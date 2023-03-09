@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel = "stylesheet" type = "text/css" href = "styles.css" >
+    </head>
+    <body>
+        
+        <div class="topnav">
+            <a class="active" href="http://54.243.252.9">Server Home Page</a>
+            <!-- <a href="http://atomickitty.ddns.net/moodle/">Moodle@atomickitty.ddns.net</a> -->
+            <!--<a href="./0-Syllabus/syllabus.ce3372-2020-3.pdf">Syllabus</a>-->
+            <a href="./ce4363notes/_build/html/index.html"> Instructor Notebook (a JupyterBook deployment)</a> 
+            <a href="./0-Syllabus/ce-4363-2023-1-Syllabus.html">Course Syllabus</a>
+            <!-- <a href="./1-Lessons/">Lessons (indexed)</a> -->
+            <a href="./2-Exercises/">Exercises (non-indexed)</a>
+            <a href="./3-Readings/">Readings (non-indexed)</a>
+            <a href="http://54.243.252.9/toolbox/">Web Tools</a>
+            <a href="https://75.3.84.227:8000"> Development Server ATT (login as senesi)</a>
+            <a href="http://54.243.252.9:8000"> Deployment Server AWS (login as senesi)</a>
+
+        </div>
+        
+        <div style="padding-left:16px">
+            <h2>CE 4363 Groundwater Hydrology/CE 5363 Groundwater Hydrology</h2>
+            <p>Catalog Description</p>
+            <p><strong>CE 4363 Groundwater Hydrology (3:3:0).</strong>. 
+            Groundwater flow; well hydraulics, development, and management of groundwater resources; <br>
+            groundwater quality; mathematical modeling with available software. <br> Introduction to design of wells and well fields.<br>
+                Prerequisite: CE 3354 or instructor consent.
+
+
+
+</p> 
+
+        </div>
+        
+        
+
+        <button class="accordion">Description</button>
+        <div class="panel">
+<p> CE 4353/5360 is ... <br> </br>
+
+
+Upon completion of this course, students should be able to:<br>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+        
+	</p>
+        </div>
+        
+        <button class="accordion">Pre-Requesites</button>
+        <div class="panel">
+        <p> 
+	CE 3305 Engineering Fluid Mechanics and CE 3354 Engineering Hydrology ; Students will apply computational thinking skills from ENGR 1330 and EGR 1206/7.
+
+	</p>
+        </div>
+        
+<button class="accordion">Software</button>
+<div class="panel">
+        <p><a href="https://www.usgs.gov/software/modflow-6-usgs-modular-hydrologic-model"> MODFLOW-6 </a> Modular 3D Groundwater Flow Model (circa 2022) </p>
+    <p><a href="https://www.usgs.gov/software/modelmuse-graphical-user-interface-groundwater-models"> ModelMUSE </a> A Graphical User Interface (GUI) for running MODFLOW-6 models </p>
+    <p><a href="http://54.243.252.9/toolbox/gwhydraulics/modflow/index.html"> MODFLOW-OnLine </a> An online implementation of MODFLOW-88 for users without local installs of MODFLOW</p>
+    <p><a href="http://54.243.252.9/toolbox/gwhydraulics/usgsmoc/"> USGS-MOC OnLine </a> An online implementation of USGS-MOC Contaminant Transport Simulator (circa 1988) for users without local installs of MOC </p>
+</div>
+
+<button class="accordion">Archives</button>
+<div class="panel">
+<p> Content Archives <p>
+</div>
+
+<!--<button class="accordion">Past Semester Archives</button>
+<div class="panel">
+<p> Content Archives <p>
+<p>
+<a href="../ce-3372/spring-2019/"> CE 3372 Spring 2019 (Redacted) </a>
+</p>
+<p>
+<a href="../ce-3372/fall-2018/"> CE 3372 Fall 2018 (Redacted) </a>
+</p>
+<p>
+<a href="../ce-3372/spring-2018/"> CE 3372 Spring 2018 (Redacted) </a>
+</p>
+</div>-->
+
+<!-- JavaScripts for this page -->
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            } 
+        }
+    }
+</script>
+
+    </body>
+</html>

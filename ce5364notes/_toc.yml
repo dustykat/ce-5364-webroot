@@ -1,0 +1,15 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: chapters/0introduction/0introduction
+- file: chapters/1tracerhypothesis/1tracerhypothesis 
+- file: chapters/2flux/2flux 
+- file: chapters/3advection/3advection
+- file: chapters/4diffusion/4diffusion
+- file: chapters/5dispersion/5dispersion
+- file: chapters/6reactions/6reactions
+- file: chapters/7decay/7decay
+
