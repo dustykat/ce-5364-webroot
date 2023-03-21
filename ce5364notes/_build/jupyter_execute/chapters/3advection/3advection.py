@@ -25,6 +25,10 @@
 # Advection calculations usually use mean section velocity based on discharge measurements.
 # 
 
+# ## References
+# 
+# 1. [Zheng, C. and Bennett, G.D. (1995) pp. 3-23 *Applied Contaminant Transport Modeling* Van Nostrand Reinhold](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/3advection/Advection.PDF)
+
 # In[ ]:
 
 

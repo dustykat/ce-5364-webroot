@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -243,6 +245,43 @@
    Scope
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preliminary-concepts">
+   Preliminary Concepts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#non-reactive-constituients">
+   Non-reactive constituients
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transport-processes">
+   Transport Processes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#advection">
+     Advection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#diffusion">
+     Diffusion
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dispersion">
+     Dispersion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -258,47 +297,114 @@
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="scope">
 <h2>Scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="preliminary-concepts">
+<h2>Preliminary Concepts<a class="headerlink" href="#preliminary-concepts" title="Permalink to this headline">¶</a></h2>
+<p>Solvent phase (soil, air, water) is the phase that contains the solute (constituient) phase. The amount of solute contained in the solvent is usually expressed as some kind of concentration,</p>
+<p>Concentrations are expressed in a variety of units:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Symbol</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Volumetric</p></td>
+<td><p>mass/volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{mg}{L}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Massic</p></td>
+<td><p>mass/mass</p></td>
+<td><p><span class="math notranslate nohighlight">\(ppm\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Molarity</p></td>
+<td><p>moles/volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(M=\frac{mol}{L}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Molality</p></td>
+<td><p>moles/mass</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(m=\frac{mol}{kg}\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td><p>Mole Fraction (also partial pressures)</p></td>
+<td><p>moles/moles</p></td>
+<td><p><span class="math notranslate nohighlight">\(X_{species}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Equivalents</p></td>
+<td><p>moles<span class="math notranslate nohighlight">\(\times\)</span>valence/volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(Eq\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Activity</p></td>
+<td><p>disintegrations/second/volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{Bq}{L}\)</span> - a contrived unit</p></td>
+</tr>
+</tbody>
+</table>
+<p>The most common in environmental flow and transport models are volumetric and massic.</p>
+<p>There are cases where multiple phases are present (multi-phase transport) and multiple components in a solute mixture (multi-component).</p>
+<p>Emulsions are a special kind of two-(or more)phase system where the emulsion behaves as a single phase with respect to motion.  Oil-in-water, water-in-oil, biosolids-in-water (technically a slurry), coal-in-water (a slurry) are examples of common emulsions.</p>
+<p>I use the terms constituients and pollutants more or less interchangeably; however a pollutant is a value judgement - if the particular constituient is undesirable, for example methyl-ethyl death in water - then its a pollutant, otherwise its just a lowly constituient.  The distinction is irrelevant unless lawyers, judges, and money are involved - then be careful; someone goes to jail, and someone loses their doublewide if you get your mords wixed!</p>
+</div>
+<div class="section" id="non-reactive-constituients">
+<h2>Non-reactive constituients<a class="headerlink" href="#non-reactive-constituients" title="Permalink to this headline">¶</a></h2>
+<p>Non-reactive constituients are constituients that <strong>do not</strong> undergo changes, exchanges, or reactions while traversing a region of interest.</p>
+<p>Solutes are constituients that are soluible in the solvent or are larger aggregates that to not constitute a distinct mobile phase from the transporting or host fluid.</p>
+<p>Examples include:</p>
 <ol class="simple">
-<li><p>Review of Essential Groundwater Hydrology</p></li>
+<li><p>Chemicals dissolved in water</p></li>
+<li><p>Solids suspended in water (liquid-solid emulsion)</p></li>
+<li><p>Oil <strong>dispersed</strong> in water (liquid-liquid emulsion)</p></li>
+<li><p>Water dispersed in air (liquid-gas emulsion)</p></li>
+<li><p>nitrogen dissolved in air (mixture)</p></li>
 </ol>
-<ul class="simple">
-<li><p>Theory of Flow in Aquifers (2D-Flow)</p></li>
-<li><p>Theory of Flow in Layered-Coupled Aquifers (Quasi-3D Flow)</p></li>
-<li><p>Boundary Conditions</p></li>
-<li><p>Flow Modeling Tools</p></li>
-</ul>
+<p>Examples of systems that are not strictly solvent-solute pairs  is an oil-water system where each liquid has a distinct phase, such as an oil slick in an estuary (distinct from produced water from a well which is an emulsion) - such a system would be a two-phase system and is dealt with using different but related tools.</p>
+</div>
+<div class="section" id="transport-processes">
+<h2>Transport Processes<a class="headerlink" href="#transport-processes" title="Permalink to this headline">¶</a></h2>
+<p>The main transport processes of interest are listed below</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>reactions are boundary conditions and while they affect behavior they are not in themselves considered as transport processes. They are most definitely fate processes, so we wont get</p>
+</div>
+<div class="section" id="advection">
+<h3>Advection<a class="headerlink" href="#advection" title="Permalink to this headline">¶</a></h3>
+<p>Advection is the process by which a physical property, such as heat or a chemical substance, is transported by the motion of a fluid. This motion can be due to <em>convection</em>, where a fluid is heated or cooled and subsequently moves because of intrinsic density changes, or it can be due to the movement of the fluid itself by pressure gradients, such as in a river or ocean current, which is called <em>forced convection</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In meteorology, advection refers to the horizontal movement of air or other atmospheric properties, such as moisture or temperature, by the wind. For example, warm air moving from the tropics to the poles is an example of advection.</p>
+<p>In oceanography, advection refers to the horizontal movement of water or other oceanic properties, such as salinity or nutrients, by ocean currents.</p>
+</div>
+<p>In our discussion herein, advection is the transport of solutes by the motion of the host fluid.</p>
+</div>
+<div class="section" id="diffusion">
+<h3>Diffusion<a class="headerlink" href="#diffusion" title="Permalink to this headline">¶</a></h3>
+<p>Solute diffusion in groundwater is the process by which solutes, such as dissolved contaminants or nutrients, move through the pore spaces and fractures of soil and rock in the subsurface. The rate and direction of solute diffusion are influenced by several factors, including the concentration gradient, the properties of the solute and the porous medium, and the temperature and pressure of the groundwater.</p>
+<p>The movement of solutes in groundwater can occur through both advection and diffusion. Advection refers to the movement of solutes due to the bulk flow of groundwater, while diffusion refers to the movement of solutes from areas of high concentration to areas of low concentration due to the random motion of molecules.</p>
+<p>The diffusion of solutes in groundwater is affected by the porosity and permeability of the subsurface, as well as the molecular properties of the solutes. For example, larger and more complex molecules may diffuse more slowly than smaller, simpler molecules. The temperature of the groundwater can also affect solute diffusion, as higher temperatures generally result in faster molecular motion and increased diffusion rates.</p>
+<p>Understanding solute diffusion in groundwater is important for predicting the movement and fate of contaminants in the subsurface, as well as for managing and protecting groundwater resources. Models of solute diffusion can be used to predict the transport of contaminants in the subsurface and to evaluate the effectiveness of different remediation strategies.</p>
+<p>A more compact definition is that diffusion is the mixing of solutes by Brownian (random) motion processes. Net transport is proportional to concentration gradients.</p>
+</div>
+<div class="section" id="dispersion">
+<h3>Dispersion<a class="headerlink" href="#dispersion" title="Permalink to this headline">¶</a></h3>
+<p>Solute dispersion in groundwater refers to the spreading and mixing of solutes, such as dissolved contaminants or nutrients, as they move through the pore spaces and fractures of soil and rock in the subsurface. The rate and extent of solute dispersion are influenced by several factors, including the properties of the solute and the porous medium, the flow velocity of the groundwater, and the geometry of the flow paths.</p>
+<p>The movement of solutes in groundwater can occur through both advection and dispersion. Advection refers to the movement of solutes due to the bulk flow of groundwater, while dispersion refers to the spreading and mixing of solutes as they move through the subsurface due to variations in the velocity and direction of groundwater flow.</p>
+<p>Solute dispersion in groundwater can be characterized by several different parameters, including the longitudinal dispersivity, which describes the spreading of solutes parallel to the direction of groundwater flow, and the transverse dispersivity, which describes the spreading of solutes perpendicular to the direction of groundwater flow.</p>
+<p>Understanding solute dispersion in groundwater is important for predicting the movement and fate of contaminants in the subsurface, as well as for managing and protecting groundwater resources. Models of solute dispersion can be used to predict the transport of contaminants in the subsurface and to evaluate the effectiveness of different remediation strategies.</p>
+<p>Observe the definition is practically the same as that for diffusion, except the temperature importance is replaced by the concepts of dispersivity.</p>
+<p>The similarity arises in part because ultimately a Fickian-type descrpition is used to explain behavior for either process (the meanings and magnitudes of the dispersion coeficient and the diffusion coefficient are quite different).
+A compact definition is that dispersion is the mixing of solutes by small and large scale variations in the velocity field of the host fluid caused by shear resistance, turbulent fluctuations, and the braided flow paths.  Net transport is usually modeled as proportional to concentration gradients.</p>
+<p>Dispersion appears in several types:</p>
 <ol class="simple">
-<li><p>Non-Reactive (Tracers) Mass Transport in Porous Media</p></li>
+<li><p>Shear induced dispersion (pipes and open channel flows)</p></li>
+<li><p>Turbulent dispersion (open flows)</p></li>
+<li><p>Hydrodynamic dispersion (porous flows)</p></li>
 </ol>
-<ul class="simple">
-<li><p>Advection</p></li>
-<li><p>Diffusion</p></li>
-<li><p>Dispersion</p></li>
-<li><p>Analytical Solutions</p></li>
-</ul>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p>Reactive Mass Transport in Porous Media</p></li>
-</ol>
-<ul class="simple">
-<li><p>Solid-Liquid Reactions (Adsorbtion)</p></li>
-<li><p>Constituient Decay</p></li>
-<li><p>Analytical Solutions</p></li>
-</ul>
-<ol class="simple">
-<li><p>Numerical Methods</p></li>
-</ol>
-<ul class="simple">
-<li><p>Multiple Cell Balance (MCB) Method</p></li>
-<li><p>Upwind Formulation</p></li>
-<li><p>Modeling Pure Advection by Particle Tracking</p></li>
-<li><p>Using the Method of Characteristics (USGS-MOC) Model</p></li>
-</ul>
-<ol class="simple">
-<li><p>Estimating Model Parameters</p></li>
-<li><p>Multi-Component Reactive Transport</p></li>
-<li><p>Multi-Phase Transport</p></li>
-<li><p>Using the Geochemical Balance (USGS-BALANCE) Model</p></li>
-<li><p>Extensions to Pollution Modeling in Surface Water and Air Quality (as time permits)</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Becquerel">Becquerel (radioactivity unit)</a></p></li>
 </ol>
 </div>
 </div>
