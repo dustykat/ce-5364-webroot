@@ -1,0 +1,613 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pollutants &#8212; My sample book</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Non-Reactive Transport - I" href="../5nonreactivetransport/5nonreactivetransport.html" />
+    <link rel="prev" title="Introduction" href="../0introduction/0introduction.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to CE 5364 Groundwater Transport Phenomena
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0introduction/0introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Pollutants
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5nonreactivetransport/5nonreactivetransport.html">
+   Non-Reactive Transport - I
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5nonreactivetransport/1tracerhypothesis.html">
+     Tracer Hypothesis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5nonreactivetransport/2flux.html">
+     Flux
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5nonreactivetransport/3advection.html">
+     Advection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6nonreactivetransport/4diffusion.html">
+     Diffusion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6nonreactivetransport/5dispersion.html">
+     Dispersion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../8reactivetransport/8reactivetransport.html">
+   Reactive Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../8reactivetransport/6reactions.html">
+     Reactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../8reactivetransport/7decay.html">
+     Introduction
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/chapters/4pollutants/4pollutants.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/4pollutants/4pollutants.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/4pollutants/4pollutants.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#concentrations">
+   Concentrations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types">
+   Types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources">
+   Sources
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exposure-sources-and-effects">
+   Exposure Sources and Effects
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exposure-and-risk">
+     Exposure and Risk
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#risk-assessment-tools">
+     Risk Assessment Tools
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exposure-concentration">
+     Exposure Concentration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dose-response-concepts">
+   Dose/Response Concepts
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#threshold-concept">
+     Threshold Concept
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#latency-concept">
+     Latency Concept
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimating-fate-of-pollutants">
+   Estimating Fate of Pollutants
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#response">
+   Response
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="pollutants">
+<h1>Pollutants<a class="headerlink" href="#pollutants" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="concentrations">
+<h2>Concentrations<a class="headerlink" href="#concentrations" title="Permalink to this headline">¶</a></h2>
+<p>Solvent phase (soil, air, water) is the phase that contains the solute (constituient) phase. The amount of solute contained in the solvent is usually expressed as some kind of concentration either massic(mass/mass) or volumetric(mass/volume).</p>
+<p>Concentrations are expressed in a variety of units:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Symbol</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Volumetric</p></td>
+<td><p>mass/volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{mg}{L}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Massic</p></td>
+<td><p>mass/mass</p></td>
+<td><p><span class="math notranslate nohighlight">\(ppm\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Molarity</p></td>
+<td><p>moles/volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(M=\frac{mol}{L}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Molality</p></td>
+<td><p>moles/mass</p></td>
+<td><p><span class="math notranslate nohighlight">\(m=\frac{mol}{kg}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Mole Fraction (also partial pressures)</p></td>
+<td><p>moles/moles</p></td>
+<td><p><span class="math notranslate nohighlight">\(X_{species}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Equivalents</p></td>
+<td><p>moles<span class="math notranslate nohighlight">\(\times\)</span>valence/volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(Eq\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Activity</p></td>
+<td><p>disintegrations/second/volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{Bq}{L}\)</span> - a contrived unit</p></td>
+</tr>
+</tbody>
+</table>
+<p>The most common in environmental flow and transport models are volumetric and massic.</p>
+<p>There are cases where multiple phases are present (multi-phase transport) and multiple components in a solute mixture (multi-component).</p>
+<p>Emulsions are a special kind of two-(or more)phase system where the emulsion behaves as a single phase with respect to motion.  Oil-in-water, water-in-oil, biosolids-in-water (technically a slurry), coal-in-water (a slurry) are examples of common emulsions.</p>
+<p>I use the terms constituients and pollutants more or less interchangeably; however a pollutant is a value judgement - if the particular constituient is <strong>undesirable</strong>, for example methyl-ethyl death in water - then its a pollutant, otherwise its just a lowly <em>constituient</em>.  The distinction is irrelevant unless lawyers, judges, and money are involved - then be careful; someone goes to jail, and someone loses their doublewide if you get your mords wixed!</p>
+</div>
+<div class="section" id="types">
+<h2>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h2>
+<p>Lots of types of pollutants, their classification below is somewhat arbitrary but useful in assessing impacts and remediation methods.</p>
+<blockquote>
+<div><p><strong>Pathogens</strong>
+Bacteria, protozoa, virus, prions that can cause disease and death. Usually associated
+with waste from human activities.<br>
+<strong>Oxygen Demanding Materials</strong>
+Usually organic chemicals associated with human activities. Often will degrade naturally
+of sufficient time and O2 are available.<br>
+<strong>Inorganic Materials</strong>
+Cations and anions that pose a threat to health or economic use of air, soil, or water.
+Metals that are problematic, but not toxic (see hazardous chemicals).<br>
+<strong>Hazardous Chemicals</strong>
+This category is further defined by <a class="reference external" href="https://www.epa.gov/hw/defining-hazardous-waste-listed-characteristic-and-mixed-radiological-wastes">listed versus characteristic</a> versus hazardous materials.  Listed means the material is on a list; characteristic means it could exhibit behavior from:</p>
+<ul class="simple">
+<li><p><strong>Ignitability</strong>-Materials that pose a fire hazard during routine handling (e.g.<a class="reference external" href="https://about.usps.com/posters/pos138/pos138_hazard_004.htm">gasoline</a>)</p></li>
+<li><p><strong>Corrosivity</strong>-Materials that require special containers because they corrode standard containers. (e.g. <a class="reference external" href="https://emergency.cdc.gov/agent/hydrofluoricacid/basics/facts.asp">hydrogen fluoride</a></p></li>
+<li><p><strong>Reactivity</strong>-Materials that react spontaneously with air or water, are unstable to shock or heat, generate toxic gases, or explode during routine handling. (e.g. <a class="reference external" href="https://www.epa.gov/sites/default/files/2016-09/documents/phosphorus.pdf">white phosphorous</a>)</p></li>
+<li><p><strong>Toxicity</strong>-Materials that release toxicants in quantities that pose a threat to human or environmental health when improperly handled. (e.g. <a class="reference external" href="https://emergency.cdc.gov/agent/nerve/tsd.asp">Organophosphate pesticides</a>)<br><br>
+Many compounds exhibit multiple characteristics - but one is enough to earn a spot on the pollutant show.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="sources">
+<h2>Sources<a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>By design.  Septic tanks, injection wells, land application.</p></li>
+<li><p>Storage systems (failure). Leaks from landfills, tanks.</p></li>
+<li><p>Transmission system (failure). Pipelines, trucks, trains.</p></li>
+<li><p>Non-point sources. Irrigation,urban runoff,mining drainage</p></li>
+<li><p>Wells, excavations.</p></li>
+<li><p>Natural.  Salt waters</p></li>
+</ol>
+<p>A nice <a class="reference external" href="https://www.epa.gov/sites/default/files/2015-08/documents/mgwc-gwc1.pdf">EPA Fact Sheet</a> discusses sources in some detail.</p>
+<p>A typical priority list (circa 1990s) is:</p>
+<ul class="simple">
+<li><p>Inorganics</p></li>
+<li><p>Organics</p></li>
+<li><p>Hydrocarbons</p></li>
+<li><p>Solvents</p></li>
+<li><p>Chlorinated hydrocarbons</p></li>
+<li><p>Metals</p></li>
+<li><p>Emerging contaminants</p></li>
+</ul>
+<p>which pretty much covers everything!  The category overlaps are intentional.</p>
+</div>
+<div class="section" id="exposure-sources-and-effects">
+<h2>Exposure Sources and Effects<a class="headerlink" href="#exposure-sources-and-effects" title="Permalink to this headline">¶</a></h2>
+<p>A subset of sources, probably more useful in the overall context of transport are exposure sources:</p>
+<blockquote>
+<div><p><strong>Biological cycles</strong>: Uptake and decay of animal and plant life, excretion of materials, etc.<br>
+<strong>Domestic waste</strong>: Discharges of raw and treated wastewater. <br>
+<strong>Industrial waste</strong>:Discharges of raw and treated wastewater, discharges of raw and treated off-gases. <br>
+<strong>Nonpoint source</strong>: Landfill leachate, stormwater runoff. As a rule of thumb, a nonpoint source is any source
+that you cannot “point” to. (Although humorous, this definition is quite practical) <br></p>
+</div></blockquote>
+<p>Effects (of exposure) are classified as:</p>
+<blockquote>
+<div><p><strong>Acute</strong> effects imply some immediate damage; effect is noticed quickly<br>
+<strong>Chronic</strong> effects imply long term damage; it may be many years until effect is noticed.</p>
+</div></blockquote>
+<div class="section" id="exposure-and-risk">
+<h3>Exposure and Risk<a class="headerlink" href="#exposure-and-risk" title="Permalink to this headline">¶</a></h3>
+<p>Fundamental question is what are the risks associated with assimilation of a certain compound at a certain concentration over short (acute) and long (chronic) term?</p>
+</div>
+<div class="section" id="risk-assessment-tools">
+<h3>Risk Assessment Tools<a class="headerlink" href="#risk-assessment-tools" title="Permalink to this headline">¶</a></h3>
+<p>Toxic response analysis, Exposure Concentration, Cost-benefit analysis, Revealed and expressed preference analysis</p>
+</div>
+<div class="section" id="exposure-concentration">
+<h3>Exposure Concentration<a class="headerlink" href="#exposure-concentration" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Source of compound, production rates, and release rates to environment.</strong></p></li>
+<li><p><strong>Characteristics of compound relevant to its ability to travel and react in the natural environment.</strong></p></li>
+<li><p>Data to estimate the population at risk. Occupation. Medical surveillance.</p></li>
+<li><p>Socioeconomic use habits. The source and compound characteristics can be incorporated into models.</p></li>
+</ul>
+<p>The actual risk analysis is a second step.</p>
+</div>
+</div>
+<div class="section" id="dose-response-concepts">
+<h2>Dose/Response Concepts<a class="headerlink" href="#dose-response-concepts" title="Permalink to this headline">¶</a></h2>
+<p>For response to a contaminant the material must be toxic and the receptor must be exposed.
+A highly toxic material with no exposure is not much of a hazard.
+A mildly toxic material with high exposure could be very hazardous.</p>
+<p>Environmental toxicology typically assumes that for dilute pollutants, toxicity is proportional to concentration and duration. The longer the contact time, the greater the probability of toxic effects. Amount of toxicant initially absorbed is gradually decreased by metabolic activity and excretion with other bodily wastes.</p>
+<p>The figure below is a conceptual retention curve for some pollutant</p>
+<p><img alt="" src="../../_images/retentioncurve.png" /></p>
+<p>Time integral of the retention curve is called the <em>retention dose</em>.
+The lifetime retention dose is called the <em>dose commitment</em>.
+A typical formula for estimating retention dose is:</p>
+<div class="math notranslate nohighlight">
+\[R=C \times U \times D\]</div>
+<p>where <span class="math notranslate nohighlight">\(R\)</span> is the retention dose, <span class="math notranslate nohighlight">\(C\)</span> is the exposure concentration, <span class="math notranslate nohighlight">\(U\)</span> is the uptake rate, and <span class="math notranslate nohighlight">\(D\)</span> is the exposure duration.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Obviously units are not supplied, we are in the realm of toxicology - outside scope of this document, but some background is needed, hence the overly simplified discussion herein.</p>
+</div>
+<div class="section" id="threshold-concept">
+<h3>Threshold Concept<a class="headerlink" href="#threshold-concept" title="Permalink to this headline">¶</a></h3>
+<p>In drug therapy there exist threshold doses where response to the drug changes. Typically
+two thresholds in drugs exist, a lower bound where no therapeutic effect is observed, and
+an upper threshold where damage (usually death) occurs.</p>
+<p>Similarly toxicants are thought to also have thresholds. A practice used is that one-percent of the threshold dose for
+animals is acceptable for humans (normalized by body weight).</p>
+</div>
+<div class="section" id="latency-concept">
+<h3>Latency Concept<a class="headerlink" href="#latency-concept" title="Permalink to this headline">¶</a></h3>
+<p>In support of the threshold hypothesis it has been observed that the period between exposure and response (tumors) for carcinogen increases as dose decreases. Generally it is accepted that the product of dose and latent time raised to some power is a constant.</p>
+</div>
+</div>
+<div class="section" id="estimating-fate-of-pollutants">
+<h2>Estimating Fate of Pollutants<a class="headerlink" href="#estimating-fate-of-pollutants" title="Permalink to this headline">¶</a></h2>
+<p>The fundamental tool used to predict concentrations in the environment is the mathematical model, supported by data, laboratory experiments, and judgement.</p>
+<p>Models are used in many disciplines such as:</p>
+<ul class="simple">
+<li><p>Economics: predict market activity, occurrence or recessions or periods of productivity.</p></li>
+<li><p>Meteorology: short-term weather conditions, long-term climatological conditions.</p></li>
+<li><p>Engineering: predict performance of engineered systems. <strong>Predict transport and fate of pollutants.</strong></p></li>
+</ul>
+<p>Keeping this in mind, much of these notes is aimed at building useful models to support engineering decisions regarding groundwater quality.</p>
+</div>
+<div class="section" id="response">
+<h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Health effects</p></li>
+<li><p>Economic effects</p></li>
+<li><p>Legal effects</p></li>
+</ul>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Becquerel">Becquerel (radioactivity unit)</a></p></li>
+<li><p><span class="xref myst">Toxicity (Cleveland notes circa 2001)</span></p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/4pollutants"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../0introduction/0introduction.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Introduction</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../5nonreactivetransport/5nonreactivetransport.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Non-Reactive Transport - I</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

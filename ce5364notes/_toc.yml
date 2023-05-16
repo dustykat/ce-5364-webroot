@@ -5,11 +5,20 @@ format: jb-book
 root: intro
 chapters:
 - file: chapters/0introduction/0introduction
-- file: chapters/1tracerhypothesis/1tracerhypothesis 
-- file: chapters/2flux/2flux 
-- file: chapters/3advection/3advection
-- file: chapters/4diffusion/4diffusion
-- file: chapters/5dispersion/5dispersion
-- file: chapters/6reactions/6reactions
-- file: chapters/7decay/7decay
+- file: chapters/4pollutants/4pollutants 
+- file: chapters/5nonreactivetransport/5nonreactivetransport 
+  sections:
+  - file: chapters/5nonreactivetransport/1tracerhypothesis
+  - file: chapters/5nonreactivetransport/2flux 
+  - file: chapters/5nonreactivetransport/3advection 
+  - file: chapters/6nonreactivetransport/4diffusion
+  - file: chapters/6nonreactivetransport/5dispersion
+- file: chapters/7analyticalmodels/analyticalmodels
+  sections:
+  - file: chapters/7analyticalmodels/ogatabanks
+  - file: chapters/7analyticalmodels/sauty
+- file: chapters/8reactivetransport/8reactivetransport 
+  sections:
+  - file: chapters/8reactivetransport/6reactions
+  - file: chapters/8reactivetransport/7decay
 

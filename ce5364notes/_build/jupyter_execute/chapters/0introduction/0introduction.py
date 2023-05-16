@@ -49,7 +49,7 @@
 # The main transport processes of interest are listed below
 # 
 # :::{note}
-# reactions are boundary conditions and while they affect behavior they are not in themselves considered as transport processes. They are most definitely fate processes, so we wont get 
+# Reactions are boundary conditions and while they affect behavior they are not in themselves considered as transport processes. They are most definitely fate processes, so we won't get to ignore them!
 # :::
 # 
 # ### Advection
