@@ -5,6 +5,7 @@ format: jb-book
 root: intro
 chapters:
 - file: chapters/0introduction/0introduction
+- file: chapters/2essentialgroundwater/essentialgwreview
 - file: chapters/4pollutants/4pollutants 
 - file: chapters/5nonreactivetransport/5nonreactivetransport 
   sections:

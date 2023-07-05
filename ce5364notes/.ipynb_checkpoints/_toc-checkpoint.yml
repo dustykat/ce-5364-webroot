@@ -5,6 +5,7 @@ format: jb-book
 root: intro
 chapters:
 - file: chapters/0introduction/0introduction
+- file: chapters/2essentialgroundwater/essentialgwreview
 - file: chapters/4pollutants/4pollutants 
 - file: chapters/5nonreactivetransport/5nonreactivetransport 
   sections:
@@ -16,6 +17,7 @@ chapters:
 - file: chapters/7analyticalmodels/analyticalmodels
   sections:
   - file: chapters/7analyticalmodels/ogatabanks
+  - file: chapters/7analyticalmodels/sauty
 - file: chapters/8reactivetransport/8reactivetransport 
   sections:
   - file: chapters/8reactivetransport/6reactions
