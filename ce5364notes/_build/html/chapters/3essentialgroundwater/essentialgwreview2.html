@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -75,7 +77,7 @@
         
       
       
-      <img src="../../_static/logo.png" class="logo" alt="logo">
+      <img src="../../_static/gwtransport.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">My sample book</h1>
@@ -313,6 +315,13 @@
   <a class="reference internal nav-link" href="#anisotropy">
    Anisotropy
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#principal-directions-of-hydraulic-conductivity">
+     Principal Directions of Hydraulic Conductivity
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cell-balance-models-flow">
@@ -353,6 +362,53 @@
 </div>
 <div class="section" id="anisotropy">
 <h2>Anisotropy<a class="headerlink" href="#anisotropy" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="principal-directions-of-hydraulic-conductivity">
+<h3>Principal Directions of Hydraulic Conductivity<a class="headerlink" href="#principal-directions-of-hydraulic-conductivity" title="Permalink to this headline">¶</a></h3>
+<p>To determine the principal values of the hydraulic conductivity tensor in 2D, you would typically follow these steps:</p>
+<blockquote>
+<div><p><strong>Define the Hydraulic Conductivity Tensor</strong>: The hydraulic conductivity tensor represents the anisotropic properties of the subsurface material in terms of its ability to transmit water. In 2D, the hydraulic conductivity tensor is a symmetric matrix with three components: Kxx, Kyy, and Kxy (or Kyx). Kxx represents the hydraulic conductivity in the x-direction, Kyy represents the hydraulic conductivity in the y-direction, and Kxy (or Kyx) represents the cross-component.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Formulate the Hydraulic Conductivity Matrix</strong>: Arrange the components of the hydraulic conductivity tensor into a 2x2 matrix, typically denoted as [K]. In matrix form, the hydraulic conductivity tensor for 2D becomes:</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{gather}
+\mathbf{K} =
+\begin{pmatrix}
+K_{xx} &amp; K_{xy} \\
+~\\
+K_{yx} &amp; K_{yy} \\
+\end{pmatrix}
+~
+\end{gather}
+\end{split}\]</div>
+<blockquote>
+<div><p><strong>Solve for Eigenvalues</strong>: Determine the eigenvalues of the hydraulic conductivity matrix [K]. Eigenvalues represent the principal values of the matrix and provide information about the directional properties of the hydraulic conductivity tensor.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Calculate Principal Values</strong>: The eigenvalues of the hydraulic conductivity matrix [K] correspond to the principal values of the hydraulic conductivity tensor. These principal values represent the maximum and minimum hydraulic conductivities in the directions determined by the corresponding eigenvectors.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Interpret the Results</strong>: The principal values of the hydraulic conductivity tensor provide insights into the anisotropic nature of fluid flow in the subsurface. The larger eigenvalue corresponds to the direction of maximum hydraulic conductivity, while the smaller eigenvalue represents the direction of minimum hydraulic conductivity.</p>
+</div></blockquote>
+<p>Obtaining accurate values for the hydraulic conductivity components involves field measurements and laboratory testing of soil or rock samples.</p>
+<p>In 3D the determination is simply the natural extension of the 2D process.  The matrix (tensor) is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{gather}
+\mathbf{K} =
+\begin{pmatrix}
+K_{xx} &amp; K_{xy} &amp; K_{xz}\\
+~\\
+K_{yx} &amp; K_{yy} &amp; K_{yz} \\
+~\\
+K_{zx} &amp; K_{zy} &amp; K_{zz} \\
+\end{pmatrix}
+~
+\end{gather}
+\end{split}\]</div>
+</div>
 </div>
 <div class="section" id="cell-balance-models-flow">
 <h2>Cell Balance Models (Flow)<a class="headerlink" href="#cell-balance-models-flow" title="Permalink to this headline">¶</a></h2>
@@ -427,7 +483,7 @@
     <div class="container">
       <p>
         
-          By The Jupyter Book Community<br/>
+          By Theodore G. Cleveland, PhD<br/>
         
             &copy; Copyright 2021.<br/>
       </p>
