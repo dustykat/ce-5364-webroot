@@ -99,6 +99,7 @@
 # ## References
 # 
 # 1. [Becquerel (radioactivity unit)](https://en.wikipedia.org/wiki/Becquerel)
+# 2. [Modeling Pollution (my notes)](http://54.243.252.9/ce-5364-webroot/3-Readings/ModelingPollution.PDF)
 
 # In[ ]:
 
