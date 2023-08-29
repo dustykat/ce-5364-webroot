@@ -112,7 +112,7 @@
 
 # ## References
 # 
-# 1. [My notes](http://54.243.252.9/ce-5364-webroot/3-Readings/GroundwaterReview.pdf)
+# 1. [Groundwater Review (my notes)](http://54.243.252.9/ce-5364-webroot/3-Readings/GroundwaterReview.pdf)
 # 2. [Ground Water and Surface Water A Single Resource](https://pubs.usgs.gov/circ/circ1139/)
 
 # In[ ]:

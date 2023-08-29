@@ -99,7 +99,10 @@
 # ## References
 # 
 # 1. [Becquerel (radioactivity unit)](https://en.wikipedia.org/wiki/Becquerel)
-# 2. [Modeling Pollution (my notes)](http://54.243.252.9/ce-5364-webroot/3-Readings/ModelingPollution.PDF)
+# 2. [Fluid Mechanics Review (my notes)](http://54.243.252.9/ce-5364-webroot/3-Readings/FluidMechanicsReview.PDF)
+# 3. [Fluid Properties (reading)](http://54.243.252.9/ce-5364-webroot/3-Readings/FluidPropertiesReading.pdf)
+# 4. [Modeling Pollution (my notes)](http://54.243.252.9/ce-5364-webroot/3-Readings/ModelingPollution.PDF)
+# 5. [Transport Processes (reading)](http://54.243.252.9/ce-5364-webroot/3-Readings/TransportPhenomenonReading.pdf)
 
 # In[ ]:
 
