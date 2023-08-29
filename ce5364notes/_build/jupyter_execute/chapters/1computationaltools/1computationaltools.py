@@ -15,7 +15,7 @@
 # - besselj(,) bessel function type j
 # - Ei() exponential integral 
 # 
-# There are a few more, but these handle many of the cases. In Excel they are part of the Analysis Add-in, similarily with LibreOffice; alternatively they can be programmed using VBA and polynomial approximations to the functions.
+# There are a few more, but these handle many of the cases. In Excel they are part of the Analysis Add-in, similarily with LibreOffice use Insert/Function/AddIn and a pull down menu appears with; alternatively they can be programmed using VBA and polynomial approximations to the functions.
 # 
 # 
 

@@ -5,6 +5,7 @@ format: jb-book
 root: intro
 chapters:
 - file: chapters/0introduction/0introduction
+- file: chapters/1computationaltools/1computationaltools
 - file: chapters/2essentialgroundwater/essentialgwreview
 - file: chapters/3essentialgroundwater/essentialgwreview2
 - file: chapters/4pollutants/4pollutants 
