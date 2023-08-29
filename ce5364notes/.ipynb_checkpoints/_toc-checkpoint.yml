@@ -20,6 +20,8 @@ chapters:
   sections:
   - file: chapters/7analyticalmodels/ogatabanks
   - file: chapters/7analyticalmodels/sauty
+  - file: chapters/7analyticalmodels/huntsolution
+  - file: chapters/7analyticalmodels/domenico
 - file: chapters/8reactivetransport/8reactivetransport 
   sections:
   - file: chapters/8reactivetransport/6reactions
