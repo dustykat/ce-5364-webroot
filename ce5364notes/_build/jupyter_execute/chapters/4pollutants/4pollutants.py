@@ -180,3 +180,7 @@
 # 2. [Toxicity (Cleveland notes circa 2001)](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/4pollutants/Toxicity.PDF)
 # 3. [Dose-Response (Wikipedia)](https://en.wikipedia.org/wiki/Dose%E2%80%93response_relationship)
 # 4. [Threshold Concept](https://www.toxmsdt.com/22-dose-response.html)
+# 5. [Risk Assessment Concepts (Cleveland notes)](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/4pollutants/CIVE3331_Lecture_018.PDF)
+# 5. [Risk Assessment Concepts (TNRCC guidelines)](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/4pollutants/CIVE3331_Readings_018 copy.pdf)
+# 5. [Risk Assessment Homework (Old Cleveland notes)](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/4pollutants/Exercise021.PDF)
+# 5. [Risk Assessment Solutions (Old Cleveland notes)](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/4pollutants/Solution021.PDF)
