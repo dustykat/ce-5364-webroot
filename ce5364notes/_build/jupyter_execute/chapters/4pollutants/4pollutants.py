@@ -184,3 +184,10 @@
 # 5. [Risk Assessment Concepts (TNRCC guidelines)](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/4pollutants/CIVE3331_Readings_018_copy.pdf)
 # 5. [Risk Assessment Homework (Old Cleveland notes)](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/4pollutants/Exercise021.PDF)
 # 5. [Risk Assessment Solutions (Old Cleveland notes)](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/4pollutants/Solution021.PDF)
+# 6. [Framework for Ecological Risk Assessment EPA 630-R-92-001](https://www.epa.gov/risk/framework-ecological-risk-assessment)
+
+# In[ ]:
+
+
+
+
