@@ -317,6 +317,28 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeling-advection">
+   Modeling Advection
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multi-linear-interpolation">
+     Multi-Linear Interpolation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spreadsheet-approach">
+     Spreadsheet Approach
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#flownets">
+   Flownets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
    References
   </a>
@@ -375,10 +397,142 @@
 </table>
 <p>The advective flux is the product of the quantity of interest (in this case mass of either host fluid or tracer) and the velocity term.  Typically the mean section velocity is used (pipe flow, open channel flow) because fine scale resolution of the velocity field is impossible.  In porous media, the pore velocity or average linear velocity is used.
 Advection calculations usually use mean section velocity based on discharge measurements.</p>
+<div class="section" id="modeling-advection">
+<h2>Modeling Advection<a class="headerlink" href="#modeling-advection" title="Permalink to this headline">¶</a></h2>
+<p>1D Examples are in the textbook; 1D is not too difficult as the direction hence the path is known.</p>
+<p>Higher spatial dimensions (2D, 3D) use either a particle tracking approach (DPRW, MOC, MT3D, …) or flux-limited Reynolds-averaged Navier-Stokes (FLUENT, SUTRA, HST3D, ….)</p>
+<p>Later on we will use USGS-MOC, so will illustrate particle tracking.</p>
+<ul class="simple">
+<li><p>Particle or front tracking is typically performed using special software.</p></li>
+<li><p>It can be performed using a spreadsheet.</p></li>
+<li><p>The spreadsheet exercise is useful to illustrate the principles involved in particle tracking calculations.</p></li>
+<li><p>Particle tracking with reactions is very computationally intensive and is beyond practical application in a spreadsheet; such computations are used to design space shuttles, helicopters and other things where the knowledge gained justifies the costs</p></li>
+</ul>
+<p>The first step is to compute the velocity field (if it is steady even better, if not then every time increment it is recomputed)</p>
+<ul class="simple">
+<li><p>If analytical functions are available for the velocity field then tracking is relatively easy.</p></li>
+<li><p>Usually the velocity field is determined numerically at discrete points in space, and this is the situation of interest.</p></li>
+<li><p>The interpolation schemes in common use are simple; simple, simple-linear, and multi-linear schemes.</p></li>
+<li><p>Only the simple-linear scheme preserves cell-by-cell mass balances.</p></li>
+</ul>
+<p>The figure below illustrates simple linear interpolation.</p>
+<p><img alt="" src="../../_images/particle_track_interpolation.png" /></p>
+<ul class="simple">
+<li><p>Typical computational grid for heads.</p></li>
+<li><p>Arrows are the interfacial fluxes.</p></li>
+<li><p>The simple scheme assigns the top and left flux to <span class="math notranslate nohighlight">\((x_1,y_1)\)</span>.</p></li>
+<li><p>The simple scheme assgins the right and bottom flux to <span class="math notranslate nohighlight">\((x_2,y_2)\)</span>.</p></li>
+</ul>
+<p>The particle velocity is determined by position of the particle relative to the velocity grid.</p>
+<p><img alt="" src="../../_images/pt_find_particle.png" /></p>
+<p>Uses the same grid as the head scheme.
+Velocity is the distance weighted average of the cell that the particle occupies.</p>
+<p><img alt="" src="../../_images/pt_get_velo.png" /></p>
+<p>From the above figure, the particle’s velocities (x- and y- directions) are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(u_p = \frac{1-\delta x}{\Delta x}u(x_1,y_1)+\frac{\delta x}{\Delta x}u(x_2,y_2)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v_p = \frac{1-\delta y}{\Delta y}v(x_1,y_1)+\frac{\delta y}{\Delta y}v(x_2,y_2)\)</span></p></li>
+</ul>
+<div class="section" id="multi-linear-interpolation">
+<h3>Multi-Linear Interpolation<a class="headerlink" href="#multi-linear-interpolation" title="Permalink to this headline">¶</a></h3>
+<p>Higher order schemes produce smoother velocity fields at the expense of cell mass balances and computational ease. The USGS-MOC model uses a bi-linear scheme where the velocities at the four corners of the occupied cell are used. When transient flow fields occur, averaging in time is also used. The differences in the schemes are hard to detect when the grid spacing is small and the flow field is smoothly varying.</p>
+</div>
+<div class="section" id="spreadsheet-approach">
+<h3>Spreadsheet Approach<a class="headerlink" href="#spreadsheet-approach" title="Permalink to this headline">¶</a></h3>
+<p>To illustrate particle tracking the simple velocity scheme is used.<br />
+Extension to higher order schemes is straight forward.</p>
+<p>Illustrate with simple scheme. Consider:</p>
+<p><img alt="" src="../../_images/ss_fig1.png" /></p>
+<ul class="simple">
+<li><p>Large rectangles represent the velocity grid.</p></li>
+<li><p>Circles represent the geometric location where velocity is known.</p></li>
+<li><p>Small rectangle represents the particle that we wish to track.</p></li>
+</ul>
+<p><strong>Cell Indexing</strong></p>
+<p><img alt="" src="../../_images/ss_fig2.png" /></p>
+<ul class="simple">
+<li><p>Each cell represents a grid location in the velocity field.  Thus each cell has a unique row and column index.</p></li>
+<li><p>Each cell centroid also has a unique geomteric (x,y) location.</p></li>
+<li><p>The particle in the figure is located in cell named: Col_1,Row_2.</p></li>
+<li><p>The cell is located at position: (X_1,Y_2).</p></li>
+<li><p>The particle position is (XP,YP).</p></li>
+</ul>
+<p><strong>Locating the Particle</strong></p>
+<ul class="simple">
+<li><p>At the start of a time-step:</p></li>
+<li><p>particle position is known.</p></li>
+<li><p>cell positions are known.</p></li>
+<li><p>cell that the particle occupies is unknown.</p></li>
+<li><p>Construct a distance table</p></li>
+<li><p>The distance from each cell to the particle is calculated and stored in a table.</p></li>
+<li><p>Search the table,find the cell nearest the particle.</p></li>
+<li><p>The cell coordinates of the smallest distance in the table is determined</p></li>
+</ul>
+<p><strong>Locating in Excel</strong></p>
+<ul class="simple">
+<li><p>The spreadsheet function that finds the value in an array (rectangular area of cells), given the position in the array to search is the function <code class="docutils literal notranslate"><span class="pre">INDEX(array,row_index,column_index)</span></code></p></li>
+<li><p>The spreadsheet function that can find the position in an array where a particular value appears is the function <code class="docutils literal notranslate"><span class="pre">MATCH(value,array,type)</span></code></p></li>
+</ul>
+<p><strong>INDEX Function</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">INDEX(array,row_index,column_index)</span></code>
+array is the location of the rectangular area of cells to search (eg. A3:C6).
+row_index is number of rows down from the starting row to search.
+column_index is the number of columns across from the starting column to search.</p></li>
+</ul>
+<p><strong>MATCH Function</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MATCH(value,array,type)</span></code>
+value is the numerical value to search for in the array.
+array is the location of the rectangular area of cells to search (eg. A3:C6).
+type is the type of match to use.  type=0 means exact matching.</p></li>
+</ul>
+<p><strong>Using the Functions</strong></p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">INDEX</span></code> function allows us to select the correct values of velocity if we know which cell the particle resides in.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">MATCH</span></code> function allows us to compare values in an array and determine the position in the array that these values are found.<br />
+Thus the <code class="docutils literal notranslate"><span class="pre">MATCH</span></code> function lets us search a distance table, find the cell center nearest the particle, and then use the index to find the correct velocity.</p></li>
+</ul>
+<p><strong>Moving the Particle</strong></p>
+<p>Once the cell containing the particle is identified, the particle is assigned the velocity values for that cell.
+The particle is then “moved” by the simple kinematic calculation:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_p(t+\Delta t)=x_p(t)+u_p(t)\Delta t\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y_p(t+\Delta t)=y_p(t)+v_p(t)\Delta t\)</span></p></li>
+</ul>
+<p><strong>Illustrative Example</strong></p>
+<p>An example with 3 particles is shown below - the spreadsheet is kind of big because iterative computations are intentionally avoided.</p>
+<p><img alt="" src="../../_images/pt_seg0.png" /></p>
+<p>Closer view for particle 1:</p>
+<p><img alt="" src="../../_images/pt_seg1.png" /></p>
+<p>Closer view for particle 2:</p>
+<p><img alt="" src="../../_images/pt_seg2.png" /></p>
+<p>Closer view for particle 3:</p>
+<p><img alt="" src="../../_images/pt_seg3.png" /></p>
+<p><strong>Summary</strong></p>
+<ul class="simple">
+<li><p>Particle tracking is a tool to determine the position of a fluid particle in a flow field.</p></li>
+<li><p>A two-step approach is required:</p></li>
+<li><p>Determine particle velocity</p>
+<ul>
+<li><p>Locate the particle relative to known velocity locations.</p></li>
+<li><p>Assign the velocity to the particle based on an interpolation scheme.</p></li>
+</ul>
+</li>
+<li><p>Move the particle.</p></li>
+<li><p>All particle tracking programs use this type of two-step logic.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="flownets">
+<h2>Flownets<a class="headerlink" href="#flownets" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/3advection/Advection.PDF">Zheng, C. and Bennett, G.D. (1995) pp. 3-23 <em>Applied Contaminant Transport Modeling</em> Van Nostrand Reinhold</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/AdvectionNotes.pdf">Cleveland, T.G. (2002) <em>Advection</em> Notes to accompany <em>“CIVE 7332 Flow and Transport Modeling for Environmental Engineering” at University of Houston</em></a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/parttrack_1.pdf">Cleveland, T.G. (2002) <em>Particle Tracking in a Spreadsheet</em> Notes to accompany “CIVE 7332 Flow and Transport Modeling for Environmental Engineering” at University of Houston</a></p></li>
 </ol>
 </div>
 </div>
