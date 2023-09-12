@@ -164,9 +164,14 @@
 #  - Move the particle.
 # - All particle tracking programs use this type of two-step logic.
 # 
+# ## Spreadsheets
+# 1. [Cleveland, T.G. (1997) *Particle Tracking Spreadsheet (10X10) (Excel)*](ce-5364-webroot/ce5364notes/chapters/5nonreactivetransport/PartTrack_10.xls/)
+# 2. [Cleveland, T.G. (1997) *Particle Tracking Spreadsheet (20X20) (Excel)*](ce-5364-webroot/ce5364notes/chapters/5nonreactivetransport/PartTrack_20.xls/)
+# 3. [Cleveland, T.G. (1997) *Particle Tracking Spreadsheet (5X5 same as example above) (Excel)*](ce-5364-webroot/ce5364notes/chapters/5nonreactivetransport/PartTrack.xls/)
+# 
 # ## Flownets
 # 
-# 
+# 3. [Cleveland, T.G. (2002) *Flownets* Notes to accompany "CIVE 7332 Flow and Transport Modeling for Environmental Engineering" at University of Houston](http://54.243.252.9/ce-5364-webroot/3-Readings/flownet_1.pdf)
 
 # ## References
 # 
