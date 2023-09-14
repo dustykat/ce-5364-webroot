@@ -9,6 +9,9 @@
 # 
 # The figure depicts how a flux vector is defined.  Imagine a frame centered at (x,y,z), oriented perpendicular to the plume time average flow line.  The mass of pollutant that passes through this frame per unit time divided by the area of the frame is called the pollutant mass flux.   The amount of fluid momentum passing through the frame would be called the momentum flux.  Any quantity can be defined in terms of its flux although mass, energy, and momentum are the most common quantities studied in engineering.
 # 
+# ![](fruxMath.png)
+# ![](fruxMath2.png)
+# 
 
 # In[ ]:
 

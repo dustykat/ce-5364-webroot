@@ -65,6 +65,11 @@
 # 
 # However at low host fluid velocities, diffusion can matter and more importantly the structure of the mathematical model is similar to the dispersion process.
 # 
+# ## Diffusion Modeling
+# 
+# As with advection one can examine a small volume in space in terms of flux and construct the equations of mass transport - as bafore its really the Reynolds Transport Theorem applied to the diffusive flux.
+# 
+# ![](diffusionEquations.png)
 
 # In[ ]:
 

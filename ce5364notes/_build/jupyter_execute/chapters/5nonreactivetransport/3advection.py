@@ -27,10 +27,17 @@
 
 # ## Modeling Advection 
 # 
+# To build models, we simply apply the Reynolds Transport Theorem to the advective flux component something like:
+# 
+# ![](advectivefrux.png)
+# 
+# ## Modeling Tools
+# 
 # 1D Examples are in the textbook; 1D is not too difficult as the direction hence the path is known.  
 # 
 # Higher spatial dimensions (2D, 3D) use either a particle tracking approach (DPRW, MOC, MT3D, ...) or flux-limited Reynolds-averaged Navier-Stokes (FLUENT, SUTRA, HST3D, ....)
 # 
+# ## Particle Tracking
 # Later on we will use USGS-MOC, so will illustrate particle tracking.
 # 
 # - Particle or front tracking is typically performed using special software.
@@ -164,14 +171,18 @@
 #  - Move the particle.
 # - All particle tracking programs use this type of two-step logic.
 # 
-# Performing the calculations in a python script is illustrated below
+# 
 # 
 # ## Spreadsheets
 # 1. [Cleveland, T.G. (1997) *Particle Tracking Spreadsheet (10X10) (Excel)*](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/5nonreactivetransport/PartTrack_10.xls)
 # 2. [Cleveland, T.G. (1997) *Particle Tracking Spreadsheet (20X20) (Excel)*](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/5nonreactivetransport/PartTrack_20.xls)
 # 3. [Cleveland, T.G. (1997) *Particle Tracking Spreadsheet (5X5 same as example above) (Excel)*](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/5nonreactivetransport/PartTrack.xls)
 # 
+# Performing the calculations in a python script is illustrated in the next section.
 # 
+# :::{note}
+# You will see that the python script is simpler to construct than the spreadsheet (in terms of weird functions), but takes a shit-ton more code!
+# :::
 
 # ## Example of Particle Tracking 
 # 
@@ -179,7 +190,7 @@
 # 
 # <hr><hr>
 # 
-# ## Problem 2 (Problem 2-8, pg. 578)
+# ### Problem 2 (Problem 2-8, pg. 578)
 # 
 # The figure below shows a piezometric map for a shallow sand aquifer.  The hydraulic conductivtiy is estimated to be $1.5 \times 10^{-2}~\frac{cm}{s}$, the saturated thickness is 40 feet, and the effective porosity is 0.3.
 # 
