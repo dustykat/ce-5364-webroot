@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: My sample book
+title: Groundwater Transport Phenomena
 author: Theodore G. Cleveland, PhD
 copyright: "2023"  # Copyright year to be placed in the footer
 logo: gwtransport.png
