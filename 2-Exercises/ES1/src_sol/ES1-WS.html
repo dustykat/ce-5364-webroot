@@ -13295,23 +13295,68 @@ $$ n = 0.20 $$</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># sketch(s) </span>
-<span class="c1"># list known quantities</span>
-<span class="c1"># list unknown quantities</span>
-<span class="c1"># governing principles</span>
-<span class="c1"># solution details (e.g. step-by-step computations)</span>
-<span class="c1"># discussion</span>
-</pre></div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="sketch(s)">sketch(s)<a class="anchor-link" href="#sketch(s)">&#182;</a></h1><h1 id="list-known-quantities">list known quantities<a class="anchor-link" href="#list-known-quantities">&#182;</a></h1><ul>
+<li>Head map (provided)</li>
+<li>$b~\approx~40~feet$</li>
+<li>$K~\approx~ 1.5 \times 10^{-2}~\frac{cm}{s} \cdot \frac{1~in}{2.54~cm} \cdot \frac{1~ft}{12~in} \cdot \frac{86400~s}{1~day} = 42.52~\frac{ft}{day}$</li>
+<li>$n~\approx~ 0.30 $
+# list unknown quantities</li>
+</ul>
+<ol>
+<li>Which well is expected to be the most contaminated.</li>
+<li>The groundwater velocity and seepage velocity across the plume.</li>
+<li>The duration that the source has been contaminating the aquifer (neglect dispersion, diffusiom, and adsorption).</li>
+<li>The flow rate across the plume.</li>
+<li>An explaination for contamination upgradient of the source zone.</li>
+</ol>
+<h1 id="governing-principles">governing principles<a class="anchor-link" href="#governing-principles">&#182;</a></h1><ol>
+<li>Darcy's law; $Q=KA\frac{dh}{dl}$</li>
+<li>Definition(s) of discharge and seepage velocity </li>
+</ol>
+<h1 id="solution-details-(e.g.-step-by-step-computations)">solution details (e.g. step-by-step computations)<a class="anchor-link" href="#solution-details-(e.g.-step-by-step-computations)">&#182;</a></h1><ol>
+<li>Which well is expected to be the most contaminated.<ul>
+<li>If release is ongoing, probably well A in annotated map below.</li>
+<li>If release is "past history" then probably well M near middle of the plume.
+<br><img src="Fig5.18.annotate.png" alt=""></li>
+</ul>
+</li>
+<li>The groundwater velocity and seepage velocity across the plume.<ul>
+<li>See annotated map below.</li>
+<li>Gradients near well A and well M are calculated directly on the map annotations.</li>
+<li>Specific discharge values:
+<br> $q_{near~well~A} = \frac{Q}{A} _{near~well~A}~\approx~45.52\frac{ft}{day}(0.0014)= 0.0637 \frac{ft}{day}$
+<br> $q_{near~well~M} = \frac{Q}{A} _{near~well~M}~\approx~45.52\frac{ft}{day}(0.00125)= 0.0569 \frac{ft}{day}$
+<br> A reasonable average is  $q = \frac{Q}{A} _{average}~\approx~0.06 \frac{ft}{day}$</li>
+<li>Species (seepage) velocity is 
+<br> $U=\frac{q}{n} = \frac{1}{n} \frac{Q}{A} = \frac{1}{0.3} 0.06 \frac{ft}{day} = 0.20 \frac{ft}{day}$</li>
+</ul>
+</li>
+<li>The duration that the source has been contaminating the aquifer (neglect dispersion, diffusiom, and adsorption).<ul>
+<li>Choose a reasonable pathline like the one on the drawing below and measure its length, then using definition of velocity, solve for duration.
+<br> Pathline is $\approx~925~feet$
+<br> $t=\frac{x}{U}= \frac{925}{0.20} = 4625~days$</li>
+</ul>
+</li>
+<li>The flow rate across the plume.<ul>
+<li>Apply Darcy's law
+<br> $Q=qA=0.06 \frac{ft}{day} \cdot 325 ft \cdot 40 ft = 780 \frac{ft^3}{day}$</li>
+</ul>
+</li>
+<li>An explaination for contamination upgradient of the source zone.<ul>
+<li>Dispersion/diffusion of constituients, and/or</li>
+<li>The regional water table is not static and at some point in past, gradient was in Easterly direction.</li>
+</ul>
+</li>
+</ol>
+<h1 id="discussion">discussion<a class="anchor-link" href="#discussion">&#182;</a></h1><ul>
+<li>The non-static water table is very likely, and quarterly moniroting is a usual standard to detect and account for seasonal/temporal variability.</li>
+</ul>
 
-    </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13333,7 +13378,7 @@ The hydraulic head at the top of the formations (top of formation 1) is 33 feet.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># sketch(s) </span>
