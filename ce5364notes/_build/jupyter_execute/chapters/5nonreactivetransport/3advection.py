@@ -407,8 +407,8 @@ XG = [[0 for j in range(ncols)] for i in range(nrows)]
 YG = [[0 for j in range(ncols)] for i in range(nrows)]
 for j in range(ncols):
     for i in range(nrows): #range(nrows)
-        U[i][j] = -1.0*(Conductivity/Porosity)*(Z[iyl+i][ixl+j]-Z[iyl+i][ixl+j-1])/(X[iyl+i][ixl+j]-X[iyl+i][ixl+j-1])  #- K dh/dx
-        V[i][j] = -1.0*(Conductivity/Porosity)*(Z[iyl+i][ixl+j]-Z[iyl+i-1][ixl+j])/(Y[iyl+i][ixl+j]-Y[iyl+i-1][ixl+j])  #- K dh/dy
+        U[i][j] = -1.0*(Conductivity/Porosity)*(Z[iyl+i][ixl+j]-Z[iyl+i][ixl+j-1])/(X[iyl+i][ixl+j]-X[iyl+i][ixl+j-1]) #- K dh/dx
+        V[i][j] = -1.0*(Conductivity/Porosity)*(Z[iyl+i][ixl+j]-Z[iyl+i-1][ixl+j])/(Y[iyl+i][ixl+j]-Y[iyl+i-1][ixl+j]) #- K dh/dy
         XG[i][j] = X[iyl+i][ixl+j]
         YG[i][j] = Y[iyl+i][ixl+j]
 
@@ -425,9 +425,15 @@ XX = numpy.asarray(XG)
 YY = numpy.asarray(YG)
 
 
+# In[4]:
+
+
+UU[30][30]
+
+
 # Now a cool "quiver" plot
 
-# In[4]:
+# In[5]:
 
 
 if flag:
@@ -453,7 +459,7 @@ ax.plot([xxh,xxh],[yyl,yyh],color="black");
 #matplotlib.pyplot.streamplot(XX, YY, UU, VV, density=0.5, linewidth=2, color=None)
 
 
-# In[5]:
+# In[6]:
 
 
 if flag:
@@ -480,7 +486,7 @@ ax.plot([xxh,xxh],[yyl,yyh],color="black");
 # 
 # Here is the basic script, one simply has to wrap it into a time-stepping loop to produce a trajectory.  Multiple particles can be managed 
 
-# In[6]:
+# In[7]:
 
 
 # U array x-velocity at XG,YG
@@ -499,7 +505,7 @@ verbose=False
 terse=False
 deltaT = 100
 etime = 0
-numTime = 20
+numTime = 42
 XP = []
 YP = []
 UP = []
@@ -507,8 +513,8 @@ VP = []
 TX = [] #trajectory vector
 TY = []
 np = 1 # Total particles 
-XP.append(810)
-YP.append(375)
+XP.append(900)
+YP.append(290)
 UP.append(0)
 VP.append(0)
 ip=np-1 
@@ -546,7 +552,7 @@ for it in range(numTime):
         TY.append([ip,YP[ip],etime])
 
 
-# In[7]:
+# In[8]:
 
 
 if flag:
@@ -574,13 +580,13 @@ ax.plot(xtrajectory,ytrajectory,marker="o",color="red")
 ("")
 
 
-# In[8]:
+# In[9]:
 
 
 (43/.3)*(1.25/700)
 
 
-# In[9]:
+# In[10]:
 
 
 700/.25
@@ -617,34 +623,34 @@ ax.plot(xtrajectory,ytrajectory,marker="o",color="red")
 # 
 # If we start with a steady flow description of GW flow like:
 # 
-# \begin{equation}
+# $$
 # 0= 
 # \frac{\partial}{\partial x}({\frac{T_x}{b} \frac{\partial h}{\partial x}})
 # +
 # \frac{\partial}{\partial y}({\frac{T_y}{b} \frac{\partial h}{\partial y}})
-# \end{equation}
+# $$
 # 
 # the terms ${\frac{T_x}{b} \frac{\partial h}{\partial x}}$  and ${\frac{T_y}{b} \frac{\partial h}{\partial y}}$ can be replaced by $\frac{\partial \phi}{\partial x}$ or $\frac{\partial \phi}{\partial y}$ so the expression looks something like
 # 
-# \begin{equation}
+# $$
 # 0= 
 # \frac{\partial}{\partial x}({ \frac{\partial \phi}{\partial x}})
 # +
 # \frac{\partial}{\partial y}({ \frac{\partial \phi}{\partial y}})
-# \end{equation}
+# $$
 # 
 # Which is what we would call the velocity potential - although for flow nets we usually just solve for the head so we can compute pressures, using the formulation below:
 # 
-# \begin{equation}
+# $$
 # 0= 
 # \frac{\partial}{\partial x}({{T_x} \frac{\partial h}{\partial x}})
 # +
 # \frac{\partial}{\partial y}({{T_y} \frac{\partial h}{\partial y}})
-# \end{equation}
+# $$
 # 
 # The difference equation (pp. 349-357) on a regular grid is
 # 
-# \begin{equation}
+# $$
 # \begin{matrix}
 # 0= 
 # [\frac{1}{\Delta x} T_{x} \frac{h_{i-1,j} - h_{i,j}}{\Delta x} +
@@ -653,30 +659,30 @@ ax.plot(xtrajectory,ytrajectory,marker="o",color="red")
 # ~~~~~~~~~~[ \frac{1}{\Delta x} T_{x}  \frac{h_{i,j} - h_{i+1,j}}{\Delta x} +
 #   \frac{1}{\Delta y}  T_{y} \frac{h_{i,j} - h_{i,j+1}}{\Delta y} ]        
 # \end{matrix}        
-# \end{equation}
+# $$
 # 
 # Typically one approximates the spatial variation of the material properties (transmissivity) as arithmetic mean values between two cells, so making the following definitions:
 # 
-# \begin{equation}
+# $$
 # \begin{matrix}
 # A_{i,j} = \frac{1}{2 \Delta x^2}(T_{x,(i-1,j)}+T_{x,(i,j)}) \\ ~~ \\
 # B_{i,j} = \frac{1}{2 \Delta x^2}(T_{x,(i,j)}+T_{x,(i+1,j)})   \\ ~~ \\
 # C_{i,j} = \frac{1}{2 \Delta y^2}(T_{y,(i,j-1)}+T_{y,(i,j)})   \\ ~~ \\
 # D_{i,j} = \frac{1}{2 \Delta y^2}(T_{y,(i,j)}+T_{y,(i,j+1)})   \\ ~~ \\
 # \end{matrix}
-# \end{equation}
+# $$
 # 
 # Substitution into the difference equation yields
 # 
-# \begin{equation}
+# $$
 # 0 = A_{i,j}h_{i-1,j} + B_{i,j}h_{i+1,j} - (A_{i,j}+B_{i,j}+C_{i,j}+D_{i,j})h_{i,j} + C_{i,j}h_{i,j-1} + D_{i,j}h_{i,j+1}
-# \end{equation}
+# $$
 # 
 # As before we can explicitly write the cell equation for $h_{i,j}$ as
 # 
-# \begin{equation}
+# $$
 # h_{i,j} = \frac{[A_{i,j}h_{i-1,j} + B_{i,j}h_{i+1,j} + C_{i,j}h_{i,j-1} + D_{i,j}h_{i,j+1}]}{[A_{i,j}+B_{i,j}+C_{i,j}+D_{i,j}]}
-# \end{equation}
+# $$
 # 
 # This difference equation represents an approximation to the governing flow equation, the accuracy depending on the cell
 # size. Boundary conditions are applied directly into the analogs (another name for the difference equations) at appropriate
@@ -686,12 +692,12 @@ ax.plot(xtrajectory,ytrajectory,marker="o",color="red")
 # 
 # The stream function $\Psi$ is a function that is orthogonal to the velocity potential function and expressed as a partial differential equation is
 # 
-# \begin{equation}
+# $$
 # 0= 
 # \frac{\partial}{\partial x}({\frac{1}{T_y} \frac{\partial \Psi}{\partial x}})
 # +
 # \frac{\partial}{\partial y}({\frac{1}{T_x} \frac{\partial \Psi}{\partial y}})
-# \end{equation}
+# $$
 # 
 # Observe how the material property is inverted and changes directional identity, otherwise the equation is structurally identical to the groundwater flow equation (for steady flow).
 # 
@@ -699,7 +705,7 @@ ax.plot(xtrajectory,ytrajectory,marker="o",color="red")
 # 
 # The difference equation is also almost the same
 # 
-# \begin{equation}
+# $$
 # \begin{matrix}
 # 0= 
 # [\frac{1}{\Delta x} \frac{1}{T_{y}} \frac{\Psi_{i-1,j} - \Psi_{i,j}}{\Delta x} +
@@ -708,30 +714,30 @@ ax.plot(xtrajectory,ytrajectory,marker="o",color="red")
 # ~~~~~~~~~~[ \frac{1}{\Delta x} \frac{1}{T_{y}}  \frac{\Psi_{i,j} - \Psi_{i+1,j}}{\Delta x} +
 #   \frac{1}{\Delta y}  \frac{1}{T_{x}} \frac{\Psi_{i,j} - \Psi_{i,j+1}}{\Delta y} ]        
 # \end{matrix}        
-# \end{equation}
+# $$
 # 
 # The substitutions are
 # 
-# \begin{equation}
+# $$
 # \begin{matrix}
 # A_{i,j} = \frac{1}{2 \Delta x^2}(T_{y,(i-1,j)}^{-1}+T_{y,(i,j)}^{-1}) \\ ~~ \\
 # B_{i,j} = \frac{1}{2 \Delta x^2}(T_{y,(i,j)}^{-1}+T_{y,(i+1,j)}^{-1})   \\ ~~ \\
 # C_{i,j} = \frac{1}{2 \Delta y^2}(T_{x,(i,j-1)}^{-1}+T_{x,(i,j)}^{-1})   \\ ~~ \\
 # D_{i,j} = \frac{1}{2 \Delta y^2}(T_{x,(i,j)}^{-1}+T_{x,(i,j+1)}^{-1})   \\ ~~ \\
 # \end{matrix}
-# \end{equation}
+# $$
 # 
 # Substitution into the difference equation yields
 # 
-# \begin{equation}
+# $$
 # 0 = A_{i,j}\Psi_{i-1,j} + B_{i,j}\Psi_{i+1,j} - (A_{i,j}+B_{i,j}+C_{i,j}+D_{i,j})\Psi_{i,j} + C_{i,j}\Psi_{i,j-1} + D_{i,j}\Psi_{i,j+1}
-# \end{equation}
+# $$
 # 
 # As before we can explicitly write the cell equation for $h_{i,j}$ as
 # 
-# \begin{equation}
+# $$
 # \Psi_{i,j} = \frac{[A_{i,j}\Psi_{i-1,j} + B_{i,j}\Psi_{i+1,j} + C_{i,j}\Psi_{i,j-1} + D_{i,j}\Psi_{i,j+1}]}{[A_{i,j}+B_{i,j}+C_{i,j}+D_{i,j}]}
-# \end{equation}
+# $$
 # 
 # So at this point we could literally use the same script, however boundary conditions also ``invert.''
 # A no-flow head-domain boundary is a constant value stream function-domain boundary.
@@ -809,7 +815,7 @@ ax.plot(xtrajectory,ytrajectory,marker="o",color="red")
 # 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001
 # 
 
-# In[10]:
+# In[11]:
 
 
 def sse(matrix1,matrix2):
@@ -1017,7 +1023,7 @@ ax.set_title('Contour Plot of Heads from Sheetpile1 Input')
 # 
 # In these examples the value of the stream function is arbitrarily set to range from $0$ to $100$.  One useful interpretation of stream function values is that their differences indicate the flow fraction (of total flow) that flows between the streamlines (contour lines of constant stream function value).
 
-# In[11]:
+# In[12]:
 
 
 def sse(matrix1,matrix2):
@@ -1178,7 +1184,7 @@ ax.set_title('Contour Plot of Stream Function for Sheetpile1 Input')
 
 # Now both plots on same canvass
 
-# In[12]:
+# In[13]:
 
 
 # Head (Velocity Potential Map)
@@ -1255,7 +1261,7 @@ ax.set_title('Flownet for Sheetpile1 Input')
 # 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001 0.0001
 # ```
 
-# In[13]:
+# In[14]:
 
 
 def sse(matrix1,matrix2):
@@ -1463,7 +1469,7 @@ ax.set_title('Contour Plot of Heads from Sheetpile2 Input')
 # 100000 100000 100000 100000 100000 100000 100000 100000 100000 100000 100000 100000 100000 100000 100000
 # ```
 
-# In[14]:
+# In[15]:
 
 
 def sse(matrix1,matrix2):
@@ -1624,7 +1630,7 @@ ax.set_title('Contour Plot of Stream Function for Sheetpile2 Input')
 
 # Now try both contour plot same plot canvas
 
-# In[15]:
+# In[16]:
 
 
 # Head (Velocity Potential Map)

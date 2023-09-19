@@ -852,8 +852,8 @@ xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
 <span class="n">YG</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span>
 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span> <span class="c1">#range(nrows)</span>
-        <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="n">Conductivity</span><span class="o">/</span><span class="n">Porosity</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">Z</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">X</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1">#- K dh/dx</span>
-        <span class="n">V</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="n">Conductivity</span><span class="o">/</span><span class="n">Porosity</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">Z</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">Y</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">])</span>  <span class="c1">#- K dh/dy</span>
+        <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="n">Conductivity</span><span class="o">/</span><span class="n">Porosity</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">Z</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">X</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1">#- K dh/dx</span>
+        <span class="n">V</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="n">Conductivity</span><span class="o">/</span><span class="n">Porosity</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">Z</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">Y</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">])</span> <span class="c1">#- K dh/dy</span>
         <span class="n">XG</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">]</span>
         <span class="n">YG</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">]</span>
 </pre></div>
@@ -868,6 +868,18 @@ xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
 <span class="n">VV</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
 <span class="n">XX</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">XG</span><span class="p">)</span>
 <span class="n">YY</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">YG</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">UU</span><span class="p">[</span><span class="mi">30</span><span class="p">][</span><span class="mi">30</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.22504528917472658
 </pre></div>
 </div>
 </div>
@@ -900,7 +912,7 @@ xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3advection_18_0.png" src="../../_images/3advection_18_0.png" />
+<img alt="../../_images/3advection_19_0.png" src="../../_images/3advection_19_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -927,7 +939,7 @@ xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3advection_19_0.png" src="../../_images/3advection_19_0.png" />
+<img alt="../../_images/3advection_20_0.png" src="../../_images/3advection_20_0.png" />
 </div>
 </div>
 <p>Now we can implement a particle tracking script.  Using the spreadsheet as a guide we can write it in python, and access the cool graphics.</p>
@@ -950,7 +962,7 @@ xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
 <span class="n">terse</span><span class="o">=</span><span class="kc">False</span>
 <span class="n">deltaT</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">etime</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">numTime</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">numTime</span> <span class="o">=</span> <span class="mi">42</span>
 <span class="n">XP</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">YP</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">UP</span> <span class="o">=</span> <span class="p">[]</span>
@@ -958,8 +970,8 @@ xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
 <span class="n">TX</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">#trajectory vector</span>
 <span class="n">TY</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">np</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Total particles </span>
-<span class="n">XP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">810</span><span class="p">)</span>
-<span class="n">YP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">375</span><span class="p">)</span>
+<span class="n">XP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>
+<span class="n">YP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">290</span><span class="p">)</span>
 <span class="n">UP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">VP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">ip</span><span class="o">=</span><span class="n">np</span><span class="o">-</span><span class="mi">1</span> 
@@ -999,7 +1011,7 @@ xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   Initial Particle Position 810 375 0 0 0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   Initial Particle Position 900 290 0 0 0
 </pre></div>
 </div>
 </div>
@@ -1038,7 +1050,7 @@ xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&#39;
 </pre></div>
 </div>
-<img alt="../../_images/3advection_22_1.png" src="../../_images/3advection_22_1.png" />
+<img alt="../../_images/3advection_23_1.png" src="../../_images/3advection_23_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1089,116 +1101,112 @@ The principal changes are the material properties representation and the boundar
 <h4>Velocity Potential<a class="headerlink" href="#velocity-potential" title="Permalink to this headline">¶</a></h4>
 <p>The velocity potential function is usually Darcy’s law applied to the head distribution <span class="math notranslate nohighlight">\(\phi = \frac{T}{b}h\)</span></p>
 <p>If we start with a steady flow description of GW flow like:</p>
-<p>\begin{equation}
-0=
+<div class="math notranslate nohighlight">
+\[
+0= 
 \frac{\partial}{\partial x}({\frac{T_x}{b} \frac{\partial h}{\partial x}})
 +
 \frac{\partial}{\partial y}({\frac{T_y}{b} \frac{\partial h}{\partial y}})
-\end{equation}</p>
+\]</div>
 <p>the terms <span class="math notranslate nohighlight">\({\frac{T_x}{b} \frac{\partial h}{\partial x}}\)</span>  and <span class="math notranslate nohighlight">\({\frac{T_y}{b} \frac{\partial h}{\partial y}}\)</span> can be replaced by <span class="math notranslate nohighlight">\(\frac{\partial \phi}{\partial x}\)</span> or <span class="math notranslate nohighlight">\(\frac{\partial \phi}{\partial y}\)</span> so the expression looks something like</p>
-<p>\begin{equation}
-0=
+<div class="math notranslate nohighlight">
+\[
+0= 
 \frac{\partial}{\partial x}({ \frac{\partial \phi}{\partial x}})
 +
 \frac{\partial}{\partial y}({ \frac{\partial \phi}{\partial y}})
-\end{equation}</p>
+\]</div>
 <p>Which is what we would call the velocity potential - although for flow nets we usually just solve for the head so we can compute pressures, using the formulation below:</p>
-<p>\begin{equation}
-0=
-\frac{\partial}{\partial x}()
+<div class="math notranslate nohighlight">
+\[
+0= 
+\frac{\partial}{\partial x}({{T_x} \frac{\partial h}{\partial x}})
 +
-\frac{\partial}{\partial y}()
-\end{equation}</p>
+\frac{\partial}{\partial y}({{T_y} \frac{\partial h}{\partial y}})
+\]</div>
 <p>The difference equation (pp. 349-357) on a regular grid is</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{matrix}
-0=
+0= 
 [\frac{1}{\Delta x} T_{x} \frac{h_{i-1,j} - h_{i,j}}{\Delta x} +
-\frac{1}{\Delta y} T_{y} \frac{h_{i,j-1} - h_{i,j}}{\Delta y}] - \</p>
-<div class="highlight-\ notranslate"><div class="highlight"><pre><span></span>~~~~~~~~~~[ \frac{1}{\Delta x} T_{x}  \frac{h_{i,j} - h_{i+1,j}}{\Delta x} +
+ \frac{1}{\Delta y} T_{y} \frac{h_{i,j-1} - h_{i,j}}{\Delta y}] - \\
+~~~~~~~~~~\\
+~~~~~~~~~~[ \frac{1}{\Delta x} T_{x}  \frac{h_{i,j} - h_{i+1,j}}{\Delta x} +
   \frac{1}{\Delta y}  T_{y} \frac{h_{i,j} - h_{i,j+1}}{\Delta y} ]        
 \end{matrix}        
-\end{equation}
-
-Typically one approximates the spatial variation of the material properties (transmissivity) as arithmetic mean values between two cells, so making the following definitions:
-
-\begin{equation}
+\end{split}\]</div>
+<p>Typically one approximates the spatial variation of the material properties (transmissivity) as arithmetic mean values between two cells, so making the following definitions:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{matrix}
 A_{i,j} = \frac{1}{2 \Delta x^2}(T_{x,(i-1,j)}+T_{x,(i,j)}) \\ ~~ \\
 B_{i,j} = \frac{1}{2 \Delta x^2}(T_{x,(i,j)}+T_{x,(i+1,j)})   \\ ~~ \\
 C_{i,j} = \frac{1}{2 \Delta y^2}(T_{y,(i,j-1)}+T_{y,(i,j)})   \\ ~~ \\
 D_{i,j} = \frac{1}{2 \Delta y^2}(T_{y,(i,j)}+T_{y,(i,j+1)})   \\ ~~ \\
 \end{matrix}
-\end{equation}
-
-Substitution into the difference equation yields
-
-\begin{equation}
+\end{split}\]</div>
+<p>Substitution into the difference equation yields</p>
+<div class="math notranslate nohighlight">
+\[
 0 = A_{i,j}h_{i-1,j} + B_{i,j}h_{i+1,j} - (A_{i,j}+B_{i,j}+C_{i,j}+D_{i,j})h_{i,j} + C_{i,j}h_{i,j-1} + D_{i,j}h_{i,j+1}
-\end{equation}
-
-As before we can explicitly write the cell equation for $h_{i,j}$ as
-
-\begin{equation}
+\]</div>
+<p>As before we can explicitly write the cell equation for <span class="math notranslate nohighlight">\(h_{i,j}\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
 h_{i,j} = \frac{[A_{i,j}h_{i-1,j} + B_{i,j}h_{i+1,j} + C_{i,j}h_{i,j-1} + D_{i,j}h_{i,j+1}]}{[A_{i,j}+B_{i,j}+C_{i,j}+D_{i,j}]}
-\end{equation}
-
-This difference equation represents an approximation to the governing flow equation, the accuracy depending on the cell
+\]</div>
+<p>This difference equation represents an approximation to the governing flow equation, the accuracy depending on the cell
 size. Boundary conditions are applied directly into the analogs (another name for the difference equations) at appropriate
-locations on the computational grid. We can generate solutions either by iteration or solving the resulting linear system; iteration is really easy to program, so for exploratory work that&#39;s usually the approach.
-</pre></div>
-</div>
+locations on the computational grid. We can generate solutions either by iteration or solving the resulting linear system; iteration is really easy to program, so for exploratory work that’s usually the approach.</p>
 </div>
 <div class="section" id="stream-function">
 <h4>Stream Function<a class="headerlink" href="#stream-function" title="Permalink to this headline">¶</a></h4>
 <p>The stream function <span class="math notranslate nohighlight">\(\Psi\)</span> is a function that is orthogonal to the velocity potential function and expressed as a partial differential equation is</p>
-<p>\begin{equation}
-0=
+<div class="math notranslate nohighlight">
+\[
+0= 
 \frac{\partial}{\partial x}({\frac{1}{T_y} \frac{\partial \Psi}{\partial x}})
 +
 \frac{\partial}{\partial y}({\frac{1}{T_x} \frac{\partial \Psi}{\partial y}})
-\end{equation}</p>
+\]</div>
 <p>Observe how the material property is inverted and changes directional identity, otherwise the equation is structurally identical to the groundwater flow equation (for steady flow).</p>
 <p>The difference equation is practically the same as above:</p>
 <p>The difference equation is also almost the same</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{matrix}
-0=
+0= 
 [\frac{1}{\Delta x} \frac{1}{T_{y}} \frac{\Psi_{i-1,j} - \Psi_{i,j}}{\Delta x} +
-\frac{1}{\Delta y} \frac{1}{T_{x}} \frac{\Psi_{i,j-1} - \Psi_{i,j}}{\Delta y}] - \</p>
-<div class="highlight-\ notranslate"><div class="highlight"><pre><span></span>~~~~~~~~~~[ \frac{1}{\Delta x} \frac{1}{T_{y}}  \frac{\Psi_{i,j} - \Psi_{i+1,j}}{\Delta x} +
+ \frac{1}{\Delta y} \frac{1}{T_{x}} \frac{\Psi_{i,j-1} - \Psi_{i,j}}{\Delta y}] - \\
+~~~~~~~~~~\\
+~~~~~~~~~~[ \frac{1}{\Delta x} \frac{1}{T_{y}}  \frac{\Psi_{i,j} - \Psi_{i+1,j}}{\Delta x} +
   \frac{1}{\Delta y}  \frac{1}{T_{x}} \frac{\Psi_{i,j} - \Psi_{i,j+1}}{\Delta y} ]        
 \end{matrix}        
-\end{equation}
-
-The substitutions are
-
-\begin{equation}
+\end{split}\]</div>
+<p>The substitutions are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{matrix}
 A_{i,j} = \frac{1}{2 \Delta x^2}(T_{y,(i-1,j)}^{-1}+T_{y,(i,j)}^{-1}) \\ ~~ \\
 B_{i,j} = \frac{1}{2 \Delta x^2}(T_{y,(i,j)}^{-1}+T_{y,(i+1,j)}^{-1})   \\ ~~ \\
 C_{i,j} = \frac{1}{2 \Delta y^2}(T_{x,(i,j-1)}^{-1}+T_{x,(i,j)}^{-1})   \\ ~~ \\
 D_{i,j} = \frac{1}{2 \Delta y^2}(T_{x,(i,j)}^{-1}+T_{x,(i,j+1)}^{-1})   \\ ~~ \\
 \end{matrix}
-\end{equation}
-
-Substitution into the difference equation yields
-
-\begin{equation}
+\end{split}\]</div>
+<p>Substitution into the difference equation yields</p>
+<div class="math notranslate nohighlight">
+\[
 0 = A_{i,j}\Psi_{i-1,j} + B_{i,j}\Psi_{i+1,j} - (A_{i,j}+B_{i,j}+C_{i,j}+D_{i,j})\Psi_{i,j} + C_{i,j}\Psi_{i,j-1} + D_{i,j}\Psi_{i,j+1}
-\end{equation}
-
-As before we can explicitly write the cell equation for $h_{i,j}$ as
-
-\begin{equation}
+\]</div>
+<p>As before we can explicitly write the cell equation for <span class="math notranslate nohighlight">\(h_{i,j}\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
 \Psi_{i,j} = \frac{[A_{i,j}\Psi_{i-1,j} + B_{i,j}\Psi_{i+1,j} + C_{i,j}\Psi_{i,j-1} + D_{i,j}\Psi_{i,j+1}]}{[A_{i,j}+B_{i,j}+C_{i,j}+D_{i,j}]}
-\end{equation}
-
-So at this point we could literally use the same script, however boundary conditions also ``invert.&#39;&#39;
+\]</div>
+<p>So at this point we could literally use the same script, however boundary conditions also ``invert.’’
 A no-flow head-domain boundary is a constant value stream function-domain boundary.
-A constant value head-domain boundary is a zero-gradient stream function-domain boundary.
-</pre></div>
-</div>
+A constant value head-domain boundary is a zero-gradient stream function-domain boundary.</p>
 <p>So a script that first solves for the head distribution, then the stream function could be used to create a flownet.</p>
 </div>
 </div>
@@ -1473,7 +1481,7 @@ Head Map
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Contour Plot of Heads from Sheetpile1 Input&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/3advection_29_2.png" src="../../_images/3advection_29_2.png" />
+<img alt="../../_images/3advection_30_2.png" src="../../_images/3advection_30_2.png" />
 </div>
 </div>
 <p>Now we reuse the code, but change <code class="docutils literal notranslate"><span class="pre">head</span></code> to <code class="docutils literal notranslate"><span class="pre">stream</span></code> and modify the contour plot variable names as well as modify the input file to reflect the changed material properties and boundary conditions.</p>
@@ -1729,7 +1737,7 @@ Stream Function Map
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Contour Plot of Stream Function for Sheetpile1 Input&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/3advection_31_2.png" src="../../_images/3advection_31_2.png" />
+<img alt="../../_images/3advection_32_2.png" src="../../_images/3advection_32_2.png" />
 </div>
 </div>
 <p>Now both plots on same canvass</p>
@@ -1756,7 +1764,7 @@ Stream Function Map
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Flownet for Sheetpile1 Input&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/3advection_33_1.png" src="../../_images/3advection_33_1.png" />
+<img alt="../../_images/3advection_34_1.png" src="../../_images/3advection_34_1.png" />
 </div>
 </div>
 <hr>
@@ -2002,7 +2010,7 @@ Head Map
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Contour Plot of Heads from Sheetpile2 Input&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/3advection_35_2.png" src="../../_images/3advection_35_2.png" />
+<img alt="../../_images/3advection_36_2.png" src="../../_images/3advection_36_2.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -2243,7 +2251,7 @@ Stream Function Map
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Contour Plot of Stream Function for Sheetpile2 Input&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/3advection_37_2.png" src="../../_images/3advection_37_2.png" />
+<img alt="../../_images/3advection_38_2.png" src="../../_images/3advection_38_2.png" />
 </div>
 </div>
 <p>Now try both contour plot same plot canvas</p>
@@ -2270,7 +2278,7 @@ Stream Function Map
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Flownet for Sheetpile2 Input&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/3advection_39_1.png" src="../../_images/3advection_39_1.png" />
+<img alt="../../_images/3advection_40_1.png" src="../../_images/3advection_40_1.png" />
 </div>
 </div>
 </div>
