@@ -26,4 +26,6 @@ chapters:
   sections:
   - file: chapters/8reactivetransport/6reactions
   - file: chapters/8reactivetransport/7decay
+- file: chapters/16siteinvestigation/siteinvestigation
+- file: chapters/19regulatory/regulatory
 

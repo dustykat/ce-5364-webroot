@@ -1660,3 +1660,10 @@ ax.set_title('Flownet for Sheetpile2 Input')
 # 1. [Zheng, C. and Bennett, G.D. (1995) pp. 3-23 *Applied Contaminant Transport Modeling* Van Nostrand Reinhold](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/3advection/Advection.PDF)
 # 2. [Cleveland, T.G. (2002) *Advection* Notes to accompany *"CIVE 7332 Flow and Transport Modeling for Environmental Engineering" at University of Houston*](http://54.243.252.9/ce-5364-webroot/3-Readings/AdvectionNotes.pdf)
 # 3. [Cleveland, T.G. (2002) *Particle Tracking in a Spreadsheet* Notes to accompany "CIVE 7332 Flow and Transport Modeling for Environmental Engineering" at University of Houston](http://54.243.252.9/ce-5364-webroot/3-Readings/parttrack_1.pdf)
+# 4. [Bear, J. (1972) *Dynamics of Fluids in Porous Media* McGraw Hill (pp. 236-241)](http://54.243.252.9/ce-5364-webroot/3-Readings/DFPM-Flownets.pdf)
+
+# In[ ]:
+
+
+
+
