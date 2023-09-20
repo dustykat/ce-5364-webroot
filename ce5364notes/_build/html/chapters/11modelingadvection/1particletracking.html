@@ -1,0 +1,1072 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modeling Advection by Particle Tracking &#8212; Groundwater Transport Phenomena</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Modeling Advection" href="2upwindfdm.html" />
+    <link rel="prev" title="Modeling Advection" href="0modelingadvection.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/gwtransport.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Groundwater Transport Phenomena</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to CE 5364 Groundwater Transport Phenomena
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0introduction/0introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1computationaltools/1computationaltools.html">
+   Computational Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2essentialgroundwater/essentialgwreview.html">
+   Essential Groundwater Review - I
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../3essentialgroundwater/essentialgwreview2.html">
+   Essential Groundwater Review - II
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../4pollutants/4pollutants.html">
+   Pollutants
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5nonreactivetransport/5nonreactivetransport.html">
+   Non-Reactive Transport - I
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5nonreactivetransport/1tracerhypothesis.html">
+     Tracer Hypothesis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5nonreactivetransport/2flux.html">
+     Flux
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5nonreactivetransport/3advection.html">
+     Advection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6nonreactivetransport/4diffusion.html">
+     Diffusion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6nonreactivetransport/5dispersion.html">
+     Dispersion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../7analyticalmodels/analyticalmodels.html">
+   Analytical Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/ogatabanks.html">
+     Ogata-Banks Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/sauty.html">
+     Sauty Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/huntsolution.html">
+     Hunt Solution (2D plume in regional flow)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/domenico.html">
+     Domenico-Robbins Convolution of 1D Solutions to approximate 3D behavior
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../8reactivetransport/8reactivetransport.html">
+   Reactive Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../8reactivetransport/6reactions.html">
+     Reactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../8reactivetransport/7decay.html">
+     Decay
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="0modelingadvection.html">
+   Modeling Advection
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Modeling Advection by Particle Tracking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2upwindfdm.html">
+     Modeling Advection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">
+   Site Investigations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../26regulatory/regulatory.html">
+   Groundwater Protection Legal Framework
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/chapters/11modelingadvection/1particletracking.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/11modelingadvection/1particletracking.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/11modelingadvection/1particletracking.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multi-linear-interpolation">
+   Multi-Linear Interpolation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spreadsheet-approach">
+   Spreadsheet Approach
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spreadsheet-examples">
+     Spreadsheet Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-of-particle-tracking">
+   Example of Particle Tracking
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-1-need-to-digitize-the-head-map">
+   Step 1. Need to Digitize the Head Map
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#open-g3data">
+     Open G3DATA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#set-view-zoom">
+     Set View == Zoom
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#set-filename">
+     Set Filename
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#set-xy-coordinates">
+     Set XY Coordinates
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#digitize-the-contours">
+     Digitize the Contours
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-2-check-the-digitization-results">
+   Step 2 Check the Digitization Results
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extensions">
+     Extensions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="modeling-advection-by-particle-tracking">
+<h1>Modeling Advection by Particle Tracking<a class="headerlink" href="#modeling-advection-by-particle-tracking" title="Permalink to this headline">¶</a></h1>
+<p>Later on we will use USGS-MOC (which incorporates particle tracking to define characteristic trajectories), so we will illustrate particle tracking keeping MOC in mind.</p>
+<ul class="simple">
+<li><p>Particle or front tracking is typically performed using special software.</p></li>
+<li><p>It can be performed using a spreadsheet.</p></li>
+<li><p>The spreadsheet exercise is useful to illustrate the principles involved in particle tracking calculations.</p></li>
+<li><p>Particle tracking with reactions is very computationally intensive and is beyond practical application in a spreadsheet; such computations are used to design space shuttles, helicopters and other things where the knowledge gained justifies the costs</p></li>
+</ul>
+<p>The first step is to compute the velocity field (if it is steady even better, if not then every time increment it is recomputed)</p>
+<ul class="simple">
+<li><p>If analytical functions are available for the velocity field then tracking is relatively easy.</p></li>
+<li><p>Usually the velocity field is determined numerically at discrete points in space, and this is the situation of interest.</p></li>
+<li><p>The interpolation schemes in common use are simple; simple, simple-linear, and multi-linear schemes.</p></li>
+<li><p>Only the simple-linear scheme preserves cell-by-cell mass balances.</p></li>
+</ul>
+<p>The figure below illustrates simple linear interpolation.</p>
+<p><img alt="" src="../../_images/particle_track_interpolation1.png" /></p>
+<ul class="simple">
+<li><p>Typical computational grid for heads.</p></li>
+<li><p>Arrows are the interfacial fluxes.</p></li>
+<li><p>The simple scheme assigns the top and left flux to <span class="math notranslate nohighlight">\((x_1,y_1)\)</span>.</p></li>
+<li><p>The simple scheme assgins the right and bottom flux to <span class="math notranslate nohighlight">\((x_2,y_2)\)</span>.</p></li>
+</ul>
+<p>The particle velocity is determined by position of the particle relative to the velocity grid.</p>
+<p><img alt="" src="../../_images/pt_find_particle1.png" /></p>
+<p>Uses the same grid as the head scheme.
+Velocity is the distance weighted average of the cell that the particle occupies.</p>
+<p><img alt="" src="../../_images/pt_get_velo1.png" /></p>
+<p>From the above figure, the particle’s velocities (x- and y- directions) are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(u_p = \frac{1-\delta x}{\Delta x}u(x_1,y_1)+\frac{\delta x}{\Delta x}u(x_2,y_2)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v_p = \frac{1-\delta y}{\Delta y}v(x_1,y_1)+\frac{\delta y}{\Delta y}v(x_2,y_2)\)</span></p></li>
+</ul>
+<div class="section" id="multi-linear-interpolation">
+<h2>Multi-Linear Interpolation<a class="headerlink" href="#multi-linear-interpolation" title="Permalink to this headline">¶</a></h2>
+<p>Higher order schemes produce smoother velocity fields at the expense of cell mass balances and computational ease. The USGS-MOC model uses a bi-linear scheme where the velocities at the four corners of the occupied cell are used. When transient flow fields occur, averaging in time is also used. The differences in the schemes are hard to detect when the grid spacing is small and the flow field is smoothly varying.</p>
+</div>
+<div class="section" id="spreadsheet-approach">
+<h2>Spreadsheet Approach<a class="headerlink" href="#spreadsheet-approach" title="Permalink to this headline">¶</a></h2>
+<p>To illustrate particle tracking the simple velocity scheme is used.<br />
+Extension to higher order schemes is straight forward.</p>
+<p>Illustrate with simple scheme. Consider:</p>
+<p><img alt="" src="../../_images/ss_fig11.png" /></p>
+<ul class="simple">
+<li><p>Large rectangles represent the velocity grid.</p></li>
+<li><p>Circles represent the geometric location where velocity is known.</p></li>
+<li><p>Small rectangle represents the particle that we wish to track.</p></li>
+</ul>
+<p><strong>Cell Indexing</strong></p>
+<p><img alt="" src="../../_images/ss_fig21.png" /></p>
+<ul class="simple">
+<li><p>Each cell represents a grid location in the velocity field.  Thus each cell has a unique row and column index.</p></li>
+<li><p>Each cell centroid also has a unique geomteric (x,y) location.</p></li>
+<li><p>The particle in the figure is located in cell named: Col_1,Row_2.</p></li>
+<li><p>The cell is located at position: (X_1,Y_2).</p></li>
+<li><p>The particle position is (XP,YP).</p></li>
+</ul>
+<p><strong>Locating the Particle</strong></p>
+<ul class="simple">
+<li><p>At the start of a time-step:</p></li>
+<li><p>particle position is known.</p></li>
+<li><p>cell positions are known.</p></li>
+<li><p>cell that the particle occupies is unknown.</p></li>
+<li><p>Construct a distance table</p></li>
+<li><p>The distance from each cell to the particle is calculated and stored in a table.</p></li>
+<li><p>Search the table,find the cell nearest the particle.</p></li>
+<li><p>The cell coordinates of the smallest distance in the table is determined</p></li>
+</ul>
+<p><strong>Locating in Excel</strong></p>
+<ul class="simple">
+<li><p>The spreadsheet function that finds the value in an array (rectangular area of cells), given the position in the array to search is the function <code class="docutils literal notranslate"><span class="pre">INDEX(array,row_index,column_index)</span></code></p></li>
+<li><p>The spreadsheet function that can find the position in an array where a particular value appears is the function <code class="docutils literal notranslate"><span class="pre">MATCH(value,array,type)</span></code></p></li>
+</ul>
+<p><strong>INDEX Function</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">INDEX(array,row_index,column_index)</span></code>
+array is the location of the rectangular area of cells to search (eg. A3:C6).
+row_index is number of rows down from the starting row to search.
+column_index is the number of columns across from the starting column to search.</p></li>
+</ul>
+<p><strong>MATCH Function</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MATCH(value,array,type)</span></code>
+value is the numerical value to search for in the array.
+array is the location of the rectangular area of cells to search (eg. A3:C6).
+type is the type of match to use.  type=0 means exact matching.</p></li>
+</ul>
+<p><strong>Using the Functions</strong></p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">INDEX</span></code> function allows us to select the correct values of velocity if we know which cell the particle resides in.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">MATCH</span></code> function allows us to compare values in an array and determine the position in the array that these values are found.<br />
+Thus the <code class="docutils literal notranslate"><span class="pre">MATCH</span></code> function lets us search a distance table, find the cell center nearest the particle, and then use the index to find the correct velocity.</p></li>
+</ul>
+<p><strong>Moving the Particle</strong></p>
+<p>Once the cell containing the particle is identified, the particle is assigned the velocity values for that cell.
+The particle is then “moved” by the simple kinematic calculation:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_p(t+\Delta t)=x_p(t)+u_p(t)\Delta t\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y_p(t+\Delta t)=y_p(t)+v_p(t)\Delta t\)</span></p></li>
+</ul>
+<p><strong>Illustrative Example</strong></p>
+<p>An example with 3 particles is shown below - the spreadsheet is kind of big because iterative computations are intentionally avoided.</p>
+<p><img alt="" src="../../_images/pt_seg01.png" /></p>
+<p>Closer view for particle 1:</p>
+<p><img alt="" src="../../_images/pt_seg11.png" /></p>
+<p>Closer view for particle 2:</p>
+<p><img alt="" src="../../_images/pt_seg21.png" /></p>
+<p>Closer view for particle 3:</p>
+<p><img alt="" src="../../_images/pt_seg31.png" /></p>
+<p><strong>Summary</strong></p>
+<ul class="simple">
+<li><p>Particle tracking is a tool to determine the position of a fluid particle in a flow field.</p></li>
+<li><p>A two-step approach is required:</p></li>
+<li><p>Determine particle velocity</p>
+<ul>
+<li><p>Locate the particle relative to known velocity locations.</p></li>
+<li><p>Assign the velocity to the particle based on an interpolation scheme.</p></li>
+</ul>
+</li>
+<li><p>Move the particle.</p></li>
+<li><p>All particle tracking programs use some sort of this two-step logic.</p></li>
+<li><p>Extension to a 3rd spatial dimension is straightforward; boundaries are tricky - ray tracing and folding back across a boundary is a simple approach to manage a need to keep particles in a computational domain; alternatively</p></li>
+</ul>
+<div class="section" id="spreadsheet-examples">
+<h3>Spreadsheet Examples<a class="headerlink" href="#spreadsheet-examples" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/11modelingadvection/PartTrack_10.xls">Cleveland, T.G. (1997) <em>Particle Tracking Spreadsheet (10X10) (Excel)</em></a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/11modelingadvection/PartTrack_20.xls">Cleveland, T.G. (1997) <em>Particle Tracking Spreadsheet (20X20) (Excel)</em></a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/11modelingadvection/PartTrack.xls">Cleveland, T.G. (1997) <em>Particle Tracking Spreadsheet (5X5 same as example above) (Excel)</em></a></p></li>
+</ol>
+<p>Performing the calculations in a python script is illustrated in the next section.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will see that the python script is simpler to construct than the spreadsheet (in terms of weird functions), but takes a shit-ton more code!</p>
+</div>
+</div>
+</div>
+<div class="section" id="example-of-particle-tracking">
+<h2>Example of Particle Tracking<a class="headerlink" href="#example-of-particle-tracking" title="Permalink to this headline">¶</a></h2>
+<p>Here we illustrate using particle tracking to address a homework problem.</p>
+<hr><hr>
+<p>The figure below shows a piezometric map for a shallow sand aquifer.  The hydraulic conductivtiy is estimated to be <span class="math notranslate nohighlight">\(1.5 \times 10^{-2}~\frac{cm}{s}\)</span>, the saturated thickness is 40 feet, and the effective porosity is 0.3.</p>
+<p><img alt="" src="http://54.243.252.9/ce-5364-webroot/2-Exercises/ES1/Fig5.18.png" /></p>
+<p>Determine:</p>
+<ol class="simple">
+<li><p>Which well is expected to be the most contaminated.</p></li>
+<li><p>The groundwater velocity and seepage velocity across the plume.</p></li>
+<li><p>The duration that the source has been contaminating the aquifer (neglect dispersion, diffusiom, and adsorption).</p></li>
+<li><p>The flow rate across the plume.</p></li>
+<li><p>An explaination for contamination upgradient of the source zone.</p></li>
+</ol>
+</div>
+<div class="section" id="step-1-need-to-digitize-the-head-map">
+<h2>Step 1. Need to Digitize the Head Map<a class="headerlink" href="#step-1-need-to-digitize-the-head-map" title="Permalink to this headline">¶</a></h2>
+<p>Use <a class="reference external" href="https://alternativeto.net/software/g3data/?platform=windows">G3DATA</a> or something similar to digitize the head map.</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">G3DATA</span></code> we will need a coordinate system, so thats superimposed on</p>
+<p><img alt="" src="../../_images/Fig5.18-Coordinates1.png" /></p>
+<p>Next you need to open an instance of <code class="docutils literal notranslate"><span class="pre">G3DATA</span></code>. If using Windows the system should give you a windows manager, if using linux you need an X-window desktop.</p>
+<div class="section" id="open-g3data">
+<h3>Open G3DATA<a class="headerlink" href="#open-g3data" title="Permalink to this headline">¶</a></h3>
+<p>Observe that I get the RandR warning (Resize and rotate) - this is assocated with my VNC server window, and the software still is working.  Given I am running on a Raspberry Pi over the internet, ill live with the warning.</p>
+<p><img alt="" src="../../_images/openG31.png" /></p>
+<p>Also notice in the program call the <code class="docutils literal notranslate"><span class="pre">-scale</span> <span class="pre">0.1</span></code> this is a trial-and-error to rescale the image so I can see what I am doing, so open and close a few times until you get the view window into a workable size.</p>
+<p><img alt="" src="../../_images/G3running1.png" /></p>
+</div>
+<div class="section" id="set-view-zoom">
+<h3>Set View == Zoom<a class="headerlink" href="#set-view-zoom" title="Permalink to this headline">¶</a></h3>
+<p>Next we will need to set the view window to Zoom area.  This is needed to write the level set files that we are building.</p>
+<p><img alt="" src="../../_images/viewZoom1.png" /></p>
+</div>
+<div class="section" id="set-filename">
+<h3>Set Filename<a class="headerlink" href="#set-filename" title="Permalink to this headline">¶</a></h3>
+<p>Here we set the file name for each level set.  We will digitize each contour line and save its coordinates to a file, then we conactenate these files after adding the Z coordinate into a single file for gridding and plotting.</p>
+<p><img alt="" src="../../_images/setFileName1.png" /></p>
+</div>
+<div class="section" id="set-xy-coordinates">
+<h3>Set XY Coordinates<a class="headerlink" href="#set-xy-coordinates" title="Permalink to this headline">¶</a></h3>
+<p>Here we must set the X and Y coordinates of the lower left,lower right (X) and lower left upper left (Y) to establish how we will be measuring things.</p>
+<p><img alt="" src="../../_images/setXY1.png" /></p>
+</div>
+<div class="section" id="digitize-the-contours">
+<h3>Digitize the Contours<a class="headerlink" href="#digitize-the-contours" title="Permalink to this headline">¶</a></h3>
+<p>Now we digitize a contour line</p>
+<p><img alt="" src="../../_images/digitizeLS1.png" /></p>
+<p>when done, we write the points to a file.  Here is what is in the tile.</p>
+<p><img alt="" src="../../_images/LSfile1.png" /></p>
+<p>Then clear the points (in the G3DATA program), change the file name and digitize the next line. Repeat until all the lines are complete.</p>
+<p>Then open each file and add the Z-coordinate.  Lastly join each file into a single file for further processing.</p>
+<p>Here is what my version looks like, the file is <code class="docutils literal notranslate"><span class="pre">Fig5.18-LevelSets.png.dat</span></code> its an ASCII file that I can read and make a contour plot, but more importantly I can grid the data to estimate x- and y- components of velocity from the given value of hydraulic conductivity.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">-</span><span class="n">Easting</span>	<span class="n">Y</span><span class="o">-</span><span class="n">Northing</span>	<span class="n">Z</span><span class="o">-</span><span class="n">Elevation</span>
+<span class="o">-</span><span class="mf">0.365791375238</span>  <span class="mf">0.00426936718372</span> <span class="mf">5.5</span>
+<span class="mf">7.44799110264</span>  <span class="mf">34.0524726574</span> <span class="mf">5.5</span>
+<span class="mf">30.6624750375</span>  <span class="mf">65.7872126049</span> <span class="mf">5.5</span>
+<span class="o">...</span>
+<span class="n">many</span> <span class="n">lines</span>
+<span class="o">...</span>
+<span class="mf">353.704129652</span>  <span class="mf">725.957058705</span> <span class="mf">5.5</span>
+<span class="mf">186.509893725</span>  <span class="mf">0.312464310759</span> <span class="mf">5.75</span>
+<span class="mf">195.371098732</span>  <span class="mf">37.1933927273</span> <span class="mf">5.75</span>
+<span class="mf">202.181166327</span>  <span class="mf">65.9190293167</span> <span class="mf">5.75</span>
+<span class="mf">206.765265923</span>  <span class="mf">96.4487403766</span> <span class="mf">5.75</span>
+<span class="o">...</span>
+<span class="n">many</span> <span class="n">lines</span>
+<span class="o">...</span>
+<span class="mf">486.889653936</span>  <span class="mf">722.268859129</span> <span class="mf">5.75</span>
+<span class="mf">362.749010841</span>  <span class="o">-</span><span class="mf">18.4586090188</span> <span class="mf">6.0</span>
+<span class="mf">367.376818083</span>  <span class="mf">9.58126046662</span> <span class="mf">6.0</span>
+<span class="o">...</span>
+<span class="n">many</span> <span class="n">lines</span>
+<span class="o">...</span>
+<span class="mf">595.939191403</span>  <span class="mf">718.506746134</span> <span class="mf">6.0</span>
+<span class="mf">502.803399911</span>  <span class="o">-</span><span class="mf">17.6039350757</span> <span class="mf">6.25</span>
+<span class="mf">512.271308678</span>  <span class="mf">26.3822876764</span> <span class="mf">6.25</span>
+<span class="mf">520.432150683</span>  <span class="mf">61.4932965599</span> <span class="mf">6.25</span>
+<span class="mf">525.047470026</span>  <span class="mf">90.2445493523</span> <span class="mf">6.25</span>
+<span class="o">...</span>
+<span class="n">many</span> <span class="n">lines</span>
+<span class="o">...</span>
+<span class="mf">708.769440297</span>  <span class="mf">624.373336948</span> <span class="mf">6.25</span>
+<span class="mf">637.755441575</span>  <span class="o">-</span><span class="mf">17.7565649526</span> <span class="mf">6.50</span>
+<span class="mf">649.674100524</span>  <span class="mf">11.6206838032</span> <span class="mf">6.50</span>
+<span class="o">...</span>
+<span class="n">many</span> <span class="n">lines</span>
+<span class="o">...</span>
+<span class="mf">885.881149356</span>  <span class="mf">618.394355043</span> <span class="mf">6.50</span>
+<span class="mf">901.700715759</span>  <span class="o">-</span><span class="mf">11.9467567219</span> <span class="mf">6.75</span>
+<span class="mf">909.60191353</span>  <span class="mf">17.1217634194</span> <span class="mf">6.75</span>
+<span class="o">...</span>
+<span class="n">many</span> <span class="n">lines</span>
+<span class="o">...</span>
+<span class="mf">976.769639356</span>  <span class="mf">628.357723872</span> <span class="mf">6.75</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-2-check-the-digitization-results">
+<h2>Step 2 Check the Digitization Results<a class="headerlink" href="#step-2-check-the-digitization-results" title="Permalink to this headline">¶</a></h2>
+<p>Here we will now produce a contour map from the digitized map, adjust sizes and overlay on the original map to get an idea of how good we did.</p>
+<p>Also will use trial-and-error to find a useable hull within the contour plot where we can capture heads and use for a particle tracking effort - we have to find a rectangle with non-null interpolation values; easiest way (my opinion) is to try indices until can find a reasonable rectangle then sample from that rectangle.  The process is documented below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The interpolation algorithm does not estimate vales outside the convex hull defined by the observation data.  So the box below is by trial-and-error to stay within the convex hull; the interpolator in this region produces useable estimates for computing the heads and velocities from just the mapped information&gt;</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CCMR from ENGR-1330:</span>
+<span class="c1"># http://54.243.252.9/engr-1330-webroot/8-Labs/Lab07/Lab07.html</span>
+<span class="c1"># https://clouds.eos.ubc.ca/~phil/docs/problem_solving/06-Plotting-with-Matplotlib/06.14-Contour-Plots.html</span>
+<span class="c1"># https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.griddata.html</span>
+<span class="c1"># https://stackoverflow.com/questions/332289/how-do-you-change-the-size-of-figures-drawn-with-matplotlib</span>
+<span class="c1"># https://stackoverflow.com/questions/18730044/converting-two-lists-into-a-matrix</span>
+<span class="c1"># https://stackoverflow.com/questions/3242382/interpolation-over-an-irregular-grid</span>
+<span class="c1"># https://stackoverflow.com/questions/33919875/interpolate-irregular-3d-data-from-a-xyz-file-to-a-regular-grid</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Fig5.18-LevelSets.png.dat&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># read an ascii file already prepared, delimiter is tabs</span>
+<span class="c1">#my_xyz = pandas.read_csv(&#39;XYZSomewhereUSA.txt&#39;,sep=&#39; &#39;) # read an ascii file already prepared, delimiter is tabs</span>
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_xyz</span><span class="p">)</span> <span class="c1"># convert into a data frame</span>
+<span class="c1">#print(my_xyz) #examine the dataframe</span>
+<span class="kn">import</span> <span class="nn">numpy</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">griddata</span>
+<span class="c1"># extract lists from the dataframe</span>
+<span class="n">coord_x</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="s1">&#39;X-Easting&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">coord_y</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="s1">&#39;Y-Northing&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">coord_z</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="s1">&#39;Z-Elevation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">coord_xy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">coord_y</span><span class="p">))</span>
+<span class="c1"># Set plotting range in original data units</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+<span class="c1"># Grid the data; use cubic spline interpolation (other choices are nearest and linear)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_xy</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_z</span><span class="p">),</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">,</span> <span class="n">fill_value</span> <span class="o">=</span> <span class="s1">&#39;nan&#39;</span><span class="p">)</span>
+<span class="c1"># Build the map</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Indices of black box on overlay below:&quot;</span><span class="p">)</span>
+<span class="n">ixl</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">ixh</span> <span class="o">=</span> <span class="mi">90</span>
+<span class="n">iyl</span> <span class="o">=</span> <span class="mi">27</span>
+<span class="n">iyh</span> <span class="o">=</span> <span class="mi">62</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xyz lower left corner &quot;</span><span class="p">,</span><span class="n">X</span><span class="p">[</span><span class="n">iyl</span><span class="p">][</span><span class="n">ixl</span><span class="p">],</span><span class="n">Y</span><span class="p">[</span><span class="n">iyl</span><span class="p">][</span><span class="n">ixl</span><span class="p">],</span><span class="n">Z</span><span class="p">[</span><span class="n">iyl</span><span class="p">][</span><span class="n">ixl</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xyz lower right corner&quot;</span><span class="p">,</span><span class="n">X</span><span class="p">[</span><span class="n">iyl</span><span class="p">][</span><span class="n">ixh</span><span class="p">],</span><span class="n">Y</span><span class="p">[</span><span class="n">iyl</span><span class="p">][</span><span class="n">ixh</span><span class="p">],</span><span class="n">Z</span><span class="p">[</span><span class="n">iyl</span><span class="p">][</span><span class="n">ixh</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xyz upper left corner &quot;</span><span class="p">,</span><span class="n">X</span><span class="p">[</span><span class="n">iyh</span><span class="p">][</span><span class="n">ixl</span><span class="p">],</span><span class="n">Y</span><span class="p">[</span><span class="n">iyh</span><span class="p">][</span><span class="n">ixl</span><span class="p">],</span><span class="n">Z</span><span class="p">[</span><span class="n">iyh</span><span class="p">][</span><span class="n">ixl</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xyz upper right corner &quot;</span><span class="p">,</span><span class="n">X</span><span class="p">[</span><span class="n">iyh</span><span class="p">][</span><span class="n">ixh</span><span class="p">],</span><span class="n">Y</span><span class="p">[</span><span class="n">iyh</span><span class="p">][</span><span class="n">ixh</span><span class="p">],</span><span class="n">Z</span><span class="p">[</span><span class="n">iyh</span><span class="p">][</span><span class="n">ixh</span><span class="p">])</span>
+<span class="n">xxl</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">iyl</span><span class="p">][</span><span class="n">ixl</span><span class="p">]</span>
+<span class="n">xxh</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">iyh</span><span class="p">][</span><span class="n">ixh</span><span class="p">]</span>
+<span class="n">yyl</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">iyl</span><span class="p">][</span><span class="n">ixl</span><span class="p">]</span>
+<span class="n">yyh</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">iyh</span><span class="p">][</span><span class="n">ixh</span><span class="p">]</span>
+<span class="n">flag</span><span class="o">=</span><span class="kc">True</span>
+<span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.00</span><span class="p">,</span> <span class="mf">8.00</span><span class="p">]</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.autolayout&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;Fig5.18-Coordinates.png&quot;</span><span class="p">)</span> <span class="c1"># base image</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">flag</span><span class="p">:</span> 
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="o">-</span><span class="mi">125</span><span class="p">,</span> <span class="mi">800</span><span class="p">])</span><span class="c1"># sets X and Y plot window of basemap</span>
+<span class="c1">#fig.set_size_inches(14, 7)</span>
+<span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">5.50</span><span class="p">,</span><span class="mf">5.75</span><span class="p">,</span><span class="mf">6.00</span><span class="p">,</span><span class="mf">6.25</span><span class="p">,</span><span class="mf">6.50</span><span class="p">,</span><span class="mf">6.75</span><span class="p">]</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Contour Plot from Gridded Data File&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">800</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xxl</span><span class="p">,</span><span class="n">xxh</span><span class="p">],[</span><span class="n">yyl</span><span class="p">,</span><span class="n">yyl</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xxl</span><span class="p">,</span><span class="n">xxh</span><span class="p">],[</span><span class="n">yyh</span><span class="p">,</span><span class="n">yyh</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xxl</span><span class="p">,</span><span class="n">xxl</span><span class="p">],[</span><span class="n">yyl</span><span class="p">,</span><span class="n">yyh</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xxh</span><span class="p">,</span><span class="n">xxh</span><span class="p">],[</span><span class="n">yyl</span><span class="p">,</span><span class="n">yyh</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Indices of black box on overlay below:
+xyz lower left corner  90.9090909090909 200.0 5.478952367771485
+xyz lower right corner 909.090909090909 200.0 6.722448985544166
+xyz upper left corner  90.9090909090909 588.8888888888889 5.302942021834024
+xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
+</pre></div>
+</div>
+<img alt="../../_images/1particletracking_11_1.png" src="../../_images/1particletracking_11_1.png" />
+</div>
+</div>
+<p>This is acceptable.  Now we will extract velocities from the gridded data files - using the “box”.  Recall to use the spreadsheet version of the particle tracker we need the <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(V\)</span> fields from the head distribution.</p>
+<p>We will use the supplied hydraulic conductivity and porosity</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(K~\approx~ 1.5 \times 10^{-2}~\frac{cm}{s} \cdot \frac{1~in}{2.54~cm} \cdot \frac{1~ft}{12~in} \cdot \frac{86400~s}{1~day} = 42.52~\frac{ft}{day}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(n~\approx~ 0.30 \)</span></p></li>
+</ul>
+<p>And apply Darcy’s law as</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\textbf{u(x,y)} = -\frac{K}{n}\cdot \frac{\Delta h}{\Delta x}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\textbf{v(x,y)} = -\frac{K}{n}\cdot \frac{\Delta h}{\Delta y}\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Conductivity</span> <span class="o">=</span> <span class="mf">42.52</span> <span class="c1"># feet/day</span>
+<span class="n">Porosity</span> <span class="o">=</span> <span class="mf">0.30</span> <span class="c1"># voids/bulk</span>
+<span class="n">nrows</span> <span class="o">=</span> <span class="n">iyh</span> <span class="o">-</span> <span class="n">iyl</span>
+<span class="n">ncols</span> <span class="o">=</span> <span class="n">ixh</span> <span class="o">-</span> <span class="n">ixl</span>
+<span class="c1">#Zero vectors for the velocity fields</span>
+<span class="n">U</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span>
+<span class="n">V</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span>
+<span class="c1">#Zero vectors for realinged mesh grid</span>
+<span class="n">XG</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span>
+<span class="n">YG</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span> <span class="c1">#range(nrows)</span>
+        <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="n">Conductivity</span><span class="o">/</span><span class="n">Porosity</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">Z</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">X</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1">#- K dh/dx</span>
+        <span class="n">V</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="n">Conductivity</span><span class="o">/</span><span class="n">Porosity</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">Z</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">Y</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">])</span> <span class="c1">#- K dh/dy</span>
+        <span class="n">XG</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">YG</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">iyl</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="n">ixl</span><span class="o">+</span><span class="n">j</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Suppose we want a plot of the vector field just to check our work, a nice tool is <code class="docutils literal notranslate"><span class="pre">quiver</span></code> and/or <code class="docutils literal notranslate"><span class="pre">streamplot</span></code> which are demonstrated below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert to numpy arrays</span>
+<span class="n">UU</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+<span class="n">VV</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">XX</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">XG</span><span class="p">)</span>
+<span class="n">YY</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">YG</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">UU</span><span class="p">[</span><span class="mi">30</span><span class="p">][</span><span class="mi">30</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.22504528917472658
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now a cool “quiver” plot</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.00</span><span class="p">,</span> <span class="mf">8.00</span><span class="p">]</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.autolayout&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;Fig5.18-Coordinates.png&quot;</span><span class="p">)</span> <span class="c1"># base image</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">flag</span><span class="p">:</span> 
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="o">-</span><span class="mi">125</span><span class="p">,</span> <span class="mi">800</span><span class="p">])</span><span class="c1"># sets X and Y plot window of basemap</span>
+<span class="c1">#fig.set_size_inches(14, 7)</span>
+<span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">5.50</span><span class="p">,</span><span class="mf">5.75</span><span class="p">,</span><span class="mf">6.00</span><span class="p">,</span><span class="mf">6.25</span><span class="p">,</span><span class="mf">6.50</span><span class="p">,</span><span class="mf">6.75</span><span class="p">]</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">XX</span><span class="p">[::</span><span class="mi">6</span><span class="p">,</span> <span class="p">::</span><span class="mi">6</span><span class="p">],</span> <span class="n">YY</span><span class="p">[::</span><span class="mi">6</span><span class="p">,</span> <span class="p">::</span><span class="mi">6</span><span class="p">],</span> <span class="n">UU</span><span class="p">[::</span><span class="mi">6</span><span class="p">,</span> <span class="p">::</span><span class="mi">6</span><span class="p">],</span> <span class="n">VV</span><span class="p">[::</span><span class="mi">6</span><span class="p">,</span> <span class="p">::</span><span class="mi">6</span><span class="p">],</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;width&#39;</span><span class="p">)</span>
+<span class="c1">#ax.clabel(CS, inline=2, fontsize=12)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Vector Plot from Gridded Data File&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">800</span><span class="p">]);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xxl</span><span class="p">,</span><span class="n">xxh</span><span class="p">],[</span><span class="n">yyl</span><span class="p">,</span><span class="n">yyl</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xxl</span><span class="p">,</span><span class="n">xxh</span><span class="p">],[</span><span class="n">yyh</span><span class="p">,</span><span class="n">yyh</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xxl</span><span class="p">,</span><span class="n">xxl</span><span class="p">],[</span><span class="n">yyl</span><span class="p">,</span><span class="n">yyh</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xxh</span><span class="p">,</span><span class="n">xxh</span><span class="p">],[</span><span class="n">yyl</span><span class="p">,</span><span class="n">yyh</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">);</span>
+
+<span class="c1">#matplotlib.pyplot.quiver(XX[::6, ::6], YY[::6, ::6], UU[::6, ::6], VV[::6, ::6], units=&#39;width&#39;)</span>
+<span class="c1">#matplotlib.pyplot.streamplot(XX, YY, UU, VV, density=0.5, linewidth=2, color=None)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1particletracking_18_0.png" src="../../_images/1particletracking_18_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.00</span><span class="p">,</span> <span class="mf">8.00</span><span class="p">]</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.autolayout&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;Fig5.18-Coordinates.png&quot;</span><span class="p">)</span> <span class="c1"># base image</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">flag</span><span class="p">:</span> 
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="o">-</span><span class="mi">125</span><span class="p">,</span> <span class="mi">800</span><span class="p">])</span><span class="c1"># sets X and Y plot window of basemap</span>
+<span class="c1">#fig.set_size_inches(14, 7)</span>
+<span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">5.50</span><span class="p">,</span><span class="mf">5.75</span><span class="p">,</span><span class="mf">6.00</span><span class="p">,</span><span class="mf">6.25</span><span class="p">,</span><span class="mf">6.50</span><span class="p">,</span><span class="mf">6.75</span><span class="p">]</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">streamplot</span><span class="p">(</span><span class="n">XX</span><span class="p">,</span> <span class="n">YY</span><span class="p">,</span> <span class="n">UU</span><span class="p">,</span> <span class="n">VV</span><span class="p">,</span>  <span class="n">density</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">arrowsize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1">#ax.clabel(CS, inline=2, fontsize=12)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Vector Plot from Gridded Data File&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">800</span><span class="p">]);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xxl</span><span class="p">,</span><span class="n">xxh</span><span class="p">],[</span><span class="n">yyl</span><span class="p">,</span><span class="n">yyl</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xxl</span><span class="p">,</span><span class="n">xxh</span><span class="p">],[</span><span class="n">yyh</span><span class="p">,</span><span class="n">yyh</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xxl</span><span class="p">,</span><span class="n">xxl</span><span class="p">],[</span><span class="n">yyl</span><span class="p">,</span><span class="n">yyh</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xxh</span><span class="p">,</span><span class="n">xxh</span><span class="p">],[</span><span class="n">yyl</span><span class="p">,</span><span class="n">yyh</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1particletracking_19_0.png" src="../../_images/1particletracking_19_0.png" />
+</div>
+</div>
+<p>Now we can implement a particle tracking script.  Using the spreadsheet as a guide we can write it in python, and access the cool graphics.</p>
+<p>Here is the basic script, one simply has to wrap it into a time-stepping loop to produce a trajectory.  Multiple particles can be managed</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># U array x-velocity at XG,YG</span>
+<span class="c1"># V array y-velocity at XG,YG</span>
+<span class="c1"># XG array X-value of cell center</span>
+<span class="c1"># YG array Y-value of cell center</span>
+<span class="c1"># XP X-value of particle position </span>
+<span class="c1"># YP Y-value of particle position</span>
+<span class="c1"># UP x-velocity of particle </span>
+<span class="c1"># VP y-velocity of particle</span>
+<span class="c1"># TX x-component particle trajectory</span>
+<span class="c1"># TY y-component particle trajectory</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="n">verbose</span><span class="o">=</span><span class="kc">False</span>
+<span class="n">terse</span><span class="o">=</span><span class="kc">False</span>
+<span class="n">deltaT</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">etime</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">numTime</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">XP</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">YP</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">UP</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">VP</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">TX</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">#trajectory vector</span>
+<span class="n">TY</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">np</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Total particles </span>
+<span class="n">XP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>
+<span class="n">YP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">290</span><span class="p">)</span>
+<span class="n">UP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">VP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ip</span><span class="o">=</span><span class="n">np</span><span class="o">-</span><span class="mi">1</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;                   Initial Particle Position&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">XP</span><span class="p">[</span><span class="n">ip</span><span class="p">],</span><span class="mi">2</span><span class="p">),</span><span class="nb">round</span><span class="p">(</span><span class="n">YP</span><span class="p">[</span><span class="n">ip</span><span class="p">],</span><span class="mi">2</span><span class="p">),</span><span class="nb">round</span><span class="p">(</span><span class="n">UP</span><span class="p">[</span><span class="n">ip</span><span class="p">],</span><span class="mi">2</span><span class="p">),</span><span class="nb">round</span><span class="p">(</span><span class="n">VP</span><span class="p">[</span><span class="n">ip</span><span class="p">],</span><span class="mi">2</span><span class="p">),</span><span class="nb">round</span><span class="p">(</span><span class="n">etime</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># move particles this time step</span>
+<span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numTime</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">ip</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="p">):</span>
+    <span class="c1"># Build Particle Distance Table</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span> <span class="c1">#range(nrows)</span>
+                <span class="n">dist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">XX</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">XP</span><span class="p">[</span><span class="n">ip</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">YY</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">YP</span><span class="p">[</span><span class="n">ip</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+                <span class="n">index</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">count</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span> <span class="c1"># use to find i,j for a given index</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span><span class="mi">1</span>
+    <span class="c1"># find closest cell</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="nb">min</span><span class="p">(</span><span class="n">dist</span><span class="p">):</span>
+                <span class="c1">#print(index[i],dist[i])</span>
+                <span class="n">ixx</span><span class="o">=</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">jyy</span><span class="o">=</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+    <span class="c1"># use nearest cell assignment - aka simple scheme</span>
+                <span class="n">UP</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span> <span class="o">=</span> <span class="n">UU</span><span class="p">[</span><span class="n">ixx</span><span class="p">][</span><span class="n">jyy</span><span class="p">]</span>
+                <span class="n">VP</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span> <span class="o">=</span> <span class="n">VV</span><span class="p">[</span><span class="n">ixx</span><span class="p">][</span><span class="n">jyy</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Particle Position and Velocities Before Move&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">XP</span><span class="p">[</span><span class="n">ip</span><span class="p">],</span><span class="mi">2</span><span class="p">),</span><span class="nb">round</span><span class="p">(</span><span class="n">YP</span><span class="p">[</span><span class="n">ip</span><span class="p">],</span><span class="mi">2</span><span class="p">),</span><span class="nb">round</span><span class="p">(</span><span class="n">UP</span><span class="p">[</span><span class="n">ip</span><span class="p">],</span><span class="mi">2</span><span class="p">),</span><span class="nb">round</span><span class="p">(</span><span class="n">VP</span><span class="p">[</span><span class="n">ip</span><span class="p">],</span><span class="mi">2</span><span class="p">),</span><span class="nb">round</span><span class="p">(</span><span class="n">etime</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+                <span class="k">break</span> <span class="c1">#exits the loop - we stop at the first nearest cell encountered</span>
+    <span class="c1"># move the particle</span>
+        <span class="n">XP</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span><span class="o">=</span><span class="n">XP</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span><span class="o">+</span><span class="n">UP</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span><span class="o">*</span><span class="n">deltaT</span>
+        <span class="n">YP</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span><span class="o">=</span><span class="n">YP</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span><span class="o">+</span><span class="n">VP</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span><span class="o">*</span><span class="n">deltaT</span>
+        <span class="n">etime</span><span class="o">=</span><span class="n">etime</span><span class="o">+</span><span class="n">deltaT</span>
+        <span class="k">if</span> <span class="n">terse</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; Particle Position and Velocities After Move&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">XP</span><span class="p">[</span><span class="n">ip</span><span class="p">],</span><span class="mi">2</span><span class="p">),</span><span class="nb">round</span><span class="p">(</span><span class="n">YP</span><span class="p">[</span><span class="n">ip</span><span class="p">],</span><span class="mi">2</span><span class="p">),</span><span class="nb">round</span><span class="p">(</span><span class="n">UP</span><span class="p">[</span><span class="n">ip</span><span class="p">],</span><span class="mi">2</span><span class="p">),</span><span class="nb">round</span><span class="p">(</span><span class="n">VP</span><span class="p">[</span><span class="n">ip</span><span class="p">],</span><span class="mi">2</span><span class="p">),</span><span class="nb">round</span><span class="p">(</span><span class="n">etime</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">TX</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">ip</span><span class="p">,</span><span class="n">XP</span><span class="p">[</span><span class="n">ip</span><span class="p">],</span><span class="n">etime</span><span class="p">])</span>
+        <span class="n">TY</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">ip</span><span class="p">,</span><span class="n">YP</span><span class="p">[</span><span class="n">ip</span><span class="p">],</span><span class="n">etime</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   Initial Particle Position 900 290 0 0 0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.00</span><span class="p">,</span> <span class="mf">8.00</span><span class="p">]</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.autolayout&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;Fig5.18-Coordinates.png&quot;</span><span class="p">)</span> <span class="c1"># base image</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">flag</span><span class="p">:</span> 
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="o">-</span><span class="mi">125</span><span class="p">,</span> <span class="mi">800</span><span class="p">])</span><span class="c1"># sets X and Y plot window of basemap</span>
+<span class="c1">#fig.set_size_inches(14, 7)</span>
+<span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">5.50</span><span class="p">,</span><span class="mf">5.75</span><span class="p">,</span><span class="mf">6.00</span><span class="p">,</span><span class="mf">6.25</span><span class="p">,</span><span class="mf">6.50</span><span class="p">,</span><span class="mf">6.75</span><span class="p">]</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">streamplot</span><span class="p">(</span><span class="n">XX</span><span class="p">,</span> <span class="n">YY</span><span class="p">,</span> <span class="n">UU</span><span class="p">,</span> <span class="n">VV</span><span class="p">,</span>  <span class="n">density</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">arrowsize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1">#ax.clabel(CS, inline=2, fontsize=12)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Vector Plot from Gridded Data File</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>\
+            <span class="s1">&#39;Each Marker is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">deltaT</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; days</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>\
+            <span class="s1">&#39;Total Time is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">etime</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; days&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">800</span><span class="p">]);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xxl</span><span class="p">,</span><span class="n">xxh</span><span class="p">],[</span><span class="n">yyl</span><span class="p">,</span><span class="n">yyl</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xxl</span><span class="p">,</span><span class="n">xxh</span><span class="p">],[</span><span class="n">yyh</span><span class="p">,</span><span class="n">yyh</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xxl</span><span class="p">,</span><span class="n">xxl</span><span class="p">],[</span><span class="n">yyl</span><span class="p">,</span><span class="n">yyh</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xxh</span><span class="p">,</span><span class="n">xxh</span><span class="p">],[</span><span class="n">yyl</span><span class="p">,</span><span class="n">yyh</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">xtrajectory</span> <span class="o">=</span> <span class="p">[</span><span class="n">sublist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">TX</span><span class="p">]</span>
+<span class="n">ytrajectory</span> <span class="o">=</span> <span class="p">[</span><span class="n">sublist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">TY</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xtrajectory</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ytrajectory</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xtrajectory</span><span class="p">,</span><span class="n">ytrajectory</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&#39;
+</pre></div>
+</div>
+<img alt="../../_images/1particletracking_22_1.png" src="../../_images/1particletracking_22_1.png" />
+</div>
+</div>
+<div class="section" id="extensions">
+<h3>Extensions<a class="headerlink" href="#extensions" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>One could certainly add a lot more particles.</p></li>
+<li><p>If the parcels represent some quantify of mass, concentrations can be directly approximated.</p></li>
+</ol>
+<p>The method is not limited to groundwater hydrology, and an example of another use is in the references.</p>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/project_reports/HARC_Document/HARC_Document.pdf">Cleveland, T.G., 1991. <em>A Comparison of Sampling Design Criterion using a Lagrangian Particle Tracking Model for Transport in Porous Media</em>, Final Report to Houston Advanced Research Center, Woodlands, Texas. 54p.</a></p></li>
+<li><p><a class="reference external" href="https://www.osti.gov/servlets/purl/7083383-IHl4XM/">Ahlstrom, S W, Foote, H P, Arnett, R C, Cole, C R, and Serne, R J. <em>Multicomponent mass transport model: theory and numerical implementation (discrete-parcel-random-walk version).</em> United States: N. p., 1977. Web. doi:10.2172/7083383.</a></p></li>
+<li><p><a class="reference external" href="https://pdf.sciencedirectassets.com/271718/1-s2.0-S0309170800X00206/1-s2.0-S0309170897000079/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEO%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIQDnoA3cV9bojVQfPNNC5216IOqSfA3CC9oNpKqm7jsg%2BAIgPNHP7BORGCHJOPXblsR7OgkpZOL4TiorvYNFoF7DzzoqvAUI2P%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAFGgwwNTkwMDM1NDY4NjUiDMtHVnMRegEZxZu%2FZiqQBTx7ackkzlJkdep3XgGsyzfLKPWiZki7LjIGbfJzfz8ghafQjvK87AoSeOQbPszA9n%2BA%2B98Cg4Td9L1s2sGvfQbmSP6y3cX55ettaeiK7IpLsVoN0Xj%2FCN00ZNLkFrbQvJx1Rf4mIj75YEI9csluicZQ16%2BFfPnaKMwguwCEtT13YL%2F%2B%2BNhpahdG5TZ8iMzgHNsyQWoMUM2CgnQU2G9HuKlIqUQWWQE5muKj2t1m5bVStiFX%2BYrsdCCwAAIAQXi%2BzNsjMY%2B92CE9Y%2BUjLXzOmb2nTemS7oJ3khktN7mbimpf5bXQvBxiwU%2B5fdOqJfkssnBrIUa%2BH4NVqtC%2F33cB%2FGJLSBstPPnTIDhObNPUnKNrwduwFa7nPcWKBhdTbjN%2B4C31UI8VV5ktT22TeFxtIxU7WPb4%2FiorI0bYgWh4rjiIWP3LewwsNVH3BeLhqVdmq8rISfyQVosTxpXvmzWVZi027h6PvICdSHIqjTUdg5%2BIN9IEeT0vibYXLIrGXPJH%2F5cRpmDnxDBZP86qyvJ7yO%2BjciEzesPfrMAeiV30eKsxyMU6mQVARd8AVHR4OUpJ3HjW6PCWaP6KHqDUDeDE9YcQpOVyHbpTojE%2BMXun6K8cVL2eghCu9JqpwaqhRnwFMSoE66sD%2F0QMDzTQhpMZOuuwwMkPwM25MXLOIUzkI%2B1Iyuz5IPWeBoMWUMmINQxMaMuXRUkajR3PEJw9Q78IurKMz3MYU%2BM2Lq2CrMulkGfB5ICmOSEAA2oDym6oVyNA13MiwgyhXfyROEtxF4dMBKkOOdcAzSR7BH%2FwefmvFZtNXn5CuqSr6TZCx%2BrQQkPgCPWlZaIhQvC3yDST7dSeHOpNEGEA6%2FKjUWmyCR0ILmJIMLOOrKgGOrEBqqrXj4L7AVYSVhfpXTtIOpQFLkzWXqlkYtxWyPxmOYgnaiBfzRsplcRE8Z15zosf35r%2Fv1DVKUie%2BNqMgcszd2tH89iZ3z29JkvRAlgCmD2cFwTzwyoTuCWGTQhZtm9B5HGkQ%2F6OkQUNmbl%2FtQzkdEdKqFTsnD8Rqr7j78eB82fPB94%2BdPFSfFDCfSNDbT4aEZtq0Gys4IxXE0fpr%2BwJrmqqffzX2WsQAcdnQKJsAZ8u&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Date=20230920T152957Z&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=300&amp;X-Amz-Credential=ASIAQ3PHCVTY3SEVAUPT%2F20230920%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Signature=32d7e0fcf2047a83bd395b8a01396547b1df965c3919265e1df97af08e546058&amp;hash=98e447ef758882bdc500f581d99984707720145e14f6f213ed170521c1a545bf&amp;host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&amp;pii=S0309170897000079&amp;tid=spdf-9915bbf9-f314-4721-8f97-e5760a05c1dd&amp;sid=2f575b1c213689494e48a5227441297408a8gxrqa&amp;type=client&amp;tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&amp;ua=0f15595e560d5f03560907&amp;rr=809b1b5fcec7479a&amp;cc=us"><em>Modeling plume behavior for nonlinearly sorbing solutes in saturated homogeneous porous media</em> in Advances in Water Resources 21 (1998) 487-498 Elsevier Science Limited</a></p></li>
+<li><p><a class="reference external" href="https://d1wqtxts1xzle7.cloudfront.net/31171747/195055535-libre.pdf?1392371142=&amp;response-content-disposition=inline%3B+filename%3DDynamics_of_fluids_in_porous_media.pdf&amp;Expires=1695231543&amp;Signature=fcj7Wef3HIA7wlTx~LJhmfFgQJIrRLnrwEgqd2KIjnsouiRrFZpLAgMw-gRJ7oxI1~h89bo-YpAQuhLHZc1vtNFq5d0QBrxwYRbAvr5jztdUDHWZrfjBPYBgujy5WCnrrtoN7GKrziCwbk7mDi1AUyBnC4RDidrKgBV-bMOpJR4ZR8~L6BTEPXhBAQJbLohdpWi8Ni6VUl33~rEQaum8NMcY11P6okNvXbXKft3vdYwjEK5NXezeVe6dQpYIiBcyPVqkFahRD9CFLXLHZsxXryzDT~x9pszx86ka0kXYN9y1Y7RzyAgZQaB5YWD8XZhK4w2PoIEVgIvGeuCxxt099Q__&amp;Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA">Bear, J. (1972) <em>Dynamics of Fluids in Porous Media</em> McGraw Hill (pp. 236-241)</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/presentations/2007_0721_ECI_Unitgraphs/2007_0721_ECI_Unitgraphs.pdf">Cleveland, T.G., Thompson, D.B., Fang,X., He, X. 2007. <em>Synthesis of Unit Hydrographs from a Digital Elevation Model.</em> Urban Runoff Modeling: Intelligent Modeling to Improve Stormwater Management, ECI Specialty Conference, July 22-27, Humboldt State University, Arcata, California.</a></p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/11modelingadvection"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="0modelingadvection.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Modeling Advection</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2upwindfdm.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Modeling Advection</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Theodore G. Cleveland, PhD<br/>
+        
+            &copy; Copyright 2023.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

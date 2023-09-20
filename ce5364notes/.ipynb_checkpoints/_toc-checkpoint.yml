@@ -18,6 +18,7 @@ chapters:
   - file: chapters/6nonreactivetransport/5dispersion
 - file: chapters/7analyticalmodels/analyticalmodels
   sections:
+  - file: chapters/7analyticalmodels/impulse
   - file: chapters/7analyticalmodels/ogatabanks
   - file: chapters/7analyticalmodels/sauty
   - file: chapters/7analyticalmodels/huntsolution
@@ -26,6 +27,10 @@ chapters:
   sections:
   - file: chapters/8reactivetransport/6reactions
   - file: chapters/8reactivetransport/7decay
+- file: chapters/11modelingadvection/0modelingadvection
+  sections:
+  - file: chapters/11modelingadvection/1particletracking
+  - file: chapters/11modelingadvection/2upwindfdm
 - file: chapters/16siteinvestigation/siteinvestigation
-- file: chapters/19regulatory/regulatory
+- file: chapters/26regulatory/regulatory
 

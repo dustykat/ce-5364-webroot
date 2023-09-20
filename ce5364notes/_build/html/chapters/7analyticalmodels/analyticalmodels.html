@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -51,7 +53,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Ogata-Banks Solution" href="ogatabanks.html" />
+    <link rel="next" title="Impulse (Instantaneous Source) Solution" href="impulse.html" />
     <link rel="prev" title="Dispersion" href="../6nonreactivetransport/5dispersion.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -167,6 +169,11 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="impulse.html">
+     Impulse (Instantaneous Source) Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="ogatabanks.html">
      Ogata-Banks Solution
     </a>
@@ -209,6 +216,38 @@
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../11modelingadvection/0modelingadvection.html">
+   Modeling Advection
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11modelingadvection/1particletracking.html">
+     Modeling Advection by Particle Tracking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11modelingadvection/2upwindfdm.html">
+     Modeling Advection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">
+   Site Investigations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../26regulatory/regulatory.html">
+   Groundwater Protection Legal Framework
+  </a>
  </li>
 </ul>
 
@@ -315,18 +354,35 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analytical-solutions">
+   Analytical Solutions:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numerical-models">
+   Numerical Models:
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparison">
+     Comparison:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#spatial-dimensionality">
    Spatial Dimensionality
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#profiles">
-   Profiles
+  <a class="reference internal nav-link" href="#concentration-profiles">
+   Concentration Profiles
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#histories">
-   Histories
+  <a class="reference internal nav-link" href="#concentration-histories">
+   Concentration Histories
   </a>
  </li>
 </ul>
@@ -342,15 +398,74 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="analytical-models">
 <h1>Analytical Models<a class="headerlink" href="#analytical-models" title="Permalink to this headline">¶</a></h1>
-<p>what are they?</p>
+<p>Partial Differential Equations (PDEs) are powerful mathematical tools used to describe and understand a wide range of physical phenomena, from heat diffusion to fluid flow. When dealing with PDEs, two primary approaches are commonly employed: analytical solutions and numerical models.</p>
+<div class="section" id="analytical-solutions">
+<h2>Analytical Solutions:<a class="headerlink" href="#analytical-solutions" title="Permalink to this headline">¶</a></h2>
+<p>Analytical solutions to PDEs involve finding exact mathematical expressions that describe the behavior of a system without resorting to approximation or numerical computation. These solutions are derived through mathematical techniques such as separation of variables, Fourier analysis, and Laplace transforms. The advantages of analytical solutions include:</p>
+<ul class="simple">
+<li><p><strong>Precision:</strong> Analytical solutions provide precise, closed-form expressions that yield exact solutions for specific initial and boundary conditions. This accuracy is particularly valuable in situations where precision is crucial, such as in fundamental scientific research or engineering design.</p></li>
+<li><p><strong>Insight:</strong> Analytical solutions offer deep insight into the underlying physics of the problem. They reveal how various parameters and variables influence the system’s behavior, facilitating a fundamental understanding of the problem at hand.</p></li>
+<li><p><strong>Computational Efficiency:</strong> Analytical solutions are typically computationally efficient, requiring significantly less computational power compared to numerical methods, which can be advantageous when working with complex or time-sensitive problems.</p></li>
+</ul>
+</div>
+<div class="section" id="numerical-models">
+<h2>Numerical Models:<a class="headerlink" href="#numerical-models" title="Permalink to this headline">¶</a></h2>
+<p>Numerical models, on the other hand, involve discretizing the domain of the PDE into a grid or mesh and approximating the solution at discrete points. Numerical methods, such as finite difference, finite element, and finite volume methods, are used to solve the resulting system of algebraic equations. The key characteristics of numerical models include:</p>
+<ul class="simple">
+<li><p><strong>Approximation:</strong> Numerical models inherently involve approximation, as they operate with discretized values. The accuracy of the solution depends on the grid size and the chosen numerical method. Smaller grid sizes yield more accurate results but require more computational resources.</p></li>
+<li><p><strong>Versatility:</strong> Numerical models are versatile and can handle complex geometries and boundary conditions. They are particularly well-suited for solving PDEs that lack analytical solutions or when analytical solutions are impractical due to complexity.</p></li>
+<li><p><strong>Computational Resources:</strong> Numerical models can be computationally intensive, especially for high-resolution simulations or large-scale problems. High-performance computing resources may be necessary for timely solutions.</p></li>
+</ul>
+<div class="section" id="comparison">
+<h3>Comparison:<a class="headerlink" href="#comparison" title="Permalink to this headline">¶</a></h3>
+<p>The choice between analytical solutions and numerical models depends on the nature of the problem and the specific objectives of the analysis:</p>
+<ul class="simple">
+<li><p>Analytical solutions are preferred when exact, closed-form expressions are achievable, offering precise insights into the system’s behavior. They are particularly useful for fundamental research and for understanding the underlying physics.</p></li>
+<li><p>Numerical models excel when dealing with complex geometries or when no analytical solutions are available. They offer flexibility and can handle a wide range of practical problems, making them indispensable in engineering, environmental modeling, and simulating real-world scenarios.</p></li>
+</ul>
+</div>
+</div>
 <div class="section" id="spatial-dimensionality">
 <h2>Spatial Dimensionality<a class="headerlink" href="#spatial-dimensionality" title="Permalink to this headline">¶</a></h2>
+<p>Spatial dimensionality in modeling refers to the number of spatial dimensions or coordinates used to describe the physical or geometric aspects of a system or problem. In various scientific and engineering contexts, models are often used to represent and understand how a system behaves or evolves in space. Spatial dimensionality plays a crucial role in defining the complexity and realism of these models.</p>
+<p>Here’s a breakdown of what spatial dimensionality means in modeling:</p>
+<ul class="simple">
+<li><p><strong>One-Dimensional (1D) Models:</strong> In one-dimensional models, the system or problem is simplified to a single spatial dimension. For example, a heat conduction model in a rod with heat varying only along its length can be represented as a 1D model. These models are suitable for problems with significant simplification in spatial variation.</p></li>
+<li><p><strong>Two-Dimensional (2D) Models:</strong> In two-dimensional models, the system is represented in two spatial dimensions, typically on a flat plane. This is common in scenarios where variations occur both horizontally and vertically. Examples include flow in a thin aquifer or heat diffusion on a flat surface.</p></li>
+<li><p><strong>Three-Dimensional (3D) Models:</strong> Three-dimensional models account for variations in three spatial dimensions, forming a 3D space. These models are used for systems with complex spatial variations in all three directions. Examples include simulating groundwater flow in a 3D aquifer or airflow in a 3D room.</p></li>
+<li><p><strong>Higher-Dimensional Models:</strong> In some cases, particularly in theoretical physics and mathematics, models may involve more than three spatial dimensions. Such models are rare in practical applications but can be used to explore abstract or theoretical concepts.</p></li>
+</ul>
+<p>The choice of spatial dimensionality in modeling depends on the nature of the problem being studied and the level of detail required to capture its essential characteristics. Simplifying a problem to fewer dimensions can make it more tractable and computationally efficient but may lead to a loss of accuracy if important spatial variations are neglected. On the other hand, using a higher spatial dimensionality can provide a more realistic representation of a complex system but may come at the cost of increased computational complexity.</p>
 </div>
-<div class="section" id="profiles">
-<h2>Profiles<a class="headerlink" href="#profiles" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="concentration-profiles">
+<h2>Concentration Profiles<a class="headerlink" href="#concentration-profiles" title="Permalink to this headline">¶</a></h2>
+<p>In transport modeling, a “concentration profile” refers to the spatial distribution of the concentration of a substance (such as a solute or pollutant) within a medium at a specific point in time. It represents how the concentration of the substance varies across different locations or spatial coordinates within the medium.</p>
+<p>The concentration profile is a fundamental concept in the study of transport phenomena, particularly in fields like hydrogeology, environmental science, and chemical engineering. It provides crucial information about how substances disperse, spread, or migrate through various media, such as air, water, soil, or porous materials. Understanding concentration profiles is essential for assessing the movement and behavior of substances in the environment and predicting their impact on ecosystems, human health, or industrial processes.</p>
+<p>Key characteristics of a concentration profile include:</p>
+<ul class="simple">
+<li><p><strong>Spatial Variation:</strong> A concentration profile shows how the concentration of the substance changes as you move from one location to another within the medium. It typically represents this variation along one or more spatial dimensions (e.g., depth, distance, height, or time).</p></li>
+<li><p><strong>Peak Concentration:</strong> The concentration profile often indicates where the highest concentration of the substance occurs within the medium, which is known as the “peak concentration” or “maximum concentration.”</p></li>
+<li><p><strong>Concentration Gradients:</strong> Concentration profiles also reveal the gradients or slopes in concentration, indicating the rate at which the concentration changes over distance or time. Steeper gradients imply faster changes.</p></li>
+<li><p><strong>Boundary Conditions:</strong> The shape and characteristics of the concentration profile are influenced by various factors, including initial conditions, boundary conditions (e.g., sources or sinks), and the transport processes at play (e.g., advection, dispersion, diffusion).</p></li>
+<li><p><strong>Temporal Evolution:</strong> Concentration profiles can change over time as substances are transported, mixed, or degraded within the medium. Dynamic modeling often involves tracking how these profiles evolve.</p></li>
+</ul>
+<p>Concentration profiles are commonly visualized using graphs or plots, with concentration (C) on the y-axis and spatial coordinates (e.g., distance or depth) on the x-axis. The resulting graph provides a visual representation of how the substance’s concentration varies spatially, helping researchers and modelers gain insights into the behavior and fate of the substance in the system.</p>
 </div>
-<div class="section" id="histories">
-<h2>Histories<a class="headerlink" href="#histories" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="concentration-histories">
+<h2>Concentration Histories<a class="headerlink" href="#concentration-histories" title="Permalink to this headline">¶</a></h2>
+<p>In transport modeling, “concentration history” refers to the temporal evolution or record of the concentration of a substance (such as a solute or pollutant) at a specific location or point within a medium over a period of time. It provides information about how the concentration of the substance changes at that particular location as time progresses.</p>
+<p>The concentration history is a critical aspect of transport modeling and is used to track and analyze how the concentration of a substance responds to various transport and fate processes, including advection, dispersion, diffusion, chemical reactions, and source/sink terms. It is particularly relevant in fields such as environmental science, hydrogeology, chemical engineering, and pollution assessment. Understanding concentration histories is essential for predicting the behavior of contaminants, the spread of pollutants, and the effectiveness of remediation or mitigation measures.</p>
+<p>Key characteristics and components of a concentration history include:</p>
+<ul class="simple">
+<li><p><strong>Temporal Variation:</strong> The concentration history shows how the concentration of the substance changes over time at a specific location. This temporal variation can reveal important trends, fluctuations, or trends in concentration levels.</p></li>
+<li><p><strong>Initial Conditions:</strong> The concentration history often begins with an initial concentration value at the starting time (t=0). This initial condition represents the state of the substance at the beginning of the simulation or observation period.</p></li>
+<li><p><strong>Transport Processes:</strong> Changes in concentration over time are influenced by various transport processes, including advection (bulk movement of fluid), dispersion (mechanical mixing), diffusion (molecular movement), chemical reactions, and any sources or sinks of the substance.</p></li>
+<li><p><strong>Boundary Conditions:</strong> Concentration histories are also affected by boundary conditions, which may include inflows, outflows, or other interactions at the system’s boundaries.</p></li>
+<li><p><strong>Equations and Models:</strong> Concentration histories are typically generated using mathematical models that describe the relevant transport and fate processes. These models are often based on partial differential equations or discrete numerical methods.</p></li>
+</ul>
+<p>Concentration histories can be visualized using plots or graphs, with time (t) on the x-axis and concentration (C) on the y-axis. This graphical representation allows modelers and researchers to observe concentration trends and patterns. Concentration histories are essential for various applications, such as assessing the impact of contaminants on groundwater quality, tracking the dispersion of pollutants in surface water bodies, monitoring the progress of chemical reactions in industrial processes, and evaluating the performance of remediation strategies.</p>
+<p><img alt="" src="../../_images/profilehistory.png" /></p>
+<p>The image above is an illustration of the <span class="math notranslate nohighlight">\(x-t\)</span> plane, with the vertical axis the <span class="math notranslate nohighlight">\(C(x,t)\)</span> axis. At the source, the concentration is some fixed value. From the origin, moving upward and to the right is the time axis. From the origin, moving downward and to the right is the space (distance) axis. A yellow line in the <span class="math notranslate nohighlight">\(x-t\)</span> plane is <span class="math notranslate nohighlight">\(x=vt\)</span> (sometimes called the trajectory). Along the time axis, is a point in time indicated by <span class="math notranslate nohighlight">\(t^*\)</span>. From this point moving downward and to the right is a plot (increasing distance) which is a concentration profile plot.  Along the space  axis, is a point in space indicated by <span class="math notranslate nohighlight">\(x^*\)</span>. From this point moving upward and to the right is a plot (increasing time) which is a concentration history plot.</p>
 </div>
 <div class="toctree-wrapper compound">
 </div>
@@ -395,10 +510,10 @@
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="ogatabanks.html" title="next page">
+        <a class="right-next" href="impulse.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Ogata-Banks Solution</p>
+                <p class="prevnext-title">Impulse (Instantaneous Source) Solution</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

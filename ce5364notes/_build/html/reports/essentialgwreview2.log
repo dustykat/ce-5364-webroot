@@ -1,0 +1,187 @@
+Traceback (most recent call last):
+  File "/opt/jupyterhub/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/client.py", line 1087, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/client.py", line 540, in async_execute
+    await self.async_execute_cell(
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/client.py", line 832, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/client.py", line 740, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+def sse(matrix1,matrix2):
+    sse=0.0
+    nr=len(matrix1) # get row count
+    nc=len(matrix1[0]) # get column count
+    for ir in range(nr):
+        for jc in range(nc):
+            sse=sse+(matrix1[ir][jc]-matrix2[ir][jc])**2
+    return(sse)
+
+def update(matrix1,matrix2):
+    nr=len(matrix1) # get row count
+    nc=len(matrix1[0]) # get column count
+    ##print(nr,nc)
+    for ir in range(nr):
+        for jc in range(nc):
+            ##print(ir,jc)
+            matrix2[ir][jc]=matrix1[ir][jc]
+    return(matrix2)
+
+def writearray(matrix):
+    nr=len(matrix) # get row count
+    nc=len(matrix[0]) # get column count
+    import numpy as np
+    new_list = list(np.around(np.array(matrix), 3))    
+    for ir in range(nr):
+        print(ir,new_list[ir][:])
+    return()
+
+localfile = open("PotentialFnSheetpile1.txt","r") # connect and read file for 2D gw model
+deltax = float(localfile.readline())
+deltay = float(localfile.readline())
+deltaz = float(localfile.readline())
+nrows = int(localfile.readline())
+ncols = int(localfile.readline())
+tolerance = float(localfile.readline())
+maxiter = int(localfile.readline())
+distancex = [] # empty list
+distancex.append([float(n) for n in localfile.readline().strip().split()])
+distancey = [] # empty list
+distancey.append([float(n) for n in localfile.readline().strip().split()])
+boundarytop = [] #empty list
+boundarytop.append([float(n) for n in localfile.readline().strip().split()])
+boundarybottom = [] #empty list
+boundarybottom.append([int(n) for n in localfile.readline().strip().split()])
+boundaryleft = [] #empty list
+boundaryleft.append([int(n) for n in localfile.readline().strip().split()])
+boundaryright = [] #empty list
+boundaryright.append([int(n) for n in localfile.readline().strip().split()])
+head =[] # empty list
+for irow in range(nrows):
+        head.append([float(n) for n in localfile.readline().strip().split()])
+hydcondx = [] # empty list
+for irow in range(nrows):
+        hydcondx.append([float(n) for n in localfile.readline().strip().split()])
+hydcondy = [] # empty list
+for irow in range(nrows):
+        hydcondy.append([float(n) for n in localfile.readline().strip().split()])
+localfile.close() # Disconnect the file
+##
+amat = [[0 for j in range(ncols)] for i in range(nrows)]
+bmat = [[0 for j in range(ncols)] for i in range(nrows)]
+cmat = [[0 for j in range(ncols)] for i in range(nrows)]
+dmat = [[0 for j in range(ncols)] for i in range(nrows)]
+##
+for irow in range(1,nrows-1):
+    for jcol in range(1,ncols-1):
+        amat[irow][jcol] = (( hydcondx[irow-1][jcol  ]+ hydcondx[irow  ][jcol  ]) * deltaz ) /(2.0*deltax**2)
+        bmat[irow][jcol] = (( hydcondx[irow  ][jcol  ]+ hydcondx[irow+1][jcol  ]) * deltaz ) /(2.0*deltax**2)
+        cmat[irow][jcol] = (( hydcondy[irow  ][jcol-1]+ hydcondy[irow  ][jcol  ]) * deltaz ) /(2.0*deltay**2)
+        dmat[irow][jcol] = (( hydcondy[irow  ][jcol  ]+ hydcondy[irow  ][jcol+1]) * deltaz ) /(2.0*deltay**2)
+##
+headold = [[0 for jc in range(ncols)] for ir in range(nrows)] #force new matrix
+headold = update(head,headold) # update
+##writearray(head)
+##print("----")
+##writearray(headold)
+##print("--------")
+tolflag = False
+for iter in range(maxiter):
+##    print("begin iteration")
+##    writearray(head)
+##    print("----")
+##    writearray(headold)
+##    print("--------")
+
+# Boundary Conditions
+
+# first and last row special == no flow boundaries
+    for jcol in range(ncols):
+        if boundarytop[0][jcol] == 0: # no - flow at top
+            head [0][jcol ] = head[1][jcol ]
+        if boundarybottom[0][ jcol ] == 0: # no - flow at bottom
+            head [nrows-1][jcol ] = head[nrows-2][jcol ]
+# first and last column special == no flow boundaries     
+    for irow in range(nrows): 
+        if  boundaryleft[0][ irow ] == 0:
+            head[irow][0] = head [irow][1] # no - flow at left
+        if boundaryright[0][ irow ] == 0: 
+            head [irow][ncols-1] = head[ irow ][ncols-2] # no - flow at right
+# interior updates
+    for irow in range(1,nrows-1):
+        for jcol in range(1,ncols-1):
+            head[irow][jcol]=( amat[irow][jcol]*head[irow-1][jcol  ] 
+                              +bmat[irow][jcol]*head[irow+1][jcol  ] 
+                              +cmat[irow][jcol]*head[irow  ][jcol-1] 
+                              +dmat[irow][jcol]*head[irow  ][jcol+1])/(amat[ irow][jcol ]+ bmat[ irow][jcol ]+ cmat[ irow][jcol ]+ dmat[ irow][jcol ])
+# test for stopping iterations
+##    print("end iteration")
+##    writearray(head)
+##    print("----")
+##    writearray(headold)
+    percentdiff = sse(head,headold)
+    if  percentdiff <= tolerance:
+        print("Exit iterations in velocity potential because tolerance met ")
+        print("Iterations =" , iter+1 ) ;
+        tolflag = True
+        break
+    headold = update(head,headold)
+print("End Calculations")
+print("Iterations    = ",iter+1)
+print("Closure Error = ",round(percentdiff,3))
+print("Head Map")
+print("----")
+writearray(head)
+print("----")
+############# Contour Plot
+my_xyz = [] # empty list
+for irow in range(nrows):
+    for jcol in range(ncols):
+        my_xyz.append([distancex[0][jcol],distancey[0][irow],head[irow][jcol]])
+import pandas
+my_xyz = pandas.DataFrame(my_xyz) # convert into a data frame
+#print(my_xyz) # activate to examine the dataframe
+import numpy 
+import matplotlib.pyplot
+from scipy.interpolate import griddata
+# extract lists from the dataframe
+coord_x = my_xyz[0].values.tolist() # column 0 of dataframe
+coord_y = my_xyz[1].values.tolist() # column 1 of dataframe
+coord_z = my_xyz[2].values.tolist() # column 2 of dataframe
+coord_xy = numpy.column_stack((coord_x, coord_y))
+# Set plotting range in original data units
+lon = numpy.linspace(min(coord_x), max(coord_x), 3000)
+lat = numpy.linspace(min(coord_y), max(coord_y), 800)
+X, Y = numpy.meshgrid(lon, lat)
+# Grid the data; use linear interpolation (choices are nearest, linear, cubic)
+Z = griddata(numpy.array(coord_xy), numpy.array(coord_z), (X, Y), method='cubic')
+# Build the map
+fig, ax = matplotlib.pyplot.subplots()
+fig.set_size_inches(15, 4)
+levels1 = [1,2,3,4,5,6,7,8,9,10]
+CS = ax.contour(X, Y, Z, levels1)
+ax.clabel(CS, inline=2, fontsize=16)
+ax.set_title('Contour Plot of Heads from Sheetpile1 Input')
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+[0;32m<ipython-input-1-1cfda8b92f98>[0m in [0;36m<module>[0;34m[0m
+[1;32m     27[0m     [0;32mreturn[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     28[0m [0;34m[0m[0m
+[0;32m---> 29[0;31m [0mlocalfile[0m [0;34m=[0m [0mopen[0m[0;34m([0m[0;34m"PotentialFnSheetpile1.txt"[0m[0;34m,[0m[0;34m"r"[0m[0;34m)[0m [0;31m# connect and read file for 2D gw model[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     30[0m [0mdeltax[0m [0;34m=[0m [0mfloat[0m[0;34m([0m[0mlocalfile[0m[0;34m.[0m[0mreadline[0m[0;34m([0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     31[0m [0mdeltay[0m [0;34m=[0m [0mfloat[0m[0;34m([0m[0mlocalfile[0m[0;34m.[0m[0mreadline[0m[0;34m([0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'PotentialFnSheetpile1.txt'
+FileNotFoundError: [Errno 2] No such file or directory: 'PotentialFnSheetpile1.txt'
+
