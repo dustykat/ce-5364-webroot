@@ -1,0 +1,597 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2D - Advection-Dispersion, Finite-Width, Finite-Duration Source &#8212; Groundwater Transport Phenomena</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source" href="3Dfinitearea.html" />
+    <link rel="prev" title="2D - Advection-Dispersion, Finite-Width, Constant Source" href="2Dfinitewidth.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/gwtransport.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Groundwater Transport Phenomena</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to CE 5364 Groundwater Transport Phenomena
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0introduction/0introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1computationaltools/1computationaltools.html">
+   Computational Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2essentialgroundwater/essentialgwreview.html">
+   Essential Groundwater Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../4pollutants/4pollutants.html">
+   Pollutants
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5nonreactivetransport/5nonreactivetransport.html">
+   Non-Reactive Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5nonreactivetransport/1tracerhypothesis.html">
+     The Tracer Hypothesis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5nonreactivetransport/2flux.html">
+     Flux
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5nonreactivetransport/3advection.html">
+     Advection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6nonreactivetransport/4diffusion.html">
+     Diffusion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6nonreactivetransport/5dispersion.html">
+     Dispersion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="analyticalmodels.html">
+   Analytical Models
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="impulse.html">
+     1D Impulse (Instantaneous Source) Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ogatabanks.html">
+     1D Ogata-Banks Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sauty.html">
+     1D Sauty Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="huntsolution.html">
+     2D Plume in Regional Flow (Hunt Solution)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="domenico.html">
+     Domenico-Robbins Solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2Dfinitewidth.html">
+     2D - Advection-Dispersion, Finite-Width, Constant Source
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2D - Advection-Dispersion, Finite-Width, Finite-Duration Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3Dfinitearea.html">
+     3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../8reactivetransport/8reactivetransport.html">
+   Reactive Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../8reactivetransport/6reactions.html">
+     Reactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../8reactivetransport/7decay.html">
+     Decay
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="reactivemodels.html">
+     Analytical Models with Decay and Adsorbtion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../11modelingadvection/0modelingadvection.html">
+   Modeling Advection
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11modelingadvection/1particletracking.html">
+     Modeling Advection by Particle Tracking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11modelingadvection/2upwindfdm.html">
+     Modeling Advection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">
+   Site Investigations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../26regulatory/regulatory.html">
+   Groundwater Protection Legal Framework
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/chapters/7analyticalmodels/2Dfwidth-pulse.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/7analyticalmodels/2Dfwidth-pulse.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/7analyticalmodels/2Dfwidth-pulse.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="d-advection-dispersion-finite-width-finite-duration-source">
+<h1>2D - Advection-Dispersion, Finite-Width, Finite-Duration Source<a class="headerlink" href="#d-advection-dispersion-finite-width-finite-duration-source" title="Permalink to this headline">¶</a></h1>
+<p><img alt="" src="../../_images/2Dgeom2.png" /></p>
+<p>The sketch depicts a finite-length horizontal line source in an aquifer of infinite extent located at <span class="math notranslate nohighlight">\((x,y)=(0,0)\)</span>. The lenght of the source zone (line) is Y. The source history is depicted beneath the sketch. The system starts with initial concentration of zero everywhere, at time <span class="math notranslate nohighlight">\(t=0\)</span>, the concentration in the source line increases to <span class="math notranslate nohighlight">\(C_0\)</span> suddenly, and is maintained at that value for a specified duration (<span class="math notranslate nohighlight">\(\tau\)</span>), when the source then decreases back to zero.</p>
+<p>An analytical model based on Domenico and Robbins (1985) was obtained by convolution (temporal superposition) of two continuous sources shifted in time relative to one another, with the later source having opposite sense (sign) (This  particular solution is described in detail in Yuan, 1995):</p>
+<div class="math notranslate nohighlight">
+\[ C(x,y,t) = \frac{C_0}{4} \cdot \textit{erfc}[\frac{(x - v t) }{ (2 \sqrt{D_x  t))}}] \cdot [\textit{erf}(\frac{(y + \frac{Y}{2}) }{ (2 \sqrt{\frac{D_y}{v} x))}}) - \textit{erf} (\frac{(y - \frac{Y}{2}) }{ (2 \sqrt{\frac{D_y}{v} x))}})]  ~ - \frac{C_0}{4} \cdot \textit{erfc}[\frac{(x - v (t-\tau)) }{ (2 \sqrt{D_x  (t-\tau)))}}] \cdot [\textit{erf}(\frac{(y + \frac{Y}{2}) }{ (2 \sqrt{\frac{D_y}{v} x))}}) - \textit{erf} (\frac{(y - \frac{Y}{2}) }{ (2 \sqrt{\frac{D_y}{v} x))}})]\]</div>
+<p>A prototype function is constructed from <code class="docutils literal notranslate"><span class="pre">c2ad</span></code> as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># prototype 2D domenico robbins ADE function</span>
+<span class="k">def</span> <span class="nf">c2adfd</span><span class="p">(</span><span class="n">conc0</span><span class="p">,</span> <span class="n">distx</span><span class="p">,</span> <span class="n">disty</span><span class="p">,</span> <span class="n">dispx</span><span class="p">,</span> <span class="n">dispy</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">lenY</span><span class="p">,</span> <span class="n">tau</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span><span class="p">,</span> <span class="n">erfc</span> <span class="c1"># scipy needs to already be loaded into the kernel</span>
+<span class="c1"># internal definition of ordinary c2ad function ########################</span>
+    <span class="k">def</span> <span class="nf">c2ad</span><span class="p">(</span><span class="n">conc0</span><span class="p">,</span> <span class="n">distx</span><span class="p">,</span> <span class="n">disty</span><span class="p">,</span> <span class="n">dispx</span><span class="p">,</span> <span class="n">dispy</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">lenY</span><span class="p">):</span>
+
+        <span class="n">vadj</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">/</span> <span class="mf">1.0</span> <span class="c1"># structure is in anticipation of adding adsorbtion and decay</span>
+        <span class="n">dispXadj</span> <span class="o">=</span> <span class="n">dispx</span> <span class="o">/</span> <span class="mf">1.0</span>
+        <span class="n">dispYadj</span> <span class="o">=</span> <span class="n">dispy</span> <span class="o">/</span> <span class="mf">1.0</span>
+        <span class="n">lambadj</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">/</span> <span class="mf">1.0</span>
+
+        <span class="n">uuu</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">4.0</span><span class="o">*</span><span class="n">lambadj</span><span class="o">*</span><span class="n">dispXadj</span><span class="o">/</span><span class="n">vadj</span><span class="p">)</span>
+        <span class="n">ypp</span> <span class="o">=</span> <span class="p">(</span><span class="n">disty</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">lenY</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispYadj</span><span class="o">*</span><span class="n">distx</span><span class="p">))</span>
+        <span class="n">ymm</span> <span class="o">=</span> <span class="p">(</span><span class="n">disty</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">lenY</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispYadj</span><span class="o">*</span><span class="n">distx</span><span class="p">))</span>
+
+        <span class="n">arg1</span> <span class="o">=</span> <span class="p">(</span><span class="n">distx</span> <span class="o">-</span> <span class="n">vadj</span><span class="o">*</span><span class="n">time</span><span class="o">*</span><span class="n">uuu</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispXadj</span><span class="o">*</span><span class="n">vadj</span><span class="o">*</span><span class="n">time</span><span class="p">))</span>
+        <span class="n">arg2</span> <span class="o">=</span> <span class="p">(</span><span class="n">distx</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dispXadj</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">uuu</span><span class="p">)</span>
+
+        <span class="n">term0</span> <span class="o">=</span> <span class="n">conc0</span> <span class="o">/</span> <span class="mi">4</span>
+        <span class="n">term1</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">arg2</span><span class="p">)</span>
+        <span class="n">term2</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(</span><span class="n">arg1</span><span class="p">)</span>
+        <span class="n">term3</span> <span class="o">=</span> <span class="p">(</span><span class="n">erf</span><span class="p">(</span><span class="n">ypp</span><span class="p">)</span> <span class="o">-</span> <span class="n">erf</span><span class="p">(</span><span class="n">ymm</span><span class="p">))</span>
+
+        <span class="n">c2ad</span> <span class="o">=</span> <span class="n">term0</span> <span class="o">*</span> <span class="n">term1</span> <span class="o">*</span> <span class="n">term2</span> <span class="o">*</span> <span class="n">term3</span>
+        <span class="k">return</span> <span class="n">c2ad</span>
+<span class="c1">#########################################################################</span>
+    <span class="n">part1</span> <span class="o">=</span> <span class="n">c2ad</span><span class="p">(</span><span class="n">conc0</span><span class="p">,</span> <span class="n">distx</span><span class="p">,</span> <span class="n">disty</span><span class="p">,</span> <span class="n">dispx</span><span class="p">,</span> <span class="n">dispy</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">lenY</span><span class="p">)</span>
+    <span class="n">part2</span> <span class="o">=</span> <span class="n">c2ad</span><span class="p">(</span><span class="n">conc0</span><span class="p">,</span> <span class="n">distx</span><span class="p">,</span> <span class="n">disty</span><span class="p">,</span> <span class="n">dispx</span><span class="p">,</span> <span class="n">dispy</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">time</span><span class="o">-</span><span class="n">tau</span> <span class="p">,</span> <span class="n">lenY</span><span class="p">)</span> <span class="c1">#time-shift here</span>
+    <span class="n">c2adfd</span> <span class="o">=</span> <span class="n">part1</span><span class="o">-</span><span class="n">part2</span>
+    <span class="k">return</span> <span class="n">c2adfd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Supply model conditions, evaluate specific point in space and time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inputs</span>
+<span class="n">c_initial</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="c1"># g/m^3</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="mi">75</span>          <span class="c1"># meters</span>
+<span class="n">yy</span> <span class="o">=</span> <span class="mi">0</span>            <span class="c1"># meters</span>
+<span class="n">Dx</span> <span class="o">=</span> <span class="mf">0.50</span>          <span class="c1"># m^2/day</span>
+<span class="n">Dy</span> <span class="o">=</span> <span class="mf">0.05</span>          <span class="c1"># m^2/day</span>
+<span class="n">V</span>  <span class="o">=</span> <span class="mf">1.0</span>           <span class="c1"># m/day</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mf">365.0</span>      <span class="c1"># days</span>
+<span class="n">tau</span>  <span class="o">=</span> <span class="mf">90.0</span>      <span class="c1"># days</span>
+<span class="n">Y</span>  <span class="o">=</span> <span class="mf">10.0</span>          <span class="c1"># meters</span>
+<span class="n">alphax</span> <span class="o">=</span> <span class="n">Dx</span><span class="o">/</span><span class="n">V</span>
+<span class="n">alphay</span> <span class="o">=</span> <span class="n">Dy</span><span class="o">/</span><span class="n">V</span>
+<span class="n">output</span><span class="o">=</span><span class="n">c2adfd</span><span class="p">(</span><span class="n">c_initial</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">alphax</span><span class="p">,</span> <span class="n">alphay</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; y= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; t= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot; C(x,y,t) = &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x=  75  y=  0  t=  365.0  C(x,y,t) =  0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Construct 2D contour plots (equivalent to a profile plot)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a plot</span>
+<span class="n">x_max</span> <span class="o">=</span> <span class="mi">900</span>
+<span class="n">y_max</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="c1"># build a grid</span>
+<span class="n">nrows</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltax</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_max</span><span class="p">)</span><span class="o">/</span><span class="n">nrows</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00001</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">deltax</span><span class="p">)</span>
+
+<span class="n">ncols</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltay</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_max</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ncols</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">y_max</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00001</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">deltay</span><span class="p">)</span>
+    
+<span class="c1">#y</span>
+
+<span class="c1">#y = [i*deltay for i in range(how_many_points)] # constructor notation</span>
+<span class="c1">#y[0]=0.001</span>
+<span class="n">ccc</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+        <span class="n">ccc</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span> <span class="o">=</span> <span class="n">c2adfd</span><span class="p">(</span><span class="n">c_initial</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span> <span class="n">alphax</span><span class="p">,</span> <span class="n">alphay</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">)</span>
+        
+<span class="c1">#y</span>
+
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># empty list</span>
+<span class="n">count</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+        <span class="n">my_xyz</span><span class="o">.</span><span class="n">append</span><span class="p">([</span> <span class="n">x</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="n">ccc</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span> <span class="p">])</span>
+       <span class="c1"># print(count)</span>
+        <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span>
+        
+<span class="c1">#print(len(my_xyz))</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_xyz</span><span class="p">)</span> <span class="c1"># convert into a data frame</span>
+<span class="kn">import</span> <span class="nn">numpy</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">griddata</span>
+<span class="c1"># extract lists from the dataframe</span>
+<span class="n">coord_x</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 0 of dataframe</span>
+<span class="n">coord_y</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 1 of dataframe</span>
+<span class="n">coord_z</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 2 of dataframe</span>
+<span class="c1">#print(min(coord_x), max(coord_x)) # activate to examine the dataframe</span>
+<span class="c1">#print(min(coord_y), max(coord_y))</span>
+<span class="n">coord_xy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">coord_y</span><span class="p">))</span>
+<span class="c1"># Set plotting range in original data units</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="mi">64</span><span class="p">)</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="mi">64</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+<span class="c1"># Grid the data; use linear interpolation (choices are nearest, linear, cubic)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_xy</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_z</span><span class="p">),</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="c1"># Build the map</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">99</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Concentration Map at Elapsed Time &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39; days&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2Dfwidth-pulse_5_0.png" src="../../_images/2Dfwidth-pulse_5_0.png" />
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/7analyticalmodels"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2Dfinitewidth.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2D - Advection-Dispersion, Finite-Width, Constant Source</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="3Dfinitearea.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Theodore G. Cleveland, PhD<br/>
+        
+            &copy; Copyright 2023.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

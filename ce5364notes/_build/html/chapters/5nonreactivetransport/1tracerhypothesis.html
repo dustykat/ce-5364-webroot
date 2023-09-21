@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tracer Hypothesis &#8212; Groundwater Transport Phenomena</title>
+    <title>The Tracer Hypothesis &#8212; Groundwater Transport Phenomena</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Flux" href="2flux.html" />
-    <link rel="prev" title="Non-Reactive Transport - I" href="5nonreactivetransport.html" />
+    <link rel="prev" title="Non-Reactive Transport" href="5nonreactivetransport.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -106,12 +106,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../2essentialgroundwater/essentialgwreview.html">
-   Essential Groundwater Review - I
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../3essentialgroundwater/essentialgwreview2.html">
-   Essential Groundwater Review - II
+   Essential Groundwater Review
   </a>
  </li>
  <li class="toctree-l1">
@@ -121,7 +116,7 @@
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="5nonreactivetransport.html">
-   Non-Reactive Transport - I
+   Non-Reactive Transport
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -131,7 +126,7 @@
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Tracer Hypothesis
+     The Tracer Hypothesis
     </a>
    </li>
    <li class="toctree-l2">
@@ -167,23 +162,28 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/impulse.html">
+     1D Impulse (Instantaneous Source) Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../7analyticalmodels/ogatabanks.html">
-     Ogata-Banks Solution
+     1D Ogata-Banks Solution
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../7analyticalmodels/sauty.html">
-     Sauty Solution
+     1D Sauty Solution
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../7analyticalmodels/huntsolution.html">
-     Hunt Solution (2D plume in regional flow)
+     2D Plume in Regional Flow (Hunt Solution)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../7analyticalmodels/domenico.html">
-     Domenico-Robbins Convolution of 1D Solutions to approximate 3D behavior
+     2D and 3D Domenico-Robbins Solutions
     </a>
    </li>
   </ul>
@@ -208,7 +208,44 @@
      Decay
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/reactivemodels.html">
+     Analytical Models with Decay and Adsorbtion
+    </a>
+   </li>
   </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../11modelingadvection/0modelingadvection.html">
+   Modeling Advection
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11modelingadvection/1particletracking.html">
+     Modeling Advection by Particle Tracking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11modelingadvection/2upwindfdm.html">
+     Modeling Advection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">
+   Site Investigations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../26regulatory/regulatory.html">
+   Groundwater Protection Legal Framework
+  </a>
  </li>
 </ul>
 
@@ -317,8 +354,8 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="tracer-hypothesis">
-<h1>Tracer Hypothesis<a class="headerlink" href="#tracer-hypothesis" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="the-tracer-hypothesis">
+<h1>The Tracer Hypothesis<a class="headerlink" href="#the-tracer-hypothesis" title="Permalink to this headline">¶</a></h1>
 <p>The tracer hypothesis is an assumption that is often used in groundwater contaminant transport models.
 The hypothesis states that the movement of a conservative tracer (a substance that is not affected by chemical reactions or other processes that alter its concentration) through a porous medium can be used to determine the movement of other, non-conservative substances (such as contaminants) through that same medium.</p>
 <p>In other words, if we introduce a known quantity of a conservative tracer into a groundwater system, we can track its movement over time and use that information to estimate how other substances, such as pollutants or contaminants, might be moving through the same system. This can be a useful tool for understanding and predicting the behavior of contaminants in groundwater, and for designing effective remediation strategies.</p>
@@ -360,7 +397,7 @@ The hypothesis states that the movement of a conservative tracer (a substance th
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Non-Reactive Transport - I</p>
+                <p class="prevnext-title">Non-Reactive Transport</p>
             </div>
         </a>
     </div>

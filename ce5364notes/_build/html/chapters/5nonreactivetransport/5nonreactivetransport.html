@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Non-Reactive Transport - I &#8212; Groundwater Transport Phenomena</title>
+    <title>Non-Reactive Transport &#8212; Groundwater Transport Phenomena</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,7 +51,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Tracer Hypothesis" href="1tracerhypothesis.html" />
+    <link rel="next" title="The Tracer Hypothesis" href="1tracerhypothesis.html" />
     <link rel="prev" title="Pollutants" href="../4pollutants/4pollutants.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -106,12 +106,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../2essentialgroundwater/essentialgwreview.html">
-   Essential Groundwater Review - I
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../3essentialgroundwater/essentialgwreview2.html">
-   Essential Groundwater Review - II
+   Essential Groundwater Review
   </a>
  </li>
  <li class="toctree-l1">
@@ -121,7 +116,7 @@
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
-   Non-Reactive Transport - I
+   Non-Reactive Transport
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -131,7 +126,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="1tracerhypothesis.html">
-     Tracer Hypothesis
+     The Tracer Hypothesis
     </a>
    </li>
    <li class="toctree-l2">
@@ -167,23 +162,28 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/impulse.html">
+     1D Impulse (Instantaneous Source) Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../7analyticalmodels/ogatabanks.html">
-     Ogata-Banks Solution
+     1D Ogata-Banks Solution
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../7analyticalmodels/sauty.html">
-     Sauty Solution
+     1D Sauty Solution
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../7analyticalmodels/huntsolution.html">
-     Hunt Solution (2D plume in regional flow)
+     2D Plume in Regional Flow (Hunt Solution)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../7analyticalmodels/domenico.html">
-     Domenico-Robbins Convolution of 1D Solutions to approximate 3D behavior
+     2D and 3D Domenico-Robbins Solutions
     </a>
    </li>
   </ul>
@@ -206,6 +206,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../8reactivetransport/7decay.html">
      Decay
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/reactivemodels.html">
+     Analytical Models with Decay and Adsorbtion
     </a>
    </li>
   </ul>
@@ -341,6 +346,19 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#non-reactive-constituient">
+   Non-Reactive Constituient
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -349,9 +367,19 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="non-reactive-transport-i">
-<h1>Non-Reactive Transport - I<a class="headerlink" href="#non-reactive-transport-i" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="non-reactive-transport">
+<h1>Non-Reactive Transport<a class="headerlink" href="#non-reactive-transport" title="Permalink to this headline">¶</a></h1>
+<p>Non-reactive contaminant transport in groundwater refers to the movement of contaminants through underground aquifers without undergoing chemical reactions or significant changes in their chemical composition. This type of transport is primarily governed by the physical processes of advection and dispersion, and it is important to understand when assessing the spread of contaminants in groundwater systems. Here’s a brief description of these key components:</p>
+<ol class="simple">
+<li><p>Advection: Advection is the process by which contaminants are transported through the porous spaces of the subsurface along with the flow of groundwater. This movement occurs because groundwater naturally flows from areas of higher hydraulic head (pressure) to areas of lower hydraulic head. Contaminants dissolved in the groundwater are carried along with this flow, similar to how a river carries objects downstream.</p></li>
+<li><p>Dispersion: Dispersion refers to the spreading and mixing of contaminants as they move through the porous media of the aquifer. It is a result of variations in groundwater flow velocities within the aquifer, which can cause contaminants to disperse both longitudinally and laterally. Longitudinal dispersion occurs along the direction of groundwater flow and leads to the elongation of the contaminant plume, while lateral dispersion results in its widening.</p></li>
+</ol>
+<p>Non-reactive contaminant transport is particularly relevant when the contaminants in question do not undergo significant chemical reactions with the surrounding geological materials or groundwater constituents. In such cases, the primary concern is understanding how these contaminants spread over time, their concentration patterns, and the potential risks they pose to groundwater quality.</p>
+<p>Models and simulations are commonly used to predict and manage non-reactive contaminant transport in groundwater. These models take into account factors such as groundwater flow rates, hydraulic conductivity of the aquifer, contaminant source characteristics, and the physical properties of the contaminants themselves to estimate the extent and behavior of the contaminant plume. By studying non-reactive contaminant transport, scientists and environmental engineers can make informed decisions regarding the protection of groundwater resources and the design of remediation strategies when contamination occurs.</p>
+<div class="section" id="non-reactive-constituient">
+<h2>Non-Reactive Constituient<a class="headerlink" href="#non-reactive-constituient" title="Permalink to this headline">¶</a></h2>
 <p>A non-reactive constituient is a substance that is not affected by chemical reactions or other processes that alter its concentration) through a porous medium.  Such a constituient does not participate in changes, exchanges, or reactions while traversing a region of interest.</p>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -398,7 +426,7 @@
         <a class="right-next" href="1tracerhypothesis.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Tracer Hypothesis</p>
+                <p class="prevnext-title">The Tracer Hypothesis</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

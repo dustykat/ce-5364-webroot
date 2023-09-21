@@ -108,12 +108,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../2essentialgroundwater/essentialgwreview.html">
-   Essential Groundwater Review - I
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../3essentialgroundwater/essentialgwreview2.html">
-   Essential Groundwater Review - II
+   Essential Groundwater Review
   </a>
  </li>
  <li class="toctree-l1">
@@ -123,7 +118,7 @@
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../5nonreactivetransport/5nonreactivetransport.html">
-   Non-Reactive Transport - I
+   Non-Reactive Transport
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -133,7 +128,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../5nonreactivetransport/1tracerhypothesis.html">
-     Tracer Hypothesis
+     The Tracer Hypothesis
     </a>
    </li>
    <li class="toctree-l2">
@@ -175,12 +170,12 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../7analyticalmodels/ogatabanks.html">
-     Ogata-Banks Solution
+     1D Ogata-Banks Solution
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../7analyticalmodels/sauty.html">
-     Sauty Solution
+     1D Sauty Solution
     </a>
    </li>
    <li class="toctree-l2">
@@ -190,7 +185,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../7analyticalmodels/domenico.html">
-     Domenico-Robbins Convolution of 1D Solutions to approximate 3D behavior
+     2D and 3D Domenico-Robbins Solutions
     </a>
    </li>
   </ul>
@@ -213,6 +208,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../8reactivetransport/7decay.html">
      Decay
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/reactivemodels.html">
+     Analytical Models with Decay and Adsorbtion
     </a>
    </li>
   </ul>
@@ -452,7 +452,7 @@
 <li><p>Only the simple-linear scheme preserves cell-by-cell mass balances.</p></li>
 </ul>
 <p>The figure below illustrates simple linear interpolation.</p>
-<p><img alt="" src="../../_images/particle_track_interpolation1.png" /></p>
+<p><img alt="" src="../../_images/particle_track_interpolation.png" /></p>
 <ul class="simple">
 <li><p>Typical computational grid for heads.</p></li>
 <li><p>Arrows are the interfacial fluxes.</p></li>
@@ -460,10 +460,10 @@
 <li><p>The simple scheme assgins the right and bottom flux to <span class="math notranslate nohighlight">\((x_2,y_2)\)</span>.</p></li>
 </ul>
 <p>The particle velocity is determined by position of the particle relative to the velocity grid.</p>
-<p><img alt="" src="../../_images/pt_find_particle1.png" /></p>
+<p><img alt="" src="../../_images/pt_find_particle.png" /></p>
 <p>Uses the same grid as the head scheme.
 Velocity is the distance weighted average of the cell that the particle occupies.</p>
-<p><img alt="" src="../../_images/pt_get_velo1.png" /></p>
+<p><img alt="" src="../../_images/pt_get_velo.png" /></p>
 <p>From the above figure, the particle’s velocities (x- and y- directions) are:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(u_p = \frac{1-\delta x}{\Delta x}u(x_1,y_1)+\frac{\delta x}{\Delta x}u(x_2,y_2)\)</span></p></li>
@@ -478,14 +478,14 @@ Velocity is the distance weighted average of the cell that the particle occupies
 <p>To illustrate particle tracking the simple velocity scheme is used.<br />
 Extension to higher order schemes is straight forward.</p>
 <p>Illustrate with simple scheme. Consider:</p>
-<p><img alt="" src="../../_images/ss_fig11.png" /></p>
+<p><img alt="" src="../../_images/ss_fig1.png" /></p>
 <ul class="simple">
 <li><p>Large rectangles represent the velocity grid.</p></li>
 <li><p>Circles represent the geometric location where velocity is known.</p></li>
 <li><p>Small rectangle represents the particle that we wish to track.</p></li>
 </ul>
 <p><strong>Cell Indexing</strong></p>
-<p><img alt="" src="../../_images/ss_fig21.png" /></p>
+<p><img alt="" src="../../_images/ss_fig2.png" /></p>
 <ul class="simple">
 <li><p>Each cell represents a grid location in the velocity field.  Thus each cell has a unique row and column index.</p></li>
 <li><p>Each cell centroid also has a unique geomteric (x,y) location.</p></li>
@@ -538,13 +538,13 @@ The particle is then “moved” by the simple kinematic calculation:</p>
 </ul>
 <p><strong>Illustrative Example</strong></p>
 <p>An example with 3 particles is shown below - the spreadsheet is kind of big because iterative computations are intentionally avoided.</p>
-<p><img alt="" src="../../_images/pt_seg01.png" /></p>
+<p><img alt="" src="../../_images/pt_seg0.png" /></p>
 <p>Closer view for particle 1:</p>
-<p><img alt="" src="../../_images/pt_seg11.png" /></p>
+<p><img alt="" src="../../_images/pt_seg1.png" /></p>
 <p>Closer view for particle 2:</p>
-<p><img alt="" src="../../_images/pt_seg21.png" /></p>
+<p><img alt="" src="../../_images/pt_seg2.png" /></p>
 <p>Closer view for particle 3:</p>
-<p><img alt="" src="../../_images/pt_seg31.png" /></p>
+<p><img alt="" src="../../_images/pt_seg3.png" /></p>
 <p><strong>Summary</strong></p>
 <ul class="simple">
 <li><p>Particle tracking is a tool to determine the position of a fluid particle in a flow field.</p></li>
@@ -592,36 +592,36 @@ The particle is then “moved” by the simple kinematic calculation:</p>
 <h2>Step 1. Need to Digitize the Head Map<a class="headerlink" href="#step-1-need-to-digitize-the-head-map" title="Permalink to this headline">¶</a></h2>
 <p>Use <a class="reference external" href="https://alternativeto.net/software/g3data/?platform=windows">G3DATA</a> or something similar to digitize the head map.</p>
 <p>Using <code class="docutils literal notranslate"><span class="pre">G3DATA</span></code> we will need a coordinate system, so thats superimposed on</p>
-<p><img alt="" src="../../_images/Fig5.18-Coordinates1.png" /></p>
+<p><img alt="" src="../../_images/Fig5.18-Coordinates.png" /></p>
 <p>Next you need to open an instance of <code class="docutils literal notranslate"><span class="pre">G3DATA</span></code>. If using Windows the system should give you a windows manager, if using linux you need an X-window desktop.</p>
 <div class="section" id="open-g3data">
 <h3>Open G3DATA<a class="headerlink" href="#open-g3data" title="Permalink to this headline">¶</a></h3>
 <p>Observe that I get the RandR warning (Resize and rotate) - this is assocated with my VNC server window, and the software still is working.  Given I am running on a Raspberry Pi over the internet, ill live with the warning.</p>
-<p><img alt="" src="../../_images/openG31.png" /></p>
+<p><img alt="" src="../../_images/openG3.png" /></p>
 <p>Also notice in the program call the <code class="docutils literal notranslate"><span class="pre">-scale</span> <span class="pre">0.1</span></code> this is a trial-and-error to rescale the image so I can see what I am doing, so open and close a few times until you get the view window into a workable size.</p>
-<p><img alt="" src="../../_images/G3running1.png" /></p>
+<p><img alt="" src="../../_images/G3running.png" /></p>
 </div>
 <div class="section" id="set-view-zoom">
 <h3>Set View == Zoom<a class="headerlink" href="#set-view-zoom" title="Permalink to this headline">¶</a></h3>
 <p>Next we will need to set the view window to Zoom area.  This is needed to write the level set files that we are building.</p>
-<p><img alt="" src="../../_images/viewZoom1.png" /></p>
+<p><img alt="" src="../../_images/viewZoom.png" /></p>
 </div>
 <div class="section" id="set-filename">
 <h3>Set Filename<a class="headerlink" href="#set-filename" title="Permalink to this headline">¶</a></h3>
 <p>Here we set the file name for each level set.  We will digitize each contour line and save its coordinates to a file, then we conactenate these files after adding the Z coordinate into a single file for gridding and plotting.</p>
-<p><img alt="" src="../../_images/setFileName1.png" /></p>
+<p><img alt="" src="../../_images/setFileName.png" /></p>
 </div>
 <div class="section" id="set-xy-coordinates">
 <h3>Set XY Coordinates<a class="headerlink" href="#set-xy-coordinates" title="Permalink to this headline">¶</a></h3>
 <p>Here we must set the X and Y coordinates of the lower left,lower right (X) and lower left upper left (Y) to establish how we will be measuring things.</p>
-<p><img alt="" src="../../_images/setXY1.png" /></p>
+<p><img alt="" src="../../_images/setXY.png" /></p>
 </div>
 <div class="section" id="digitize-the-contours">
 <h3>Digitize the Contours<a class="headerlink" href="#digitize-the-contours" title="Permalink to this headline">¶</a></h3>
 <p>Now we digitize a contour line</p>
-<p><img alt="" src="../../_images/digitizeLS1.png" /></p>
+<p><img alt="" src="../../_images/digitizeLS.png" /></p>
 <p>when done, we write the points to a file.  Here is what is in the tile.</p>
-<p><img alt="" src="../../_images/LSfile1.png" /></p>
+<p><img alt="" src="../../_images/LSfile.png" /></p>
 <p>Then clear the points (in the G3DATA program), change the file name and digitize the next line. Repeat until all the lines are complete.</p>
 <p>Then open each file and add the Z-coordinate.  Lastly join each file into a single file for further processing.</p>
 <p>Here is what my version looks like, the file is <code class="docutils literal notranslate"><span class="pre">Fig5.18-LevelSets.png.dat</span></code> its an ASCII file that I can read and make a contour plot, but more importantly I can grid the data to estimate x- and y- components of velocity from the given value of hydraulic conductivity.</p>

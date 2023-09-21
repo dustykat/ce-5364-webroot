@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Tracer Hypothesis
+# # The Tracer Hypothesis
 # 
 # The tracer hypothesis is an assumption that is often used in groundwater contaminant transport models. 
 # The hypothesis states that the movement of a conservative tracer (a substance that is not affected by chemical reactions or other processes that alter its concentration) through a porous medium can be used to determine the movement of other, non-conservative substances (such as contaminants) through that same medium.

@@ -93,6 +93,12 @@
 # 
 # The image above is an illustration of the $x-t$ plane, with the vertical axis the $C(x,t)$ axis. At the source, the concentration is some fixed value. From the origin, moving upward and to the right is the time axis. From the origin, moving downward and to the right is the space (distance) axis. A yellow line in the $x-t$ plane is $x=vt$ (sometimes called the trajectory). Along the time axis, is a point in time indicated by $t^*$. From this point moving downward and to the right is a plot (increasing distance) which is a concentration profile plot.  Along the space  axis, is a point in space indicated by $x^*$. From this point moving upward and to the right is a plot (increasing time) which is a concentration history plot. 
 
+# ## References
+# 
+# 1. [Bear, J. (1972) *Dynamics of Fluids in Porous Media* McGraw Hill (pp. 628-629)](https://www.amazon.com/Dynamics-Fluids-Porous-Mechanical-Engineering/dp/0486656756)
+# 3. [Yuan, D, (1995)  *Accurate approximations for one-, two-, and three-dimensional groundwater mass transport from an exponentially decaying contaminant source.* MS Thesis, Department of Civil and Environmental Engineering, University of Houston. ](http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/yuan_thesis/Groundwater_transport.pdf)
+# 4. [Chuang, Lu-Chia, (1998) *A guidance system for choosing analytical contaminant transport models.* Doctoral Dissertation, Department of Civil and Environmental Engineering, University of Houston, Houston, Texas. 222p.](http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/ants_dissertation/Luke_Chuang.pdf)
+
 # In[ ]:
 
 

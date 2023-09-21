@@ -7,7 +7,7 @@ chapters:
 - file: chapters/0introduction/0introduction
 - file: chapters/1computationaltools/1computationaltools
 - file: chapters/2essentialgroundwater/essentialgwreview
-- file: chapters/3essentialgroundwater/essentialgwreview2
+#- file: chapters/3essentialgroundwater/essentialgwreview2
 - file: chapters/4pollutants/4pollutants 
 - file: chapters/5nonreactivetransport/5nonreactivetransport 
   sections:
@@ -23,6 +23,9 @@ chapters:
   - file: chapters/7analyticalmodels/sauty
   - file: chapters/7analyticalmodels/huntsolution
   - file: chapters/7analyticalmodels/domenico
+  - file: chapters/7analyticalmodels/2Dfinitewidth
+  - file: chapters/7analyticalmodels/2Dfwidth-pulse
+  - file: chapters/7analyticalmodels/3Dfinitearea
 - file: chapters/8reactivetransport/8reactivetransport 
   sections:
   - file: chapters/8reactivetransport/6reactions
