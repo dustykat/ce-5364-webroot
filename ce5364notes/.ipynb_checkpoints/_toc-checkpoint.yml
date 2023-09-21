@@ -27,6 +27,7 @@ chapters:
   sections:
   - file: chapters/8reactivetransport/6reactions
   - file: chapters/8reactivetransport/7decay
+  - file: chapters/7analyticalmodels/reactivemodels
 - file: chapters/11modelingadvection/0modelingadvection
   sections:
   - file: chapters/11modelingadvection/1particletracking

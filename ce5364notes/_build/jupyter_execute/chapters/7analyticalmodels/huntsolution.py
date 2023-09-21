@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Hunt Solution (2D plume in regional flow)
+# # 2D Plume in Regional Flow (Hunt Solution)
 # 
 # The sketch depicts a vertical line source in an aquifer of infinite extent located at (x,y)=(0,0) some time after constant injection has begun. 
 # 
@@ -13,7 +13,7 @@
 # $$C(\pm \infty,\pm \infty,t)=0$$
 # $$\int_{- \infty}^{\infty}\int_{-\infty}^{\infty}C(x,y,t)dxdy = C_0 Q t$$
 # 
-# A solution obtained by time-convolution of an elementary line source solution is 
+# A solution obtained by time-convolution of an elementary line source solution (Hunt, 1978) is 
 # 
 # $$C(x,y,t) = \frac{C_0 Q}{4 \pi n L}\frac{1}{\sqrt{D_x D_y}}exp(\frac{x v}{2 D_x})W(a,b)$$
 # 
@@ -22,188 +22,17 @@
 # $$a=\frac{(x^2+y^2(\frac{D_x}{D_y}))}{4 D_x t}$$
 # 
 # $$b=\frac{\sqrt{(x^2+y^2(\frac{D_x}{D_y})}}{2D_x}$$
+# 
+# The solution is presented in (Bear, 1972) as a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the integration routine); Hunt (1978) noticed that the integral was the leaky well function with appropriate substitutions and completed the solution.
 
-# The leaky aquifer function can be evaluated numerically using a recursive definition, or efficient approximations can be used. 
+# The leaky aquifer function can be evaluated numerically using a recursive definition, or efficient approximations can be used. Listings for these approximations appear below after the references
 # 
-# **Polynomial Approximation**
-# 
-# ```
-# Based on polynomial approximations in:
-# 
-# Abramowitz, M. and I.A. Stegun, 1964. Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables. U.S. Department of Commerce, National Bureau of Standards, Applied Mathematics Series, Vol 55.
-# 
-# #######################
-# # Theis Well Function # 
-# #######################
-# def wellfn(u):
-#     import math
-#     if ((u >= 0) and (u <=1)):
-# # polynomial approximation constants
-#         a0 = -0.57721566
-#         a1 =  0.99999193
-#         a2 = -0.24991055
-#         a3 =  0.05519968
-#         a4 = -0.00976004
-#         a5 =  0.00107857
-#         wellfn = -math.log(u) + a0 + a1*u + a2*u**2 + a3*u**3 + a4*u**4 + a5*u**5
-#         return(wellfn)
-#     elif ((u >1)):
-# # polynomial approximation constants
-#         a1 =  8.5733287401
-#         a2 = 18.0590169730
-#         a3 =  8.6347608925
-#         a4 =  0.2677737343
-#         b1 =  9.5733223454
-#         b2 = 25.6329561486
-#         b3 = 21.0996530827
-#         b4 =  3.9584969228
-#         frac1 = u**4 + a1*u**3 + a2*u**2 + a3*u + a4
-#         frac2 = u**4 + b1*u**3 + b2*u**2 + b3*u + b4
-#         frac3 = u*math.exp(u)
-#         wellfn = (frac1/frac2)/frac3
-#         return(wellfn)
-#     else:
-#         print('error in wellfn')
-#         wellfn = -999.0
-#         return(wellfn)
-# 
-# #######################
-# # Leaky Well Function #
-# #######################
-# def leakyfn(u,v):
-#     import math
-#     import numpy
-#     from scipy.special import kn as besselK
-#     from scipy.special import iv as besselI
-# # finite series recursion constants
-#     c12 =  0.0277777777777778
-# #
-#     c14 = -0.00347222222222222
-#     c15 =  0.00173611111111111
-# #
-#     c17 =  0.000416666666666667
-#     c18 = -0.000138888888888889
-#     c19 =  0.0000694444444444444
-# #
-#     c21 = -0.0000462962962962963
-#     c22 =  0.0000115740740740741
-#     c23 = -3.85802469135802E-06
-#     c24 =  1.92901234567901E-06
-# #
-#     c26 =  4.72411186696901E-06
-#     c27 = -9.44822373393802E-07
-#     c28 =  2.3620559334845E-07
-#     c29 = -7.87351977828168E-08
-#     c30 =  3.93675988914084E-08
-# #
-#     c32 = -4.42885487528345E-07
-#     c33 =  7.38142479213908E-08
-#     c34 = -1.47628495842782E-08
-#     c35 =  3.69071239606954E-09
-#     c36 = -1.23023746535651E-09
-#     c37 =  6.15118732678257E-10
-# #
-# # entry point 
-#     a3 = (v**2)/4  
-# # if leakance term is negligible, then return well function
-#     if (a3 == 0) :
-#         leakyfn = wellfn(u)
-#         return(leakyfn)
-# # if leakance/time term is large enough, then return besselKo
-#     if (a3/u > 5) :
-#         leakyfn = 2*besselK(0,v)
-#         return(leakyfn)
-# #  }
-# # finite series approximation for u>1, v<=2
-#     if ((u >= 1) and (v <= 2)) :
-#     # recursion terms built by-hand (ported from SSANTS)
-#         g11 = c12*a3
-#         g12 = c14*(a3**2)/(u)
-#         g21 = c15*(a3**2)
-#         g22 = c17*(a3**3)/(u**2)
-#         g23 = c18*(a3**3)/(u)
-#         g31 = c19*(a3**3)
-#         g32 = c21*(a3**4)/(u**3)
-#         g33 = c22*(a3**4)/(u**2)
-#         g34 = c23*(a3**4)/(u)
-#         g41 = c24*(a3**4)
-#         g42 = c26*(a3**5)/(u**4)
-#         g43 = c27*(a3**5)/(u**3)
-#         g44 = c28*(a3**5)/(u**2)
-#         g45 = c29*(a3**5)/(u)
-#         g51 = c30*(a3**5)
-#         g52 = c32*(a3**6)/(u**5)
-#         g53 = c33*(a3**6)/(u**4)
-#         g54 = c34*(a3**6)/(u**3)
-#         g55 = c35*(a3**6)/(u**2)
-#         g56 = c36*(a3**6)/(u)
-#         g61 = c37*(a3**6)
-#     # sum them up!
-#         a34list = [g11,g12,g21,g22,g23,g31,g32,g33,g34,g41,g42,g43,g44,g45,g51,g52,g53,g54,g55,g56,g61]
-#         a34 = numpy.sum(a34list)
-#         a35 = a34*math.exp(-u)
-#         a36 = a3/u
-#         a37 = besselI(v,0)
-#         a38 = wellfn(u)*a37
-#         a39 = 0.5772 + math.log(a36) + wellfn(a36) - a36 +(besselI(0,v)-1)/u
-#         a40 = a39*math.exp(-u)
-#         leakyfn = a38 - a40 + a35
-#         leakyfn=abs(leakyfn)
-#         return(leakyfn)
-# # finite series approximation for u<=1, v<=2
-#     if ((u <= 1) and (v <= 2)) :
-#     # recursion terms built by-hand (ported from SSANTS)
-#         g11 = c12*a3
-#         g12 = c14*(a3)/(u**-1)
-#         g21 = c15*(a3**2)
-#         g22 = c17*(a3)/(u**-2)
-#         g23 = c18*(a3**2)/(u**-1)
-#         g31 = c19*(a3**3)
-#         g32 = c21*(a3)/(u**-3)
-#         g33 = c22*(a3**2)/(u**-2)
-#         g34 = c23*(a3)/(u**-1)
-#         g41 = c24*(a3**4)
-#         g42 = c26*(a3)/(u**-4)
-#         g43 = c27*(a3**2)/(u**-3)
-#         g44 = c28*(a3**3)/(u**-2)
-#         g45 = c29*(a3**4)/(u**-1)
-#         g51 = c30*(a3**5)
-#         g52 = c32*(a3)/(u**-5)
-#         g53 = c33*(a3**2)/(u**-4)
-#         g54 = c34*(a3**3)/(u**-3)
-#         g55 = c35*(a3**4)/(u**-2)
-#         g56 = c36*(a3**5)/(u**-1)
-#         g61 = c37*(a3**6)
-#     # sum them up!  
-#         a70list = [g11,g12,g21,g22,g23,g31,g32,g33,g34,g41,g42,g43,g44,g45,g51,g52,g53,g54,g55,g56,g61]
-#         a70 = numpy.sum(a70list)
-#         a71 = u*a70
-#         a72 = a3/u
-#         a73 = 0.5772+math.log(u)+wellfn(u)-u+(besselI(0,v)-1)/(a72)
-#         a74 = a73*math.exp(-a72)
-#         a75 = besselI(0,v)*wellfn(a72)
-#         a76 = a75 - a74 + a71
-#         a77 = 2*besselK(0,v)
-#         leakyfn = (a77-a76)
-#         return(leakyfn)
-# # approximation for v > 2
-#     if (v > 2) :
-#         term1 = math.sqrt(pi/(2*v))
-#         term2 = math.exp(-v)
-#         term3 = -(v-2*u)/(2*math.sqrt(u))
-#         term4 = math.erfc(term3)
-#         leakyfn = term1*term2*term4
-#         return(leakyfn)
-#     else:
-#         print('error in leakyfn')
-#         leakyfn = -999.0
-#         return(leakyfn)
-# 
-# ```
 
 # The solution is applicable for porous media flow, where the velocity (below) is the mean section velocity (seepage velocity divided by the porosity). The solution can also be used with streams and pipes (porosity = 1). Negative values of distance in x-axis would correspond to locations upgradient of the injection location.
 # 
 # Scripts to generate solutions are listed below:
+# 
+# ## Leaky Well Function
 
 # In[1]:
 
@@ -237,6 +66,8 @@ def wh(u, rho): # Hantush Leaky aquifer well function
     return(wh)
 
 
+# ## Hunt Solution (Prototype Function)
+
 # In[2]:
 
 
@@ -259,6 +90,8 @@ def chunt(c_injection,q_injection,l_thickness,d_x,d_y,velocity,x_location,y_loca
     return chunt
 
 
+# ## Driver Script
+
 # In[3]:
 
 
@@ -270,12 +103,15 @@ d_x = 0.920
 d_y = 0.092
 velocity = 0.187
 x_location = 123
-y_location = 16
-time = 3650
+y_location = 0
+time = 36500
+scale = c_injection*q_injection
 output = chunt(c_injection,q_injection,l_thickness,d_x,d_y,velocity,x_location,y_location,time)
 print("Concentration at x = ",round(x_location,2)," y= ",round(y_location,2) ," t= ",round(time,2) ," = ",round(output,3))
 #
 
+
+# ## Plotting Script
 
 # In[4]:
 
@@ -344,10 +180,16 @@ X, Y = numpy.meshgrid(lon, lat)
 Z = griddata(numpy.array(coord_xy), numpy.array(coord_z), (X, Y), method='cubic')
 # Build the map
 fig, ax = matplotlib.pyplot.subplots()
-fig.set_size_inches(14, 7)
-CS = ax.contour(X, Y, Z, levels = [1,5,10,15,20,25,30,35,40])
+fig.set_size_inches(10, 5)
+CS = ax.contour(X, Y, Z, levels = [1,5,10,15,20,25,30,35,40,45,50])
 ax.clabel(CS, inline=2, fontsize=16)
 ax.set_title('Concentration Map at Elapsed Time '+ str(round(time,1))+' days');
+
+
+# In[ ]:
+
+
+
 
 
 # <!--
@@ -394,6 +236,194 @@ ax.set_title('Concentration Map at Elapsed Time '+ str(round(time,1))+' days');
 #     # return calculated value of F(rho,tau)
 #     return F
 # -->
+
+# ## References
+# 
+# 1. Hunt, B. (1978) Dispersive sources in uniform ground water flow. Journal of the Hydraulics Division, 104 (HY1), 75-85. 
+# 2. [**SSANTS2.xlsm** (Excel Macro Sheet(s)) - Choose Tabsheet **2D????**](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/7analyticalmodels/SSANTS2.xlsm)
+# 3. [Yuan, D, (1995)  *Accurate approximations for one-, two-, and three-dimensional groundwater mass transport from an exponentially decaying contaminant source.* MS Thesis, Department of Civil and Environmental Engineering, University of Houston. ](http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/yuan_thesis/Groundwater_transport.pdf)
+# 4. [Chuang, Lu-Chia, (1998) *A guidance system for choosing analytical contaminant transport models.* Doctoral Dissertation, Department of Civil and Environmental Engineering, University of Houston, Houston, Texas. 222p.](http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/ants_dissertation/Luke_Chuang.pdf)
+
+# ## Useful Code Listings
+# 
+# **Polynomial Approximation**
+# 
+# The approximations below are coded in python, and can convert to spreadsheet using VBA fairly easily. These are based on polynomial approximations in:
+# 
+# Abramowitz, M. and I.A. Stegun, 1964. Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables. U.S. Department of Commerce, National Bureau of Standards, Applied Mathematics Series, Vol 55.
+# 
+# And seem to produce nearly the same results as the recursive version above.
+
+# In[5]:
+
+
+#######################
+# Theis Well Function # 
+#######################
+def wellfn(u):
+    import math
+    if ((u >= 0) and (u <=1)):
+# polynomial approximation constants
+        a0 = -0.57721566
+        a1 =  0.99999193
+        a2 = -0.24991055
+        a3 =  0.05519968
+        a4 = -0.00976004
+        a5 =  0.00107857
+        wellfn = -math.log(u) + a0 + a1*u + a2*u**2 + a3*u**3 + a4*u**4 + a5*u**5
+        return(wellfn)
+    elif ((u >1)):
+# polynomial approximation constants
+        a1 =  8.5733287401
+        a2 = 18.0590169730
+        a3 =  8.6347608925
+        a4 =  0.2677737343
+        b1 =  9.5733223454
+        b2 = 25.6329561486
+        b3 = 21.0996530827
+        b4 =  3.9584969228
+        frac1 = u**4 + a1*u**3 + a2*u**2 + a3*u + a4
+        frac2 = u**4 + b1*u**3 + b2*u**2 + b3*u + b4
+        frac3 = u*math.exp(u)
+        wellfn = (frac1/frac2)/frac3
+        return(wellfn)
+    else:
+        print('error in wellfn')
+        wellfn = -999.0
+        return(wellfn)
+
+#######################
+# Leaky Well Function #
+#######################
+def leakyfn(u,v):
+    import math
+    import numpy
+    from scipy.special import kn as besselK
+    from scipy.special import iv as besselI
+# finite series recursion constants
+    c12 =  0.0277777777777778
+#
+    c14 = -0.00347222222222222
+    c15 =  0.00173611111111111
+#
+    c17 =  0.000416666666666667
+    c18 = -0.000138888888888889
+    c19 =  0.0000694444444444444
+#
+    c21 = -0.0000462962962962963
+    c22 =  0.0000115740740740741
+    c23 = -3.85802469135802E-06
+    c24 =  1.92901234567901E-06
+#
+    c26 =  4.72411186696901E-06
+    c27 = -9.44822373393802E-07
+    c28 =  2.3620559334845E-07
+    c29 = -7.87351977828168E-08
+    c30 =  3.93675988914084E-08
+#
+    c32 = -4.42885487528345E-07
+    c33 =  7.38142479213908E-08
+    c34 = -1.47628495842782E-08
+    c35 =  3.69071239606954E-09
+    c36 = -1.23023746535651E-09
+    c37 =  6.15118732678257E-10
+#
+# entry point 
+    a3 = (v**2)/4  
+# if leakance term is negligible, then return well function
+    if (a3 == 0) :
+        leakyfn = wellfn(u)
+        return(leakyfn)
+# if leakance/time term is large enough, then return besselKo
+    if (a3/u > 5) :
+        leakyfn = 2*besselK(0,v)
+        return(leakyfn)
+#  }
+# finite series approximation for u>1, v<=2
+    if ((u >= 1) and (v <= 2)) :
+    # recursion terms built by-hand (ported from SSANTS)
+        g11 = c12*a3
+        g12 = c14*(a3**2)/(u)
+        g21 = c15*(a3**2)
+        g22 = c17*(a3**3)/(u**2)
+        g23 = c18*(a3**3)/(u)
+        g31 = c19*(a3**3)
+        g32 = c21*(a3**4)/(u**3)
+        g33 = c22*(a3**4)/(u**2)
+        g34 = c23*(a3**4)/(u)
+        g41 = c24*(a3**4)
+        g42 = c26*(a3**5)/(u**4)
+        g43 = c27*(a3**5)/(u**3)
+        g44 = c28*(a3**5)/(u**2)
+        g45 = c29*(a3**5)/(u)
+        g51 = c30*(a3**5)
+        g52 = c32*(a3**6)/(u**5)
+        g53 = c33*(a3**6)/(u**4)
+        g54 = c34*(a3**6)/(u**3)
+        g55 = c35*(a3**6)/(u**2)
+        g56 = c36*(a3**6)/(u)
+        g61 = c37*(a3**6)
+    # sum them up!
+        a34list = [g11,g12,g21,g22,g23,g31,g32,g33,g34,g41,g42,g43,g44,g45,g51,g52,g53,g54,g55,g56,g61]
+        a34 = numpy.sum(a34list)
+        a35 = a34*math.exp(-u)
+        a36 = a3/u
+        a37 = besselI(v,0)
+        a38 = wellfn(u)*a37
+        a39 = 0.5772 + math.log(a36) + wellfn(a36) - a36 +(besselI(0,v)-1)/u
+        a40 = a39*math.exp(-u)
+        leakyfn = a38 - a40 + a35
+        leakyfn=abs(leakyfn)
+        return(leakyfn)
+# finite series approximation for u<=1, v<=2
+    if ((u <= 1) and (v <= 2)) :
+    # recursion terms built by-hand (ported from SSANTS)
+        g11 = c12*a3
+        g12 = c14*(a3)/(u**-1)
+        g21 = c15*(a3**2)
+        g22 = c17*(a3)/(u**-2)
+        g23 = c18*(a3**2)/(u**-1)
+        g31 = c19*(a3**3)
+        g32 = c21*(a3)/(u**-3)
+        g33 = c22*(a3**2)/(u**-2)
+        g34 = c23*(a3)/(u**-1)
+        g41 = c24*(a3**4)
+        g42 = c26*(a3)/(u**-4)
+        g43 = c27*(a3**2)/(u**-3)
+        g44 = c28*(a3**3)/(u**-2)
+        g45 = c29*(a3**4)/(u**-1)
+        g51 = c30*(a3**5)
+        g52 = c32*(a3)/(u**-5)
+        g53 = c33*(a3**2)/(u**-4)
+        g54 = c34*(a3**3)/(u**-3)
+        g55 = c35*(a3**4)/(u**-2)
+        g56 = c36*(a3**5)/(u**-1)
+        g61 = c37*(a3**6)
+    # sum them up!  
+        a70list = [g11,g12,g21,g22,g23,g31,g32,g33,g34,g41,g42,g43,g44,g45,g51,g52,g53,g54,g55,g56,g61]
+        a70 = numpy.sum(a70list)
+        a71 = u*a70
+        a72 = a3/u
+        a73 = 0.5772+math.log(u)+wellfn(u)-u+(besselI(0,v)-1)/(a72)
+        a74 = a73*math.exp(-a72)
+        a75 = besselI(0,v)*wellfn(a72)
+        a76 = a75 - a74 + a71
+        a77 = 2*besselK(0,v)
+        leakyfn = (a77-a76)
+        return(leakyfn)
+# approximation for v > 2
+    if (v > 2) :
+        term1 = math.sqrt(pi/(2*v))
+        term2 = math.exp(-v)
+        term3 = -(v-2*u)/(2*math.sqrt(u))
+        term4 = math.erfc(term3)
+        leakyfn = term1*term2*term4
+        return(leakyfn)
+    else:
+        print('error in leakyfn')
+        leakyfn = -999.0
+        return(leakyfn)
+
 
 # In[ ]:
 

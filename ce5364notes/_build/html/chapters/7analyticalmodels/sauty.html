@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sauty Solution &#8212; Groundwater Transport Phenomena</title>
+    <title>1D Sauty Solution &#8212; Groundwater Transport Phenomena</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -53,8 +53,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Hunt Solution (2D plume in regional flow)" href="huntsolution.html" />
-    <link rel="prev" title="Ogata-Banks Solution" href="ogatabanks.html" />
+    <link rel="next" title="2D Plume in Regional Flow (Hunt Solution)" href="huntsolution.html" />
+    <link rel="prev" title="1D Ogata-Banks Solution" href="ogatabanks.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -169,23 +169,28 @@
   </label>
   <ul class="current">
    <li class="toctree-l2">
+    <a class="reference internal" href="impulse.html">
+     1D Impulse (Instantaneous Source) Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="ogatabanks.html">
-     Ogata-Banks Solution
+     1D Ogata-Banks Solution
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Sauty Solution
+     1D Sauty Solution
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="huntsolution.html">
-     Hunt Solution (2D plume in regional flow)
+     2D Plume in Regional Flow (Hunt Solution)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="domenico.html">
-     Domenico-Robbins Convolution of 1D Solutions to approximate 3D behavior
+     2D and 3D Domenico-Robbins Solutions
     </a>
    </li>
   </ul>
@@ -211,6 +216,38 @@
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../11modelingadvection/0modelingadvection.html">
+   Modeling Advection
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11modelingadvection/1particletracking.html">
+     Modeling Advection by Particle Tracking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11modelingadvection/2upwindfdm.html">
+     Modeling Advection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">
+   Site Investigations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../26regulatory/regulatory.html">
+   Groundwater Protection Legal Framework
+  </a>
  </li>
 </ul>
 
@@ -342,17 +379,25 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sauty-solution">
-<h1>Sauty Solution<a class="headerlink" href="#sauty-solution" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="d-sauty-solution">
+<h1>1D Sauty Solution<a class="headerlink" href="#d-sauty-solution" title="Permalink to this headline">¶</a></h1>
 <p>A slightly different condition occurs when the constituient is added at x=0 at a constant rate.
 The figure below depicts the physical system, and the analytical model system at three different times.</p>
 <p><img alt="" src="../../_images/sautysetup.png" /></p>
 <p><strong>Panel A</strong> is a depiction of the physical system and the concentration profile along the x-axis at time less than zero. The concentration is zero everywhere. An injection supply is depicted by the small reservoir and the injection path into the aquifer (or stream). The valve is closed in this panel.</p>
 <p><strong>Panel B</strong> is a depection of the physical system and the concentration profile along the x-axis at time equal zero (like the Big Bang!). At t=0, mass is added into the aquifer (stream) at a rate CoQ at the origin (x=0). This mass flow rate at the injection site is maintained from t=0 onward.</p>
 <p><strong>Panel C</strong> is a depiction of the physical system and the concentration profile along the x-axis at some time greater than zero. The concentration front translates to the right of the origin a distance determined by the species velocity and dispersed along the front proportional to the dispersivity in the system. Some mass disperses upstream from the injection site.</p>
-<p>The analytical solution (Sauty, 1980) for this situation is:</p>
+<p>The analytical solution (<a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/wr016i001p00145">Sauty, 1980</a> ) for this situation is:</p>
 <div class="math notranslate nohighlight">
 \[ C(x,t) = \frac{C_0 Q}{2 n v}exp(\frac{xv}{2D})[exp(\frac{|x|v}{2D}) \cdot erfc(\frac{|x|-vt}{2\sqrt{Dt}})- exp(\frac{|x|v}{2D}) \cdot erfc(\frac{|x|+vt}{2\sqrt{Dt}})]\]</div>
+<p>where <br></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C_0\)</span> is the source concentration,<br></p></li>
+<li><p><span class="math notranslate nohighlight">\(D_x = \alpha_L*v+D_d\)</span> is the hydrodynamic dispersion (plus any molecular diffusion),<br></p></li>
+<li><p><span class="math notranslate nohighlight">\(v = \frac{q}{n}\)</span> is the pore velocity</p></li>
+<li><p><span class="math notranslate nohighlight">\(Q\)</span> is the volumetric injection rate</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> is the aquifer porosity</p></li>
+</ul>
 <p>The solution is applicable for porous media flow, where the velocity is the pore velocity (seepage velocity divided by the porosity).</p>
 <div class="section" id="concentration-profile">
 <h2>Concentration Profile<a class="headerlink" href="#concentration-profile" title="Permalink to this headline">¶</a></h2>
@@ -481,11 +526,15 @@ The figure below depicts the physical system, and the analytical model system at
 <img alt="../../_images/sauty_4_0.png" src="../../_images/sauty_4_0.png" />
 </div>
 </div>
+<p>A spreadsheet implementation is available below in the references.</p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p><a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/wr016i001p00145">Sauty, J. (1980). “An analysis of hydrodispersive transfer in aquifers.” Water Resour. Res., 16(1), 145–158. </a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/7analyticalmodels/SSANTS2.xlsm"><strong>SSANTS2.xlsm</strong> (Excel Macro Sheet(s)) - Choose Tabsheet <strong>1DINJAD</strong></a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/yuan_thesis/Groundwater_transport.pdf">Yuan, D, (1995)  <em>Accurate approximations for one-, two-, and three-dimensional groundwater mass transport from an exponentially decaying contaminant source.</em> MS Thesis, Department of Civil and Environmental Engineering, University of Houston. </a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/ants_dissertation/Luke_Chuang.pdf">Chuang, Lu-Chia, (1998) <em>A guidance system for choosing analytical contaminant transport models.</em> Doctoral Dissertation, Department of Civil and Environmental Engineering, University of Houston, Houston, Texas. 222p.</a></p></li>
 </ol>
 </div>
 </div>
@@ -524,7 +573,7 @@ The figure below depicts the physical system, and the analytical model system at
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Ogata-Banks Solution</p>
+                <p class="prevnext-title">1D Ogata-Banks Solution</p>
             </div>
         </a>
     </div>
@@ -532,7 +581,7 @@ The figure below depicts the physical system, and the analytical model system at
         <a class="right-next" href="huntsolution.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Hunt Solution (2D plume in regional flow)</p>
+                <p class="prevnext-title">2D Plume in Regional Flow (Hunt Solution)</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

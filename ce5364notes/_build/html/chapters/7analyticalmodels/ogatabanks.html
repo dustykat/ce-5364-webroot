@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ogata-Banks Solution &#8212; Groundwater Transport Phenomena</title>
+    <title>1D Ogata-Banks Solution &#8212; Groundwater Transport Phenomena</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -53,8 +53,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Sauty Solution" href="sauty.html" />
-    <link rel="prev" title="Analytical Models" href="analyticalmodels.html" />
+    <link rel="next" title="1D Sauty Solution" href="sauty.html" />
+    <link rel="prev" title="1D Impulse (Instantaneous Source) Solution" href="impulse.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -168,24 +168,29 @@
    </i>
   </label>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="impulse.html">
+     1D Impulse (Instantaneous Source) Solution
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Ogata-Banks Solution
+     1D Ogata-Banks Solution
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="sauty.html">
-     Sauty Solution
+     1D Sauty Solution
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="huntsolution.html">
-     Hunt Solution (2D plume in regional flow)
+     2D Plume in Regional Flow (Hunt Solution)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="domenico.html">
-     Domenico-Robbins Convolution of 1D Solutions to approximate 3D behavior
+     2D and 3D Domenico-Robbins Solutions
     </a>
    </li>
   </ul>
@@ -211,6 +216,38 @@
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../11modelingadvection/0modelingadvection.html">
+   Modeling Advection
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11modelingadvection/1particletracking.html">
+     Modeling Advection by Particle Tracking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11modelingadvection/2upwindfdm.html">
+     Modeling Advection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">
+   Site Investigations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../26regulatory/regulatory.html">
+   Groundwater Protection Legal Framework
+  </a>
  </li>
 </ul>
 
@@ -339,6 +376,18 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-6-1-using-near-field-solution-above">
+   Example 6.1 (Using Near-Field Solution above)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution">
+     Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
    References
   </a>
@@ -354,43 +403,56 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="ogata-banks-solution">
-<h1>Ogata-Banks Solution<a class="headerlink" href="#ogata-banks-solution" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="d-ogata-banks-solution">
+<h1>1D Ogata-Banks Solution<a class="headerlink" href="#d-ogata-banks-solution" title="Permalink to this headline">¶</a></h1>
 <p>The figure below depicts the physical system, and the analytical model system at three different times.</p>
 <p><img alt="" src="../../_images/1DADR.png" /></p>
 <p><strong>Panel A</strong> is a depiction of the physical system and the concentration profile along the x-axis at time less than zero. The concentration is zero everywhere.</p>
 <p><strong>Panel B</strong> is a depection of the physical system and the concentration profile along the x-axis at time equal zero (like the Big Bang!). At x &lt; 0, the concentration is suddenly raised to a value of <span class="math notranslate nohighlight">\(C_0\)</span> everywhere to the left of the origin, x=0. This condition represents a step function input and is a suitable approximation of some upstream source zone that has a constant concentration. The concentration to the right of the origin (x &gt; 0) is still zero.</p>
 <p><strong>Panel C</strong> is a depiction of the physical system and the concentration profile aling the x-axis at some time greater than zero. The source mass has moved to the right of the origin a distance determined by the species velocity and dispersed along the translational front proportional to the dispersivity in the system.</p>
-<p>The analytical solution (Ogata and Banks, 1961) for this situation is:</p>
+<p>The analytical solution  (<a class="reference external" href="https://pubs.usgs.gov/pp/0411a/report.pdf">Ogata and Banks, 1961</a>) for this situation is:</p>
 <div class="math notranslate nohighlight">
-\[ C(x,t) = \frac{C_0}{2}[erfc(\frac{x-vt}{2\sqrt{Dt}})+ exp(\frac{xv}{D}) \cdot erfc(\frac{x+vt}{2\sqrt{Dt}})]\]</div>
+\[ C(x,t) = \frac{C_0}{2}[erfc(\frac{x-vt}{2\sqrt{D_xt}})+ exp(\frac{xv}{D_x}) \cdot erfc(\frac{x+vt}{2\sqrt{D_xt}})]\]</div>
+<p>where <br></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C_0\)</span> is the source concentration,<br></p></li>
+<li><p><span class="math notranslate nohighlight">\(D_x = \alpha_L*v+D_d\)</span> is the hydrodynamic dispersion (plus any molecular diffusion),<br></p></li>
+<li><p><span class="math notranslate nohighlight">\(v = \frac{q}{n}\)</span> is the pore velocity</p></li>
+</ul>
+<p>It is also presented in the textbook as equation 6.17</p>
 <p>The solution is applicable for porous media flow, where the velocity is the pore velocity (seepage velocity divided by the porosity).</p>
 <div class="section" id="building-a-model">
 <h2>Building a Model<a class="headerlink" href="#building-a-model" title="Permalink to this headline">¶</a></h2>
-<p>This particular model is all over the internet as an on-line calculator,  but sometimes we have need to build our own version.  In Jupyter Notebooks running a python kernel we need to script the equation above and structure the equation into a useable function.</p>
+<p>This particular model is also all over the internet as an on-line calculator,  but sometimes we have need to build our own version.  In Jupyter Notebooks running a python kernel we need to script the equation above and structure the equation into a useable function.</p>
 <div class="section" id="forward-define-the-functions">
 <h3>Forward define the functions<a class="headerlink" href="#forward-define-the-functions" title="Permalink to this headline">¶</a></h3>
 <p>This step is important, the functions must be defined before they are called – in an interpreter, this is usually done at the top of the script.  Other scripting languages store the scripts at the end (JavaScript usually keeps scripts at end of the file – it internally promotes then to the top before it runs its JIT bytecode compiler).</p>
 <p>In a compiled language, this step is not as necessary (predefinition is, location not so much).</p>
 <p>These prototype functions are usually written so that they are organic with respect to their variables, so there is no leakage – in these two functions, the input list is just names, and the output is just a value that must be assigned in the calling script.</p>
-</div>
-</div>
-<div class="section" id="concentration-profile">
-<h2>Concentration Profile<a class="headerlink" href="#concentration-profile" title="Permalink to this headline">¶</a></h2>
-<p>The example below uses a function named <code class="docutils literal notranslate"><span class="pre">ogatabanks</span></code> to compute values for <span class="math notranslate nohighlight">\(x \ge 0\)</span> and <span class="math notranslate nohighlight">\(t \gt 0\)</span>, and plot the resulting concentration profile.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span><span class="n">erf</span><span class="p">,</span><span class="n">erfc</span><span class="p">,</span><span class="n">exp</span>  <span class="c1"># get special math functions</span>
-<span class="c1">#</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
 <span class="c1"># prototype ogatabanks function</span>
 <span class="c1">#</span>
 <span class="k">def</span> <span class="nf">ogatabanks</span><span class="p">(</span><span class="n">c_source</span><span class="p">,</span><span class="n">space</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">dispersion</span><span class="p">,</span><span class="n">velocity</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span><span class="n">erf</span><span class="p">,</span><span class="n">erfc</span><span class="p">,</span><span class="n">exp</span>  <span class="c1"># get special math functions</span>
     <span class="n">term1</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(((</span><span class="n">space</span><span class="o">-</span><span class="n">velocity</span><span class="o">*</span><span class="n">time</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispersion</span><span class="o">*</span><span class="n">time</span><span class="p">)))</span>
     <span class="n">term2</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">velocity</span><span class="o">*</span><span class="n">space</span><span class="o">/</span><span class="n">dispersion</span><span class="p">)</span>
     <span class="n">term3</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(((</span><span class="n">space</span><span class="o">+</span><span class="n">velocity</span><span class="o">*</span><span class="n">time</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispersion</span><span class="o">*</span><span class="n">time</span><span class="p">)))</span>
     <span class="n">ogatabanks</span> <span class="o">=</span> <span class="n">c_source</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">term1</span><span class="o">+</span><span class="n">term2</span><span class="o">*</span><span class="n">term3</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">ogatabanks</span><span class="p">)</span>
-<span class="c1">#</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="concentration-profile">
+<h2>Concentration Profile<a class="headerlink" href="#concentration-profile" title="Permalink to this headline">¶</a></h2>
+<p>The example below uses the function named <code class="docutils literal notranslate"><span class="pre">ogatabanks</span></code> to compute values for <span class="math notranslate nohighlight">\(x \ge 0\)</span> and <span class="math notranslate nohighlight">\(t \gt 0\)</span>, and plot the resulting concentration profile.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
 <span class="c1"># example inputs</span>
 <span class="c1">#</span>
 <span class="n">c_source</span> <span class="o">=</span> <span class="mf">1000.0</span> <span class="c1"># source concentration</span>
@@ -429,7 +491,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ogatabanks_2_0.png" src="../../_images/ogatabanks_2_0.png" />
+<img alt="../../_images/ogatabanks_4_0.png" src="../../_images/ogatabanks_4_0.png" />
 </div>
 </div>
 </div>
@@ -438,17 +500,7 @@
 <p>Its also quite reasonable to build a history (concentration versus time at some location) - the script is practically the same, except time is the variable instead of space.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span><span class="n">erf</span><span class="p">,</span><span class="n">erfc</span><span class="p">,</span><span class="n">exp</span>  <span class="c1"># get special math functions</span>
-<span class="c1">#</span>
-<span class="c1"># prototype ogatabanks function</span>
-<span class="c1">#</span>
-<span class="k">def</span> <span class="nf">ogatabanks</span><span class="p">(</span><span class="n">c_source</span><span class="p">,</span><span class="n">space</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">dispersion</span><span class="p">,</span><span class="n">velocity</span><span class="p">):</span>
-    <span class="n">term1</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(((</span><span class="n">space</span><span class="o">-</span><span class="n">velocity</span><span class="o">*</span><span class="n">time</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispersion</span><span class="o">*</span><span class="n">time</span><span class="p">)))</span>
-    <span class="n">term2</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">velocity</span><span class="o">*</span><span class="n">space</span><span class="o">/</span><span class="n">dispersion</span><span class="p">)</span>
-    <span class="n">term3</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(((</span><span class="n">space</span><span class="o">+</span><span class="n">velocity</span><span class="o">*</span><span class="n">time</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispersion</span><span class="o">*</span><span class="n">time</span><span class="p">)))</span>
-    <span class="n">ogatabanks</span> <span class="o">=</span> <span class="n">c_source</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">term1</span><span class="o">+</span><span class="n">term2</span><span class="o">*</span><span class="n">term3</span><span class="p">)</span>
-    <span class="k">return</span><span class="p">(</span><span class="n">ogatabanks</span><span class="p">)</span>
-<span class="c1">#</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
 <span class="c1"># example inputs</span>
 <span class="c1">#</span>
 <span class="n">c_source</span> <span class="o">=</span> <span class="mf">1000.0</span> <span class="c1"># source concentration</span>
@@ -489,14 +541,89 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ogatabanks_4_0.png" src="../../_images/ogatabanks_4_0.png" />
+<img alt="../../_images/ogatabanks_6_0.png" src="../../_images/ogatabanks_6_0.png" />
 </div>
+</div>
+</div>
+<div class="section" id="example-6-1-using-near-field-solution-above">
+<h2>Example 6.1 (Using Near-Field Solution above)<a class="headerlink" href="#example-6-1-using-near-field-solution-above" title="Permalink to this headline">¶</a></h2>
+<p>From pp. 174-175:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(K=2.15~\frac{m}{day}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(n=0.1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{dh}{dx}=0.04\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(C_0=1000~ppm\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha_L = 7.5~m\)</span></p></li>
+</ul>
+<p>Plot a concentration profile at 728 days.</p>
+<div class="section" id="solution">
+<h3>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h3>
+<p>A little preparatory arithmetic is used:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(v = \frac{1}{n} \cdot K \cdot \frac{dh}{dx} = \frac{1}{0.1} \cdot 2.15 \cdot 0.04 = 0.86~\frac{m}{day}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(D~\approx~\alpha_L \cdot v = 7.5 \cdot 0.86 = 6.45~\frac{m^2}{day}\)</span></p></li>
+</ul>
+<p>Now just use our program</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># example inputs</span>
+<span class="c1">#</span>
+<span class="n">c_source</span> <span class="o">=</span> <span class="mf">1000.0</span> <span class="c1"># source concentration</span>
+<span class="n">space</span> <span class="o">=</span> <span class="mf">1500.</span>      <span class="c1"># how far in X-direction to extend the plot</span>
+<span class="n">time</span>  <span class="o">=</span> <span class="mf">728.</span>       <span class="c1"># time since release</span>
+<span class="n">dispersion</span> <span class="o">=</span> <span class="mf">6.45</span>  <span class="c1"># dispersion coefficient</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mf">0.86</span>   <span class="c1"># pore velocity</span>
+<span class="c1">#</span>
+<span class="c1"># forward define and initialize vectors for a profile plot</span>
+<span class="c1">#</span>
+<span class="n">how_many_points</span> <span class="o">=</span> <span class="mi">100</span>   
+<span class="n">deltax</span> <span class="o">=</span> <span class="n">space</span><span class="o">/</span><span class="n">how_many_points</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">deltax</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span> <span class="c1"># constructor notation</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span>      <span class="c1"># constructor notation</span>
+<span class="c1">#</span>
+<span class="c1"># build the profile predictions</span>
+<span class="c1">#</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">how_many_points</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ogatabanks</span><span class="p">(</span><span class="n">c_source</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">time</span><span class="p">,</span><span class="n">dispersion</span><span class="p">,</span><span class="n">velocity</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># Import graphics routines for picture making</span>
+<span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="c1">#</span>
+<span class="c1"># Build and Render the Plot</span>
+<span class="c1">#</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span><span class="p">)</span>  <span class="c1"># make the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot; Concentration Profile </span><span class="se">\n</span><span class="s2"> Time: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; time units </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot; Dispersion: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">dispersion</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; length^2/time units </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot; Velocity: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; length/time units </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># caption the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot; Distance from Source &quot;</span><span class="p">)</span> <span class="c1"># label x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot; Concentration        &quot;</span><span class="p">)</span> <span class="c1"># label y-axis</span>
+<span class="c1">#plt.savefig(&quot;ogatabanksplot.png&quot;) # optional generates just a plot for embedding into a report</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># plot to stdio -- has to be last call as it kills prior objects</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span> <span class="c1"># needed when plt.show call not invoked, optional here</span>
+<span class="c1">#sys.exit() # used to elegant exit for CGI-BIN use</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Concentration at x = 750, t = 728 :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">ogatabanks</span><span class="p">(</span><span class="n">c_source</span><span class="p">,</span><span class="mf">750.0</span><span class="p">,</span><span class="mf">728.0</span><span class="p">,</span><span class="n">dispersion</span><span class="p">,</span><span class="n">velocity</span><span class="p">),</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ogatabanks_8_0.png" src="../../_images/ogatabanks_8_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concentration at x = 750, t = 728 : 112.838  mg/L
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare the result to the textbook, which uses the far-field solution for a value of <span class="math notranslate nohighlight">\(100~mg/L\)</span> (how would you modify for the far-field solution?)</p>
+<p>A spreadsheet implementation is available below in the references.</p>
 </div>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p><a class="reference external" href="https://pubs.usgs.gov/pp/0411a/report.pdf">Ogata, A. and Banks,R. B. (1961) A Solution of the Differential Equation of Longitudinal Dispersion in Porous Media. USGS Professional Paper 411-A.</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/7analyticalmodels/SSANTS2.xlsm"><strong>SSANTS2.xlsm</strong> (Excel Macro Sheet(s)) - Choose Tabsheet <strong>1DCRAD</strong></a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/yuan_thesis/Groundwater_transport.pdf">Yuan, D, (1995)  <em>Accurate approximations for one-, two-, and three-dimensional groundwater mass transport from an exponentially decaying contaminant source.</em> MS Thesis, Department of Civil and Environmental Engineering, University of Houston. </a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/ants_dissertation/Luke_Chuang.pdf">Chuang, Lu-Chia, (1998) <em>A guidance system for choosing analytical contaminant transport models.</em> Doctoral Dissertation, Department of Civil and Environmental Engineering, University of Houston, Houston, Texas. 222p.</a></p></li>
 </ol>
 </div>
 </div>
@@ -531,11 +658,11 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="analyticalmodels.html" title="previous page">
+        <a class="left-prev" href="impulse.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Analytical Models</p>
+                <p class="prevnext-title">1D Impulse (Instantaneous Source) Solution</p>
             </div>
         </a>
     </div>
@@ -543,7 +670,7 @@
         <a class="right-next" href="sauty.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Sauty Solution</p>
+                <p class="prevnext-title">1D Sauty Solution</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
