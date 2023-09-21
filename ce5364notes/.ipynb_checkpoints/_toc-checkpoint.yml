@@ -35,6 +35,7 @@ chapters:
   sections:
   - file: chapters/11modelingadvection/1particletracking
   - file: chapters/11modelingadvection/2upwindfdm
+- file: chapters/12usgsmocmodel/usgsmoc
 - file: chapters/16siteinvestigation/siteinvestigation
 - file: chapters/26regulatory/regulatory
 
