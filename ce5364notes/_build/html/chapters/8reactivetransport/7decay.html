@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -52,7 +54,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Analytical Models with Decay and Adsorbtion" href="../7analyticalmodels/reactivemodels.html" />
-    <link rel="prev" title="Reactions" href="6reactions.html" />
+    <link rel="prev" title="Adsorbtion" href="6reactions.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -183,7 +185,22 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../7analyticalmodels/domenico.html">
-     2D and 3D Domenico-Robbins Solutions
+     Domenico-Robbins Solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/2Dfinitewidth.html">
+     2D - Advection-Dispersion, Finite-Width, Constant Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/2Dfwidth-pulse.html">
+     2D - Advection-Dispersion, Finite-Width, Finite-Duration Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/3Dfinitearea.html">
+     3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source
     </a>
    </li>
   </ul>
@@ -200,7 +217,7 @@
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="6reactions.html">
-     Reactions
+     Adsorbtion
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -232,10 +249,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../11modelingadvection/2upwindfdm.html">
-     Modeling Advection
+     Upwind Formulation Finite-Difference
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12usgsmocmodel/usgsmoc.html">
+   USGS MOC Software
+  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">
@@ -352,8 +374,28 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scope-of-the-course">
-   Scope of the Course
+  <a class="reference internal nav-link" href="#st-order-decay">
+   1-st Order Decay
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hydrolysis">
+   Hydrolysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#electron-transfer">
+   Electron Transfer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#incorporation-into-ade">
+   Incorporation into ADE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
   </a>
  </li>
 </ul>
@@ -369,49 +411,50 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="decay">
 <h1>Decay<a class="headerlink" href="#decay" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="scope-of-the-course">
-<h2>Scope of the Course<a class="headerlink" href="#scope-of-the-course" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Essential Groundwater Hydrology</p></li>
-</ol>
+<p>Exponential decay of constituents in groundwater describes the gradual reduction in the concentration of dissolved substances in groundwater over time due to natural attenuation processes such as radioactive decay, biodegredation, and hydrolysis. Typically, as groundwater flows through an aquifer, constituents such as contaminants or dissolved solutes may undergo degradation, or other reactive processes. These processes may follow exponential decay kinetics, where the rate of decrease in concentration is proportional to the remaining concentration. As a result, the concentration of constituents diminishes rapidly initially and then gradually approaches a stable, lower level over time. Understanding exponential decay in groundwater is critical for assessing the long-term behavior of contaminants, designing effective groundwater remediation strategies, and safeguarding the quality of groundwater resources.</p>
+<div class="section" id="st-order-decay">
+<h2>1-st Order Decay<a class="headerlink" href="#st-order-decay" title="Permalink to this headline">¶</a></h2>
+<p>First-order decay is a mathematical model used to describe the exponential decrease in the concentration of a substance over time. It is commonly applied in various fields, including chemistry, physics, biology, and environmental science, to represent processes such as radioactive decay, chemical reactions, and the natural attenuation of contaminants. The mathematics of first-order decay is defined by the following equation:</p>
+<div class="math notranslate nohighlight">
+\[C(t)=C_0 \cdot e^{-\lambda t}\]</div>
+<p>Where:</p>
 <ul class="simple">
-<li><p>Theory of Flow in Aquifers (2D-Flow)</p></li>
-<li><p>Theory of Flow in Layered-Coupled Aquifers (Quasi-3D Flow)</p></li>
-<li><p>Boundary Conditions</p></li>
-<li><p>Flow Modeling Tools</p></li>
+<li><p><span class="math notranslate nohighlight">\(C(t)\)</span> represents the concentration of the substance at time <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_0\)</span> is the initial concentration of the substance at <span class="math notranslate nohighlight">\(t=0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda\)</span> is the first-order rate constant, which determines the rate of decay.</p></li>
 </ul>
-<ol class="simple">
-<li><p>Non-Reactive (Tracers) Mass Transport in Porous Media</p></li>
-</ol>
+<p>Key points about first-order decay:</p>
 <ul class="simple">
-<li><p>Advection</p></li>
-<li><p>Diffusion</p></li>
-<li><p>Dispersion</p></li>
-<li><p>Analytical Solutions</p></li>
+<li><p>Exponential Decrease: The concentration C(t)C(t) decreases exponentially over time. This means that the rate of decrease is proportional to the current concentration, resulting in a continuous, smooth curve that approaches zero but never reaches it completely.</p></li>
+<li><p>Rate Constant (<span class="math notranslate nohighlight">\(\lambda\)</span>): The rate constant <span class="math notranslate nohighlight">\(\lambda\)</span> is a positive constant that characterizes the speed of the decay process. It is unique to each specific decay or reaction and is often expressed in units of reciprocal time (e.g., per day, per year). A larger <span class="math notranslate nohighlight">\(\lambda\)</span> value indicates a faster decay rate.</p></li>
+<li><p>Half-Life: The half-life (<span class="math notranslate nohighlight">\(t_{1/2}\)</span>) is a valuable parameter associated with first-order decay. It represents the time it takes for the concentration to decrease to half of its initial value (<span class="math notranslate nohighlight">\(\frac{C_0}{2}\)</span>). The relationship between the rate constant and half-life is given by <span class="math notranslate nohighlight">\(t_{1/2}=0.693 \lambda\)</span>.</p></li>
+<li><p>Independence of Concentration: The rate of decay is independent of the initial concentration <span class="math notranslate nohighlight">\(C_0\)</span>. This means that substances undergoing first-order decay will always decrease by the same proportion in a given time interval, regardless of their initial concentrations.</p></li>
 </ul>
+</div>
+<div class="section" id="hydrolysis">
+<h2>Hydrolysis<a class="headerlink" href="#hydrolysis" title="Permalink to this headline">¶</a></h2>
+<p>Hydrolysis is a chemical reaction in the fate and transport of contaminants in groundwater. It involves the breakdown of certain chemical compounds when they come into contact with water molecules. In the context of groundwater contaminants, hydrolysis can transform hazardous substances into less harmful or more easily degradable forms. This reaction can alter the chemical composition and reactivity of contaminants, affecting their persistence in the subsurface environment. Understanding the occurrence and rate of hydrolysis reactions is crucial for predicting the behavior and potential risks associated with groundwater contaminants, especially for compounds like pesticides and industrial chemicals that are prone to hydrolytic degradation. Contaminant hydrolysis can be a key factor in groundwater remediation strategies and in the assessment of long-term environmental impacts.</p>
+<p>While temperature sensitive hydrolysis is typically described using a first-order decay model</p>
+</div>
+<div class="section" id="electron-transfer">
+<h2>Electron Transfer<a class="headerlink" href="#electron-transfer" title="Permalink to this headline">¶</a></h2>
+<p>Electron transfer, often referred to as oxidation-reduction (redox) reactions, plays a pivotal role in the fate and transformation of contaminants in groundwater. These reactions involve the exchange of electrons between different chemical species, leading to changes in the oxidation states of the participating compounds. In the context of groundwater contaminants, redox reactions can either facilitate the degradation or transformation of pollutants or, conversely, promote their persistence and mobility. For instance, certain contaminants may undergo reduction reactions, gaining electrons and becoming less toxic or mobile. Conversely, oxidation reactions can render contaminants more mobile or transform them into more harmful forms. Understanding the redox chemistry of groundwater contaminants is crucial for assessing the potential risks, remediation strategies, and long-term behavior of these substances in the subsurface environment. It is a complex yet fundamental aspect of contaminant fate in groundwater systems.</p>
+<p>Like hydrolysis electron transfer processes are typically modeled using a first-order decay model.</p>
+</div>
+<div class="section" id="incorporation-into-ade">
+<h2>Incorporation into ADE<a class="headerlink" href="#incorporation-into-ade" title="Permalink to this headline">¶</a></h2>
+<p>1-st order decay is incorporated into the transport equation as another source/sink term:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial C}{\partial t}  =  \frac{\partial}{\partial x} D_x \frac{\partial C}{\partial x} - v_x \frac{\partial C}{\partial x} - \lambda C\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Obviously other reactions can be included - they simply appear as a source/sink term.  Whether they manifest as simply as the terms herein depends on the nature of the process.</p>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p>Reactive Mass Transport in Porous Media</p></li>
-</ol>
-<ul class="simple">
-<li><p>Solid-Liquid Reactions (Adsorbtion)</p></li>
-<li><p>Constituient Decay</p></li>
-<li><p>Analytical Solutions</p></li>
-</ul>
-<ol class="simple">
-<li><p>Numerical Methods</p></li>
-</ol>
-<ul class="simple">
-<li><p>Multiple Cell Balance (MCB) Method</p></li>
-<li><p>Upwind Formulation</p></li>
-<li><p>Modeling Pure Advection by Particle Tracking</p></li>
-<li><p>Using the Method of Characteristics (USGS-MOC) Model</p></li>
-</ul>
-<ol class="simple">
-<li><p>Estimating Model Parameters</p></li>
-<li><p>Multi-Component Reactive Transport</p></li>
-<li><p>Multi-Phase Transport</p></li>
-<li><p>Using the Geochemical Balance (USGS-BALANCE) Model</p></li>
-<li><p>Extensions to Pollution Modeling in Surface Water and Air Quality (as time permits)</p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/adsorb_2.pdf">Cleveland, T.G. (1998) <em>Adsorbtion-2</em> Notes to accompany <em>“CIVE 7332 Flow and Transport Modeling for Environmental Engineering” at University of Houston</em></a></p></li>
 </ol>
 </div>
 </div>
@@ -450,7 +493,7 @@
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Reactions</p>
+                <p class="prevnext-title">Adsorbtion</p>
             </div>
         </a>
     </div>

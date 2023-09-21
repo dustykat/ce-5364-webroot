@@ -51,8 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Reactions" href="6reactions.html" />
-    <link rel="prev" title="2D and 3D Domenico-Robbins Solutions" href="../7analyticalmodels/domenico.html" />
+    <link rel="next" title="Adsorbtion" href="6reactions.html" />
+    <link rel="prev" title="3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source" href="../7analyticalmodels/3Dfinitearea.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -183,7 +183,22 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../7analyticalmodels/domenico.html">
-     2D and 3D Domenico-Robbins Solutions
+     Domenico-Robbins Solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/2Dfinitewidth.html">
+     2D - Advection-Dispersion, Finite-Width, Constant Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/2Dfwidth-pulse.html">
+     2D - Advection-Dispersion, Finite-Width, Finite-Duration Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/3Dfinitearea.html">
+     3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source
     </a>
    </li>
   </ul>
@@ -200,7 +215,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="6reactions.html">
-     Reactions
+     Adsorbtion
     </a>
    </li>
    <li class="toctree-l2">
@@ -232,10 +247,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../11modelingadvection/2upwindfdm.html">
-     Modeling Advection
+     Upwind Formulation Finite-Difference
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12usgsmocmodel/usgsmoc.html">
+   USGS MOC Software
+  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">
@@ -352,8 +372,13 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scope-of-the-course">
-   Scope of the Course
+  <a class="reference internal nav-link" href="#reactions">
+   Reactions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
   </a>
  </li>
 </ul>
@@ -369,49 +394,24 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="reactive-transport">
 <h1>Reactive Transport<a class="headerlink" href="#reactive-transport" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="scope-of-the-course">
-<h2>Scope of the Course<a class="headerlink" href="#scope-of-the-course" title="Permalink to this headline">¶</a></h2>
+<p>Reactive constituent transport in groundwater refers to the complex movement and transformation of dissolved substances as they migrate through the subsurface environment. This phenomenon is characterized by the interaction of these constituents with the surrounding geological materials and the potential for chemical reactions to occur, altering the composition of the groundwater. It plays a critical role in environmental processes, as it encompasses the transport of contaminants, nutrients, and other solutes, often involving reactions such as sorption, degradation, precipitation, and dissolution. Understanding reactive constituent transport is essential for managing and mitigating groundwater contamination, optimizing groundwater remediation strategies, and safeguarding the quality of groundwater resources.</p>
+<div class="section" id="reactions">
+<h2>Reactions<a class="headerlink" href="#reactions" title="Permalink to this headline">¶</a></h2>
+<p>The figure below is a classification of different kinds of reactions (CITE source)</p>
+<p><img alt="" src="../../_images/reactions.png" /></p>
+<p>Some reaction “categories” important in groundwater include:</p>
 <ol class="simple">
-<li><p>Essential Groundwater Hydrology</p></li>
+<li><p>Adsorbtion - solute clings to surface due to various attractive forces - usually electrostatic.</p></li>
+<li><p>Ion-Exchange - ions are attracted to mineral surfaces substitute themselves into the mineral structure. Zeolites are examples of natural ion-exchange materials.</p></li>
+<li><p>Chemisorption - solute is incorporated into a sediment by chemical reaction.</p></li>
+<li><p>Absorbtion - solute diffuses into solid matrix and clings to interior surfaces. (Notice the “b” replaces the “d” in adsorbtion)</p></li>
 </ol>
-<ul class="simple">
-<li><p>Theory of Flow in Aquifers (2D-Flow)</p></li>
-<li><p>Theory of Flow in Layered-Coupled Aquifers (Quasi-3D Flow)</p></li>
-<li><p>Boundary Conditions</p></li>
-<li><p>Flow Modeling Tools</p></li>
-</ul>
+<p>All these reactions are controlled to a great extent by solution pH, EH, and salinity.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p>Non-Reactive (Tracers) Mass Transport in Porous Media</p></li>
-</ol>
-<ul class="simple">
-<li><p>Advection</p></li>
-<li><p>Diffusion</p></li>
-<li><p>Dispersion</p></li>
-<li><p>Analytical Solutions</p></li>
-</ul>
-<ol class="simple">
-<li><p>Reactive Mass Transport in Porous Media</p></li>
-</ol>
-<ul class="simple">
-<li><p>Solid-Liquid Reactions (Adsorbtion)</p></li>
-<li><p>Constituient Decay</p></li>
-<li><p>Analytical Solutions</p></li>
-</ul>
-<ol class="simple">
-<li><p>Numerical Methods</p></li>
-</ol>
-<ul class="simple">
-<li><p>Multiple Cell Balance (MCB) Method</p></li>
-<li><p>Upwind Formulation</p></li>
-<li><p>Modeling Pure Advection by Particle Tracking</p></li>
-<li><p>Using the Method of Characteristics (USGS-MOC) Model</p></li>
-</ul>
-<ol class="simple">
-<li><p>Estimating Model Parameters</p></li>
-<li><p>Multi-Component Reactive Transport</p></li>
-<li><p>Multi-Phase Transport</p></li>
-<li><p>Using the Geochemical Balance (USGS-BALANCE) Model</p></li>
-<li><p>Extensions to Pollution Modeling in Surface Water and Air Quality (as time permits)</p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/MassTransfer.pdf">Cleveland, T. G. (1998) <em>Mass Transfer</em> Notes to accompany <em>“CIVE 7332 Flow and Transport Modeling for Environmental Engineering” at University of Houston</em></a></p></li>
 </ol>
 </div>
 <div class="toctree-wrapper compound">
@@ -448,11 +448,11 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../7analyticalmodels/domenico.html" title="previous page">
+        <a class="left-prev" href="../7analyticalmodels/3Dfinitearea.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">2D and 3D Domenico-Robbins Solutions</p>
+                <p class="prevnext-title">3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source</p>
             </div>
         </a>
     </div>
@@ -460,7 +460,7 @@
         <a class="right-next" href="6reactions.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Reactions</p>
+                <p class="prevnext-title">Adsorbtion</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reactions &#8212; Groundwater Transport Phenomena</title>
+    <title>Adsorbtion &#8212; Groundwater Transport Phenomena</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -183,7 +185,22 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../7analyticalmodels/domenico.html">
-     2D and 3D Domenico-Robbins Solutions
+     Domenico-Robbins Solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/2Dfinitewidth.html">
+     2D - Advection-Dispersion, Finite-Width, Constant Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/2Dfwidth-pulse.html">
+     2D - Advection-Dispersion, Finite-Width, Finite-Duration Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/3Dfinitearea.html">
+     3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source
     </a>
    </li>
   </ul>
@@ -200,7 +217,7 @@
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Reactions
+     Adsorbtion
     </a>
    </li>
    <li class="toctree-l2">
@@ -232,10 +249,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../11modelingadvection/2upwindfdm.html">
-     Modeling Advection
+     Upwind Formulation Finite-Difference
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12usgsmocmodel/usgsmoc.html">
+   USGS MOC Software
+  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">
@@ -346,6 +368,59 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partitioning">
+   Partitioning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sorbtion-isotherms">
+   Sorbtion Isotherms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-isotherm">
+   Linear Isotherm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#freundlich-isotherm">
+   Freundlich Isotherm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#langmuir-isotherm">
+   Langmuir Isotherm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#incorporation-into-ade">
+   Incorporation into ADE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partioning-of-organic-compounds">
+   Partioning of Organic Compounds
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#volatization">
+   Volatization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -354,8 +429,145 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="reactions">
-<h1>Reactions<a class="headerlink" href="#reactions" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="adsorbtion">
+<h1>Adsorbtion<a class="headerlink" href="#adsorbtion" title="Permalink to this headline">¶</a></h1>
+<p>Reactions between solutes and surfaces play an important role in various environmental and geological processes, particularly in the context of groundwater and subsurface systems. These reactions, often referred to as surface reactions or sorption processes, involve the interaction of solutes with the surfaces of solid materials, such as minerals, sediments, or aquifer grains. They can significantly influence the fate and transport of solutes in the subsurface environment.</p>
+<p>For instance, in groundwater contamination scenarios, sorption processes can either attenuate or enhance the mobility of contaminants, depending on whether the reactions involve adsorption (binding of contaminants to surfaces) or desorption (release of contaminants from surfaces). These reactions can determine whether contaminants are retained within the subsurface, reducing their potential impact on groundwater quality, or if they are transported further, posing a greater risk to the environment.</p>
+<p>Furthermore, surface reactions are crucial in natural processes such as the cycling of nutrients (e.g., phosphate or nitrate) within aquifer systems, affecting nutrient availability to ecosystems and influencing water quality.</p>
+<div class="section" id="partitioning">
+<h2>Partitioning<a class="headerlink" href="#partitioning" title="Permalink to this headline">¶</a></h2>
+<p>When water containing a constituient with concentration <span class="math notranslate nohighlight">\(C_i\)</span> equilibrates with the surrounding solid phase (porous media) the mass is said to be partitioned between the liquid (solute) and solid phase.  A partition relationship is something like:</p>
+<div class="math notranslate nohighlight">
+\[C_{solid} = \frac{(C_i-C_{eq} V_{solute}}{m_{solid}}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C_{solid}\)</span> is the equilibrium concentration of the constituient in/on the solid phase (e.g. units of mg/g)</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_i\)</span> initial liquid phase concentration of the constituient</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_{eq}\)</span> is the equilibrium liquid phase concentration</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{solute}\)</span> is the volume of solution (in the pore space of interest)</p></li>
+<li><p><span class="math notranslate nohighlight">\(m_{solid}\)</span> is the mass of the solid phase (in the porous space of interest)</p></li>
+</ul>
+<p>A collection of these partitions for different equilibrium concentrations (all obtained at the same temperature) is called an isotherm.</p>
+</div>
+<div class="section" id="sorbtion-isotherms">
+<h2>Sorbtion Isotherms<a class="headerlink" href="#sorbtion-isotherms" title="Permalink to this headline">¶</a></h2>
+<p>Sorbtion Isotherms are typically arrived at by some version of the cartoon below</p>
+<p><img alt="" src="../../_images/isotherm-method.png" /></p>
+<ol class="simple">
+<li><p>Samples with a known water volume (or mass) and known concentration of solute are prepared.  This concentration is <span class="math notranslate nohighlight">\(C_0\)</span></p></li>
+<li><p>Different masses of the same solids are added to each of the samples.</p></li>
+<li><p>The jars are vigorously agitated for some time (usually 24 hours).</p></li>
+<li><p>The concentration in each jar is measured.  These concentrations are <span class="math notranslate nohighlight">\(C_{eq}\)</span></p></li>
+<li><p>The amount of mass that has transferred to the solid in the i-th sample is calculated from: <span class="math notranslate nohighlight">\( mass_{\text{liquid-solid}} (i)= [C_0(i)-C_{eq}(i)] \cdot V_{\text{liquid}}\)</span></p></li>
+<li><p>The solid phase concnetration is computed from: <span class="math notranslate nohighlight">\(C_{solid} = mass_{\text{liquid-solid}} (i) / mass_{solid} (i)\)</span></p></li>
+<li><p>The plot of <span class="math notranslate nohighlight">\(C_{solid}\)</span> versus <span class="math notranslate nohighlight">\(C_{eq}\)</span> is called the equilibrium adsorbtion isotherm.</p></li>
+<li><p>If the procedure is done using different agitation time, then kinetic effects can be studied, and the resulting contour (surface) plot would be called a kinetic adsorbtion isotherm. Kinetic isotherms are probably uncommon.</p></li>
+</ol>
+<p>Once the isotherm data are obtained then they are fit to one of several models for subsequent use.</p>
+</div>
+<div class="section" id="linear-isotherm">
+<h2>Linear Isotherm<a class="headerlink" href="#linear-isotherm" title="Permalink to this headline">¶</a></h2>
+<p>If the data exhibits a straight-line relationship when plotted on arithmetic graph paper, then the isotherm is called a <em>linear equilibrium isotherm</em>.</p>
+<p><img alt="" src="../../_images/linearisotherm.png" /></p>
+<p>If, in addition to the linear relationship, the system assumes new equilibrium conditions very fast relative to the transport processes involved, then the isotherm is called an <em>instantaneous linear equilibrium isotherm</em>.</p>
+<p>The slope of the isotherm is called the distribution coefficient, <span class="math notranslate nohighlight">\(K_d\)</span>.</p>
+<p>The equation of the isotherm is:  <span class="math notranslate nohighlight">\(C_{solid} = K_d C_{eq}\)</span></p>
+<p>Expressed as a rate equation: <span class="math notranslate nohighlight">\( \frac{dC_{solid}}{dt} = K_d \frac{dC_{eq}}{dt}\)</span></p>
+</div>
+<div class="section" id="freundlich-isotherm">
+<h2>Freundlich Isotherm<a class="headerlink" href="#freundlich-isotherm" title="Permalink to this headline">¶</a></h2>
+<p>If the data exhibits a straight-line relationship when plotted on log-log graph paper, then the isotherm is called a <em>Freundlich Isotherm</em>.</p>
+<p><img alt="" src="../../_images/freundlich.png" /></p>
+<p>If, in addition to the log-log linear relationship, the system assumes new equilibrium conditions very fast relative to the transport processes involved, then the isotherm is called an <em>instantaneous Freundlich equilibrium isotherm</em>.</p>
+<p>The slope of the isotherm is called Freundlich exponent, N, and the intercept is called the Freundlich distribution coefficient, K.</p>
+<p>The equation of the isotherm is : <span class="math notranslate nohighlight">\(C_{solid} = K C_{eq}^N\)</span></p>
+<p>Expressed as a rate equation: <span class="math notranslate nohighlight">\( \frac{dC_{solid}}{dt} = KN C_{eq}^{N-1} \frac{dC_{eq}}{dt}\)</span></p>
+</div>
+<div class="section" id="langmuir-isotherm">
+<h2>Langmuir Isotherm<a class="headerlink" href="#langmuir-isotherm" title="Permalink to this headline">¶</a></h2>
+<p>If the data exhibits a straight-line relationship when <span class="math notranslate nohighlight">\(\frac{C_{eq}}{C_{solid}}\)</span> is plotted versus <span class="math notranslate nohighlight">\(C_{eq}\)</span> on arithmetic paper, then the isotherm is called a <em>Langmuir Isotherm</em>.</p>
+<p><img alt="" src="../../_images/langmuir.png" /></p>
+<p>If, in addition to the linear relationship of <span class="math notranslate nohighlight">\(\frac{C_{eq}}{C_{solid}}\)</span> versus <span class="math notranslate nohighlight">\(C_{eq}\)</span>, the system assumes new equilibrium conditions very fast relative to the transport processes involved, then the isotherm is called an <em>instantaneous Langmuir equilibrium isotherm</em>.</p>
+<p>The equation of the isotherm is:</p>
+<div class="math notranslate nohighlight">
+\[\frac{C_{eq}}{C_{solid}} = \frac{1}{\alpha \beta} + \frac{C_{aq}}{\beta}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is an adsorbtion constant related to binding energy and <span class="math notranslate nohighlight">\(\beta\)</span> is the maximum amount of solute that can be adsorbed.</p>
+<p>To express as a rate equation rearrange as</p>
+<div class="math notranslate nohighlight">
+\[C_{solid} = \frac{\alpha \beta C_{aq}}{1 + \alpha C_{aq}}\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{dC_{solid}}{dt} = \frac{\alpha \beta}{(1+\alpha C_{aq})^2} \frac{dC_{eq}}{dt}\]</div>
+</div>
+<div class="section" id="incorporation-into-ade">
+<h2>Incorporation into ADE<a class="headerlink" href="#incorporation-into-ade" title="Permalink to this headline">¶</a></h2>
+<p>The adsorbtion/desorbtion reaction(s) are incorporated into the transport equation as a source/sink term:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial C}{\partial t} + \frac{\rho_b}{n} \frac{\partial C_{solid}}{\partial t} =  \frac{\partial}{\partial x} D_x \frac{\partial C}{\partial x} - v_x \frac{\partial C}{\partial x}\]</div>
+<p>If the linear isotherm applies a simple substitution of the <span class="math notranslate nohighlight">\(K_d\)</span> gives</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial C}{\partial t} + \frac{\rho_b}{n} K_d \frac{\partial C}{\partial t} =  \frac{\partial}{\partial x} D_x \frac{\partial C}{\partial x} - v_x \frac{\partial C}{\partial x}\]</div>
+<p>And renaming the term <span class="math notranslate nohighlight">\(1 + \frac{\rho_b}{n} K_d = R\)</span> (the retardation factor) the result is</p>
+<div class="math notranslate nohighlight">
+\[R \frac{\partial C}{\partial t} =  \frac{\partial}{\partial x} D_x \frac{\partial C}{\partial x} - v_x \frac{\partial C}{\partial x}\]</div>
+<p>Conceptually, the retardation factor is a fundamental parameter in hydrogeology and groundwater transport modeling. It represents the ratio of the average groundwater velocity to the average solute velocity within an aquifer. More precisely, it quantifies how much slower a solute moves through the subsurface due to interactions with the solid materials (e.g., soil or rock) and the fluid (groundwater) in the aquifer.</p>
+<p>The retardation factor is a critical concept when assessing the transport of contaminants in groundwater. When the retardation factor is greater than one, it indicates that the solute is retarded or delayed in its movement through the aquifer due to sorption or other reactive processes, reducing its mobility. On the other hand, when the retardation factor is less than one (colloids exhibit such behavior - its called hydrodynamic chromatography, it also occurs in low ionic strength solutions or with charged ions of same charge as the solid surface), it suggests that the solute moves more quickly than the groundwater, potentially increasing its transport distance.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Understanding the retardation factor is essential for predicting the movement and dispersion of contaminants, designing effective groundwater remediation strategies, and assessing the risk of groundwater contamination. It plays a pivotal role in characterizing the complex interplay between solute transport and subsurface geochemistry.</p>
+</div>
+</div>
+<div class="section" id="partioning-of-organic-compounds">
+<h2>Partioning of Organic Compounds<a class="headerlink" href="#partioning-of-organic-compounds" title="Permalink to this headline">¶</a></h2>
+<p>Organic compounds partitioning is strongly influenced by the fraction of organic carbon in the solid phase as opposed to the total mass of solids themselves.</p>
+<p>A working model for estimating partitioning is</p>
+<div class="math notranslate nohighlight">
+\[K_d = f_{oc}k_{oc}\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(K_d\)</span> is a linear isotherm slope (i.e. we use the linear model)</p></li>
+<li><p><span class="math notranslate nohighlight">\(f_{oc}\)</span> is the fraction of organic carbon in the solid phase (A portion of the dried aquifer is burned at high temperatures (usually around 550°C) in a specialized instrument called a muffle furnace. During combustion, the organic carbon in the sample is oxidized and converted into carbon dioxide. The evolved CO2 is then captured and quantified using gas chromatography or infrared gas analyzers. The fraction of organic carbon in the soil can be determined by measuring the weight of the CO2 produced and applying stoichiometric relationships.</p></li>
+<li><p><span class="math notranslate nohighlight">\(k_{oc}\)</span> the organic-carbon partition coefficient, usually estimated from the <span class="math notranslate nohighlight">\(k_{ow}\)</span> <a class="reference external" href="https://en.wikipedia.org/wiki/Octanol-water_partition_coefficient">octonal-water partition coefficient</a> for the constituient of interest (in the 1990s it was obtained by liquid-liquid extractions, but less wasteful methods are likely in use today).  Many compounds are tabulated <a class="reference external" href="https://www.nist.gov/system/files/documents/srd/jpcrd367.pdf">Octanol-Water Partition Coefficients of Simple Organic Compounds (1988) NIST</a> or one can use Table 7.2 in the textbook to make a good guess.</p></li>
+</ul>
+</div>
+<div class="section" id="volatization">
+<h2>Volatization<a class="headerlink" href="#volatization" title="Permalink to this headline">¶</a></h2>
+<p>Volatization is another significant process in the fate of contaminants in groundwater. It refers to the escape or release of certain chemical compounds from the aqueous phase (groundwater) into the vapor phase (air) when there is an interface between the two. Volatization occurs predominantly with volatile organic compounds (VOCs), such as certain solvents and gasoline components, which have a tendency to evaporate. This process can lead to the migration of contaminants from groundwater into the air, posing risks to human health through inhalation exposure.</p>
+<p>Structurally it is a lot like an adsorbtion (mass transfer) process.  A working partition model is</p>
+<div class="math notranslate nohighlight">
+\[[C]_{aq} \cdot H_c = P_c\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\([C]_{aq}\)</span> is the concentration in the aqueous phase of the volatile compound (intentionally shown as a molar concentration)</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_c\)</span> is Henry’s law for the compound (kind of Raoult’s law extended throughout the domain</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_c\)</span> is the partial pressure of the compound in the gas phase.</p></li>
+</ul>
+<p>Henry’s Law is a fundamental principle that quantifies the relationship between the concentration of a volatile compound in the gas phase and its concentration in the water phase at equilibrium. It states that the concentration of a gas in the air is directly proportional to its concentration in the water and is governed by a proportionality constant called Henry’s constant. Henry’s Law is valuable in predicting the volatilization of contaminants from groundwater, as it helps estimate the extent to which a substance will partition into the vapor phase based on its solubility in water.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Raoult’s law and Henry’s law are two fundamental principles in physical chemistry that describe the behavior of solutes in solutions, particularly when it comes to the interaction between solutes and the vapor phase. While these laws are similar in some respects, they apply to different phases of matter and have distinct applications.</p>
+<p>Raoult’s Law:</p>
+<ul class="simple">
+<li><p>Phase: Raoult’s law primarily applies to solutions of non-electrolyte solutes (molecules that do not ionize) in a liquid phase.</p></li>
+<li><p>Description: Raoult’s law describes the vapor pressure of an ideal solution, where the partial vapor pressure of each component in the solution is directly proportional to its mole fraction in the liquid phase.</p></li>
+<li><p>Mathematical Form: For a binary ideal solution, Raoult’s law is expressed as <span class="math notranslate nohighlight">\(P_i = x_i * P_i^*\)</span> , where <span class="math notranslate nohighlight">\(P_i\)</span> is the partial vapor pressure of component <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(x_i\)</span> is the mole fraction of component <span class="math notranslate nohighlight">\(i\)</span> in the liquid phase, and <span class="math notranslate nohighlight">\(P_i^*\)</span> is the vapor pressure of pure component <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p>Application: Raoult’s law is often used to describe the behavior of volatile components in solutions, such as ideal gas mixtures and non-ideal solutions at low concentrations.</p></li>
+</ul>
+<p>Henry’s Law:</p>
+<ul class="simple">
+<li><p>Phase: Henry’s law applies to the interaction between a solute and the gas (vapor) phase, typically in cases where the solute has low solubility in the liquid phase.</p></li>
+<li><p>Description: Henry’s law states that the concentration of a gas dissolved in a liquid is directly proportional to the partial pressure of that gas above the liquid. It describes the solubility of gases in a liquid.</p></li>
+<li><p>Mathematical Form: Henry’s law is expressed as <span class="math notranslate nohighlight">\([C] = \frac{1}{H_c} * P\)</span>, where <span class="math notranslate nohighlight">\([C]\)</span> is the concentration of the dissolved gas, <span class="math notranslate nohighlight">\(H_c\)</span> is Henry’s constant (specific to each solute-solvent pair), and <span class="math notranslate nohighlight">\(P\)</span> is the partial pressure of the gas in contact with the liquid.</p></li>
+<li><p>Application: Henry’s law is commonly used in environmental chemistry, particularly in the context of predicting the dissolution and volatilization of gases in natural waters, such as the transfer of gases between the atmosphere and surface waters.</p></li>
+</ul>
+<p>In summary, Raoult’s law pertains to ideal solutions of non-electrolyte solutes in the liquid phase and describes the vapor pressure of components in the solution, while Henry’s law pertains to the solubility of gases in a liquid and relates the concentration of a gas dissolved in the liquid to its partial pressure in the gas phase. Both laws deal with the interaction between solutes and gases but in different phases and under different conditions.</p>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/adsorption_1.pdf">Cleveland, T.G. (1998) <em>Adsorbtion</em> Notes to accompany <em>“CIVE 7332 Flow and Transport Modeling for Environmental Engineering” at University of Houston</em></a></p></li>
+</ol>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
