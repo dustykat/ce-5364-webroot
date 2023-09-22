@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # USGS MOC Windows Build
+# # Windows Build
 # 
 # You may find the build on the USGS website won't run on your computer. Options at this point are to get a FORTRAN compiler and build it yourself from source code, or you can use a build from around 1997 that I tested on a Windows computer.
 # 

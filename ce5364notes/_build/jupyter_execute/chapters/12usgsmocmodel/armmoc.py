@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # USGSMOC ARM7/AARCH 64 Build
+# # ARM7/AARCH 64 Build
 # 
 # Get source code from
 # 
