@@ -1,4 +1,6 @@
-# Welcome to CE 5364 Groundwater Transport Phenomena
+# Preface
+
+## Welcome to CE 5364 Groundwater Transport Phenomena
 
 These are the instructor course notes (from which lecture and discussion items are derived).
 

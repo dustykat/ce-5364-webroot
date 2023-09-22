@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>USGS MOC Software &#8212; Groundwater Transport Phenomena</title>
+    <title>Unsaturated Zone Flow and Transport &#8212; Groundwater Transport Phenomena</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="USGS MOC Windows Build" href="winmoc.html" />
-    <link rel="prev" title="Upwind Formulation Finite-Difference" href="../11modelingadvection/2upwindfdm.html" />
+    <link rel="next" title="Groundwater Protection Legal Framework" href="../26regulatory/regulatory.html" />
+    <link rel="prev" title="Site Investigations" href="../16siteinvestigation/siteinvestigation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -252,35 +252,18 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12usgsmocmodel/usgsmoc.html">
    USGS MOC Software
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="winmoc.html">
-     USGS MOC Windows Build
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="armmoc.html">
-     USGS MOC on ARM/AARCH 64
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">
    Site Investigations
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../17unsaturatedzone/unsaturated.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Unsaturated Zone Flow and Transport
   </a>
  </li>
@@ -330,7 +313,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/chapters/12usgsmocmodel/usgsmoc.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/chapters/17unsaturatedzone/unsaturated.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -350,7 +333,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/12usgsmocmodel/usgsmoc.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/17unsaturatedzone/unsaturated.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -371,7 +354,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/12usgsmocmodel/usgsmoc.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/17unsaturatedzone/unsaturated.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -396,15 +379,10 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="usgs-moc-software">
-<h1>USGS MOC Software<a class="headerlink" href="#usgs-moc-software" title="Permalink to this headline">¶</a></h1>
-<p>The USGS MOC software is a specialized modeling tool developed to simulate groundwater flow, solute transport, and some chemical reactions within aquifers. It is based on numerical modeling principles and has evolved over the years to address complex hydrogeological scenarios. The software employs a modular framework, allowing users (with programming expertise) to tailor it to specific applications, making it an invaluable asset for groundwater professionals and researchers.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>I choose MOC instead of MODFLOW/MODPATH because the program is easier to understand and get working.  Accessing MODFLOW using FloPy or ModelMUSE is far more challenging than the pretty pictures on the web-a-rama suggest. You can examine how to install MODFLOW at <a class="reference external" href="http://54.243.252.9/ce-4363-webroot/ce4363notes/lessons/groundwatermodels/installing.pdf">MODFLOW on a JupyterHub</a> and how to access using <a class="reference external" href="http://54.243.252.9/ce-4363-webroot/ce4363notes/_build/html/lessons/groundwatermodels/15gwmodels-examples.html">MODFLOW using Jupyter Example(s)</a></p>
-</div>
-<div class="toctree-wrapper compound">
-</div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="unsaturated-zone-flow-and-transport">
+<h1>Unsaturated Zone Flow and Transport<a class="headerlink" href="#unsaturated-zone-flow-and-transport" title="Permalink to this headline">¶</a></h1>
+<p>Unsaturated Zone Flow and Transport refers to the movement and transport of water and contaminants in the portion of the subsurface that lies above the groundwater table and contains both air and water within the pore spaces of the soil or rock. In this zone, the pore spaces are not completely saturated with water; rather, they contain a mixture of air and water, with the degree of saturation varying depending on factors such as rainfall, evaporation, and soil properties.</p>
+<p>The unsaturated zone, also known as the vadose zone, is a critical component of the hydrological cycle. Water moves through this zone due to gravity, capillary forces, and pressure gradients. It plays a crucial role in processes like soil moisture replenishment, plant root uptake, and filtration of contaminants. Understanding unsaturated zone flow and transport is essential for managing water resources, assessing the risk of groundwater contamination, and optimizing land use practices to protect both water quality and quantity.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -420,7 +398,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./chapters/12usgsmocmodel"
+            path: "./chapters/17unsaturatedzone"
         },
         predefinedOutput: true
     }
@@ -437,19 +415,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../11modelingadvection/2upwindfdm.html" title="previous page">
+        <a class="left-prev" href="../16siteinvestigation/siteinvestigation.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Upwind Formulation Finite-Difference</p>
+                <p class="prevnext-title">Site Investigations</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="winmoc.html" title="next page">
+        <a class="right-next" href="../26regulatory/regulatory.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">USGS MOC Windows Build</p>
+                <p class="prevnext-title">Groundwater Protection Legal Framework</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

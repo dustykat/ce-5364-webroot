@@ -13,7 +13,7 @@
 # 
 # When water containing a constituient with concentration $C_i$ equilibrates with the surrounding solid phase (porous media) the mass is said to be partitioned between the liquid (solute) and solid phase.  A partition relationship is something like:
 # 
-# $$C_{solid} = \frac{(C_i-C_{eq} V_{solute}}{m_{solid}}$$ 
+# $$C_{solid} = \frac{(C_i-C_{eq}) V_{solute}}{m_{solid}}$$ 
 # 
 # where:
 # - $C_{solid}$ is the equilibrium concentration of the constituient in/on the solid phase (e.g. units of mg/g)

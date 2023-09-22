@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>USGS MOC Software &#8212; Groundwater Transport Phenomena</title>
+    <title>Remediation Technologies &#8212; Groundwater Transport Phenomena</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="USGS MOC Windows Build" href="winmoc.html" />
-    <link rel="prev" title="Upwind Formulation Finite-Difference" href="../11modelingadvection/2upwindfdm.html" />
+    <link rel="next" title="Groundwater Protection Legal Framework" href="../26regulatory/regulatory.html" />
+    <link rel="prev" title="Unsaturated Zone Flow and Transport" href="../17unsaturatedzone/unsaturated.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -252,23 +252,23 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../12usgsmocmodel/usgsmoc.html">
    USGS MOC Software
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="winmoc.html">
+    <a class="reference internal" href="../12usgsmocmodel/winmoc.html">
      USGS MOC Windows Build
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="armmoc.html">
+    <a class="reference internal" href="../12usgsmocmodel/armmoc.html">
      USGS MOC on ARM/AARCH 64
     </a>
    </li>
@@ -282,6 +282,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../17unsaturatedzone/unsaturated.html">
    Unsaturated Zone Flow and Transport
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Remediation Technologies
   </a>
  </li>
  <li class="toctree-l1">
@@ -330,7 +335,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/chapters/12usgsmocmodel/usgsmoc.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/chapters/22remediation/remediation.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -350,7 +355,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/12usgsmocmodel/usgsmoc.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/22remediation/remediation.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -371,7 +376,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/12usgsmocmodel/usgsmoc.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/22remediation/remediation.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -396,15 +401,22 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="usgs-moc-software">
-<h1>USGS MOC Software<a class="headerlink" href="#usgs-moc-software" title="Permalink to this headline">¶</a></h1>
-<p>The USGS MOC software is a specialized modeling tool developed to simulate groundwater flow, solute transport, and some chemical reactions within aquifers. It is based on numerical modeling principles and has evolved over the years to address complex hydrogeological scenarios. The software employs a modular framework, allowing users (with programming expertise) to tailor it to specific applications, making it an invaluable asset for groundwater professionals and researchers.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>I choose MOC instead of MODFLOW/MODPATH because the program is easier to understand and get working.  Accessing MODFLOW using FloPy or ModelMUSE is far more challenging than the pretty pictures on the web-a-rama suggest. You can examine how to install MODFLOW at <a class="reference external" href="http://54.243.252.9/ce-4363-webroot/ce4363notes/lessons/groundwatermodels/installing.pdf">MODFLOW on a JupyterHub</a> and how to access using <a class="reference external" href="http://54.243.252.9/ce-4363-webroot/ce4363notes/_build/html/lessons/groundwatermodels/15gwmodels-examples.html">MODFLOW using Jupyter Example(s)</a></p>
-</div>
-<div class="toctree-wrapper compound">
-</div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="remediation-technologies">
+<h1>Remediation Technologies<a class="headerlink" href="#remediation-technologies" title="Permalink to this headline">¶</a></h1>
+<p>Groundwater remediation technologies are a diverse set of techniques and methods used to restore contaminated groundwater to an acceptable quality. These technologies are deployed to mitigate the adverse effects of various pollutants, including chemicals, heavy metals, and other contaminants that can jeopardize both human health and the environment. Groundwater remediation is essential to protect valuable water resources and ensure their safe use. There are several key categories of groundwater remediation technologies:</p>
+<ul class="simple">
+<li><p><strong>Source Control:</strong> Source control is focused on identifying and eliminating or mitigating the source of contamination, preventing further release into the groundwater. Source control measures may include the removal of underground storage tanks, sealing or capping contaminated areas, or implementing strict containment and management practices for hazardous materials to prevent future contamination incidents.</p></li>
+<li><p><strong>Pump-and-Treat Systems:</strong> This is one of the most common remediation methods. It involves extracting contaminated groundwater using wells, treating it at the surface, and then re-injecting the treated water back into the aquifer or disposing of it safely. Treatment methods may include air stripping, activated carbon adsorption, and chemical precipitation.</p></li>
+<li><p><strong>In-Situ Bioremediation:</strong> In this approach, microorganisms are introduced into the contaminated groundwater to facilitate the natural degradation of organic contaminants. Bioremediation can be enhanced by adding nutrients and other amendments to stimulate microbial activity.</p></li>
+<li><p><strong>Chemical Oxidation:</strong> Chemical oxidation methods involve injecting oxidizing agents, such as hydrogen peroxide or ozone, into the groundwater to break down and neutralize contaminants. These technologies are particularly effective for treating organic pollutants.</p></li>
+<li><p><strong>Permeable Reactive Barriers (PRBs):</strong> PRBs consist of reactive materials placed in the subsurface along the flow path of contaminated groundwater. These materials chemically react with and immobilize contaminants as they pass through the barrier.</p></li>
+<li><p><strong>Phytoremediation:</strong> This eco-friendly method uses specially selected plants to uptake, absorb, or transform contaminants from groundwater. Plants can help remediate metals, nutrients, and some organic pollutants.</p></li>
+<li><p><strong>Dual-Phase Extraction:</strong> This technology is used when both groundwater and soil are contaminated. It involves the simultaneous extraction of groundwater and soil vapor for treatment.</p></li>
+<li><p><strong>Electrokinetic Remediation:</strong> In this technique, low-level electric currents are applied to the subsurface to move charged ions, mobilize contaminants, and facilitate their removal from the groundwater.  A related technique is <a class="reference external" href="https://www.geoengineer.org/education/web-class-projects/cee-549-geoenvironmental-engineering-winter-2013/assignments/vitrification">soil vitrification</a>.</p></li>
+<li><p><strong>Ex-Situ Treatment:</strong> For extremely contaminated groundwater, extraction and treatment above ground may be the most effective option. This can involve various physical and chemical treatment processes, such as advanced oxidation, ion exchange, and membrane filtration.</p></li>
+<li><p><strong>Natural Attenuation:</strong> In some cases, allowing natural processes to attenuate contaminants over time may be a viable remediation strategy. This approach relies on factors like dilution, dispersion, sorption, and microbial degradation.</p></li>
+</ul>
+<p>Groundwater remediation technologies are chosen based on the specific contaminants, hydrogeological conditions, and regulatory requirements at a contaminated site. Successful groundwater restoration often involves a combination of these techniques to address multiple challenges and ensure the protection of water resources and human health. Groundwater remediation is a vital aspect of environmental management, safeguarding this precious resource for current and future generations.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -420,7 +432,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./chapters/12usgsmocmodel"
+            path: "./chapters/22remediation"
         },
         predefinedOutput: true
     }
@@ -437,19 +449,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../11modelingadvection/2upwindfdm.html" title="previous page">
+        <a class="left-prev" href="../17unsaturatedzone/unsaturated.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Upwind Formulation Finite-Difference</p>
+                <p class="prevnext-title">Unsaturated Zone Flow and Transport</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="winmoc.html" title="next page">
+        <a class="right-next" href="../26regulatory/regulatory.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">USGS MOC Windows Build</p>
+                <p class="prevnext-title">Groundwater Protection Legal Framework</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
