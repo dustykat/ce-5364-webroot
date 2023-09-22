@@ -8,8 +8,8 @@
 # Download from
 # 
 # [WINMOC_32.exe (compiled for Windows) circa 1997](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/12usgsmocmodel/winmoc/bin/WINMOC_32.exe)
-
 # 
+# [MOC01.INP Example Input File](http://ce-5364-webroot/ce5364notes/chapters/12usgsmocmodel/winmoc/example1/MOC01.INP)
 
 # When you get the program and an example input file put it somewhere on your computer
 # 
