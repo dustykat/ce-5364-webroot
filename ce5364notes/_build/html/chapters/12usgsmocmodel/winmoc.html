@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>USGS MOC Software &#8212; Groundwater Transport Phenomena</title>
+    <title>USGS MOC Windows Build &#8212; Groundwater Transport Phenomena</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="USGS MOC Windows Build" href="winmoc.html" />
-    <link rel="prev" title="Upwind Formulation Finite-Difference" href="../11modelingadvection/2upwindfdm.html" />
+    <link rel="next" title="USGS MOC on ARM/AARCH 64" href="armmoc.html" />
+    <link rel="prev" title="USGS MOC Software" href="usgsmoc.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -253,7 +253,7 @@
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+  <a class="reference internal" href="usgsmoc.html">
    USGS MOC Software
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -261,9 +261,9 @@
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="winmoc.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      USGS MOC Windows Build
     </a>
    </li>
@@ -325,7 +325,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/chapters/12usgsmocmodel/usgsmoc.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/chapters/12usgsmocmodel/winmoc.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -345,7 +345,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/12usgsmocmodel/usgsmoc.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/12usgsmocmodel/winmoc.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -366,7 +366,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/12usgsmocmodel/usgsmoc.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/12usgsmocmodel/winmoc.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -391,15 +391,23 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="usgs-moc-software">
-<h1>USGS MOC Software<a class="headerlink" href="#usgs-moc-software" title="Permalink to this headline">¶</a></h1>
-<p>The USGS MOC software is a specialized modeling tool developed to simulate groundwater flow, solute transport, and some chemical reactions within aquifers. It is based on numerical modeling principles and has evolved over the years to address complex hydrogeological scenarios. The software employs a modular framework, allowing users (with programming expertise) to tailor it to specific applications, making it an invaluable asset for groundwater professionals and researchers.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>I choose MOC instead of MODFLOW/MODPATH because the program is easier to understand and get working.  Accessing MODFLOW using FloPy or ModelMUSE is far more challenging than the pretty pictures on the web-a-rama suggest. You can examine how to install MODFLOW at <a class="reference external" href="http://54.243.252.9/ce-4363-webroot/ce4363notes/lessons/groundwatermodels/installing.pdf">MODFLOW on a JupyterHub</a> and how to access using <a class="reference external" href="http://54.243.252.9/ce-4363-webroot/ce4363notes/_build/html/lessons/groundwatermodels/15gwmodels-examples.html">MODFLOW using Jupyter Example(s)</a></p>
-</div>
-<div class="toctree-wrapper compound">
-</div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="usgs-moc-windows-build">
+<h1>USGS MOC Windows Build<a class="headerlink" href="#usgs-moc-windows-build" title="Permalink to this headline">¶</a></h1>
+<p>You may find the build on the USGS website won’t run on your computer. Options at this point are to get a FORTRAN compiler and build it yourself from source code, or you can use a build from around 1997 that I tested on a Windows computer.</p>
+<p>Download from</p>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/12usgsmocmodel/winmoc/bin/WINMOC_32.exe">WINMOC_32.exe (compiled for Windows) circa 1997</a></p>
+<p>When you get the program and an example input file put it somewhere on your computer</p>
+<p><img alt="" src="../../_images/mocwin1.png" /></p>
+<p>Then when you run this program it should generate a terminal window.</p>
+<p><img alt="" src="../../_images/mocwin2.png" /></p>
+<p>Supply the input file name</p>
+<p><img alt="" src="../../_images/mocwin3.png" /></p>
+<p>Supply an output file name</p>
+<p><img alt="" src="../../_images/mocwin4.png" /></p>
+<p>When it is completed, the terminal closes by itself</p>
+<p><img alt="" src="../../_images/mocwin5.png" /></p>
+<p>Then you can examine the output and post-process as needed</p>
+<p><img alt="" src="../../_images/mocwin6.png" /></p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -432,19 +440,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../11modelingadvection/2upwindfdm.html" title="previous page">
+        <a class="left-prev" href="usgsmoc.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Upwind Formulation Finite-Difference</p>
+                <p class="prevnext-title">USGS MOC Software</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="winmoc.html" title="next page">
+        <a class="right-next" href="armmoc.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">USGS MOC Windows Build</p>
+                <p class="prevnext-title">USGS MOC on ARM/AARCH 64</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

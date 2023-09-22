@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # USGS MOC on ARM/AARCH 64 Computers (Raspberry Pi; Arduino, etc ...)
+# # USGS MOC on ARM/AARCH 64 
 # 
 # Get source code from
 # 

@@ -37,6 +37,7 @@ chapters:
   - file: chapters/11modelingadvection/2upwindfdm
 - file: chapters/12usgsmocmodel/usgsmoc
   sections:
+  - file: chapters/12usgsmocmodel/winmoc
   - file: chapters/12usgsmocmodel/armmoc
 - file: chapters/16siteinvestigation/siteinvestigation
 - file: chapters/26regulatory/regulatory
