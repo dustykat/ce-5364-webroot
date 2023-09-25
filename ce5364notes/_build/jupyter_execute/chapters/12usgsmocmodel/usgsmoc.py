@@ -257,11 +257,22 @@
 # 2.65,0.0,0.0                     rho-s,Kd,lambda
 # ```
 # 
-# [MOC01.INP (Windows)](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/12usgsmocmodel/winmoc/example1/MOC01.INP)
+# Here is the file for using with the Windows application [MOC01.INP (Windows)](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/12usgsmocmodel/winmoc/example1/MOC01.INP)
 # 
+# The script below runs it on the ARM-based webserver (slightly different syntax, but uses same input file)
+
+# In[1]:
+
+
+get_ipython().system(' cp ./armmoc/bin/usgsmoc.exe ./')
+get_ipython().system(' cp ./armmoc/example01/MOC01.INP ./')
+get_ipython().system(' cp ./armmoc/example01/moc01.sup ./')
+get_ipython().system(' ./usgsmoc.exe < moc01.sup ;')
+# next line lists output file on server - probably want to use an editor to parse the file for map making
+get_ipython().system(' cat MOC01-NO-D.OUT ;')
+
+
 # We can use this data file for case 2 by changing the longitudinal dispersivity term from 0 to 90 (or whatever mixing length is appropriate).
-# 
-# 
 # 
 # #### Case (2)
 # 
@@ -311,9 +322,19 @@
 # 2.65,0.0,0.0                     rho-s,Kd,lambda
 # ```
 # 
-# The computer software can also be used to model vertical aquifer slices and one-dimensional transport pg. 35 of the software documentation contains information on how to do these tasks.
+# Below is the output with dispersion active
 
-# ## Example 2 (Future)
+# In[2]:
+
+
+get_ipython().system(' cat MOC01-YES-D.OUT ;')
+
+
+# The computer software can also be used to model vertical aquifer slices and one-dimensional transport pg. 35 of the software documentation contains information on how to do these tasks.
+# 
+# <hr>
+# 
+# ## Example 2 (Future Semester)
 # 
 # You wish to dispose of a liquid waste by injecting into an aquifer that is also used for water supply.
 # 
@@ -376,10 +397,100 @@
 # - Is the penalty structure adequate from a microeconomic point of view to prevent permit violation?
 # - What if the profit were doubled?  Halved? 
 # 
+# ### Initial Solution File
 # 
+# ```
+# Example 3 - Waste Injection Example File
+# 1,1,10,14,3200,1,7,3,200,4,4,2,0,0,0,0,0,1   
+# 0.25 .0001 0.20 150.  0.0  0.0  0.0 150. 150.  0.5 1.0  1.0
+# 0.005 2.65 15724800.0
+#  5 11
+#  7 11
+#  8 11
+#  4 4    -30.00   239.0
+#  5 11    30.00   0.00
+#  7 11    9.00    0.00
+#  8 11    9.00    0.00
+# 1  1.416
+# 0 0 0 0 0 0 0 0 0 0
+# 0 10 10 10 10 10 10 10 10 0
+# 0 10 10 10 10 10 10 10 10 0
+# 0 10 10 10 10 10 10 10 10 0
+# 0 10 10 10 10 10 10 10 10 0
+# 0 3.34 3.34 3.34 3.34 3.34 3.34 3.34 3.34 0
+# 0 3.34 3.34 3.34 3.34 3.34 3.34 3.34 3.34 0
+# 0 3.34 3.34 3.34 3.34 3.34 3.34 3.34 3.34 0
+# 0 3.34 3.34 3.34 3.34 3.34 3.34 3.34 3.34 0
+# 0 1 1 1 1 1 1 1 1 0
+# 0 1 1 1 1 1 1 1 1 0
+# 0 1 1 1 1 1 1 1 1 0
+# 0 1 1 1 1 1 1 1 1 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0  300.0
+# 1  1.0
+# 0 0 0 0 0 0 0 0 0 0 
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 1  1.0
+# 0 0 0 0 0 0 0 0 0 0 
+# 0 1 1 1 1 1 1 1 1 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 0 0 0 0 0 0 0 0 0
+# 0 2 2 2 2 2 2 2 2 0
+# 0 0 0 0 0 0 0 0 0 0
+#   1      100.00    0.00      0.00 0
+#   2      200.00    0.00      0.00 0
+# 1    300.00
+#  0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+#  0.0 2.0 2.0 2.0 2.0 2.0 2.0 2.0 2.0 0.0
+#  0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+#  0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+#  0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+#  0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+#  0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+#  0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+#  0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+#  0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+#  0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+#  0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+#  0.0 1.8 1.79 1.78 1.77 1.76 1.75 1.74 1.73 0.0
+#  0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+# 0  0.0
+# ```
+
+# In[3]:
+
+
+get_ipython().system(' cp ./armmoc/bin/usgsmoc.exe ./')
+get_ipython().system(' cp ./armmoc/example08/MOC08.INP ./')
+get_ipython().system(' cp ./armmoc/example08/moc08.sup ./')
+get_ipython().system(' ./usgsmoc.exe < moc08.sup ;')
+# next line lists output file on server - probably want to use an editor to parse the file for map making
+get_ipython().system(' cat MOC08-TRY1.OUT ;')
+
 
 # <hr>
-# ## Example 3
+# 
+# ## Example 3 (Future Semester)
 # 
 # The town of Tivoli is planning to expand its water supply by constructing a well in an aquifer consisting of sandy silt.
 # The well is designed to pump continuously at a rate of 30,000 cubic meters per day.
@@ -552,7 +663,7 @@
 # 
 # The script below will run the model (on my ARM machine)
 
-# In[1]:
+# In[4]:
 
 
 get_ipython().system(' cp ./armmoc/bin/usgsmoc.exe ./')
@@ -560,7 +671,7 @@ get_ipython().system(' cp ./armmoc/example03/MOC03.INP ./')
 get_ipython().system(' cp ./armmoc/example03/moc03.sup ./')
 get_ipython().system(' ./usgsmoc.exe < moc03.sup ;')
 # next line lists output file on server - probably want to use an editor to parse the file for map making
-#! cat MOC03-TRY1.OUT ;
+get_ipython().system(' cat MOC03-TRY1.OUT ;')
 
 
 # In[ ]:
