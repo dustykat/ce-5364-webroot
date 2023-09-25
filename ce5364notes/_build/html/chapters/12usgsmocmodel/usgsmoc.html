@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -272,6 +274,11 @@
      ARM7/AARCH 64 Build
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dprw.html">
+     Discrete Particle Random Walk (Future Semester)
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -393,6 +400,53 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-a-model">
+   Setting up a model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-1">
+   Example 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conceptual-model">
+     Conceptual model:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#case-1">
+       Case (1)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#case-2">
+       Case (2)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-2-future">
+   Example 2 (Future)
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -407,6 +461,522 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>I choose MOC instead of MODFLOW/MODPATH because the program is easier to understand and get working.  Accessing MODFLOW using FloPy or ModelMUSE is far more challenging than the pretty pictures on the web-a-rama suggest. You can examine how to install MODFLOW at <a class="reference external" href="http://54.243.252.9/ce-4363-webroot/ce4363notes/lessons/groundwatermodels/installing.pdf">MODFLOW on a JupyterHub</a> and how to access using <a class="reference external" href="http://54.243.252.9/ce-4363-webroot/ce4363notes/_build/html/lessons/groundwatermodels/15gwmodels-examples.html">MODFLOW using Jupyter Example(s)</a></p>
+</div>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>MOC is based on similar concepts to the <a class="reference external" href="https://www.osti.gov/biblio/7148095">DPRW</a>  model but has some subtle differences, the primary difference is in MOC particles have the attribute of concentration rather than mass.</p>
+<p>USGS-MOC is actually two models:</p>
+<ul class="simple">
+<li><p>Groundwater flow model</p></li>
+<li><p>Contaminant transport model</p></li>
+</ul>
+<p>USGS-MOC solves two systems of equations:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\nabla \cdot (T \nabla(h) ) = S\frac{\partial h}{\partial t} + W\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\nabla \cdot (bD\nabla(C) - bCV) -\frac{C`W}{n} - \lambda C = Rb \frac{\partial C}{\partial t}\)</span></p></li>
+</ol>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(W = Q - \frac{K_z}{m}(H_s-h)\)</span>; (a pumping and leakage term)</p></li>
+<li><p><span class="math notranslate nohighlight">\(C'\)</span> = concentration in source or sink fluid</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The documentation states that it only models non-reactive transport but modifications since 1980 allow for first order decay and reversible linear instantaneous adsorbtion.:::</p>
+</div>
+<p>The version used in the class models:</p>
+<ul class="simple">
+<li><p>Advective transport</p></li>
+<li><p>Dispersive transport</p></li>
+<li><p>Fluid sources/sinks</p></li>
+<li><p>Simple decay and fluid/solid reaction terms</p></li>
+</ul>
+<p>Assuming that gradients of fluid density, viscosity, and temperature do not affect the velocity distribution.  There is a version called MOCDense that does consider density as part of the transport process.</p>
+<p>MOC can be used as a building block for a multi-component reactive system (with some effort!).  This approach was used to create BIOPLUME-II/III programs (pp 269-273).</p>
+<p><strong>Groundwater Flow Conceptualizations</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial }{\partial x} (T_{xx} \frac{\partial h}{\partial x}) + \frac{\partial }{\partial x} (T_{yy} \frac{\partial h}{\partial y}) =  S\frac{\partial h}{\partial t}  + Q(x,y,t) - \frac{K_z(x,y)}{m}(H_s(x,y,t)-h(x,y,t))\]</div>
+<p><img alt="" src="../../_images/celldiagram.png" /></p>
+<p>Velocity Field in Aquifer:</p>
+<div class="math notranslate nohighlight">
+\[V_x = -\frac{K_{xx}}{n} \frac{\partial h}{\partial x} \]</div>
+<div class="math notranslate nohighlight">
+\[V_y = -\frac{K_{yy}}{n} \frac{\partial h}{\partial y} \]</div>
+<p>where        <span class="math notranslate nohighlight">\(K_{ii}  = \frac{T_{ii}}{b}\)</span></p>
+<p>Assumptions implicit in MOC include:</p>
+<ul class="simple">
+<li><p>Darcy’s law is valid.</p></li>
+<li><p>Hydraulic head is the significant driving mechanism.</p></li>
+<li><p>Porosity is uniform in space and constant in time.</p></li>
+<li><p>Hydraulic conductivity is constant in time.</p></li>
+<li><p>Gradients of fluid density, viscosity, and temperature do not affect the fluid velocity (MOC-Dense relaxes these requirements).</p></li>
+<li><p>No chemical reactions (except decay and LEA).</p></li>
+<li><p>Ionic and molecular diffusion are negligible compared to hydrodynamic dispersion.</p></li>
+<li><p>Vertical variations in head and concentration are negligible.</p></li>
+<li><p>Aquifer is homogeneous and isotropic with respect to the dispersivity field.</p></li>
+</ul>
+<p><strong>Numerical Methods:</strong></p>
+<p><em>Flow</em> equation assumes coordinate axes are aligned with principal directions of hydraulic anisotropy. An implicit finite difference solution by ADI method is used to compute <code class="docutils literal notranslate"><span class="pre">head(x,y,t)</span></code></p>
+<p>Numerical differentiation by centered finite difference to compute <code class="docutils literal notranslate"><span class="pre">grad(head(x,y,t)$</span></code></p>
+<p><em>Transport</em> solves the diffusion equation along a characteristic line. Particle tracking is used to determine the characteristic trajectory; produces a system of ODE’s along the characteristics.</p>
+<p>Reuse of the ADI method on a finite differences is used to solve system of parabolic ODE’s for concentration centered at computation particle. Superposition is then applied to recover concentration (for all particles tracked). The result is  <code class="docutils literal notranslate"><span class="pre">C(x,y,t)</span></code></p>
+<p>USGS-MOC (Method of Characteristics) Model</p>
+<ul class="simple">
+<li><p>Particles have concentrations instead of mass (different from DPRW)</p></li>
+<li><p>Average concentration of a cell is:<span class="math notranslate nohighlight">\(C_j = \sum_{i=1}^{NP} \frac{C_i^j}{NP}\)</span> where <span class="math notranslate nohighlight">\(C_i\)</span>  is the concentration of the <span class="math notranslate nohighlight">\(i\)</span>-th particle located in cell <span class="math notranslate nohighlight">\(j\)</span>.</p></li>
+<li><p>A particle moves under advective forces the same way as in DPRW (ie.  <span class="math notranslate nohighlight">\(x_{pk}  =x_{pk-1}   + \Delta t V_x [x_{pk} ; t]\)</span>)</p></li>
+<li><p>Velocities  (local) are computed using bi-linear interpolation.</p></li>
+</ul>
+<p>Bi-Linear Interpolation (MOC)</p>
+<p><span class="math notranslate nohighlight">\(V_x^p  = \frac{V_x(i,j) + V_x(i,j+1) + V_x(i+1/2,j) + V_x(i+1/2,j+1)}{4}\)</span></p>
+<p><span class="math notranslate nohighlight">\(V_y^p  = \frac{V_y(i,j) + V_y(i+1,j) + V_y(i,j+1/2) + V_y(i+1,j+1/2)}{4}\)</span></p>
+<p>see pg. 5 of documentation for more detail.</p>
+<p><img alt="" src="../../_images/particleV.png" /></p>
+<p>After advective move of particles dispersive spreading is computed from</p>
+<div class="math notranslate nohighlight">
+\[\frac{DC}{Dt} = \frac{1}{b}  [ \frac{\partial}{\partial x_i}( bD_{ij} \frac{\partial C}{\partial x_{j}} )  ]~~\text{for} i=1,2; j=1,2\]</div>
+<p>where <span class="math notranslate nohighlight">\(\frac{DC}{Dt}\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Material_derivative">material (or total derivative)</a>.</p>
+<p>This equation has same structure as flow equation and is calculated using similar methods.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Equation 39 in the documentation is explicitly solved during the particle movement phase. :::</p>
+<p>Lastly, concentrations are adjusted for decay in a manner analogous to DPRW (or simply using 1st-order decay). Read pp 11-12 about stability.</p>
+<p>Boundary conditions: constant flux and constant head.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The model requires a no-flow boundary around the modeled area and this requirement must be included when constructing the input file. :::</p>
+<p>Read pp 14-19 carefully.</p>
+</div>
+</div>
+</div>
+<div class="section" id="setting-up-a-model">
+<h2>Setting up a model<a class="headerlink" href="#setting-up-a-model" title="Permalink to this headline">¶</a></h2>
+<p>As users we have to translate the conceptual model into input files for the code to solve.</p>
+<p><img alt="" src="../../_images/modelingworkflow.png" /></p>
+<p><em>USGS MOC Data Files</em></p>
+<p>The data file contains records (cards, rows) that have fields (groups of columns) that tell MOC what to simulate.</p>
+<p>Consider “input file” below:</p>
+<p><img alt="" src="../../_images/inputfile.png" /></p>
+<p>The first record for MOC is a title record that can contain anything you want - usually it is filled with some useful title:
+“EXAMPLE PROBLEM #3 – TEST PROBLEM FOR ….”
+Remaining records describe the conceptual model to the computer.</p>
+<p>The figure below examines some of the input file structure</p>
+<p><img alt="" src="../../_images/inputfile2.png" /></p>
+<p><strong>Record 2</strong> contains 18 items as follows:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NTIM</span></code> – time steps/stress period</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NPMP</span></code> – # stress periods</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NX</span></code> – x direction mesh size</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NY</span></code> – y direction mesh size</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NPMAX</span></code> – maximum particles in system (use 3200)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NPNT</span></code> – time steps for printing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NITP</span></code> – Use 7</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NUMOBS</span></code> – number of observations (5 max unless you recompile code)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ITMAX</span></code> – Iterations for ADI (Use 100 for first guess)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NREC</span></code> – # pumping/recharge wells</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NPTPND</span></code> – # particles per node (Use 9 unless too slow, use 4)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NCODES</span></code> – up to 10, used to define IC’s &amp; BC’s</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NPNTMV</span></code> – usually use 0, example uses 10.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NPNTVL</span></code> – usually use 1 or 2.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NPNTD</span></code> – see documentation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NPDELC</span></code> – see documentation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NPNCHV</span></code> – use 0 (unless you have compiler, and know what punching to a “unit” means)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NREACT</span></code> – 0 non-reactive system; 1 otherwise.</p></li>
+</ol>
+<p><strong>Record 3</strong> contains 12 items as follows:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PINT</span></code> – pump period (years)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TOL</span></code> – stopping criterion - keep fairly small 0.0001</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POROS</span></code> – Porosity</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BETA</span></code> – Longitudinal dispersivity in feet</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">S</span></code> – storage coefficient</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TIMX</span></code> – time step multiplier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TINIT</span></code> – Initial time step</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">XDEL</span></code> – delta x</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">YDEL</span></code> – delta y</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DLTRAT</span></code> - transverse dispersivity/longitudinal 	dispersivity</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CELDIS</span></code> – see documentation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ANFCTR</span></code> – ratio of transmissivity in y direction to transmissivity in x direction (<span class="math notranslate nohighlight">\(\frac{T_x}{T_y}\)</span>).</p></li>
+</ol>
+<p><strong>Record(s) 4 - NREC</strong></p>
+<p>Various items, like head arrays, transmissivity arrays and similar data structures.</p>
+<p>See documentation.</p>
+</div>
+<div class="section" id="example-1">
+<h2>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h2>
+<p>Alluvial valley with lakes as shown. Mountains are hydrogeologic barriers. Region is arid.</p>
+<p>Problem: Fuel spill at parking area near lake introduces contamination at 100 mg/l over area shown; How will plume spread over time?</p>
+<p><img alt="" src="../../_images/example1-area.png" /></p>
+<div class="section" id="conceptual-model">
+<h3>Conceptual model:<a class="headerlink" href="#conceptual-model" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Assume 2D confined flow approximation is valid (small drawdowns compared to saturated thickness)</p></li>
+<li><p>No pumping</p></li>
+<li><p>Recharge = Evaporation (so net rainfall to aquifer is negligible)</p></li>
+<li><p>Mountains are no-flow boundaries.</p></li>
+</ul>
+<p>Translate into a computational grid:</p>
+<p><img alt="" src="../../_images/concept2grid.png" /></p>
+<p>Using the sketch above we can construct an input file for USGS-MOC to study the question.</p>
+<p>Input Data - The conceptual model can be entered as
+(1) No dispersion
+(2) Dispersion</p>
+<div class="section" id="case-1">
+<h4>Case (1)<a class="headerlink" href="#case-1" title="Permalink to this headline">¶</a></h4>
+<p><img alt="" src="../../_images/moco1-1.png" /></p>
+<p><img alt="" src="../../_images/moco1-2.png" /></p>
+<p>Heres what the file looks like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Example</span> <span class="mi">1</span> <span class="n">From</span> <span class="n">Notes</span> <span class="o">--</span> <span class="n">Zero</span> <span class="n">Dispersion</span> <span class="n">Simulation</span> 
+<span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">3200</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>   
+<span class="mf">2.0</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.30</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">900.0</span><span class="p">,</span><span class="mf">900.0</span><span class="p">,</span><span class="mf">0.30</span><span class="p">,</span><span class="mf">0.49</span><span class="p">,</span><span class="mf">1.0</span>
+<span class="mi">5</span><span class="p">,</span><span class="mi">5</span>                        <span class="n">Observation</span> <span class="n">Well</span>
+<span class="mi">0</span>  <span class="mf">0.1</span>                     <span class="n">Transmissivity</span>
+<span class="mi">0</span>  <span class="mf">20.0</span>                    <span class="n">Thickness</span>
+<span class="mi">0</span>  <span class="mf">0.0</span>                     <span class="n">Recharge</span>
+<span class="mi">1</span>  <span class="mf">1.0</span>                     <span class="n">Boundary</span> <span class="ow">and</span> <span class="n">I</span><span class="o">/</span><span class="n">C</span> <span class="n">array</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>              
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">1</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mi">0</span>        <span class="n">Leakance</span> <span class="n">terms</span> <span class="n">at</span> <span class="n">special</span> <span class="n">nodes</span>
+<span class="mi">2</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mi">0</span>
+<span class="mi">1</span>  <span class="mf">100.0</span>       <span class="n">initial</span> <span class="n">head</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span> 
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span> <span class="o">.</span><span class="mi">8</span> <span class="o">.</span><span class="mi">8</span> <span class="o">.</span><span class="mi">8</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">1</span>  <span class="mf">100.0</span>       <span class="n">initial</span> <span class="n">concentration</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span> 
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+
+<span class="mf">2.65</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span>                     <span class="n">rho</span><span class="o">-</span><span class="n">s</span><span class="p">,</span><span class="n">Kd</span><span class="p">,</span><span class="k">lambda</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/12usgsmocmodel/winmoc/example1/MOC01.INP">MOC01.INP (Windows)</a></p>
+<p>We can use this data file for case 2 by changing the longitudinal dispersivity term from 0 to 90 (or whatever mixing length is appropriate).</p>
+</div>
+<div class="section" id="case-2">
+<h4>Case (2)<a class="headerlink" href="#case-2" title="Permalink to this headline">¶</a></h4>
+<p>Modify above</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Example</span> <span class="mi">1</span> <span class="n">From</span> <span class="n">Notes</span> <span class="o">--</span> <span class="n">Non</span><span class="o">-</span><span class="n">Zero</span> <span class="n">Dispersion</span> <span class="n">Simulation</span> 
+<span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">3200</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>   
+<span class="mf">2.0</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.30</span><span class="p">,</span><span class="mf">90.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">900.0</span><span class="p">,</span><span class="mf">900.0</span><span class="p">,</span><span class="mf">0.30</span><span class="p">,</span><span class="mf">0.49</span><span class="p">,</span><span class="mf">1.0</span>
+<span class="mi">5</span><span class="p">,</span><span class="mi">5</span>                        <span class="n">Observation</span> <span class="n">Well</span>
+<span class="mi">0</span>  <span class="mf">0.1</span>                     <span class="n">Transmissivity</span>
+<span class="mi">0</span>  <span class="mf">20.0</span>                    <span class="n">Thickness</span>
+<span class="mi">0</span>  <span class="mf">0.0</span>                     <span class="n">Recharge</span>
+<span class="mi">1</span>  <span class="mf">1.0</span>                     <span class="n">Boundary</span> <span class="ow">and</span> <span class="n">I</span><span class="o">/</span><span class="n">C</span> <span class="n">array</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>              
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">1</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mi">0</span>        <span class="n">Leakance</span> <span class="n">terms</span> <span class="n">at</span> <span class="n">special</span> <span class="n">nodes</span>
+<span class="mi">2</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mi">0</span>
+<span class="mi">1</span>  <span class="mf">100.0</span>       <span class="n">initial</span> <span class="n">head</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span> 
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span> <span class="o">.</span><span class="mi">8</span> <span class="o">.</span><span class="mi">8</span> <span class="o">.</span><span class="mi">8</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">1</span>  <span class="mf">100.0</span>       <span class="n">initial</span> <span class="n">concentration</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span> 
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+
+<span class="mf">2.65</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span>                     <span class="n">rho</span><span class="o">-</span><span class="n">s</span><span class="p">,</span><span class="n">Kd</span><span class="p">,</span><span class="k">lambda</span>
+</pre></div>
+</div>
+<p>The computer software can also be used to model vertical aquifer slices and one-dimensional transport pg. 35 of the software documentation contains information on how to do these tasks.</p>
+</div>
+</div>
+</div>
+<div class="section" id="example-2-future">
+<h2>Example 2 (Future)<a class="headerlink" href="#example-2-future" title="Permalink to this headline">¶</a></h2>
+<p>You wish to dispose of a liquid waste by injecting into an aquifer that is also used for water supply.</p>
+<p>Wells W-1,W-2,W-3 are water supply wells.</p>
+<p>The aquifer is 300 ft thick.</p>
+<p><img alt="" src="../../_images/example2-area.png" /></p>
+<p>The hydraulic conductivity in each zone has been measured and is:</p>
+<ul class="simple">
+<li><p>Zone 1:   K = 0.472 cm/sec</p></li>
+<li><p>Zone 2:   K = 0.157 cm/sec</p></li>
+<li><p>Zone 3:   K = 0.047 cm/sec</p></li>
+</ul>
+<p>Aquifer dispersivities are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha_l\)</span>  = 50 m  <br></p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha_t\)</span>  = 25 m</p></li>
+</ul>
+<p>The aquifer porosity = 20%</p>
+<p>The drinking water wells supply water at:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Well</p></th>
+<th class="head"><p>Pumping rate</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>W-1</p></td>
+<td><p>30 cfs</p></td>
+</tr>
+<tr class="row-odd"><td><p>W-2</p></td>
+<td><p>_9 cfs</p></td>
+</tr>
+<tr class="row-even"><td><p>W-3</p></td>
+<td><p>_9 cfs</p></td>
+</tr>
+</tbody>
+</table>
+<p>Your company, Waste Injection Safety Kompany, Inc. has an operating permit to inject at any of the three sites I-1,I-2, or I-3.
+The permit states that the concentration for purple akenpucky must not exceed 250 mg/l at the water production wells.</p>
+<p>Your company plans to inject (WISK away the purple akenpucky) the waste at 30 cfs at a concentration of 1000 mg/l at site I-3.</p>
+<p>You want to determine:</p>
+<ol class="simple">
+<li><p>Will you voliate your permit?</p></li>
+<li><p>If not, can you inject more waste?</p></li>
+<li><p>What is the general overall assimilative capacity of the aquifer system for purple ackenpucky if it is non-reactive?</p></li>
+</ol>
+<p>Methods:</p>
+<ol class="simple">
+<li><p>Construct a flow and transport model, determine steady state concentrations at w-1,w-2, and w-3.</p></li>
+<li><p>Run the simulation with different waste loads, if you can do better than 30 cfs at 1000 mg/l you get a promotion.</p></li>
+<li><p>Find the maximum mass that can be injected and meet the permit - this is the “regulatory assimilative capacity of the system”</p></li>
+</ol>
+<p>Exercise:</p>
+<p>Your regulatory agency is trying to use economic incentives to manage the aquifer system for both a water resource and a waste disposal resource.</p>
+<p>The permit currently reads:</p>
+<blockquote>
+<div><p>“You may inject purple akenpucky at wells I-1,I-2, or I-3 and the concentration may not exceed 250 mg/l at the supply wells, W-1, W-2, and W-3. Non-compliance will result in fines of:</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>$25,000/day when blended drinking water from all three wells is less than 250 mg/l;</p></li>
+<li><p>$250,000/day when blended drinking water from all three wells is less than 1000 mg/l (but bigger than 250 mg/l); and</p></li>
+<li><p>$1,000,000/day otherwise.”</p></li>
+</ul>
+<p>The profit on ackenpucky disposal by injection is $130/mg disposed.</p>
+<ul class="simple">
+<li><p>Is the penalty structure adequate from a microeconomic point of view to prevent permit violation?</p></li>
+<li><p>What if the profit were doubled?  Halved?</p></li>
+</ul>
+<hr>
+## Example 3
+<p>The town of Tivoli is planning to expand its water supply by constructing a well in an aquifer consisting of sandy silt.
+The well is designed to pump continuously at a rate of 30,000 cubic meters per day.
+The well construction was opposed by the Guadelupe Delta Conservation Authority claiming that the well would significantly reduce the groundwater discharge into the conservation area, thereby upsetting the salinity balance of the region.</p>
+<p>The conservation area has a southern border that is in contact with the bay with an average salinity of 10,000 ppm.
+The town planners claim that a groundwater divide located near the valley center will prevent any adverse change in flow to the delta, and thus have little effect on the salinity throughout the delta area.</p>
+<p><img alt="" src="../../_images/tivoli.png" /></p>
+<p>You are tasked with constructing a two-dimensional plan view model of the area between the river and the delta prior to pumping using the information supplied below.</p>
+<p><img alt="" src="../../_images/tivoli2.png" /></p>
+<ol class="simple">
+<li><p>Use the model to determine pre-development steady-state head distribution in the system.  Ignore any concentration outputs.  Use computed steady-state head from supplied boundary conditions as initial head in subsequent calculations</p></li>
+</ol>
+<blockquote>
+<div><p>Step 1: Simulate with given conditions, get steady state heads.<br>
+Step 2: Copy these heads into the initial head arrayposition in the inout file - repeat the simulation.<br>
+Step 3: Continue run-copy-run until produce near-zero drawdown; this last run is an equilibrum state.<br></p>
+</div></blockquote>
+<ol class="simple">
+<li><p>Use the model to determine the average long-term salinity levels in the aquifer (the reported data values should reasonably agree with these long-term calculated values).  Prepare a contour map of groundwater heads and a contour map of salinity.  Calculate the area of acceptable habitatbetween the valley-conservation area interface and the bay. The authority uses a groundwater salinity value of 100 ppm as the upper limit of acceptable salinity for useful habitat.  It is generally accepted that the groundwater and surface water in the conservation area are (more or less) in chemical equilibrium.</p></li>
+<li><p>Use the model to determine the salinity in the pumped water assuming Mission Creek is fresh water and Guadelupe bay has a salinity of 10,000 ppm.  Prepare a contour map of groundwater heads and a contour map of salinity.  If the acceptable salinity is 10 ppm, is the water acceptable to use as drinking water?</p></li>
+<li><p>Use the model to support or refute the claim of the conservation authority that the reduced groundwater inflow will significantly decrease available habitat.  Determine the maximum acceptable pumping rate that can be used if 50% habitat loss is acceptable.  Determine the maximum acceptable pumping rate that can be used if 25% habitat loss is acceptable.</p></li>
+</ol>
+<p>Tasks:</p>
+<ol class="simple">
+<li><p>Convert all units to feet and seconds as used in the version of USGS-MOC</p></li>
+<li><p>Build in input file of necessary geometry</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GUADLUPE</span> <span class="n">DELTA</span> <span class="n">MODEL</span> <span class="mi">20</span><span class="n">ROWS</span> <span class="mi">11</span><span class="n">COLUMNS</span> <span class="n">STEADY</span> <span class="n">STATE</span>
+<span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">3200</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>   
+<span class="mi">1000</span><span class="p">,</span><span class="mf">0.0001</span><span class="p">,</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">1000.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1332.0</span><span class="p">,</span><span class="mf">2100.0</span><span class="p">,</span><span class="mf">0.10</span><span class="p">,</span><span class="mf">0.49</span><span class="p">,</span><span class="mf">1.0</span>
+<span class="mi">6</span>  <span class="mi">6</span>                          
+<span class="mi">6</span>  <span class="mi">12</span>                         
+<span class="mi">6</span>  <span class="mi">18</span>
+<span class="mi">5</span>  <span class="mi">6</span>  <span class="mf">0.0E-03</span> <span class="mf">0.0</span>             <span class="n">Pumping</span> <span class="n">Well</span> <span class="p">(</span><span class="nb">set</span> <span class="n">to</span> <span class="mf">8.5e-03</span><span class="p">)</span>
+<span class="mi">1</span>  <span class="mf">0.0035</span>                     <span class="n">Transmissivity</span> <span class="n">ft</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="n">sec</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>              
+<span class="mi">0</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mf">2.5</span> <span class="mf">2.5</span> <span class="mf">2.5</span> <span class="mf">2.5</span> <span class="mf">2.5</span> <span class="mf">2.5</span> <span class="mf">2.5</span> <span class="mf">2.5</span> <span class="mf">2.5</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">1</span>  <span class="mf">90.0</span>                     <span class="n">Thickness</span> <span class="p">(</span><span class="n">ft</span><span class="p">)</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>              
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">1</span>  <span class="o">-</span><span class="mf">3.7E-8</span>                     <span class="n">Recharge</span> <span class="n">array</span> <span class="p">(</span><span class="n">ft</span><span class="o">/</span><span class="n">sec</span><span class="p">)</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>              
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">1</span>  <span class="mf">1.0</span>                     <span class="n">Boundary</span> <span class="ow">and</span> <span class="n">I</span><span class="o">/</span><span class="n">C</span> <span class="n">array</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>              
+<span class="mi">0</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">1</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">10000.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mi">0</span>        <span class="n">Leakance</span> <span class="n">terms</span> <span class="n">at</span> <span class="n">special</span> <span class="n">nodes</span>
+<span class="mi">2</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.0000</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mi">0</span>
+<span class="mi">1</span>  <span class="mf">1.0</span>                    <span class="n">Initial</span> <span class="n">Head</span> <span class="p">(</span><span class="n">ft</span><span class="p">)</span>
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+<span class="mi">0</span>   <span class="mi">6</span>   <span class="mi">6</span>   <span class="mi">6</span>   <span class="mi">6</span>   <span class="mi">6</span>   <span class="mi">6</span>   <span class="mi">6</span>   <span class="mi">6</span>   <span class="mi">6</span>   <span class="mi">0</span>
+<span class="mi">0</span>   <span class="mi">7</span>   <span class="mi">7</span>   <span class="mi">7</span>   <span class="mi">7</span>   <span class="mi">7</span>   <span class="mi">7</span>   <span class="mi">7</span>   <span class="mi">7</span>   <span class="mi">7</span>   <span class="mi">0</span>
+<span class="mi">0</span>   <span class="mi">9</span>   <span class="mi">9</span>   <span class="mi">9</span>   <span class="mi">9</span>   <span class="mi">9</span>   <span class="mi">9</span>   <span class="mi">9</span>   <span class="mi">9</span>   <span class="mi">9</span>   <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>   <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>   <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">11</span>  <span class="mi">11</span>  <span class="mi">11</span>  <span class="mi">11</span>  <span class="mi">11</span>  <span class="mi">11</span>  <span class="mi">11</span>  <span class="mi">11</span>  <span class="mi">11</span>   <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>   <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>   <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>   <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>   <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>   <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>  <span class="mi">12</span>   <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">11</span>  <span class="mi">11</span>  <span class="mi">11</span>  <span class="mi">11</span>  <span class="mi">11</span>  <span class="mi">11</span>  <span class="mi">11</span>  <span class="mi">11</span>  <span class="mi">11</span>   <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>   <span class="mi">0</span>
+<span class="mi">0</span>   <span class="mi">8</span>   <span class="mi">8</span>   <span class="mi">8</span>   <span class="mi">8</span>   <span class="mi">8</span>   <span class="mi">8</span>   <span class="mi">8</span>   <span class="mi">8</span>   <span class="mi">8</span>   <span class="mi">0</span>
+<span class="mi">0</span>   <span class="mi">7</span>   <span class="mi">7</span>   <span class="mi">7</span>   <span class="mi">7</span>   <span class="mi">7</span>   <span class="mi">7</span>   <span class="mi">7</span>   <span class="mi">7</span>   <span class="mi">7</span>   <span class="mi">0</span>
+<span class="mi">0</span>   <span class="mi">5</span>   <span class="mi">5</span>   <span class="mi">5</span>   <span class="mi">5</span>   <span class="mi">5</span>   <span class="mi">5</span>   <span class="mi">5</span>   <span class="mi">5</span>   <span class="mi">5</span>   <span class="mi">0</span>
+<span class="mi">0</span>   <span class="mi">3</span>   <span class="mi">3</span>   <span class="mi">3</span>   <span class="mi">3</span>   <span class="mi">3</span>   <span class="mi">3</span>   <span class="mi">3</span>   <span class="mi">3</span>   <span class="mi">3</span>   <span class="mi">0</span>
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+<span class="mi">1</span>  <span class="mf">1.0</span>                            <span class="n">initial</span> <span class="n">concentration</span> <span class="p">(</span><span class="n">pph</span><span class="p">)</span>
+<span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>
+<span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>
+<span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>
+<span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>
+<span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>
+<span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>
+<span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>
+<span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>
+<span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>
+<span class="mi">0</span>    <span class="mi">1</span>    <span class="mi">1</span>    <span class="mi">1</span>    <span class="mi">1</span>    <span class="mi">1</span>    <span class="mi">1</span>    <span class="mi">1</span>    <span class="mi">1</span>    <span class="mi">1</span>    <span class="mi">0</span>
+<span class="mi">0</span>    <span class="mi">5</span>    <span class="mi">5</span>    <span class="mi">5</span>    <span class="mi">5</span>    <span class="mi">5</span>    <span class="mi">5</span>    <span class="mi">5</span>    <span class="mi">5</span>    <span class="mi">5</span>    <span class="mi">0</span>
+<span class="mi">0</span>    <span class="mi">7</span>    <span class="mi">7</span>    <span class="mi">7</span>    <span class="mi">7</span>    <span class="mi">7</span>    <span class="mi">7</span>    <span class="mi">7</span>    <span class="mi">7</span>    <span class="mi">7</span>    <span class="mi">0</span>
+<span class="mi">0</span>   <span class="mi">10</span>   <span class="mi">10</span>   <span class="mi">10</span>   <span class="mi">10</span>   <span class="mi">10</span>   <span class="mi">10</span>   <span class="mi">10</span>   <span class="mi">10</span>   <span class="mi">10</span>    <span class="mi">0</span>
+<span class="mi">0</span>   <span class="mi">13</span>   <span class="mi">13</span>   <span class="mi">13</span>   <span class="mi">13</span>   <span class="mi">13</span>   <span class="mi">13</span>   <span class="mi">13</span>   <span class="mi">13</span>   <span class="mi">13</span>    <span class="mi">0</span>
+<span class="mi">0</span>   <span class="mi">20</span>   <span class="mi">20</span>   <span class="mi">20</span>   <span class="mi">20</span>   <span class="mi">20</span>   <span class="mi">20</span>   <span class="mi">20</span>   <span class="mi">20</span>   <span class="mi">20</span>    <span class="mi">0</span>
+<span class="mi">0</span>   <span class="mi">39</span>   <span class="mi">39</span>   <span class="mi">39</span>   <span class="mi">39</span>   <span class="mi">39</span>   <span class="mi">39</span>   <span class="mi">39</span>   <span class="mi">39</span>   <span class="mi">39</span>    <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">127</span>  <span class="mi">127</span>  <span class="mi">127</span>  <span class="mi">127</span>  <span class="mi">127</span>  <span class="mi">127</span>  <span class="mi">127</span>  <span class="mi">127</span>  <span class="mi">127</span>    <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">520</span>  <span class="mi">520</span>  <span class="mi">520</span>  <span class="mi">520</span>  <span class="mi">520</span>  <span class="mi">520</span>  <span class="mi">520</span>  <span class="mi">520</span>  <span class="mi">520</span>    <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1547</span> <span class="mi">1547</span> <span class="mi">1547</span> <span class="mi">1547</span> <span class="mi">1547</span> <span class="mi">1547</span> <span class="mi">1547</span> <span class="mi">1547</span> <span class="mi">1547</span>    <span class="mi">0</span>
+<span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>   
+<span class="mi">1000</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+<span class="mi">5</span>  <span class="mi">6</span>  <span class="mf">0.0E-03</span> <span class="mf">0.0</span>             <span class="n">Pumping</span> <span class="n">Well</span> <span class="p">(</span><span class="nb">set</span> <span class="n">to</span> <span class="mf">8.5e-03</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The script below will run the model (on my ARM machine)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> cp ./armmoc/bin/usgsmoc.exe ./
+<span class="o">!</span> cp ./armmoc/example03/MOC03.INP ./
+<span class="o">!</span> cp ./armmoc/example03/moc03.sup ./
+<span class="o">!</span> ./usgsmoc.exe &lt; moc03.sup <span class="p">;</span>
+<span class="c1"># next line lists output file on server - probably want to use an editor to parse the file for map making</span>
+<span class="c1">#! cat MOC03-TRY1.OUT ;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="toctree-wrapper compound">
 </div>

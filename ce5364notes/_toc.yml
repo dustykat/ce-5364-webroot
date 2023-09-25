@@ -39,6 +39,7 @@ chapters:
   sections:
   - file: chapters/12usgsmocmodel/winmoc
   - file: chapters/12usgsmocmodel/armmoc
+  - file: chapters/12usgsmocmodel/dprw
 - file: chapters/16siteinvestigation/siteinvestigation
 - file: chapters/17unsaturatedzone/unsaturated
 - file: chapters/22remediation/remediation
