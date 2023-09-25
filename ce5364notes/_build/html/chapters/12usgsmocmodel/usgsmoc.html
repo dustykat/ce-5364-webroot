@@ -551,15 +551,15 @@
 <p>This equation has same structure as flow equation and is calculated using similar methods.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Equation 39 in the documentation is explicitly solved during the particle movement phase. :::</p>
+<p>Equation 39 in the documentation is explicitly solved during the particle movement phase.</p>
+</div>
 <p>Lastly, concentrations are adjusted for decay in a manner analogous to DPRW (or simply using 1st-order decay). Read pp 11-12 about stability.</p>
 <p>Boundary conditions: constant flux and constant head.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The model requires a no-flow boundary around the modeled area and this requirement must be included when constructing the input file. :::</p>
+<p>The model requires a no-flow boundary around the modeled area and this requirement must be explicitly included when constructing the input file.</p>
+</div>
 <p>Read pp 14-19 carefully.</p>
-</div>
-</div>
 </div>
 <div class="section" id="setting-up-a-model">
 <h2>Setting up a model<a class="headerlink" href="#setting-up-a-model" title="Permalink to this headline">¶</a></h2>
@@ -613,6 +613,7 @@ Remaining records describe the conceptual model to the computer.</p>
 <p><strong>Record(s) 4 - NREC</strong></p>
 <p>Various items, like head arrays, transmissivity arrays and similar data structures.</p>
 <p>See documentation.</p>
+<hr>
 </div>
 <div class="section" id="example-1">
 <h2>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h2>

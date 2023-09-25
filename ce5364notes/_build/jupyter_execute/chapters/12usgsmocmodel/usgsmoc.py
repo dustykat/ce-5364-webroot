@@ -103,13 +103,17 @@
 # 
 # This equation has same structure as flow equation and is calculated using similar methods. 
 # 
-# :::{note} Equation 39 in the documentation is explicitly solved during the particle movement phase. :::
+# :::{note} 
+# Equation 39 in the documentation is explicitly solved during the particle movement phase. 
+# :::
 # 
 # Lastly, concentrations are adjusted for decay in a manner analogous to DPRW (or simply using 1st-order decay). Read pp 11-12 about stability.
 # 
 # Boundary conditions: constant flux and constant head.
 # 
-# :::{note}  The model requires a no-flow boundary around the modeled area and this requirement must be included when constructing the input file. :::
+# :::{note}  
+# The model requires a no-flow boundary around the modeled area and this requirement must be explicitly included when constructing the input file. 
+# :::
 # 
 # Read pp 14-19 carefully.
 
@@ -179,6 +183,8 @@
 # 
 # 
 
+# <hr>
+# 
 # ## Example 1
 
 # Alluvial valley with lakes as shown. Mountains are hydrogeologic barriers. Region is arid.
