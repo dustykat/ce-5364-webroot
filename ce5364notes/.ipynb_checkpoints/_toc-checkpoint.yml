@@ -42,6 +42,11 @@ chapters:
   - file: chapters/12usgsmocmodel/dprw
 - file: chapters/16siteinvestigation/siteinvestigation
 - file: chapters/17unsaturatedzone/unsaturated
+- file: chapters/19chemflow/chemflow
+  sections:
+  - file: chapters/19chemflow/chemflowwinders
+  - file: chapters/19chemflow/chemflowaarch
+
 - file: chapters/22remediation/remediation
 - file: chapters/26regulatory/regulatory
 
