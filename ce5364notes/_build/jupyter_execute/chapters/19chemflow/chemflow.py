@@ -13,7 +13,10 @@
 # 
 # In theory it should run over the wire (via the mighty Internet) however below I demonstrate download and running on a Windows machine (x86-64) and a Raspberry Pi (aarch64). The install instructions on the web-o-rama are a touch confusing - so the notes below might be of value.  
 
+# ## References
 # 
+# 1. [Chemflo-2000 Manual (local copy)](http://54.243.252.9/ce-5364-webroot/3-Readings/ChemfloManual.pdf)
+# 2. [Chemflo-2000 Manual (EPA website)](https://cfpub.epa.gov/si/si_public_record_report.cfm?Lab=NRMRL&dirEntryId=96478)
 
 # In[ ]:
 

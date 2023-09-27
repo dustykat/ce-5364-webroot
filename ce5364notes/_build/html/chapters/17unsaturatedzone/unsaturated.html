@@ -51,7 +51,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Remediation Technologies" href="../22remediation/remediation.html" />
+    <link rel="next" title="CHEMFLO-2000" href="../19chemflow/chemflow.html" />
     <link rel="prev" title="Site Investigations" href="../16siteinvestigation/siteinvestigation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -264,12 +264,17 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../12usgsmocmodel/winmoc.html">
-     USGS MOC Windows Build
+     Windows Build
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../12usgsmocmodel/armmoc.html">
-     USGS MOC on ARM/AARCH 64
+     ARM7/AARCH 64 Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12usgsmocmodel/dprw.html">
+     Discrete Particle Random Walk (Future Semester)
     </a>
    </li>
   </ul>
@@ -283,6 +288,28 @@
   <a class="current reference internal" href="#">
    Unsaturated Zone Transport
   </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../19chemflow/chemflow.html">
+   CHEMFLO-2000
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../19chemflow/chemflowwinders.html">
+     Windows Install
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../19chemflow/chemflowaarch.html">
+     ARM7/AARCH Install
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../22remediation/remediation.html">
@@ -393,6 +420,63 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#infiltration">
+   Infiltration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tension-suction-capillary-pressure">
+   Tension (suction); Capillary Pressure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#soil-characteristic-curves">
+   Soil Characteristic Curves
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#darcy-s-law-in-unsaturated-flow">
+   Darcy’s Law in Unsaturated Flow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#measurement-of-soil-properties">
+   Measurement of Soil Properties
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relative-permeability">
+     Relative Permeability
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#infiltration-models">
+   Infiltration Models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#green-ampt-model">
+     Green-Ampt Model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -405,6 +489,67 @@
 <h1>Unsaturated Zone Transport<a class="headerlink" href="#unsaturated-zone-transport" title="Permalink to this headline">¶</a></h1>
 <p>Unsaturated Zone Flow and Transport refers to the movement and transport of water and contaminants in the portion of the subsurface that lies above the groundwater table and contains both air and water within the pore spaces of the soil or rock. In this zone, the pore spaces are not completely saturated with water; rather, they contain a mixture of air and water, with the degree of saturation varying depending on factors such as rainfall, evaporation, and soil properties.</p>
 <p>The unsaturated zone, also known as the vadose zone, is a critical component of the hydrological cycle. Water moves through this zone due to gravity, capillary forces, and pressure gradients. It plays a crucial role in processes like soil moisture replenishment, plant root uptake, and filtration of contaminants. Understanding unsaturated zone flow and transport is essential for managing water resources, assessing the risk of groundwater contamination, and optimizing land use practices to protect both water quality and quantity.</p>
+<div class="section" id="infiltration">
+<h2>Infiltration<a class="headerlink" href="#infiltration" title="Permalink to this headline">¶</a></h2>
+<p>The unsaturated zone is the portion of groundwater system where liquids and gasses share the pore space.  The liquid phase may be discontinuous.</p>
+<p><img alt="" src="../../_images/vadose1.png" /></p>
+<p>In the rainfall (or fuel spill) runoff process we can discuss the zone as a microcosm of a hydrologic cycle</p>
+<p><img alt="" src="../../_images/abstractions.png" /></p>
+</div>
+<div class="section" id="tension-suction-capillary-pressure">
+<h2>Tension (suction); Capillary Pressure<a class="headerlink" href="#tension-suction-capillary-pressure" title="Permalink to this headline">¶</a></h2>
+<p><img alt="" src="../../_images/suction1.png" /></p>
+<p>The pressure for water to move upward into the sponge (porous medium) is called the suction pressure, tension, or capillary pressure (almost interchangeably).</p>
+<p>In the next figure - we examine the pore scale conditions in comparison to a capillary tube.</p>
+<p><img alt="" src="../../_images/porepressure.png" /></p>
+<p>The capillary rise (capillary pressure) is related to the pore size - small pores, large negative pressure at a water table.</p>
+<p><img alt="" src="../../_images/suctionpressure.png" /></p>
+</div>
+<div class="section" id="soil-characteristic-curves">
+<h2>Soil Characteristic Curves<a class="headerlink" href="#soil-characteristic-curves" title="Permalink to this headline">¶</a></h2>
+<p>These are relationships between water content and suction pressure.  Unique for each soil, but many, many soils already characterized.  Methods are discussed below.</p>
+<p><img alt="" src="../../_images/soilcharcurve.png" /></p>
+<p>The soil characteristic curve is often modeled using one of several models such as (both these models are incorporated into Chemflo-2000):</p>
+<ol class="simple">
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/BrooksCorey2.PDF"><strong>Local Copy</strong> Brooks, R.H. and Corey, A.T. (1964) Hydraulic Properties of Porous Media. Hydrology Paper, Vol. 3, Colorado State University, Fort Collins. (local copy)</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/291980vGClosed-formKh.pdf"><strong>Local Copy</strong> van Genuchten, M.T. (1980), A Closed-form Equation for Predicting the Hydraulic Conductivity of Unsaturated Soils. Soil Science Society of America Journal, 44: 892-898.</a></p></li>
+</ol>
+</div>
+<div class="section" id="darcy-s-law-in-unsaturated-flow">
+<h2>Darcy’s Law in Unsaturated Flow<a class="headerlink" href="#darcy-s-law-in-unsaturated-flow" title="Permalink to this headline">¶</a></h2>
+<p><img alt="" src="../../_images/unsatdarcy.png" /></p>
+<p><img alt="" src="../../_images/retardseqn.png" /></p>
+</div>
+<div class="section" id="measurement-of-soil-properties">
+<h2>Measurement of Soil Properties<a class="headerlink" href="#measurement-of-soil-properties" title="Permalink to this headline">¶</a></h2>
+<p><img alt="" src="../../_images/soilproperties1.png" /></p>
+<p><img alt="" src="../../_images/soilproperties2.png" /></p>
+<p><img alt="" src="../../_images/soilproperties3.png" /></p>
+<p>Instead of the hanging column a more modern technique uses a <a class="reference external" href="https://www.soilmoisture.com/TEMPE-CELL-2-1-4-DIAM.-6-CM-1-BAR-STD-CERAMIC/">Tempe Cell</a></p>
+<p><img alt="" src="../../_images/soilproperties4.png" /></p>
+<div class="section" id="relative-permeability">
+<h3>Relative Permeability<a class="headerlink" href="#relative-permeability" title="Permalink to this headline">¶</a></h3>
+<p><img alt="" src="../../_images/relativeperm.png" /></p>
+<p><img alt="" src="../../_images/relativeperm2.png" /></p>
+</div>
+</div>
+<div class="section" id="infiltration-models">
+<h2>Infiltration Models<a class="headerlink" href="#infiltration-models" title="Permalink to this headline">¶</a></h2>
+<p><img alt="" src="../../_images/infiltration1.png" /></p>
+<div class="section" id="green-ampt-model">
+<h3>Green-Ampt Model<a class="headerlink" href="#green-ampt-model" title="Permalink to this headline">¶</a></h3>
+<p><img alt="" src="../../_images/green-ampt.png" /></p>
+<p><img alt="" src="../../_images/greenampt2.png" /></p>
+<p><img alt="" src="../../_images/greenampt3.png" /></p>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="https://www.wipp.energy.gov/library/cra/2009_cra/references/Others/Brooks_Corey_1964_Hydraulic_Properties_ERMS241117.pdf">Brooks, R.H. and Corey, A.T. (1964) Hydraulic Properties of Porous Media. Hydrology Paper, Vol. 3, Colorado State University, Fort Collins. (DOE link)</a></p></li>
+<li><p><a class="reference external" href="https://doi.org/10.2136/sssaj1980.03615995004400050002x">van Genuchten, M.T. (1980), A Closed-form Equation for Predicting the Hydraulic Conductivity of Unsaturated Soils. Soil Science Society of America Journal, 44: 892-898.</a></p></li>
+</ol>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -446,10 +591,10 @@
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="../22remediation/remediation.html" title="next page">
+        <a class="right-next" href="../19chemflow/chemflow.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Remediation Technologies</p>
+                <p class="prevnext-title">CHEMFLO-2000</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
