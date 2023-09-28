@@ -2,6 +2,8 @@
 # coding: utf-8
 
 # # Analytical Models with Decay and Adsorbtion
+# 
+# This section is incomplete - saved for future semester
 
 # In[1]:
 
