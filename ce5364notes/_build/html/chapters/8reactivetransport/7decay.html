@@ -91,7 +91,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../intro.html">
-   Welcome to CE 5364 Groundwater Transport Phenomena
+   Preface
   </a>
  </li>
 </ul>
@@ -254,14 +254,68 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../12usgsmocmodel/usgsmoc.html">
    USGS MOC Software
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12usgsmocmodel/winmoc.html">
+     Windows Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12usgsmocmodel/armmoc.html">
+     ARM7/AARCH 64 Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12usgsmocmodel/dprw.html">
+     Discrete Particle Random Walk (Future Semester)
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">
    Site Investigations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17unsaturatedzone/unsaturated.html">
+   Unsaturated Zone Transport
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../19chemflow/chemflow.html">
+   CHEMFLO-2000
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../19chemflow/chemflowwinders.html">
+     Windows Install
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../19chemflow/chemflowaarch.html">
+     ARM7/AARCH Install
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../22remediation/remediation.html">
+   Remediation Technologies
   </a>
  </li>
  <li class="toctree-l1">
@@ -392,6 +446,18 @@
   <a class="reference internal nav-link" href="#incorporation-into-ade">
    Incorporation into ADE
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-constant-source-retardation-decaying-species">
+     1D Constant Source, Retardation, Decaying Species
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#d-exponentially-decaying-source-zone-decaying-species">
+   1D Exponentially decaying source zone, decaying species
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
@@ -450,11 +516,198 @@
 <p class="admonition-title">Note</p>
 <p>Obviously other reactions can be included - they simply appear as a source/sink term.  Whether they manifest as simply as the terms herein depends on the nature of the process.</p>
 </div>
+<p>To modify our existing analytical solutions for 1-st order decay of the species, and a linear equilibrium isotherm (e.g. a constant <span class="math notranslate nohighlight">\(R\)</span>) we simply have:</p>
+<div class="math notranslate nohighlight">
+\[R\frac{\partial C}{\partial t}  =  \frac{\partial}{\partial x} D_x \frac{\partial C}{\partial x} - v_x \frac{\partial C}{\partial x} - \lambda C\]</div>
+<p>We can increase dimensionality as needed (e.g for 3 spatial dimensions):</p>
+<div class="math notranslate nohighlight">
+\[R\frac{\partial C}{\partial t}  =  [\frac{\partial}{\partial x} D_x \frac{\partial C}{\partial x} - v_x \frac{\partial C}{\partial x}]
++ [\frac{\partial}{\partial y} D_y \frac{\partial C}{\partial y} - v_y] + [\frac{\partial}{\partial z} D_z \frac{\partial C}{\partial z} - v_z \frac{\partial C}{\partial z}] - \lambda C\]</div>
+<p>We can reuse our already built analytical solutions either by defining parameters as</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(D^*_{i} = \frac{D^~_{i}}{R}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v^*_{i} = \frac{v^~_{i}}{R}\)</span></p></li>
+</ul>
+<p>and use our existing solutions</p>
+<div class="section" id="d-constant-source-retardation-decaying-species">
+<h3>1D Constant Source, Retardation, Decaying Species<a class="headerlink" href="#d-constant-source-retardation-decaying-species" title="Permalink to this headline">¶</a></h3>
+<p>For example a 1D prototype function for a constant source from <a class="reference external" href="https://pubs.usgs.gov/of/1989/0056/report.pdf">Wexler, 1989</a> is:</p>
+<p><img alt="" src="../../_images/wexler1.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># prototype decaying species function</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">c1dadrd</span><span class="p">(</span><span class="n">c_source</span><span class="p">,</span><span class="n">space</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">dispersion</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">retardation</span><span class="p">,</span><span class="n">decay</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span><span class="n">erf</span><span class="p">,</span><span class="n">erfc</span><span class="p">,</span><span class="n">exp</span>  <span class="c1"># get special math functions</span>
+    <span class="n">dee</span> <span class="o">=</span> <span class="n">dispersion</span><span class="o">/</span><span class="n">retardation</span>
+    <span class="n">vee</span> <span class="o">=</span> <span class="n">velocity</span><span class="o">/</span><span class="n">retardation</span>
+    <span class="n">uuu</span> <span class="o">=</span> <span class="p">(</span><span class="n">vee</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">4.0</span><span class="o">*</span><span class="n">decay</span><span class="o">*</span><span class="n">dee</span><span class="p">)</span>
+    <span class="n">uuu</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">uuu</span><span class="p">)</span>
+    <span class="n">arg1</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span><span class="o">*</span><span class="p">(</span><span class="n">vee</span><span class="o">-</span><span class="n">uuu</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">dee</span><span class="p">)</span>
+    <span class="n">arg2</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span> <span class="o">-</span> <span class="n">uuu</span><span class="o">*</span><span class="n">time</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dee</span><span class="o">*</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">arg3</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span><span class="o">*</span><span class="p">(</span><span class="n">vee</span><span class="o">+</span><span class="n">uuu</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">dee</span><span class="p">)</span>
+    <span class="n">arg4</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span> <span class="o">+</span> <span class="n">uuu</span><span class="o">*</span><span class="n">time</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dee</span><span class="o">*</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">temp1</span> <span class="o">=</span> <span class="n">c_source</span><span class="o">/</span><span class="mf">2.0</span>
+    <span class="n">temp2</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">arg1</span><span class="p">)</span>
+    <span class="n">temp3</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(</span><span class="n">arg2</span><span class="p">)</span>
+    <span class="n">temp4</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">arg3</span><span class="p">)</span>
+    <span class="n">temp5</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(</span><span class="n">arg4</span><span class="p">)</span>
+    
+    <span class="n">c1dadrd</span> <span class="o">=</span> <span class="n">temp1</span><span class="o">*</span><span class="p">(</span><span class="n">temp2</span><span class="o">*</span><span class="n">temp3</span><span class="o">+</span><span class="n">temp4</span><span class="o">*</span><span class="n">temp5</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">c1dadrd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># example inputs</span>
+<span class="c1">#</span>
+<span class="n">c_source</span> <span class="o">=</span> <span class="mf">1000.0</span> <span class="c1"># source concentration</span>
+<span class="n">space</span> <span class="o">=</span> <span class="mf">100.</span>      <span class="c1"># how far in X-direction to extend the plot</span>
+<span class="n">time</span>  <span class="o">=</span> <span class="mf">50.</span>       <span class="c1"># time since release</span>
+<span class="n">dispersion</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># dispersion coefficient</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mf">1.0</span>    <span class="c1"># pore velocity</span>
+<span class="n">retardation</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">decay</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="c1">#</span>
+<span class="c1"># forward define and initialize vectors for a profile plot</span>
+<span class="c1">#</span>
+<span class="n">how_many_points</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltax</span> <span class="o">=</span> <span class="n">space</span><span class="o">/</span><span class="n">how_many_points</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">deltax</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span> <span class="c1"># constructor notation</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span>      <span class="c1"># constructor notation</span>
+<span class="c1">#</span>
+<span class="c1"># build the profile predictions</span>
+<span class="c1">#</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">how_many_points</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">c1dadrd</span><span class="p">(</span><span class="n">c_source</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">time</span><span class="p">,</span><span class="n">dispersion</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">retardation</span><span class="p">,</span><span class="n">decay</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># Import graphics routines for picture making</span>
+<span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="c1">#</span>
+<span class="c1"># Build and Render the Plot</span>
+<span class="c1">#</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span><span class="p">)</span>  <span class="c1"># make the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot; Concentration Profile </span><span class="se">\n</span><span class="s2"> Time: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; time units </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot; Dispersion: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">dispersion</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; length^2/time units </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot; Velocity: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; length/time units </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># caption the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot; Distance from Source &quot;</span><span class="p">)</span> <span class="c1"># label x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot; Concentration        &quot;</span><span class="p">)</span> <span class="c1"># label y-axis</span>
+<span class="c1">#plt.savefig(&quot;ogatabanksplot.png&quot;) # optional generates just a plot for embedding into a report</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># plot to stdio -- has to be last call as it kills prior objects</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span> <span class="c1"># needed when plt.show call not invoked, optional here</span>
+<span class="c1">#sys.exit() # used to elegant exit for CGI-BIN use</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7decay_2_0.png" src="../../_images/7decay_2_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="d-exponentially-decaying-source-zone-decaying-species">
+<h2>1D Exponentially decaying source zone, decaying species<a class="headerlink" href="#d-exponentially-decaying-source-zone-decaying-species" title="Permalink to this headline">¶</a></h2>
+<p>We can also implement the concepts of the source zone itself decaying, employing for example a solution by <a class="reference external" href="https://doi.org/10.1111/j.1752-1688.1974.tb00542.x">Marino 1974</a> our model is:</p>
+<p><img alt="" src="../../_images/marino74.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I have assumed the source decay rate can be different than the species rate, one would need to re-read the original work to determine if that is a correct assumption - given that the solution is a convolution of infinite point sources decaying exponentially at some rate that could concievable by different than the species decay rate the assumption is probably fine.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># prototype decaying sourze zone function</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">c1dadrdsrd</span><span class="p">(</span><span class="n">c_source</span><span class="p">,</span><span class="n">space</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">dispersion</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">retardation</span><span class="p">,</span><span class="n">decay</span><span class="p">,</span><span class="n">source_decay</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span><span class="n">erf</span><span class="p">,</span><span class="n">erfc</span><span class="p">,</span><span class="n">exp</span>  <span class="c1"># get special math functions</span>
+    <span class="n">dee</span> <span class="o">=</span> <span class="n">dispersion</span><span class="o">/</span><span class="n">retardation</span>
+    <span class="n">vee</span> <span class="o">=</span> <span class="n">velocity</span><span class="o">/</span><span class="n">retardation</span>
+    <span class="n">uuu</span> <span class="o">=</span> <span class="p">(</span><span class="n">vee</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">4.0</span><span class="o">*</span><span class="n">decay</span><span class="o">*</span><span class="n">dee</span><span class="p">)</span>
+    <span class="n">uuu</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">uuu</span><span class="p">)</span>
+    <span class="n">arg1</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span><span class="o">*</span><span class="p">(</span><span class="n">vee</span><span class="o">-</span><span class="n">uuu</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">dee</span><span class="p">)</span>
+    <span class="n">arg2</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span> <span class="o">-</span> <span class="n">uuu</span><span class="o">*</span><span class="n">time</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dee</span><span class="o">*</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">arg3</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span><span class="o">*</span><span class="p">(</span><span class="n">vee</span><span class="o">+</span><span class="n">uuu</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">dee</span><span class="p">)</span>
+    <span class="n">arg4</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span> <span class="o">+</span> <span class="n">uuu</span><span class="o">*</span><span class="n">time</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dee</span><span class="o">*</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">temp0</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">source_decay</span><span class="o">*</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">temp1</span> <span class="o">=</span> <span class="n">c_source</span><span class="o">/</span><span class="mf">2.0</span>
+    <span class="n">temp2</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">arg1</span><span class="p">)</span>
+    <span class="n">temp3</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(</span><span class="n">arg2</span><span class="p">)</span>
+    <span class="n">temp4</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">arg3</span><span class="p">)</span>
+    <span class="n">temp5</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(</span><span class="n">arg4</span><span class="p">)</span>
+    
+    <span class="n">c1dadrdsrd</span> <span class="o">=</span> <span class="n">temp0</span><span class="o">*</span><span class="n">temp1</span><span class="o">*</span><span class="p">(</span><span class="n">temp2</span><span class="o">*</span><span class="n">temp3</span><span class="o">+</span><span class="n">temp4</span><span class="o">*</span><span class="n">temp5</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">c1dadrdsrd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s a sample profile plot</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># example inputs</span>
+<span class="c1">#</span>
+<span class="n">c_source</span> <span class="o">=</span> <span class="mf">1000.0</span> <span class="c1"># source concentration</span>
+<span class="n">space</span> <span class="o">=</span> <span class="mf">100.</span>      <span class="c1"># how far in X-direction to extend the plot</span>
+<span class="n">time</span>  <span class="o">=</span> <span class="mf">50.</span>       <span class="c1"># time since release</span>
+<span class="n">dispersion</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># dispersion coefficient</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mf">1.0</span>    <span class="c1"># pore velocity</span>
+<span class="n">retardation</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">decay</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># species decay rate</span>
+<span class="n">decay_s</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># source zone decay rate (e.g. washout rate)</span>
+<span class="c1">#</span>
+<span class="c1"># forward define and initialize vectors for a profile plot</span>
+<span class="c1">#</span>
+<span class="n">how_many_points</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltax</span> <span class="o">=</span> <span class="n">space</span><span class="o">/</span><span class="n">how_many_points</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">deltax</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span> <span class="c1"># constructor notation</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span>      <span class="c1"># constructor notation</span>
+<span class="c1">#</span>
+<span class="c1"># build the profile predictions</span>
+<span class="c1">#</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">how_many_points</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">c1dadrdsrd</span><span class="p">(</span><span class="n">c_source</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">time</span><span class="p">,</span><span class="n">dispersion</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">retardation</span><span class="p">,</span><span class="n">decay</span><span class="p">,</span><span class="n">decay_s</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># Import graphics routines for picture making</span>
+<span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="c1">#</span>
+<span class="c1"># Build and Render the Plot</span>
+<span class="c1">#</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span><span class="p">)</span>  <span class="c1"># make the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot; Concentration Profile </span><span class="se">\n</span><span class="s2"> Time: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; time units </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot; Dispersion: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">dispersion</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; length^2/time units </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot; Velocity: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; length/time units </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># caption the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot; Distance from Source &quot;</span><span class="p">)</span> <span class="c1"># label x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot; Concentration        &quot;</span><span class="p">)</span> <span class="c1"># label y-axis</span>
+<span class="c1">#plt.savefig(&quot;ogatabanksplot.png&quot;) # optional generates just a plot for embedding into a report</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># plot to stdio -- has to be last call as it kills prior objects</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span> <span class="c1"># needed when plt.show call not invoked, optional here</span>
+<span class="c1">#sys.exit() # used to elegant exit for CGI-BIN use</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7decay_6_0.png" src="../../_images/7decay_6_0.png" />
+</div>
+</div>
+<p>Application of Domenico and Robbin’s methodology to extend dimensionality would be reasonable (and is essentially the approach taken by Domenico 1987 that appears in your book as equation 6.33)</p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/adsorb_2.pdf">Cleveland, T.G. (1998) <em>Adsorbtion-2</em> Notes to accompany <em>“CIVE 7332 Flow and Transport Modeling for Environmental Engineering” at University of Houston</em></a></p></li>
+<li><p><a class="reference external" href="https://wwwbrr.cr.usgs.gov/projects/GWC_coupled/phreeqc/html/final-22.html">Advection-Dispersion adjusted time from <em>USGS PHREEQ documentation</em></a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/of/1989/0056/report.pdf">
+Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow. Open-File Report 89-56</a></p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1111/j.1752-1688.1974.tb00542.x">Marino, M.A. (1974), NUMERICAL AND ANALYTICAL SOLUTIONS OF DISPERSION IN A FINITE, ADSORBING POROUS MEDIUM. JAWRA Journal of the American Water Resources Association, 10: 81-90. </a></p></li>
+<li><p><span class="xref myst">M. Th. van Genuchten and W. J. Alves. 1982. Analytical
+Solutions of the One-Dimensional Convective-Dispersive Solute
+Transport Equation. U.S. Department of Agriculture, Technical
+Bulletin No. 1661, 151 p.</span></p></li>
 </ol>
 </div>
 </div>

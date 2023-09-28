@@ -48,6 +48,7 @@ def ogatabanks(c_source,space,time,dispersion,velocity):
     term1 = erfc(((space-velocity*time))/(2.0*sqrt(dispersion*time)))
     term2 = exp(velocity*space/dispersion)
     term3 = erfc(((space+velocity*time))/(2.0*sqrt(dispersion*time)))
+    print(term3)
     ogatabanks = c_source*0.5*(term1+term2*term3)
     return(ogatabanks)
 
