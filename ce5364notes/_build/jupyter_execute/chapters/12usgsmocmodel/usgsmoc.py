@@ -356,6 +356,13 @@ ascii_array = [
 distancex=[1,2,3,4,5,6,7,8,9]
 distancey=[1,2,3,4,5,6,7,8,9]
 
+distancex[0]=450
+distancey[0]=450
+
+for i in range(1, len(distancex)):
+    distancex[i]=distancex[i-1]+900
+    distancey[i]=distancey[i-1]+900
+
 type(distancex)
 
 
@@ -389,11 +396,13 @@ X, Y = numpy.meshgrid(lon, lat)
 Z = griddata(numpy.array(coord_xy), numpy.array(coord_z), (X, Y), method='cubic')
 # Build the map
 fig, ax = matplotlib.pyplot.subplots()
-fig.set_size_inches(15, 4)
-levels1 = [1,2,3,4,5,6,7,8,9,10]
+fig.set_size_inches(8,8)
+levels1 = [10,20,30,40,50,60]
 CS = ax.contour(X, Y, Z, levels1)
 ax.clabel(CS, inline=2, fontsize=16)
-ax.set_title('Contour Plot of Heads from Sheetpile1 Input')
+ax.set_xlabel("Distance in feet")
+ax.set_ylabel("Distance in feet")
+ax.set_title('Contour Plot of Concentration from Spill at Parking Lot \n At time = 2 years')
 
 
 # The computer software can also be used to model vertical aquifer slices and one-dimensional transport pg. 35 of the software documentation contains information on how to do these tasks.
@@ -739,6 +748,10 @@ get_ipython().system(' ./usgsmoc.exe < moc03.sup ;')
 # next line lists output file on server - probably want to use an editor to parse the file for map making
 get_ipython().system(' cat MOC03-TRY1.OUT ;')
 
+
+# ## References
+# 
+# 1. [TWRI 7-C2 USGFS MOC User Manual](https://water.usgs.gov/nrp/gwsoftware/moc/doc/TWRI_7-C2.pdf)
 
 # In[ ]:
 
