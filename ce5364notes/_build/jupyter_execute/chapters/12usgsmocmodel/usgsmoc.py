@@ -356,13 +356,6 @@ ascii_array = [
 distancex=[1,2,3,4,5,6,7,8,9]
 distancey=[1,2,3,4,5,6,7,8,9]
 
-distancex[0]=450
-distancey[0]=450
-
-for i in range(1, len(distancex)):
-    distancex[i]=distancex[i-1]+900
-    distancey[i]=distancey[i-1]+900
-
 type(distancex)
 
 
@@ -396,13 +389,13 @@ X, Y = numpy.meshgrid(lon, lat)
 Z = griddata(numpy.array(coord_xy), numpy.array(coord_z), (X, Y), method='cubic')
 # Build the map
 fig, ax = matplotlib.pyplot.subplots()
-fig.set_size_inches(8,8)
-levels1 = [10,20,30,40,50,60]
+fig.set_size_inches(6, 6)
+levels1 = [10,20,30,40,50]
 CS = ax.contour(X, Y, Z, levels1)
 ax.clabel(CS, inline=2, fontsize=16)
-ax.set_xlabel("Distance in feet")
-ax.set_ylabel("Distance in feet")
-ax.set_title('Contour Plot of Concentration from Spill at Parking Lot \n At time = 2 years')
+ax.set_xlabel('Easting (feet)')
+ax.set_ylabel('Northing (feet)')
+ax.set_title('Contour Plot of Concentration')
 
 
 # The computer software can also be used to model vertical aquifer slices and one-dimensional transport pg. 35 of the software documentation contains information on how to do these tasks.
@@ -591,7 +584,7 @@ get_ipython().system(' cat MOC08-TRY1.OUT ;')
 # Tasks:
 # 
 # 1. Convert all units to feet and seconds as used in the version of USGS-MOC
-# 
+
 # 2. Build in input file of necessary geometry
 # 
 # ```
@@ -738,20 +731,188 @@ get_ipython().system(' cat MOC08-TRY1.OUT ;')
 # 
 # The script below will run the model (on my ARM machine)
 
+# 
+
 # In[6]:
 
 
-get_ipython().system(' cp ./armmoc/bin/usgsmoc.exe ./')
-get_ipython().system(' cp ./armmoc/example03/MOC03.INP ./')
-get_ipython().system(' cp ./armmoc/example03/moc03.sup ./')
+#! cp ./armmoc/bin/usgsmoc.exe ./
+#! cp ./armmoc/example03/MOC03.INP ./
+#! cp ./armmoc/example03/moc03.sup ./
 get_ipython().system(' ./usgsmoc.exe < moc03.sup ;')
 # next line lists output file on server - probably want to use an editor to parse the file for map making
 get_ipython().system(' cat MOC03-TRY1.OUT ;')
 
 
-# ## References
-# 
-# 1. [TWRI 7-C2 USGFS MOC User Manual](https://water.usgs.gov/nrp/gwsoftware/moc/doc/TWRI_7-C2.pdf)
+# In[7]:
+
+
+ascii_array=[
+[2,2,2,2,2,2,2,2,2,2,2],
+[2,2,2,2,2,2,2,2,2,2,2],
+[1.9824704,1.9824704,1.9817755,1.9812523,1.9823327,1.9860897,1.9914353,1.9968044,2.0009695,2.0032144,2.0032144],
+[1.9493786,1.9493786,1.9458412,1.9412092,1.9407227,1.9509342,1.9655228,1.9792917,1.9894292,1.9947191,1.9947191],
+[1.9077647,1.9077647,1.8953256,1.8735055,1.8552067,1.8875707,1.9243329,1.9534483,1.9726357,1.9820581,1.9820581],
+[1.8797366,1.8797366,1.8508128,1.7796579,1.6264312,1.7959227,1.8848174,1.9348898,1.9628007,1.9754839,1.9754839],
+[1.9062448,1.9062448,1.8939348,1.8723718,1.8544265,1.8872218,1.9244401,1.953979,1.9734819,1.9830781,1.9830781],
+[1.9459812,1.9459812,1.9427145,1.9386335,1.9389311,1.9501274,1.9657812,1.9805524,1.9914468,1.9971545,1.9971545],
+[1.976452,1.976452,1.976164,1.9765218,1.9789592,1.9845336,1.9919303,1.9992708,2.0049506,2.0080323,2.0080323],
+[1.9902456,1.9902456,1.9906493,1.9917361,1.9937963,1.9969799,2.0008261,2.0046107,2.0075548,2.009176,2.009176],
+[1.9856354,1.9856354,1.9860716,1.9870122,1.9884389,1.9903391,1.9924731,1.9945204,1.9960834,1.9969483,1.9969483],
+[1.9625396,1.9625396,1.9628748,1.9635591,1.9645021,1.9656767,1.9669334,1.9681117,1.9689833,1.9694683,1.9694683],
+[1.9170766,1.9170766,1.9173128,1.9177851,1.918401,1.9191451,1.9199175,1.920631,1.9211405,1.9214248,1.9214248],
+[1.8371684,1.8371684,1.8373234,1.8376294,1.8380111,1.8384659,1.8389282,1.8393522,1.8396425,1.8398047,1.8398047],
+[1.7219858,1.7219858,1.7220795,1.7222678,1.7224904,1.7227548,1.7230192,1.7232617,1.7234179,1.7235076,1.7235076],
+[1.5805758,1.5805758,1.5806312,1.5807443,1.5808709,1.5810217,1.5811706,1.5813077,1.58139,1.5814388,1.5814388],
+[1.4130549,1.4130549,1.4130857,1.4131494,1.4132173,1.4132985,1.413378,1.4134515,1.4134926,1.4135177,1.4135177],
+[1.2195073,1.2195073,1.219521,1.2195498,1.2195792,1.2196147,1.2196491,1.2196811,1.219698,1.2197086,1.2197086],
+[1,1,1,1,1,1,1,1,1,1,1],
+[1,1,1,1,1,1,1,1,1,1,1]
+]
+
+distancex=[0 for i in range(len(ascii_array[0]))]
+distancey=[0 for j in range(len(ascii_array))]
+
+deltax = 444
+deltay = 700
+
+distancex[0]=deltax/2
+
+for i in range(1,len(distancex)):
+    distancex[i]= distancex[i-1]+deltax
+
+
+distancey[0]=deltay/2
+
+for i in range(1,len(distancey)):
+    distancey[i]= distancey[i-1]+deltay
+
+dymax = max(distancey)
+
+for i in range(len(distancey)):
+    distancey[i]=dymax-distancey[i]
+
+
+############# Contour Plot
+nrows=len(distancey)
+ncols=len(distancex)
+my_xyz = [] # empty list
+for irow in range(nrows):
+    for jcol in range(ncols):
+#        my_xyz.append([distancex[0][jcol],distancey[0][irow],head[irow][jcol]])
+        my_xyz.append([distancex[jcol],distancey[irow],ascii_array[irow][jcol]])
+import pandas
+my_xyz = pandas.DataFrame(my_xyz) # convert into a data frame
+#print(my_xyz) # activate to examine the dataframe
+import numpy 
+import matplotlib.pyplot
+from scipy.interpolate import griddata
+# extract lists from the dataframe
+coord_x = my_xyz[0].values.tolist() # column 0 of dataframe
+coord_y = my_xyz[1].values.tolist() # column 1 of dataframe
+coord_z = my_xyz[2].values.tolist() # column 2 of dataframe
+coord_xy = numpy.column_stack((coord_x, coord_y))
+# Set plotting range in original data units
+lon = numpy.linspace(min(coord_x), max(coord_x), 1100)
+lat = numpy.linspace(min(coord_y), max(coord_y), 2100)
+X, Y = numpy.meshgrid(lon, lat)
+# Grid the data; use linear interpolation (choices are nearest, linear, cubic)
+Z = griddata(numpy.array(coord_xy), numpy.array(coord_z), (X, Y), method='cubic')
+# Build the map
+fig, ax = matplotlib.pyplot.subplots()
+fig.set_size_inches(5.5, 10.5)
+levels1 = [1.0,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.925,1.95,1.975,1.99,2.0]
+CS = ax.contour(X, Y, Z, levels1)
+ax.clabel(CS, inline=2, fontsize=16)
+ax.set_xlabel('Easting (feet)')
+ax.set_ylabel('Northing (feet)')
+ax.set_title('Contour Plot of Heads from Guadelupe Basin after 100 years pumping')
+
+
+# In[8]:
+
+
+ascii_array=[
+[0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0],
+[1,1,1,1,1,1,1,1,1,1,1],
+[5,5,5,5,5,5,5,5,5,5,5],
+[7,7,7,7,7,7,7,7,7,7,7],
+[10,10,10,10,10,10,10,9,9,9,9],
+[13,13,13,13,13,13,13,13,13,13,13],
+[27,27,27,27,27,27,27,27,27,27,27],
+[76,76,76,76,76,76,76,76,76,76,76],
+[237,237,237,237,237,237,237,237,237,237,237],
+[612,612,612,612,612,612,612,612,612,612,612],
+[1215,1215,1215,1215,1215,1215,1215,1215,1215,1215,1215],
+[1215,1215,1215,1215,1215,1215,1215,1215,1215,1215,1215]
+]
+
+distancex=[0 for i in range(len(ascii_array[0]))]
+distancey=[0 for j in range(len(ascii_array))]
+
+deltax = 444
+deltay = 700
+
+distancex[0]=deltax/2
+
+for i in range(1,len(distancex)):
+    distancex[i]= distancex[i-1]+deltax
+
+
+distancey[0]=deltay/2
+
+for i in range(1,len(distancey)):
+    distancey[i]= distancey[i-1]+deltay
+
+dymax = max(distancey)
+
+for i in range(len(distancey)):
+    distancey[i]=dymax-distancey[i]
+
+
+############# Contour Plot
+nrows=len(distancey)
+ncols=len(distancex)
+my_xyz = [] # empty list
+for irow in range(nrows):
+    for jcol in range(ncols):
+#        my_xyz.append([distancex[0][jcol],distancey[0][irow],head[irow][jcol]])
+        my_xyz.append([distancex[jcol],distancey[irow],ascii_array[irow][jcol]])
+import pandas
+my_xyz = pandas.DataFrame(my_xyz) # convert into a data frame
+#print(my_xyz) # activate to examine the dataframe
+import numpy 
+import matplotlib.pyplot
+from scipy.interpolate import griddata
+# extract lists from the dataframe
+coord_x = my_xyz[0].values.tolist() # column 0 of dataframe
+coord_y = my_xyz[1].values.tolist() # column 1 of dataframe
+coord_z = my_xyz[2].values.tolist() # column 2 of dataframe
+coord_xy = numpy.column_stack((coord_x, coord_y))
+# Set plotting range in original data units
+lon = numpy.linspace(min(coord_x), max(coord_x), 1100)
+lat = numpy.linspace(min(coord_y), max(coord_y), 2100)
+X, Y = numpy.meshgrid(lon, lat)
+# Grid the data; use linear interpolation (choices are nearest, linear, cubic)
+Z = griddata(numpy.array(coord_xy), numpy.array(coord_z), (X, Y), method='cubic')
+# Build the map
+fig, ax = matplotlib.pyplot.subplots()
+fig.set_size_inches(5.5, 10.5)
+levels1 = [10,20,30,40,50,100,200,300,400,500,1000,2000,3000,4000,5000,10000]
+CS = ax.contour(X, Y, Z, levels1)
+ax.clabel(CS, inline=2, fontsize=16)
+ax.set_xlabel('Easting (feet)')
+ax.set_ylabel('Northing (feet)')
+ax.set_title('Contour Plot of Concentration from Guadelupe Basin')
+
 
 # In[ ]:
 
