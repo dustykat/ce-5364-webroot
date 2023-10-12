@@ -109,10 +109,10 @@ def c1dadrd(c_source,space,time,dispersion,velocity,retardation,decay):
 c_source = 1000.0 # source concentration
 space = 100.      # how far in X-direction to extend the plot
 time  = 50.       # time since release
-dispersion = 1 # dispersion coefficient
+dispersion = 1.0 # dispersion coefficient
 velocity = 1.0    # pore velocity
-retardation = 2.0
-decay = 0.001
+retardation = 1.0
+decay = 0.1
 #
 # forward define and initialize vectors for a profile plot
 #
@@ -193,9 +193,9 @@ space = 100.      # how far in X-direction to extend the plot
 time  = 50.       # time since release
 dispersion = 1.0  # dispersion coefficient
 velocity = 1.0    # pore velocity
-retardation = 2.0
+retardation = 1.0
 decay = 0.001 # species decay rate
-decay_s = 0.001 # source zone decay rate (e.g. washout rate)
+decay_s = 0.01 # source zone decay rate (e.g. washout rate)
 #
 # forward define and initialize vectors for a profile plot
 #

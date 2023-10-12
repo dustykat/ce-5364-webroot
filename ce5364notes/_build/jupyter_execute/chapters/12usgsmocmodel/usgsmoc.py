@@ -336,6 +336,66 @@ get_ipython().system(' cat MOC01-NO-D.OUT ;')
 get_ipython().system(' cat MOC01-YES-D.OUT ;')
 
 
+# Now will try to make a contour plotting tool to operate on cut-and-paste arrays
+
+# In[3]:
+
+
+ascii_array = [
+[    0 ,   0 ,   0 ,   0 ,  0   , 0   , 0   , 0   , 0],
+[    0 ,   0 ,   2 ,   0 ,   0  ,  0  ,  0  ,  0  ,  0],
+[    0 ,   0 ,   3 ,   1 ,   0  ,  0  ,  0  ,  1  ,  0],
+[    0 ,   0 ,   3 ,   5 ,   3  ,  2   , 2  ,  2  ,  0],
+[    0 ,   1 ,  37 ,  20 ,   9  ,  8  ,  8  ,  8  ,  0],
+[    0 ,   1 ,  21 ,  55 ,  46  , 28  , 54  , 43  ,  0],
+[    0 ,   0 ,   5 ,  10 ,   7  ,  6  ,  4  ,  4  ,  0],
+[    0 ,   0 ,   1 ,   3 ,   1  ,  0  ,  0  ,  0  ,  0],
+[    0 ,   0 ,   0 ,   0 ,   0  ,  0  ,  0  ,  0  ,  0],
+]
+
+distancex=[1,2,3,4,5,6,7,8,9]
+distancey=[1,2,3,4,5,6,7,8,9]
+
+type(distancex)
+
+
+# In[4]:
+
+
+############# Contour Plot
+nrows=9
+ncols=9
+my_xyz = [] # empty list
+for irow in range(nrows):
+    for jcol in range(ncols):
+#        my_xyz.append([distancex[0][jcol],distancey[0][irow],head[irow][jcol]])
+        my_xyz.append([distancex[jcol],distancey[irow],ascii_array[irow][jcol]])
+import pandas
+my_xyz = pandas.DataFrame(my_xyz) # convert into a data frame
+#print(my_xyz) # activate to examine the dataframe
+import numpy 
+import matplotlib.pyplot
+from scipy.interpolate import griddata
+# extract lists from the dataframe
+coord_x = my_xyz[0].values.tolist() # column 0 of dataframe
+coord_y = my_xyz[1].values.tolist() # column 1 of dataframe
+coord_z = my_xyz[2].values.tolist() # column 2 of dataframe
+coord_xy = numpy.column_stack((coord_x, coord_y))
+# Set plotting range in original data units
+lon = numpy.linspace(min(coord_x), max(coord_x), 3000)
+lat = numpy.linspace(min(coord_y), max(coord_y), 800)
+X, Y = numpy.meshgrid(lon, lat)
+# Grid the data; use linear interpolation (choices are nearest, linear, cubic)
+Z = griddata(numpy.array(coord_xy), numpy.array(coord_z), (X, Y), method='cubic')
+# Build the map
+fig, ax = matplotlib.pyplot.subplots()
+fig.set_size_inches(15, 4)
+levels1 = [1,2,3,4,5,6,7,8,9,10]
+CS = ax.contour(X, Y, Z, levels1)
+ax.clabel(CS, inline=2, fontsize=16)
+ax.set_title('Contour Plot of Heads from Sheetpile1 Input')
+
+
 # The computer software can also be used to model vertical aquifer slices and one-dimensional transport pg. 35 of the software documentation contains information on how to do these tasks.
 # 
 # <hr>
@@ -483,7 +543,7 @@ get_ipython().system(' cat MOC01-YES-D.OUT ;')
 # 0  0.0
 # ```
 
-# In[3]:
+# In[5]:
 
 
 get_ipython().system(' cp ./armmoc/bin/usgsmoc.exe ./')
@@ -669,7 +729,7 @@ get_ipython().system(' cat MOC08-TRY1.OUT ;')
 # 
 # The script below will run the model (on my ARM machine)
 
-# In[4]:
+# In[6]:
 
 
 get_ipython().system(' cp ./armmoc/bin/usgsmoc.exe ./')
