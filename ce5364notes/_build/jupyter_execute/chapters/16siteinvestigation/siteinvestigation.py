@@ -81,9 +81,15 @@
 
 # ### Groundwater Motion
 # 
-# Discharge is proportional to driving energy (hydraulic gradient) cross sectional area (A), and ease of conductance (hydraulic conductivity, K) formally represented by Darcy's law $$Q = - KA \nabla(h)$$
+# Discharge is proportional to driving energy (hydraulic gradient) cross sectional area (A), and ease of conductance (hydraulic conductivity, K) formally represented by Darcy's law 
 # 
-# The interstitial (seepage) velocity is estimated as $$v = \frac{1}{n}\frac{Q}{A}$$ where $n$ is the porosity.
+# $$Q = - KA \nabla(h)$$
+# 
+# The interstitial (seepage) velocity is estimated as 
+# 
+# $$v = \frac{1}{n}\frac{Q}{A}$$ 
+# 
+# where $n$ is the porosity.
 # 
 # Transmissivity is the ability of an aquifer to transmit water through its entire thickness.
 
@@ -183,23 +189,18 @@
 # ![](lowK.png) ![](vadosesampler.png)
 
 # [Keller Landfill Hydrogeology Example](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/16siteinvestigation/HydrogeologyPractice.pdf)
+## Summary
 
-# ## Hydrological Assessment (for Flow and Transport)
-# 
-# ### Geologic Framework
-# 
-# ### Developing the Hydrogeologic Description
-# 
-# ### Preparing Illustrations
+- Hydrological Assessment (for Flow and Transport)
+- Geologic Framework
+- Developing the Hydrogeologic Description
+- Preparing Illustrations## Regulatory Framework
 
-# ## Regulatory Framework
-# 
-# ### Water Rights
-# 
-# ### Federal Law
-# 
-# ## Groundwater Geochemistry
-# 
+### Water Rights
+
+### Federal Law
+
+## Groundwater Geochemistry
 
 # ## References
 # 
