@@ -156,7 +156,24 @@
 # 
 # ![](decontamination.png)
 # 
+# **Shelby-Tube Sample Probe**
+# 
+# ![](shelby.png)
+# 
+# **Split Spoon Sample Probe (Typ.)**
+# 
+# ![Split Spoon Sample Probe (Typical)](splitspoon.png)
+# 
+# **Piston-Core Sample Probe**
+# 
+# ![](pistoncore.png)
+# 
+# [Getting high-quality samples in ‘sensitive’ soils for advanced
+# laboratory tests. Innov. Infrastruct. Solut. (2017) 2:34](http://543.243.252.9/ce-5364-webroot/ce5364notes/chapters/16siteinvestigation/SamplerPaper.pdf)
+# 
 # ![](drilltypes.png) ![](hollowstemsample.png) 
+# 
+# 
 # 
 # ![](procondrilling.png)
 # 
@@ -217,6 +234,8 @@
 # 1. [Cleveland, T.G. and W. W-G. Yeh, 1990. Sampling Network Design for Transport Parameter Identification, Journal of Water Resources Planning and Management, American Society of Civil Engineers, Vol. 116, No. 6, pp 764-782.](http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/journal_papers/ASCE_JWRPM_1990A/ASCE_JWRPM_1990A.pdf)
 # 
 # 2. [Cleveland, T.G. and W. W-G. Yeh, 1991. Optimal Configuration and Scheduling of a Groundwater Tracer Test, Journal of Water Resources Planning and Management, American Society of Civil Engineers, Vol. 117, No. 1, pp 37-51](http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/journal_papers/optimal_tracer_asce_1991/optimal_tracer_asce_1991.pdf)
+# 
+# 3. [Lee S-L. and Kitanidis P. K. 1996. Optimization of Monitoring Well Installation Time and Location During Aquifer Decontamination, Water Resources Management 10: 439-462](http://54.243.252.9/ce-5364-webroot/3-Readings/BF00422549.pdf)
 # 
 # 
 ### Unsaturated (Vadose) Zone
