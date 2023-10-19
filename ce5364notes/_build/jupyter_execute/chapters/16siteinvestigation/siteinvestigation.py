@@ -169,7 +169,7 @@
 # ![](pistoncore.png)
 # 
 # [Getting high-quality samples in ‘sensitive’ soils for advanced
-# laboratory tests. Innov. Infrastruct. Solut. (2017) 2:34](http://543.243.252.9/ce-5364-webroot/ce5364notes/chapters/16siteinvestigation/SamplerPaper.pdf)
+# laboratory tests. Innov. Infrastruct. Solut. (2017) 2:34](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/16siteinvestigation/SamplerPaper.pdf)
 # 
 # ![](drilltypes.png) ![](hollowstemsample.png) 
 # 
