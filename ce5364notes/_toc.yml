@@ -41,6 +41,7 @@ chapters:
   - file: chapters/12usgsmocmodel/armmoc
   - file: chapters/12usgsmocmodel/dprw
 - file: chapters/16siteinvestigation/siteinvestigation
+- file: chapters/15datacollection/datacollection
 - file: chapters/17unsaturatedzone/unsaturated
 - file: chapters/19chemflow/chemflow
   sections:
