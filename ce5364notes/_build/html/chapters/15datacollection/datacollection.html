@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Data Collection and Analysis &#8212; Groundwater Transport Phenomena</title>
+    <title>Sample Collection and Data Analysis &#8212; Groundwater Transport Phenomena</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -286,7 +286,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Data Collection and Analysis
+   Sample Collection and Data Analysis
   </a>
  </li>
  <li class="toctree-l1">
@@ -451,17 +451,31 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="data-collection-and-analysis">
-<h1>Data Collection and Analysis<a class="headerlink" href="#data-collection-and-analysis" title="Permalink to this headline">¶</a></h1>
-<p>The textbook (pp. 113-158) has a decent description of how to perform a site investigation.</p>
-<p>A short background follows:</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="sample-collection-and-data-analysis">
+<h1>Sample Collection and Data Analysis<a class="headerlink" href="#sample-collection-and-data-analysis" title="Permalink to this headline">¶</a></h1>
+<p>Sampling is a crucial step in assessing groundwater contamination. The objective is to obtain representative samples that accurately reflect the water quality and the presence of contaminants. Here are some key considerations in sample collection:</p>
+<ul class="simple">
+<li><p>Sampling Locations: Careful selection of sampling locations is vital. These sites should be strategically chosen based on hydrogeological knowledge, proximity to potential contamination sources, and historical data. Monitoring wells, springs, or nearby surface water bodies can be appropriate locations.</p></li>
+<li><p>Sampling Depth: Groundwater can exhibit vertical variability in its quality. Thus, samples should be collected at various depths to assess the full spectrum of contamination.</p></li>
+<li><p>Sampling Frequency: Regular and consistent sampling over time is essential to track changes in groundwater quality. Seasonal variations and short-term fluctuations can impact the data.</p></li>
+<li><p>Sample Containers: Choosing appropriate containers is critical to preserve the integrity of the samples. Containers must be clean, made of inert materials, and properly labeled.</p></li>
+</ul>
+<p>Once samples are collected, thorough data analysis is imperative to draw meaningful conclusions about groundwater quality and contamination. Several steps are involved in this process:</p>
+<ul class="simple">
+<li><p>Laboratory Analysis: Samples are typically analyzed in specialized laboratories using standardized methods to detect and quantify specific contaminants. Common parameters include pH, turbidity, dissolved oxygen, and the concentration of various pollutants (e.g., heavy metals, nitrates, volatile organic compounds).</p></li>
+<li><p>Quality Control: Quality control measures, such as blank samples and duplicates, are essential to verify the accuracy and precision of laboratory results.</p></li>
+<li><p>Data Interpretation: The collected data need to be interpreted in the context of relevant regulations and guidelines. Comparison to established water quality standards or local regulatory limits helps identify contamination levels.</p></li>
+<li><p>Spatial Mapping: Geographic Information Systems (GIS) can be used to create spatial maps of contamination plumes, providing a visual representation of the extent and movement of pollutants.</p></li>
+<li><p>Trend Analysis: Over time, trends in groundwater quality should be assessed. This involves statistical techniques like trend analysis and time series modeling to identify changes in contamination levels.</p></li>
+<li><p>Risk Assessment: The final step is assessing the potential risks associated with groundwater contamination. This involves understanding the exposure pathways and potential health impacts on the community.</p></li>
+</ul>
 <div class="section" id="demonstrating-trend-s">
 <h2>Demonstrating Trend(s)<a class="headerlink" href="#demonstrating-trend-s" title="Permalink to this headline">¶</a></h2>
 <p>Demonstration of trends will typically employ both plotting (visual cues) and some kind of trend analysis.  The methods suggested in the textbook are variations of non-parametric statistical hypothesis tests.  (pp. 456-462)</p>
 <p><strong>Mann-Kendall Trend Test</strong> is used to determine whether or not a trend exists in time series (ordered) data. It is a non-parametric test, meaning there is no underlying assumption made about the normality of the data.</p>
 <p>The textbook presents a tabular approach for small data sets as one would expect on a remediation site - here we present a scripting approach using python packages.</p>
 <blockquote>
-<div><p>Mann-Kendall Trend Test using <code class="docutils literal notranslate"><span class="pre">mk.original_test()</span></code> function <br><br>In this approach, the <code class="docutils literal notranslate"><span class="pre">mk.original_test()</span></code> function with required parameters from the <strong>pymannkendall</strong> library to conduct the Mann-Kendall Trend test on the given data in the python programming language. To install the pymannkendall library for mk.original_test() function employ <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code> like:<br><br> ::: root&#64;atomickitty:/home/sensei# sudo -H /opt/jupyterhub/bin/python3 -m pip install pymannkendall :::</p>
+<div><p>Mann-Kendall Trend Test using <code class="docutils literal notranslate"><span class="pre">mk.original_test()</span></code> function <br><br>In this approach, the <code class="docutils literal notranslate"><span class="pre">mk.original_test()</span></code> function with required parameters from the <strong>pymannkendall</strong> library to conduct the Mann-Kendall Trend test on the given data in the python programming language. To install the pymannkendall library for mk.original_test() function employ <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code> like:<br><br> <code class="docutils literal notranslate"><span class="pre">root&#64;atomickitty:/home/sensei#</span> <span class="pre">sudo</span> <span class="pre">-H</span> <span class="pre">/opt/jupyterhub/bin/python3</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pymannkendall</span></code></p>
 </div></blockquote>
 <p>An example from <a class="reference external" href="https://www.geeksforgeeks.org/how-to-perform-a-mann-kendall-trend-test-in-python/">https://www.geeksforgeeks.org</a> below is used to check the install</p>
 <div class="cell docutils container">
@@ -514,6 +528,7 @@
 <span class="c1"># perform Mann-Kendall Trend Test</span>
 <span class="n">result</span><span class="o">=</span><span class="n">mk</span><span class="o">.</span><span class="n">original_test</span><span class="p">(</span><span class="n">gfg_data</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trend type: &quot;</span><span class="p">,</span><span class="n">result</span><span class="o">.</span><span class="n">trend</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p-value at rejection : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">p</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">trend_line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gfg_data</span><span class="p">))</span><span class="o">*</span><span class="n">result</span><span class="o">.</span><span class="n">slope</span> <span class="o">+</span> <span class="n">result</span><span class="o">.</span><span class="n">intercept</span>
 
 <span class="c1">#data plot </span>
@@ -531,6 +546,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trend type:  decreasing
+p-value at rejection :  0.06
 </pre></div>
 </div>
 <img alt="../../_images/datacollection_4_1.png" src="../../_images/datacollection_4_1.png" />
@@ -542,6 +558,8 @@
 <ol class="simple">
 <li><p><a class="reference external" href="https://www.epa.gov/sites/default/files/2016-05/documents/tech_notes_6_dec2013_trend.pdf">U.S. Environmental Protection Agency, National Nonpoint Source Monitoring Program, Tech Notes #6</a></p></li>
 <li><p><a class="reference external" href="https://www.epa.gov/sites/default/files/documents/rcragwguiddoc-rpt_0.pdf">U.S. Environmental Protection Agency, Office of Solid Waste. (1986) RCRA ground-water monitoring technical enforcement guidance document. OSWER-9950.1</a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/twri/twri4a3/">Helsel, D.R., Hirsch, R.M., Ryberg, K.R., Archfield, S.A., and Gilroy, E.J., 2020, Statistical methods in water resources: U.S. Geological Survey Techniques and Methods, book 4, chap. A3, 458 p., https://doi.org/10.3133/tm4a3. [Supersedes USGS Techniques of Water-Resources Investigations, book 4, chap. A3, version 1.1.]</a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/sir/2005/5275/">Helsel, D.R., Mueller, D.K., and Slack, J.R., 2006, Computer program for the Kendall family of trend tests: U.S. Geological Survey Scientific Investigations Report 2005–5275, 4 p.</a></p></li>
 </ol>
 </div>
 </div>
