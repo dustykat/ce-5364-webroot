@@ -237,6 +237,11 @@ plt.close('all') # needed when plt.show call not invoked, optional here
 # 4. [Marino, M.A. (1974), NUMERICAL AND ANALYTICAL SOLUTIONS OF DISPERSION IN A FINITE, ADSORBING POROUS MEDIUM. JAWRA Journal of the American Water Resources Association, 10: 81-90. ](https://doi.org/10.1111/j.1752-1688.1974.tb00542.x)
 # 
 # 5. [M. Th. van Genuchten and W. J. Alves. 1982. Analytical Solutions of the One-Dimensional Convective-Dispersive Solute Transport Equation. U.S. Department of Agriculture, Technical Bulletin No. 1661, 151 p.](http://54.243.252.9/ce-5364-webroot/3-Readings/tb1661.pdf) 
+# 
+# 5. [Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow
+# Open-File Report 89-56](https://pubs.usgs.gov/publication/ofr8956)
+# 6. [Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow
+# Techniques of Water-Resources Investigations 03-B7 (supercedes above reference)](https://pubs.usgs.gov/publication/twri03B7)
 
 # In[ ]:
 

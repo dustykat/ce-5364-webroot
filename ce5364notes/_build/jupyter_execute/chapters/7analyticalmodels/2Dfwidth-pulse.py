@@ -145,6 +145,12 @@ ax.clabel(CS, inline=1, fontsize=16)
 ax.set_title('Concentration Map at Elapsed Time '+ str(round(time,1))+' days');
 
 
+# ## References
+# 5. [Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow
+# Open-File Report 89-56](https://pubs.usgs.gov/publication/ofr8956)
+# 6. [Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow
+# Techniques of Water-Resources Investigations 03-B7 (supercedes above reference)](https://pubs.usgs.gov/publication/twri03B7)
+
 # In[ ]:
 
 
