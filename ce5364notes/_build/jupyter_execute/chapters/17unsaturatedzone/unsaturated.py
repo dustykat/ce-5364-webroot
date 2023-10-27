@@ -24,11 +24,11 @@
 # The pressure for water to move upward into the sponge (porous medium) is called the suction pressure, tension, or capillary pressure (almost interchangeably).
 # 
 # In the next figure - we examine the pore scale conditions in comparison to a capillary tube.
-# <img src="porepressure.png" alt="porepressure.png" width="200%"/>
+# <img src="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/17unsaturatedzone/porepressure.png" alt="porepressure.png" width="200%"/>
 # <!--![](porepressure.png)-->
 # 
 # The capillary rise (capillary pressure) is related to the pore size - small pores, large negative pressure at a water table.
-# <img src="suctionpressure.png" alt="suctionpressure.png" width="200%"/>
+# <img src="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/17unsaturatedzone/suctionpressure.png" alt="suctionpressure.png" width="200%"/>
 # 
 # <!--![](suctionpressure.png)-->
 
@@ -36,7 +36,7 @@
 # 
 # pp. 291-295 of textbook discusses relationships between water content and suction pressure. Unique for each soil, but many, many soils already characterized.  Methods are discussed below.
 # 
-# <img src="soilcharcurve.png" alt="soilcharcurve.png" width="200%"/>
+# <img src="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/17unsaturatedzone/soilcharcurve.png" alt="soilcharcurve.png" width="200%"/>
 # 
 # <!--![](soilcharcurve.png)-->
 # 
@@ -77,11 +77,11 @@
 # 
 # pp. 295-297 discusses unsaturated flow equations
 # 
-# <img src="unsatdarcy.png" alt="unsatdarcy.png" width="200%"/>
+# <img src="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/17unsaturatedzone/unsatdarcy.png" alt="unsatdarcy.png" width="200%"/>
 # 
 # <!--![](unsatdarcy.png)-->
 # 
-# <img src="retardseqn.png" alt="retardseqn.png" width="200%"/>
+# <img src="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/17unsaturatedzone/retardseqn.png" alt="retardseqn.png" width="200%"/>
 # 
 # <!--![](retardseqn.png)-->
 
@@ -89,28 +89,28 @@
 # 
 # pg 297-298 of textbook discusses measurements
 # 
-# <img src="soilproperties1.png" alt="soilproperties4.png" width="200%"/>
+# <img src="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/17unsaturatedzone/soilproperties1.png" alt="soilproperties4.png" width="200%"/>
 # <!--![](soilproperties1.png)-->
-# <img src="soilproperties2.png" alt="soilproperties4.png" width="200%"/>
+# <img src="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/17unsaturatedzone/soilproperties2.png" alt="soilproperties4.png" width="200%"/>
 # <!--![](soilproperties2.png)-->
-# <img src="soilproperties3.png" alt="soilproperties4.png" width="200%"/>
+# <img src="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/17unsaturatedzone/soilproperties3.png" alt="soilproperties4.png" width="200%"/>
 # <!--![](soilproperties3.png)-->
 # 
 # Instead of the hanging column a more modern technique uses a [Tempe Cell](https://www.soilmoisture.com/TEMPE-CELL-2-1-4-DIAM.-6-CM-1-BAR-STD-CERAMIC/)
-# <img src="soilproperties4.png" alt="soilproperties4.png" width="200%"/>
+# <img src="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/17unsaturatedzone/soilproperties4.png" alt="soilproperties4.png" width="200%"/>
 # <!--![](soilproperties4.png)-->
 
 # ### Relative Permeability
-# <img src="relativeperm.png" alt="relativeperm.png" width="200%"/>
+# <img src="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/17unsaturatedzone/relativeperm.png" alt="relativeperm.png" width="200%"/>
 # <!--![](relativeperm.png)-->
-# <img src="relativeperm2.png" alt="relativeperm2.png" width="200%"/>
+# <img src="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/17unsaturatedzone/relativeperm2.png" alt="relativeperm2.png" width="200%"/>
 # <!--![](relativeperm2.png)-->
 
 # ## Infiltration Models
 # 
 # pp. 298-303 discusses infiltration models - a few are examined in my notes below
 # 
-# <img src="infiltration1.png" alt="infiltration1.png" width="200%"/>
+# <img src="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/17unsaturatedzone/infiltration1.png" alt="infiltration1.png" width="200%"/>
 # <!--![](infiltration1.png)-->
 # 
 # Similar plots from numerical experiments by [Pickens, J. F., and Gillham, R. W. (1980), Finite element analysis of solute transport under hysteretic unsaturated flow conditions, Water Resour. Res., 16(6), 1071–1078, doi:10.1029/WR016i006p01071. ](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/WR016i006p01071) are:
@@ -121,13 +121,13 @@
 # ### Green-Ampt Model
 # 
 # The following is a simple model of infiltration based on Green-Ampt concept as explained by [Polubarinova-Kochina, 1962 (translated by J. DeWeist)](http://54.243.252.9/ce-3354-webroot/3-Readings/Green-Ampt-PBK/Polubarinova-Kochina.pdf)
-# <img src="green-ampt.png" alt="greenampt1.png" width="200%"/>
+# <img src="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/17unsaturatedzone/green-ampt.png" alt="greenampt1.png" width="200%"/>
 # 
 # <!--![](green-ampt.png)-->
-# <img src="greenampt2.png" alt="greenampt2.png" width="200%"/>
+# <img src="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/17unsaturatedzone/greenampt2.png" alt="greenampt2.png" width="200%"/>
 # 
 # <!--![](greenampt2.png)-->
-# <img src="greenampt3.png" alt="greenampt3.png" width="200%"/>
+# <img src="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/17unsaturatedzone/greenampt3.png" alt="greenampt3.png" width="200%"/>
 # 
 # <!--![](greenampt3.png)-->
 
