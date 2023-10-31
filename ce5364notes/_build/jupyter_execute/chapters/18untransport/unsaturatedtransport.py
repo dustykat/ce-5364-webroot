@@ -9,7 +9,7 @@
 # 
 # 
 
-# ## Volatile Emission from SOils
+# ## Volatile Emission from Soils
 # 
 # pp. 305-308 of textbook discusses 
 

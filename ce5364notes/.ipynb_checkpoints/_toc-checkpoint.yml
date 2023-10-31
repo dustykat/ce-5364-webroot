@@ -44,6 +44,8 @@ chapters:
 - file: chapters/15datacollection/datacollection
 - file: chapters/17unsaturatedzone/unsaturated
 - file: chapters/18untransport/unsaturatedtransport
+  sections:
+  - file: chapters/18untransport/napls
 - file: chapters/19chemflow/chemflow
   sections:
   - file: chapters/19chemflow/chemflowwinders
