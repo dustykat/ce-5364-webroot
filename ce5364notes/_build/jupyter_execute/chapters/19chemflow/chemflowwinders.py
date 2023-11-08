@@ -54,3 +54,19 @@
 # ![](CF2KRunning.png)
 # 
 # 
+
+# ## VNC Demonstration
+# 
+# On WCOE hardware end users are forbidden to install useful tools; hence here I use a hack to access a remote desktop. The remote desktop is used to access the software remotely. 
+# 
+# [VNC-Viewer Windoze (portable) 32-bit](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/19chemflow/VNCportable/VNC-Viewer-7.7.0-Windows-32bit.exe)
+# 
+# [VNC-viewer Winders (portable) 64-bit](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/19chemflow/VNCportable/VNC-Viewer-7.7.0-Windows-64bit.exe)
+# 
+# The actual remote desktop is a Raspberry Pi computer running an XFCE desktop.  Its CHEMFLOW configuration is described in the next section.
+
+# In[ ]:
+
+
+
+
