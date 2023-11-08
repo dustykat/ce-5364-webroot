@@ -50,6 +50,7 @@ chapters:
   sections:
   - file: chapters/19chemflow/chemflowwinders
   - file: chapters/19chemflow/chemflowaarch
+  - file: chapters/19chemflow/chemflowexamples
 
 - file: chapters/22remediation/remediation
 - file: chapters/26regulatory/regulatory
