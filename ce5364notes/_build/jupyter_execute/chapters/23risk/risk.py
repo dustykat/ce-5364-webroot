@@ -35,7 +35,7 @@
 # 
 # $EXP\frac{mg}{kg \cdot d} = IF(\frac{amount of medium}{d})\times C(\frac{mg}{medium}) \times EDF \times CF$ <br>  IF == intake factor; EDF == exposure duration factor; CF == conversion factor <br> concentrations are compared to MCLs if available <br> derived from animal or human exposure
 # 
-# [Asante-Duah, K. (1993) Hazardous Waste Risk Assessment](http://54.243.,252.9/ce-5364-webroot/3-Readings/HazardousWasteRiskAssessmentbyAsante-Duah.pdf)
+# [Asante-Duah, K. (1993) Hazardous Waste Risk Assessment](http://54.243.252.9/ce-5364-webroot/3-Readings/HazardousWasteRiskAssessmentbyAsante-Duah.pdf)
 # 
 # ![](intakedose.png)
 
@@ -88,9 +88,15 @@
 
 # ## References
 # 
-# 1. [Asante-Duah, K. (1993) Hazardous Waste Risk Assessment](http://54.243.,252.9/ce-5364-webroot/3-Readings/HazardousWasteRiskAssessmentbyAsante-Duah.pdf)
+# 1. [Asante-Duah, K. (1993) Hazardous Waste Risk Assessment](http://54.243.252.9/ce-5364-webroot/3-Readings/HazardousWasteRiskAssessmentbyAsante-Duah.pdf)
 # 2. [Hazard Ranking System Guidance Manual](http://54.243.252.9/ce-5364-webroot/3-Readings/HRSmanual.pdf)
 # 3. [EPA Risk Communication Seminar (1990)](http://54.243.252.9/ce-5364-webroot/3-Readings/EPARiskCommunicationSeminar.pdf)
+
+# In[ ]:
+
+
+
+
 
 # In[ ]:
 
