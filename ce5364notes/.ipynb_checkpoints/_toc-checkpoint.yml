@@ -53,5 +53,6 @@ chapters:
   - file: chapters/19chemflow/chemflowexamples
 
 - file: chapters/22remediation/remediation
+- file: chapters/23risk/risk
 - file: chapters/26regulatory/regulatory
 
