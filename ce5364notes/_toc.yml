@@ -61,11 +61,17 @@ chapters:
 - file: chapters/91exercises/2-Exercises
   sections:
   - file: chapters/91exercises/ES1/ES1
+  - file: chapters/91exercises/ES1/src-sol/ES1-WS
   - file: chapters/91exercises/ES2/ES2
+  - file: chapters/91exercises/ES2/src-sol/ES2-WS
   - file: chapters/91exercises/ES3/ES3
+  - file: chapters/91exercises/ES3/src-sol/ES3-WS
   - file: chapters/91exercises/ES4/ES4
+  - file: chapters/91exercises/ES4/src-sol/ES4-WS
   - file: chapters/91exercises/ES5/ES5
+  - file: chapters/91exercises/ES5/src-sol/ES5-WS
   - file: chapters/91exercises/ES6/ES6
+  - file: chapters/91exercises/ES6/src-sol/ES6-WS
   
 - file: chapters/93projects/Projects
   sections:
