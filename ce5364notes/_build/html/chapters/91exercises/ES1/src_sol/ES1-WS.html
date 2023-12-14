@@ -1,0 +1,1477 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CE 5364 Groundwater Transport Phenomena Fall 2023 Exercise Set 1 &#8212; Groundwater Transport Phenomena</title>
+    
+  <link href="../../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../../_static/gwtransport.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Groundwater Transport Phenomena</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../intro.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../0introduction/0introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../1computationaltools/1computationaltools.html">
+   Computational Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../2essentialgroundwater/essentialgwreview.html">
+   Essential Groundwater Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../4pollutants/4pollutants.html">
+   Pollutants
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../5nonreactivetransport/5nonreactivetransport.html">
+   Non-Reactive Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../5nonreactivetransport/1tracerhypothesis.html">
+     The Tracer Hypothesis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../5nonreactivetransport/2flux.html">
+     Flux
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../5nonreactivetransport/3advection.html">
+     Advection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../6nonreactivetransport/4diffusion.html">
+     Diffusion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../6nonreactivetransport/5dispersion.html">
+     Dispersion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../7analyticalmodels/analyticalmodels.html">
+   Analytical Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/impulse.html">
+     1D Impulse (Instantaneous Source) Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/ogatabanks.html">
+     1D Ogata-Banks Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/sauty.html">
+     1D Sauty Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/huntsolution.html">
+     2D Plume in Regional Flow (Hunt Solution)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/domenico.html">
+     Domenico-Robbins Solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/2Dfinitewidth.html">
+     2D - Advection-Dispersion, Finite-Width, Constant Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/2Dfwidth-pulse.html">
+     2D - Advection-Dispersion, Finite-Width, Finite-Duration Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/3Dfinitearea.html">
+     3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../8reactivetransport/8reactivetransport.html">
+   Reactive Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../8reactivetransport/6reactions.html">
+     Adsorbtion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../8reactivetransport/7decay.html">
+     Decay
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/reactivemodels.html">
+     Analytical Models with Decay and Adsorbtion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../11modelingadvection/0modelingadvection.html">
+   Modeling Advection
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../11modelingadvection/1particletracking.html">
+     Modeling Advection by Particle Tracking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../11modelingadvection/2upwindfdm.html">
+     Upwind Formulation Finite-Difference
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../12usgsmocmodel/usgsmoc.html">
+   USGS MOC Software
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../12usgsmocmodel/winmoc.html">
+     Windows Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../12usgsmocmodel/armmoc.html">
+     ARM7/AARCH 64 Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../12usgsmocmodel/dprw.html">
+     Discrete Particle Random Walk (Future Semester)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../16siteinvestigation/siteinvestigation.html">
+   Site Investigations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../15datacollection/datacollection.html">
+   Sample Collection and Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../17unsaturatedzone/unsaturated.html">
+   Unsaturated Zone Flow
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../18untransport/unsaturatedtransport.html">
+   Unsaturated Zone Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../18untransport/napls.html">
+     Non-Aqueous Phase Liquids
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../19chemflow/chemflow.html">
+   CHEMFLO-2000
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../19chemflow/chemflowwinders.html">
+     Windows Install
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../19chemflow/chemflowaarch.html">
+     ARM7/AARCH Install
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../19chemflow/chemflowexamples.html">
+     CHEMFLOW Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../22remediation/remediation.html">
+   Remediation Technologies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../23risk/risk.html">
+   Risk Assessment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../26regulatory/regulatory.html">
+   Groundwater Protection Legal Framework
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../2-Exercises.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ES1.html">
+     <font color="darkblue">
+      CE 4363/5363 Groundwater Transport Phenomena
+      <br/>
+      Fall 2023 Exercise Set 1
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ES2/ES2.html">
+     <font color="darkblue">
+      CE 4363/5363 Groundwater Transport Phenomena
+      <br/>
+      Spring 2023 Exercise Set 2
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ES3/ES3.html">
+     <font color="darkblue">
+      CE 5364 Groundwater Transport Phenemona
+      <br/>
+      Fall 2023 Exercise Set 3
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ES4/ES4.html">
+     <font color="darkblue">
+      CE 5364 Groundwater Transport Phenemona
+      <br/>
+      Fall 2023 Exercise Set 4
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ES5/ES5.html">
+     <font color="darkblue">
+      CE 5364 Groundwater Transport Phenemona
+      <br/>
+      Fall 2023 Exercise Set 5
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ES6/ES6.html">
+     <font color="darkblue">
+      CE 5364 Groundwater Transport Phenemona
+      <br/>
+      Fall 2023 Exercise Set 6
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../../_sources/chapters/91exercises/ES1/src_sol/ES1-WS.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/91exercises/ES1/src_sol/ES1-WS.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/91exercises/ES1/src_sol/ES1-WS.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <font color="darkblue">
+    CE 5364 Groundwater Transport Phenomena
+    <br/>
+    Fall 2023 Exercise Set 1
+   </font>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#purpose">
+     Purpose :
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assessment-criteria">
+     Assessment Criteria :
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-1-problem-2-3-pg-578">
+     Problem 1 (Problem 2-3, pg. 578)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sketch">
+     sketch
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-known-quantities">
+     list known quantities
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-unknown-quantities">
+     list unknown quantities
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#governing-principles">
+     governing principles
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-details-e-g-step-by-step-computations">
+     solution details (e.g. step-by-step computations)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion">
+     discussion
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-2-problem-2-8-pg-578">
+     Problem 2 (Problem 2-8, pg. 578)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sketch-s">
+   sketch(s)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   list known quantities
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   list unknown quantities
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   governing principles
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   solution details (e.g. step-by-step computations)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   discussion
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-3-problem-2-12-pg-579">
+     Problem 3 (Problem 2-12, pg. 579)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     sketch
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     list known quantities
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     list unknown quantities
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     governing principles
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-4">
+     Problem 4
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-5">
+     Problem 5
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="font-color-darkblue-ce-5364-groundwater-transport-phenomena-br-fall-2023-exercise-set-1-font">
+<h1><font color=darkblue>CE 5364 Groundwater Transport Phenomena <br> Fall 2023 Exercise Set 1</font><a class="headerlink" href="#font-color-darkblue-ce-5364-groundwater-transport-phenomena-br-fall-2023-exercise-set-1-font" title="Permalink to this headline">¶</a></h1>
+<p><strong>LAST NAME, FIRST NAME</strong></p>
+<p><strong>R00000000</strong></p>
+<hr>
+<div class="section" id="purpose">
+<h2>Purpose :<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
+<p>Refresh groundwater principles; apply principles to quantitative cases</p>
+</div>
+<div class="section" id="assessment-criteria">
+<h2>Assessment Criteria :<a class="headerlink" href="#assessment-criteria" title="Permalink to this headline">¶</a></h2>
+<p>Completion, results plausible, format correct, example calculations shown.</p>
+<hr><hr>
+</div>
+<div class="section" id="problem-1-problem-2-3-pg-578">
+<h2>Problem 1 (Problem 2-3, pg. 578)<a class="headerlink" href="#problem-1-problem-2-3-pg-578" title="Permalink to this headline">¶</a></h2>
+<p>A sand column has the following characteristics:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} K = 10^{-4} \frac{cm}{s} \\ A = 75 cm^{2} \\ \frac{dh}{dl} = 0.01 \\ n = 0.20\end{split}\]</div>
+<p>Determine:</p>
+<ol class="simple">
+<li><p>Sketch the system.</p></li>
+<li><p>The discharge velocity.</p></li>
+<li><p>The seepage velocity.</p></li>
+<li><p>The volumetric flow rate through the column.</p></li>
+</ol>
+</div>
+<div class="section" id="sketch">
+<h2>sketch<a class="headerlink" href="#sketch" title="Permalink to this headline">¶</a></h2>
+<p><img alt="" src="../../../../_images/es1-1-sketch.png" /></p>
+</div>
+<div class="section" id="list-known-quantities">
+<h2>list known quantities<a class="headerlink" href="#list-known-quantities" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[ K = 10^{-4} \frac{cm}{s} \]</div>
+<div class="math notranslate nohighlight">
+\[ A = 75 cm^{2} \]</div>
+<div class="math notranslate nohighlight">
+\[ \frac{dh}{dl} = 0.01 \]</div>
+<div class="math notranslate nohighlight">
+\[ n = 0.20 \]</div>
+</div>
+<div class="section" id="list-unknown-quantities">
+<h2>list unknown quantities<a class="headerlink" href="#list-unknown-quantities" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>The discharge velocity, <span class="math notranslate nohighlight">\(q = \frac{Q}{A}\)</span></p></li>
+<li><p>The seepage velocity, <span class="math notranslate nohighlight">\(u = \frac{q}{n} = \frac{Q}{nA}\)</span></p></li>
+<li><p>The volumetric flow rate through the column, <span class="math notranslate nohighlight">\(Q\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="governing-principles">
+<h2>governing principles<a class="headerlink" href="#governing-principles" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Darcy’s law; <span class="math notranslate nohighlight">\(Q=KA\frac{dh}{dl}\)</span></p></li>
+<li><p>Definition(s) of discharge and seepage velocity</p></li>
+</ol>
+</div>
+<div class="section" id="solution-details-e-g-step-by-step-computations">
+<h2>solution details (e.g. step-by-step computations)<a class="headerlink" href="#solution-details-e-g-step-by-step-computations" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mf">1.0e-04</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mi">75</span>
+<span class="n">dhdl</span><span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mf">0.20</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span><span class="o">=</span><span class="n">K</span><span class="o">*</span><span class="n">dhdl</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;discharge velocity = &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot; cm/sec&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>discharge velocity =  1e-06  cm/sec
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span><span class="o">=</span><span class="n">q</span><span class="o">/</span><span class="n">n</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;seepage velocity = &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot; cm/sec&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>seepage velocity =  5e-06  cm/sec
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Q</span><span class="o">=</span><span class="n">q</span><span class="o">*</span><span class="n">A</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Volumetric discharge = &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot; ml/sec&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Volumetric discharge =  7.5e-05  ml/sec
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="discussion">
+<h2>discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h2>
+<p>Direct application of Darcy’s law and definitions from the mighty internet is all that is required for this exercise.</p>
+<hr><hr>
+</div>
+<div class="section" id="problem-2-problem-2-8-pg-578">
+<h2>Problem 2 (Problem 2-8, pg. 578)<a class="headerlink" href="#problem-2-problem-2-8-pg-578" title="Permalink to this headline">¶</a></h2>
+<p>The figure below shows a piezometric map for a shallow sand aquifer.  The hydraulic conductivtiy is estimated to be <span class="math notranslate nohighlight">\(1.5 \times 10^{-2}~\frac{cm}{s}\)</span>, the saturated thickness is 40 feet, and the effective porosity is 0.3.</p>
+<p><img alt="" src="../../../../_images/Fig5.181.png" /></p>
+<p>Determine:</p>
+<ol class="simple">
+<li><p>Which well is expected to be the most contaminated.</p></li>
+<li><p>The groundwater velocity and seepage velocity across the plume.</p></li>
+<li><p>The duration that the source has been contaminating the aquifer (neglect dispersion, diffusiom, and adsorption).</p></li>
+<li><p>The flow rate across the plume.</p></li>
+<li><p>An explaination for contamination upgradient of the source zone.</p></li>
+</ol>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="sketch-s">
+<h1>sketch(s)<a class="headerlink" href="#sketch-s" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1>list known quantities<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Head map (provided)</p></li>
+<li><p><span class="math notranslate nohighlight">\(b~\approx~40~feet\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(K~\approx~ 1.5 \times 10^{-2}~\frac{cm}{s} \cdot \frac{1~in}{2.54~cm} \cdot \frac{1~ft}{12~in} \cdot \frac{86400~s}{1~day} = 42.52~\frac{ft}{day}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(n~\approx~ 0.30 \)</span></p></li>
+</ul>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id2">
+<h1>list unknown quantities<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>Which well is expected to be the most contaminated.</p></li>
+<li><p>The groundwater velocity and seepage velocity across the plume.</p></li>
+<li><p>The duration that the source has been contaminating the aquifer (neglect dispersion, diffusiom, and adsorption).</p></li>
+<li><p>The flow rate across the plume.</p></li>
+<li><p>An explaination for contamination upgradient of the source zone.</p></li>
+</ol>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id3">
+<h1>governing principles<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>Darcy’s law; <span class="math notranslate nohighlight">\(Q=KA\frac{dh}{dl}\)</span></p></li>
+<li><p>Definition(s) of discharge and seepage velocity</p></li>
+</ol>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id4">
+<h1>solution details (e.g. step-by-step computations)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>Which well is expected to be the most contaminated.</p></li>
+</ol>
+<ul class="simple">
+<li><p>If release is ongoing, probably well A in annotated map below.</p></li>
+<li><p>If release is “past history” then probably well M near middle of the plume.
+<br><img alt="" src="../../../../_images/Fig5.18.annotate.png" /></p></li>
+</ul>
+<ol class="simple">
+<li><p>The groundwater velocity and seepage velocity across the plume.</p></li>
+</ol>
+<ul class="simple">
+<li><p>See annotated map below.</p></li>
+<li><p>Gradients near well A and well M are calculated directly on the map annotations.</p></li>
+<li><p>Specific discharge values:
+<br> <span class="math notranslate nohighlight">\(q_{near~well~A} = \frac{Q}{A} _{near~well~A}~\approx~45.52\frac{ft}{day}(0.0014)= 0.0637 \frac{ft}{day}\)</span>
+<br> <span class="math notranslate nohighlight">\(q_{near~well~M} = \frac{Q}{A} _{near~well~M}~\approx~45.52\frac{ft}{day}(0.00125)= 0.0569 \frac{ft}{day}\)</span>
+<br> A reasonable average is  <span class="math notranslate nohighlight">\(q = \frac{Q}{A} _{average}~\approx~0.06 \frac{ft}{day}\)</span></p></li>
+<li><p>Species (seepage) velocity is
+<br> <span class="math notranslate nohighlight">\(U=\frac{q}{n} = \frac{1}{n} \frac{Q}{A} = \frac{1}{0.3} 0.06 \frac{ft}{day} = 0.2 \frac{ft}{day}\)</span></p></li>
+</ul>
+<ol class="simple">
+<li><p>The duration that the source has been contaminating the aquifer (neglect dispersion, diffusiom, and adsorption).</p></li>
+</ol>
+<ul class="simple">
+<li><p>Choose a reasonable pathline like the one on the drawing below and measure its length, then using definition of velocity, solve for duration.
+<br> Pathline is <span class="math notranslate nohighlight">\(\approx~925~feet\)</span>
+<br> <span class="math notranslate nohighlight">\(t=\frac{x}{U}= \frac{925}{0.02} = 4625~days\)</span></p></li>
+</ul>
+<ol class="simple">
+<li><p>The flow rate across the plume.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Apply Darcy’s law
+<br> <span class="math notranslate nohighlight">\(Q=qA=0.06 \frac{ft}{day} \cdot 325 ft \cdot 40 ft = 780 \frac{ft^3}{day}\)</span></p></li>
+</ul>
+<ol class="simple">
+<li><p>An explaination for contamination upgradient of the source zone.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Dispersion/diffusion of constituients, and/or</p></li>
+<li><p>The regional water table is not static and at some point in past, gradient was in Easterly direction.</p></li>
+</ul>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id5">
+<h1>discussion<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>The non-static water table is very likely, and quarterly moniroting is a usual standard to detect and account for seasonal/temporal variability.</p></li>
+</ul>
+<hr><hr> 
+<div class="section" id="problem-3-problem-2-12-pg-579">
+<h2>Problem 3 (Problem 2-12, pg. 579)<a class="headerlink" href="#problem-3-problem-2-12-pg-579" title="Permalink to this headline">¶</a></h2>
+<p>Three geologic formations overlie one another with the characteristics listed below.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} b_1 = 50~ft ~~~~ K_1 = 0.0002 \frac{ft}{s}\\ b_2 = 20~ft ~~~~ K_1 = 0.000005 \frac{ft}{s}\\ b_3 = 210~ft ~~~~ K_1 = 0.001 \frac{ft}{s}\end{split}\]</div>
+<p>A constant velocity vertical flow field exists across the three formations.
+The hydraulic head at the top of the formations (top of formation 1) is 33 feet.  The hydraulic head at the bottom of the formations (bottom of formation 3) is 21 feet.</p>
+<p>Determine:</p>
+<ol class="simple">
+<li><p>Sketch the system.</p></li>
+<li><p>The hydraulic head at the internal boundary between formation 1 and 2.</p></li>
+<li><p>The hydraulic head at the internal boundary between formation 2 and 3.</p></li>
+<li><p>Approximate time for a tracer to flow through the three layers if the porosities <span class="math notranslate nohighlight">\(n_1\)</span>, <span class="math notranslate nohighlight">\(n_2\)</span>, and <span class="math notranslate nohighlight">\(n_3\)</span> are 0.30,0.42, and 0.35, respectively</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sketch(s) </span>
+<span class="c1"># list known quantities</span>
+<span class="c1"># list unknown quantities</span>
+<span class="c1"># governing principles</span>
+<span class="c1"># solution details (e.g. step-by-step computations)</span>
+<span class="c1"># discussion</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>sketch<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p><img alt="" src="../../../../_images/es1-3-sketch.png" /></p>
+</div>
+<div class="section" id="id7">
+<h2>list known quantities<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>Thickness, hydraulic conductivities, porosities and heads as shown on sketch above.</p>
+</div>
+<div class="section" id="id8">
+<h2>list unknown quantities<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>H at 1-2 interface.</p></li>
+<li><p>H at 2-3 interface.</p></li>
+<li><p>Time for tracer to traverse entire formation</p></li>
+</ol>
+</div>
+<div class="section" id="id9">
+<h2>governing principles<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Darcy’s law by layer</p></li>
+<li><p>velocity = q/n</p></li>
+<li><p>time = thickness/velocity</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find total discharge per unit area through entire formation</span>
+<span class="n">htop</span><span class="o">=</span><span class="mi">33</span>
+<span class="n">hbot</span><span class="o">=</span><span class="mi">21</span>
+<span class="n">k1</span><span class="o">=</span><span class="mf">0.0002</span>
+<span class="n">k2</span><span class="o">=</span><span class="mf">0.000005</span>
+<span class="n">k3</span><span class="o">=</span><span class="mf">0.001</span>
+<span class="n">l1</span><span class="o">=</span><span class="mi">50</span>
+<span class="n">l2</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">l3</span><span class="o">=</span><span class="mi">210</span>
+<span class="n">n1</span><span class="o">=</span><span class="mf">0.30</span>
+<span class="n">n2</span><span class="o">=</span><span class="mf">0.42</span>
+<span class="n">n3</span><span class="o">=</span><span class="mf">0.35</span>
+<span class="n">Kbar</span><span class="o">=</span><span class="p">(</span><span class="n">l1</span><span class="o">+</span><span class="n">l2</span><span class="o">+</span><span class="n">l3</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">l1</span><span class="o">/</span><span class="n">k1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">l2</span><span class="o">/</span><span class="n">k2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">l3</span><span class="o">/</span><span class="n">k3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;vertical composite Kv: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">Kbar</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot; ft/sec&quot;</span><span class="p">)</span>
+<span class="n">dH</span><span class="o">=</span><span class="n">htop</span> <span class="o">-</span> <span class="n">hbot</span>
+<span class="n">dl</span> <span class="o">=</span> <span class="n">l1</span><span class="o">+</span><span class="n">l2</span><span class="o">+</span><span class="n">l3</span>
+<span class="n">qt</span><span class="o">=</span><span class="n">Kbar</span><span class="o">*</span><span class="n">dH</span><span class="o">/</span><span class="n">dl</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;vertical hydraulic gradient :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">dH</span><span class="o">/</span><span class="n">dl</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot; ft/ft&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;vertical specific discharge q: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">qt</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot; ft/sec&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vertical composite Kv:  6.3e-05  ft/sec
+vertical hydraulic gradient : 0.042857  ft/ft
+vertical specific discharge q:  3e-06  ft/sec
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find head loss in layer 1</span>
+<span class="n">dh1</span> <span class="o">=</span> <span class="n">l1</span><span class="o">*</span><span class="n">qt</span><span class="o">/</span><span class="n">k1</span>
+<span class="n">h12</span> <span class="o">=</span> <span class="n">htop</span> <span class="o">-</span><span class="n">dh1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;head at layer 1-2 interface :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">h12</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; ft &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>head at layer 1-2 interface : 32.33  ft 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find head loss in layer 2</span>
+<span class="n">dh2</span> <span class="o">=</span> <span class="n">l2</span><span class="o">*</span><span class="n">qt</span><span class="o">/</span><span class="n">k2</span>
+<span class="n">h23</span> <span class="o">=</span> <span class="n">htop</span> <span class="o">-</span> <span class="n">dh1</span> <span class="o">-</span><span class="n">dh2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;head at layer 2-3 interface :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">h23</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; ft &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>head at layer 2-3 interface : 21.57  ft 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># time in layer 1</span>
+<span class="n">time1</span> <span class="o">=</span> <span class="n">l1</span><span class="o">*</span><span class="n">n1</span><span class="o">/</span><span class="n">qt</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tracer time in layer 1 :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">time1</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot; sec&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tracer time in layer 1 : 5575000.0  sec
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># time in layer 2</span>
+<span class="n">time2</span> <span class="o">=</span> <span class="n">l2</span><span class="o">*</span><span class="n">n2</span><span class="o">/</span><span class="n">qt</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tracer time in layer 2 :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">time2</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot; sec&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tracer time in layer 2 : 3122000.0  sec
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># time in layer 3</span>
+<span class="n">time3</span> <span class="o">=</span> <span class="n">l3</span><span class="o">*</span><span class="n">n3</span><span class="o">/</span><span class="n">qt</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tracer time in layer 3 :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">time3</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot; sec&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tracer time in layer 3 : 27317500.0  sec
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">totaltime</span><span class="o">=</span><span class="n">time1</span><span class="o">+</span><span class="n">time2</span><span class="o">+</span><span class="n">time3</span>
+<span class="n">totaltime</span><span class="o">=</span><span class="n">totaltime</span><span class="o">/</span><span class="mi">86400</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tracer travel time :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">totaltime</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; days &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tracer travel time : 416.834  days 
+</pre></div>
+</div>
+</div>
+</div>
+<hr><hr> 
+</div>
+<div class="section" id="problem-4">
+<h2>Problem 4<a class="headerlink" href="#problem-4" title="Permalink to this headline">¶</a></h2>
+<p>Three monitoring wells are in a homogeneous isotropic confined aquifer with transmissivity <span class="math notranslate nohighlight">\(T=1700\frac{m^2}{day}\)</span>.  The observed piezometric heads are given in the table below:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Well ID</p></th>
+<th class="text-align:left head"><p>Easting Coordinate (m)</p></th>
+<th class="text-align:left head"><p>Northing Coordinate (m)</p></th>
+<th class="text-align:left head"><p>Head (m)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>MW-1</p></td>
+<td class="text-align:left"><p>0</p></td>
+<td class="text-align:left"><p>0</p></td>
+<td class="text-align:left"><p>120.0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>MW-2</p></td>
+<td class="text-align:left"><p>0</p></td>
+<td class="text-align:left"><p>300</p></td>
+<td class="text-align:left"><p>118.4</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>MW-3</p></td>
+<td class="text-align:left"><p>200</p></td>
+<td class="text-align:left"><p>0</p></td>
+<td class="text-align:left"><p>122.5</p></td>
+</tr>
+</tbody>
+</table>
+<p>Determine:</p>
+<ol class="simple">
+<li><p>A contour map of the piezometric surface in the vicinity of these wells using a 1-meter contour interval.</p></li>
+<li><p>Magnitude and direction of the gradient of head.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sketch(s) </span>
+<span class="c1"># list known quantities</span>
+<span class="c1"># list unknown quantities</span>
+<span class="c1"># governing principles</span>
+<span class="c1"># solution details (e.g. step-by-step computations)</span>
+<span class="c1"># discussion</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="n">Tran</span><span class="o">=</span><span class="mf">1700.0</span>
+<span class="c1"># well A is origin</span>
+<span class="n">wellID</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;Well A&#39;</span><span class="p">,</span><span class="s1">&#39;Well B&#39;</span><span class="p">,</span><span class="s1">&#39;Well C&#39;</span><span class="p">]</span>
+<span class="n">well_X</span> <span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">200.0</span><span class="p">]</span>
+<span class="n">well_Y</span> <span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">300.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span>
+<span class="n">well_Z</span> <span class="o">=</span><span class="p">[</span><span class="mi">120</span><span class="p">,</span><span class="mf">118.4</span><span class="p">,</span><span class="mf">122.5</span><span class="p">]</span>
+<span class="n">amatrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="c1"># A-matrix</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">amatrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">well_X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">amatrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">well_Y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">amatrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mf">1.0</span>
+    <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span> <span class="n">well_Z</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 
+<span class="n">amatrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">amatrix</span><span class="p">)</span> <span class="c1">#typecast as numpy array</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">amatrix</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="c1"># solve equation of plane</span>
+<span class="c1"># recover and report results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x-component hydraulic gradient: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y-component hydraulic gradient: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">grad</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;magnitude hydraulic gradient: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">grad</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;direction cosine x-component hydraulic gradient: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">grad</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;direction cosine y-component hydraulic gradient: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">grad</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">gradH</span> <span class="o">=</span> <span class="n">grad</span><span class="o">*</span><span class="n">Tran</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;magnitude head gradient: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">gradH</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; meters per day&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;u= -K*dH/dx: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">Tran</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot;m/day&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;v= -K*dH/dy: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">Tran</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot;m/day&quot;</span><span class="p">)</span>
+<span class="c1"># use this if want to plot</span>
+<span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">grad</span><span class="p">)]</span> 
+<span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">grad</span><span class="p">)]</span> 
+<span class="n">stry</span><span class="o">=</span><span class="s1">&#39;Distance Northing&#39;</span>
+<span class="n">strx</span><span class="o">=</span><span class="s1">&#39;Distance Easting&#39;</span>
+<span class="n">strtitle</span><span class="o">=</span><span class="s1">&#39;Hydraulic Gradient and 3-Well Locations</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="s1">&#39;Gradient Magnitude: &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">grad</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> Red segment is 100X direction cosines&#39;</span> 
+
+<span class="n">plotlabel</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Wells&#39;</span><span class="p">,</span><span class="s1">&#39;Gradient&#39;</span><span class="p">]</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span> <span class="c1"># import the plotting library from matplotlibplt.show()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">well_X</span><span class="p">,</span> <span class="n">well_Y</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span> <span class="c1"># create a line chart, years on x-axis, gdp on y-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">strtitle</span><span class="p">)</span><span class="c1"># add a title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">stry</span><span class="p">)</span><span class="c1"># add a label to the x and y-axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">strx</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">plotlabel</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># display the plot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x-component hydraulic gradient:  -0.012
+y-component hydraulic gradient:  0.005
+magnitude hydraulic gradient:  0.014
+direction cosine x-component hydraulic gradient:  -0.92
+direction cosine y-component hydraulic gradient:  0.392
+magnitude head gradient:  23.103  meters per day
+u= -K*dH/dx:  -21.25 m/day
+v= -K*dH/dy:  9.067 m/day
+</pre></div>
+</div>
+<img alt="../../../../_images/ES1-WS_26_1.png" src="../../../../_images/ES1-WS_26_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># build XYZ structure from 3-well function</span>
+<span class="n">nrows</span><span class="o">=</span><span class="mi">401</span>
+<span class="n">ncols</span><span class="o">=</span><span class="mi">301</span>
+<span class="n">distancex</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span>
+<span class="n">distancey</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span>
+<span class="n">head</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="n">distancex</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="n">distancey</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+        <span class="n">head</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">distancex</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">distancey</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_xyz</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># empty list</span>
+<span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+        <span class="n">my_xyz</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">distancex</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="n">distancey</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span><span class="n">head</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]])</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_xyz</span><span class="p">)</span> <span class="c1"># convert into a data frame</span>
+<span class="c1">#print(my_xyz) # activate to examine the dataframe</span>
+<span class="kn">import</span> <span class="nn">numpy</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">griddata</span>
+<span class="c1"># extract lists from the dataframe</span>
+<span class="n">coord_x</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 0 of dataframe</span>
+<span class="n">coord_y</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 1 of dataframe</span>
+<span class="n">coord_z</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 2 of dataframe</span>
+<span class="n">coord_xy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">coord_y</span><span class="p">))</span>
+<span class="c1"># Set plotting range in original data units</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+<span class="c1"># Grid the data; use linear interpolation (choices are nearest, linear, cubic)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_xy</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_z</span><span class="p">),</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="c1"># Build the map</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
+<span class="c1"># build flowline to overlaY</span>
+<span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="o">-</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">grad</span><span class="p">)]</span> 
+<span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="o">-</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">grad</span><span class="p">)]</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Contour Plot from Gridded Data File&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Contour Plot from Gridded Data File&#39;)
+</pre></div>
+</div>
+<img alt="../../../../_images/ES1-WS_28_1.png" src="../../../../_images/ES1-WS_28_1.png" />
+</div>
+</div>
+<hr><hr> 
+</div>
+<div class="section" id="problem-5">
+<h2>Problem 5<a class="headerlink" href="#problem-5" title="Permalink to this headline">¶</a></h2>
+<p>Three monitoring wells are in a homogeneous anisotropic aquifer with saturated thickness of 20 m, and hydraulic conductivity given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{gather}
+\mathbf{K} =
+\begin{pmatrix}
+30 &amp; ~8 \\
+~\\
+8 &amp; 10 \\
+\end{pmatrix}
+\frac{m}{day}
+~
+\end{gather}
+\end{split}\]</div>
+<p>The observed piezometric heads are given in the table below:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Well ID</p></th>
+<th class="text-align:left head"><p>Easting Coordinate (m)</p></th>
+<th class="text-align:left head"><p>Northing Coordinate (m)</p></th>
+<th class="text-align:left head"><p>Head (m)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>MW-1</p></td>
+<td class="text-align:left"><p>0</p></td>
+<td class="text-align:left"><p>0</p></td>
+<td class="text-align:left"><p>120.0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>MW-2</p></td>
+<td class="text-align:left"><p>0</p></td>
+<td class="text-align:left"><p>300</p></td>
+<td class="text-align:left"><p>118.4</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>MW-3</p></td>
+<td class="text-align:left"><p>200</p></td>
+<td class="text-align:left"><p>0</p></td>
+<td class="text-align:left"><p>122.5</p></td>
+</tr>
+</tbody>
+</table>
+<p>Determine:</p>
+<ol class="simple">
+<li><p>A contour map of the piezometric surface in the vicinity of these wells using a 1-meter contour interval (identical to previous problem).</p></li>
+<li><p>Magnitude and direction of the specific discharge through the aquifer.</p></li>
+<li><p>Determine the principal values of the hydraulic conductivity <span class="math notranslate nohighlight">\(\mathbf{K}\)</span> tensor, and the angle between the principal axes and the Easting-Northing coordinate system.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sketch(s) </span>
+<span class="c1"># list known quantities</span>
+<span class="c1"># list unknown quantities</span>
+<span class="c1"># governing principles</span>
+<span class="c1"># solution details (e.g. step-by-step computations)</span>
+<span class="c1"># discussion</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="n">K</span><span class="o">=</span><span class="p">[[</span><span class="mi">30</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">]]</span>
+<span class="c1"># well A is origin</span>
+<span class="n">wellID</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;Well A&#39;</span><span class="p">,</span><span class="s1">&#39;Well B&#39;</span><span class="p">,</span><span class="s1">&#39;Well C&#39;</span><span class="p">]</span>
+<span class="n">well_X</span> <span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">200.0</span><span class="p">]</span>
+<span class="n">well_Y</span> <span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">300.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span>
+<span class="n">well_Z</span> <span class="o">=</span><span class="p">[</span><span class="mi">120</span><span class="p">,</span><span class="mf">118.4</span><span class="p">,</span><span class="mf">122.5</span><span class="p">]</span>
+<span class="n">amatrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="c1"># A-matrix</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">amatrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">well_X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">amatrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">well_Y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">amatrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mf">1.0</span>
+    <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span> <span class="n">well_Z</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 
+<span class="n">amatrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">amatrix</span><span class="p">)</span> <span class="c1">#typecast as numpy array</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">amatrix</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="c1"># solve equation of plane</span>
+<span class="c1"># recover and report results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x-component hydraulic gradient: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y-component hydraulic gradient: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">grad</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;magnitude hydraulic gradient: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">grad</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;direction cosine x-component hydraulic gradient: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">grad</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;direction cosine y-component hydraulic gradient: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">grad</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="c1">#gradH = grad*Tran</span>
+<span class="c1">#print(&quot;magnitude head gradient: &quot;,round(gradH,3),&quot; meters per day&quot;)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">K</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">K</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">K</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">K</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;u= -K*dH/dx: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot;m/day&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;v= -K*dH/dy: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot;m/day&quot;</span><span class="p">)</span>
+<span class="c1"># use this if want to plot</span>
+<span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">grad</span><span class="p">)]</span> 
+<span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">grad</span><span class="p">)]</span> 
+
+<span class="n">list11</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">u</span><span class="p">)]</span> 
+<span class="n">list22</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">v</span><span class="p">)]</span> 
+
+<span class="n">stry</span><span class="o">=</span><span class="s1">&#39;Distance Northing&#39;</span>
+<span class="n">strx</span><span class="o">=</span><span class="s1">&#39;Distance Easting&#39;</span>
+<span class="n">strtitle</span><span class="o">=</span><span class="s1">&#39;Hydraulic Gradient and 3-Well Locations</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> \
+<span class="s1">&#39;Gradient Magnitude: &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">grad</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> Red segment is 100X direction cosines&#39;</span> <span class="o">+</span> \
+<span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> Blue Segment is 100X Specific Discharge Velocities&#39;</span>
+
+<span class="n">plotlabel</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Wells&#39;</span><span class="p">,</span><span class="s1">&#39;Hydraulic Gradient&#39;</span><span class="p">,</span><span class="s1">&#39;Flowline&#39;</span><span class="p">]</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span> <span class="c1"># import the plotting library from matplotlibplt.show()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">well_X</span><span class="p">,</span> <span class="n">well_Y</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span> <span class="c1"># create a line chart, years on x-axis, gdp on y-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">list11</span><span class="p">,</span> <span class="n">list22</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">strtitle</span><span class="p">)</span><span class="c1"># add a title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">stry</span><span class="p">)</span><span class="c1"># add a label to the x and y-axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">strx</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">plotlabel</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># display the plot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x-component hydraulic gradient:  -0.012
+y-component hydraulic gradient:  0.005
+magnitude hydraulic gradient:  0.014
+direction cosine x-component hydraulic gradient:  -0.92
+direction cosine y-component hydraulic gradient:  0.392
+u= -K*dH/dx:  -0.332 m/day
+v= -K*dH/dy:  -0.047 m/day
+</pre></div>
+</div>
+<img alt="../../../../_images/ES1-WS_31_1.png" src="../../../../_images/ES1-WS_31_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># build XYZ structure from 3-well function</span>
+<span class="n">nrows</span><span class="o">=</span><span class="mi">401</span>
+<span class="n">ncols</span><span class="o">=</span><span class="mi">301</span>
+<span class="n">distancex</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span>
+<span class="n">distancey</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span>
+<span class="n">head</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="n">distancex</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="n">distancey</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+        <span class="n">head</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">distancex</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">distancey</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_xyz</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># empty list</span>
+<span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+        <span class="n">my_xyz</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">distancex</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="n">distancey</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span><span class="n">head</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]])</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_xyz</span><span class="p">)</span> <span class="c1"># convert into a data frame</span>
+<span class="c1">#print(my_xyz) # activate to examine the dataframe</span>
+<span class="kn">import</span> <span class="nn">numpy</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">griddata</span>
+<span class="c1"># extract lists from the dataframe</span>
+<span class="n">coord_x</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 0 of dataframe</span>
+<span class="n">coord_y</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 1 of dataframe</span>
+<span class="n">coord_z</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 2 of dataframe</span>
+<span class="n">coord_xy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">coord_y</span><span class="p">))</span>
+<span class="c1"># Set plotting range in original data units</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+<span class="c1"># Grid the data; use linear interpolation (choices are nearest, linear, cubic)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_xy</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_z</span><span class="p">),</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="c1"># Build the map</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
+<span class="c1"># build flowline to overlaY</span>
+<span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="o">-</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">grad</span><span class="p">)]</span> 
+<span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="o">-</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">grad</span><span class="p">)]</span> 
+<span class="n">list11</span> <span class="o">=</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="o">+</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">u</span><span class="p">)]</span> 
+<span class="n">list22</span> <span class="o">=</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="o">+</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">v</span><span class="p">)]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">list11</span><span class="p">,</span> <span class="n">list22</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Contour Plot from Gridded Data File&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Contour Plot from Gridded Data File&#39;)
+</pre></div>
+</div>
+<img alt="../../../../_images/ES1-WS_33_1.png" src="../../../../_images/ES1-WS_33_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/91exercises/ES1/src_sol"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Theodore G. Cleveland, PhD<br/>
+        
+            &copy; Copyright 2023.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

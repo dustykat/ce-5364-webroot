@@ -1,0 +1,746 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>USGS MOC Project (Casing Failure) &#8212; Groundwater Transport Phenomena</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Chemflow 2000 Project 2" href="../PR5/PR5.html" />
+    <link rel="prev" title="USGS MOC Project 3 (Site Investigation/Remediation Design)" href="../PR3/PR3.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/gwtransport.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Groundwater Transport Phenomena</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../intro.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../0introduction/0introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../1computationaltools/1computationaltools.html">
+   Computational Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../2essentialgroundwater/essentialgwreview.html">
+   Essential Groundwater Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../4pollutants/4pollutants.html">
+   Pollutants
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../5nonreactivetransport/5nonreactivetransport.html">
+   Non-Reactive Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5nonreactivetransport/1tracerhypothesis.html">
+     The Tracer Hypothesis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5nonreactivetransport/2flux.html">
+     Flux
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5nonreactivetransport/3advection.html">
+     Advection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../6nonreactivetransport/4diffusion.html">
+     Diffusion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../6nonreactivetransport/5dispersion.html">
+     Dispersion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../7analyticalmodels/analyticalmodels.html">
+   Analytical Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../7analyticalmodels/impulse.html">
+     1D Impulse (Instantaneous Source) Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../7analyticalmodels/ogatabanks.html">
+     1D Ogata-Banks Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../7analyticalmodels/sauty.html">
+     1D Sauty Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../7analyticalmodels/huntsolution.html">
+     2D Plume in Regional Flow (Hunt Solution)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../7analyticalmodels/domenico.html">
+     Domenico-Robbins Solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../7analyticalmodels/2Dfinitewidth.html">
+     2D - Advection-Dispersion, Finite-Width, Constant Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../7analyticalmodels/2Dfwidth-pulse.html">
+     2D - Advection-Dispersion, Finite-Width, Finite-Duration Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../7analyticalmodels/3Dfinitearea.html">
+     3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../8reactivetransport/8reactivetransport.html">
+   Reactive Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../8reactivetransport/6reactions.html">
+     Adsorbtion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../8reactivetransport/7decay.html">
+     Decay
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../7analyticalmodels/reactivemodels.html">
+     Analytical Models with Decay and Adsorbtion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../11modelingadvection/0modelingadvection.html">
+   Modeling Advection
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../11modelingadvection/1particletracking.html">
+     Modeling Advection by Particle Tracking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../11modelingadvection/2upwindfdm.html">
+     Upwind Formulation Finite-Difference
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../12usgsmocmodel/usgsmoc.html">
+   USGS MOC Software
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../12usgsmocmodel/winmoc.html">
+     Windows Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../12usgsmocmodel/armmoc.html">
+     ARM7/AARCH 64 Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../12usgsmocmodel/dprw.html">
+     Discrete Particle Random Walk (Future Semester)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../16siteinvestigation/siteinvestigation.html">
+   Site Investigations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../15datacollection/datacollection.html">
+   Sample Collection and Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../17unsaturatedzone/unsaturated.html">
+   Unsaturated Zone Flow
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../18untransport/unsaturatedtransport.html">
+   Unsaturated Zone Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../18untransport/napls.html">
+     Non-Aqueous Phase Liquids
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../19chemflow/chemflow.html">
+   CHEMFLO-2000
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../19chemflow/chemflowwinders.html">
+     Windows Install
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../19chemflow/chemflowaarch.html">
+     ARM7/AARCH Install
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../19chemflow/chemflowexamples.html">
+     CHEMFLOW Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../22remediation/remediation.html">
+   Remediation Technologies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../23risk/risk.html">
+   Risk Assessment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../26regulatory/regulatory.html">
+   Groundwater Protection Legal Framework
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../91exercises/2-Exercises.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../91exercises/ES1/ES1.html">
+     <font color="darkblue">
+      CE 4363/5363 Groundwater Transport Phenomena
+      <br/>
+      Fall 2023 Exercise Set 1
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../91exercises/ES2/ES2.html">
+     <font color="darkblue">
+      CE 4363/5363 Groundwater Transport Phenomena
+      <br/>
+      Spring 2023 Exercise Set 2
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../91exercises/ES3/ES3.html">
+     <font color="darkblue">
+      CE 5364 Groundwater Transport Phenemona
+      <br/>
+      Fall 2023 Exercise Set 3
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../91exercises/ES4/ES4.html">
+     <font color="darkblue">
+      CE 5364 Groundwater Transport Phenemona
+      <br/>
+      Fall 2023 Exercise Set 4
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../91exercises/ES5/ES5.html">
+     <font color="darkblue">
+      CE 5364 Groundwater Transport Phenemona
+      <br/>
+      Fall 2023 Exercise Set 5
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../91exercises/ES6/ES6.html">
+     <font color="darkblue">
+      CE 5364 Groundwater Transport Phenemona
+      <br/>
+      Fall 2023 Exercise Set 6
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../Projects.html">
+   Projects
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PR2/PR2.html">
+     USGS MOC Project 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PR3/PR3.html">
+     USGS MOC Project 3 (Site Investigation/Remediation Design)
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     USGS MOC Project (Casing Failure)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PR5/PR5.html">
+     Chemflow 2000 Project 2
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/chapters/93projects/PR4/PR4.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/93projects/PR4/PR4.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/93projects/PR4/PR4.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#project">
+   Project
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="usgs-moc-project-casing-failure">
+<h1>USGS MOC Project (Casing Failure)<a class="headerlink" href="#usgs-moc-project-casing-failure" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>An injection well will be used to re-inject scale from produced water (produced water is water produced as part of oil extraction).<br />
+The scale is usually classified as a naturally occuring radioactive material (NORM).<br />
+NORM waste is difficult (in a regulatory sense) to dispose of, because the cost of long-term containment is very high.</p>
+<p>Economically it is preferable to chemically dissolve the scale, which is the significant radioactive source, and inject the solution into a deep reservoir, typically a depleted oil reservoir.
+Normally injection wells are operated in batches, and would be monitored frequently during the injection process.</p>
+<p>A casing failure means that the casing (riser pipe) connecting the surface injection pump to the reservoir is breached in some fashion and water in injected at an incorrect elevation. A pressure transducer at the injection head would normally detect the loss of pressure from a catastrophic breach (casing failure) and shut off the injection pump.  A second kind of failure, possibly more common (casing failures are pretty rare) is poor casing-borehole integrity allowing the injection water to move along the borehole and enter formations at incorrect elevations.</p>
+<p>In the figure below the right panel depicts an injection well configuration where the target formation is the deepest one (at around 300 m in the schematic).  The left panel depicts hydrostatic liquid pressures and the corresponding effective stress (solids pressure) mostly to illustrate the mechanical forces injolved in deep=well injection.</p>
+<p><img alt="" src="../../../_images/vertical-schematic.png" /></p>
+<p>In the schematic the mechanical stress on screen would be approximately 5400 KPa (~800psi); the injection pressure at least 1360 KPa (~200psi).  The overall mechanical stress (solid + fluid pressures) on the casing is often very high.  The injection pressures are also quite high to overcome the high fluid pressure in the receiving reservoir (injection zone).  These two situations can combine and lead to casing failure (a rare occurance).</p>
+</div>
+<div class="section" id="project">
+<h2>Project<a class="headerlink" href="#project" title="Permalink to this headline">¶</a></h2>
+<p>Use the USGS-MOC model to simulate a casing failure in an injection well for a radioactive waste.  As a worst case we will assume that one day’s injection volume is lost into Aquifer 2. The figure below is a plan view of the conceptual model to explore the effects of a casing failure.</p>
+<p><img alt="" src="../../../_images/conceptual-plan-view.png" /></p>
+<p>Aquifer 2 is a confined aquifer of high-quality water, penetrated by the injection well casing and a drinking water well.
+Purpose of the model is to determine in a generic case, the expected concentration of radioactive material in the aquifer at the drinking water well. The simulation time is 200 years.  The typical radioactive material found in NORM is radium, so use the half life of radium in the model to account for decay during transport.</p>
+<p>Use a 20 x 20 grid with:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Delta x = 500m(1640 ft)\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta y = 200m (656 ft)\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(K = 16.6 m/day (54.0 ft/day)\)</span>  ;</p></li>
+<li><p><span class="math notranslate nohighlight">\(a_L=50m (164.0 ft)\)</span> ;</p></li>
+<li><p><span class="math notranslate nohighlight">\(a_T=5m(16.4 ft)\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(n=0.35\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(Q_{drink} = 2. 8 MGD (4.33 cu.ft./sec)\)</span></p></li>
+</ul>
+<p>Concentration of Injection Water = 1000 pC/L, when in operation injection volumes are about 8,000 gallons per day.</p>
+<p>Using Liberty County as representative we can estimate injection volumes to complete this hypothetica study.  The figure below is a Railroad Commission public database showing injection volumes by month (from operator reporting).</p>
+<p><img alt="" src="../../../_images/injVol.png" /></p>
+<p>In August of 2010 almost 1 million barrels was injected which is a rate of</p>
+<p><span class="math notranslate nohighlight">\(1\times10^{6}~bbl \approx 5,779,573~\frac{ft^3}{30~days} \approx 192,652 \frac{ft^3}{day}\)</span></p>
+<p>The figure below is one example of a wellfield in Liberty county with at least some injection wells.</p>
+<p><img alt="" src="../../../_images/GISmap.png" /></p>
+<p>There are likely hundreds of wells depicted, if a few percent are active injection wells then at least dozens of injection wells.  Given the scale of the hypothetical case lets estimate the deep-well injection rate as 2.23 cu.ft./sec, when it is active.</p>
+<p><img alt="" src="../../../_images/configurations.png" /></p>
+<p>In this generic case we will assume two no-flow boundaries (these could be flowlines) and two known head boundaries.
+The model will investigate effect of distance and location relative to the regional gradient that the injection well has on the concentrations in the drinking water well.</p>
+<p>Prepare a report on your findings</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5779573</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="mi">86400</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.2297735339506173
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">4.33</span><span class="o">*</span><span class="mi">86400</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>374112.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.8e06</span><span class="o">/</span><span class="mi">86400</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32.407407407407405
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">4.33</span><span class="o">*</span><span class="mf">7.48</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32.388400000000004
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/93projects/PR4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../PR3/PR3.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">USGS MOC Project 3 (Site Investigation/Remediation Design)</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../PR5/PR5.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Chemflow 2000 Project 2</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Theodore G. Cleveland, PhD<br/>
+        
+            &copy; Copyright 2023.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

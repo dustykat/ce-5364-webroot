@@ -1,0 +1,1742 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>F23 Exam 1 Solution Sketch &#8212; Groundwater Transport Phenomena</title>
+    
+  <link href="../../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="F23 Exam 2 Deploy" href="../../EX2/EX2.html" />
+    <link rel="prev" title="F23 Exam 1 Deploy" href="../EX1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../../_static/gwtransport.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Groundwater Transport Phenomena</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../intro.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../0introduction/0introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../1computationaltools/1computationaltools.html">
+   Computational Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../2essentialgroundwater/essentialgwreview.html">
+   Essential Groundwater Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../4pollutants/4pollutants.html">
+   Pollutants
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../5nonreactivetransport/5nonreactivetransport.html">
+   Non-Reactive Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../5nonreactivetransport/1tracerhypothesis.html">
+     The Tracer Hypothesis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../5nonreactivetransport/2flux.html">
+     Flux
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../5nonreactivetransport/3advection.html">
+     Advection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../6nonreactivetransport/4diffusion.html">
+     Diffusion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../6nonreactivetransport/5dispersion.html">
+     Dispersion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../7analyticalmodels/analyticalmodels.html">
+   Analytical Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/impulse.html">
+     1D Impulse (Instantaneous Source) Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/ogatabanks.html">
+     1D Ogata-Banks Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/sauty.html">
+     1D Sauty Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/huntsolution.html">
+     2D Plume in Regional Flow (Hunt Solution)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/domenico.html">
+     Domenico-Robbins Solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/2Dfinitewidth.html">
+     2D - Advection-Dispersion, Finite-Width, Constant Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/2Dfwidth-pulse.html">
+     2D - Advection-Dispersion, Finite-Width, Finite-Duration Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/3Dfinitearea.html">
+     3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../8reactivetransport/8reactivetransport.html">
+   Reactive Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../8reactivetransport/6reactions.html">
+     Adsorbtion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../8reactivetransport/7decay.html">
+     Decay
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../7analyticalmodels/reactivemodels.html">
+     Analytical Models with Decay and Adsorbtion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../11modelingadvection/0modelingadvection.html">
+   Modeling Advection
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../11modelingadvection/1particletracking.html">
+     Modeling Advection by Particle Tracking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../11modelingadvection/2upwindfdm.html">
+     Upwind Formulation Finite-Difference
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../12usgsmocmodel/usgsmoc.html">
+   USGS MOC Software
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../12usgsmocmodel/winmoc.html">
+     Windows Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../12usgsmocmodel/armmoc.html">
+     ARM7/AARCH 64 Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../12usgsmocmodel/dprw.html">
+     Discrete Particle Random Walk (Future Semester)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../16siteinvestigation/siteinvestigation.html">
+   Site Investigations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../15datacollection/datacollection.html">
+   Sample Collection and Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../17unsaturatedzone/unsaturated.html">
+   Unsaturated Zone Flow
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../18untransport/unsaturatedtransport.html">
+   Unsaturated Zone Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../18untransport/napls.html">
+     Non-Aqueous Phase Liquids
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../19chemflow/chemflow.html">
+   CHEMFLO-2000
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../19chemflow/chemflowwinders.html">
+     Windows Install
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../19chemflow/chemflowaarch.html">
+     ARM7/AARCH Install
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../19chemflow/chemflowexamples.html">
+     CHEMFLOW Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../22remediation/remediation.html">
+   Remediation Technologies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../23risk/risk.html">
+   Risk Assessment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../26regulatory/regulatory.html">
+   Groundwater Protection Legal Framework
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../91exercises/2-Exercises.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../91exercises/ES1/ES1.html">
+     <font color="darkblue">
+      CE 4363/5363 Groundwater Transport Phenomena
+      <br/>
+      Fall 2023 Exercise Set 1
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../91exercises/ES2/ES2.html">
+     <font color="darkblue">
+      CE 4363/5363 Groundwater Transport Phenomena
+      <br/>
+      Spring 2023 Exercise Set 2
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../91exercises/ES3/ES3.html">
+     <font color="darkblue">
+      CE 5364 Groundwater Transport Phenemona
+      <br/>
+      Fall 2023 Exercise Set 3
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../91exercises/ES4/ES4.html">
+     <font color="darkblue">
+      CE 5364 Groundwater Transport Phenemona
+      <br/>
+      Fall 2023 Exercise Set 4
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../91exercises/ES5/ES5.html">
+     <font color="darkblue">
+      CE 5364 Groundwater Transport Phenemona
+      <br/>
+      Fall 2023 Exercise Set 5
+     </font>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../91exercises/ES6/ES6.html">
+     <font color="darkblue">
+      CE 5364 Groundwater Transport Phenemona
+      <br/>
+      Fall 2023 Exercise Set 6
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../93projects/Projects.html">
+   Projects
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../93projects/PR2/PR2.html">
+     USGS MOC Project 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../93projects/PR3/PR3.html">
+     USGS MOC Project 3 (Site Investigation/Remediation Design)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../93projects/PR4/PR4.html">
+     USGS MOC Project (Casing Failure)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../93projects/PR5/PR5.html">
+     Chemflow 2000 Project 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../exams.html">
+   Exams
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../EX1.html">
+     F23 Exam 1 Deploy
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     F23 Exam 1 Solution Sketch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../EX2/EX2.html">
+     F23 Exam 2 Deploy
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../../_sources/chapters/92exams/EX1/src-sol/EX1-WS.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/92exams/EX1/src-sol/EX1-WS.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/92exams/EX1/src-sol/EX1-WS.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#purpose">
+   Purpose :
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#additional-instructions">
+   Additional Instructions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-0">
+   Problem 0
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     0.1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     0.2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     0.3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     0.4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     0.5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     0.6
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     0.7
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     0.8
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     0.9
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     0.10
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-1-problem-2-8-pg-578">
+   Problem 1 (Problem 2-8, pg. 578)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-known-quantities">
+     list known quantities
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-unknown-quantities">
+     list unknown quantities
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#governing-principles">
+     governing principles
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-details-e-g-step-by-step-computations">
+     solution details (e.g. step-by-step computations)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion">
+     discussion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-2-problem-2-9-pg-578">
+   Problem 2 (Problem 2-9, pg 578)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-3-problem-2-12-pg-579">
+   Problem 3 (Problem 2-12, pg. 579)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sketch">
+     sketch
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     list known quantities
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     list unknown quantities
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     governing principles
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-4-problem-6-4-pg-588">
+   Problem 4 (Problem 6-4 pg. 588)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-5-modified-from-problem-6-24-pg-592">
+   Problem 5 (modified from Problem 6-24 pg. 592)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-to-75-m">
+     Time to 75 m
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#peak-at-75-meters">
+     Peak at 75 meters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     solution details (e.g. step-by-step computations)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-6">
+   Problem 6
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-7">
+   Problem 7
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <!-- # <font color=darkblue>CE 5364 Groundwater Contaminant Transport Phenomena </font>-->
+<div class="tex2jax_ignore mathjax_ignore section" id="f23-exam-1-solution-sketch">
+<h1>F23 Exam 1 Solution Sketch<a class="headerlink" href="#f23-exam-1-solution-sketch" title="Permalink to this headline">¶</a></h1>
+<p><strong>LAST NAME, FIRST NAME</strong></p>
+<p><strong>R00000000</strong></p>
+<hr class="docutils" />
+<div class="section" id="purpose">
+<h2>Purpose :<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
+<p>Demonstrate ability to apply principles of groundwater contaminant transport</p>
+</div>
+<div class="section" id="additional-instructions">
+<h2>Additional Instructions<a class="headerlink" href="#additional-instructions" title="Permalink to this headline">¶</a></h2>
+<p>The test is intended to be completed on blackboard.  The questions below are transcribed to BB as (in general) <code class="docutils literal notranslate"><span class="pre">file</span> <span class="pre">response</span></code> questions or in the short answer part, as essay response.</p>
+<hr>
+</div>
+<div class="section" id="problem-0">
+<h2>Problem 0<a class="headerlink" href="#problem-0" title="Permalink to this headline">¶</a></h2>
+<p>Short answer questions:</p>
+<div class="section" id="id1">
+<h3>0.1<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Describe how to use the areal extent of a groundwater contaminant plume with a known source to estimate the local groundwater velocity.</p>
+<p>Estimating local groundwater velocity using the areal extent of a groundwater contaminant plume with a known source involves some hydrogeological principles and mathematical calculations. This method assumes that the contaminant plume is expanding in a direction perpendicular to groundwater flow. Here are the steps to estimate groundwater velocity using this approach:</p>
+<ul class="simple">
+<li><p>Data Collection: <br>Gather all available data related to the contaminant plume and the source. This should include the spatial and temporal extent of the plume, the source location, and the concentration of the contaminant at various monitoring points.</p></li>
+<li><p>Determine the Plume Movement Direction:<br>Analyze the data to understand the movement direction of the contaminant plume. Typically, a contaminant plume spreads perpendicularly to groundwater flow. In most cases, this direction can be assumed to be perpendicular to the groundwater flow.</p></li>
+<li><p>Select Monitoring Points:<br>Choose at least two monitoring points along the perpendicular axis to the groundwater flow direction. These points should have accurate groundwater monitoring data, including the depth to the water table.</p></li>
+<li><p>Estimate the Time of Travel:<br>Calculate the time it took for the contaminant plume to travel from the source to the chosen monitoring points. This can be determined from the historical data, assuming the contaminant plume is advecting with the groundwater flow.</p></li>
+<li><p>Determine the Distance of Travel:<br>Measure the distance between the source and the monitoring points. This distance should be measured perpendicular to the assumed groundwater flow direction.</p></li>
+<li><p>Calculate Groundwater Velocity: <br>Use the following equation to estimate the groundwater velocity: <br>Velocity (v) = Distance (d) / Time (t) <br> Where: Velocity (v) is the groundwater velocity. Distance (d) is the distance between the source and monitoring point perpendicular to groundwater flow. Time (t) is the time it took for the plume to travel from the source to the monitoring point.</p></li>
+<li><p>Repeat and Average:<br>If you have data from multiple monitoring points, calculate the groundwater velocity for each point and then average them to get a more reliable estimate.</p></li>
+<li><p>Assess Uncertainty:<br>Be aware that this method makes several simplifying assumptions. The accuracy of your estimate may be influenced by factors such as heterogeneity in the aquifer, dispersion, and the actual groundwater flow direction. Be sure to assess and report the uncertainty in your velocity estimate.</p></li>
+<li><p>Validate the Estimate:<br>Compare the estimated groundwater velocity to any available independent measurements or models to validate the accuracy of your estimate.</p></li>
+<li><p>Use the Estimate:<br>Once you have a reasonably accurate estimate of the groundwater velocity, you can use this information for various purposes, such as contaminant transport modeling, remediation planning, or regulatory compliance.</p></li>
+</ul>
+<p>Keep in mind that this method provides an approximation of local groundwater velocity and may not be as accurate as more direct methods like tracer tests or pumping tests. It is important to consider the limitations and uncertainties associated with this approach when making decisions based on the estimated velocity.</p>
+<hr>
+</div>
+<div class="section" id="id2">
+<h3>0.2<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>List four transport mechanisms that affect solute migration in groundwater flow.</p>
+<p>Solute migration in groundwater flow is influenced by various transport mechanisms. Four key transport mechanisms that affect solute migration in groundwater are:</p>
+<ul class="simple">
+<li><p>Advection: Advection is the dominant mechanism of solute transport in groundwater. It occurs when solutes are transported along with the bulk movement of groundwater. Advection is responsible for the downstream movement of contaminants and can transport solutes over significant distances in a relatively short time.</p></li>
+<li><p>Dispersion: Dispersion refers to the spreading or mixing of solutes as they move through porous media due to velocity variations within the groundwater flow. It results from the interactions between the solute and the porous matrix, and it leads to a spreading of the solute plume over time. Longitudinal dispersion (along the flow direction) and transverse dispersion (perpendicular to the flow direction) are common types of dispersion.</p></li>
+<li><p>Diffusion: Diffusion is the process by which solutes move from areas of higher concentration to areas of lower concentration, driven by concentration gradients. In groundwater, diffusion operates at the pore scale, and it can be a significant factor for solute migration in low-permeability formations or in areas where advection is limited.</p></li>
+<li><p>Matrix Diffusion: Matrix diffusion occurs when solutes migrate into and out of the solid matrix of the porous media. This process is particularly important in geologic formations with low-permeability zones, such as clays and shales. Solute molecules can temporarily adsorb to the solid matrix, slowing their movement through the groundwater system.</p></li>
+</ul>
+<p>These transport mechanisms interact and can vary in significance depending on the hydrogeological properties of the subsurface and the specific solute being transported. Understanding the interplay of these mechanisms is essential for accurate modeling and management of groundwater contaminants.<hr></p>
+</div>
+<div class="section" id="id3">
+<h3>0.3<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Why are dispersivity values small (~ centimeters) for laboratory column tests and large (~ decameters) for field transport modeling?</p>
+<p>The difference in dispersivity values between laboratory column tests and field transport modeling can be attributed to the scale and the complex nature of subsurface environments. Here’s why dispersivity values tend to be small in laboratory column tests and large in field transport modeling:</p>
+<ul class="simple">
+<li><p>Scale Effect:</p></li>
+<li><p>Laboratory Column Tests: In laboratory settings, experiments are conducted on a small scale, often involving relatively uniform and controlled conditions. The porous media in a laboratory column are typically homogenous and well-mixed, and the flow velocities are low. Under such conditions, the physical and chemical processes influencing dispersion are more predictable and limited in their impact, leading to smaller dispersivity values.</p></li>
+<li><p>Field Transport Modeling: In the field, groundwater flow occurs through heterogeneous and geologically complex formations. These formations may include a variety of grain sizes, fractures, and other subsurface heterogeneities. This heterogeneity causes significant variability in groundwater flow rates, resulting in higher dispersivity values due to the more irregular pathways and mixing that solutes experience at larger scales.</p></li>
+<li><p>Macroscopic vs. Microscopic Transport: In laboratory column tests, the focus is often on macroscopic transport processes, where the impact of heterogeneity is minimized or controlled. The porous media in a column may be carefully packed to be more uniform. In field transport modeling, the transport occurs on a macroscopic scale where solutes encounter numerous preferential flow paths and barriers due to geological heterogeneity. This leads to a much broader range of flow velocities and dispersivity values.</p></li>
+<li><p>Hydrogeological Factors: In the field, geological structures like fractures, faults, and stratigraphy can significantly influence groundwater flow and dispersion. These natural features can cause solutes to migrate over much larger distances before reaching a monitoring well, leading to larger dispersivity values. In a laboratory column, the absence of these geological features and the controlled nature of the setup minimize the potential for long-distance solute migration and, consequently, result in smaller dispersivity values.</p></li>
+<li><p>Time and Distance Scales: Laboratory column tests are conducted over shorter time and distance scales, which may not allow for the development of large dispersivity values. Field transport modeling encompasses longer time and distance scales, allowing more time for solutes to disperse over larger areas, leading to larger dispersivity values.</p></li>
+</ul>
+<p>It’s important to note that laboratory column tests are valuable for studying certain aspects of solute transport and can provide insights into the behavior of contaminants in controlled environments. However, they may not fully capture the complexity of solute transport in the field, which is influenced by the natural heterogeneity and scale of subsurface systems. Consequently, field transport modeling typically requires larger dispersivity values to account for the broader range of transport processes that occur in the real-world subsurface environment.<hr></p>
+</div>
+<div class="section" id="id4">
+<h3>0.4<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>List four soil characteristics that affect sorption in groundwater solute transport.</p>
+<p>Sorption is the process by which solutes are adsorbed onto the surfaces of soil and sediment particles as they migrate through the subsurface. Several soil characteristics influence sorption in groundwater solute transport. Four key soil characteristics that affect sorption are:</p>
+<ul class="simple">
+<li><p>Cation Exchange Capacity (CEC): Cation exchange capacity refers to the ability of soil or sediment particles to adsorb and exchange cations (positively charged ions). Soils with a higher CEC tend to have a greater capacity to sorb cations from groundwater. This property is influenced by the presence of clay and organic matter, which typically have higher CEC compared to sand or silt.</p></li>
+<li><p>Surface Area: The specific surface area of soil particles, especially clay and organic matter, plays a crucial role in sorption. Larger surface areas provide more opportunities for solute molecules to come into contact with soil particles, leading to increased sorption capacity. Clays and organic matter typically have higher specific surface areas compared to sand and silt.</p></li>
+<li><p>Mineral Composition: The mineral composition of soil affects sorption because different minerals have varying affinities for different solutes. For example, certain minerals like iron oxides and aluminum oxides can strongly sorb contaminants such as heavy metals. The presence of specific minerals in the soil can significantly impact the sorption behavior of solutes.</p></li>
+<li><p>Organic Carbon Content: Organic carbon content, often found in the form of humic and fulvic acids, can play a significant role in sorption. Organic matter in the soil can act as an adsorption site for organic contaminants, and it can also affect the sorption of inorganic compounds through complexation and other mechanisms. Soils with higher organic carbon content tend to exhibit stronger sorption of many organic solutes.</p></li>
+</ul>
+<p>These soil characteristics collectively determine the sorption capacity and affinity of a given soil or sediment for various solutes. Understanding these characteristics is crucial when assessing the fate and transport of contaminants in groundwater, as they impact how much of a solute will be retained by the subsurface as it moves through the aquifer.</p>
+<hr>
+</div>
+<div class="section" id="id5">
+<h3>0.5<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>Define natural attenuation as applied in groundwater contamination studies</p>
+<p>Natural attenuation, in the context of groundwater contamination studies, refers to a set of naturally occurring processes and mechanisms by which contaminants are reduced, immobilized, or otherwise transformed in the subsurface environment without the need for human intervention or engineered remediation techniques. It is a cost-effective and sustainable approach for managing groundwater contamination over time.</p>
+<p>Key components and processes involved in natural attenuation include:</p>
+<ol class="simple">
+<li><p>Biological Degradation: Microorganisms in the subsurface can naturally break down contaminants through various metabolic processes. This often involves the use of organic contaminants as a carbon source, resulting in the conversion of the contaminants into less harmful or less mobile forms. Common processes include aerobic and anaerobic biodegradation.</p></li>
+<li><p>Sorption: Contaminants can be sorbed (adsorbed or absorbed) onto soil and sediment particles, reducing their mobility in the groundwater. Sorption processes can vary depending on the type of contaminant and the properties of the subsurface materials.</p></li>
+<li><p>Dilution: Over time, groundwater flow can naturally dilute the concentration of contaminants as they mix with cleaner groundwater. This process is particularly relevant when contaminants are introduced from a localized source.</p></li>
+<li><p>Chemical Reactions: Certain chemical reactions can transform contaminants into less harmful forms. For example, reactions involving redox (reduction-oxidation) processes can convert toxic compounds into more benign substances.</p></li>
+<li><p>Volatilization: Some volatile contaminants can naturally vaporize into the air when they come into contact with the water table, reducing their presence in groundwater.</p></li>
+<li><p>Physical Processes: Physical processes such as dispersion and diffusion can contribute to the natural attenuation of contaminants by spreading them out and reducing their concentration over time.</p></li>
+</ol>
+<p>The effectiveness of natural attenuation depends on various factors, including the type and concentration of contaminants, the hydrogeological characteristics of the subsurface, and the presence of reactive materials (e.g., organic carbon, iron oxides) that can facilitate attenuation processes.</p>
+<p>Natural attenuation is often considered as a strategy for managing groundwater contamination, particularly when the risks to human health and the environment are low or when contaminants are expected to naturally degrade over time. It is typically used in combination with ongoing monitoring to ensure that natural processes are effectively reducing contaminant concentrations to acceptable levels without posing a risk to receptors.</p>
+<hr>
+</div>
+<div class="section" id="id6">
+<h3>0.6<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>How does one determine the principal values of the hydraulic conductivity tensor (in 2D)?</p>
+<p>In a two-dimensional (2D) subsurface environment, the hydraulic conductivity tensor is a fundamental parameter used to describe the anisotropic nature of groundwater flow. The tensor represents the hydraulic conductivity of the aquifer in different directions. To determine the principal values of the hydraulic conductivity tensor in 2D, you can follow these steps:</p>
+<ol class="simple">
+<li><p>Define the Coordinate System: Establish a coordinate system that aligns with the principal directions of the aquifer. In 2D, you typically have two orthogonal axes: one for the primary direction and one for the secondary direction.</p></li>
+<li><p>Collect Data: Gather data from various sources, including aquifer tests, pump tests, and hydraulic conductivity measurements from monitoring wells. These data should include information about groundwater flow and hydraulic conductivity in different directions.</p></li>
+<li><p>Choose Two Orthogonal Directions: In a 2D system, you’ll choose two orthogonal directions to represent the primary and secondary flow directions. These directions are typically along the x-axis and y-axis of the coordinate system.</p></li>
+<li><p>Transform the Data: Transform the hydraulic conductivity data to fit the chosen coordinate system. If the data is given in a different coordinate system, you may need to apply mathematical transformations to express the hydraulic conductivity values in the selected directions.</p></li>
+<li><p>Perform Principal Value Analysis: Use statistical or mathematical techniques, such as a principal component analysis, to determine the principal values of the hydraulic conductivity tensor. This analysis will provide the values of hydraulic conductivity along the primary and secondary directions.</p></li>
+<li><p>Interpret the Results: The principal values represent the hydraulic conductivity along the major and minor axes of the aquifer. The larger principal value corresponds to the direction of higher hydraulic conductivity (primary direction), while the smaller principal value corresponds to the direction of lower hydraulic conductivity (secondary direction).</p></li>
+<li><p>Use the Tensor Information: Once you have determined the principal values, you can use this information in groundwater flow and transport modeling. It allows you to account for the anisotropic nature of the aquifer and make more accurate predictions of groundwater flow and solute transport.</p></li>
+</ol>
+<p>It’s important to note that the hydraulic conductivity tensor in 2D represents a simplified representation of the subsurface, and aquifer anisotropy can be more complex in three-dimensional (3D) systems. In 3D, you would have three principal values for the hydraulic conductivity tensor, and the analysis would be more complex. In such cases, the principal values describe the hydraulic conductivity in the primary, secondary, and tertiary directions.<hr></p>
+</div>
+<div class="section" id="id7">
+<h3>0.7<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>What is the practical significance of anisotropy in groundwater contaminant studies?</p>
+<p>Anisotropy in groundwater contaminant studies, where the subsurface’s properties and behavior vary in different directions, has several practical significances that influence the assessment, management, and remediation of groundwater contamination. Here are some key practical aspects:</p>
+<ul class="simple">
+<li><p>Directional Variation in Contaminant Movement: Anisotropy can lead to directional variations in hydraulic conductivity, which, in turn, affect the direction and rate of groundwater flow. This impacts the movement of contaminants, leading to preferential flow pathways and dispersion patterns. Understanding these variations is crucial for predicting the spatial and temporal behavior of contaminants in the subsurface.</p></li>
+<li><p>Enhanced or Reduced Migration Potential: Anisotropy can result in areas with enhanced or reduced migration potential for contaminants. In highly anisotropic aquifers, there may be zones with significantly higher or lower hydraulic conductivity along different axes. Contaminants can migrate more rapidly along the direction of higher hydraulic conductivity, potentially increasing the risk to receptors in those areas.</p></li>
+<li><p>Complex Plume Shapes: Contaminant plumes in anisotropic aquifers can exhibit complex shapes due to variations in flow velocity and dispersion. Plumes may elongate along the axis of higher hydraulic conductivity and be constrained along the axis of lower conductivity. Understanding these shapes is critical for designing effective remediation strategies.</p></li>
+<li><p>Influence on Remediation Design: Remediation strategies, such as groundwater extraction and treatment or in-situ remediation, need to consider the anisotropic nature of the subsurface. Treatment systems may need to be strategically located and oriented to target areas of higher contaminant concentration or enhanced flow.</p></li>
+<li><p>Risk Assessment and Exposure Modeling: Accurate risk assessments and exposure modeling require an understanding of how contaminants move through anisotropic aquifers. Failure to account for anisotropy can lead to inaccurate predictions of contaminant plume behavior and potential risks to human health and the environment.</p></li>
+<li><p>Optimizing Well Placement: When installing monitoring wells or extraction wells, anisotropy must be considered to ensure that they are placed strategically to capture or manage the contaminant plume effectively. Well placement that aligns with the principal directions of anisotropy can significantly impact the success of site assessment and remediation efforts.</p></li>
+<li><p>Predicting Long-Term Behavior: Anisotropy also plays a role in predicting the long-term behavior of contaminant plumes. Variations in flow rates, dispersion, and the effectiveness of natural attenuation can affect the rate at which contaminants attenuate or migrate through the subsurface.</p></li>
+</ul>
+<p>In summary, anisotropy in groundwater contaminant studies is practically significant because it introduces complexities and spatial variations that impact the migration and behavior of contaminants in the subsurface. Understanding and properly accounting for anisotropy are essential for accurate site characterization, risk assessment, and the design of effective remediation strategies.<hr></p>
+</div>
+<div class="section" id="id8">
+<h3>0.8<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>What is the retardation coefficient?</p>
+<p>The retardation coefficient, often denoted as “R,” is a hydrogeological parameter used to describe the degree of retardation or delay in the movement of contaminants in groundwater due to sorption or adsorption processes. It quantifies how much slower a contaminant travels through the subsurface compared to the groundwater flow velocity. The retardation coefficient is a critical parameter in groundwater contaminant transport modeling and is used to assess the behavior of contaminants in porous media.</p>
+<p>The retardation coefficient is typically defined as the ratio of the average groundwater velocity (<span class="math notranslate nohighlight">\(V_g\)</span>) to the average velocity at which a contaminant travels through the porous medium (<span class="math notranslate nohighlight">\(V_c\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[R=\frac{V_g}{V_c}\]</div>
+<p>Here’s what the terms in the equation represent:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R\)</span>: Retardation coefficient, a dimensionless number.</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_g\)</span>: Average groundwater velocity, which represents the rate of water movement in the aquifer.</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_c\)</span>: Average velocity of the contaminant through the porous medium, accounting for sorption or adsorption processes.</p></li>
+</ul>
+<p>A retardation coefficient greater than 1 (R &gt; 1) indicates that the contaminant is traveling more slowly through the porous medium than the groundwater. This means that the contaminant is being retarded or delayed due to sorption, which can be caused by processes such as adsorption to soil particles, absorption into organic matter, or chemical reactions with solid phases.</p>
+<p>The retardation coefficient is an essential parameter in predicting the transport and fate of contaminants in groundwater, particularly when assessing the potential for groundwater contamination from point sources, such as leaking underground storage tanks or landfills. It helps in estimating the degree of contaminant attenuation and the distance a plume may travel, which is critical information for assessing and managing groundwater contamination.<hr></p>
+</div>
+<div class="section" id="id9">
+<h3>0.9<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>List four common concentration units</p>
+<p>Concentration units are used to express the amount of a substance dissolved or contained within a given volume or mass of a solution or mixture. Here are four common concentration units:</p>
+<ol class="simple">
+<li><p>Molarity (M): Molarity is a measure of the concentration of a solute in a solution. It is defined as the number of moles of solute per liter of solution. The unit for molarity is moles per liter (mol/L).</p></li>
+<li><p>Mass Concentration (Mass/Vol or g/L): Mass concentration, also known as mass/volume concentration, expresses the amount of a solute (in grams) dissolved in a specific volume (in liters) of a solution. The unit for mass concentration is typically grams per liter (g/L).</p></li>
+<li><p>Mole Fraction (X): Mole fraction is a dimensionless measure of concentration that represents the ratio of the number of moles of a particular component to the total number of moles in a mixture. It is often expressed as a decimal or fraction and has no specific unit.</p></li>
+<li><p>Parts Per Million (ppm) and Parts Per Billion (ppb): Parts per million and parts per billion are used to express extremely low concentrations of a substance in a solution. For ppm, one part is equivalent to one milligram per liter (mg/L) in a million parts of the solution. For ppb, one part is equivalent to one microgram per liter (µg/L) in a billion parts of the solution.</p></li>
+</ol>
+<p>These concentration units are widely used in various fields, including chemistry, environmental science, biology, and industry, to quantify the amount of solutes in solutions, mixtures, and other substances.</p>
+<hr>
+</div>
+<div class="section" id="id10">
+<h3>0.10<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>What is the most common chemical contaminant in the world’s groundwater and aquifers?</p>
+<p>The most common chemical contaminant in the world’s groundwater and aquifers is nitrate (NO3-). Nitrate contamination in groundwater primarily arises from various human activities, particularly the use of nitrogen-based fertilizers in agriculture, industrial discharges, and improper management of sewage and septic systems. When nitrate-containing compounds are applied to the land or released into the environment, they can percolate through the soil and reach the groundwater, leading to elevated nitrate levels.</p>
+<p>Nitrate contamination in groundwater is a significant concern due to its potential health impacts. High nitrate concentrations in drinking water can lead to a condition called methemoglobinemia, often referred to as “blue baby syndrome,” in infants. This condition reduces the blood’s ability to carry oxygen and can be life-threatening.</p>
+<p>Additionally, nitrate contamination in groundwater can contribute to the formation of nitrite and nitrosamine compounds, which are known carcinogens. Long-term exposure to nitrate-contaminated water can pose health risks to humans.</p>
+<p>Efforts to manage and mitigate nitrate contamination in groundwater include monitoring, regulatory controls on fertilizer use, improved agricultural practices, and water treatment to reduce nitrate levels in drinking water supplies. It’s important to address nitrate contamination to protect both human health and the quality of groundwater resources worldwide.</p>
+<hr>
+</div>
+</div>
+<div class="section" id="problem-1-problem-2-8-pg-578">
+<h2>Problem 1 (Problem 2-8, pg. 578)<a class="headerlink" href="#problem-1-problem-2-8-pg-578" title="Permalink to this headline">¶</a></h2>
+<p>The figure below shows a piezometric map for a shallow sand aquifer with a saturated thickness of 50 ft.  The hydraulic conductivity is estimated to be <span class="math notranslate nohighlight">\(42~\frac{ft}{day}\)</span>.</p>
+<!--<img src="./Fig5.18.png" width="300">-->
+<p><img alt="" src="../../../../_images/Fig5.183.png" /></p>
+<p>Determine:</p>
+<ol class="simple">
+<li><p>Which well is expected to be the most contaminated.</p></li>
+<li><p>The groundwater velocity and seepage velocity across the plume.</p></li>
+<li><p>The duration that the source has been contaminating the aquifer (neglect dispersion, diffusiom, and adsorption).</p></li>
+<li><p>The flow rate across the plume.</p></li>
+<li><p>An explaination for contamination upgradient of the source zone.</p></li>
+</ol>
+<div class="section" id="list-known-quantities">
+<h3>list known quantities<a class="headerlink" href="#list-known-quantities" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Head map (provided)</p></li>
+<li><p><span class="math notranslate nohighlight">\(b~\approx~40~feet\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(K~\approx~ 1.5 \times 10^{-2}~\frac{cm}{s} \cdot \frac{1~in}{2.54~cm} \cdot \frac{1~ft}{12~in} \cdot \frac{86400~s}{1~day} = 42.52~\frac{ft}{day}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(n~\approx~ 0.30 \)</span></p></li>
+</ul>
+</div>
+<div class="section" id="list-unknown-quantities">
+<h3>list unknown quantities<a class="headerlink" href="#list-unknown-quantities" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Which well is expected to be the most contaminated.</p></li>
+<li><p>The groundwater velocity and seepage velocity across the plume.</p></li>
+<li><p>The duration that the source has been contaminating the aquifer (neglect dispersion, diffusiom, and adsorption).</p></li>
+<li><p>The flow rate across the plume.</p></li>
+<li><p>An explaination for contamination upgradient of the source zone.</p></li>
+</ol>
+</div>
+<div class="section" id="governing-principles">
+<h3>governing principles<a class="headerlink" href="#governing-principles" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Darcy’s law; <span class="math notranslate nohighlight">\(Q=KA\frac{dh}{dl}\)</span></p></li>
+<li><p>Definition(s) of discharge and seepage velocity</p></li>
+</ol>
+</div>
+<div class="section" id="solution-details-e-g-step-by-step-computations">
+<h3>solution details (e.g. step-by-step computations)<a class="headerlink" href="#solution-details-e-g-step-by-step-computations" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Which well is expected to be the most contaminated.</p></li>
+</ol>
+<ul class="simple">
+<li><p>If release is ongoing, probably well A in annotated map below.</p></li>
+<li><p>If release is “past history” then probably well M near middle of the plume.
+<br><img alt="" src="../../../../_images/Fig5.18.annotate1.png" /></p></li>
+</ul>
+<ol class="simple">
+<li><p>The groundwater velocity and seepage velocity across the plume.</p></li>
+</ol>
+<ul class="simple">
+<li><p>See annotated map below.</p></li>
+<li><p>Gradients near well A and well M are calculated directly on the map annotations.</p></li>
+<li><p>Specific discharge values:
+<br> <span class="math notranslate nohighlight">\(q_{near~well~A} = \frac{Q}{A} _{near~well~A}~\approx~45.52\frac{ft}{day}(0.0014)= 0.0637 \frac{ft}{day}\)</span>
+<br> <span class="math notranslate nohighlight">\(q_{near~well~M} = \frac{Q}{A} _{near~well~M}~\approx~45.52\frac{ft}{day}(0.00125)= 0.0569 \frac{ft}{day}\)</span>
+<br> A reasonable average is  <span class="math notranslate nohighlight">\(q = \frac{Q}{A} _{average}~\approx~0.06 \frac{ft}{day}\)</span></p></li>
+<li><p>Species (seepage) velocity is
+<br> <span class="math notranslate nohighlight">\(U=\frac{q}{n} = \frac{1}{n} \frac{Q}{A} = \frac{1}{0.3} 0.06 \frac{ft}{day} = 0.2 \frac{ft}{day}\)</span></p></li>
+</ul>
+<ol class="simple">
+<li><p>The duration that the source has been contaminating the aquifer (neglect dispersion, diffusiom, and adsorption).</p></li>
+</ol>
+<ul class="simple">
+<li><p>Choose a reasonable pathline like the one on the drawing below and measure its length, then using definition of velocity, solve for duration.
+<br> Pathline is <span class="math notranslate nohighlight">\(\approx~925~feet\)</span>
+<br> <span class="math notranslate nohighlight">\(t=\frac{x}{U}= \frac{925}{0.02} = 4625~days\)</span></p></li>
+</ul>
+<ol class="simple">
+<li><p>The flow rate across the plume.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Apply Darcy’s law
+<br> <span class="math notranslate nohighlight">\(Q=qA=0.06 \frac{ft}{day} \cdot 325 ft \cdot 40 ft = 780 \frac{ft^3}{day}\)</span></p></li>
+</ul>
+<ol class="simple">
+<li><p>An explaination for contamination upgradient of the source zone.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Dispersion/diffusion of constituients, and/or</p></li>
+<li><p>The regional water table is not static and at some point in past, gradient was in Easterly direction.</p></li>
+</ul>
+</div>
+<div class="section" id="discussion">
+<h3>discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The non-static water table is very likely, and quarterly moniroting is a usual standard to detect and account for seasonal/temporal variability.</p></li>
+</ul>
+<hr>
+</div>
+</div>
+<div class="section" id="problem-2-problem-2-9-pg-578">
+<h2>Problem 2 (Problem 2-9, pg 578)<a class="headerlink" href="#problem-2-problem-2-9-pg-578" title="Permalink to this headline">¶</a></h2>
+<p>Two observation wells 1700 meters apart have been constructed in a confined aquifer with spatially variable hydraulic conductivity as shown below:</p>
+<!--<img src="./FigP2.9.png" width="300">-->
+<p><img alt="" src="../../../../_images/FigP2.91.png" /></p>
+<p>The flow rate is 0.008 <span class="math notranslate nohighlight">\(\frac{m^3}{hr}\)</span> per unit width (into the plane of the figure) of aquifer.  Well 1 is drilled into soil A which has hydraulic conductivity <span class="math notranslate nohighlight">\(K = 13 \frac{m}{d}\)</span>. Well 2 is drilled into soil B which has hydraulic conductivity <span class="math notranslate nohighlight">\(K = 9 \frac{m}{d}\)</span>.  Soil zone B is between the wells as shown, 600 meters from Well 1 and 300 meters from Well 2.  The potentiometric surface is 6 meters above the upper confining unit in Well 1 and 2.5 meters above the upper confining unit in Well 2.</p>
+<p>Determine:</p>
+<ol class="simple">
+<li><p>Hydraulic conductivity in Soil B</p></li>
+<li><p>Sketch the hydraulic grade line (HGL) from Well 1 to Well 2; clearly indicate the changes in slope in each part of the HGL.</p></li>
+</ol>
+<p>Solution:</p>
+<p><img alt="" src="../../../../_images/p2-1.png" /></p>
+<p><img alt="" src="../../../../_images/p2-2.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KA</span><span class="o">=</span><span class="mi">13</span> <span class="c1">#m/d</span>
+<span class="n">KC</span><span class="o">=</span> <span class="mi">9</span> <span class="c1">#m/d</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="mf">0.008</span><span class="o">*</span><span class="mi">24</span> <span class="c1">#m^3/d</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#m</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">18</span> <span class="c1">#m</span>
+
+<span class="n">gradhA</span> <span class="o">=</span> <span class="o">-</span><span class="n">Q</span><span class="o">/</span><span class="p">(</span><span class="n">KA</span><span class="o">*</span><span class="n">b</span><span class="o">*</span><span class="n">w</span><span class="p">)</span>
+<span class="n">gradhC</span> <span class="o">=</span> <span class="o">-</span><span class="n">Q</span><span class="o">/</span><span class="p">(</span><span class="n">KC</span><span class="o">*</span><span class="n">b</span><span class="o">*</span><span class="n">w</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;gradhA :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="o">-</span><span class="n">gradhA</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;gradhC :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="o">-</span><span class="n">gradhC</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="n">hab</span> <span class="o">=</span> <span class="mf">6.0</span><span class="o">+</span><span class="n">gradhA</span><span class="o">*</span><span class="mi">600</span>
+<span class="n">hbc</span> <span class="o">=</span> <span class="mf">2.5</span><span class="o">-</span><span class="n">gradhC</span><span class="o">*</span><span class="mi">300</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hab :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">hab</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; meters&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hbc :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">hbc</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; meters&quot;</span><span class="p">)</span>
+
+<span class="n">KB</span> <span class="o">=</span> <span class="o">-</span><span class="n">Q</span><span class="o">/</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="p">((</span><span class="n">hbc</span><span class="o">-</span><span class="n">hab</span><span class="p">)</span><span class="o">/</span><span class="mi">800</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;KB :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">KB</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; meters/day&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gradhA : 0.001
+gradhC : 0.001
+hab : 5.508  meters
+hbc : 2.856  meters
+KB : 3.218  meters/day
+</pre></div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="section" id="problem-3-problem-2-12-pg-579">
+<h2>Problem 3 (Problem 2-12, pg. 579)<a class="headerlink" href="#problem-3-problem-2-12-pg-579" title="Permalink to this headline">¶</a></h2>
+<p>Three geologic formations overlie one another with the characteristics listed below.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} b_1 = 50~ft ~~~~ K_1 = 0.0002 \frac{ft}{s}\\ b_2 = 20~ft ~~~~ K_1 = 0.000005 \frac{ft}{s}\\ b_3 = 210~ft ~~~~ K_1 = 0.001 \frac{ft}{s}\end{split}\]</div>
+<p>A constant velocity vertical flow field exists across the three formations.
+The hydraulic head at the top of the formations (top of formation 1) is 33 feet.  The hydraulic head at the bottom of the formations (bottom of formation 3) is 21 feet.</p>
+<p>Determine:</p>
+<ol class="simple">
+<li><p>Sketch the system.</p></li>
+<li><p>The hydraulic head at the internal boundary between formation 1 and 2.</p></li>
+<li><p>The hydraulic head at the internal boundary between formation 2 and 3.</p></li>
+</ol>
+<div class="section" id="sketch">
+<h3>sketch<a class="headerlink" href="#sketch" title="Permalink to this headline">¶</a></h3>
+<p><img alt="" src="../../../../_images/es1-3-sketch1.png" /></p>
+</div>
+<div class="section" id="id11">
+<h3>list known quantities<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>Thickness, hydraulic conductivities, porosities and heads as shown on sketch above.</p>
+</div>
+<div class="section" id="id12">
+<h3>list unknown quantities<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>H at 1-2 interface.</p></li>
+<li><p>H at 2-3 interface.</p></li>
+<li><p>Time for tracer to traverse entire formation</p></li>
+</ol>
+</div>
+<div class="section" id="id13">
+<h3>governing principles<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Darcy’s law by layer</p></li>
+<li><p>velocity = q/n</p></li>
+<li><p>time = thickness/velocity</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find total discharge per unit area through entire formation</span>
+<span class="n">htop</span><span class="o">=</span><span class="mi">33</span>
+<span class="n">hbot</span><span class="o">=</span><span class="mi">21</span>
+<span class="n">k1</span><span class="o">=</span><span class="mf">0.0002</span>
+<span class="n">k2</span><span class="o">=</span><span class="mf">0.000005</span>
+<span class="n">k3</span><span class="o">=</span><span class="mf">0.001</span>
+<span class="n">l1</span><span class="o">=</span><span class="mi">50</span>
+<span class="n">l2</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">l3</span><span class="o">=</span><span class="mi">210</span>
+<span class="n">n1</span><span class="o">=</span><span class="mf">0.30</span>
+<span class="n">n2</span><span class="o">=</span><span class="mf">0.42</span>
+<span class="n">n3</span><span class="o">=</span><span class="mf">0.35</span>
+<span class="n">Kbar</span><span class="o">=</span><span class="p">(</span><span class="n">l1</span><span class="o">+</span><span class="n">l2</span><span class="o">+</span><span class="n">l3</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">l1</span><span class="o">/</span><span class="n">k1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">l2</span><span class="o">/</span><span class="n">k2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">l3</span><span class="o">/</span><span class="n">k3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;vertical composite Kv: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">Kbar</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot; ft/sec&quot;</span><span class="p">)</span>
+<span class="n">dH</span><span class="o">=</span><span class="n">htop</span> <span class="o">-</span> <span class="n">hbot</span>
+<span class="n">dl</span> <span class="o">=</span> <span class="n">l1</span><span class="o">+</span><span class="n">l2</span><span class="o">+</span><span class="n">l3</span>
+<span class="n">qt</span><span class="o">=</span><span class="n">Kbar</span><span class="o">*</span><span class="n">dH</span><span class="o">/</span><span class="n">dl</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;vertical hydraulic gradient :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">dH</span><span class="o">/</span><span class="n">dl</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot; ft/ft&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;vertical specific discharge q: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">qt</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot; ft/sec&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vertical composite Kv:  6.3e-05  ft/sec
+vertical hydraulic gradient : 0.042857  ft/ft
+vertical specific discharge q:  3e-06  ft/sec
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find head loss in layer 1</span>
+<span class="n">dh1</span> <span class="o">=</span> <span class="n">l1</span><span class="o">*</span><span class="n">qt</span><span class="o">/</span><span class="n">k1</span>
+<span class="n">h12</span> <span class="o">=</span> <span class="n">htop</span> <span class="o">-</span><span class="n">dh1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;head at layer 1-2 interface :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">h12</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; ft &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>head at layer 1-2 interface : 32.33  ft 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find head loss in layer 2</span>
+<span class="n">dh2</span> <span class="o">=</span> <span class="n">l2</span><span class="o">*</span><span class="n">qt</span><span class="o">/</span><span class="n">k2</span>
+<span class="n">h23</span> <span class="o">=</span> <span class="n">htop</span> <span class="o">-</span> <span class="n">dh1</span> <span class="o">-</span><span class="n">dh2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;head at layer 2-3 interface :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">h23</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; ft &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>head at layer 2-3 interface : 21.57  ft 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># time in layer 1</span>
+<span class="n">time1</span> <span class="o">=</span> <span class="n">l1</span><span class="o">*</span><span class="n">n1</span><span class="o">/</span><span class="n">qt</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tracer time in layer 1 :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">time1</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot; sec&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tracer time in layer 1 : 5575000.0  sec
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># time in layer 2</span>
+<span class="n">time2</span> <span class="o">=</span> <span class="n">l2</span><span class="o">*</span><span class="n">n2</span><span class="o">/</span><span class="n">qt</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tracer time in layer 2 :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">time2</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot; sec&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tracer time in layer 2 : 3122000.0  sec
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># time in layer 3</span>
+<span class="n">time3</span> <span class="o">=</span> <span class="n">l3</span><span class="o">*</span><span class="n">n3</span><span class="o">/</span><span class="n">qt</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tracer time in layer 3 :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">time3</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot; sec&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tracer time in layer 3 : 27317500.0  sec
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">totaltime</span><span class="o">=</span><span class="n">time1</span><span class="o">+</span><span class="n">time2</span><span class="o">+</span><span class="n">time3</span>
+<span class="n">totaltime</span><span class="o">=</span><span class="n">totaltime</span><span class="o">/</span><span class="mi">86400</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tracer travel time :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">totaltime</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; days &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tracer travel time : 416.834  days 
+</pre></div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+</div>
+<div class="section" id="problem-4-problem-6-4-pg-588">
+<h2>Problem 4 (Problem 6-4 pg. 588)<a class="headerlink" href="#problem-4-problem-6-4-pg-588" title="Permalink to this headline">¶</a></h2>
+<p>Match the breakthrough curves given in the diagram with the appropriate description given below.  Curves represent responses to the injection of a tracer in 1-D soil columns. Choose the best match for each case.</p>
+<ol class="simple">
+<li><p>Curve for a 1-D continuous injection where the constituients get sorbed to the medium</p></li>
+<li><p>Curve for a 1-D continuous injection with plug flow is observed</p></li>
+<li><p>Curve for an instantaneous source with longitudinal dispersion</p></li>
+<li><p>Curve for an instantaneous source with no dispersion</p></li>
+<li><p>Curve for a 1-D continuous injection with longitudinal dispersion</p></li>
+<li><p>Curve for a 1-D continuous injection with longitudinal dispersion and biodegredation</p></li>
+<li><p>Curve for a 1-D continuous injection in which a fracture existed along the soil column</p></li>
+</ol>
+<!--<img src ="./BTC.png" width="300">-->
+<p><img alt="" src="../../../../_images/BTC1.png" /></p>
+<ol class="simple">
+<li><p>Curve for a 1-D continuous injection where the constituients get sorbed to the medium <strong>Curve F</strong> - the median relative concentration at (C/C0 = 0.5) at greater then one pore volume is the clue; retains similar shape as C</p></li>
+<li><p>Curve for a 1-D continuous injection with plug flow is observed. <strong>Curve E</strong> - the sharp interface at one pore volume is the clue.</p></li>
+<li><p>Curve for an instantaneous source with longitudinal dispersion. <strong>Curve B</strong> - the peak relative concentration at (C/C0 = max) at one pore volume is the clue, along with symmetric spreading ahead snd behind.</p></li>
+<li><p>Curve for an instantaneous source with no dispersion.  <strong>Curve G</strong> - this curve is not plotted, but would be a “spike” at one poer volume.</p></li>
+<li><p>Curve for a 1-D continuous injection with longitudinal dispersion <strong>Curve C</strong> - the median relative concentration at (C/C0 = 0.5) at one pore volume is the clue.</p></li>
+<li><p>Curve for a 1-D continuous injection with longitudinal dispersion and biodegredation <strong>Curve D</strong> - Similar shape as C butreduced concentrations, and equilibrium profile never gets to C0.</p></li>
+<li><p>Curve for a 1-D continuous injection in which a fracture existed along the soil column. <strong>Curve A</strong> - the early arrival of median relative concentration at (C/C0 = 0.5) at less than one pore volume is a clue.</p></li>
+</ol>
+<hr>
+</div>
+<div class="section" id="problem-5-modified-from-problem-6-24-pg-592">
+<h2>Problem 5 (modified from Problem 6-24 pg. 592)<a class="headerlink" href="#problem-5-modified-from-problem-6-24-pg-592" title="Permalink to this headline">¶</a></h2>
+<p>A tank storing various liquids leaks over an area of 10 m<span class="math notranslate nohighlight">\(^2\)</span> into an aquifer.  One constituient of concern is benzene that is released at a concentration of 10,000 <span class="math notranslate nohighlight">\(\frac{\mu~g}{L}\)</span>. Assume the aquifer exhibits a retardation factor for benzene of 2.0, and benzene experiences first-order degredation with a decay coefficient <span class="math notranslate nohighlight">\(\lambda~=\frac{0.0005}{day}\)</span>; the longitudinal dispersion coefficient is <span class="math notranslate nohighlight">\(D_l = 1 \frac{m^2}{day}\)</span>, the transverse dispersion coefficient is <span class="math notranslate nohighlight">\(D_t = 0.1 \frac{m^2}{day}\)</span>, the seepage velocity (in longitudinal direction) is <span class="math notranslate nohighlight">\(u = 1.0 \frac{m}{day}\)</span>.</p>
+<p>Determine:</p>
+<ol class="simple">
+<li><p>Time required for the release to traverse 75 meters (ignoring dispersion and degredation)</p></li>
+<li><p>Peak concentration at 75 meters</p></li>
+<li><p>Approximate plume longitudinal and transverse dimensions at 365 days</p></li>
+</ol>
+<div class="section" id="time-to-75-m">
+<h3>Time to 75 m<a class="headerlink" href="#time-to-75-m" title="Permalink to this headline">¶</a></h3>
+<p>Following example 6.2 in textbook</p>
+<div class="math notranslate nohighlight">
+\[x = \frac{V}{R}t\]</div>
+<p>set <span class="math notranslate nohighlight">\(x=75\)</span> and solve for <span class="math notranslate nohighlight">\(t\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distance</span> <span class="o">=</span> <span class="mi">75</span> <span class="c1">#m</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1">#m/day</span>
+<span class="n">retardation</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="c1">#given</span>
+
+<span class="n">timet075</span> <span class="o">=</span> <span class="n">distance</span><span class="o">*</span><span class="n">retardation</span><span class="o">/</span><span class="n">velocity</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time to 75 meters :&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">timet075</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; days&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time to 75 meters : 150.0  days
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="peak-at-75-meters">
+<h3>Peak at 75 meters<a class="headerlink" href="#peak-at-75-meters" title="Permalink to this headline">¶</a></h3>
+<p>Could simply ploat a history at <span class="math notranslate nohighlight">\(x=75\)</span> meters and capture the peak value</p>
+<p><strong>point</strong> source spill; use Equation 6.27 in book , modify for decay <br></p>
+<p><img alt="" src="../../../../_images/eqn627.png" /></p>
+</div>
+<div class="section" id="id14">
+<h3>solution details (e.g. step-by-step computations)<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>Create a prototype function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">c3addinst</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">dx</span><span class="p">,</span><span class="n">dy</span><span class="p">,</span><span class="n">dz</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">lm</span><span class="p">):</span>
+<span class="c1"># Baetsle 1969 model eq. 6.28</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="n">term0</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">lm</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="c1">#    term1 = 4.0*((math.pi*t)**(2/2))*math.sqrt(dx*dy)</span>
+    <span class="n">term1</span> <span class="o">=</span> <span class="mf">8.0</span><span class="o">*</span><span class="p">((</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span><span class="o">*</span><span class="n">dy</span><span class="o">*</span><span class="n">dz</span><span class="p">)</span>
+    <span class="n">term2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">v</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">dx</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span><span class="p">((</span><span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">dy</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span><span class="p">((</span><span class="n">z</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">dz</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
+    <span class="n">c3addinst</span> <span class="o">=</span> <span class="n">term0</span><span class="o">*</span><span class="p">(</span><span class="n">mass</span><span class="o">/</span><span class="n">term1</span><span class="p">)</span><span class="o">*</span><span class="n">term2</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">c3addinst</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">c2addinst</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">dx</span><span class="p">,</span><span class="n">dy</span><span class="p">,</span><span class="n">dz</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">lm</span><span class="p">):</span>
+<span class="c1"># dz is not used, preserved to make cut-and-paste same eq 6.27</span>
+<span class="c1"># Baetsle 1969 model</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="n">term0</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">lm</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">term1</span> <span class="o">=</span> <span class="mf">4.0</span><span class="o">*</span><span class="p">((</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span><span class="o">*</span><span class="n">dy</span><span class="p">)</span>
+    <span class="n">term2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">v</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">dx</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span><span class="p">((</span><span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">dy</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">c2addinst</span> <span class="o">=</span> <span class="n">term0</span><span class="o">*</span><span class="p">(</span><span class="n">mass</span><span class="o">/</span><span class="n">term1</span><span class="p">)</span><span class="o">*</span><span class="n">term2</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">c2addinst</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Build input data manager, report intermediate computations</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Co</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1">#mg/L note problem presents in micrograms/L</span>
+<span class="n">Ao</span> <span class="o">=</span> <span class="mi">10</span> 
+<span class="n">mass</span>        <span class="o">=</span> <span class="n">Co</span><span class="o">*</span><span class="n">Ao</span> <span class="c1">#kg</span>
+<span class="n">velocity</span>    <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="n">retardation</span> <span class="c1">#m/day</span>
+<span class="n">disp_x</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1">#m^2/day</span>
+<span class="n">disp_y</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1">#m^2/day</span>
+<span class="n">disp_z</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1">#m^2/day</span>
+<span class="n">decay</span> <span class="o">=</span> <span class="mf">0.0005</span> <span class="c1">#1/day</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;            Mass : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; kg/m^3&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Species velocity : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">velocity</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; m/day&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Dispersion x : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">disp_x</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; m^2/day&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Dispersion y : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">disp_y</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; m^2/day&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Dispersion z : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">disp_z</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; m^2/day&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            Mass :  10000  kg/m^3
+Species velocity :  0.5  m/day
+    Dispersion x :  1.0  m^2/day
+    Dispersion y :  0.1  m^2/day
+    Dispersion z :  0.1  m^2/day
+</pre></div>
+</div>
+</div>
+</div>
+<p>Calculate the maximum concentration at <span class="math notranslate nohighlight">\(x=75~m\)</span></p>
+<ul class="simple">
+<li><p>use a history plot</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deltat</span>      <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="c1">#days</span>
+<span class="n">howmany</span> <span class="o">=</span>     <span class="mi">300</span><span class="o">/</span><span class="n">deltat</span> 
+<span class="n">howmany</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">howmany</span><span class="p">)</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">#days</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">howmany</span><span class="p">):</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">deltat</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># trap zero time to prevent divide by zero</span>
+        <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span> <span class="mf">0.00000001</span>
+    
+<span class="n">x</span>        <span class="o">=</span> <span class="mi">75</span>  <span class="c1">#ft</span>
+<span class="n">y</span>        <span class="o">=</span> <span class="mi">0</span>
+<span class="n">z</span>        <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">howmany</span><span class="p">)]</span> <span class="c1">#concentration </span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">howmany</span><span class="p">):</span>
+    <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">c3addinst</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mass</span><span class="p">,</span><span class="n">disp_x</span><span class="p">,</span><span class="n">disp_y</span><span class="p">,</span><span class="n">disp_z</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">decay</span><span class="p">)</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># Import graphics routines for picture making</span>
+<span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="c1">#</span>
+<span class="c1"># Build and Render the Plot</span>
+<span class="c1">#</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span><span class="p">)</span>  <span class="c1"># make the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot; Concentration History </span><span class="se">\n</span><span class="s2"> Distance: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; feet </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="p">)</span> <span class="c1"># caption the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot; Elapsed Time (days) &quot;</span><span class="p">)</span> <span class="c1"># label x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot; Concentration  (kg/m^3)      &quot;</span><span class="p">)</span> <span class="c1"># label y-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># plot to stdio -- has to be last call as it kills prior objects</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span> <span class="c1"># needed when plt.show call not invoked, optional here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/EX1-WS_25_0.png" src="../../../../_images/EX1-WS_25_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Maximum concentration : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">c</span><span class="p">),</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; mg/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;          Observed at : &quot;</span><span class="p">,</span><span class="n">t</span><span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">c</span><span class="p">))],</span><span class="s2">&quot; days&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maximum concentration :  1.211  mg/L
+          Observed at :  138.0  days
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plume dimensions</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">sigma_x</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">disp_x</span><span class="o">*</span><span class="mi">365</span><span class="p">)</span>
+<span class="n">sigma_y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">disp_y</span><span class="o">*</span><span class="mi">365</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x dimension : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">sigma_x</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; meters &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y dimension : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">sigma_y</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; meters &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x dimension :  81.06  meters 
+y dimension :  25.63  meters 
+</pre></div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+</div>
+<div class="section" id="problem-6">
+<h2>Problem 6<a class="headerlink" href="#problem-6" title="Permalink to this headline">¶</a></h2>
+<p>A one-dimensional column study was conducted using a 30-cm long packed soil column.  The injected solute concentration was 10.0 mg/L, and the seepage velocity during the experiment was 0.20 cm/min. The dipsersivity of the solute species in the sample soil is known to be 4.0 cm.</p>
+<p>Determine:</p>
+<ol class="simple">
+<li><p>The concentration in mg/L of the solute species in the column effluent 90 minutes after injection began.</p></li>
+</ol>
+<p>Apply Ogata-Banks as in ES3:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># prototype decaying species function</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">c1dadrd</span><span class="p">(</span><span class="n">c_source</span><span class="p">,</span><span class="n">space</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">dispersion</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">retardation</span><span class="p">,</span><span class="n">decay</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span><span class="n">erf</span><span class="p">,</span><span class="n">erfc</span><span class="p">,</span><span class="n">exp</span>  <span class="c1"># get special math functions</span>
+    <span class="n">dee</span> <span class="o">=</span> <span class="n">dispersion</span><span class="o">/</span><span class="n">retardation</span>
+    <span class="n">vee</span> <span class="o">=</span> <span class="n">velocity</span><span class="o">/</span><span class="n">retardation</span>
+    <span class="n">uuu</span> <span class="o">=</span> <span class="p">(</span><span class="n">vee</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">4.0</span><span class="o">*</span><span class="n">decay</span><span class="o">*</span><span class="n">dee</span><span class="p">)</span>
+    <span class="n">uuu</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">uuu</span><span class="p">)</span>
+    <span class="n">arg1</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span><span class="o">*</span><span class="p">(</span><span class="n">vee</span><span class="o">-</span><span class="n">uuu</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">dee</span><span class="p">)</span>
+    <span class="n">arg2</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span> <span class="o">-</span> <span class="n">uuu</span><span class="o">*</span><span class="n">time</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dee</span><span class="o">*</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">arg3</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span><span class="o">*</span><span class="p">(</span><span class="n">vee</span><span class="o">+</span><span class="n">uuu</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">dee</span><span class="p">)</span>
+    <span class="n">arg4</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span> <span class="o">+</span> <span class="n">uuu</span><span class="o">*</span><span class="n">time</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dee</span><span class="o">*</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">temp1</span> <span class="o">=</span> <span class="n">c_source</span><span class="o">/</span><span class="mf">2.0</span>
+    <span class="n">temp2</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">arg1</span><span class="p">)</span>
+    <span class="n">temp3</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(</span><span class="n">arg2</span><span class="p">)</span>
+    <span class="n">temp4</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">arg3</span><span class="p">)</span>
+    <span class="n">temp5</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(</span><span class="n">arg4</span><span class="p">)</span>
+    
+    <span class="n">c1dadrd</span> <span class="o">=</span> <span class="n">temp1</span><span class="o">*</span><span class="p">(</span><span class="n">temp2</span><span class="o">*</span><span class="n">temp3</span><span class="o">+</span><span class="n">temp4</span><span class="o">*</span><span class="n">temp5</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">c1dadrd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Build input data manager, report intermediate computations</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># input data manager</span>
+<span class="n">conc_c</span> <span class="o">=</span> <span class="mf">10.0</span> <span class="c1">#mg/L</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mf">0.20</span> <span class="c1">#cm/min</span>
+<span class="n">dispersivity</span> <span class="o">=</span> <span class="mf">4.0</span> <span class="c1">#cm</span>
+<span class="n">dispersion</span> <span class="o">=</span> <span class="n">dispersivity</span><span class="o">*</span><span class="n">velocity</span>
+<span class="n">length</span> <span class="o">=</span> <span class="mf">30.0</span> <span class="c1">#cm</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;        ---- Supplied Values ----  &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;            Pore Velocity : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">velocity</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; cm/min&quot;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;             Dispersivity : &quot;</span><span class="p">,</span><span class="n">dispersivity</span><span class="p">,</span><span class="s2">&quot; cm &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;          Outlet Distance : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">length</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; cm &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;        ---- Computed Values ----  &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;               Dispersion : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">dispersion</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; cm^2/min &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        ---- Supplied Values ----  
+            Pore Velocity :  0.2  cm/min
+             Dispersivity :  4.0  cm 
+          Outlet Distance :  30.0  cm 
+        ---- Computed Values ----  
+               Dispersion :  0.8  cm^2/min 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot a concentration history over 600 minutes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deltat</span>      <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="c1">#minutes</span>
+<span class="n">howmany</span> <span class="o">=</span>     <span class="mi">601</span><span class="o">/</span><span class="n">deltat</span> 
+<span class="n">howmany</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">howmany</span><span class="p">)</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">#days</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">howmany</span><span class="p">):</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">deltat</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># trap zero time to prevent divide by zero</span>
+        <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span> <span class="mf">0.00000001</span>
+    
+<span class="n">distance</span>        <span class="o">=</span> <span class="mi">30</span>  <span class="c1">#cm</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">howmany</span><span class="p">)]</span> <span class="c1">#concentration </span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">howmany</span><span class="p">):</span>
+    <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">c1dadrd</span><span class="p">(</span><span class="n">conc_c</span><span class="p">,</span><span class="n">distance</span><span class="p">,</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">dispersion</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1">#</span>
+<span class="c1"># Import graphics routines for picture making</span>
+<span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="c1">#</span>
+<span class="c1"># Build and Render the Plot</span>
+<span class="c1">#</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span><span class="p">)</span>  <span class="c1"># make the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot; Concentration History </span><span class="se">\n</span><span class="s2"> Distance: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; cm </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot; Dispersion: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">dispersion</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; cm^2/min </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot; Velocity: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; cm/min </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># caption the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot; Elapsed Time (minutes) &quot;</span><span class="p">)</span> <span class="c1"># label x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot; Concentration  (mg/L)      &quot;</span><span class="p">)</span> <span class="c1"># label y-axis</span>
+<span class="c1">#plt.plot([365,365],[0,c0])</span>
+<span class="c1">#plt.plot([365*2,365*2],[0,c0])</span>
+<span class="c1">#plt.text(365,100,&quot;  year 1&quot;)</span>
+<span class="c1">#plt.text(365*2,100,&quot;  year 2&quot;)</span>
+<span class="c1">#plt.savefig(&quot;ogatabanksplot.png&quot;) # optional generates just a plot for embedding into a report</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># plot to stdio -- has to be last call as it kills prior objects</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span> <span class="c1"># needed when plt.show call not invoked, optional here</span>
+<span class="c1">#sys.exit() # used to elegant exit for CGI-BIN use</span>
+<span class="c1">#print(&quot;Center of Distribution Position : &quot;,round(time*velocity,2),&quot; length units&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/EX1-WS_34_0.png" src="../../../../_images/EX1-WS_34_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Concentration observed at&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">90</span><span class="p">])],</span><span class="s2">&quot; minutes : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">90</span><span class="p">],</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; mg/L &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concentration observed at 90.0  minutes :  2.159  mg/L 
+</pre></div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div class="section" id="problem-7">
+<h2>Problem 7<a class="headerlink" href="#problem-7" title="Permalink to this headline">¶</a></h2>
+<p>One kilogram of toluene was spilled into a well that fully penetrates an aquifer.  The toluene immediately dissolved and completely mixed into the well water. The well’s effective diameter is 0.60 m, and the aquifer has a saturated thickness of 8.5 m; the source area is 5.1 m<span class="math notranslate nohighlight">\(^2\)</span>. The seepage velocity is 95 m/yr due west, the longitudinal dispersivity is 3.5 m, and the transverse dispersivity is 0.50 m.  The aquifer has bulk density of 1.6 g/cc and porosity of 0.40.  The distribution coefficient <span class="math notranslate nohighlight">\(K_d\)</span> for toluene in the aquifer soil is 0.84 L/kg.  Toluene has a first-order decay rate of 0.021 d<span class="math notranslate nohighlight">\(^{-1}\)</span></p>
+<p>Determine:</p>
+<ol class="simple">
+<li><p>The retardation factor R for toluene in this aquifer.</p></li>
+<li><p>The time in years it will take the center of mass of the contaminant plume to travel 5 m in the direction of flow.</p></li>
+<li><p>The concentration of toluene in mg/L in a sampling well that is located 5 meters west, and 1.5 meters north of the release point, 3 months from the initial release.</p></li>
+</ol>
+<p><img alt="" src="../../../../_images/p7-1.png" /></p>
+<div class="math notranslate nohighlight">
+\[R = 1 + \frac{\rho_b}{n} K_d\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rhob</span><span class="o">=</span><span class="mf">1.6</span> <span class="c1">#g/cc</span>
+<span class="n">pors</span><span class="o">=</span><span class="mf">0.40</span>
+<span class="n">kaydee</span> <span class="o">=</span> <span class="mf">0.84</span> <span class="c1">#1000cc/1000g</span>
+<span class="n">retardation</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="p">(</span><span class="n">rhob</span><span class="o">/</span><span class="n">pors</span><span class="p">)</span><span class="o">*</span><span class="n">kaydee</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Retardation coefficient for Toluene : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">retardation</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retardation coefficient for Toluene :  4.36
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># time to 5 meters</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mi">95</span><span class="o">/</span><span class="mi">365</span> <span class="c1">#cm/day</span>
+<span class="n">distance</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">timeTo5</span> <span class="o">=</span> <span class="n">distance</span><span class="o">*</span><span class="n">retardation</span><span class="o">/</span><span class="n">velocity</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time to travel 5 meters (advection only) : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">timeTo5</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; days&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time to travel 5 meters (advection only) :  83.758  days
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use 2D impulse approach (Eq 6.27) from textbook</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">c2addinst</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">dx</span><span class="p">,</span><span class="n">dy</span><span class="p">,</span><span class="n">vee</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">lm</span><span class="p">):</span>
+<span class="c1"># Baetsle 1969 model</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="n">v</span><span class="o">=</span><span class="n">vee</span><span class="o">/</span><span class="n">r</span>
+    <span class="n">dxx</span><span class="o">=</span><span class="n">dx</span><span class="o">/</span><span class="n">r</span>
+    <span class="n">dyy</span><span class="o">=</span><span class="n">dy</span><span class="o">/</span><span class="n">r</span>
+    <span class="n">term0</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">lm</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">term1</span> <span class="o">=</span> <span class="mf">4.0</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dxx</span><span class="o">*</span><span class="n">dyy</span><span class="p">)</span>
+    <span class="n">term2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span>    <span class="o">-</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">v</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">dxx</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="p">((</span><span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">dyy</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">c2addinst</span> <span class="o">=</span> <span class="n">term0</span><span class="o">*</span><span class="p">(</span><span class="n">mass</span><span class="o">/</span><span class="n">term1</span><span class="p">)</span><span class="o">*</span><span class="n">term2</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">c2addinst</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">thickness</span> <span class="o">=</span> <span class="mf">8.5</span>
+<span class="n">diameter</span> <span class="o">=</span> <span class="mf">0.6</span>
+<span class="n">well_volume</span> <span class="o">=</span> <span class="n">thickness</span><span class="o">*</span><span class="mf">0.25</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">diameter</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">mass</span> <span class="o">=</span> <span class="mf">1000.0</span>
+<span class="n">conc_0</span> <span class="o">=</span> <span class="n">mass</span><span class="o">/</span><span class="n">well_volume</span>
+<span class="n">mmm</span> <span class="o">=</span> <span class="n">conc_0</span><span class="o">*</span><span class="n">thickness</span><span class="o">*</span><span class="n">diameter</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Initial concentration : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">conc_0</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">time1</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">30</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">alpha_l</span> <span class="o">=</span> <span class="mf">3.5</span>
+<span class="n">alpha_t</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">disp_x</span> <span class="o">=</span> <span class="n">velocity</span><span class="o">*</span><span class="n">alpha_l</span> <span class="c1">#units!</span>
+<span class="n">disp_y</span> <span class="o">=</span> <span class="n">velocity</span><span class="o">*</span><span class="n">alpha_t</span>
+<span class="n">lm</span> <span class="o">=</span> <span class="mf">0.021</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="n">c2addinst</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">time1</span><span class="p">,</span><span class="n">mmm</span><span class="p">,</span><span class="n">disp_x</span><span class="p">,</span><span class="n">disp_y</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">retardation</span><span class="p">,</span><span class="n">lm</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Field point (x,y,t) : (&quot;</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="n">time1</span><span class="p">,</span><span class="s2">&quot;) &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pore velocity : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">velocity</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot;m/d&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dispersion x : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">disp_x</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; m^2/d&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dispersion y : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">disp_y</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; m^2/d&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Retardation R : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">retardation</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Decay Lambda : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">lm</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot; per day&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Concentration : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot; mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initial concentration :  416.091
+Field point (x,y,t) : ( 5 , 1.5 , 90 ) 
+Pore velocity :  0.26 m/d
+Dispersion x :  0.911  m^2/d
+Dispersion y :  0.13  m^2/d
+Retardation R :  4.36
+Decay Lambda :  0.021  per day
+Concentration :  1.36939  mg/L
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/92exams/EX1/src-sol"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../EX1.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">F23 Exam 1 Deploy</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../../EX2/EX2.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">F23 Exam 2 Deploy</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Theodore G. Cleveland, PhD<br/>
+        
+            &copy; Copyright 2023.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

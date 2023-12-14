@@ -112,7 +112,7 @@ time  = 50.       # time since release
 dispersion = 1.0 # dispersion coefficient
 velocity = 1.0    # pore velocity
 retardation = 1.0
-decay = 0.1
+decay = 0.00001
 #
 # forward define and initialize vectors for a profile plot
 #
