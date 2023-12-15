@@ -27,7 +27,7 @@ Or as functional code blocks.  In either case you can cut-and-paste onto your co
 
 ## Suggested Citation
 
-<font color=blue>Theodore G. Cleveland (2023), *Groundwater Transport Phenomena: Instructor's Notes for CE 5364 at TTU*. Department of Civil, Environmental, and Construction Engineering, Whitacre College of Engineering, Texas Tech University</font>
+<font color=blue>Theodore G. Cleveland (2023), *Groundwater Transport Phenomena: A JupyterBook of Instructor's Notes to accompany CE 5364 at TTU*. Department of Civil, Environmental, and Construction Engineering, Whitacre College of Engineering, Texas Tech University</font>
 
 ## Copyright Information
 Copyright © 2023 Cleveland, T. G. *The contents of this book are licensed for free consumption under the following license: [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)* 
