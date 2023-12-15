@@ -1,0 +1,23 @@
+
+GFORTRAN=gfortran
+FFLAGS=
+PROG=USGSMOC
+VERSION=0.1
+SOURCES=USGSMOC.FOR GENPT.FOR ITERAT.FOR MOVE.FOR PARLOD.FOR UTIL.FOR VELO.FOR
+OBJS=${SOURCES:.f=.o}
+
+all: USGSMOC
+
+USGSMOC: ${SOURCES}
+	${GFORTRAN} ${FFLAGS} -o usgsmoc.exe ${SOURCES}
+
+dist:
+	@mkdir ${PROG}-${VERSION}
+	@cp ${SOURCES} ${PROG}-${VERSION}
+	@cp Makefile ${PROG}-${VERSION}
+	@tar cvfz ${PROG}-${VERSION}.tar.gz ${PROG}-${VERSION} 
+	@rm -rf ${PROG}-${VERSION}
+
+clean:
+	@rm -f ${PROG} ${OBJS} core
+

@@ -1,0 +1,1111 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2D Plume in Regional Flow (Hunt Solution) &#8212; Groundwater Transport Phenomena</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Domenico-Robbins Solutions" href="domenico.html" />
+    <link rel="prev" title="1D Sauty Solution" href="sauty.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/gwtransport.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Groundwater Transport Phenomena</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0introduction/0introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1computationaltools/1computationaltools.html">
+   Computational Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2essentialgroundwater/essentialgwreview.html">
+   Essential Groundwater Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../4pollutants/4pollutants.html">
+   Pollutants
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5nonreactivetransport/5nonreactivetransport.html">
+   Non-Reactive Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5nonreactivetransport/1tracerhypothesis.html">
+     The Tracer Hypothesis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5nonreactivetransport/2flux.html">
+     Flux
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5nonreactivetransport/3advection.html">
+     Advection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6nonreactivetransport/4diffusion.html">
+     Diffusion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6nonreactivetransport/5dispersion.html">
+     Dispersion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="analyticalmodels.html">
+   Analytical Models
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="impulse.html">
+     1D Impulse (Instantaneous Source) Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ogatabanks.html">
+     1D Ogata-Banks Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sauty.html">
+     1D Sauty Solution
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2D Plume in Regional Flow (Hunt Solution)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="domenico.html">
+     Domenico-Robbins Solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2Dfinitewidth.html">
+     2D - Advection-Dispersion, Finite-Width, Constant Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2Dfwidth-pulse.html">
+     2D - Advection-Dispersion, Finite-Width, Finite-Duration Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3Dfinitearea.html">
+     3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../8reactivetransport/8reactivetransport.html">
+   Reactive Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../8reactivetransport/6reactions.html">
+     Adsorbtion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../8reactivetransport/7decay.html">
+     Decay
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="reactivemodels.html">
+     Analytical Models with Decay and Adsorbtion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../11modelingadvection/0modelingadvection.html">
+   Modeling Advection
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11modelingadvection/1particletracking.html">
+     Modeling Advection by Particle Tracking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11modelingadvection/2upwindfdm.html">
+     Upwind Formulation Finite-Difference
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../12usgsmocmodel/usgsmoc.html">
+   USGS MOC Software
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12usgsmocmodel/winmoc.html">
+     Windows Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12usgsmocmodel/armmoc.html">
+     ARM7/AARCH 64 Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12usgsmocmodel/dprw.html">
+     Discrete Particle Random Walk (Future Semester)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">
+   Site Investigations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../15datacollection/datacollection.html">
+   Sample Collection and Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17unsaturatedzone/unsaturated.html">
+   Unsaturated Zone Flow
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../18untransport/unsaturatedtransport.html">
+   Unsaturated Zone Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18untransport/napls.html">
+     Non-Aqueous Phase Liquids
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../19chemflow/chemflow.html">
+   CHEMFLO-2000
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../19chemflow/chemflowwinders.html">
+     Windows Install
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../19chemflow/chemflowaarch.html">
+     ARM7/AARCH Install
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../19chemflow/chemflowexamples.html">
+     CHEMFLOW Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../22remediation/remediation.html">
+   Remediation Technologies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../23risk/risk.html">
+   Risk Assessment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../26regulatory/regulatory.html">
+   Groundwater Protection Legal Framework
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../91exercises/2-Exercises.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES1/ES1.html">
+     F23 Exercise Set 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES2/ES2.html">
+     F23 Exercise Set 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES3/ES3.html">
+     F23 Exercise Set 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES4/ES4.html">
+     F23 Exercise Set 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES5/ES5.html">
+     F23 Exercise Set 5
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES6/ES6.html">
+     F23 Exercise Set 6
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../93projects/Projects.html">
+   Projects
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../93projects/PR2/PR2.html">
+     USGS MOC Project 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../93projects/PR3/PR3.html">
+     USGS MOC Project 3 (Site Investigation/Remediation Design)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../93projects/PR4/PR4.html">
+     USGS MOC Project (Casing Failure)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../93projects/PR5/PR5.html">
+     Chemflow 2000 Project 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../92exams/exams.html">
+   Exams
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../92exams/EX1/EX1.html">
+     F23 Exam 1 Deploy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../92exams/EX1/src-sol/EX1-WS.html">
+     F23 Exam 1 Solution Sketch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../92exams/EX2/EX2.html">
+     F23 Exam 2 Deploy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../92exams/EX2/src-sol/EX2-WS.html">
+     F23 Exam 2 Solution Sketch
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/chapters/7analyticalmodels/huntsolution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/7analyticalmodels/huntsolution.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/7analyticalmodels/huntsolution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#leaky-well-function">
+   Leaky Well Function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hunt-solution-prototype-function">
+   Hunt Solution (Prototype Function)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#driver-script">
+   Driver Script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-script">
+   Plotting Script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#useful-code-listings">
+   Useful Code Listings
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="d-plume-in-regional-flow-hunt-solution">
+<h1>2D Plume in Regional Flow (Hunt Solution)<a class="headerlink" href="#d-plume-in-regional-flow-hunt-solution" title="Permalink to this headline">¶</a></h1>
+<p>The sketch depicts a vertical line source in an aquifer of infinite extent located at (x,y)=(0,0) some time after constant injection has begun.</p>
+<p><img alt="" src="../../_images/huntsetup.png" /></p>
+<p>For the line source (injection well) whose fluid contribution makes negligible impact on the local hydraulics as depicted in the sketch the initial, boundary, and mass conservation conditions are:</p>
+<div class="math notranslate nohighlight">
+\[C(x,y,0)=0\]</div>
+<div class="math notranslate nohighlight">
+\[C(\pm \infty,\pm \infty,t)=0\]</div>
+<div class="math notranslate nohighlight">
+\[\int_{- \infty}^{\infty}\int_{-\infty}^{\infty}C(x,y,t)dxdy = C_0 Q t\]</div>
+<p>A solution obtained by time-convolution of an elementary line source solution (Hunt, 1978) is</p>
+<div class="math notranslate nohighlight">
+\[C(x,y,t) = \frac{C_0 Q}{4 \pi n L}\frac{1}{\sqrt{D_x D_y}}exp(\frac{x v}{2 D_x})W(a,b)\]</div>
+<p>where <span class="math notranslate nohighlight">\(W(a,b)\)</span> is the leaky aquifer (Hantush) well function with</p>
+<div class="math notranslate nohighlight">
+\[a=\frac{(x^2+y^2(\frac{D_x}{D_y}))}{4 D_x t}\]</div>
+<div class="math notranslate nohighlight">
+\[b=\frac{\sqrt{(x^2+y^2(\frac{D_x}{D_y})}}{2D_x}\]</div>
+<p>The solution is presented in (Bear, 1972) as a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the integration routine); Hunt (1978) noticed that the integral was the leaky well function with appropriate substitutions and completed the solution.</p>
+<p>The leaky aquifer function can be evaluated numerically using a recursive definition, or efficient approximations can be used. Listings for these approximations appear below after the references</p>
+<p>The solution is applicable for porous media flow, where the velocity (below) is the mean section velocity (seepage velocity divided by the porosity). The solution can also be used with streams and pipes (porosity = 1). Negative values of distance in x-axis would correspond to locations upgradient of the injection location.</p>
+<p>Scripts to generate solutions are listed below:</p>
+<div class="section" id="leaky-well-function">
+<h2>Leaky Well Function<a class="headerlink" href="#leaky-well-function" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wh</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">rho</span><span class="p">):</span> <span class="c1"># Hantush Leaky aquifer well function</span>
+    <span class="kn">import</span> <span class="nn">numpy</span>
+    <span class="sd">&quot;&quot;&quot;Returns Hantush&#39;s well function values</span>
+
+<span class="sd">    Note: works only for scalar values of u and rho</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    u : scalar  (u= r^2 * S / (4 * kD * t))</span>
+<span class="sd">    rho : sclaar (rho =r / lambda, lambda = sqrt(kD * c))</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">    Wh(u, rho) : Hantush well function value for (u, rho)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">u</span> <span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">rho</span> <span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;u and rho must be scalars.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
+
+    <span class="n">LOGINF</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">LOGINF</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">ym</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span>  <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">wh</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">ym</span> <span class="o">-</span> <span class="p">(</span><span class="n">rho</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">ym</span> <span class="p">)</span> <span class="o">*</span> <span class="n">dy</span> <span class="o">/</span> <span class="n">ym</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">wh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="hunt-solution-prototype-function">
+<h2>Hunt Solution (Prototype Function)<a class="headerlink" href="#hunt-solution-prototype-function" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">chunt</span><span class="p">(</span><span class="n">c_injection</span><span class="p">,</span><span class="n">q_injection</span><span class="p">,</span><span class="n">l_thickness</span><span class="p">,</span><span class="n">d_x</span><span class="p">,</span><span class="n">d_y</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">x_location</span><span class="p">,</span><span class="n">y_location</span><span class="p">,</span><span class="n">time</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="n">rsq</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_location</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y_location</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">d_x</span><span class="o">/</span><span class="n">d_y</span><span class="p">))</span>
+    <span class="n">rrr</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rsq</span><span class="p">)</span>
+    <span class="n">aaa</span> <span class="o">=</span> <span class="n">rsq</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">d_x</span><span class="o">*</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">bbb</span> <span class="o">=</span> <span class="p">(</span><span class="n">rrr</span><span class="o">*</span><span class="n">velocity</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">d_x</span><span class="p">)</span>
+<span class="c1">#    print(rsq,rrr,aaa,bbb)</span>
+    <span class="n">term1</span> <span class="o">=</span> <span class="n">c_injection</span><span class="o">*</span><span class="n">q_injection</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">l_thickness</span><span class="p">)</span>
+    <span class="n">term2</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d_x</span><span class="o">*</span><span class="n">d_y</span><span class="p">))</span>
+    <span class="n">term3</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">x_location</span><span class="o">*</span><span class="n">velocity</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">d_x</span><span class="p">))</span>
+<span class="c1">#    term4 = leakyfn(aaa,bbb)</span>
+    <span class="n">term4</span> <span class="o">=</span> <span class="n">wh</span><span class="p">(</span><span class="n">aaa</span><span class="p">,</span><span class="n">bbb</span><span class="p">)</span>
+
+    <span class="c1">#if term4 &lt;= 0.0: term4 = 0.0</span>
+<span class="c1">#    print(term1,term2,term3,term4)</span>
+    <span class="n">chunt</span> <span class="o">=</span> <span class="n">term1</span><span class="o">*</span><span class="n">term2</span><span class="o">*</span><span class="n">term3</span><span class="o">*</span><span class="n">term4</span>
+    <span class="k">return</span> <span class="n">chunt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="driver-script">
+<h2>Driver Script<a class="headerlink" href="#driver-script" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inputs</span>
+<span class="n">c_injection</span> <span class="o">=</span> <span class="mi">133</span>
+<span class="n">q_injection</span> <span class="o">=</span> <span class="mf">3.66</span>
+<span class="n">l_thickness</span> <span class="o">=</span> <span class="mf">1.75</span>
+<span class="n">d_x</span> <span class="o">=</span> <span class="mf">0.920</span>
+<span class="n">d_y</span> <span class="o">=</span> <span class="mf">0.092</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mf">0.187</span>
+<span class="n">x_location</span> <span class="o">=</span> <span class="mi">123</span>
+<span class="n">y_location</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mi">36500</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="n">c_injection</span><span class="o">*</span><span class="n">q_injection</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">chunt</span><span class="p">(</span><span class="n">c_injection</span><span class="p">,</span><span class="n">q_injection</span><span class="p">,</span><span class="n">l_thickness</span><span class="p">,</span><span class="n">d_x</span><span class="p">,</span><span class="n">d_y</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">x_location</span><span class="p">,</span><span class="n">y_location</span><span class="p">,</span><span class="n">time</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Concentration at x = &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">x_location</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; y= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">y_location</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">,</span><span class="s2">&quot; t= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">,</span><span class="s2">&quot; = &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="c1">#</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concentration at x =  123  y=  0  t=  36500  =  53.424
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-script">
+<h2>Plotting Script<a class="headerlink" href="#plotting-script" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a plot</span>
+<span class="n">x_max</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">y_max</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="c1"># build a grid</span>
+<span class="n">nrows</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltax</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_max</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="n">nrows</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">x_max</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00001</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">deltax</span><span class="p">)</span>
+
+<span class="n">ncols</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltay</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_max</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ncols</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">y_max</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00001</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">deltay</span><span class="p">)</span>
+    
+<span class="c1">#y</span>
+
+<span class="c1">#y = [i*deltay for i in range(how_many_points)] # constructor notation</span>
+<span class="c1">#y[0]=0.001</span>
+<span class="n">ccc</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+        <span class="n">ccc</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span> <span class="o">=</span> <span class="n">chunt</span><span class="p">(</span><span class="n">c_injection</span><span class="p">,</span><span class="n">q_injection</span><span class="p">,</span><span class="n">l_thickness</span><span class="p">,</span><span class="n">d_x</span><span class="p">,</span><span class="n">d_y</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="n">time</span><span class="p">)</span>
+        
+<span class="c1">#y</span>
+
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># empty list</span>
+<span class="n">count</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+        <span class="n">my_xyz</span><span class="o">.</span><span class="n">append</span><span class="p">([</span> <span class="n">x</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="n">ccc</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span> <span class="p">])</span>
+       <span class="c1"># print(count)</span>
+        <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span>
+        
+<span class="c1">#print(len(my_xyz))</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_xyz</span><span class="p">)</span> <span class="c1"># convert into a data frame</span>
+<span class="kn">import</span> <span class="nn">numpy</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">griddata</span>
+<span class="c1"># extract lists from the dataframe</span>
+<span class="n">coord_x</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 0 of dataframe</span>
+<span class="n">coord_y</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 1 of dataframe</span>
+<span class="n">coord_z</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 2 of dataframe</span>
+<span class="c1">#print(min(coord_x), max(coord_x)) # activate to examine the dataframe</span>
+<span class="c1">#print(min(coord_y), max(coord_y))</span>
+<span class="n">coord_xy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">coord_y</span><span class="p">))</span>
+<span class="c1"># Set plotting range in original data units</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="mi">64</span><span class="p">)</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="mi">64</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+<span class="c1"># Grid the data; use linear interpolation (choices are nearest, linear, cubic)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_xy</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_z</span><span class="p">),</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="c1"># Build the map</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">50</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Concentration Map at Elapsed Time &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39; days&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/huntsolution_9_0.png" src="../../_images/huntsolution_9_0.png" />
+</div>
+</div>
+<!--
+from scipy import *
+from scipy import special
+from scipy.special import kn as BesselK
+#from scipy.special import expn as ExpInt
+from math import sqrt as sqrt
+from math import cosh as cosh
+from math import log as ln # in python: log(x)=Ln(x)
+import numpy
+
+def ExpInt(n,u):
+
+    # n wordt niet gebruikt
+
+    # Fast approximation for Wu according to equation 7a and 7b from Srivastava(1998)
+    gamma = 0.5772 # Euler-Macheroni constant
+
+    # Wu for u<1
+    u0  = numpy.where(u<1.0,u,1) # u=1 is just a dummy to make ln() work on all values
+    Wu0 = numpy.lib.scimath.log(numpy.exp(-gamma)/u0) + 0.9653*u - 0.1690*u0**2
+
+    #Wu for u>=1
+    u1 = numpy.where(u>=1.0,u,1) # u=1 is just a dummy to make ln() work on all values
+    Wu1 = 1/(u1*numpy.exp(u1))*(u1+0.3575)/(u1+1.280)
+
+    # combine Wu0 and Wu1
+    Wu = numpy.where(u<1.0,Wu0,Wu1)
+    return Wu
+
+def func_F(rho,tau):
+# func_F is a fast approximation of Hantush well function W
+
+    # Calculate parameter w
+    w = (ExpInt(1,rho)-BesselK(0,rho))/(ExpInt(1,rho)-ExpInt(1,rho/2))
+
+    # Calculate F(rho,tau)
+    if tau <= 0:
+        F = w*ExpInt(1,rho/2*e**(-tau))-(w-1)*ExpInt(1,rho*cosh(tau))
+    else:
+        F = 2*BesselK(0,rho) - w*ExpInt(1,rho/2*e**tau) + (w-1)*ExpInt(1,rho*cosh(tau))
+
+    # return calculated value of F(rho,tau)
+    return F
+--></div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Hunt, B. (1978) Dispersive sources in uniform ground water flow. Journal of the Hydraulics Division, 104 (HY1), 75-85.</p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/7analyticalmodels/SSANTS2.xlsm"><strong>SSANTS2.xlsm</strong> (Excel Macro Sheet(s)) - Choose Tabsheet <strong>2D????</strong></a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/yuan_thesis/Groundwater_transport.pdf">Yuan, D, (1995)  <em>Accurate approximations for one-, two-, and three-dimensional groundwater mass transport from an exponentially decaying contaminant source.</em> MS Thesis, Department of Civil and Environmental Engineering, University of Houston. </a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/ants_dissertation/Luke_Chuang.pdf">Chuang, Lu-Chia, (1998) <em>A guidance system for choosing analytical contaminant transport models.</em> Doctoral Dissertation, Department of Civil and Environmental Engineering, University of Houston, Houston, Texas. 222p.</a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/publication/ofr8956">Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow
+Open-File Report 89-56</a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/publication/twri03B7">Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow
+Techniques of Water-Resources Investigations 03-B7 (supercedes above reference)</a></p></li>
+</ol>
+</div>
+<div class="section" id="useful-code-listings">
+<h2>Useful Code Listings<a class="headerlink" href="#useful-code-listings" title="Permalink to this headline">¶</a></h2>
+<p><strong>Polynomial Approximation</strong></p>
+<p>The approximations below are coded in python, and can convert to spreadsheet using VBA fairly easily. These are based on polynomial approximations in:</p>
+<p>Abramowitz, M. and I.A. Stegun, 1964. Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables. U.S. Department of Commerce, National Bureau of Standards, Applied Mathematics Series, Vol 55.</p>
+<p>And seem to produce nearly the same results as the recursive version above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#######################</span>
+<span class="c1"># Theis Well Function # </span>
+<span class="c1">#######################</span>
+<span class="k">def</span> <span class="nf">wellfn</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="k">if</span> <span class="p">((</span><span class="n">u</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">u</span> <span class="o">&lt;=</span><span class="mi">1</span><span class="p">)):</span>
+<span class="c1"># polynomial approximation constants</span>
+        <span class="n">a0</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.57721566</span>
+        <span class="n">a1</span> <span class="o">=</span>  <span class="mf">0.99999193</span>
+        <span class="n">a2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.24991055</span>
+        <span class="n">a3</span> <span class="o">=</span>  <span class="mf">0.05519968</span>
+        <span class="n">a4</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.00976004</span>
+        <span class="n">a5</span> <span class="o">=</span>  <span class="mf">0.00107857</span>
+        <span class="n">wellfn</span> <span class="o">=</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">+</span> <span class="n">a0</span> <span class="o">+</span> <span class="n">a1</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="n">a2</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a3</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">a4</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="n">a5</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">5</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">wellfn</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="p">((</span><span class="n">u</span> <span class="o">&gt;</span><span class="mi">1</span><span class="p">)):</span>
+<span class="c1"># polynomial approximation constants</span>
+        <span class="n">a1</span> <span class="o">=</span>  <span class="mf">8.5733287401</span>
+        <span class="n">a2</span> <span class="o">=</span> <span class="mf">18.0590169730</span>
+        <span class="n">a3</span> <span class="o">=</span>  <span class="mf">8.6347608925</span>
+        <span class="n">a4</span> <span class="o">=</span>  <span class="mf">0.2677737343</span>
+        <span class="n">b1</span> <span class="o">=</span>  <span class="mf">9.5733223454</span>
+        <span class="n">b2</span> <span class="o">=</span> <span class="mf">25.6329561486</span>
+        <span class="n">b3</span> <span class="o">=</span> <span class="mf">21.0996530827</span>
+        <span class="n">b4</span> <span class="o">=</span>  <span class="mf">3.9584969228</span>
+        <span class="n">frac1</span> <span class="o">=</span> <span class="n">u</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="n">a1</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">a2</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a3</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="n">a4</span>
+        <span class="n">frac2</span> <span class="o">=</span> <span class="n">u</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="n">b1</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">b2</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b3</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="n">b4</span>
+        <span class="n">frac3</span> <span class="o">=</span> <span class="n">u</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">wellfn</span> <span class="o">=</span> <span class="p">(</span><span class="n">frac1</span><span class="o">/</span><span class="n">frac2</span><span class="p">)</span><span class="o">/</span><span class="n">frac3</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">wellfn</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error in wellfn&#39;</span><span class="p">)</span>
+        <span class="n">wellfn</span> <span class="o">=</span> <span class="o">-</span><span class="mf">999.0</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">wellfn</span><span class="p">)</span>
+
+<span class="c1">#######################</span>
+<span class="c1"># Leaky Well Function #</span>
+<span class="c1">#######################</span>
+<span class="k">def</span> <span class="nf">leakyfn</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="kn">import</span> <span class="nn">numpy</span>
+    <span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">kn</span> <span class="k">as</span> <span class="n">besselK</span>
+    <span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">iv</span> <span class="k">as</span> <span class="n">besselI</span>
+<span class="c1"># finite series recursion constants</span>
+    <span class="n">c12</span> <span class="o">=</span>  <span class="mf">0.0277777777777778</span>
+<span class="c1">#</span>
+    <span class="n">c14</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.00347222222222222</span>
+    <span class="n">c15</span> <span class="o">=</span>  <span class="mf">0.00173611111111111</span>
+<span class="c1">#</span>
+    <span class="n">c17</span> <span class="o">=</span>  <span class="mf">0.000416666666666667</span>
+    <span class="n">c18</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.000138888888888889</span>
+    <span class="n">c19</span> <span class="o">=</span>  <span class="mf">0.0000694444444444444</span>
+<span class="c1">#</span>
+    <span class="n">c21</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.0000462962962962963</span>
+    <span class="n">c22</span> <span class="o">=</span>  <span class="mf">0.0000115740740740741</span>
+    <span class="n">c23</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.85802469135802E-06</span>
+    <span class="n">c24</span> <span class="o">=</span>  <span class="mf">1.92901234567901E-06</span>
+<span class="c1">#</span>
+    <span class="n">c26</span> <span class="o">=</span>  <span class="mf">4.72411186696901E-06</span>
+    <span class="n">c27</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.44822373393802E-07</span>
+    <span class="n">c28</span> <span class="o">=</span>  <span class="mf">2.3620559334845E-07</span>
+    <span class="n">c29</span> <span class="o">=</span> <span class="o">-</span><span class="mf">7.87351977828168E-08</span>
+    <span class="n">c30</span> <span class="o">=</span>  <span class="mf">3.93675988914084E-08</span>
+<span class="c1">#</span>
+    <span class="n">c32</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.42885487528345E-07</span>
+    <span class="n">c33</span> <span class="o">=</span>  <span class="mf">7.38142479213908E-08</span>
+    <span class="n">c34</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.47628495842782E-08</span>
+    <span class="n">c35</span> <span class="o">=</span>  <span class="mf">3.69071239606954E-09</span>
+    <span class="n">c36</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.23023746535651E-09</span>
+    <span class="n">c37</span> <span class="o">=</span>  <span class="mf">6.15118732678257E-10</span>
+<span class="c1">#</span>
+<span class="c1"># entry point </span>
+    <span class="n">a3</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span>  
+<span class="c1"># if leakance term is negligible, then return well function</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">leakyfn</span> <span class="o">=</span> <span class="n">wellfn</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
+<span class="c1"># if leakance/time term is large enough, then return besselKo</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a3</span><span class="o">/</span><span class="n">u</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">leakyfn</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">besselK</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
+<span class="c1">#  }</span>
+<span class="c1"># finite series approximation for u&gt;1, v&lt;=2</span>
+    <span class="k">if</span> <span class="p">((</span><span class="n">u</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">v</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">))</span> <span class="p">:</span>
+    <span class="c1"># recursion terms built by-hand (ported from SSANTS)</span>
+        <span class="n">g11</span> <span class="o">=</span> <span class="n">c12</span><span class="o">*</span><span class="n">a3</span>
+        <span class="n">g12</span> <span class="o">=</span> <span class="n">c14</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">g21</span> <span class="o">=</span> <span class="n">c15</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g22</span> <span class="o">=</span> <span class="n">c17</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g23</span> <span class="o">=</span> <span class="n">c18</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">g31</span> <span class="o">=</span> <span class="n">c19</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g32</span> <span class="o">=</span> <span class="n">c21</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g33</span> <span class="o">=</span> <span class="n">c22</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g34</span> <span class="o">=</span> <span class="n">c23</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">g41</span> <span class="o">=</span> <span class="n">c24</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">g42</span> <span class="o">=</span> <span class="n">c26</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">g43</span> <span class="o">=</span> <span class="n">c27</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g44</span> <span class="o">=</span> <span class="n">c28</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g45</span> <span class="o">=</span> <span class="n">c29</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">g51</span> <span class="o">=</span> <span class="n">c30</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">g52</span> <span class="o">=</span> <span class="n">c32</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">g53</span> <span class="o">=</span> <span class="n">c33</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">g54</span> <span class="o">=</span> <span class="n">c34</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g55</span> <span class="o">=</span> <span class="n">c35</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g56</span> <span class="o">=</span> <span class="n">c36</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">g61</span> <span class="o">=</span> <span class="n">c37</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span>
+    <span class="c1"># sum them up!</span>
+        <span class="n">a34list</span> <span class="o">=</span> <span class="p">[</span><span class="n">g11</span><span class="p">,</span><span class="n">g12</span><span class="p">,</span><span class="n">g21</span><span class="p">,</span><span class="n">g22</span><span class="p">,</span><span class="n">g23</span><span class="p">,</span><span class="n">g31</span><span class="p">,</span><span class="n">g32</span><span class="p">,</span><span class="n">g33</span><span class="p">,</span><span class="n">g34</span><span class="p">,</span><span class="n">g41</span><span class="p">,</span><span class="n">g42</span><span class="p">,</span><span class="n">g43</span><span class="p">,</span><span class="n">g44</span><span class="p">,</span><span class="n">g45</span><span class="p">,</span><span class="n">g51</span><span class="p">,</span><span class="n">g52</span><span class="p">,</span><span class="n">g53</span><span class="p">,</span><span class="n">g54</span><span class="p">,</span><span class="n">g55</span><span class="p">,</span><span class="n">g56</span><span class="p">,</span><span class="n">g61</span><span class="p">]</span>
+        <span class="n">a34</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a34list</span><span class="p">)</span>
+        <span class="n">a35</span> <span class="o">=</span> <span class="n">a34</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">a36</span> <span class="o">=</span> <span class="n">a3</span><span class="o">/</span><span class="n">u</span>
+        <span class="n">a37</span> <span class="o">=</span> <span class="n">besselI</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">a38</span> <span class="o">=</span> <span class="n">wellfn</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">a37</span>
+        <span class="n">a39</span> <span class="o">=</span> <span class="mf">0.5772</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a36</span><span class="p">)</span> <span class="o">+</span> <span class="n">wellfn</span><span class="p">(</span><span class="n">a36</span><span class="p">)</span> <span class="o">-</span> <span class="n">a36</span> <span class="o">+</span><span class="p">(</span><span class="n">besselI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">u</span>
+        <span class="n">a40</span> <span class="o">=</span> <span class="n">a39</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">leakyfn</span> <span class="o">=</span> <span class="n">a38</span> <span class="o">-</span> <span class="n">a40</span> <span class="o">+</span> <span class="n">a35</span>
+        <span class="n">leakyfn</span><span class="o">=</span><span class="nb">abs</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
+<span class="c1"># finite series approximation for u&lt;=1, v&lt;=2</span>
+    <span class="k">if</span> <span class="p">((</span><span class="n">u</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">v</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">))</span> <span class="p">:</span>
+    <span class="c1"># recursion terms built by-hand (ported from SSANTS)</span>
+        <span class="n">g11</span> <span class="o">=</span> <span class="n">c12</span><span class="o">*</span><span class="n">a3</span>
+        <span class="n">g12</span> <span class="o">=</span> <span class="n">c14</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">g21</span> <span class="o">=</span> <span class="n">c15</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g22</span> <span class="o">=</span> <span class="n">c17</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g23</span> <span class="o">=</span> <span class="n">c18</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">g31</span> <span class="o">=</span> <span class="n">c19</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g32</span> <span class="o">=</span> <span class="n">c21</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g33</span> <span class="o">=</span> <span class="n">c22</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g34</span> <span class="o">=</span> <span class="n">c23</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">g41</span> <span class="o">=</span> <span class="n">c24</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">g42</span> <span class="o">=</span> <span class="n">c26</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">g43</span> <span class="o">=</span> <span class="n">c27</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g44</span> <span class="o">=</span> <span class="n">c28</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g45</span> <span class="o">=</span> <span class="n">c29</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">g51</span> <span class="o">=</span> <span class="n">c30</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">g52</span> <span class="o">=</span> <span class="n">c32</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">g53</span> <span class="o">=</span> <span class="n">c33</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">g54</span> <span class="o">=</span> <span class="n">c34</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g55</span> <span class="o">=</span> <span class="n">c35</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g56</span> <span class="o">=</span> <span class="n">c36</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">g61</span> <span class="o">=</span> <span class="n">c37</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span>
+    <span class="c1"># sum them up!  </span>
+        <span class="n">a70list</span> <span class="o">=</span> <span class="p">[</span><span class="n">g11</span><span class="p">,</span><span class="n">g12</span><span class="p">,</span><span class="n">g21</span><span class="p">,</span><span class="n">g22</span><span class="p">,</span><span class="n">g23</span><span class="p">,</span><span class="n">g31</span><span class="p">,</span><span class="n">g32</span><span class="p">,</span><span class="n">g33</span><span class="p">,</span><span class="n">g34</span><span class="p">,</span><span class="n">g41</span><span class="p">,</span><span class="n">g42</span><span class="p">,</span><span class="n">g43</span><span class="p">,</span><span class="n">g44</span><span class="p">,</span><span class="n">g45</span><span class="p">,</span><span class="n">g51</span><span class="p">,</span><span class="n">g52</span><span class="p">,</span><span class="n">g53</span><span class="p">,</span><span class="n">g54</span><span class="p">,</span><span class="n">g55</span><span class="p">,</span><span class="n">g56</span><span class="p">,</span><span class="n">g61</span><span class="p">]</span>
+        <span class="n">a70</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a70list</span><span class="p">)</span>
+        <span class="n">a71</span> <span class="o">=</span> <span class="n">u</span><span class="o">*</span><span class="n">a70</span>
+        <span class="n">a72</span> <span class="o">=</span> <span class="n">a3</span><span class="o">/</span><span class="n">u</span>
+        <span class="n">a73</span> <span class="o">=</span> <span class="mf">0.5772</span><span class="o">+</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">+</span><span class="n">wellfn</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">-</span><span class="n">u</span><span class="o">+</span><span class="p">(</span><span class="n">besselI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">a72</span><span class="p">)</span>
+        <span class="n">a74</span> <span class="o">=</span> <span class="n">a73</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a72</span><span class="p">)</span>
+        <span class="n">a75</span> <span class="o">=</span> <span class="n">besselI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">wellfn</span><span class="p">(</span><span class="n">a72</span><span class="p">)</span>
+        <span class="n">a76</span> <span class="o">=</span> <span class="n">a75</span> <span class="o">-</span> <span class="n">a74</span> <span class="o">+</span> <span class="n">a71</span>
+        <span class="n">a77</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">besselK</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">leakyfn</span> <span class="o">=</span> <span class="p">(</span><span class="n">a77</span><span class="o">-</span><span class="n">a76</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
+<span class="c1"># approximation for v &gt; 2</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">v</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">term1</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">v</span><span class="p">))</span>
+        <span class="n">term2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">term3</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">v</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+        <span class="n">term4</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">erfc</span><span class="p">(</span><span class="n">term3</span><span class="p">)</span>
+        <span class="n">leakyfn</span> <span class="o">=</span> <span class="n">term1</span><span class="o">*</span><span class="n">term2</span><span class="o">*</span><span class="n">term4</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error in leakyfn&#39;</span><span class="p">)</span>
+        <span class="n">leakyfn</span> <span class="o">=</span> <span class="o">-</span><span class="mf">999.0</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/7analyticalmodels"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="sauty.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">1D Sauty Solution</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="domenico.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Domenico-Robbins Solutions</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Theodore G. Cleveland, PhD<br/>
+        
+            &copy; Copyright 2023.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

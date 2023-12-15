@@ -1,0 +1,392 @@
+1U.S.G.S. METHOD-OF-CHARACTERISTICS MODEL FOR SOLUTE TRANSPORT IN GROUND WATER
+0SAMPLE FILE FOR EXAMPLE 1 IN PPT PRESENTATION                                   
+ 
+0                     I N P U T     D A T A
+0                       GRID DESCRIPTORS
+
+             NX    (NUMBER OF COLUMNS)  =     9
+             NY    (NUMBER OF ROWS)     =     9
+             XDEL  (X-DISTANCE IN FEET) =  1000.0
+             YDEL  (Y-DISTANCE IN FEET) =  1000.0
+0                       TIME  PARAMETERS
+
+             NTIM   (MAX. NO. OF TIME STEPS)       =      1
+             NPMP   (NO. OF PUMPING PERIODS)       =      1
+             PINT   (PUMPING PERIOD IN YEARS)      =      3.000
+             TIMX   (TIME INCREMENT MULTIPLIER)    =       .00
+             TINIT  (INITIAL TIME STEP IN SEC.)    =      0.
+0              HYDROLOGIC AND CHEMICAL PARAMETERS
+
+             S       (STORAGE COEFFICIENT)       =       .000000
+             POROS   (EFFECTIVE POROSITY)        =       .250
+             BETA    (LONGITUDINAL DISPERSIVITY) =    100.0
+             DLTRAT  (RATIO OF TRANSVERSE TO
+                     LONGITUDINAL DISPERSIVITY)  =       .10
+             ANFCTR  (RATIO OF T-YY TO T-XX)     =      1.000000
+0                     EXECUTION PARAMETERS
+
+             NITP   (NO. OF ITERATION PARAMETERS) =    7
+             TOL    (CONVERGENCE CRITERIA - ADIP) =   .10E-02
+             ITMAX  (MAX.NO.OF ITERATIONS - ADIP) =   90
+             CELDIS (MAX.CELL DISTANCE PER MOVE
+                        OF PARTICLES - M.O.C.)    =     .490
+             NPMAX  (MAX. NO. OF PARTICLES)       = 3200
+             NPTPND (NO. PARTICLES PER NODE)      =     9
+1
+0                       PROGRAM OPTIONS
+
+             NPNT   (TIME STEP INTERVAL FOR
+                     COMPLETE PRINTOUT)       =     1
+             NPNTMV (MOVE INTERVAL FOR CHEM.
+                     CONCENTRATION PRINTOUT)  =     0
+             NPNTVL (TIME STEP INTERVAL FOR
+                     VELOCITY PRINTOUT; 0=NEVER;
+                     -1=FIRST TIME STEP;
+                     -2=LAST TIME STEP)       =     0
+             NPNTD  (PRINT OPTION-DISP.COEF.
+                     0=NO; 1=FIRST TIME STEP;
+                     2=ALL TIME STEPS)        =     0
+             NUMOBS (NO. OF OBSERVATION WELLS
+                     FOR HYDROGRAPH PRINTOUT) =     2
+             NREC   (NO. OF PUMPING WELLS)    =     0
+             NCODES (FOR NODE IDENT.)         =     1
+             NPNCHV (TIME STEP INTERVAL FOR
+                     VELOCITY PRINTOUT ON
+                     FILE UNIT 7; 0=NEVER;
+                     -1=FIRST TIME STEP;
+                     -2=LAST TIME STEP)       =     0
+             NPDELC (PRINT OPT.-CONC. CHANGE) =     0
+0                       REACTION TERMS
+
+             DK      (DISTRIBUTION COEFFICIENT) =   .26500E+01
+             RHOB    (BULK DENSITY OF SOLIDS)   =   .00000E+00
+             RF      (RETARDATION FACTOR)       =   .10000E+01
+             THALF   (HALF LIFE OF DECAY,IN SEC)=   .00000E+00
+             DECAY   (DECAY CONSTANT=LN 2/THALF)=   .00000E+00
+1               STEADY-STATE FLOW
+
+     TIME INTERVALS (IN SEC) FOR SOLUTE-TRANSPORT SIMULATION
+     .94673E+08
+ 
+0          LOCATION OF OBSERVATION WELLS
+
+                 NO.     X     Y
+
+                  1      3     3
+                  2      5     6
+ 
+0          AREA OF ONE CELL =    .1000E+07
+0          X-Y SPACING:
+               1000.0    
+               1000.0    
+1TRANSMISSIVITY MAP (FT*FT/SEC)
+ 
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+   0.00E+00  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  0.00E+00
+   0.00E+00  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  0.00E+00
+   0.00E+00  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  0.00E+00
+   0.00E+00  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  0.00E+00
+   0.00E+00  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  0.00E+00
+   0.00E+00  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  0.00E+00
+   0.00E+00  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  1.00E-01  0.00E+00
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+1AQUIFER THICKNESS (FT)
+ 
+      .0   .0   .0   .0   .0   .0   .0   .0   .0
+      .0 40.0 40.0 40.0 40.0 40.0 40.0 40.0   .0
+      .0 40.0 40.0 40.0 40.0 40.0 40.0 40.0   .0
+      .0 40.0 40.0 40.0 40.0 40.0 40.0 40.0   .0
+      .0 40.0 40.0 40.0 40.0 40.0 40.0 40.0   .0
+      .0 40.0 40.0 40.0 40.0 40.0 40.0 40.0   .0
+      .0 40.0 40.0 40.0 40.0 40.0 40.0 40.0   .0
+      .0 40.0 40.0 40.0 40.0 40.0 40.0 40.0   .0
+      .0   .0   .0   .0   .0   .0   .0   .0   .0
+1DIFFUSE RECHARGE AND DISCHARGE (FT/SEC)
+ 
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+1PERMEABILTY MAP (FT/SEC)
+ 
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+   0.00E+00  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  0.00E+00
+   0.00E+00  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  0.00E+00
+   0.00E+00  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  0.00E+00
+   0.00E+00  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  0.00E+00
+   0.00E+00  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  0.00E+00
+   0.00E+00  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  0.00E+00
+   0.00E+00  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  2.50E-03  0.00E+00
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+0          NO. OF FINITE-DIFFERENCE CELLS IN AQUIFER =   49
+
+          AREA OF AQUIFER IN MODEL  =   .49000E+08   SQ. FT.
+
+
+
+          NZCRIT   (MAX. NO. OF CELLS THAT CAN BE VOID OF
+                    PARTICLES;  IF EXCEEDED, PARTICLES ARE REGENERATED)   =    1
+
+1NODE IDENTIFICATION MAP
+
+
+   0  0  0  0  0  0  0  0  0
+   0  1  1  1  1  1  1  1  0
+   0  0  0  0  0  0  0  0  0
+   0  0  0  0  0  0  0  0  0
+   0  0  0  0  0  0  0  0  0
+   0  0  0  0  0  0  0  0  0
+   0  0  0  0  0  0  0  0  0
+   0  1  1  1  1  1  1  1  0
+   0  0  0  0  0  0  0  0  0
+0     NO. OF NODE IDENT. CODES SPECIFIED =  1
+0          THE FOLLOWING ASSIGNMENTS HAVE BEEN MADE:
+     CODE NO.     LEAKANCE     SOURCE CONC.     RECHARGE
+0        1         .100E+01           .00
+1VERTICAL PERMEABILITY/THICKNESS (FT/(FT*SEC))
+ 
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+   0.00E+00  1.00E+00  1.00E+00  1.00E+00  1.00E+00  1.00E+00  1.00E+00  1.00E+00  0.00E+00
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+   0.00E+00  1.00E+00  1.00E+00  1.00E+00  1.00E+00  1.00E+00  1.00E+00  1.00E+00  0.00E+00
+   0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00  0.00E+00
+1WATER TABLE
+ 
+    0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0. 100. 100. 100. 100. 100. 100. 100.   0.
+    0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.  80.  80.  80.  80.  80.  80.  80.   0.
+    0.   0.   0.   0.   0.   0.   0.   0.   0.
+1HEAD DISTRIBUTION - ROW
+ NUMBER OF TIME STEPS =     0
+        TIME(SECONDS) =   .00000    
+        TIME(DAYS)    =   .00000E+00
+        TIME(YEARS)   =   .00000E+00
+ 
+0    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000
+0    .0000000 100.0000000 100.0000000 100.0000000 100.0000000 100.0000000 100.0000000 100.0000000    .0000000
+0    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000
+0    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000
+0    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000
+0    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000
+0    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000
+0    .0000000  80.0000000  80.0000000  80.0000000  80.0000000  80.0000000  80.0000000  80.0000000    .0000000
+0    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000
+1ITERATION PARAMETERS
+            .304617E-01
+            .545083E-01
+            .975371E-01
+            .174533    
+            .312309    
+            .558846    
+            1.00000    
+1CONCENTRATION
+
+ NUMBER OF TIME STEPS =     0
+        TIME(SECONDS) =   .00000    
+   CHEM.TIME(SECONDS) =   .00000E+00
+   CHEM.TIME(DAYS)    =   .00000E+00
+        TIME(YEARS)   =   .00000E+00
+   CHEM.TIME(YEARS)   =   .00000E+00
+  NO. MOVES COMPLETED =     0
+ 
+0    0    0    0    0    0    0    0    0    0
+0    0    0    0    0    0    0    0    0    0
+0    0    0    0  100  100  100    0    0    0
+0    0    0    0    0    0    0    0    0    0
+0    0    0    0    0    0    0    0    0    0
+0    0    0    0    0    0    0    0    0    0
+0    0    0    0    0    0    0    0    0    0
+0    0    0    0    0    0    0    0    0    0
+0    0    0    0    0    0    0    0    0    0
+0
+
+   N =    1
+   NUMBER OF ITERATIONS =   13
+1HEAD DISTRIBUTION - ROW
+ NUMBER OF TIME STEPS =     1
+        TIME(SECONDS) =   .94673E+08
+        TIME(DAYS)    =   .10958E+04
+        TIME(YEARS)   =   .30000E+01
+ 
+0    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000
+0    .0000000  99.9999997  99.9999997  99.9999997  99.9999997  99.9999997  99.9999997  99.9999997    .0000000
+0    .0000000  96.6664001  96.6663582  96.6663556  96.6663512  96.6663556  96.6663582  96.6664001    .0000000
+0    .0000000  93.3332484  93.3332659  93.3332221  93.3332135  93.3332221  93.3332659  93.3332484    .0000000
+0    .0000000  89.9998249  89.9998089  89.9998510  89.9998471  89.9998510  89.9998089  89.9998249    .0000000
+0    .0000000  86.6662536  86.6662212  86.6662453  86.6662531  86.6662453  86.6662212  86.6662536    .0000000
+0    .0000000  83.3334136  83.3334267  83.3333586  83.3333402  83.3333586  83.3334267  83.3334136    .0000000
+0    .0000000  80.0000003  80.0000003  80.0000003  80.0000003  80.0000003  80.0000003  80.0000003    .0000000
+0    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000    .0000000
+1HEAD DISTRIBUTION - ROW
+ NUMBER OF TIME STEPS =     1
+        TIME(SECONDS) =   .94673E+08
+        TIME(DAYS)    =   .10958E+04
+        TIME(YEARS)   =   .30000E+01
+ 
+0   0   0   0   0   0   0   0   0   0
+0   0 100 100 100 100 100 100 100   0
+0   0  97  97  97  97  97  97  97   0
+0   0  93  93  93  93  93  93  93   0
+0   0  90  90  90  90  90  90  90   0
+0   0  87  87  87  87  87  87  87   0
+0   0  83  83  83  83  83  83  83   0
+0   0  80  80  80  80  80  80  80   0
+0   0   0   0   0   0   0   0   0   0
+1DRAWDOWN
+       0    0    0    0    0    0    0    0    0
+       0    0    0    0    0    0    0    0    0
+       0  -97  -97  -97  -97  -97  -97  -97    0
+       0  -93  -93  -93  -93  -93  -93  -93    0
+       0  -90  -90  -90  -90  -90  -90  -90    0
+       0  -87  -87  -87  -87  -87  -87  -87    0
+       0  -83  -83  -83  -83  -83  -83  -83    0
+       0    0    0    0    0    0    0    0    0
+       0    0    0    0    0    0    0    0    0
+0  CUMULATIVE MASS BALANCE -- (IN FT**3) 
+
+
+    RECHARGE AND INJECTION     =   .00000E+00
+    PUMPAGE AND E-T WITHDRAWAL =   .00000E+00
+    CUMULATIVE  NET  PUMPAGE   =   .00000E+00
+    WATER RELEASE FROM STORAGE =   .00000E+00
+    LEAKAGE INTO AQUIFER       =   .22092E+09
+    LEAKAGE OUT OF AQUIFER     =  -.22091E+09
+    CUMULATIVE  NET  LEAKAGE   =   .15937E+05
+0       MASS BALANCE RESIDUAL  =   15937.    
+        ERROR  (AS PERCENT)    =   .72143E-02
+
+0  RATE MASS BALANCE -- (IN C.F.S.) 
+
+
+    LEAKAGE INTO AQUIFER       =   .23335E+01
+    LEAKAGE OUT OF AQUIFER     =  -.23334E+01
+    NET LEAKAGE    (QNET)      =   .16834E-03
+    RECHARGE AND INJECTION     =   .00000E+00
+    PUMPAGE AND E-T WITHDRAWAL =   .00000E+00
+    NET WITHDRAWAL   (TPUM)    =   .00000E+00
+1          STABILITY CRITERIA --- M.O.C.
+
+
+0     MAXIMUM FLUID VELOCITIES:  X-VEL =  6.81E-10     Y-VEL =  3.33E-05
+0 TMV (MAX. INJ.) =   .29997E+08
+  TIMV (CELDIS)   =   .14699E+08
+0 TIMV =  1.47E+07     NTIMV =     6     NMOV =     7
+
+   TIM (N)  =   .94673E+08
+   TIMEVELO =   .13525E+08
+   TIMEDISP =   .13635E+09
+0 TIMV =  1.35E+07     NTIMD =     0     NMOV =     7
+0          THE LIMITING STABILITY CRITERION IS CELDIS
+     MAX. Y-VEL. IS CONSTRAINT AND OCCURS BETWEEN NODES ( 5, 2) AND ( 5, 3)
+0          NO. OF PARTICLE MOVES REQUIRED TO COMPLETE THIS TIME STEP  =    7
+
+
+0  NP       =          441          IMOV     =            1
+   TIM(N)   =   .94673E+08          TIMV     =   .13525E+08          SUMTCH =   .13525E+08
+0  NP       =          441          IMOV     =            2
+   TIM(N)   =   .94673E+08          TIMV     =   .13525E+08          SUMTCH =   .27049E+08
+0  NP       =          441          IMOV     =            3
+   TIM(N)   =   .94673E+08          TIMV     =   .13525E+08          SUMTCH =   .40574E+08
+0  NP       =          462          IMOV     =            4
+   TIM(N)   =   .94673E+08          TIMV     =   .13525E+08          SUMTCH =   .54099E+08
+0  NP       =          462          IMOV     =            5
+   TIM(N)   =   .94673E+08          TIMV     =   .13525E+08          SUMTCH =   .67623E+08
+0  NP       =          483          IMOV     =            6
+   TIM(N)   =   .94673E+08          TIMV     =   .13525E+08          SUMTCH =   .81148E+08
+0  NP       =          483          IMOV     =            7
+   TIM(N)   =   .94673E+08          TIMV     =   .13525E+08          SUMTCH =   .94673E+08
+1CONCENTRATION
+
+ NUMBER OF TIME STEPS =     1
+        DELTA T       =   .94673E+08
+        TIME(SECONDS) =   .94673E+08
+   CHEM.TIME(SECONDS) =   .94673E+08
+   CHEM.TIME(DAYS)    =   .10958E+04
+        TIME(YEARS)   =   .30000E+01
+   CHEM.TIME(YEARS)   =   .30000E+01
+  NO. MOVES COMPLETED =     7
+ 
+0    0    0    0    0    0    0    0    0    0
+0    0    0    0    0    0    0    0    0    0
+0    0    0    0    1    1    1    0    0    0
+0    0    0    0    4    4    4    0    0    0
+0    0    0    1    9    9    9    1    0    0
+0    0    0    2   69   70   69    2    0    0
+0    0    0    0   11   11   11    0    0    0
+0    0    0    0    3    3    3    0    0    0
+0    0    0    0    0    0    0    0    0    0
+ 
+ CHEMICAL MASS BALANCE
+ 
+        MASS IN BOUNDARIES     =   .00000E+00
+        MASS OUT BOUNDARIES    =  -.47210E+08
+        MASS PUMPED IN         =   .00000E+00
+        MASS PUMPED OUT        =   .00000E+00
+        MASS LOST BY DECAY     =   .00000E+00
+        MASS ADSORBED ON SOLIDS=   .00000E+00
+        INITIAL MASS ADSORBED  =   .00000E+00
+        INFLOW MINUS OUTFLOW   =  -.47210E+08
+        INITIAL MASS DISSOLVED =   .30000E+10
+        PRESENT MASS DISSOLVED =   .29588E+10
+        CHANGE MASS DISSOLVED  =  -.41195E+08
+        CHANGE TOTL.MASS STORED=  -.41195E+08
+      COMPARE RESIDUAL WITH NET FLUX AND MASS ACCUMULATION:
+        MASS BALANCE RESIDUAL  =  -.60152E+07
+        ERROR  (AS PERCENT)    =   .00000E+00
+      COMPARE INITIAL MASS STORED WITH CHANGE IN MASS STORED:
+        ERROR  (AS PERCENT)    =   .19740E+00
+1SAMPLE FILE FOR EXAMPLE 1 IN PPT PRESENTATION                                   
+
+
+0     TIME VERSUS HEAD AND CONCENTRATION AT SELECTED OBSERVATION POINTS
+
+               PUMPING PERIOD NO.    1
+
+
+
+
+0               STEADY-STATE SOLUTION
+
+
+
+
+0                    OBS.WELL NO.    X    Y                 N      HEAD (FT)    CONC.(MG/L)    TIME (YEARS)
+
+                          1          3    3
+
+
+                                                            0           .0             .0           .000
+                                                            1         96.7             .4           .429
+                                                            2         96.7             .2           .857
+                                                            3         96.7             .1          1.286
+                                                            4         96.7             .1          1.714
+                                                            5         96.7             .1          2.143
+                                                            6         96.7             .1          2.571
+                                                            7         96.7             .0          3.000
+0                    OBS.WELL NO.    X    Y                 N      HEAD (FT)    CONC.(MG/L)    TIME (YEARS)
+
+                          2          5    6
+
+
+                                                            0           .0             .0           .000
+                                                            1         86.7             .0           .429
+                                                            2         86.7             .5           .857
+                                                            3         86.7            2.5          1.286
+                                                            4         86.7            6.1          1.714
+                                                            5         86.7           37.2          2.143
+                                                            6         86.7           55.0          2.571
+                                                            7         86.7           70.5          3.000
