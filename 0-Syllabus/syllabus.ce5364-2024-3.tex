@@ -24,7 +24,7 @@
 %%%%%% BEGIN SYLLABUS COMPONENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%2010-0814TGC%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{{Course Location, Textbook, Instructor Contact Information}}
 \begin{tabular}{p{1.5in}p{5.0in}}
-Class meetings: &   2:00-3:20PM, T-TH, IE205 (Section 001) \\
+Class meetings: &   3:30-4:50PM, T-TH, CE007 (Section 001) \\
 Instructor: & Theodore G. Cleveland, CE Room 203F \\
 TA: & none \\
 Office Hours: & TBD \\%P. Monaco MW 13:00-15:00 \\
@@ -54,16 +54,16 @@ The purpose of this class is to study the theory and application of hydrologic c
 During this course the student will
 \begin{enumerate}
 \item Read, synthesize, and communicate ideas presented in current and historical technical literature.
-\item Delineate watersheds from maps and determine common metrics (area, slope, main channel length) using digital planimetry.
-\item Perform hydrologic computations using Excel, as needed\footnote{This task is principally to develop understanding of how the professional tools function.  Excel is a professional tool in its own right, but the skill level to use for engineering is beyond the scope of this class.}.
-\item Perform hydrologic simulation using HEC-HMS.
-\item Size and select engineering materials (pipes) for use in drainage engineering.
-\item Prepare professional reports for the design of a stormwater management system.  
+\item Describe relevant concepts related to contaminant (constituient) hydrogeology.
+\item Perform computations using Excel or Jupyter/IPython.
+\item Perform simulation using MODFLOW, FloPY, and MT3DMS tools or USGS-MOC tool.
+\item Size and select remediation strategies for impacted groundwater.
+\item Prepare professional report to document a groundwater quality management system.  
 
 \end{enumerate}
 
 \subsection*{ABET Program Outcomes}
-A subset of the ABET Program Outcomes are addressed in CE 5364, these outcomes are listed below:\footnote{Item 3[b] below is only partially fulfilled --- in this course students will analyze and interpret data, design of experiments is beyond the scope of the class.}
+A subset of the ABET Program Outcomes are addressed in CE 5364, these outcomes are listed below:
 
 \begin{tabular}{p{3.0in}p{3.0in}}
 \ Outcome &  Assessment \\
@@ -176,10 +176,10 @@ The grader will not diagnose sources of arithmetic or algebra errors unless the 
 Once solutions are presented in class and/or posted on the server, the maximum point allowance is substantially reduced}.
 
 \subsection*{Semester Project:}  
-A semester project comprised of various components developed during the course is to be completed by teams of 2 people.  .  
-A presentation and final report are required (all team members will submit a final report).
+A semester project comprised of various components developed during the course is to be completed by teams of 3 people.  
+A presentation and final report are required (all team members will submit a final report).\footnote{Team size is dictated by class size, at the time of this writing the total class size is integer divisible by 3; partial people are not viable.}
 
-\subsection*{Exams:} Three in-class examinations are scheduled, they will be of approximately equal difficulty.  
+\subsection*{Exams:} One mid-term examination and one final examination is scheduled.  
 \begin{enumerate}
 \item Examinations are open notes.
 \item Examinations are comprehensive, even though the main focus will be the materials discussed prior to the examination.
@@ -195,10 +195,10 @@ Item & Percent of Grade \\
 \hline
 \hline
 Attendance & 10\% \\
-Exercises & 20\% \\
-Project Report & 10\% \\
-Project Presentation & 10\% \\
-Examinations & 50\% \\
+Exercises & 30\% \\
+Project Report & 20\% \\
+%Project Presentation & 10\% \\
+Examinations & 40\% \\
 \hline
 \end{tabular}
 \end{table}
@@ -209,6 +209,17 @@ Examinations & 50\% \\
 %%%%%%%%% Use Comment to Maintain History %%%%%
 \clearpage
 \section*{Schedule}
+
+The schedule is listed in Table \ref{tab:fall2024schedule}.
+
+The readings are coded as:
+\begin{enumerate}
+\item BRN = \cite{BRN1999}
+\item BC= \cite{Bear2010}
+\end{enumerate}
+
+Electronic copies of both readings are available on the mighty internet, and copies are on the class server (access via BB to fall within Fair Use Provision).  
+
 \begin{table}[ht!]
    \centering
    \caption{Fall 2024 Course Schedule}
@@ -218,40 +229,39 @@ Examinations & 50\% \\
 DATE & TOPIC & READINGS  \\
 \hline
 \texttt{22AUG24} & Introduction & Server Notes  \\ %0
-\texttt{27AUG24} & Specialized Software &  \\ %1 
-\texttt{29AUG24} & Essential Groundwater Review - I  & RSG(pp.39-46);CMM(pp.1-12)\\ %2 water budget(s) ES-1 (Water Budget)
-\texttt{~3SEP24} & Essential Groundwater Review - II & RSG(pp.273-326);CMM(pp.175-201)\\ %3 streamflow measurement, precipitation measurement, online archives
-\texttt{~5SEP24} & Pollutants &  \\ %4 watershed definitions and delineation, metrics of interest ES-2 (Watershed Delineation; Web Soil SUrvey)
-\texttt{10SEP24} & Non-Reactive Mass Transport in Porous Media - I &  RSG(pp.423-442);CMM(pp.350-380)\\ %5
-\texttt{12SEP24} & Non-Reactive Mass Transport in Porous Media - II & RSG(pp.93-123;);CMM(pp.127-175)\\ %6 ES-3 (Precipitation, Runoff Data Plots; Oklahoma Empirical Return Period)
+\texttt{27AUG24} & Specialized Software & BRN (pp. 1-15); BC (pp. 1-65) \\ %1 
+\texttt{29AUG24} & Essential Groundwater Review - I  & BRN (pp. 15-41);BC (pp. 65-109) \\ %2 
+\texttt{~3SEP24} & Essential Groundwater Review - II & BRN (pp. 41-75);BC (pp. 109-251)\\ %3 
+\texttt{~5SEP24} & Pollutants &  BRN (pp. 75-113); \\ %4 
+\texttt{10SEP24} & Non-Reactive Mass Transport in Porous Media - I &  BRN (pp. 159-162);BC (pp. 341-376)\\ %5
+\texttt{12SEP24} & Non-Reactive Mass Transport in Porous Media - II & BRN (pp. 162-170);BC (pp. 376-388)\\ %6 
 \texttt{17SEP24} & WCOE Job Fair (Civil Engineering)   &   \\ %7
-\texttt{19SEP24} & Analytical Models & RSG(pp.442-469);CMM(pp.380-416) \\ %8 ES-4 (FloodFrequency B17C)
-\texttt{24SEP24} & Reactive Mass Transport in Porous Media - I &  RSG(pp.46-59);CMM(pp.444-493) \\  %9 NOAA Atlas 14, PFDS, Create design storm
-\texttt{26SEP24} & Reactive Mass Transport in Porous Media - II &  \\ % XBS Watershed Delineation; Flood Frequency; Water Budget; 
-\texttt{~1OCT24} & Analytical Models with Reactive Processes & RSG(pp.65-88; 93-111);CMM(pp.99-127) \\ %10
-\texttt{~3OCT24} & Numerical Models & RSG(pp.93-123) \\ %11
-\texttt{~8OCT24} & Modeling Advective Transport & RSG(pp.711-734) \\  %12  
-\texttt{10OCT24} & Modflow/MT3D/MOC software & RSG(pp.350-361);CMM(pp.201-221)\\ %13
-\texttt{15OCT24} & Modflow/MT3D/MOC software  & RSG(pp.362-371);CMM(pp.221-242) \\ %14
-\texttt{17OCT24} & Modflow/MT3D/MOC Modeling/Project Workshop   & SN \\ %15
-\texttt{22OCT24} & Site Investigations &RSG(pp.477-492;503-506);CMM(pp.242-252)  \\ %16
-\texttt{24OCT24} & Data-Collection  &RSG(pp.497-502);CMM(pp.257-272;302-310)\\ %17
-\texttt{29OCT24} & Unsaturated Zone Flow & RSG(pp.545-575)\\ %18
-\texttt{31OCT24} & \textbf{Exam 2} & \\ %YBS Rational; Modified Rational; UH Analysis
-\texttt{~5NOV24} & Unsaturated Zone Transport &RSG(pp.711-734);CMM(pp.493-517)  \\ %19
-\texttt{~7NOV24} & CHEMFLO-2000 Model & RSG(pp.761-770);CMM(pp.XXX-XXX)  \\ %20
-\texttt{12NOV24} & NAPLs and CHEMFLO-2000 Model & RSG(pp.127-135)  \\ %21 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\texttt{14NOV24} & CHEMFLO Modeling/Project Workshop  & RSG(pp.136-154) \\ %22
-\texttt{19NOV24} & Remediation Alternatives-I & RSG(pp.167-187) \\ %23
-\texttt{21NOV24} & Remediation Alternatives-II & RSG(pp.187-215) \\ %24
-\texttt{26NOV24} & Team Presentations &  \\ %25
-\texttt{28NOV24} & Thanksgiving Holiday &    \\ %26
-\texttt{~3DEC24} & Team Presentations &  \\ %27
-\texttt{~6DEC24} & \textbf{Exam 3} & 07:30-10:00 \\ %ZBS Storm Sewer; Routing ; HEC-HMS; Pumping Test; Wellfield
+\texttt{19SEP24} & Analytical Models & BRN (pp. 170-181); BC (pp. 446-458) \\ %8 
+\texttt{24SEP24} & Reactive Mass Transport in Porous Media - I &  BRN (pp. 203-237);BC (pp. 388-432)\\  %9 
+\texttt{26SEP24} & Reactive Mass Transport in Porous Media - II & BRN (pp. 203-237); BC (pp. 432-458) \\ % 10
+\texttt{~1OCT24} & Analytical Models with Reactive Processes & BRN (pp. 237-289);BC (pp. 446-458)\\ %11
+\texttt{~3OCT24} & Numerical Models & BRN (pp. 335-391); BC (pp. 525-583)  \\  %12  
+\texttt{~8OCT24} & Modeling Advective Transport & BRN (pp. 335-391);BC (pp. 473-479)\\ %13
+\texttt{10OCT24} & \textbf{Mid-Term Exam} & ~ \\ % 
+\texttt{15OCT24} & Modflow/MT3D/MOC Software  & BRN (pp. 335-391);BC (pp. 583-593)\\ %14
+\texttt{17OCT24} & Modflow/MT3D/MOC Workshop & BRN (pp. 335-391);BC (pp. 583-593) \\ %15
+\texttt{22OCT24} & Site Investigations & BRN (pp. 113-125);BC (pp. xxx-xxx) \\ %16
+\texttt{24OCT24} & Data-Collection  & BRN (pp. 125-152);BC (pp. xxx-xxx)\\ %17
+\texttt{29OCT24} & Unsaturated Zone Flow & BRN (pp. 289-279); BC (pp. 251-341)\\ %18
+\texttt{31OCT24} & Unsaturated Zone Flow & BRN (pp. 289-279); BC (pp. 251-341)\\ %19
+\texttt{~5NOV24} & Unsaturated Zone Transport & BRN (pp. 297-335); BC (pp. 391-441)  \\ %20
+\texttt{~7NOV24} & CHEMFLO-2000 Model & BRN (pp. 391-441);BC (pp. 391-441)  \\ %21
+\texttt{12NOV24} & NAPLs and CHEMFLO-2000 Model & BRN (pp. 391-441)  \\ %22 
+\texttt{14NOV24} & CHEMFLO Modeling/Project Workshop  & BRN (pp. 391-441); BC (pp. 391-441) \\ %23
+\texttt{19NOV24} & Remediation Alternatives-I & BRN (pp. 441-479); BC (pp. 512-525) \\ %24
+\texttt{21NOV24} & Remediation Alternatives-II & BRN (pp. 479-545); BC (pp. 512-525) \\ %25
+\texttt{26NOV24} & Modflow/MT3D/MOC Workshop &  \\ %
+\texttt{28NOV24} & Thanksgiving Holiday &    \\ %
+\texttt{~3DEC24} & Modflow/MT3D/MOC Workshop &  \\ %
+\texttt{~6DEC24} & \textbf{Final Exam} & 07:30-10:00 \\ %
 \hline
    \end{tabular}
-   \label{tab:fall2013schedule}
+   \label{tab:fall2024schedule}
 \end{table}
 
 %RSG = \cite{Gupta2017};
