@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.15)  20 AUG 2024 22:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.15)  22 AUG 2024 20:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -604,17 +604,13 @@ Overfull \hbox (7.09003pt too wide) in paragraph at lines 261--261
  []
 
 
-Overfull \hbox (36.0pt too wide) in paragraph at lines 226--265
+Overfull \hbox (43.22743pt too wide) in paragraph at lines 226--265
  [][] 
  []
 
 [10
 
-]
-
-LaTeX Warning: Text page 11 contains only floats.
-
-[11] 
+] [11] 
 AED: lastpage setting LastPage
 [12
 
@@ -636,7 +632,7 @@ onts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on syllabus.ce5364-2024-3.pdf (12 pages, 123325 bytes).
+Output written on syllabus.ce5364-2024-3.pdf (12 pages, 123255 bytes).
 PDF statistics:
  82 PDF objects out of 1000 (max. 8388607)
  57 compressed objects within 1 object stream
