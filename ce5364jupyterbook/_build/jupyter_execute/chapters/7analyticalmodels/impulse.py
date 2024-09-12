@@ -27,7 +27,13 @@
 # The solution is applicable for porous media flow, where the velocity is the pore velocity (seepage velocity divided by the porosity). 
 # 
 # :::{note}
-# We should probably check that it is a solution, by differentiating the solution once by $x$ then that result again by $x$, then once by $t$, and putting these results back into the ADE to verify that the result indeed fits the PDE.  The process is demonstrated below (I have not checked the math, but the process is straightforward) using GPT-4.0;  Mathematica is probably a better tool for this exercise, but its API doen not interpret natural language input very well.
+# We should check that it is a solution to
+# 
+# $$ \frac{\partial C}{\partial t} = D_x  \frac{\partial^2 C}{\partial x^2} - v \frac{\partial C}{\partial x}$$
+# 
+# by differentiating the solution once by $x$ then that result again by $x$, then once by $t$, and putting these results back into the ADE to verify that the result indeed fits the PDE.  
+# 
+# The process is illustrated below (I have not checked the math, but the process is straightforward) using GPT-4.0;  Mathematica is probably a better tool for this exercise, but its API doen not interpret natural language input very well.
 # :::
 
 # ## Verify Solution
@@ -40,7 +46,7 @@
 # Retrieved [12 Sep 2024], from https://chat.openai.com
 # 
 # :::
-# 
+
 # ![](PDEverify1.png)
 # 
 # ![](PDEverify2.png)
@@ -50,8 +56,6 @@
 # ![](PDEverify4.png)
 # 
 # ![](PDEverify5.png)
-# 
-# :::
 
 # <!--PDE (Advection Dispersion)
 # 
@@ -92,8 +96,6 @@
 # $$  \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  +  =  (\frac{1}{2} \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  +  \frac{1}{2} \frac{M (x-v)^2 exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^3}) -  \frac{-M (2xv-2v^2)exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^2}$$
 # 
 # -->
-
-# 
 
 # ## Building a Modeling Tool
 # 

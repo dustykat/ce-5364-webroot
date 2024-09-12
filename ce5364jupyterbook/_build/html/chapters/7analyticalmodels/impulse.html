@@ -658,7 +658,11 @@
 <p>The solution is applicable for porous media flow, where the velocity is the pore velocity (seepage velocity divided by the porosity).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We should probably check that it is a solution, by differentiating the solution once by <span class="math notranslate nohighlight">\(x\)</span> then that result again by <span class="math notranslate nohighlight">\(x\)</span>, then once by <span class="math notranslate nohighlight">\(t\)</span>, and putting these results back into the ADE to verify that the result indeed fits the PDE.  The process is demonstrated below (I have not checked the math, but the process is straightforward) using GPT-4.0;  Mathematica is probably a better tool for this exercise, but its API doen not interpret natural language input very well.</p>
+<p>We should check that it is a solution to</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial C}{\partial t} = D_x  \frac{\partial^2 C}{\partial x^2} - v \frac{\partial C}{\partial x}\]</div>
+<p>by differentiating the solution once by <span class="math notranslate nohighlight">\(x\)</span> then that result again by <span class="math notranslate nohighlight">\(x\)</span>, then once by <span class="math notranslate nohighlight">\(t\)</span>, and putting these results back into the ADE to verify that the result indeed fits the PDE.</p>
+<p>The process is illustrated below (I have not checked the math, but the process is straightforward) using GPT-4.0;  Mathematica is probably a better tool for this exercise, but its API doen not interpret natural language input very well.</p>
 </div>
 <div class="section" id="verify-solution">
 <h2>Verify Solution<a class="headerlink" href="#verify-solution" title="Permalink to this headline">¶</a></h2>
@@ -673,9 +677,6 @@
 <p><img alt="" src="../../_images/PDEverify3.png" /></p>
 <p><img alt="" src="../../_images/PDEverify4.png" /></p>
 <p><img alt="" src="../../_images/PDEverify5.png" /></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 <!--PDE (Advection Dispersion)
 
 $$ \frac{\partial C}{\partial t} = D_x  \frac{\partial^2 C}{\partial x^2} - v \frac{\partial C}{\partial x}$$
