@@ -27,8 +27,69 @@
 # The solution is applicable for porous media flow, where the velocity is the pore velocity (seepage velocity divided by the porosity). 
 # 
 # :::{note}
-# We should probably check that it is a solution, by differentiating the solution once by $x$ then that result again by $x$, then once by $t$, and putting these results back into the ADE to verify that the result indeed fits the PDE.  However out of an overabundace of laziness we will simply assume the result is correct because it is copied from a book.
+# We should probably check that it is a solution, by differentiating the solution once by $x$ then that result again by $x$, then once by $t$, and putting these results back into the ADE to verify that the result indeed fits the PDE.  The process is demonstrated below (I have not checked the math, but the process is straightforward) using GPT-4.0;  Mathematica is probably a better tool for this exercise, but its API doen not interpret natural language input very well.
 # :::
+
+# ## Verify Solution
+# 
+# :::{admonition} OpenAI. (2024). ChatGPT (GPT-4). 
+# The images below are a transaction transcript (the prompt was)
+# ```
+# Can you demonstrate that  C(x,t)=M/(4*pi*D*t) * exp(-(x-v)**2 /(4*D*t) where x,t are variables, M,pi,D,v are known constants is a solution to the PDE dC/dt = D d^2C/dx^2 - v dc/dx?
+# ```
+# Retrieved [12 Sep 2024], from https://chat.openai.com
+# 
+# :::
+# 
+# ![](PDEverify1.png)
+# 
+# ![](PDEverify2.png)
+# 
+# ![](PDEverify3.png)
+# 
+# ![](PDEverify4.png)
+# 
+# ![](PDEverify5.png)
+# 
+# <!--PDE (Advection Dispersion)
+# 
+# $$ \frac{\partial C}{\partial t} = D_x  \frac{\partial^2 C}{\partial x^2} - v \frac{\partial C}{\partial x}$$
+# 
+# plus initial and boundary conditions (we will invoke after some arithmetic)
+# 
+# Consider the proposed solution:
+# 
+# $$ C(x,t) = \frac{M}{4 \pi D_x t} exp(- \frac{(x-vt)^2}{4 D_x t})$$
+# 
+# Find partial derivatives for space and time, and the second partial for space
+# 
+# $$ \frac{\partial C}{\partial x} = \frac{-M (2x-2v)exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^2}$$
+# 
+# $$ \frac{\partial C}{\partial t} = \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  + \frac{M (x-v)^2 exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^3}$$
+# 
+# $$ \frac{\partial^2 C}{\partial x^2} = \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{8 \pi D_x^2 t^2}  + \frac{M (2x-2v)^2exp(- \frac{(x-vt)^2}{4 D_x t})}{64 \pi D_x^3 t^3}$$
+# 
+# Substitute into the PDE and simplify
+# 
+# $$  \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  + \frac{M (x-v)^2 exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^3} = D_x (\frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{8 \pi D_x^2 t^2}  + \frac{M (2x-2v)^2 exp(- \frac{(x-vt)^2}{4 D_x t})}{64 \pi D_x^3 t^3}) - v  \frac{-M (2x-2v)exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^2}$$
+# 
+# First term on RHS, factor out $D_x$
+# 
+# $$  \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  + \frac{M (x-v)^2 exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^3} =  (\frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{8 \pi D_x t^2}  + \frac{M (2x-2v)^2 exp(- \frac{(x-vt)^2}{4 D_x t})}{64 \pi D_x^2 t^3}) - v  \frac{-M (2x-2v)exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^2}$$
+# 
+# Second term on RHS, distribute $v$
+# 
+# $$  \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  + \frac{M (x-v)^2 exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^3} =  (\frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{8 \pi D_x t^2}  + \frac{M (2x-2v)^2 exp(- \frac{(x-vt)^2}{4 D_x t})}{64 \pi D_x^2 t^3}) -  \frac{-M (2xv-2v^2)exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^2}$$
+# 
+# All RHS factor out the various $2$s
+# 
+# $$  \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  + \frac{M (x-v)^2 exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^3} =  (\frac{1}{2} \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  + 2 \frac{1}{2} \frac{1}{2} \frac{M (x-v)^2 exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^3}) -  \frac{-M (2xv-2v^2)exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^2}$$
+# 
+# Second term LHS cancels with part of second term RHS
+# 
+# $$  \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  +  =  (\frac{1}{2} \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  +  \frac{1}{2} \frac{M (x-v)^2 exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^3}) -  \frac{-M (2xv-2v^2)exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^2}$$
+# 
+# -->
 
 # ## Building a Modeling Tool
 # 
