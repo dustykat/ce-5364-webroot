@@ -34,9 +34,9 @@
 # 
 # :::{admonition} OpenAI. (2024). ChatGPT (GPT-4). 
 # The images below are a transaction transcript (the prompt was)
-# ```
-# Can you demonstrate that  C(x,t)=M/(4*pi*D*t) * exp(-(x-v)**2 /(4*D*t) where x,t are variables, M,pi,D,v are known constants is a solution to the PDE dC/dt = D d^2C/dx^2 - v dc/dx?
-# ```
+# 
+# Can you demonstrate that  C(x,t)=M/(4\*pi\*D\*t) * exp(-(x-v)\*\*2 /(4\*D\*t) where x,t are variables, M,pi,D,v are known constants is a solution to the PDE dC/dt = D d^2C/dx^2 - v dc/dx?
+# 
 # Retrieved [12 Sep 2024], from https://chat.openai.com
 # 
 # :::
@@ -50,6 +50,8 @@
 # ![](PDEverify4.png)
 # 
 # ![](PDEverify5.png)
+# 
+# :::
 
 # <!--PDE (Advection Dispersion)
 # 
