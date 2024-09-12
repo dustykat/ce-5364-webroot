@@ -50,7 +50,7 @@
 # ![](PDEverify4.png)
 # 
 # ![](PDEverify5.png)
-# 
+
 # <!--PDE (Advection Dispersion)
 # 
 # $$ \frac{\partial C}{\partial t} = D_x  \frac{\partial^2 C}{\partial x^2} - v \frac{\partial C}{\partial x}$$
@@ -90,6 +90,8 @@
 # $$  \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  +  =  (\frac{1}{2} \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  +  \frac{1}{2} \frac{M (x-v)^2 exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^3}) -  \frac{-M (2xv-2v^2)exp(- \frac{(x-vt)^2}{4 D_x t})}{16 \pi D_x^2 t^2}$$
 # 
 # -->
+
+# 
 
 # ## Building a Modeling Tool
 # 
