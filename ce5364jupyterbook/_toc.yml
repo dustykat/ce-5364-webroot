@@ -35,16 +35,18 @@ chapters:
   sections:
   - file: chapters/11modelingadvection/1particletracking
   - file: chapters/11modelingadvection/2upwindfdm
-- file: chapters/12usgsmocmodel/usgsmoc
-  sections:
-  - file: chapters/12usgsmocmodel/winmoc
-  - file: chapters/12usgsmocmodel/armmoc
-  - file: chapters/12usgsmocmodel/dprw
+
 #
 - file: chapters/12.01usgsmodflow6/usgsmodflow6
   sections:
   - file: chapters/12.01usgsmodflow6/example-in-progress
 #
+- file: chapters/12usgsmocmodel/usgsmoc
+  sections:
+  - file: chapters/12usgsmocmodel/winmoc
+  - file: chapters/12usgsmocmodel/armmoc
+  - file: chapters/12usgsmocmodel/dprw
+  
 - file: chapters/16siteinvestigation/siteinvestigation
 - file: chapters/15datacollection/datacollection
 - file: chapters/17unsaturatedzone/unsaturated
