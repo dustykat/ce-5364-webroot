@@ -1,0 +1,95 @@
+Traceback (most recent call last):
+  File "/opt/jupyterhub/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/client.py", line 1087, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/client.py", line 540, in async_execute
+    await self.async_execute_cell(
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/client.py", line 832, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/client.py", line 740, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+scenario(0, silent=True)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mException[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-6-b206b6187915>[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0mscenario[0m[0;34m([0m[0;36m0[0m[0;34m,[0m [0msilent[0m[0;34m=[0m[0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;32m<ipython-input-5-8b917bc193b3>[0m in [0;36mscenario[0;34m(idx, silent)[0m
+[1;32m      4[0m         [0mwrite_models[0m[0;34m([0m[0mmf2k5[0m[0;34m,[0m [0mmt3d[0m[0;34m,[0m [0msim[0m[0;34m,[0m [0msilent[0m[0;34m=[0m[0msilent[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m     [0;32mif[0m [0mrun[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 6[0;31m         [0mrun_models[0m[0;34m([0m[0mmf2k5[0m[0;34m,[0m [0mmt3d[0m[0;34m,[0m [0msim[0m[0;34m,[0m [0msilent[0m[0;34m=[0m[0msilent[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      7[0m     [0;32mif[0m [0mplot[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      8[0m         [0mplot_results[0m[0;34m([0m[0mmf2k5[0m[0;34m,[0m [0mmt3d[0m[0;34m,[0m [0msim[0m[0;34m,[0m [0midx[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/jupyterhub/lib/python3.8/site-packages/modflow_devtools/misc.py[0m in [0;36m_timed[0;34m(*args, **kw)[0m
+[1;32m    478[0m             [0mres[0m [0;34m=[0m [0mf[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkw[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    479[0m [0;34m[0m[0m
+[0;32m--> 480[0;31m         [0mt[0m [0;34m=[0m [0mtimeit[0m[0;34m([0m[0;32mlambda[0m[0;34m:[0m [0mcall[0m[0;34m([0m[0;34m)[0m[0;34m,[0m [0mnumber[0m[0;34m=[0m[0;36m1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    481[0m         [0;32mif[0m [0;34m"log_time"[0m [0;32min[0m [0mkw[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    482[0m             [0mname[0m [0;34m=[0m [0mkw[0m[0;34m.[0m[0mget[0m[0;34m([0m[0;34m"log_name"[0m[0;34m,[0m [0mf[0m[0;34m.[0m[0m__name__[0m[0;34m.[0m[0mupper[0m[0;34m([0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/lib/python3.8/timeit.py[0m in [0;36mtimeit[0;34m(stmt, setup, timer, number, globals)[0m
+[1;32m    231[0m            number=default_number, globals=None):
+[1;32m    232[0m     [0;34m"""Convenience function to create Timer object and call timeit method."""[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 233[0;31m     [0;32mreturn[0m [0mTimer[0m[0;34m([0m[0mstmt[0m[0;34m,[0m [0msetup[0m[0;34m,[0m [0mtimer[0m[0;34m,[0m [0mglobals[0m[0;34m)[0m[0;34m.[0m[0mtimeit[0m[0;34m([0m[0mnumber[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    234[0m [0;34m[0m[0m
+[1;32m    235[0m def repeat(stmt="pass", setup="pass", timer=default_timer,
+
+[0;32m/usr/lib/python3.8/timeit.py[0m in [0;36mtimeit[0;34m(self, number)[0m
+[1;32m    175[0m         [0mgc[0m[0;34m.[0m[0mdisable[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    176[0m         [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 177[0;31m             [0mtiming[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0minner[0m[0;34m([0m[0mit[0m[0;34m,[0m [0mself[0m[0;34m.[0m[0mtimer[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    178[0m         [0;32mfinally[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    179[0m             [0;32mif[0m [0mgcold[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/lib/python3.8/timeit.py[0m in [0;36minner[0;34m(_it, _timer, _stmt)[0m
+
+[0;32m/opt/jupyterhub/lib/python3.8/site-packages/modflow_devtools/misc.py[0m in [0;36m<lambda>[0;34m()[0m
+[1;32m    478[0m             [0mres[0m [0;34m=[0m [0mf[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkw[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    479[0m [0;34m[0m[0m
+[0;32m--> 480[0;31m         [0mt[0m [0;34m=[0m [0mtimeit[0m[0;34m([0m[0;32mlambda[0m[0;34m:[0m [0mcall[0m[0;34m([0m[0;34m)[0m[0;34m,[0m [0mnumber[0m[0;34m=[0m[0;36m1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    481[0m         [0;32mif[0m [0;34m"log_time"[0m [0;32min[0m [0mkw[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    482[0m             [0mname[0m [0;34m=[0m [0mkw[0m[0;34m.[0m[0mget[0m[0;34m([0m[0;34m"log_name"[0m[0;34m,[0m [0mf[0m[0;34m.[0m[0m__name__[0m[0;34m.[0m[0mupper[0m[0;34m([0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/jupyterhub/lib/python3.8/site-packages/modflow_devtools/misc.py[0m in [0;36mcall[0;34m()[0m
+[1;32m    476[0m         [0;32mdef[0m [0mcall[0m[0;34m([0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    477[0m             [0;32mnonlocal[0m [0mres[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 478[0;31m             [0mres[0m [0;34m=[0m [0mf[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkw[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    479[0m [0;34m[0m[0m
+[1;32m    480[0m         [0mt[0m [0;34m=[0m [0mtimeit[0m[0;34m([0m[0;32mlambda[0m[0;34m:[0m [0mcall[0m[0;34m([0m[0;34m)[0m[0;34m,[0m [0mnumber[0m[0;34m=[0m[0;36m1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m<ipython-input-3-0156aa0a9679>[0m in [0;36mrun_models[0;34m(mf2k5, mt3d, sim, silent)[0m
+[1;32m    333[0m [0;34m@[0m[0mtimed[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    334[0m [0;32mdef[0m [0mrun_models[0m[0;34m([0m[0mmf2k5[0m[0;34m,[0m [0mmt3d[0m[0;34m,[0m [0msim[0m[0;34m,[0m [0msilent[0m[0;34m=[0m[0;32mTrue[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 335[0;31m     [0msuccess[0m[0;34m,[0m [0mbuff[0m [0;34m=[0m [0mmf2k5[0m[0;34m.[0m[0mrun_model[0m[0;34m([0m[0msilent[0m[0;34m=[0m[0msilent[0m[0;34m,[0m [0mreport[0m[0;34m=[0m[0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    336[0m     [0;32massert[0m [0msuccess[0m[0;34m,[0m [0mpformat[0m[0;34m([0m[0mbuff[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    337[0m     success, buff = mt3d.run_model(
+
+[0;32m/opt/jupyterhub/lib/python3.8/site-packages/flopy/mbase.py[0m in [0;36mrun_model[0;34m(self, silent, pause, report, normal_msg)[0m
+[1;32m   1371[0m         """
+[1;32m   1372[0m [0;34m[0m[0m
+[0;32m-> 1373[0;31m         return run_model(
+[0m[1;32m   1374[0m             [0mself[0m[0;34m.[0m[0mexe_name[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1375[0m             [0mself[0m[0;34m.[0m[0mnamefile[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/jupyterhub/lib/python3.8/site-packages/flopy/mbase.py[0m in [0;36mrun_model[0;34m(exe_name, namefile, model_ws, silent, pause, report, normal_msg, use_async, cargs)[0m
+[1;32m   1706[0m         [0mexe[0m [0;34m=[0m [0mwhich[0m[0;34m([0m[0mos[0m[0;34m.[0m[0mpath[0m[0;34m.[0m[0mabspath[0m[0;34m([0m[0mexe_name[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1707[0m     [0;32mif[0m [0mexe[0m [0;32mis[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1708[0;31m         raise Exception(
+[0m[1;32m   1709[0m             [0;34mf"The program {exe_name} does not exist or is not executable."[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1710[0m         )
+
+[0;31mException[0m: The program mf2005 does not exist or is not executable.
+Exception: The program mf2005 does not exist or is not executable.
+
