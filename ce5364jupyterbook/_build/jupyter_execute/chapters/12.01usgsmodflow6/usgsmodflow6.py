@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Contaminant Transport using MODFLOW6 and Python Interface
+# # Contaminant Transport using MF6 and Python
 # 
 # In this chapter, we explore the simulation of contaminant transport in groundwater systems using MODFLOW 6 and its Python interface. MODFLOW 6, the industry-standard tool for groundwater modeling, allows for the integration of complex transport processes with hydraulic flow simulations. Through practical examples, we will demonstrate how to model contaminant migration, interface with Python for enhanced data manipulation, and analyze the impact of environmental variables on transport dynamics.
 # 
