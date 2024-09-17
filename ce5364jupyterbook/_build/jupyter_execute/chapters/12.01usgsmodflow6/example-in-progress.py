@@ -1,6 +1,37 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# # MT3DMS Problem 9
+# 
+# The purpose of this section is to recreate the example problems that were first described in the 1999 MT3DMS report.  Other sources demonstrate that the MF6 result and MT3D result are comparable (identical?)
+# 
+# Ten example problems appear in the 1999 MT3DMS manual, starting on page 130. This notebook demonstrates example 9 from the list below:
+# 
+# - *Two-Dimensional Application Example*
+# 
+# :::{note}
+# Substantial rewrite, and some debugging to get the example to run on my computer.  A generic cut-and-paste from [https://modflow6-examples.readthedocs.io/en/master/_notebooks/ex-gwt-mt3dms-p09.html](https://modflow6-examples.readthedocs.io/en/master/_notebooks/ex-gwt-mt3dms-p09.html) is likely to be quite unsucessful.  I had to modify parts of the script for my machine (ie. to find the compiled binary).  And one object needed changing.  The example code at the link will probably work fine if the install is identical in terms of file paths as the GitHub source.  Herein I am mostly proving it is portable.
+# :::
+# 
+# :::{warning}
+# The next two code cells are specific to my machine, the reset wipes the lernel memory when it attempts to build the notebook for caching and subsequent typesetting.  The `warnings ignore` turns off a lot of deprecation warnings.  The online reference is funny enough to share
+# 
+# > You should just fix your code but just in case,
+# 
+# ```
+# import warnings
+# warnings.filterwarnings("ignore", category=DeprecationWarning) 
+# ```
+# 
+# The script generates a lot of output that can be suppressed by a `;`  as presented here I left all this on to help me get things working.
+# 
+# :::
+# 
+# :::{warning}
+# I have this working but this section is incomplete. Remove this message when plotting is figured out!
+# :::
+# 
+
 # In[1]:
 
 
@@ -14,7 +45,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
-# ### Initial setup
+# ## Initial setup
 # 
 # Import dependencies, define the example name and workspace, and read settings from environment variables.
 # 
@@ -134,7 +165,7 @@ npsink = nph
 nadvfd = 1
 
 
-# ### Model setup
+# ## Model setup
 # 
 # Define functions to build models, write input files, and run the simulation.
 # 
@@ -339,7 +370,7 @@ flopy.mf6.ModflowGwfoc(
 
 # 
 # 
-# **Transport Package Building***
+# **Transport Package Building**
 
 # In[16]:
 
@@ -531,13 +562,15 @@ flopy.mf6.ModflowGwfgwt(
     )
 
 
+# **Generate the Files**
+
 # In[26]:
 
 
 sim.write_simulation(silent=True)
 
 
-# Next block attempts to run the simulation.  
+# **Running the Model** 
 
 # In[27]:
 
@@ -627,3 +660,9 @@ def plot_results(mf2k5, mt3d, mf6, idx, ax=None):
             )
             fig.savefig(fpth)
 # 
+
+# In[ ]:
+
+
+
+

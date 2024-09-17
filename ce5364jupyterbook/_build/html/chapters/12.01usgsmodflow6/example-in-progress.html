@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Initial setup &#8212; Groundwater Transport Phenomena</title>
+    <title>MT3DMS Problem 9 &#8212; Groundwater Transport Phenomena</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -598,25 +598,29 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initial-setup">
    Initial setup
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-parameters">
+     Define parameters
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-parameters">
-   Define parameters
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#model-setup">
    Model setup
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting-results">
-   Plotting results
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-results">
+     Plotting results
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -629,7 +633,34 @@
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="tex2jax_ignore mathjax_ignore section" id="mt3dms-problem-9">
+<h1>MT3DMS Problem 9<a class="headerlink" href="#mt3dms-problem-9" title="Permalink to this headline">¶</a></h1>
+<p>The purpose of this section is to recreate the example problems that were first described in the 1999 MT3DMS report.  Other sources demonstrate that the MF6 result and MT3D result are comparable (identical?)</p>
+<p>Ten example problems appear in the 1999 MT3DMS manual, starting on page 130. This notebook demonstrates example 9 from the list below:</p>
+<ul class="simple">
+<li><p><em>Two-Dimensional Application Example</em></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Substantial rewrite, and some debugging to get the example to run on my computer.  A generic cut-and-paste from <a class="reference external" href="https://modflow6-examples.readthedocs.io/en/master/_notebooks/ex-gwt-mt3dms-p09.html">https://modflow6-examples.readthedocs.io/en/master/_notebooks/ex-gwt-mt3dms-p09.html</a> is likely to be quite unsucessful.  I had to modify parts of the script for my machine (ie. to find the compiled binary).  And one object needed changing.  The example code at the link will probably work fine if the install is identical in terms of file paths as the GitHub source.  Herein I am mostly proving it is portable.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The next two code cells are specific to my machine, the reset wipes the lernel memory when it attempts to build the notebook for caching and subsequent typesetting.  The <code class="docutils literal notranslate"><span class="pre">warnings</span> <span class="pre">ignore</span></code> turns off a lot of deprecation warnings.  The online reference is funny enough to share</p>
+<blockquote>
+<div><p>You should just fix your code but just in case,</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p>The script generates a lot of output that can be suppressed by a <code class="docutils literal notranslate"><span class="pre">;</span></code>  as presented here I left all this on to help me get things working.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>I have this working but this section is incomplete. Remove this message when plotting is figured out!</p>
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reset</span> -f
 </pre></div>
@@ -645,7 +676,7 @@
 </div>
 </div>
 <div class="section" id="initial-setup">
-<h1>Initial setup<a class="headerlink" href="#initial-setup" title="Permalink to this headline">¶</a></h1>
+<h2>Initial setup<a class="headerlink" href="#initial-setup" title="Permalink to this headline">¶</a></h2>
 <p>Import dependencies, define the example name and workspace, and read settings from environment variables.</p>
 <p>The next cell performs a forced reset to clear active kernel memory.  Ususlly unnecessary, but herein used to develop the example</p>
 <div class="cell docutils container">
@@ -666,9 +697,8 @@
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="define-parameters">
-<h1>Define parameters<a class="headerlink" href="#define-parameters" title="Permalink to this headline">¶</a></h1>
+<h3>Define parameters<a class="headerlink" href="#define-parameters" title="Permalink to this headline">¶</a></h3>
 <p>Define model units, parameters and other settings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -765,8 +795,9 @@
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="model-setup">
-<h1>Model setup<a class="headerlink" href="#model-setup" title="Permalink to this headline">¶</a></h1>
+<h2>Model setup<a class="headerlink" href="#model-setup" title="Permalink to this headline">¶</a></h2>
 <p>Define functions to build models, write input files, and run the simulation.</p>
 <p><strong>Groundwater Flow Package Build</strong></p>
 <div class="cell docutils container">
@@ -1341,7 +1372,7 @@ printrecord
 </div>
 </div>
 </div>
-<p><strong>Transport Package Building</strong>*</p>
+<p><strong>Transport Package Building</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###### Instantiating MODFLOW 6 groundwater transport package ##########</span>
@@ -1689,6 +1720,7 @@ simulation_name = sim-mt3d_ex09
 </div>
 </div>
 </div>
+<p><strong>Generate the Files</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span><span class="o">.</span><span class="n">write_simulation</span><span class="p">(</span><span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1696,7 +1728,7 @@ simulation_name = sim-mt3d_ex09
 </div>
 </div>
 </div>
-<p>Next block attempts to run the simulation.</p>
+<p><strong>Running the Model</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">success</span><span class="p">,</span> <span class="n">buff</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run_simulation</span><span class="p">(</span><span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">report</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1705,10 +1737,11 @@ simulation_name = sim-mt3d_ex09
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="plotting-results">
-<h1>Plotting results<a class="headerlink" href="#plotting-results" title="Permalink to this headline">¶</a></h1>
+<h3>Plotting results<a class="headerlink" href="#plotting-results" title="Permalink to this headline">¶</a></h3>
 <p>Define functions to plot model results.</p>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
