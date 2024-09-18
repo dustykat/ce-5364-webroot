@@ -1,0 +1,1366 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transient Flow, Mulitple-Layer Aquifer &#8212; Groundwater Transport Phenomena</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Transport Model using MT3DMS Problem 9 Example" href="transportmodel1.html" />
+    <link rel="prev" title="Transient Flow, Single Layer Aquifer" href="flowmodel2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/gwtransport.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Groundwater Transport Phenomena</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0introduction/0introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1computationaltools/1computationaltools.html">
+   Computational Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2essentialgroundwater/essentialgwreview.html">
+   Essential Groundwater Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../4pollutants/4pollutants.html">
+   Pollutants
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5nonreactivetransport/5nonreactivetransport.html">
+   Non-Reactive Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5nonreactivetransport/1tracerhypothesis.html">
+     The Tracer Hypothesis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5nonreactivetransport/2flux.html">
+     Flux
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5nonreactivetransport/3advection.html">
+     Advection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6nonreactivetransport/4diffusion.html">
+     Diffusion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6nonreactivetransport/5dispersion.html">
+     Dispersion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../7analyticalmodels/analyticalmodels.html">
+   Analytical Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/impulse.html">
+     1D Impulse (Instantaneous Source) Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/ogatabanks.html">
+     1D Ogata-Banks Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/sauty.html">
+     1D Sauty Solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/huntsolution.html">
+     2D Plume in Regional Flow (Hunt Solution)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/domenico.html">
+     Domenico-Robbins Solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/2Dfinitewidth.html">
+     2D - Advection-Dispersion, Finite-Width, Constant Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/2Dfwidth-pulse.html">
+     2D - Advection-Dispersion, Finite-Width, Finite-Duration Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/3Dfinitearea.html">
+     3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../8reactivetransport/8reactivetransport.html">
+   Reactive Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../8reactivetransport/6reactions.html">
+     Adsorbtion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../8reactivetransport/7decay.html">
+     Decay
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7analyticalmodels/reactivemodels.html">
+     Analytical Models with Decay and Adsorbtion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../11modelingadvection/0modelingadvection.html">
+   Modeling Advection
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11modelingadvection/1particletracking.html">
+     Modeling Advection by Particle Tracking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11modelingadvection/2upwindfdm.html">
+     Upwind Formulation Finite-Difference
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="usgsmodflow6.html">
+   MODFLOW6 and Python
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="flowmodel1.html">
+     Steady Flow, Single Layer Aquifer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flowmodel2.html">
+     Transient Flow, Single Layer Aquifer
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Transient Flow, Mulitple-Layer Aquifer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="transportmodel1.html">
+     Transport Model using MT3DMS Problem 9 Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../12usgsmocmodel/usgsmoc.html">
+   USGS MOC Software
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12usgsmocmodel/winmoc.html">
+     Windows Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12usgsmocmodel/armmoc.html">
+     ARM7/AARCH 64 Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12usgsmocmodel/dprw.html">
+     Discrete Particle Random Walk (Future Semester)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">
+   Site Investigations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../15datacollection/datacollection.html">
+   Sample Collection and Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17unsaturatedzone/unsaturated.html">
+   Unsaturated Zone Flow
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../18untransport/unsaturatedtransport.html">
+   Unsaturated Zone Transport
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18untransport/napls.html">
+     Non-Aqueous Phase Liquids
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../19chemflow/chemflow.html">
+   CHEMFLO-2000
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../19chemflow/chemflowwinders.html">
+     Windows Install
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../19chemflow/chemflowaarch.html">
+     ARM7/AARCH Install
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../19chemflow/chemflowexamples.html">
+     CHEMFLOW Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../22remediation/remediation.html">
+   Remediation Technologies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../23risk/risk.html">
+   Risk Assessment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../26regulatory/regulatory.html">
+   Groundwater Protection Legal Framework
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../91exercises/2-Exercises.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES1/ES1.html">
+     F23 Exercise Set 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES1/src-sol/ES1-WS.html">
+     F23 ES1 Solution Sketch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES2/ES2.html">
+     F23 Exercise Set 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES2/src-sol/ES2-WS.html">
+     F23 ES2 Solution Sketch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES3/ES3.html">
+     F23 Exercise Set 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES3/src-sol/ES3-WS.html">
+     F23 ES3 Solution Sketch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES4/ES4.html">
+     F23 Exercise Set 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES4/src-sol/ES4-WS.html">
+     F23 ES4 Solution Sketch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES5/ES5.html">
+     F23 Exercise Set 5
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES5/src-sol/ES5-WS.html">
+     F23 ES5 Solution Sketch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES6/ES6.html">
+     F23 Exercise Set 6
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../91exercises/ES6/src-sol/ES6-WS.html">
+     F23 ES6 Solution Sketch
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../93projects/Projects.html">
+   Projects
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../93projects/PR2/PR2.html">
+     USGS MOC Project 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../93projects/PR3/PR3.html">
+     USGS MOC Project 3 (Site Investigation/Remediation Design)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../93projects/PR4/PR4.html">
+     USGS MOC Project (Casing Failure)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../93projects/PR5/PR5.html">
+     Chemflow 2000 Project 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../92exams/exams.html">
+   Exams
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../92exams/EX1/EX1.html">
+     F23 Exam 1 Deploy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../92exams/EX1/src-sol/EX1-WS.html">
+     F23 Exam 1 Solution Sketch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../92exams/EX2/EX2.html">
+     F23 Exam 2 Deploy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../92exams/EX2/src-sol/EX2-WS.html">
+     F23 Exam 2 Solution Sketch
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/chapters/12.01usgsmodflow6/flowmodel3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/12.01usgsmodflow6/flowmodel3.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/12.01usgsmodflow6/flowmodel3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="transient-flow-mulitple-layer-aquifer">
+<h1>Transient Flow, Mulitple-Layer Aquifer<a class="headerlink" href="#transient-flow-mulitple-layer-aquifer" title="Permalink to this headline">¶</a></h1>
+<p>The figure below is a map and cross section of an aquifer system.</p>
+<p><img alt="" src="../../_images/drawing_P-12.png" /></p>
+<p>Two well fields operate in the area; well field A pumping <span class="math notranslate nohighlight">\(10 \times 10^{6} \frac{m^3}{yr}\)</span> and a well field B pumping <span class="math notranslate nohighlight">\(16 \times 10^{6} \frac{m^3}{yr}\)</span> All the intake screens in well field B are below the semipervious layer.  A new wellfield, C is planned, with an annual withdrawl of <span class="math notranslate nohighlight">\(15 \times 10^{6} \frac{m^3}{yr}\)</span> and, if possible, up to <span class="math notranslate nohighlight">\(25 \times 10^{6} \frac{m^3}{yr}\)</span>.</p>
+<p>Use MODFLOW to evaluate the feasibility of the proposed pumping rates for well field C.  The river itself should not serve as a water source because the water rights are already apportioned (i.e. someone else owns the water).</p>
+<p>The plan view layout and the 5-layer conceptualization are shown below.</p>
+<p><img alt="" src="../../_images/planview.png" /></p>
+<p>The vertical discritization used is a 5-layer conceptualization to mimic the aquifer system.</p>
+<p><img alt="" src="../../_images/elevationview.png" /></p>
+<p>The upper aquifer layer is unconfined and the river is represented using constant head boundaries. The next layer is a confined/unconfined layer and is where the well field A wells are screened (65-125 meters).  The aquitard is a thin layer from (60-65 meters) with spatially varying hydraulic conductivity. The lower aquifers are represented as confined in MODFLOW, with well screens as shown.</p>
+<p>Below we use MODFLOW to produce:</p>
+<ol class="simple">
+<li><p>An equilibrium head distribution for all 5 aquifer layers in this system, with zero pumping in all wellfields.  This is a pre-development case (recharge only).</p></li>
+<li><p>An equilibrium head distribution for the system with only Wellfield A active (assuming 30 years is long enough to reach equilibrium).</p></li>
+<li><p>An equilibrium head distribution for the system with Wellfields A and B active at the prescribed rates. (Again assuming 30 years is long enough to reach equilibrium).</p></li>
+<li><p>An equilibrium head distribution for the system with Wellfields A and B active at the prescribed rates; Wellfield C is active, but rate is increased by trial-error until gradient from river indicates flow into the aquifer.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reset</span> -f
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span><span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">flopy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#dir(flopy.mf6)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Workspace and Executibles</span>
+<span class="n">binary</span> <span class="o">=</span> <span class="s2">&quot;/home/sensei/ce-4363-webroot/ModflowExperimental/mf6-arm/mf6&quot;</span>  <span class="c1"># location on MY computer of the compiled modflow program</span>
+<span class="n">workarea</span> <span class="o">=</span> <span class="s2">&quot;/home/sensei/ce-4363-webroot/ModflowExperimental/mf6-arm/project_1&quot;</span> <span class="c1"># location on MY computer to store files this example (directory must already exist)</span>
+
+<span class="c1"># Set Simulation Name</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;project_1&quot;</span>
+<span class="c1">#modelname=name</span>
+
+<span class="c1">##### FLOPY Build simulation framework ####</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">MFSimulation</span><span class="p">(</span>
+    <span class="n">sim_name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">exe_name</span><span class="o">=</span><span class="n">binary</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;mf6&quot;</span><span class="p">,</span> <span class="n">sim_ws</span><span class="o">=</span><span class="n">workarea</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set Time Structure</span>
+<span class="n">Time_Units</span><span class="o">=</span><span class="s2">&quot;YEARS&quot;</span>
+
+<span class="c1"># Multiple stress periods</span>
+<span class="n">nper</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># how many periods</span>
+<span class="c1"># perlen = how long each one in problem time units</span>
+<span class="c1"># nstp =  how many steps in each stress period</span>
+<span class="c1"># tsmult = time step multiplier</span>
+<span class="c1"># perioddata = [(perlen,nstp,tsmult),(perlen,nstp,tsmult),(perlen,nstp,tsmult) ... repeat for each stress period]</span>
+
+<span class="n">perioddata</span> <span class="o">=</span> <span class="p">[(</span><span class="mf">30.0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mf">30.0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mf">30.0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mf">30.0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>
+
+<span class="c1">##### FLOPY Build time framework ##########</span>
+<span class="n">tdis</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowTdis</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span> <span class="n">pname</span><span class="o">=</span><span class="s2">&quot;tdis&quot;</span><span class="p">,</span> <span class="n">time_units</span><span class="o">=</span><span class="n">Time_Units</span><span class="p">,</span> <span class="n">nper</span><span class="o">=</span><span class="n">nper</span><span class="p">,</span> <span class="n">perioddata</span><span class="o">=</span><span class="n">perioddata</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set Iterative Model Solution (choose solver parameters)</span>
+<span class="c1"># about IMS see: https://water.usgs.gov/nrp/gwsoftware/ModelMuse/Help/sms_sparse_matrix_solution_pac.htm</span>
+<span class="c1"># using defaults see: https://flopy.readthedocs.io/en/3.3.2/source/flopy.mf6.modflow.mfims.html</span>
+
+<span class="c1">##### FLOPY Build IMS framework ###########</span>
+<span class="n">ims</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowIms</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">pname</span><span class="o">=</span><span class="s2">&quot;ims&quot;</span><span class="p">,</span> <span class="n">complexity</span><span class="o">=</span><span class="s2">&quot;SIMPLE&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set Model Name (using same base name as the simulation)</span>
+<span class="n">model_nam_file</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.nam&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="c1">##### FLOPY Build Model Name framework ####</span>
+<span class="n">gwf</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwf</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">modelname</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">model_nam_file</span><span class="o">=</span><span class="n">model_nam_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define The Grid</span>
+<span class="n">Nlay</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1">#number layers</span>
+<span class="n">Nrow</span> <span class="o">=</span> <span class="mi">24</span> <span class="c1">#number rows</span>
+<span class="n">Ncol</span> <span class="o">=</span> <span class="mi">11</span> <span class="c1">#number columns</span>
+<span class="c1"># Define distances and elevations</span>
+<span class="n">delrow</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># cell size along columns (how tall is a row)</span>
+<span class="n">delcol</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># cell size along row (how wide is a column)</span>
+<span class="n">topelev</span> <span class="o">=</span> <span class="mf">180.0</span> <span class="c1"># elevation of top of aquifer</span>
+<span class="n">thick</span> <span class="o">=</span> <span class="mf">175.0</span> <span class="c1">#aquifer thickness</span>
+
+<span class="c1">#bot = [topelev-thick] # bot is a list with Nlay entries</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">125</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">#print(bot)</span>
+
+
+<span class="c1">##### FLOPY Build Model Grid framework #####</span>
+<span class="n">dis</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfdis</span><span class="p">(</span><span class="n">gwf</span><span class="p">,</span><span class="n">nlay</span><span class="o">=</span><span class="n">Nlay</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="n">Nrow</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="n">Ncol</span><span class="p">,</span><span class="n">delr</span><span class="o">=</span><span class="n">delrow</span><span class="p">,</span><span class="n">delc</span><span class="o">=</span><span class="n">delcol</span><span class="p">,</span><span class="n">top</span><span class="o">=</span><span class="n">topelev</span><span class="p">,</span><span class="n">botm</span><span class="o">=</span><span class="n">bot</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define initial conditions</span>
+<span class="n">h1</span> <span class="o">=</span> <span class="mf">151.0</span> <span class="c1"># </span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">h1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">Nlay</span><span class="p">,</span> <span class="n">Nrow</span><span class="p">,</span> <span class="n">Ncol</span><span class="p">))</span> <span class="c1"># start heads are h1 everywhere</span>
+
+<span class="c1">##### FLOPY Build Initial Conditions framework ###</span>
+<span class="n">ic</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfic</span><span class="p">(</span><span class="n">gwf</span><span class="p">,</span> <span class="n">pname</span><span class="o">=</span><span class="s2">&quot;ic&quot;</span><span class="p">,</span> <span class="n">strt</span><span class="o">=</span><span class="n">start</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define hydraulic conductivity arrays</span>
+<span class="n">K1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="mf">3650.0</span>
+<span class="n">K2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="mf">3650.0</span>
+<span class="n">K3</span> <span class="o">=</span> <span class="mf">0.01</span><span class="o">*</span><span class="mf">3650.0</span>
+<span class="n">K4</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="mf">3650.0</span>
+<span class="n">K5</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="mi">3650</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">Nlay</span><span class="p">,</span> <span class="n">Nrow</span><span class="p">,</span> <span class="n">Ncol</span><span class="p">))</span> <span class="c1"># populate k with ones</span>
+<span class="c1">#print(k) # check structure</span>
+<span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">K1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">Nrow</span><span class="p">,</span> <span class="n">Ncol</span><span class="p">))</span>
+<span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">K2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">Nrow</span><span class="p">,</span> <span class="n">Ncol</span><span class="p">))</span>
+<span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">K3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">Nrow</span><span class="p">,</span> <span class="n">Ncol</span><span class="p">))</span> <span class="c1"># modify for spatial varying K this layer</span>
+<span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="n">Nrow</span><span class="p">):</span>
+    <span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">irow</span><span class="p">]</span> <span class="o">=</span> <span class="n">K2</span>
+<span class="n">k</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">K4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">Nrow</span><span class="p">,</span> <span class="n">Ncol</span><span class="p">))</span>
+<span class="n">k</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">K5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">Nrow</span><span class="p">,</span> <span class="n">Ncol</span><span class="p">))</span>
+<span class="c1">#print(k[2]) # check structure</span>
+<span class="c1"># Use above to build layer-by-layer spatial varying K</span>
+<span class="c1"># need to read: to deal with Kx!=Ky</span>
+
+<span class="c1">##### FLOPY Build BCF framework ######</span>
+<span class="n">npf</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfnpf</span><span class="p">(</span><span class="n">gwf</span><span class="p">,</span> <span class="n">icelltype</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">save_flows</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+<span class="c1"># setting icelltype &gt; 0 is unconfined </span>
+<span class="c1"># https://flopy.readthedocs.io/en/3.3.5/source/flopy.mf6.modflow.mfgwfnpf.html?highlight=icelltype#flopy.mf6.modflow.mfgwfnpf.ModflowGwfnpf.icelltype</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the storativity arrays</span>
+<span class="n">Sy</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="c1"># specific yield</span>
+<span class="n">Ss</span> <span class="o">=</span> <span class="mf">2.5e-4</span> <span class="c1"># specific storage</span>
+
+<span class="n">sto</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfsto</span><span class="p">(</span><span class="n">gwf</span><span class="p">,</span> <span class="n">sy</span><span class="o">=</span><span class="n">Sy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define constant head boundary conditions - these need to be supplied for each stress period</span>
+<span class="n">chd_rec</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">hriv</span> <span class="o">=</span> <span class="mi">151</span> <span class="c1"># river as a boundary</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">Ncol</span><span class="p">):</span>
+    <span class="n">chd_rec</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span> <span class="p">,</span> <span class="n">col</span><span class="p">),</span> <span class="n">hriv</span><span class="p">))</span> <span class="c1"># river as a boundary</span>
+<span class="c1">#chd_rec.append(((0, 5, 5), h2))</span>
+<span class="c1"># L,R,T,B constant head boundaries</span>
+<span class="c1">#for layer in range(0, Nlay):</span>
+<span class="c1">#    for row in range(0, Nrow):</span>
+<span class="c1">#        chd_rec.append(((layer, row, 0), h1))  #left column held at h1</span>
+<span class="c1">#        chd_rec.append(((layer, row, Ncol-1), h1)) #right column held at h1</span>
+<span class="c1">#    for col in range(1,Ncol-1):</span>
+<span class="c1">#        chd_rec.append(((layer, 0, col), h1)) # top row held at h1</span>
+<span class="c1">#        chd_rec.append(((layer, Nrow-1 , col), h1)) # bottom row held at h1</span>
+
+<span class="n">stress_period_data</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">chd_rec</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">chd_rec</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="n">chd_rec</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="n">chd_rec</span><span class="p">}</span> <span class="c1"># dictionary same BC each stress period</span>
+        
+<span class="c1">##### FLOPY Build CHD framework #####          </span>
+<span class="n">chd</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfchd</span><span class="p">(</span><span class="n">gwf</span><span class="p">,</span><span class="n">maxbound</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">chd_rec</span><span class="p">),</span><span class="n">stress_period_data</span><span class="o">=</span><span class="n">stress_period_data</span><span class="p">,</span><span class="n">save_flows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define wellfields</span>
+<span class="c1">#wel_rec = []</span>
+<span class="c1"># wel_rec.append((0, 5, 5, -0e6)) # 0 Mm3/yr - use to examine recharge only</span>
+<span class="c1">#wel_rec.append((0, 5, 5, -2114e6)) # 2,114 Mm3/yr</span>
+<span class="c1"># Multiple Stress Periods</span>
+
+
+<span class="n">wel_sp1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">wel_sp1</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">))</span> <span class="c1">#wellfieldA-upper</span>
+<span class="n">wel_sp1</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">))</span> <span class="c1">#wellfieldA-lower</span>
+<span class="n">wel_sp1</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">))</span> <span class="c1">#wellfieldB-upper</span>
+<span class="n">wel_sp1</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">))</span> <span class="c1">#wellfieldB-lower</span>
+<span class="n">wel_sp1</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">))</span> <span class="c1">#wellfieldC-upper</span>
+<span class="n">wel_sp1</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">))</span> <span class="c1">#wellfieldC-lower</span>
+
+<span class="n">wel_sp2</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">wel_sp2</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0e6</span><span class="p">))</span> <span class="c1">#wellfieldA-upper</span>
+<span class="n">wel_sp2</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0e6</span><span class="p">))</span> <span class="c1">#wellfieldA-lower</span>
+<span class="n">wel_sp2</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">))</span> <span class="c1">#wellfieldB-upper</span>
+<span class="n">wel_sp2</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">))</span> <span class="c1">#wellfieldB-lower</span>
+<span class="n">wel_sp2</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">))</span> <span class="c1">#wellfieldC-upper</span>
+<span class="n">wel_sp2</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">))</span> <span class="c1">#wellfieldC-lower</span>
+
+<span class="n">wel_sp3</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">wel_sp3</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0e6</span><span class="p">))</span> <span class="c1">#wellfieldA-upper</span>
+<span class="n">wel_sp3</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0e6</span><span class="p">))</span> <span class="c1">#wellfieldA-lower</span>
+<span class="n">wel_sp3</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.0e6</span><span class="p">))</span> <span class="c1">#wellfieldB-upper</span>
+<span class="n">wel_sp3</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.0e6</span><span class="p">))</span> <span class="c1">#wellfieldB-lower</span>
+<span class="n">wel_sp3</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">))</span> <span class="c1">#wellfieldC-upper</span>
+<span class="n">wel_sp3</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">))</span> <span class="c1">#wellfieldC-lower</span>
+
+<span class="n">wel_sp4</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">wel_sp4</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0e6</span><span class="p">))</span> <span class="c1">#wellfieldA-upper</span>
+<span class="n">wel_sp4</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0e6</span><span class="p">))</span> <span class="c1">#wellfieldA-lower</span>
+<span class="n">wel_sp4</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.0e6</span><span class="p">))</span> <span class="c1">#wellfieldB-upper</span>
+<span class="n">wel_sp4</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.0e6</span><span class="p">))</span> <span class="c1">#wellfieldB-lower</span>
+<span class="n">wel_sp4</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.0e6</span><span class="p">))</span> <span class="c1">#wellfieldC-upper</span>
+<span class="n">wel_sp4</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0e6</span><span class="p">))</span> <span class="c1">#wellfieldC-lower</span>
+
+<span class="n">stress_period_data</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">wel_sp1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">wel_sp2</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="n">wel_sp3</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="n">wel_sp4</span><span class="p">}</span>
+<span class="c1">#wel = flopy.modflow.ModflowWel(mf, stress_period_data=stress_period_data)</span>
+
+
+
+<span class="c1">##### FLOPY Build Wellfields framework #####  </span>
+<span class="n">wel</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfwel</span><span class="p">(</span><span class="n">gwf</span><span class="p">,</span><span class="n">maxbound</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">stress_period_data</span><span class="o">=</span><span class="n">stress_period_data</span><span class="p">,)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define recharge</span>
+<span class="n">rech_val</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="c1">#  rate as depth/year</span>
+<span class="n">rech_rec</span> <span class="o">=</span> <span class="n">rech_val</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">Nrow</span><span class="p">,</span> <span class="n">Ncol</span><span class="p">))</span> <span class="c1"># set recharge top layer only</span>
+
+<span class="n">rec_sp1</span> <span class="o">=</span> <span class="n">rech_rec</span>
+<span class="n">rec_sp2</span> <span class="o">=</span> <span class="n">rech_rec</span>
+<span class="n">rec_sp3</span> <span class="o">=</span> <span class="n">rech_rec</span>
+
+<span class="n">stress_period_data</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">rec_sp1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">rec_sp2</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="n">rec_sp3</span><span class="p">}</span>
+
+<span class="n">rch</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfrcha</span><span class="p">(</span><span class="n">gwf</span><span class="p">,</span> <span class="n">maxbound</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">rech_rec</span><span class="p">),</span><span class="n">recharge</span><span class="o">=</span><span class="n">stress_period_data</span><span class="p">,)</span>
+
+<span class="c1">#rch = flopy.mf6.ModflowGwfrcha(gwf, recharge=rech_val) # default entry format</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># something to do with stress periods</span>
+<span class="n">iper</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ra</span> <span class="o">=</span> <span class="n">chd</span><span class="o">.</span><span class="n">stress_period_data</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">iper</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the output control (`OC`) Package</span>
+<span class="n">headfile</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.hds&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="n">head_filerecord</span> <span class="o">=</span> <span class="p">[</span><span class="n">headfile</span><span class="p">]</span>
+<span class="n">budgetfile</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.cbb&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="n">budget_filerecord</span> <span class="o">=</span> <span class="p">[</span><span class="n">budgetfile</span><span class="p">]</span>
+<span class="n">saverecord</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;HEAD&quot;</span><span class="p">,</span> <span class="s2">&quot;ALL&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;BUDGET&quot;</span><span class="p">,</span> <span class="s2">&quot;ALL&quot;</span><span class="p">)]</span>
+<span class="n">printrecord</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;HEAD&quot;</span><span class="p">,</span> <span class="s2">&quot;LAST&quot;</span><span class="p">)]</span>
+
+<span class="c1">##### FLOPY Build OC framework</span>
+<span class="n">oc</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfoc</span><span class="p">(</span>
+    <span class="n">gwf</span><span class="p">,</span>
+    <span class="n">saverecord</span><span class="o">=</span><span class="n">saverecord</span><span class="p">,</span>
+    <span class="n">head_filerecord</span><span class="o">=</span><span class="n">head_filerecord</span><span class="p">,</span>
+    <span class="n">budget_filerecord</span><span class="o">=</span><span class="n">budget_filerecord</span><span class="p">,</span>
+    <span class="n">printrecord</span><span class="o">=</span><span class="n">printrecord</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write files to the directory</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">write_simulation</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>writing simulation...
+  writing simulation name file...
+  writing simulation tdis package...
+  writing ims package ims...
+  writing model project_1...
+    writing model name file...
+    writing package dis...
+    writing package ic...
+    writing package npf...
+    writing package sto...
+    writing package chd_0...
+    writing package wel_0...
+    writing package rcha_0...
+    writing package oc...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Attempt to run MODFLOW this model</span>
+<span class="n">success</span><span class="p">,</span> <span class="n">buff</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run_simulation</span><span class="p">(</span><span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">report</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;MODFLOW 6 did not terminate normally.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># now attempt to postprocess</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">gwf</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">kstpkper</span><span class="o">=</span><span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="c1">#print(h[0])</span>
+<span class="c1">#x = np.linspace(0, LC, Ncol )</span>
+<span class="n">x</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delcol</span><span class="o">*</span><span class="n">Ncol</span><span class="p">,</span> <span class="n">Ncol</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delrow</span><span class="o">*</span><span class="n">Nrow</span><span class="p">,</span> <span class="n">Nrow</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">175.0</span>
+<span class="n">contour_intervals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># ### Plot a Map of Layer 1</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">contour_intervals</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Project Aquifer Layer 1 = PreDevelopment Conditions&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Easting (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Northing (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2.1f</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="c1"># ### Plot a Map of Layer 5</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">contour_intervals</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Project Aquifer Layer 5 = PreDevelopment Conditions&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Easting (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Northing (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2.1f</span><span class="s2">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>179.42766115527678
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>179.42524150761562
+</pre></div>
+</div>
+<img alt="../../_images/flowmodel3_20_3.png" src="../../_images/flowmodel3_20_3.png" />
+<img alt="../../_images/flowmodel3_20_4.png" src="../../_images/flowmodel3_20_4.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># now attempt to postprocess</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">gwf</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">kstpkper</span><span class="o">=</span><span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="c1">#print(h[0])</span>
+<span class="c1">#x = np.linspace(0, LC, Ncol )</span>
+<span class="n">x</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delcol</span><span class="o">*</span><span class="n">Ncol</span><span class="p">,</span> <span class="n">Ncol</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delrow</span><span class="o">*</span><span class="n">Nrow</span><span class="p">,</span> <span class="n">Nrow</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">175.0</span>
+<span class="n">contour_intervals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># ### Plot a Map of Layer 1</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">contour_intervals</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Project Aquifer Layer 1 = Wellfield A Active&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Easting (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Northing (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2.1f</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="c1"># ### Plot a Map of Layer 5</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">contour_intervals</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Project Aquifer Layer 5 = Wellfield A Active&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Easting (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Northing (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2.1f</span><span class="s2">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>170.32400078924502
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>170.32146880486474
+</pre></div>
+</div>
+<img alt="../../_images/flowmodel3_21_3.png" src="../../_images/flowmodel3_21_3.png" />
+<img alt="../../_images/flowmodel3_21_4.png" src="../../_images/flowmodel3_21_4.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># now attempt to postprocess</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">gwf</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">kstpkper</span><span class="o">=</span><span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="c1">#print(h[0])</span>
+<span class="c1">#x = np.linspace(0, LC, Ncol )</span>
+<span class="n">x</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delcol</span><span class="o">*</span><span class="n">Ncol</span><span class="p">,</span> <span class="n">Ncol</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delrow</span><span class="o">*</span><span class="n">Nrow</span><span class="p">,</span> <span class="n">Nrow</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">175.0</span>
+<span class="n">contour_intervals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># ### Plot a Map of Layer 1</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">contour_intervals</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Project Aquifer Layer 1 = Wellfield A&amp;B Active&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Easting (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Northing (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2.1f</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="c1"># ### Plot a Map of Layer 5</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">contour_intervals</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Project Aquifer Layer 5 = Wellfield A&amp;B Active&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Easting (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Northing (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2.1f</span><span class="s2">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>161.85750086146658
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>161.854854013628
+</pre></div>
+</div>
+<img alt="../../_images/flowmodel3_22_3.png" src="../../_images/flowmodel3_22_3.png" />
+<img alt="../../_images/flowmodel3_22_4.png" src="../../_images/flowmodel3_22_4.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># now attempt to postprocess</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">gwf</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">kstpkper</span><span class="o">=</span><span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="c1">#print(h[0])</span>
+<span class="c1">#x = np.linspace(0, LC, Ncol )</span>
+<span class="n">x</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delcol</span><span class="o">*</span><span class="n">Ncol</span><span class="p">,</span> <span class="n">Ncol</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delrow</span><span class="o">*</span><span class="n">Nrow</span><span class="p">,</span> <span class="n">Nrow</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">175.0</span>
+<span class="n">contour_intervals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">)</span>
+
+<span class="c1"># ### Plot a Map of Layer 1</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">contour_intervals</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Project Aquifer Layer 1 </span><span class="se">\n</span><span class="s2"> Wellfield A&amp;B&amp;C Active Qc = 8 Mm3/yr&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Easting (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Northing (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2.1f</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="c1"># ### Plot a Map of Layer 5</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">contour_intervals</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Project Aquifer Layer 5 </span><span class="se">\n</span><span class="s2"> Wellfield A&amp;B&amp;C Active Qc = 8 Mm3/yr&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Easting (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Northing (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2.1f</span><span class="s2">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
+  and should_run_async(code)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>161.831479235934
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>161.82883201916712
+</pre></div>
+</div>
+<img alt="../../_images/flowmodel3_23_3.png" src="../../_images/flowmodel3_23_3.png" />
+<img alt="../../_images/flowmodel3_23_4.png" src="../../_images/flowmodel3_23_4.png" />
+</div>
+</div>
+<p>So for the stated problem, wellfield C is limited to about <span class="math notranslate nohighlight">\(8~\frac{Mm^3}{yr}\)</span> if the goal is to avoid river flow into the aquifer.</p>
+<p>The next steps are to add stress periods according to the annual pumping schedule to examine the effect time-of-year has on the heads.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/12.01usgsmodflow6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="flowmodel2.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Transient Flow, Single Layer Aquifer</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="transportmodel1.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Transport Model using MT3DMS Problem 9 Example</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Theodore G. Cleveland, PhD<br/>
+        
+            &copy; Copyright 2023.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

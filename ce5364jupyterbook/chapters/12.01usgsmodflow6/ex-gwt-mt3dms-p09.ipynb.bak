@@ -578,9 +578,6 @@
      "iopub.status.idle": "2024-07-04T03:33:06.762483Z",
      "shell.execute_reply": "2024-07-04T03:33:06.761758Z"
     },
-    "jupyter": {
-     "source_hidden": true
-    },
     "lines_to_end_of_cell_marker": 2
    },
    "outputs": [],

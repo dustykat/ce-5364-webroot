@@ -39,7 +39,10 @@ chapters:
 #
 - file: chapters/12.01usgsmodflow6/usgsmodflow6
   sections:
-  - file: chapters/12.01usgsmodflow6/example-in-progress
+  - file: chapters/12.01usgsmodflow6/flowmodel1
+  - file: chapters/12.01usgsmodflow6/flowmodel2
+  - file: chapters/12.01usgsmodflow6/flowmodel3
+  - file: chapters/12.01usgsmodflow6/transportmodel1
 #
 - file: chapters/12usgsmocmodel/usgsmoc
   sections:
