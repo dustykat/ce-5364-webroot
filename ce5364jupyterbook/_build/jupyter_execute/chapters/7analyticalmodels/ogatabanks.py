@@ -97,6 +97,10 @@ plt.close('all') # needed when plt.show call not invoked, optional here
 #sys.exit() # used to elegant exit for CGI-BIN use
 
 
+# ## Spreadsheet Model
+# 
+# A spreadsheet model is located at [http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/OgataBanksProfile.xlsx](http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/OgataBanksProfile.xlsx)
+
 # ## Concentration History
 # 
 # Its also quite reasonable to build a history (concentration versus time at some location) - the script is practically the same, except time is the variable instead of space.
@@ -208,7 +212,9 @@ print("Concentration at x = 750, t = 728 :",round(ogatabanks(c_source,750.0,728.
 
 # Compare the result to the textbook, which uses the far-field solution for a value of $100~mg/L$ (how would you modify for the far-field solution?)
 # 
-# A spreadsheet implementation is available below in the references.
+# ## Spreadsheet Model
+# 
+# A spreadsheet model is located at [http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/OgataBanksHistory.xlsx](http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/OgataBanksHistory.xlsx)
 
 # ## References
 # 

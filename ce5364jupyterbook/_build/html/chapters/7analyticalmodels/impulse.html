@@ -255,8 +255,8 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../12usgsmocmodel/usgsmoc.html">
-   USGS MOC Software
+  <a class="reference internal" href="../12.01usgsmodflow6/usgsmodflow6.html">
+   MODFLOW6 and Python
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -265,18 +265,23 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/winmoc.html">
-     Windows Build
+    <a class="reference internal" href="../12.01usgsmodflow6/flowmodel1.html">
+     Steady Flow, Single Layer Aquifer
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/armmoc.html">
-     ARM7/AARCH 64 Build
+    <a class="reference internal" href="../12.01usgsmodflow6/flowmodel2.html">
+     Transient Flow, Single Layer Aquifer
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/dprw.html">
-     Discrete Particle Random Walk (Future Semester)
+    <a class="reference internal" href="../12.01usgsmodflow6/flowmodel3.html">
+     Transient Flow, Mulitple-Layer Aquifer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12.01usgsmodflow6/transportmodel1.html">
+     Transport Model using MT3DMS Problem 9 Example
     </a>
    </li>
   </ul>
@@ -491,6 +496,38 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../99legacy/99legacy.html">
+   Legacy Content
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../99legacy/12usgsmocmodel/usgsmoc.html">
+     USGS MOC Software
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../99legacy/12usgsmocmodel/winmoc.html">
+     Windows Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../99legacy/12usgsmocmodel/armmoc.html">
+     ARM7/AARCH 64 Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../99legacy/12usgsmocmodel/dprw.html">
+     Discrete Particle Random Walk (Future Semester)
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </div>
@@ -618,8 +655,18 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spreadsheet-model">
+   Spreadsheet Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#concentration-history">
    Concentration History
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Spreadsheet Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -752,6 +799,7 @@ $$  \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  +  =  (\frac{1}{2}
 <span class="n">porosity</span>    <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">c0</span>          <span class="o">=</span> <span class="mf">10000.0</span> <span class="c1"># kg/m^3</span>
 <span class="n">mass</span>        <span class="o">=</span> <span class="p">(</span><span class="n">c0</span><span class="o">*</span><span class="n">volume</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">porosity</span><span class="p">)</span>
+<span class="c1">#print(mass)</span>
 <span class="n">dispersion</span>  <span class="o">=</span> <span class="mf">1.0</span> <span class="c1">#m^2/day</span>
 <span class="n">velocity</span>    <span class="o">=</span> <span class="mf">1.0</span> <span class="c1">#m/day</span>
 <span class="n">deltax</span>      <span class="o">=</span> <span class="mf">2.0</span> <span class="c1">#meters</span>
@@ -789,6 +837,10 @@ $$  \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  +  =  (\frac{1}{2}
 <img alt="../../_images/impulse_7_0.png" src="../../_images/impulse_7_0.png" />
 </div>
 </div>
+</div>
+<div class="section" id="spreadsheet-model">
+<h2>Spreadsheet Model<a class="headerlink" href="#spreadsheet-model" title="Permalink to this headline">¶</a></h2>
+<p>A spreadsheet model is located at <a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/ImpulseSolutionProfile.xlsx">http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/ImpulseSolutionProfile.xlsx</a></p>
 </div>
 <div class="section" id="concentration-history">
 <h2>Concentration History<a class="headerlink" href="#concentration-history" title="Permalink to this headline">¶</a></h2>
@@ -836,16 +888,19 @@ $$  \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  +  =  (\frac{1}{2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/impulse_9_0.png" src="../../_images/impulse_9_0.png" />
+<img alt="../../_images/impulse_10_0.png" src="../../_images/impulse_10_0.png" />
 </div>
 </div>
-<p>A spreadsheet implementation is available below in the references.</p>
+</div>
+<div class="section" id="id1">
+<h2>Spreadsheet Model<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>A spreadsheet model is located at <a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/ImpulseSolutionHistory.xlsx">http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/ImpulseSolutionHistory.xlsx</a></p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p><a class="reference external" href="https://www.amazon.com/Dynamics-Fluids-Porous-Mechanical-Engineering/dp/0486656756">Bear, J. (1972) <em>Dynamics of Fluids in Porous Media</em> McGraw Hill (pp. 628-629)</a></p></li>
-<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/7analyticalmodels/SSANTS2.xlsm"><strong>SSANTS2.xlsm</strong> (Excel Macro Sheet(s)) - Choose Tabsheet <strong>1DIMPAD</strong></a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/7analyticalmodels/SSANTS2.xlsm"><strong>SSANTS2.xlsm</strong> (Excel Macro Sheet(s)) - Choose Tabsheet <strong>1DIMPAD</strong></a> No longer works with modern Excel, it will open in LibreOffice</p></li>
 <li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/yuan_thesis/Groundwater_transport.pdf">Yuan, D, (1995)  <em>Accurate approximations for one-, two-, and three-dimensional groundwater mass transport from an exponentially decaying contaminant source.</em> MS Thesis, Department of Civil and Environmental Engineering, University of Houston. </a></p></li>
 <li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/ants_dissertation/Luke_Chuang.pdf">Chuang, Lu-Chia, (1998) <em>A guidance system for choosing analytical contaminant transport models.</em> Doctoral Dissertation, Department of Civil and Environmental Engineering, University of Houston, Houston, Texas. 222p.</a></p></li>
 <li><p><a class="reference external" href="https://pubs.usgs.gov/publication/ofr8956">Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow

@@ -137,6 +137,7 @@ volume      = thick*width*length
 porosity    = 1.0
 c0          = 10000.0 # kg/m^3
 mass        = (c0*volume)/(porosity)
+#print(mass)
 dispersion  = 1.0 #m^2/day
 velocity    = 1.0 #m/day
 deltax      = 2.0 #meters
@@ -168,6 +169,10 @@ plt.close('all') # needed when plt.show call not invoked, optional here
 #print("Advective Front Position : ",round(time*velocity,2)," length units")
 #print("Total Mass : ",round(mass,3)," kg")
 
+
+# ## Spreadsheet Model
+# 
+# A spreadsheet model is located at [http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/ImpulseSolutionProfile.xlsx](http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/ImpulseSolutionProfile.xlsx)
 
 # ## Concentration History
 # 
@@ -215,12 +220,14 @@ plt.close('all') # needed when plt.show call not invoked, optional here
 #print("Total Mass : ",round(mass,3)," kg")
 
 
-# A spreadsheet implementation is available below in the references.
+# ## Spreadsheet Model
+# 
+# A spreadsheet model is located at [http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/ImpulseSolutionHistory.xlsx](http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/ImpulseSolutionHistory.xlsx)
 
 # ## References
 # 
 # 1. [Bear, J. (1972) *Dynamics of Fluids in Porous Media* McGraw Hill (pp. 628-629)](https://www.amazon.com/Dynamics-Fluids-Porous-Mechanical-Engineering/dp/0486656756)
-# 2. [**SSANTS2.xlsm** (Excel Macro Sheet(s)) - Choose Tabsheet **1DIMPAD**](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/7analyticalmodels/SSANTS2.xlsm)
+# 2. [**SSANTS2.xlsm** (Excel Macro Sheet(s)) - Choose Tabsheet **1DIMPAD**](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/7analyticalmodels/SSANTS2.xlsm) No longer works with modern Excel, it will open in LibreOffice
 # 3. [Yuan, D, (1995)  *Accurate approximations for one-, two-, and three-dimensional groundwater mass transport from an exponentially decaying contaminant source.* MS Thesis, Department of Civil and Environmental Engineering, University of Houston. ](http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/yuan_thesis/Groundwater_transport.pdf)
 # 4. [Chuang, Lu-Chia, (1998) *A guidance system for choosing analytical contaminant transport models.* Doctoral Dissertation, Department of Civil and Environmental Engineering, University of Houston, Houston, Texas. 222p.](http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/ants_dissertation/Luke_Chuang.pdf)
 # 5. [Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow

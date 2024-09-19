@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -51,7 +53,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="USGS MOC Software" href="../12usgsmocmodel/usgsmoc.html" />
+    <link rel="next" title="MODFLOW6 and Python" href="../12.01usgsmodflow6/usgsmodflow6.html" />
     <link rel="prev" title="Modeling Advection by Particle Tracking" href="1particletracking.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -253,8 +255,8 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../12usgsmocmodel/usgsmoc.html">
-   USGS MOC Software
+  <a class="reference internal" href="../12.01usgsmodflow6/usgsmodflow6.html">
+   MODFLOW6 and Python
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -263,18 +265,23 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/winmoc.html">
-     Windows Build
+    <a class="reference internal" href="../12.01usgsmodflow6/flowmodel1.html">
+     Steady Flow, Single Layer Aquifer
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/armmoc.html">
-     ARM7/AARCH 64 Build
+    <a class="reference internal" href="../12.01usgsmodflow6/flowmodel2.html">
+     Transient Flow, Single Layer Aquifer
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/dprw.html">
-     Discrete Particle Random Walk (Future Semester)
+    <a class="reference internal" href="../12.01usgsmodflow6/flowmodel3.html">
+     Transient Flow, Mulitple-Layer Aquifer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12.01usgsmodflow6/transportmodel1.html">
+     Transport Model using MT3DMS Problem 9 Example
     </a>
    </li>
   </ul>
@@ -489,6 +496,38 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../99legacy/99legacy.html">
+   Legacy Content
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../99legacy/12usgsmocmodel/usgsmoc.html">
+     USGS MOC Software
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../99legacy/12usgsmocmodel/winmoc.html">
+     Windows Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../99legacy/12usgsmocmodel/armmoc.html">
+     ARM7/AARCH 64 Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../99legacy/12usgsmocmodel/dprw.html">
+     Discrete Particle Random Walk (Future Semester)
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </div>
@@ -594,6 +633,28 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#upwinding-in-hyperbolic-dominant-pdes">
+   Upwinding in Hyperbolic-Dominant PDEs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-upwinding-is-important">
+   Why Upwinding is Important
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#upwind-formulation">
+     Upwind formulation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#centered-formulation">
+     Centered formulation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
    References
   </a>
@@ -611,11 +672,90 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="upwind-formulation-finite-difference">
 <h1>Upwind Formulation Finite-Difference<a class="headerlink" href="#upwind-formulation-finite-difference" title="Permalink to this headline">¶</a></h1>
-<p>pull from PCHinR</p>
+<p>Introduction to Finite-Difference Methods for Transport Modeling</p>
+<p>Transport modeling is a key component in simulating the movement of contaminants, heat, or fluids in natural systems. At the heart of many transport processes are partial differential equations (PDEs), which describe the evolution of a quantity over space and time. One of the most common methods for solving these equations numerically is the finite-difference method (FDM). This approach discretizes space and time into a grid and approximates the derivatives of the governing equations.
+Finite-Difference Method</p>
+<p>In the finite-difference method, spatial and temporal domains are discretized into small steps. The derivatives in the governing transport PDE are approximated using the differences between neighboring grid points.</p>
+<p>For example, consider the 1D advection equation (a typical transport equation):
+$<span class="math notranslate nohighlight">\(\frac{\partial C}{\partial t} = - V \frac{\partial C}{\partial x}\)</span>$</p>
+<p>where <span class="math notranslate nohighlight">\(C(x,t)\)</span> is the transported quantity (e.g., concentration), <span class="math notranslate nohighlight">\(V\)</span> is the advection velocity, and <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(x\)</span> are time and space, respectively.</p>
+<p>To solve approximate the solution using finite-difference, we could approximate the derivatives as:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial C}{\partial t} \approx \frac{C_i^{n+1} - C_i^n}{\Delta t}~\text{(time derivative, forward difference)}\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial C}{\partial x} \approx \frac{C_{i+1}^{n} - C_{i-1}^n}{2 \Delta x}~\text{(spatial derivative, centered difference)}\]</div>
+<p>However, the simple central difference approximation for the spatial derivative may lead to non-physical oscillations or instability, particularly when solving hyperbolic dominanted transport equations like the advection equation.</p>
+<div class="section" id="upwinding-in-hyperbolic-dominant-pdes">
+<h2>Upwinding in Hyperbolic-Dominant PDEs<a class="headerlink" href="#upwinding-in-hyperbolic-dominant-pdes" title="Permalink to this headline">¶</a></h2>
+<p>In transport modeling, hyperbolic PDEs (like the advection equation) describe wave propagation and are characterized by the dominance of the advection term. When solving such equations numerically, the choice of difference scheme is critical for stability and accuracy.</p>
+<p>Upwind differencing is a technique specifically designed to handle hyperbolic PDEs. The idea is to use information from the direction of the flow (upstream) to approximate the spatial derivative. This prevents the introduction of non-physical oscillations by ensuring that the finite-difference scheme respects the direction of the characteristic waves (i.e., the direction in which information propagates).
+Upwind Scheme</p>
+<p>For a simple 1D advection equation, if the flow velocity <span class="math notranslate nohighlight">\(V&gt;0\)</span> (information travels to the right), we use the backward difference to approximate the spatial derivative:
+$<span class="math notranslate nohighlight">\(\frac{\partial C}{\partial x} \approx \frac{C_{i}^{n} - C_{i-1}^n}{\Delta x}~\text{(spatial derivative, backward difference)}\)</span>$</p>
+<p>If <span class="math notranslate nohighlight">\(V&lt;0\)</span> (information travels to the left), we use the forward difference:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial C}{\partial x} \approx \frac{C_{i+1}^{n} - C_{i}^n}{\Delta x}~\text{(spatial derivative, forward difference)}\]</div>
+<p>This technique, called upwinding, introduces numerical dissipation that stabilizes the solution and prevents oscillations, but it does so at the cost of some accuracy (it can be less accurate for smooth solutions compared to central differencing).</p>
+</div>
+<div class="section" id="why-upwinding-is-important">
+<h2>Why Upwinding is Important<a class="headerlink" href="#why-upwinding-is-important" title="Permalink to this headline">¶</a></h2>
+<p>Upwinding is essential in transport modeling because most real-world problems involve advection-dominated transport, where sharp fronts or discontinuities are common (e.g., contaminant plumes or shock waves). Without upwinding, traditional finite-difference methods can result in:</p>
+<ul class="simple">
+<li><p>Non-physical oscillations: especially when trying to capture sharp gradients.</p></li>
+<li><p>Instability: numerical solutions can blow up if the scheme is not carefully designed for hyperbolic systems.</p></li>
+<li><p>Artificial diffusion: even stable solutions will have apparent added diffusion that is absent from the physical system.</p></li>
+</ul>
+<p>By incorporating upwinding, we align the numerical method with the physics of the problem, ensuring that information propagates in the correct direction, thereby stabilizing the simulation.</p>
+<p>A simple example follows to illustrate the effect of upwinding and no upwinding.</p>
+<div class="section" id="upwind-formulation">
+<h3>Upwind formulation<a class="headerlink" href="#upwind-formulation" title="Permalink to this headline">¶</a></h3>
+<p>A simple upwind formulation for 1D system is</p>
+<div class="math notranslate nohighlight">
+\[C_i^{n+1} = C_i^n + \frac{\Delta t}{\Delta x}(V_{i-1}[\frac{1}{2}(1+\frac{V_{i-1}}{|V_{i-1}|})C_{i-1}^{n}+\frac{1}{2}(1-\frac{V_{i-1}}{|V_{i-1}|})C_{i}^{n}]-V_{i}[\frac{1}{2}(1+\frac{V_{i}}{|V_{i}|})C_{i}^{n}+\frac{1}{2}(1-\frac{V_{i}}{|V_{i}|})C_{i+1}^{n}])\]</div>
+<p>The parts with the absolute value are a sneaky way to handle the upwinding automatically.</p>
+<p>As long as <span class="math notranslate nohighlight">\(V_i &lt;= \frac{\Delta t}{\Delta x}\)</span> this difference scheme is stable, it is also reasonably accurate if <span class="math notranslate nohighlight">\(V_i \approx \frac{\Delta t}{\Delta x}\)</span></p>
+<p>Below is a simple spreadsheet implementation of the explicit scheme above.</p>
+<p><img alt="" src="../../_images/UpwindExplicit.png" /></p>
+<p>In MODFLOW6 transport model, a choice of upwind (called upstream in the toolkit) tries to match internal time steps to maintain numerical stability.  As you will see in class when we run a spreadsheet example. Its impossible for perfect accuracy and stability, but it is possible to stay close.  We will see examples of numerical diffusion as we depart from the accuracy requirement.</p>
+</div>
+<div class="section" id="centered-formulation">
+<h3>Centered formulation<a class="headerlink" href="#centered-formulation" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[C_i^{n+1} = C_i^n + \frac{\Delta t}{2 \Delta x}(V_{i-1}*C_{i-1}^n - V_{i}*C_{i+1}^n)\]</div>
+<p>This scheme will exhibit substantial numerical diffusion in part because it is a non-upwind formulation.</p>
+<p>Below is a simple spreadsheet implementation of the explicit, centered in space scheme above.</p>
+<p><img alt="" src="../../_images/CenteredExplicit.png" /></p>
+<p>The spreadsheet above nicely exhibits numerical diffusion, apparent in the profile plot as well as oscillation in the time history.
+Professional tools address this phenomenon by a variety of approaches, upwinding and flux limiters being common reliable methods, a method of characteristics is another way to deal with the issue.</p>
+<p><strong>Numerical Diffusion</strong>
+When solving advection-dominated partial differential equations (PDEs) using numerical methods, one common issue is numerical diffusion (also called numerical dissipation). This artifact of the numerical scheme can significantly affect the accuracy of the solution, particularly when sharp gradients or fronts are present, as in contaminant transport or shock waves.</p>
+<p>Numerical diffusion is especially problematic in non-upwind formulations, such as those using central differencing for spatial derivatives. To understand why this happens, let’s review what numerical diffusion is and why it arises in these schemes.
+What is Numerical Diffusion?</p>
+<p>Numerical diffusion refers to the artificial smoothing or blurring of a solution in a numerical model, which leads to a loss of sharpness in the advective transport of quantities like contaminants, pollutants, or heat. This effect is not physical but arises from the discretization of the advection equation.</p>
+<p>The equation should transport <span class="math notranslate nohighlight">\(C(x,t)\)</span> without changing its waveform (if no other processes, such as diffusion or dispersion, are acting). However, many numerical schemes, particularly non-upwind methods, introduce spurious diffusion into the solution.</p>
+<p><strong>Central Differencing and Numerical Diffusion</strong></p>
+<p>One popular method for approximating the spatial derivative is central differencing which is used in the scheme just preceding. While central differencing has second-order accuracy, meaning it can provide higher accuracy for smooth solutions, it is unstable when applied to advection-dominated problems without additional stabilization mechanisms. Specifically, central differencing often leads to oscillations and numerical diffusion in the solution when dealing with sharp fronts or discontinuities.</p>
+<p><strong>Why Numerical Diffusion Occurs</strong></p>
+<p>Numerical diffusion arises from the fact that non-upwind methods, like central differencing, do not adequately account for the direction of the flow in advection-dominated problems. In these cases, the finite-difference scheme inadvertently mimics a diffusive process. This can be understood as follows:</p>
+<ul class="simple">
+<li><p>Information propagation: In hyperbolic PDEs like the advection equation, information propagates in a specific direction (determined by the sign of cc). Non-upwind methods like central differencing treat the spatial derivative symmetrically, which leads to a lack of proper alignment with the flow direction.</p></li>
+<li><p>Smoothing effect: When central differencing is used in such cases, it smooths the solution because it averages information from both directions (upstream and downstream) of the grid point. This acts similarly to a diffusion process, where sharp gradients are smeared over time.</p></li>
+</ul>
+<p><strong>Impact of Numerical Diffusion</strong></p>
+<p>Numerical diffusion is particularly problematic for sharp fronts, such as contaminant plumes, where it can cause:</p>
+<ul class="simple">
+<li><p>Excessive smoothing of the front: The sharp boundary of the plume becomes diffused over a larger area than physically expected.</p></li>
+<li><p>Loss of mass conservation: In some cases, numerical diffusion can lead to non-conservative solutions, where the total amount of the transported quantity is not accurately preserved.</p></li>
+</ul>
+<p>For example, if you are modeling the transport of a pollutant in groundwater using central differencing, the sharp concentration gradient between the polluted and unpolluted regions can be artificially blurred. This causes the plume to spread out more than it physically should.</p>
+<p><strong>Mitigating Numerical Diffusion</strong></p>
+<p>To reduce or eliminate numerical diffusion, upwinding schemes are commonly used. The upwind finite-difference method ensures that the spatial derivative is calculated using values from the upstream direction, thus preventing the unwanted smoothing that central differencing introduces. Although upwinding alone introduces some numerical dissipation, this dissipation is controlled and aligned with the flow direction, making it more suitable for advection-dominated problems.</p>
+</div>
+</div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p><a class="reference external" href="http://54.243.252.9/">Placeholder</a></p></li>
+<li><p><a class="reference external" href="https://archive.org/details/elementsofcomput0000kout">Koutitas,C.G. (1983) <em>Elements of computational hydraulics</em> Pentech Press ; New York : Distributed in the USA by Chapman and Hall </a> Link is to internet book archive.</p></li>
 <li><p><a class="reference external" href="http://54.243.252.9/">Placeholder</a></p></li>
 </ol>
 </div>
@@ -660,10 +800,10 @@
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="../12usgsmocmodel/usgsmoc.html" title="next page">
+        <a class="right-next" href="../12.01usgsmodflow6/usgsmodflow6.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">USGS MOC Software</p>
+                <p class="prevnext-title">MODFLOW6 and Python</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
