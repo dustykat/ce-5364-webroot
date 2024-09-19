@@ -26,11 +26,14 @@ chapters:
   - file: chapters/7analyticalmodels/2Dfinitewidth
   - file: chapters/7analyticalmodels/2Dfwidth-pulse
   - file: chapters/7analyticalmodels/3Dfinitearea
-- file: chapters/8reactivetransport/8reactivetransport 
+- file: chapters/8.0reactivetransport/8reactivetransport 
   sections:
-  - file: chapters/8reactivetransport/6reactions
-  - file: chapters/8reactivetransport/7decay
-  - file: chapters/7analyticalmodels/reactivemodels
+  - file: chapters/8.0reactivetransport/6reactions
+  - file: chapters/8.0reactivetransport/7decay
+- file: chapters/8.1analyticalmodels/reactivemodels
+  sections:
+  - file: chapters/8.1analyticalmodels/wilsonmiller
+  
 - file: chapters/11modelingadvection/0modelingadvection
   sections:
   - file: chapters/11modelingadvection/1particletracking
