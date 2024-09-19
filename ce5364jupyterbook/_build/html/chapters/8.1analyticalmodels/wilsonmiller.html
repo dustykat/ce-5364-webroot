@@ -674,11 +674,6 @@
    References
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#useful-code-listings">
-   Useful Code Listings
-  </a>
- </li>
 </ul>
 
             </nav>
@@ -771,7 +766,6 @@ a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the 
     <span class="n">term1</span> <span class="o">=</span> <span class="n">c_injection</span><span class="o">*</span><span class="n">q_injection</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">l_thickness</span><span class="p">)</span>
     <span class="n">term2</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d_x</span><span class="o">*</span><span class="n">d_y</span><span class="p">))</span>
     <span class="n">term3</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">x_location</span><span class="o">*</span><span class="n">velocity</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">d_x</span><span class="p">))</span>
-<span class="c1">#    term4 = leakyfn(aaa,bbb)</span>
     <span class="n">term4</span> <span class="o">=</span> <span class="n">wh</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">r</span><span class="o">/</span><span class="n">B</span><span class="p">)</span>
 
     <span class="c1">#if term4 &lt;= 0.0: term4 = 0.0</span>
@@ -793,7 +787,7 @@ a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the 
 <span class="n">l_thickness</span> <span class="o">=</span> <span class="mf">1.75</span>
 <span class="n">d_x</span> <span class="o">=</span> <span class="mf">0.920</span>
 <span class="n">d_y</span> <span class="o">=</span> <span class="mf">0.092</span>
-<span class="n">decay</span> <span class="o">=</span> <span class="mf">0.005</span> <span class="c1"># added 1st order decay</span>
+<span class="n">decay</span> <span class="o">=</span> <span class="mf">0.0024</span> <span class="c1"># added 1st order decay</span>
 <span class="n">velocity</span> <span class="o">=</span> <span class="mf">0.187</span>
 <span class="n">x_location</span> <span class="o">=</span> <span class="mi">123</span>
 <span class="n">y_location</span> <span class="o">=</span> <span class="mi">0</span>
@@ -806,7 +800,7 @@ a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concentration at x =  123  y=  0  t=  36500  =  2.539
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concentration at x =  123  y=  0  t=  36500  =  11.394
 </pre></div>
 </div>
 </div>
@@ -894,7 +888,7 @@ a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the 
 </div>
 <div class="section" id="spreadsheet-model">
 <h2>Spreadsheet Model<a class="headerlink" href="#spreadsheet-model" title="Permalink to this headline">¶</a></h2>
-<p>A spreadsheet implementation is available at <a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/HuntModel.xlsm">http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/HuntModel.xlsm</a></p>
+<p>A spreadsheet implementation is available at <a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/WilsonMillerModel.xlsm">http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/WilsonMillerModel.xlsm</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This model requires Analysis Tool Pack Add-In and the VBA Macro Enabled.</p>
@@ -946,10 +940,6 @@ def func_F(rho,tau):
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p>Hunt, B. (1978) Dispersive sources in uniform ground water flow. Journal of the Hydraulics Division, 104 (HY1), 75-85.</p></li>
-</ol>
-<!--2. [**SSANTS2.xlsm** (Excel Macro Sheet(s)) - Choose Tabsheet **2D????**](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/7analyticalmodels/SSANTS2.xlsm)-->
-<ol class="simple">
 <li><p><a class="reference external" href="https://ascelibrary.org/doi/10.1061/JYCEAJ.0004975">Wilson, J.L. and Miller, P.J. (1978) Two-dimensional plumes in uniform groundwater flow. J. Hyd. Div., ASCE, 104:503–514, 1978.</a></p></li>
 <li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/yuan_thesis/Groundwater_transport.pdf">Yuan, D, (1995)  <em>Accurate approximations for one-, two-, and three-dimensional groundwater mass transport from an exponentially decaying contaminant source.</em> MS Thesis, Department of Civil and Environmental Engineering, University of Houston. </a></p></li>
 <li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/ants_dissertation/Luke_Chuang.pdf">Chuang, Lu-Chia, (1998) <em>A guidance system for choosing analytical contaminant transport models.</em> Doctoral Dissertation, Department of Civil and Environmental Engineering, University of Houston, Houston, Texas. 222p.</a></p></li>
@@ -958,185 +948,6 @@ Open-File Report 89-56</a></p></li>
 <li><p><a class="reference external" href="https://pubs.usgs.gov/publication/twri03B7">Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow
 Techniques of Water-Resources Investigations 03-B7 (supercedes above reference)</a></p></li>
 </ol>
-</div>
-<div class="section" id="useful-code-listings">
-<h2>Useful Code Listings<a class="headerlink" href="#useful-code-listings" title="Permalink to this headline">¶</a></h2>
-<p><strong>Polynomial Approximation</strong></p>
-<p>The approximations below are coded in python, and can convert to spreadsheet using VBA fairly easily. These are based on polynomial approximations in:</p>
-<p>Abramowitz, M. and I.A. Stegun, 1964. Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables. U.S. Department of Commerce, National Bureau of Standards, Applied Mathematics Series, Vol 55.</p>
-<p>And seem to produce nearly the same results as the recursive version above.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#######################</span>
-<span class="c1"># Theis Well Function # </span>
-<span class="c1">#######################</span>
-<span class="k">def</span> <span class="nf">wellfn</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
-    <span class="kn">import</span> <span class="nn">math</span>
-    <span class="k">if</span> <span class="p">((</span><span class="n">u</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">u</span> <span class="o">&lt;=</span><span class="mi">1</span><span class="p">)):</span>
-<span class="c1"># polynomial approximation constants</span>
-        <span class="n">a0</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.57721566</span>
-        <span class="n">a1</span> <span class="o">=</span>  <span class="mf">0.99999193</span>
-        <span class="n">a2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.24991055</span>
-        <span class="n">a3</span> <span class="o">=</span>  <span class="mf">0.05519968</span>
-        <span class="n">a4</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.00976004</span>
-        <span class="n">a5</span> <span class="o">=</span>  <span class="mf">0.00107857</span>
-        <span class="n">wellfn</span> <span class="o">=</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">+</span> <span class="n">a0</span> <span class="o">+</span> <span class="n">a1</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="n">a2</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a3</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">a4</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="n">a5</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">5</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">wellfn</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="p">((</span><span class="n">u</span> <span class="o">&gt;</span><span class="mi">1</span><span class="p">)):</span>
-<span class="c1"># polynomial approximation constants</span>
-        <span class="n">a1</span> <span class="o">=</span>  <span class="mf">8.5733287401</span>
-        <span class="n">a2</span> <span class="o">=</span> <span class="mf">18.0590169730</span>
-        <span class="n">a3</span> <span class="o">=</span>  <span class="mf">8.6347608925</span>
-        <span class="n">a4</span> <span class="o">=</span>  <span class="mf">0.2677737343</span>
-        <span class="n">b1</span> <span class="o">=</span>  <span class="mf">9.5733223454</span>
-        <span class="n">b2</span> <span class="o">=</span> <span class="mf">25.6329561486</span>
-        <span class="n">b3</span> <span class="o">=</span> <span class="mf">21.0996530827</span>
-        <span class="n">b4</span> <span class="o">=</span>  <span class="mf">3.9584969228</span>
-        <span class="n">frac1</span> <span class="o">=</span> <span class="n">u</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="n">a1</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">a2</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a3</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="n">a4</span>
-        <span class="n">frac2</span> <span class="o">=</span> <span class="n">u</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="n">b1</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">b2</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b3</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="n">b4</span>
-        <span class="n">frac3</span> <span class="o">=</span> <span class="n">u</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-        <span class="n">wellfn</span> <span class="o">=</span> <span class="p">(</span><span class="n">frac1</span><span class="o">/</span><span class="n">frac2</span><span class="p">)</span><span class="o">/</span><span class="n">frac3</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">wellfn</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error in wellfn&#39;</span><span class="p">)</span>
-        <span class="n">wellfn</span> <span class="o">=</span> <span class="o">-</span><span class="mf">999.0</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">wellfn</span><span class="p">)</span>
-
-<span class="c1">#######################</span>
-<span class="c1"># Leaky Well Function #</span>
-<span class="c1">#######################</span>
-<span class="k">def</span> <span class="nf">leakyfn</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
-    <span class="kn">import</span> <span class="nn">math</span>
-    <span class="kn">import</span> <span class="nn">numpy</span>
-    <span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">kn</span> <span class="k">as</span> <span class="n">besselK</span>
-    <span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">iv</span> <span class="k">as</span> <span class="n">besselI</span>
-<span class="c1"># finite series recursion constants</span>
-    <span class="n">c12</span> <span class="o">=</span>  <span class="mf">0.0277777777777778</span>
-<span class="c1">#</span>
-    <span class="n">c14</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.00347222222222222</span>
-    <span class="n">c15</span> <span class="o">=</span>  <span class="mf">0.00173611111111111</span>
-<span class="c1">#</span>
-    <span class="n">c17</span> <span class="o">=</span>  <span class="mf">0.000416666666666667</span>
-    <span class="n">c18</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.000138888888888889</span>
-    <span class="n">c19</span> <span class="o">=</span>  <span class="mf">0.0000694444444444444</span>
-<span class="c1">#</span>
-    <span class="n">c21</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.0000462962962962963</span>
-    <span class="n">c22</span> <span class="o">=</span>  <span class="mf">0.0000115740740740741</span>
-    <span class="n">c23</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.85802469135802E-06</span>
-    <span class="n">c24</span> <span class="o">=</span>  <span class="mf">1.92901234567901E-06</span>
-<span class="c1">#</span>
-    <span class="n">c26</span> <span class="o">=</span>  <span class="mf">4.72411186696901E-06</span>
-    <span class="n">c27</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.44822373393802E-07</span>
-    <span class="n">c28</span> <span class="o">=</span>  <span class="mf">2.3620559334845E-07</span>
-    <span class="n">c29</span> <span class="o">=</span> <span class="o">-</span><span class="mf">7.87351977828168E-08</span>
-    <span class="n">c30</span> <span class="o">=</span>  <span class="mf">3.93675988914084E-08</span>
-<span class="c1">#</span>
-    <span class="n">c32</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.42885487528345E-07</span>
-    <span class="n">c33</span> <span class="o">=</span>  <span class="mf">7.38142479213908E-08</span>
-    <span class="n">c34</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.47628495842782E-08</span>
-    <span class="n">c35</span> <span class="o">=</span>  <span class="mf">3.69071239606954E-09</span>
-    <span class="n">c36</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.23023746535651E-09</span>
-    <span class="n">c37</span> <span class="o">=</span>  <span class="mf">6.15118732678257E-10</span>
-<span class="c1">#</span>
-<span class="c1"># entry point </span>
-    <span class="n">a3</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span>  
-<span class="c1"># if leakance term is negligible, then return well function</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">a3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
-        <span class="n">leakyfn</span> <span class="o">=</span> <span class="n">wellfn</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
-<span class="c1"># if leakance/time term is large enough, then return besselKo</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">a3</span><span class="o">/</span><span class="n">u</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">:</span>
-        <span class="n">leakyfn</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">besselK</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
-<span class="c1">#  }</span>
-<span class="c1"># finite series approximation for u&gt;1, v&lt;=2</span>
-    <span class="k">if</span> <span class="p">((</span><span class="n">u</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">v</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">))</span> <span class="p">:</span>
-    <span class="c1"># recursion terms built by-hand (ported from SSANTS)</span>
-        <span class="n">g11</span> <span class="o">=</span> <span class="n">c12</span><span class="o">*</span><span class="n">a3</span>
-        <span class="n">g12</span> <span class="o">=</span> <span class="n">c14</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-        <span class="n">g21</span> <span class="o">=</span> <span class="n">c15</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">g22</span> <span class="o">=</span> <span class="n">c17</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">g23</span> <span class="o">=</span> <span class="n">c18</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-        <span class="n">g31</span> <span class="o">=</span> <span class="n">c19</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
-        <span class="n">g32</span> <span class="o">=</span> <span class="n">c21</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
-        <span class="n">g33</span> <span class="o">=</span> <span class="n">c22</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">g34</span> <span class="o">=</span> <span class="n">c23</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-        <span class="n">g41</span> <span class="o">=</span> <span class="n">c24</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
-        <span class="n">g42</span> <span class="o">=</span> <span class="n">c26</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
-        <span class="n">g43</span> <span class="o">=</span> <span class="n">c27</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
-        <span class="n">g44</span> <span class="o">=</span> <span class="n">c28</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">g45</span> <span class="o">=</span> <span class="n">c29</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-        <span class="n">g51</span> <span class="o">=</span> <span class="n">c30</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
-        <span class="n">g52</span> <span class="o">=</span> <span class="n">c32</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
-        <span class="n">g53</span> <span class="o">=</span> <span class="n">c33</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
-        <span class="n">g54</span> <span class="o">=</span> <span class="n">c34</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
-        <span class="n">g55</span> <span class="o">=</span> <span class="n">c35</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">g56</span> <span class="o">=</span> <span class="n">c36</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-        <span class="n">g61</span> <span class="o">=</span> <span class="n">c37</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span>
-    <span class="c1"># sum them up!</span>
-        <span class="n">a34list</span> <span class="o">=</span> <span class="p">[</span><span class="n">g11</span><span class="p">,</span><span class="n">g12</span><span class="p">,</span><span class="n">g21</span><span class="p">,</span><span class="n">g22</span><span class="p">,</span><span class="n">g23</span><span class="p">,</span><span class="n">g31</span><span class="p">,</span><span class="n">g32</span><span class="p">,</span><span class="n">g33</span><span class="p">,</span><span class="n">g34</span><span class="p">,</span><span class="n">g41</span><span class="p">,</span><span class="n">g42</span><span class="p">,</span><span class="n">g43</span><span class="p">,</span><span class="n">g44</span><span class="p">,</span><span class="n">g45</span><span class="p">,</span><span class="n">g51</span><span class="p">,</span><span class="n">g52</span><span class="p">,</span><span class="n">g53</span><span class="p">,</span><span class="n">g54</span><span class="p">,</span><span class="n">g55</span><span class="p">,</span><span class="n">g56</span><span class="p">,</span><span class="n">g61</span><span class="p">]</span>
-        <span class="n">a34</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a34list</span><span class="p">)</span>
-        <span class="n">a35</span> <span class="o">=</span> <span class="n">a34</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">u</span><span class="p">)</span>
-        <span class="n">a36</span> <span class="o">=</span> <span class="n">a3</span><span class="o">/</span><span class="n">u</span>
-        <span class="n">a37</span> <span class="o">=</span> <span class="n">besselI</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">a38</span> <span class="o">=</span> <span class="n">wellfn</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">a37</span>
-        <span class="n">a39</span> <span class="o">=</span> <span class="mf">0.5772</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a36</span><span class="p">)</span> <span class="o">+</span> <span class="n">wellfn</span><span class="p">(</span><span class="n">a36</span><span class="p">)</span> <span class="o">-</span> <span class="n">a36</span> <span class="o">+</span><span class="p">(</span><span class="n">besselI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">u</span>
-        <span class="n">a40</span> <span class="o">=</span> <span class="n">a39</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">u</span><span class="p">)</span>
-        <span class="n">leakyfn</span> <span class="o">=</span> <span class="n">a38</span> <span class="o">-</span> <span class="n">a40</span> <span class="o">+</span> <span class="n">a35</span>
-        <span class="n">leakyfn</span><span class="o">=</span><span class="nb">abs</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
-<span class="c1"># finite series approximation for u&lt;=1, v&lt;=2</span>
-    <span class="k">if</span> <span class="p">((</span><span class="n">u</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">v</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">))</span> <span class="p">:</span>
-    <span class="c1"># recursion terms built by-hand (ported from SSANTS)</span>
-        <span class="n">g11</span> <span class="o">=</span> <span class="n">c12</span><span class="o">*</span><span class="n">a3</span>
-        <span class="n">g12</span> <span class="o">=</span> <span class="n">c14</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">g21</span> <span class="o">=</span> <span class="n">c15</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">g22</span> <span class="o">=</span> <span class="n">c17</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">g23</span> <span class="o">=</span> <span class="n">c18</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">g31</span> <span class="o">=</span> <span class="n">c19</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
-        <span class="n">g32</span> <span class="o">=</span> <span class="n">c21</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">3</span><span class="p">)</span>
-        <span class="n">g33</span> <span class="o">=</span> <span class="n">c22</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">g34</span> <span class="o">=</span> <span class="n">c23</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">g41</span> <span class="o">=</span> <span class="n">c24</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
-        <span class="n">g42</span> <span class="o">=</span> <span class="n">c26</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">4</span><span class="p">)</span>
-        <span class="n">g43</span> <span class="o">=</span> <span class="n">c27</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">3</span><span class="p">)</span>
-        <span class="n">g44</span> <span class="o">=</span> <span class="n">c28</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">g45</span> <span class="o">=</span> <span class="n">c29</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">g51</span> <span class="o">=</span> <span class="n">c30</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
-        <span class="n">g52</span> <span class="o">=</span> <span class="n">c32</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">5</span><span class="p">)</span>
-        <span class="n">g53</span> <span class="o">=</span> <span class="n">c33</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">4</span><span class="p">)</span>
-        <span class="n">g54</span> <span class="o">=</span> <span class="n">c34</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">3</span><span class="p">)</span>
-        <span class="n">g55</span> <span class="o">=</span> <span class="n">c35</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">g56</span> <span class="o">=</span> <span class="n">c36</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">g61</span> <span class="o">=</span> <span class="n">c37</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span>
-    <span class="c1"># sum them up!  </span>
-        <span class="n">a70list</span> <span class="o">=</span> <span class="p">[</span><span class="n">g11</span><span class="p">,</span><span class="n">g12</span><span class="p">,</span><span class="n">g21</span><span class="p">,</span><span class="n">g22</span><span class="p">,</span><span class="n">g23</span><span class="p">,</span><span class="n">g31</span><span class="p">,</span><span class="n">g32</span><span class="p">,</span><span class="n">g33</span><span class="p">,</span><span class="n">g34</span><span class="p">,</span><span class="n">g41</span><span class="p">,</span><span class="n">g42</span><span class="p">,</span><span class="n">g43</span><span class="p">,</span><span class="n">g44</span><span class="p">,</span><span class="n">g45</span><span class="p">,</span><span class="n">g51</span><span class="p">,</span><span class="n">g52</span><span class="p">,</span><span class="n">g53</span><span class="p">,</span><span class="n">g54</span><span class="p">,</span><span class="n">g55</span><span class="p">,</span><span class="n">g56</span><span class="p">,</span><span class="n">g61</span><span class="p">]</span>
-        <span class="n">a70</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a70list</span><span class="p">)</span>
-        <span class="n">a71</span> <span class="o">=</span> <span class="n">u</span><span class="o">*</span><span class="n">a70</span>
-        <span class="n">a72</span> <span class="o">=</span> <span class="n">a3</span><span class="o">/</span><span class="n">u</span>
-        <span class="n">a73</span> <span class="o">=</span> <span class="mf">0.5772</span><span class="o">+</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">+</span><span class="n">wellfn</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">-</span><span class="n">u</span><span class="o">+</span><span class="p">(</span><span class="n">besselI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">a72</span><span class="p">)</span>
-        <span class="n">a74</span> <span class="o">=</span> <span class="n">a73</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a72</span><span class="p">)</span>
-        <span class="n">a75</span> <span class="o">=</span> <span class="n">besselI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">wellfn</span><span class="p">(</span><span class="n">a72</span><span class="p">)</span>
-        <span class="n">a76</span> <span class="o">=</span> <span class="n">a75</span> <span class="o">-</span> <span class="n">a74</span> <span class="o">+</span> <span class="n">a71</span>
-        <span class="n">a77</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">besselK</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
-        <span class="n">leakyfn</span> <span class="o">=</span> <span class="p">(</span><span class="n">a77</span><span class="o">-</span><span class="n">a76</span><span class="p">)</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
-<span class="c1"># approximation for v &gt; 2</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">v</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">:</span>
-        <span class="n">term1</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">v</span><span class="p">))</span>
-        <span class="n">term2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">v</span><span class="p">)</span>
-        <span class="n">term3</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">v</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
-        <span class="n">term4</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">erfc</span><span class="p">(</span><span class="n">term3</span><span class="p">)</span>
-        <span class="n">leakyfn</span> <span class="o">=</span> <span class="n">term1</span><span class="o">*</span><span class="n">term2</span><span class="o">*</span><span class="n">term4</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error in leakyfn&#39;</span><span class="p">)</span>
-        <span class="n">leakyfn</span> <span class="o">=</span> <span class="o">-</span><span class="mf">999.0</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 
