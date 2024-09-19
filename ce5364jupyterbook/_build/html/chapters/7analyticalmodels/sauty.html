@@ -255,8 +255,8 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../12usgsmocmodel/usgsmoc.html">
-   USGS MOC Software
+  <a class="reference internal" href="../12.01usgsmodflow6/usgsmodflow6.html">
+   MODFLOW6 and Python
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -265,18 +265,23 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/winmoc.html">
-     Windows Build
+    <a class="reference internal" href="../12.01usgsmodflow6/flowmodel1.html">
+     Steady Flow, Single Layer Aquifer
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/armmoc.html">
-     ARM7/AARCH 64 Build
+    <a class="reference internal" href="../12.01usgsmodflow6/flowmodel2.html">
+     Transient Flow, Single Layer Aquifer
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/dprw.html">
-     Discrete Particle Random Walk (Future Semester)
+    <a class="reference internal" href="../12.01usgsmodflow6/flowmodel3.html">
+     Transient Flow, Mulitple-Layer Aquifer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12.01usgsmodflow6/transportmodel1.html">
+     Transport Model using MT3DMS Problem 9 Example
     </a>
    </li>
   </ul>
@@ -491,6 +496,38 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../99legacy/99legacy.html">
+   Legacy Content
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../99legacy/12usgsmocmodel/usgsmoc.html">
+     USGS MOC Software
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../99legacy/12usgsmocmodel/winmoc.html">
+     Windows Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../99legacy/12usgsmocmodel/armmoc.html">
+     ARM7/AARCH 64 Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../99legacy/12usgsmocmodel/dprw.html">
+     Discrete Particle Random Walk (Future Semester)
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </div>
@@ -601,8 +638,18 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spreadsheet-model">
+   Spreadsheet Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#concentration-history">
    Concentration History
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Spreadsheet Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -704,6 +751,10 @@ The figure below depicts the physical system, and the analytical model system at
 </div>
 </div>
 </div>
+<div class="section" id="spreadsheet-model">
+<h2>Spreadsheet Model<a class="headerlink" href="#spreadsheet-model" title="Permalink to this headline">¶</a></h2>
+<p>A spreadsheet implementation is available at <a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyProfile.xlsx">http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyProfile.xlsx</a></p>
+</div>
 <div class="section" id="concentration-history">
 <h2>Concentration History<a class="headerlink" href="#concentration-history" title="Permalink to this headline">¶</a></h2>
 <p>Its also quite reasonable to build a history (concentration versus time at some location) - the script is practically the same, except time is the variable instead of space.</p>
@@ -765,10 +816,13 @@ The figure below depicts the physical system, and the analytical model system at
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sauty_4_0.png" src="../../_images/sauty_4_0.png" />
+<img alt="../../_images/sauty_5_0.png" src="../../_images/sauty_5_0.png" />
 </div>
 </div>
-<p>A spreadsheet implementation is available below in the references.</p>
+</div>
+<div class="section" id="id1">
+<h2>Spreadsheet Model<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>A spreadsheet implementation is available at <a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyHistory.xlsx">http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyHistory.xlsx</a></p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>

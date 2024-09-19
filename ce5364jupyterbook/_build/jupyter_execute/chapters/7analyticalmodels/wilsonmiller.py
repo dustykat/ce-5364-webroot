@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 2D Plume in Regional Flow (Hunt Solution)
+# # 2D Plume in Regional Flow with 1st-Order Decay (Wilson and Miller Solution)
 # 
 # The sketch depicts a vertical line source in an aquifer of infinite extent located at (x,y)=(0,0) some time after constant injection has begun. 
 # 
@@ -13,17 +13,31 @@
 # $$C(\pm \infty,\pm \infty,t)=0$$
 # $$\int_{- \infty}^{\infty}\int_{-\infty}^{\infty}C(x,y,t)dxdy = C_0 Q t$$
 # 
-# A solution obtained by time-convolution of an elementary line source solution (Hunt, 1978) is 
+# A solution obtained by time-convolution of an elementary line source solution with 1st order decay term is (Wilson and Miller, 1978) is 
 # 
-# $$C(x,y,t) = \frac{C_0 Q}{4 \pi n L}\frac{1}{\sqrt{D_x D_y}}exp(\frac{x v}{2 D_x})W(a,b)$$
+# $$C(x,y,t) = \frac{C_0 Q}{4 \pi n L}\frac{1}{\sqrt{D_x D_y}}exp(\frac{x v}{2 D_x})W(u,\frac{r}{B})$$
 # 
-# where $W(a,b)$ is the leaky aquifer (Hantush) well function with
+# where $W(u,\frac{r}{B})$ is the leaky aquifer (Hantush) well function with
 # 
-# $$a=\frac{(x^2+y^2(\frac{D_x}{D_y}))}{4 D_x t}$$
+# $$B=\frac{2D_x}{v}$$
 # 
-# $$b=\frac{\sqrt{(x^2+y^2(\frac{D_x}{D_y})}}{2D_x}$$
+# $$d=1+\frac{2B\lambda}{v}$$
 # 
-# The solution is presented in (Bear, 1972) as a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the integration routine); Hunt (1978) noticed that the integral was the leaky well function with appropriate substitutions and completed the solution.
+# $$r= {\sqrt{(x^2+y^2\frac{D_x}{D_y})d}}$$
+# 
+# $$u=\frac{r^2}{4 d D_x t}$$
+# 
+# 
+# 
+# 
+
+# The solution is presented in (Bear and Cheng, 2010) as 
+# 
+# ![](wilsonmiller2.png)
+# ![](wilsonmiller1.png)
+# a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the integration routine); Hunt (1978) noticed that the integral was the leaky well function with appropriate substitutions and completed the solution.
+
+# 
 
 # The leaky aquifer function can be evaluated numerically using a recursive definition, or efficient approximations can be used. Listings for these approximations appear below after the references
 # 
@@ -243,6 +257,7 @@ ax.set_title('Concentration Map at Elapsed Time '+ str(round(time,1))+' days');
 # 
 # 1. Hunt, B. (1978) Dispersive sources in uniform ground water flow. Journal of the Hydraulics Division, 104 (HY1), 75-85. 
 # <!--2. [**SSANTS2.xlsm** (Excel Macro Sheet(s)) - Choose Tabsheet **2D????**](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/7analyticalmodels/SSANTS2.xlsm)-->
+# 1. [Wilson, J.L. and Miller, P.J. (1978) Two-dimensional plumes in uniform groundwater flow. J. Hyd. Div., ASCE, 104:503–514, 1978.](https://ascelibrary.org/doi/10.1061/JYCEAJ.0004975)
 # 3. [Yuan, D, (1995)  *Accurate approximations for one-, two-, and three-dimensional groundwater mass transport from an exponentially decaying contaminant source.* MS Thesis, Department of Civil and Environmental Engineering, University of Houston. ](http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/yuan_thesis/Groundwater_transport.pdf)
 # 4. [Chuang, Lu-Chia, (1998) *A guidance system for choosing analytical contaminant transport models.* Doctoral Dissertation, Department of Civil and Environmental Engineering, University of Houston, Houston, Texas. 222p.](http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/ants_dissertation/Luke_Chuang.pdf)
 # 5. [Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow

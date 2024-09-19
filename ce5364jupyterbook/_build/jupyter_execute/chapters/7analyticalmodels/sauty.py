@@ -86,6 +86,10 @@ plt.close('all') # needed when plt.show call not invoked, optional here
 #sys.exit() # used to elegant exit for CGI-BIN use
 
 
+# ## Spreadsheet Model
+# 
+# A spreadsheet implementation is available at [http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyProfile.xlsx](http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyProfile.xlsx)
+
 # ## Concentration History
 # 
 # Its also quite reasonable to build a history (concentration versus time at some location) - the script is practically the same, except time is the variable instead of space.
@@ -147,8 +151,10 @@ plt.close('all') # needed when plt.show call not invoked, optional here
 #sys.exit() # used to elegant exit for CGI-BIN use
 
 
-# A spreadsheet implementation is available below in the references.
+# ## Spreadsheet Model
 # 
+# A spreadsheet implementation is available at [http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyHistory.xlsx](http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyHistory.xlsx)
+
 # ## References
 # 
 # 1. [Sauty, J. (1980). “An analysis of hydrodispersive transfer in aquifers.” Water Resour. Res., 16(1), 145–158. ](https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/wr016i001p00145) 

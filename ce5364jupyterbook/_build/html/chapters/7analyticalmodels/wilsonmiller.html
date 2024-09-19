@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2D Plume in Regional Flow (Hunt Solution) &#8212; Groundwater Transport Phenomena</title>
+    <title>2D Plume in Regional Flow with 1st-Order Decay (Wilson and Miller Solution) &#8212; Groundwater Transport Phenomena</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -53,8 +53,6 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Domenico-Robbins Solutions" href="domenico.html" />
-    <link rel="prev" title="1D Sauty Solution" href="sauty.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -95,7 +93,7 @@
   </a>
  </li>
 </ul>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../0introduction/0introduction.html">
    Introduction
@@ -153,16 +151,16 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="analyticalmodels.html">
    Analytical Models
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="impulse.html">
      1D Impulse (Instantaneous Source) Solution
@@ -178,8 +176,8 @@
      1D Sauty Solution
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="huntsolution.html">
      2D Plume in Regional Flow (Hunt Solution)
     </a>
    </li>
@@ -569,7 +567,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/chapters/7analyticalmodels/huntsolution.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/chapters/7analyticalmodels/wilsonmiller.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -589,7 +587,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/7analyticalmodels/huntsolution.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/7analyticalmodels/wilsonmiller.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -610,7 +608,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/7analyticalmodels/huntsolution.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/7analyticalmodels/wilsonmiller.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -678,8 +676,8 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="d-plume-in-regional-flow-hunt-solution">
-<h1>2D Plume in Regional Flow (Hunt Solution)<a class="headerlink" href="#d-plume-in-regional-flow-hunt-solution" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="d-plume-in-regional-flow-with-1st-order-decay-wilson-and-miller-solution">
+<h1>2D Plume in Regional Flow with 1st-Order Decay (Wilson and Miller Solution)<a class="headerlink" href="#d-plume-in-regional-flow-with-1st-order-decay-wilson-and-miller-solution" title="Permalink to this headline">¶</a></h1>
 <p>The sketch depicts a vertical line source in an aquifer of infinite extent located at (x,y)=(0,0) some time after constant injection has begun.</p>
 <p><img alt="" src="../../_images/huntsetup.png" /></p>
 <p>For the line source (injection well) whose fluid contribution makes negligible impact on the local hydraulics as depicted in the sketch the initial, boundary, and mass conservation conditions are:</p>
@@ -689,15 +687,22 @@
 \[C(\pm \infty,\pm \infty,t)=0\]</div>
 <div class="math notranslate nohighlight">
 \[\int_{- \infty}^{\infty}\int_{-\infty}^{\infty}C(x,y,t)dxdy = C_0 Q t\]</div>
-<p>A solution obtained by time-convolution of an elementary line source solution (Hunt, 1978) is</p>
+<p>A solution obtained by time-convolution of an elementary line source solution with 1st order decay term is (Wilson and Miller, 1978) is</p>
 <div class="math notranslate nohighlight">
-\[C(x,y,t) = \frac{C_0 Q}{4 \pi n L}\frac{1}{\sqrt{D_x D_y}}exp(\frac{x v}{2 D_x})W(a,b)\]</div>
-<p>where <span class="math notranslate nohighlight">\(W(a,b)\)</span> is the leaky aquifer (Hantush) well function with</p>
+\[C(x,y,t) = \frac{C_0 Q}{4 \pi n L}\frac{1}{\sqrt{D_x D_y}}exp(\frac{x v}{2 D_x})W(u,\frac{r}{B})\]</div>
+<p>where <span class="math notranslate nohighlight">\(W(u,\frac{r}{B})\)</span> is the leaky aquifer (Hantush) well function with</p>
 <div class="math notranslate nohighlight">
-\[a=\frac{(x^2+y^2(\frac{D_x}{D_y}))}{4 D_x t}\]</div>
+\[B=\frac{2D_x}{v}\]</div>
 <div class="math notranslate nohighlight">
-\[b=\frac{\sqrt{(x^2+y^2(\frac{D_x}{D_y})}}{2D_x}\]</div>
-<p>The solution is presented in (Bear, 1972) as a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the integration routine); Hunt (1978) noticed that the integral was the leaky well function with appropriate substitutions and completed the solution.</p>
+\[d=1+\frac{2B\lambda}{v}\]</div>
+<div class="math notranslate nohighlight">
+\[r= {\sqrt{(x^2+y^2\frac{D_x}{D_y})d}}\]</div>
+<div class="math notranslate nohighlight">
+\[u=\frac{r^2}{4 d D_x t}\]</div>
+<p>The solution is presented in (Bear and Cheng, 2010) as</p>
+<p><img alt="" src="../../_images/wilsonmiller2.png" />
+<img alt="" src="../../_images/wilsonmiller1.png" />
+a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the integration routine); Hunt (1978) noticed that the integral was the leaky well function with appropriate substitutions and completed the solution.</p>
 <p>The leaky aquifer function can be evaluated numerically using a recursive definition, or efficient approximations can be used. Listings for these approximations appear below after the references</p>
 <p>The solution is applicable for porous media flow, where the velocity (below) is the mean section velocity (seepage velocity divided by the porosity). The solution can also be used with streams and pipes (porosity = 1). Negative values of distance in x-axis would correspond to locations upgradient of the injection location.</p>
 <p>Scripts to generate solutions are listed below:</p>
@@ -867,7 +872,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/huntsolution_9_0.png" src="../../_images/huntsolution_9_0.png" />
+<img alt="../../_images/wilsonmiller_11_0.png" src="../../_images/wilsonmiller_11_0.png" />
 </div>
 </div>
 </div>
@@ -929,6 +934,7 @@ def func_F(rho,tau):
 </ol>
 <!--2. [**SSANTS2.xlsm** (Excel Macro Sheet(s)) - Choose Tabsheet **2D????**](http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/7analyticalmodels/SSANTS2.xlsm)-->
 <ol class="simple">
+<li><p><a class="reference external" href="https://ascelibrary.org/doi/10.1061/JYCEAJ.0004975">Wilson, J.L. and Miller, P.J. (1978) Two-dimensional plumes in uniform groundwater flow. J. Hyd. Div., ASCE, 104:503–514, 1978.</a></p></li>
 <li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/yuan_thesis/Groundwater_transport.pdf">Yuan, D, (1995)  <em>Accurate approximations for one-, two-, and three-dimensional groundwater mass transport from an exponentially decaying contaminant source.</em> MS Thesis, Department of Civil and Environmental Engineering, University of Houston. </a></p></li>
 <li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/ants_dissertation/Luke_Chuang.pdf">Chuang, Lu-Chia, (1998) <em>A guidance system for choosing analytical contaminant transport models.</em> Doctoral Dissertation, Department of Civil and Environmental Engineering, University of Houston, Houston, Texas. 222p.</a></p></li>
 <li><p><a class="reference external" href="https://pubs.usgs.gov/publication/ofr8956">Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow
@@ -1147,24 +1153,6 @@ Techniques of Water-Resources Investigations 03-B7 (supercedes above reference)<
 
 <div class='prev-next-bottom'>
     
-    <div id="prev">
-        <a class="left-prev" href="sauty.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">1D Sauty Solution</p>
-            </div>
-        </a>
-    </div>
-     <div id="next">
-        <a class="right-next" href="domenico.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Domenico-Robbins Solutions</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
 
 </div>
         
