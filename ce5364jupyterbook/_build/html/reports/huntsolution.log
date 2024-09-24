@@ -1,0 +1,54 @@
+Traceback (most recent call last):
+  File "/opt/jupyterhub/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/client.py", line 1087, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/client.py", line 540, in async_execute
+    await self.async_execute_cell(
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/client.py", line 832, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/opt/jupyterhub/lib/python3.8/site-packages/nbclient/client.py", line 740, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# inputs
+c_injection = 133
+q_injection = 3.66
+l_thickness = 1.75
+d_x = 0.920
+d_y = 0.00092
+velocity = 0.187
+x_location = 123
+y_location = 0
+time = 365000
+scale = c_injection*q_injection
+output = chunt(c_injection,q_injection,l_thickness,d_x,d_y,velocity,x_location,y_location,time)
+print("Concentration at x = ",round(x_location,2)," y= ",round(y_location,2) ," t= ",round(time,2) ," = ",round(output,3))
+#
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-3-9e0b9105f03f>[0m in [0;36m<module>[0;34m[0m
+[1;32m     10[0m [0mtime[0m [0;34m=[0m [0;36m365000[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     11[0m [0mscale[0m [0;34m=[0m [0mc_injection[0m[0;34m*[0m[0mq_injection[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 12[0;31m [0moutput[0m [0;34m=[0m [0mchunt[0m[0;34m([0m[0mc_injection[0m[0;34m,[0m[0mq_injection[0m[0;34m,[0m[0ml_thickness[0m[0;34m,[0m[0md_x[0m[0;34m,[0m[0md_y[0m[0;34m,[0m[0mvelocity[0m[0;34m,[0m[0mx_location[0m[0;34m,[0m[0my_location[0m[0;34m,[0m[0mtime[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     13[0m [0mprint[0m[0;34m([0m[0;34m"Concentration at x = "[0m[0;34m,[0m[0mround[0m[0;34m([0m[0mx_location[0m[0;34m,[0m[0;36m2[0m[0;34m)[0m[0;34m,[0m[0;34m" y= "[0m[0;34m,[0m[0mround[0m[0;34m([0m[0my_location[0m[0;34m,[0m[0;36m2[0m[0;34m)[0m [0;34m,[0m[0;34m" t= "[0m[0;34m,[0m[0mround[0m[0;34m([0m[0mtime[0m[0;34m,[0m[0;36m2[0m[0;34m)[0m [0;34m,[0m[0;34m" = "[0m[0;34m,[0m[0mround[0m[0;34m([0m[0moutput[0m[0;34m,[0m[0;36m3[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     14[0m [0;31m#[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m<ipython-input-2-a5735aaaefc0>[0m in [0;36mchunt[0;34m(c_injection, q_injection, l_thickness, d_x, d_y, velocity, x_location, y_location, time)[0m
+[1;32m      9[0m     [0mterm2[0m [0;34m=[0m [0;36m1.0[0m[0;34m/[0m[0;34m([0m[0mmath[0m[0;34m.[0m[0msqrt[0m[0;34m([0m[0md_x[0m[0;34m*[0m[0md_y[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     10[0m     [0mterm3[0m [0;34m=[0m [0mmath[0m[0;34m.[0m[0mexp[0m[0;34m([0m[0;34m([0m[0mx_location[0m[0;34m*[0m[0mvelocity[0m[0;34m)[0m[0;34m/[0m[0;34m([0m[0;36m2.0[0m[0;34m*[0m[0md_x[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 11[0;31m     [0mterm4[0m [0;34m=[0m [0mleakyfn[0m[0;34m([0m[0maaa[0m[0;34m,[0m[0mbbb[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     12[0m [0;31m#    term4 = wh(aaa,bbb)[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     13[0m [0;34m[0m[0m
+
+[0;31mNameError[0m: name 'leakyfn' is not defined
+NameError: name 'leakyfn' is not defined
+

@@ -774,16 +774,16 @@
 <p>The adsorbtion/desorbtion reaction(s) are incorporated into the transport equation as a source/sink term:</p>
 <div class="math notranslate nohighlight">
 \[\frac{\partial C}{\partial t} + \frac{\rho_b}{n} \frac{\partial C_{solid}}{\partial t} =  \frac{\partial}{\partial x} D_x \frac{\partial C}{\partial x} - v_x \frac{\partial C}{\partial x}\]</div>
-<p>If the linear isotherm applies a simple substitution of the <span class="math notranslate nohighlight">\(K_d\)</span> gives</p>
+<p>If the linear isotherm applies, and the reaction is considered “fast” a simple substitution of the <span class="math notranslate nohighlight">\(K_d\)</span> gives</p>
 <div class="math notranslate nohighlight">
 \[\frac{\partial C}{\partial t} + \frac{\rho_b}{n} K_d \frac{\partial C}{\partial t} =  \frac{\partial}{\partial x} D_x \frac{\partial C}{\partial x} - v_x \frac{\partial C}{\partial x}\]</div>
 <p>And renaming the term <span class="math notranslate nohighlight">\(1 + \frac{\rho_b}{n} K_d = R\)</span> (the retardation factor) the result is</p>
 <div class="math notranslate nohighlight">
 \[R \frac{\partial C}{\partial t} =  \frac{\partial}{\partial x} D_x \frac{\partial C}{\partial x} - v_x \frac{\partial C}{\partial x}\]</div>
-<p>Conceptually, the retardation factor is a fundamental parameter in hydrogeology and groundwater transport modeling. It represents the ratio of the average groundwater velocity to the average solute velocity within an aquifer. More precisely, it quantifies how much slower a solute moves through the subsurface due to interactions with the solid materials (e.g., soil or rock) and the fluid (groundwater) in the aquifer.</p>
+<p>Conceptually, the retardation factor (retardation coefficient) is a fundamental parameter in hydrogeology and groundwater transport modeling. It represents the <strong>ratio</strong> of the average <strong>groundwater velocity</strong> to the average <strong>solute velocity</strong> within an aquifer. More precisely, it quantifies how much slower a solute moves through the subsurface due to interactions with the solid materials (e.g., soil or rock) and the fluid (groundwater) in the aquifer.</p>
 <p>The retardation factor is a critical concept when assessing the transport of contaminants in groundwater. When the retardation factor is greater than one, it indicates that the solute is retarded or delayed in its movement through the aquifer due to sorption or other reactive processes, reducing its mobility. On the other hand, when the retardation factor is less than one (colloids exhibit such behavior - its called hydrodynamic chromatography, it also occurs in low ionic strength solutions or with charged ions of same charge as the solid surface), it suggests that the solute moves more quickly than the groundwater, potentially increasing its transport distance.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p>Understanding the retardation factor is essential for predicting the movement and dispersion of contaminants, designing effective groundwater remediation strategies, and assessing the risk of groundwater contamination. It plays a pivotal role in characterizing the complex interplay between solute transport and subsurface geochemistry.</p>
 </div>
 </div>
@@ -812,6 +812,7 @@
 <li><p><span class="math notranslate nohighlight">\(H_c\)</span> is Henry’s law for the compound (kind of Raoult’s law extended throughout the domain</p></li>
 <li><p><span class="math notranslate nohighlight">\(P_c\)</span> is the partial pressure of the compound in the gas phase.</p></li>
 </ul>
+<p><img alt="" src="../../_images/Henrys-law.png" /></p>
 <p>Henry’s Law is a fundamental principle that quantifies the relationship between the concentration of a volatile compound in the gas phase and its concentration in the water phase at equilibrium. It states that the concentration of a gas in the air is directly proportional to its concentration in the water and is governed by a proportionality constant called Henry’s constant. Henry’s Law is valuable in predicting the volatilization of contaminants from groundwater, as it helps estimate the extent to which a substance will partition into the vapor phase based on its solubility in water.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -837,6 +838,8 @@
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/adsorption_1.pdf">Cleveland, T.G. (1998) <em>Adsorbtion</em> Notes to accompany <em>“CIVE 7332 Flow and Transport Modeling for Environmental Engineering” at University of Houston</em></a></p></li>
+<li><p><a class="reference external" href="https://www.chemistrylearner.com/henrys-law.html">https://www.chemistrylearner.com/henrys-law.html</a></p></li>
+<li><p><a class="reference external" href="https://ngwa.onlinelibrary.wiley.com/doi/abs/10.1111/j.1745-6584.1996.tb02059.x">Washington, J.W. (1996), Gas Partitioning of Dissolved Volatile Organic Compounds in the Vadose Zone: Principles, Temperature Effects and Literature Review. Groundwater, 34: 709-718. https://doi.org/10.1111/j.1745-6584.1996.tb02059.x</a></p></li>
 </ol>
 </div>
 </div>

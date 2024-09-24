@@ -86,7 +86,11 @@ def chunt(c_injection,q_injection,l_thickness,d_x,d_y,velocity,x_location,y_loca
 
     #if term4 <= 0.0: term4 = 0.0
 #    print(term1,term2,term3,term4)
-    chunt = term1*term2*term3*term4
+    if term1*term2*term3*term4 <=0.0:
+        temp = 0.0
+    else:
+        temp = term1*term2*term3*term4
+    chunt = temp
     return chunt
 
 
@@ -104,7 +108,7 @@ d_y = 0.092
 velocity = 0.187
 x_location = 123
 y_location = 0
-time = 36500
+time = 365000
 scale = c_injection*q_injection
 output = chunt(c_injection,q_injection,l_thickness,d_x,d_y,velocity,x_location,y_location,time)
 print("Concentration at x = ",round(x_location,2)," y= ",round(y_location,2) ," t= ",round(time,2) ," = ",round(output,3))
@@ -419,7 +423,7 @@ def leakyfn(u,v):
         return(leakyfn)
 # approximation for v > 2
     if (v > 2) :
-        term1 = math.sqrt(pi/(2*v))
+        term1 = math.sqrt(math.pi/(2*v))
         term2 = math.exp(-v)
         term3 = -(v-2*u)/(2*math.sqrt(u))
         term4 = math.erfc(term3)

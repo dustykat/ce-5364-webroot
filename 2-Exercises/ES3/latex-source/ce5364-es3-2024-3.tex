@@ -1,0 +1,90 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{daves,fancyhdr,natbib,graphicx,dcolumn,amsmath,lastpage,url}
+\usepackage{amsmath,amssymb,epstopdf,longtable}
+\usepackage[final]{pdfpages}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\pagestyle{fancy}
+\lhead{CE 5364 -- Groundwater Transport Phenomena }
+\rhead{FALL 2024}
+\lfoot{ES3}
+\cfoot{}
+\rfoot{Page \thepage\ of \pageref{LastPage}}
+\renewcommand\headrulewidth{0pt}
+
+
+
+\begin{document}
+\begin{center}
+{\textbf{{ CE 5364 Groundwater Transport Phenomena } \\ {Exercise Set 3}}}
+\end{center}
+
+\section*{\small{Exercises}}
+\begin{enumerate}
+\item (Problem 6-1, pg. 567)
+Chloride ($Cl^{-}$) is injected as a continuous source into a 1-D column 50 centimeters long at a seepage velocity of $10^{-3}~\frac{cm}{s}$.  The effluent concentration measured at $t=1800~s$ from the start of the injection is $0.3$ of the initial concentration, and at $t=2700~s$ the effluent concentration is measured to be $0.4$ of the initial concentration.
+
+Determine:
+\begin{enumerate}
+\item Sketch the system.
+\item The longitudinal dispersivity.
+\item The dispersion coefficient.
+%\item The volumetric flow rate through the column.
+\end{enumerate}
+
+\item (Problem 6-2, pg. 567)
+The following table has data from a column test with bromide (conservative) and chromium (sorbed).  The porosity of the soil was 0.485, the bulk density was 1.85 g/cc, velocity was 0.244 cm/min, and the column was 25.4 cm long with a diameter of 2.54 cm.  
+
+
+|Time (min)|Bromide $\frac{C}{Co}$|Chromium $\frac{C}{Co}$|
+|:---|:---|:---|
+|0|0.000|0.000|
+|15|0.000|0.000|
+|30|0.005|0.000|
+|45|0.003|0.000|
+|60|0.013|0.000|
+|75|0.075|0.000|
+|90|0.137|0.000|
+|105|0.530|0.000|
+|120|0.841|0.000|
+|135|1.000|0.000|
+|150|1.000|0.000|
+|165|1.000|0.009|
+|180|1.000|0.186|
+|195|1.000|0.595|
+|210|1.000|0.791|
+|225|1.000|0.875|
+|240|1.000|0.913|
+|255|1.000|0.946|
+|270|1.000|0.946|
+|285|1.000|1.000|
+|300|1.000|1.000|
+|315|1.000|1.000|
+|330|1.000|1.000|
+|345|1.000|1.000|
+|360|1.000|1.000|
+
+Determine:
+
+1. The dispersivity in cm 
+2. The retardation coefficient for $Cr$.
+
+\clearpage
+
+\item (Problem 6-3, pg. 587)
+The estimated mass from an instantaneous release of benzene is $107 \frac{kg}{m^2}$ of a 1-D aquifer system. The aquifer has a seepage velocity of $0.03 \frac{in}{day}$ and a longitudinal **dispersion coefficient** of $9 \times 10^{-4}\frac{m^2}{day}$
+
+Determine:
+\begin{enumerate}
+\item Sketch the system.
+\item Plot a concentration profile at $t = 1~\text{year}$ for $x = 0$ to $x = 50$ inches, in 1-inch increments.
+\item Plot a concentration history at $x=v\times (1~\text{year})$ (this value stays constant) for $t = 0$ to $t = 2 $ years in $\frac{1}{12}$-year increments.
+\item The maximum concentration at $t = 1~\text{year}$ and its location.
+\end{enumerate}
+
+
+\end{enumerate}
+\end{document}  

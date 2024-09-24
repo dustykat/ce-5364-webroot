@@ -97,7 +97,7 @@
 # 
 # $$\frac{\partial C}{\partial t} + \frac{\rho_b}{n} \frac{\partial C_{solid}}{\partial t} =  \frac{\partial}{\partial x} D_x \frac{\partial C}{\partial x} - v_x \frac{\partial C}{\partial x}$$
 # 
-# If the linear isotherm applies a simple substitution of the $K_d$ gives
+# If the linear isotherm applies, and the reaction is considered "fast" a simple substitution of the $K_d$ gives
 # 
 # $$\frac{\partial C}{\partial t} + \frac{\rho_b}{n} K_d \frac{\partial C}{\partial t} =  \frac{\partial}{\partial x} D_x \frac{\partial C}{\partial x} - v_x \frac{\partial C}{\partial x}$$
 # 
@@ -105,11 +105,11 @@
 # 
 # $$R \frac{\partial C}{\partial t} =  \frac{\partial}{\partial x} D_x \frac{\partial C}{\partial x} - v_x \frac{\partial C}{\partial x}$$
 # 
-# Conceptually, the retardation factor is a fundamental parameter in hydrogeology and groundwater transport modeling. It represents the ratio of the average groundwater velocity to the average solute velocity within an aquifer. More precisely, it quantifies how much slower a solute moves through the subsurface due to interactions with the solid materials (e.g., soil or rock) and the fluid (groundwater) in the aquifer.
+# Conceptually, the retardation factor (retardation coefficient) is a fundamental parameter in hydrogeology and groundwater transport modeling. It represents the **ratio** of the average **groundwater velocity** to the average **solute velocity** within an aquifer. More precisely, it quantifies how much slower a solute moves through the subsurface due to interactions with the solid materials (e.g., soil or rock) and the fluid (groundwater) in the aquifer.
 # 
 # The retardation factor is a critical concept when assessing the transport of contaminants in groundwater. When the retardation factor is greater than one, it indicates that the solute is retarded or delayed in its movement through the aquifer due to sorption or other reactive processes, reducing its mobility. On the other hand, when the retardation factor is less than one (colloids exhibit such behavior - its called hydrodynamic chromatography, it also occurs in low ionic strength solutions or with charged ions of same charge as the solid surface), it suggests that the solute moves more quickly than the groundwater, potentially increasing its transport distance.
 # 
-# :::{note}
+# :::{important}
 # Understanding the retardation factor is essential for predicting the movement and dispersion of contaminants, designing effective groundwater remediation strategies, and assessing the risk of groundwater contamination. It plays a pivotal role in characterizing the complex interplay between solute transport and subsurface geochemistry.
 # :::
 
@@ -139,6 +139,8 @@
 # - $H_c$ is Henry's law for the compound (kind of Raoult's law extended throughout the domain
 # - $P_c$ is the partial pressure of the compound in the gas phase.
 # 
+# ![](Henrys-law.png)
+# 
 # Henry's Law is a fundamental principle that quantifies the relationship between the concentration of a volatile compound in the gas phase and its concentration in the water phase at equilibrium. It states that the concentration of a gas in the air is directly proportional to its concentration in the water and is governed by a proportionality constant called Henry's constant. Henry's Law is valuable in predicting the volatilization of contaminants from groundwater, as it helps estimate the extent to which a substance will partition into the vapor phase based on its solubility in water. 
 # 
 # :::{note}
@@ -164,6 +166,10 @@
 # ## References
 # 
 # 1. [Cleveland, T.G. (1998) *Adsorbtion* Notes to accompany *"CIVE 7332 Flow and Transport Modeling for Environmental Engineering" at University of Houston*](http://54.243.252.9/ce-5364-webroot/3-Readings/adsorption_1.pdf)
+# 
+# 2. [https://www.chemistrylearner.com/henrys-law.html](https://www.chemistrylearner.com/henrys-law.html)
+# 
+# 3. [Washington, J.W. (1996), Gas Partitioning of Dissolved Volatile Organic Compounds in the Vadose Zone: Principles, Temperature Effects and Literature Review. Groundwater, 34: 709-718. https://doi.org/10.1111/j.1745-6584.1996.tb02059.x](https://ngwa.onlinelibrary.wiley.com/doi/abs/10.1111/j.1745-6584.1996.tb02059.x)
 
 # In[ ]:
 

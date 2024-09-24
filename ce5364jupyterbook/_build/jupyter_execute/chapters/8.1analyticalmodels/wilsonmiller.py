@@ -92,6 +92,7 @@ def willsonmiller(c_injection,q_injection,l_thickness,d_x,d_y,decay,velocity,x_l
     rsq = (x_location**2 + (y_location**2)*(d_x/d_y))*d
     r   = math.sqrt(rsq)
     u   = rsq/(4.0*d*d_x*time)
+#    print(B,d,rsq,r,u,r/B)
 #    print(rsq,rrr,aaa,bbb)
     term1 = c_injection*q_injection/(4.0*math.pi*l_thickness)
     term2 = 1.0/(math.sqrt(d_x*d_y))
@@ -100,7 +101,11 @@ def willsonmiller(c_injection,q_injection,l_thickness,d_x,d_y,decay,velocity,x_l
 
     #if term4 <= 0.0: term4 = 0.0
 #    print(term1,term2,term3,term4)
-    willsonmiller = term1*term2*term3*term4
+    if term1*term2*term3*term4 <=0.0:
+        temp = 0.0
+    else:
+        temp = term1*term2*term3*term4
+    willsonmiller = temp
     return willsonmiller
 
 
@@ -110,25 +115,63 @@ def willsonmiller(c_injection,q_injection,l_thickness,d_x,d_y,decay,velocity,x_l
 
 
 # inputs
+decay = 0#0.0024 # added 1st order decay
 c_injection = 133
 q_injection = 3.66
 l_thickness = 1.75
 d_x = 0.920
 d_y = 0.092
-decay = 0.0024 # added 1st order decay
 velocity = 0.187
 x_location = 123
 y_location = 0
 time = 36500
 scale = c_injection*q_injection
 output = willsonmiller(c_injection,q_injection,l_thickness,d_x,d_y,decay,velocity,x_location,y_location,time)
-print("Concentration at x = ",round(x_location,2)," y= ",round(y_location,2) ," t= ",round(time,2) ," = ",round(output,3))
+print("Concentration at x = ",round(x_location,2)," y= ",round(y_location,2) ," t= ",round(time,2) ," = ",repr(output))
 #
+print(wh(0.1,61.5))
+
+
+# In[4]:
+
+
+#
+# forward define and initialize vectors for a profile plot
+#
+how_many_points = 29   
+deltat = 12.3
+t = [0.0 for i in range(how_many_points)]  # constructor notation
+c = [0.0 for i in range(how_many_points)]  # constructor notation
+
+t[0]=1e-5 #cannot have zero time, so use really small value first position in list
+#
+# build the profile predictions
+#
+for i in range(0,how_many_points,1):
+    if i > 0:
+        t[i]=t[i-1]+deltat
+    c[i] = willsonmiller(c_injection,q_injection,l_thickness,d_x,d_y,decay,velocity,x_location,y_location,t[i])
+
+#
+# Import graphics routines for picture making
+#
+from matplotlib import pyplot as plt
+#
+# Build and Render the Plot
+#
+plt.plot(t,c, color='red', linestyle = 'solid')  # make the plot object
+plt.title(" Concentration History \n Space: " + repr(x_location) + "  \n") # caption the plot object
+plt.xlabel(" Time since release ") # label x-axis
+plt.ylabel(" Concentration        ") # label y-axis
+#plt.savefig("ogatabanksplot.png") # optional generates just a plot for embedding into a report
+plt.show() # plot to stdio -- has to be last call as it kills prior objects
+plt.close('all') # needed when plt.show call not invoked, optional here
+#sys.exit() # used to elegant exit for CGI-BIN use
 
 
 # ## Plotting Script
 
-# In[4]:
+# In[5]:
 
 
 # make a plot
@@ -175,6 +218,10 @@ for irow in range(nrows):
         
 #print(len(my_xyz))
 
+
+# In[6]:
+
+
 import pandas
 my_xyz = pandas.DataFrame(my_xyz) # convert into a data frame
 import numpy 
@@ -199,6 +246,12 @@ fig.set_size_inches(10, 5)
 CS = ax.contour(X, Y, Z, levels = [1,5,10,15,20,25,30,35,40,45,50])
 ax.clabel(CS, inline=2, fontsize=16)
 ax.set_title('Concentration Map at Elapsed Time '+ str(round(time,1))+' days');
+
+
+# In[57]:
+
+
+
 
 
 # ## Spreadsheet Model

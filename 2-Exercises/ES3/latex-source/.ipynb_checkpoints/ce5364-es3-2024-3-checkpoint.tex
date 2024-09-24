@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{daves,fancyhdr,natbib,graphicx,dcolumn,amsmath,lastpage,url}
+\usepackage{amsmath,amssymb,epstopdf,longtable}
+\usepackage[final]{pdfpages}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\pagestyle{fancy}
+\lhead{CE 5364 -- Groundwater Transport Phenomena }
+\rhead{FALL 2024}
+\lfoot{ES1}
+\cfoot{}
+\rfoot{Page \thepage\ of \pageref{LastPage}}
+\renewcommand\headrulewidth{0pt}
+
+
+
+\begin{document}
+\begin{center}
+{\textbf{{ CE 5364 Groundwater Transport Phenomena } \\ {Exercise Set 2}}}
+\end{center}
+
+\section*{\small{Exercises}}
+\begin{enumerate}
+\item (Problem 6-1, pg. 567)
+Chloride ($Cl^{-}$) is injected as a continuous source into a 1-D column 50 centimeters long at a seepage velocity of $10^{-3}~\frac{cm}{s}$.  The effluent concentration measured at $t=1800~s$ from the start of the injection is $0.3$ of the initial concentration, and at $t=2700~s$ the effluent concentration is measured to be $0.4$ of the initial concentration.
+
+Determine:
+\begin{enumerate}
+\item Sketch the system.
+\item The longitudinal dispersivity.
+\item The dispersion coefficient.
+%\item The volumetric flow rate through the column.
+\end{enumerate}
+
+\item (Problem 6-2, pg. 567)
+Chloride ($Cl^{-}$) is injected as a continuous source into a 1-D column.
+The system has Darcy velocity of $5.18 \times 10^{-3}~\frac{in}{day}$, a porosity of $n=0.30$, and longitudinal dispersivity of $5 m$.
+
+Determine:
+\begin{enumerate}
+\item Sketch the system.
+\item The ratio $\frac{C}{C_0}$ at a location 0.3 meters from the injection location after 5 days of injection. 
+\item The ratio $\frac{C}{C_0}$ at a location 0.3 meters from the injection location after 5 days of injection, if the dispersivity is 4 times larger ($20 m$).
+\item Comment on the difference in results.
+\end{enumerate}
+
+\clearpage
+
+\item (Problem 6-3, pg. 587)
+The estimated mass from an instantaneous release of benzene is $107 \frac{kg}{m^2}$ of a 1-D aquifer system. The aquifer has a seepage velocity of $0.03 \frac{in}{day}$ and a longitudinal **dispersion coefficient** of $9 \times 10^{-4}\frac{m^2}{day}$
+
+Determine:
+\begin{enumerate}
+\item Sketch the system.
+\item Plot a concentration profile at $t = 1~\text{year}$ for $x = 0$ to $x = 50$ inches, in 1-inch increments.
+\item Plot a concentration history at $x=v\times (1~\text{year})$ (this value stays constant) for $t = 0$ to $t = 2 $ years in $\frac{1}{12}$-year increments.
+\item The maximum concentration at $t = 1~\text{year}$ and its location.
+\end{enumerate}
+
+
+\end{enumerate}
+\end{document}  

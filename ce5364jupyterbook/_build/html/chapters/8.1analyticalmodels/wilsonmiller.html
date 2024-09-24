@@ -762,6 +762,7 @@ a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the 
     <span class="n">rsq</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_location</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y_location</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">d_x</span><span class="o">/</span><span class="n">d_y</span><span class="p">))</span><span class="o">*</span><span class="n">d</span>
     <span class="n">r</span>   <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rsq</span><span class="p">)</span>
     <span class="n">u</span>   <span class="o">=</span> <span class="n">rsq</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">d</span><span class="o">*</span><span class="n">d_x</span><span class="o">*</span><span class="n">time</span><span class="p">)</span>
+<span class="c1">#    print(B,d,rsq,r,u,r/B)</span>
 <span class="c1">#    print(rsq,rrr,aaa,bbb)</span>
     <span class="n">term1</span> <span class="o">=</span> <span class="n">c_injection</span><span class="o">*</span><span class="n">q_injection</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">l_thickness</span><span class="p">)</span>
     <span class="n">term2</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d_x</span><span class="o">*</span><span class="n">d_y</span><span class="p">))</span>
@@ -770,7 +771,11 @@ a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the 
 
     <span class="c1">#if term4 &lt;= 0.0: term4 = 0.0</span>
 <span class="c1">#    print(term1,term2,term3,term4)</span>
-    <span class="n">willsonmiller</span> <span class="o">=</span> <span class="n">term1</span><span class="o">*</span><span class="n">term2</span><span class="o">*</span><span class="n">term3</span><span class="o">*</span><span class="n">term4</span>
+    <span class="k">if</span> <span class="n">term1</span><span class="o">*</span><span class="n">term2</span><span class="o">*</span><span class="n">term3</span><span class="o">*</span><span class="n">term4</span> <span class="o">&lt;=</span><span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">term1</span><span class="o">*</span><span class="n">term2</span><span class="o">*</span><span class="n">term3</span><span class="o">*</span><span class="n">term4</span>
+    <span class="n">willsonmiller</span> <span class="o">=</span> <span class="n">temp</span>
     <span class="k">return</span> <span class="n">willsonmiller</span>
 </pre></div>
 </div>
@@ -782,27 +787,70 @@ a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inputs</span>
+<span class="n">decay</span> <span class="o">=</span> <span class="mi">0</span><span class="c1">#0.0024 # added 1st order decay</span>
 <span class="n">c_injection</span> <span class="o">=</span> <span class="mi">133</span>
 <span class="n">q_injection</span> <span class="o">=</span> <span class="mf">3.66</span>
 <span class="n">l_thickness</span> <span class="o">=</span> <span class="mf">1.75</span>
 <span class="n">d_x</span> <span class="o">=</span> <span class="mf">0.920</span>
 <span class="n">d_y</span> <span class="o">=</span> <span class="mf">0.092</span>
-<span class="n">decay</span> <span class="o">=</span> <span class="mf">0.0024</span> <span class="c1"># added 1st order decay</span>
 <span class="n">velocity</span> <span class="o">=</span> <span class="mf">0.187</span>
 <span class="n">x_location</span> <span class="o">=</span> <span class="mi">123</span>
 <span class="n">y_location</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">time</span> <span class="o">=</span> <span class="mi">36500</span>
 <span class="n">scale</span> <span class="o">=</span> <span class="n">c_injection</span><span class="o">*</span><span class="n">q_injection</span>
 <span class="n">output</span> <span class="o">=</span> <span class="n">willsonmiller</span><span class="p">(</span><span class="n">c_injection</span><span class="p">,</span><span class="n">q_injection</span><span class="p">,</span><span class="n">l_thickness</span><span class="p">,</span><span class="n">d_x</span><span class="p">,</span><span class="n">d_y</span><span class="p">,</span><span class="n">decay</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">x_location</span><span class="p">,</span><span class="n">y_location</span><span class="p">,</span><span class="n">time</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Concentration at x = &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">x_location</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; y= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">y_location</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">,</span><span class="s2">&quot; t= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">,</span><span class="s2">&quot; = &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Concentration at x = &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">x_location</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; y= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">y_location</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">,</span><span class="s2">&quot; t= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">,</span><span class="s2">&quot; = &quot;</span><span class="p">,</span><span class="nb">repr</span><span class="p">(</span><span class="n">output</span><span class="p">))</span>
 <span class="c1">#</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wh</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">61.5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concentration at x =  123  y=  0  t=  36500  =  11.394
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concentration at x =  123  y=  0  t=  36500  =  53.424298876849655
+6.232529667098016e-28
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># forward define and initialize vectors for a profile plot</span>
+<span class="c1">#</span>
+<span class="n">how_many_points</span> <span class="o">=</span> <span class="mi">29</span>   
+<span class="n">deltat</span> <span class="o">=</span> <span class="mf">12.3</span>
+<span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span>  <span class="c1"># constructor notation</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span>  <span class="c1"># constructor notation</span>
+
+<span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mf">1e-5</span> <span class="c1">#cannot have zero time, so use really small value first position in list</span>
+<span class="c1">#</span>
+<span class="c1"># build the profile predictions</span>
+<span class="c1">#</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">how_many_points</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">deltat</span>
+    <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">willsonmiller</span><span class="p">(</span><span class="n">c_injection</span><span class="p">,</span><span class="n">q_injection</span><span class="p">,</span><span class="n">l_thickness</span><span class="p">,</span><span class="n">d_x</span><span class="p">,</span><span class="n">d_y</span><span class="p">,</span><span class="n">decay</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">x_location</span><span class="p">,</span><span class="n">y_location</span><span class="p">,</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1">#</span>
+<span class="c1"># Import graphics routines for picture making</span>
+<span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="c1">#</span>
+<span class="c1"># Build and Render the Plot</span>
+<span class="c1">#</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span><span class="p">)</span>  <span class="c1"># make the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot; Concentration History </span><span class="se">\n</span><span class="s2"> Space: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">x_location</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># caption the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot; Time since release &quot;</span><span class="p">)</span> <span class="c1"># label x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot; Concentration        &quot;</span><span class="p">)</span> <span class="c1"># label y-axis</span>
+<span class="c1">#plt.savefig(&quot;ogatabanksplot.png&quot;) # optional generates just a plot for embedding into a report</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># plot to stdio -- has to be last call as it kills prior objects</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span> <span class="c1"># needed when plt.show call not invoked, optional here</span>
+<span class="c1">#sys.exit() # used to elegant exit for CGI-BIN use</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/wilsonmiller_10_0.png" src="../../_images/wilsonmiller_10_0.png" />
 </div>
 </div>
 </div>
@@ -853,8 +901,13 @@ a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the 
         <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span>
         
 <span class="c1">#print(len(my_xyz))</span>
-
-<span class="kn">import</span> <span class="nn">pandas</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
 <span class="n">my_xyz</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_xyz</span><span class="p">)</span> <span class="c1"># convert into a data frame</span>
 <span class="kn">import</span> <span class="nn">numpy</span> 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
@@ -882,7 +935,7 @@ a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/wilsonmiller_11_0.png" src="../../_images/wilsonmiller_11_0.png" />
+<img alt="../../_images/wilsonmiller_13_0.png" src="../../_images/wilsonmiller_13_0.png" />
 </div>
 </div>
 </div>
