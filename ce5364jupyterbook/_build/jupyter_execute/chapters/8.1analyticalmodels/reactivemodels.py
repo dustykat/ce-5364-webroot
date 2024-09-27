@@ -14,7 +14,7 @@
 # 
 # The generalized advection-dispersion equation with reaction terms in multiple dimensions is written as:
 # 
-# $$ (1+\frac{\rho_b}{n} K_d)\frac{\partial C}{\partial t} = D \nabla C -V \nabla C - \lambda C $$
+# $$ (1+\frac{\rho_b}{n} K_d)\frac{\partial C}{\partial t} =  \nabla \cdot (D \nabla C - VC) - \lambda C $$
 # 
 # where:
 # 
@@ -32,6 +32,88 @@
 # Generally our prior solutions can be used with modifications to account for the new processes.  If the adsorbtion/desorbtion behavior is reasonably described by a linear equilibrium isotherm, the constant on the left $1 + \frac{\rho_b}{n} K_d = R$ (the retardation factor) is approximated by a temporal adjustment called adjusted time (or just divide the other constants by $R$.)
 # 
 # The 1st order decay term usually adjusts apparent velocity, and source concentration.
+
+# ## Ogata-Banks with Retardation
+# 
+# Adding the retardation effect is a simple metter of adjusting the various transport constants (assuming $\lambda = 0$)
+# 
+# Below are a couple of spreadsheets that implement the modifications
+# 
+# ### Profile Spreadsheet
+# 
+# [OB-ADR-Profile](http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/OgataBanksRetardationProfile.xlsx)
+# 
+# ### History Spreadsheet
+# 
+# [OB-ADR-History](http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/OgataBanksRetardationHistory.xlsx)
+
+# ## Ogata-Banks with Retardation and Decay
+# 
+# Adding the decay effect requires some consideration of travel time and elapsed time, then applying exponential decay to the entire transport result.
+# 
+# Below are a couple of spreadsheets that implement the modifications
+# 
+# ### Profile Spreadsheet
+# 
+# [OB-ADRD-Profile](http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/OgataBanksRetardationDecayProfile.xlsx) 
+# 
+# :::{note}
+# I am not entirely confident this particular spreadsheet is correct; so if you use it professionally, check against some known solution before donating your double-wide to an attourney!
+# :::
+# 
+# ### History Spreadsheet
+# 
+# [OB-ADRD-History](http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/OgataBanksRetardationDecayHistory.xlsx)
+
+# ## Sauty with Retardation
+# 
+# Adding the retardation effect is a simple metter of adjusting the various transport constants (assuming $\lambda = 0$)
+# 
+# :::{warning}
+# This section in-progress, links below may be 404s
+# :::
+# 
+# Below are a couple of spreadsheets that implement the modifications
+# 
+# ### Profile Spreadsheet
+# 
+# [S-ADR-Profile](http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyRetardationProfile.xlsx)
+# 
+# ### History Spreadsheet
+# 
+# [S-ADR-History](http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyRetardationHistory.xlsx)
+
+# ## Sauty with Retardation and Decay
+# 
+# Adding the decay effect requires some consideration of travel time and elapsed time, then applying exponential decay to the entire transport result.
+# 
+# :::{warning}
+# This section in-progress, links below may be 404s
+# :::
+# 
+# Below are a couple of spreadsheets that implement the modifications
+# 
+# ### Profile Spreadsheet
+# 
+# [S-ADRD-Profile](http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyRetardationDecayProfile.xlsx) 
+# 
+# :::{note}
+# I am not entirely confident this particular spreadsheet is correct; so if you use it professionally, check against some known solution before donating your double-wide to an attourney!
+# :::
+# 
+# ### History Spreadsheet
+# 
+# [S-ADRD-History](http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyRetardationDecayHistory.xlsx)
+
+# 
+
+# ## A 2D Model
+# 
+# :::{warning}
+# This section in-progress, more description pending
+# :::
+# 
+# Below is a script for a 2D situation, you can use it for 1D problem by specifying a large value for $+/- Y$.
 
 # In[1]:
 
@@ -67,11 +149,11 @@ def c2adrl(conc0, distx, disty, dispx, dispy, velocity, time, lenY, retardation,
 # inputs
 c_initial = 100.0
 xx = 100
-yy = 5
+yy = 5000
 Dx = 1.0
 Dy = 0.1
 V = 1.0
-time = 10.0
+time = 100.0
 Y = 10.0
 R = 1.0
 LAM = 0.00001
@@ -147,4 +229,10 @@ fig.set_size_inches(14, 7)
 CS = ax.contour(X, Y, Z, levels = [1,5,10,25,50,75,100])
 ax.clabel(CS, inline=2, fontsize=16)
 ax.set_title('Concentration Map at Elapsed Time '+ str(round(time,1))+' days');
+
+
+# In[ ]:
+
+
+
 

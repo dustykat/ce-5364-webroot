@@ -639,6 +639,87 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ogata-banks-with-retardation">
+   Ogata-Banks with Retardation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#profile-spreadsheet">
+     Profile Spreadsheet
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#history-spreadsheet">
+     History Spreadsheet
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ogata-banks-with-retardation-and-decay">
+   Ogata-Banks with Retardation and Decay
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Profile Spreadsheet
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     History Spreadsheet
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sauty-with-retardation">
+   Sauty with Retardation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Profile Spreadsheet
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     History Spreadsheet
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sauty-with-retardation-and-decay">
+   Sauty with Retardation and Decay
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Profile Spreadsheet
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     History Spreadsheet
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-2d-model">
+   A 2D Model
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -658,7 +739,7 @@
 <p><strong>Governing Equation</strong></p>
 <p>The generalized advection-dispersion equation with reaction terms in multiple dimensions is written as:</p>
 <div class="math notranslate nohighlight">
-\[ (1+\frac{\rho_b}{n} K_d)\frac{\partial C}{\partial t} = D \nabla C -V \nabla C - \lambda C \]</div>
+\[ (1+\frac{\rho_b}{n} K_d)\frac{\partial C}{\partial t} =  \nabla \cdot (D \nabla C - VC) - \lambda C \]</div>
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(C(x,y,z,t)\)</span> is the contaminant concentration as a function of space and time.</p></li>
@@ -672,6 +753,81 @@
 <p><strong>Solutions</strong></p>
 <p>Generally our prior solutions can be used with modifications to account for the new processes.  If the adsorbtion/desorbtion behavior is reasonably described by a linear equilibrium isotherm, the constant on the left <span class="math notranslate nohighlight">\(1 + \frac{\rho_b}{n} K_d = R\)</span> (the retardation factor) is approximated by a temporal adjustment called adjusted time (or just divide the other constants by <span class="math notranslate nohighlight">\(R\)</span>.)</p>
 <p>The 1st order decay term usually adjusts apparent velocity, and source concentration.</p>
+<div class="section" id="ogata-banks-with-retardation">
+<h2>Ogata-Banks with Retardation<a class="headerlink" href="#ogata-banks-with-retardation" title="Permalink to this headline">¶</a></h2>
+<p>Adding the retardation effect is a simple metter of adjusting the various transport constants (assuming <span class="math notranslate nohighlight">\(\lambda = 0\)</span>)</p>
+<p>Below are a couple of spreadsheets that implement the modifications</p>
+<div class="section" id="profile-spreadsheet">
+<h3>Profile Spreadsheet<a class="headerlink" href="#profile-spreadsheet" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/OgataBanksRetardationProfile.xlsx">OB-ADR-Profile</a></p>
+</div>
+<div class="section" id="history-spreadsheet">
+<h3>History Spreadsheet<a class="headerlink" href="#history-spreadsheet" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/OgataBanksRetardationHistory.xlsx">OB-ADR-History</a></p>
+</div>
+</div>
+<div class="section" id="ogata-banks-with-retardation-and-decay">
+<h2>Ogata-Banks with Retardation and Decay<a class="headerlink" href="#ogata-banks-with-retardation-and-decay" title="Permalink to this headline">¶</a></h2>
+<p>Adding the decay effect requires some consideration of travel time and elapsed time, then applying exponential decay to the entire transport result.</p>
+<p>Below are a couple of spreadsheets that implement the modifications</p>
+<div class="section" id="id1">
+<h3>Profile Spreadsheet<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/OgataBanksRetardationDecayProfile.xlsx">OB-ADRD-Profile</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I am not entirely confident this particular spreadsheet is correct; so if you use it professionally, check against some known solution before donating your double-wide to an attourney!</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>History Spreadsheet<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/OgataBanksRetardationDecayHistory.xlsx">OB-ADRD-History</a></p>
+</div>
+</div>
+<div class="section" id="sauty-with-retardation">
+<h2>Sauty with Retardation<a class="headerlink" href="#sauty-with-retardation" title="Permalink to this headline">¶</a></h2>
+<p>Adding the retardation effect is a simple metter of adjusting the various transport constants (assuming <span class="math notranslate nohighlight">\(\lambda = 0\)</span>)</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This section in-progress, links below may be 404s</p>
+</div>
+<p>Below are a couple of spreadsheets that implement the modifications</p>
+<div class="section" id="id3">
+<h3>Profile Spreadsheet<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyRetardationProfile.xlsx">S-ADR-Profile</a></p>
+</div>
+<div class="section" id="id4">
+<h3>History Spreadsheet<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyRetardationHistory.xlsx">S-ADR-History</a></p>
+</div>
+</div>
+<div class="section" id="sauty-with-retardation-and-decay">
+<h2>Sauty with Retardation and Decay<a class="headerlink" href="#sauty-with-retardation-and-decay" title="Permalink to this headline">¶</a></h2>
+<p>Adding the decay effect requires some consideration of travel time and elapsed time, then applying exponential decay to the entire transport result.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This section in-progress, links below may be 404s</p>
+</div>
+<p>Below are a couple of spreadsheets that implement the modifications</p>
+<div class="section" id="id5">
+<h3>Profile Spreadsheet<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyRetardationDecayProfile.xlsx">S-ADRD-Profile</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I am not entirely confident this particular spreadsheet is correct; so if you use it professionally, check against some known solution before donating your double-wide to an attourney!</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>History Spreadsheet<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyRetardationDecayHistory.xlsx">S-ADRD-History</a></p>
+</div>
+</div>
+<div class="section" id="a-2d-model">
+<h2>A 2D Model<a class="headerlink" href="#a-2d-model" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This section in-progress, more description pending</p>
+</div>
+<p>Below is a script for a 2D situation, you can use it for 1D problem by specifying a large value for <span class="math notranslate nohighlight">\(+/- Y\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -706,11 +862,11 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inputs</span>
 <span class="n">c_initial</span> <span class="o">=</span> <span class="mf">100.0</span>
 <span class="n">xx</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">yy</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">yy</span> <span class="o">=</span> <span class="mi">5000</span>
 <span class="n">Dx</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">Dy</span> <span class="o">=</span> <span class="mf">0.1</span>
 <span class="n">V</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="n">time</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mf">100.0</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="mf">10.0</span>
 <span class="n">R</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">LAM</span> <span class="o">=</span> <span class="mf">0.00001</span>
@@ -790,10 +946,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x=  100  y=  5  t=  10.0  C(x,y,t) =  0.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x=  100  y=  5000  t=  100.0  C(x,y,t) =  0.0
 </pre></div>
 </div>
-<img alt="../../_images/reactivemodels_2_1.png" src="../../_images/reactivemodels_2_1.png" />
+<img alt="../../_images/reactivemodels_8_1.png" src="../../_images/reactivemodels_8_1.png" />
+</div>
 </div>
 </div>
 <div class="toctree-wrapper compound">
