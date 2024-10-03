@@ -53,8 +53,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Upwind Formulation Finite-Difference" href="2upwindfdm.html" />
-    <link rel="prev" title="Modeling Advection" href="0modelingadvection.html" />
+    <link rel="next" title="MODFLOW6 and Python" href="../12.01usgsmodflow6/usgsmodflow6.html" />
+    <link rel="prev" title="Upwind Formulation Finite-Difference" href="2upwindfdm.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -206,7 +206,7 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../8reactivetransport/8reactivetransport.html">
+  <a class="reference internal" href="../8.0reactivetransport/8reactivetransport.html">
    Reactive Transport
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -216,18 +216,30 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../8reactivetransport/6reactions.html">
+    <a class="reference internal" href="../8.0reactivetransport/6reactions.html">
      Adsorbtion
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../8reactivetransport/7decay.html">
+    <a class="reference internal" href="../8.0reactivetransport/7decay.html">
      Decay
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../8.1analyticalmodels/reactivemodels.html">
+   Analytical Models with Reaction Terms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/reactivemodels.html">
-     Analytical Models with Decay and Adsorbtion
+    <a class="reference internal" href="../8.1analyticalmodels/wilsonmiller.html">
+     2D Plume in Regional Flow with 1st-Order Decay (Wilson and Miller Solution)
     </a>
    </li>
   </ul>
@@ -236,47 +248,52 @@
   <a class="reference internal" href="0modelingadvection.html">
    Modeling Advection
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Modeling Advection by Particle Tracking
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="2upwindfdm.html">
      Upwind Formulation Finite-Difference
     </a>
    </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Modeling Advection by Particle Tracking
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../12usgsmocmodel/usgsmoc.html">
-   USGS MOC Software
+  <a class="reference internal" href="../12.01usgsmodflow6/usgsmodflow6.html">
+   MODFLOW6 and Python
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/winmoc.html">
-     Windows Build
+    <a class="reference internal" href="../12.01usgsmodflow6/flowmodel1.html">
+     Steady Flow, Single Layer Aquifer
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/armmoc.html">
-     ARM7/AARCH 64 Build
+    <a class="reference internal" href="../12.01usgsmodflow6/flowmodel2.html">
+     Transient Flow, Single Layer Aquifer
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/dprw.html">
-     Discrete Particle Random Walk (Future Semester)
+    <a class="reference internal" href="../12.01usgsmodflow6/flowmodel3.html">
+     Transient Flow, Mulitple-Layer Aquifer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12.01usgsmodflow6/transportmodel1.html">
+     Transport Model using MT3DMS Problem 9 Example
     </a>
    </li>
   </ul>
@@ -300,8 +317,8 @@
   <a class="reference internal" href="../18untransport/unsaturatedtransport.html">
    Unsaturated Zone Transport
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -317,8 +334,8 @@
   <a class="reference internal" href="../19chemflow/chemflow.html">
    CHEMFLO-2000
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -359,8 +376,8 @@
   <a class="reference internal" href="../91exercises/2-Exercises.html">
    Exercises
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -431,8 +448,8 @@
   <a class="reference internal" href="../93projects/Projects.html">
    Projects
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -463,8 +480,8 @@
   <a class="reference internal" href="../92exams/exams.html">
    Exams
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -487,6 +504,38 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../92exams/EX2/src-sol/EX2-WS.html">
      F23 Exam 2 Solution Sketch
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../99legacy/99legacy.html">
+   Legacy Content
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../99legacy/12usgsmocmodel/usgsmoc.html">
+     USGS MOC Software
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../99legacy/12usgsmocmodel/winmoc.html">
+     Windows Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../99legacy/12usgsmocmodel/armmoc.html">
+     ARM7/AARCH 64 Build
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../99legacy/12usgsmocmodel/dprw.html">
+     Discrete Particle Random Walk (Future Semester)
     </a>
    </li>
   </ul>
@@ -804,9 +853,9 @@ The particle is then “moved” by the simple kinematic calculation:</p>
 <div class="section" id="spreadsheet-examples">
 <h3>Spreadsheet Examples<a class="headerlink" href="#spreadsheet-examples" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/11modelingadvection/PartTrack_10.xls">Cleveland, T.G. (1997) <em>Particle Tracking Spreadsheet (10X10) (Excel)</em></a></p></li>
-<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/11modelingadvection/PartTrack_20.xls">Cleveland, T.G. (1997) <em>Particle Tracking Spreadsheet (20X20) (Excel)</em></a></p></li>
-<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/11modelingadvection/PartTrack.xls">Cleveland, T.G. (1997) <em>Particle Tracking Spreadsheet (5X5 same as example above) (Excel)</em></a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/chapters/11modelingadvection/PartTrack_10.xls">Cleveland, T.G. (1997) <em>Particle Tracking Spreadsheet (10X10) (Excel)</em></a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/chapters/11modelingadvection/PartTrack_20.xls">Cleveland, T.G. (1997) <em>Particle Tracking Spreadsheet (20X20) (Excel)</em></a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/chapters/11modelingadvection/PartTrack.xls">Cleveland, T.G. (1997) <em>Particle Tracking Spreadsheet (5X5 same as example above) (Excel)</em></a></p></li>
 </ol>
 <p>Performing the calculations in a python script is illustrated in the next section.</p>
 <div class="admonition note">
@@ -1274,19 +1323,19 @@ xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="0modelingadvection.html" title="previous page">
+        <a class="left-prev" href="2upwindfdm.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Modeling Advection</p>
+                <p class="prevnext-title">Upwind Formulation Finite-Difference</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="2upwindfdm.html" title="next page">
+        <a class="right-next" href="../12.01usgsmodflow6/usgsmodflow6.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Upwind Formulation Finite-Difference</p>
+                <p class="prevnext-title">MODFLOW6 and Python</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

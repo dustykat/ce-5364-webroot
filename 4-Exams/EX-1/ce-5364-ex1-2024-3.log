@@ -1,0 +1,749 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.15)  1 OCT 2024 23:20
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**/home/sensei/ce-5364-webroot/4-Exams/EX-1/ce-5364-ex1-2024-3.tex
+(/home/sensei/ce-5364-webroot/4-Exams/EX-1/ce-5364-ex1-2024-3.tex
+LaTeX2e <2020-02-02> patch level 2
+L3 programming layer <2020-02-14>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+)
+\c@part=\count167
+\c@section=\count168
+\c@subsection=\count169
+\c@subsubsection=\count170
+\c@paragraph=\count171
+\c@subparagraph=\count172
+\c@figure=\count173
+\c@table=\count174
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2019/11/07 v1.0c TeX engine tests
+))
+\Gm@cnth=\count175
+\Gm@cntv=\count176
+\c@Gm@tempcnt=\count177
+\Gm@bindingoffset=\dimen135
+\Gm@wd@mp=\dimen136
+\Gm@odd@mp=\dimen137
+\Gm@even@mp=\dimen138
+\Gm@layoutwidth=\dimen139
+\Gm@layoutheight=\dimen140
+\Gm@layouthoffset=\dimen141
+\Gm@layoutvoffset=\dimen142
+\Gm@dimlist=\toks15
+)
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
+Package: parskip 2020-01-22 v2.0d non-zero parskip adjustments
+
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count178
+)) (./daves.sty
+Dave's standard definitions: Last modified Friday, July 7, 1995.
+.....dbt changed footnote indentation
+.....dbt changed labels to arabic
+.....dbt included milestone charts
+\mile@i=\count179
+\mile@j=\count180
+\mile@startmonth=\count181
+\mile@endmonth=\count182
+\mile@major=\count183
+\mile@month=\dimen143
+\mile@width=\dimen144
+\mile@shift=\dimen145
+\mile@trheight=\dimen146
+\mile@trdepth=\dimen147
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip49
+\f@nch@O@elh=\skip50
+\f@nch@O@erh=\skip51
+\f@nch@O@olh=\skip52
+\f@nch@O@orh=\skip53
+\f@nch@O@elf=\skip54
+\f@nch@O@erf=\skip55
+\f@nch@O@olf=\skip56
+\f@nch@O@orf=\skip57
+)
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip58
+\bibsep=\skip59
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count184
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen148
+\Gin@req@width=\dimen149
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/dcolumn.sty
+Package: dcolumn 2014/10/28 v1.06 decimal alignment package (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen150
+\ar@mcellbox=\box45
+\extrarowheight=\dimen151
+\NC@list=\toks16
+\extratabsurround=\skip60
+\backup@length=\skip61
+\ar@cellbox=\box46
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2020/01/20 v2.17e AMS math features
+\@mathmargin=\skip62
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen152
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen153
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count185
+LaTeX Info: Redefining \frac on input line 227.
+\uproot@=\count186
+\leftroot@=\count187
+LaTeX Info: Redefining \overline on input line 389.
+\classnum@=\count188
+\DOTSCASE@=\count189
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
+\Mathstrutbox@=\box47
+\strutbox@=\box48
+\big@size=\dimen154
+LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
+\macc@depth=\count190
+\c@MaxMatrixCols=\count191
+\dotsspace@=\muskip16
+\c@parentequation=\count192
+\dspbrk@lvl=\count193
+\tag@help=\toks18
+\row@=\count194
+\column@=\count195
+\maxfields@=\count196
+\andhelp@=\toks19
+\eqnshift@=\dimen155
+\alignsep@=\dimen156
+\tagshift@=\dimen157
+\tagwidth@=\dimen158
+\totwidth@=\dimen159
+\lineht@=\dimen160
+\@envbody=\toks20
+\multlinegap=\skip63
+\multlinetaggap=\skip64
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2859.
+LaTeX Info: Redefining \] on input line 2860.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/lastpage/lastpage.sty
+Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf.sty
+Package: epstopdf 2020-01-24 v2.11 Conversion with epstopdf on the fly (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+)))
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
+\LTleft=\skip65
+\LTright=\skip66
+\LTpre=\skip67
+\LTpost=\skip68
+\LTchunksize=\count197
+\LTcapwidth=\dimen161
+\LT@head=\box49
+\LT@firsthead=\box50
+\LT@foot=\box51
+\LT@lastfoot=\box52
+\LT@cols=\count198
+\LT@rows=\count199
+\c@LT@tables=\count266
+\c@LT@chunks=\count267
+\LT@p@ftn=\toks22
+)
+(/usr/share/texlive/texmf-dist/tex/latex/paralist/paralist.sty
+Package: paralist 2017/01/22 v2.7 Extended list environments
+\pltopsep=\skip69
+\plpartopsep=\skip70
+\plitemsep=\skip71
+\plparsep=\skip72
+\pl@lab=\toks23
+)
+(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2020/01/03 v3.4h Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 61.
+\captionmargin=\dimen162
+\captionmargin@=\dimen163
+\captionwidth=\dimen164
+\caption@tempdima=\dimen165
+\caption@indent=\dimen166
+\caption@parindent=\dimen167
+\caption@hangindent=\dimen168
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count268
+\c@continuedfloat=\count269
+Package caption Info: longtable package is loaded.
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2018/08/26 v1.4a longtable captions (AR)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count270
+\l__pdf_internal_box=\box53
+)
+(./ce-5364-ex1-2024-3.aux)
+\openout1 = `ce-5364-ex1-2024-3.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(92.14519pt, 430.00462pt, 92.14519pt)
+* v-part:(T,H,B)=(95.39737pt, 556.47656pt, 143.09605pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75499pt
+* \textheight=596.2275pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=0.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count271
+\scratchdimen=\dimen169
+\scratchbox=\box54
+\nofMPsegments=\count272
+\nofMParguments=\count273
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count274
+\MPscratchDim=\dimen170
+\MPnumerator=\count275
+\makeMPintoPDFobject=\count276
+\everyMPtoPDFconversion=\toks25
+)
+Package lastpage Info: Please have a look at the pageslts package at
+(lastpage)             https://www.ctan.org/pkg/pageslts
+(lastpage)             ! on input line 31.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+
+Overfull \hbox (3.79425pt too wide) in paragraph at lines 38--44
+\OT1/cmr/m/n/12 Students are \OT1/cmr/bx/n/12 for-bid-den \OT1/cmr/m/n/12 to \O
+T1/cmr/bx/n/12 com-mu-ni-cate with other peo-ple \OT1/cmr/m/n/12 dur-ing the ex
+-am-i-na-tion. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--54
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--54
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--54
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--54
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--54
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--75
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+Make it at least 14.49998pt.
+We now make it that large for the rest of the document.
+This may cause the page layout to be inconsistent, however.
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+]
+<profile1.png, id=8, 392.46625pt x 270.00874pt>
+File: profile1.png Graphic file (type png)
+<use profile1.png>
+Package pdftex.def Info: profile1.png  used on input line 81.
+(pdftex.def)             Requested size: 289.07999pt x 198.8928pt.
+ [2
+
+ <./profile1.png>]
+[3
+
+]
+<history1.png, id=17, 421.575pt x 277.035pt>
+File: history1.png Graphic file (type png)
+<use history1.png>
+Package pdftex.def Info: history1.png  used on input line 97.
+(pdftex.def)             Requested size: 289.07999pt x 189.97073pt.
+ [4
+
+ <./history1.png>] [5
+
+]
+<aquifer1.png, id=25, 561.09625pt x 206.7725pt>
+File: aquifer1.png Graphic file (type png)
+<use aquifer1.png>
+Package pdftex.def Info: aquifer1.png  used on input line 113.
+(pdftex.def)             Requested size: 289.07999pt x 106.52846pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--122
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--122
+
+ []
+
+<WellsHistory.png, id=26, 944.52875pt x 206.7725pt>
+File: WellsHistory.png Graphic file (type png)
+<use WellsHistory.png>
+Package pdftex.def Info: WellsHistory.png  used on input line 123.
+(pdftex.def)             Requested size: 433.62pt x 94.92719pt.
+
+Overfull \hbox (19.08939pt too wide) in paragraph at lines 123--124
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--131
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--131
+
+ []
+
+File: WellsHistory.png Graphic file (type png)
+<use WellsHistory.png>
+Package pdftex.def Info: WellsHistory.png  used on input line 132.
+(pdftex.def)             Requested size: 433.62pt x 94.92719pt.
+
+Overfull \hbox (19.08939pt too wide) in paragraph at lines 132--133
+ [] 
+ []
+
+[6
+
+ <./aquifer1.png> <./WellsHistory.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 138--141
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 138--141
+
+ []
+
+File: WellsHistory.png Graphic file (type png)
+<use WellsHistory.png>
+Package pdftex.def Info: WellsHistory.png  used on input line 142.
+(pdftex.def)             Requested size: 433.62pt x 94.92719pt.
+
+Overfull \hbox (19.08939pt too wide) in paragraph at lines 142--143
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 147--150
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 147--150
+
+ []
+
+File: WellsHistory.png Graphic file (type png)
+<use WellsHistory.png>
+Package pdftex.def Info: WellsHistory.png  used on input line 151.
+(pdftex.def)             Requested size: 433.62pt x 94.92719pt.
+
+Overfull \hbox (19.08939pt too wide) in paragraph at lines 151--152
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--159
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--159
+
+ []
+
+<PulseHistory.png, id=32, 936.49875pt x 206.7725pt>
+File: PulseHistory.png Graphic file (type png)
+<use PulseHistory.png>
+Package pdftex.def Info: PulseHistory.png  used on input line 160.
+(pdftex.def)             Requested size: 433.62pt x 95.7412pt.
+
+Overfull \hbox (19.08939pt too wide) in paragraph at lines 160--161
+ [] 
+ []
+
+[7
+
+ <./PulseHistory.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 166--169
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 166--169
+
+ []
+
+File: PulseHistory.png Graphic file (type png)
+<use PulseHistory.png>
+Package pdftex.def Info: PulseHistory.png  used on input line 170.
+(pdftex.def)             Requested size: 433.62pt x 95.7412pt.
+
+Overfull \hbox (19.08939pt too wide) in paragraph at lines 170--171
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--178
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--178
+
+ []
+
+File: PulseHistory.png Graphic file (type png)
+<use PulseHistory.png>
+Package pdftex.def Info: PulseHistory.png  used on input line 179.
+(pdftex.def)             Requested size: 433.62pt x 95.7412pt.
+
+Overfull \hbox (19.08939pt too wide) in paragraph at lines 179--180
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--187
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--187
+
+ []
+
+File: PulseHistory.png Graphic file (type png)
+<use PulseHistory.png>
+Package pdftex.def Info: PulseHistory.png  used on input line 188.
+(pdftex.def)             Requested size: 433.62pt x 95.7412pt.
+
+Overfull \hbox (19.08939pt too wide) in paragraph at lines 188--189
+ [] 
+ []
+
+[8
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 194--197
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 194--197
+
+ []
+
+<DeclineHistory.png, id=41, 936.49875pt x 206.7725pt>
+File: DeclineHistory.png Graphic file (type png)
+<use DeclineHistory.png>
+Package pdftex.def Info: DeclineHistory.png  used on input line 198.
+(pdftex.def)             Requested size: 433.62pt x 95.7412pt.
+
+Overfull \hbox (19.08939pt too wide) in paragraph at lines 198--199
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--206
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--206
+
+ []
+
+<SequenceHistory.png, id=42, 936.49875pt x 206.7725pt>
+File: SequenceHistory.png Graphic file (type png)
+<use SequenceHistory.png>
+Package pdftex.def Info: SequenceHistory.png  used on input line 207.
+(pdftex.def)             Requested size: 433.62pt x 95.7412pt.
+
+Overfull \hbox (19.08939pt too wide) in paragraph at lines 207--208
+ [] 
+ []
+
+
+AED: lastpage setting LastPage
+[9
+
+ <./DeclineHistory.png> <./SequenceHistory.png>] (./ce-5364-ex1-2024-3.aux) ) 
+Here is how much of TeX's memory you used:
+ 5740 strings out of 483183
+ 81653 string characters out of 5966292
+ 326196 words of memory out of 5000000
+ 20678 multiletter control sequences out of 15000+600000
+ 532943 words of font info for 26 fonts, out of 8000000 for 9000
+ 15 hyphenation exceptions out of 8191
+ 41i,11n,45p,919b,337s stack positions out of 5000i,500n,10000p,200000b,80000s
+</
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+Output written on ce-5364-ex1-2024-3.pdf (9 pages, 144212 bytes).
+PDF statistics:
+ 57 PDF objects out of 1000 (max. 8388607)
+ 29 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+
