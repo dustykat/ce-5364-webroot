@@ -47,6 +47,11 @@ chapters:
   - file: chapters/12.01usgsmodflow6/flowmodel2
   - file: chapters/12.01usgsmodflow6/flowmodel3
   - file: chapters/12.01usgsmodflow6/transportmodel1
+  - file: chapters/12.01usgsmodflow6/transportmodel2.1
+  - file: chapters/12.02usgsmocmodel/usgsmoc
+  - file: chapters/12.02usgsmocmodel/winmoc
+  - file: chapters/12.02usgsmocmodel/armmoc
+  - file: chapters/12.02usgsmocmodel/dprw
 #
 
   
@@ -99,8 +104,4 @@ chapters:
   - file: chapters/92exams/EX2/src-sol/EX2-WS
   
 - file: chapters/99legacy/99legacy
-  sections:
-  - file: chapters/99legacy/12usgsmocmodel/usgsmoc
-  - file: chapters/99legacy/12usgsmocmodel/winmoc
-  - file: chapters/99legacy/12usgsmocmodel/armmoc
-  - file: chapters/99legacy/12usgsmocmodel/dprw
+

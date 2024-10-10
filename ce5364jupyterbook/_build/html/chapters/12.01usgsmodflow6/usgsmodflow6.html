@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Steady Flow, Single Layer Aquifer" href="flowmodel1.html" />
-    <link rel="prev" title="Upwind Formulation Finite-Difference" href="../11modelingadvection/2upwindfdm.html" />
+    <link rel="prev" title="Modeling Advection by Particle Tracking" href="../11modelingadvection/1particletracking.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -204,7 +204,7 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../8reactivetransport/8reactivetransport.html">
+  <a class="reference internal" href="../8.0reactivetransport/8reactivetransport.html">
    Reactive Transport
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -214,25 +214,20 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../8reactivetransport/6reactions.html">
+    <a class="reference internal" href="../8.0reactivetransport/6reactions.html">
      Adsorbtion
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../8reactivetransport/7decay.html">
+    <a class="reference internal" href="../8.0reactivetransport/7decay.html">
      Decay
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/reactivemodels.html">
-     Analytical Models with Decay and Adsorbtion
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../11modelingadvection/0modelingadvection.html">
-   Modeling Advection
+  <a class="reference internal" href="../8.1analyticalmodels/reactivemodels.html">
+   Analytical Models with Reaction Terms
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -241,13 +236,30 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../11modelingadvection/1particletracking.html">
-     Modeling Advection by Particle Tracking
+    <a class="reference internal" href="../8.1analyticalmodels/wilsonmiller.html">
+     2D Plume in Regional Flow with 1st-Order Decay (Wilson and Miller Solution)
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../11modelingadvection/0modelingadvection.html">
+   Modeling Advection
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../11modelingadvection/2upwindfdm.html">
      Upwind Formulation Finite-Difference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11modelingadvection/1particletracking.html">
+     Modeling Advection by Particle Tracking
     </a>
    </li>
   </ul>
@@ -256,8 +268,8 @@
   <a class="current reference internal" href="#">
    MODFLOW6 and Python
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -282,30 +294,28 @@
      Transport Model using MT3DMS Problem 9 Example
     </a>
    </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../12usgsmocmodel/usgsmoc.html">
-   USGS MOC Software
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/winmoc.html">
+    <a class="reference internal" href="transportmodel2.1.html">
+     Transport Model using MT3DMS and USGS MOC (circa 1980s Example)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12.02usgsmocmodel/usgsmoc.html">
+     USGS MOC Software
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12.02usgsmocmodel/winmoc.html">
      Windows Build
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/armmoc.html">
+    <a class="reference internal" href="../12.02usgsmocmodel/armmoc.html">
      ARM7/AARCH 64 Build
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/dprw.html">
+    <a class="reference internal" href="../12.02usgsmocmodel/dprw.html">
      Discrete Particle Random Walk (Future Semester)
     </a>
    </li>
@@ -521,6 +531,11 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../99legacy/99legacy.html">
+   Legacy Content
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -698,6 +713,7 @@
 <li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/3advection/Advection.PDF">Zheng, C. and Bennett, G.D. (1995) <em>Applied Contaminant Transport Modeling</em> Van Nostrand Reinhold</a></p></li>
 <li><p><a class="reference external" href="https://www.usgs.gov/software/flopy-python-package-creating-running-and-post-processing-modflow-based-models">FloPy: Python Package for Creating, Running, and Post-Processing MODFLOW-Based Models </a></p></li>
 <li><p><a class="reference external" href="https://modflow6-examples.readthedocs.io/en/master/_notebooks/ex-gwt-mt3dms-p09.html">MT3DMS Problem 9 (On-line documentation for MT3D)</a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/tm/06/a61/tm6a61.pdf">MODFLOW6 Transport Model Documentation</a></p></li>
 </ol>
 </div>
 <div class="section" id="videos">
@@ -828,11 +844,11 @@ The installation process is:
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../11modelingadvection/2upwindfdm.html" title="previous page">
+        <a class="left-prev" href="../11modelingadvection/1particletracking.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Upwind Formulation Finite-Difference</p>
+                <p class="prevnext-title">Modeling Advection by Particle Tracking</p>
             </div>
         </a>
     </div>
