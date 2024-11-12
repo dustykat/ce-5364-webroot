@@ -1,0 +1,312 @@
+% My standard setups and macro definitions.
+%
+% History of changes
+%
+%   Originally written June 1992
+%       Mon 02/15/1993 -- Added eqnarray abbreviations.
+%       Friday - June 30, 1995 -- Minor cleanup.
+%       Fri 07/07/1995 -- Added derivative abbreviations.
+
+\typeout{Dave's standard definitions: Last modified Friday, July 7, 1995.}
+
+% My standard page dimensions.
+
+\setlength{\topmargin}{0in}
+\setlength{\textheight}{8.25in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+\raggedbottom
+\newcommand{\cl}[1]{\centerline{#1}}
+\newcommand{\bfg}{\begin{figure}}
+\newcommand{\efg}{\end{figure}}
+\newcommand{\EGL}{{\em EGL}}
+\newcommand{\HGL}{{\em HGL}}
+
+% Some of my own markups.
+
+\newcommand{\mhead}[1]{\vspace{0pt}{\large \sf #1}\nopagebreak}
+\newcommand{\dspace}{\renewcommand{\baselinestretch}{1.5}\tiny\normalsize}
+\newcommand{\sspace}{\renewcommand{\baselinestretch}{1}\tiny\normalsize}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+% I used to use these for reviews.
+
+\newcommand{\mk}[2]{\underline{Item #1; Page #2:}}
+\newcommand{\p}[1]{\underline{Page #1:}}
+
+% Equation definitions (courtesy Jon Lee).
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\pard}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\vrsb}[2]{#1_{#2}}
+\newcommand{\vrss}[3]{#1_{#2}^{#3}}
+\newcommand{\xz}{\vrsb{x}{0}}
+\newcommand{\xone}{\vrsb{x}{1}}
+\newcommand{\xtwo}{\vrsb{x}{2}}
+\newcommand{\tz}{\vrsb{t}{0}}
+\newcommand{\tone}{\vrsb{t}{1}}
+\newcommand{\ttwo}{\vrsb{t}{2}}
+\newcommand{\xint}{\vrss{\int}{\xone}{\xtwo}}
+\newcommand{\tint}{\vrss{\int}{\tone}{\ttwo}}
+\newcommand{\ddx}{\pard{}{x}}
+\newcommand{\ddt}{\pard{}{t}}
+\newcommand{\dhdx}{\pard{h}{x}}
+\newcommand{\dhdt}{\pard{h}{t}}
+\newcommand{\dcdx}{\pard{c}{x}}
+\newcommand{\dcdt}{\pard{c}{t}}
+\newcommand{\dzdx}{\pard{z}{x}}
+\newcommand{\dzdt}{\pard{z}{t}}
+\newcommand{\dAdx}{\pard{A}{x}}
+\newcommand{\dAdt}{\pard{A}{t}}
+\newcommand{\dAdh}{\pard{A}{h}}
+\newcommand{\dKdx}{\pard{K}{x}}
+\newcommand{\dKdt}{\pard{K}{t}}
+\newcommand{\dKdh}{\pard{K}{h}}
+\newcommand{\dudx}{\pard{u}{x}}
+\newcommand{\dudt}{\pard{u}{t}}
+\newcommand{\dQdx}{\pard{Q}{x}}
+\newcommand{\dQdt}{\pard{Q}{t}}
+\newcommand{\barh}{\right|_{h\mbox{\scriptsize{ constant}}}}
+\newcommand{\Sz}{\vrsb{S}{0}}
+\newcommand{\Sf}{\vrsb{S}{f}}
+\newcommand{\nf}{\frac{1.49}{n}}
+\newcommand{\Rp}{R^{2/3}}
+\newcommand{\Szp}{\Sz^{1/2}}
+\newcommand{\Sfp}{\Sf^{1/2}}
+\newcommand{\sumiN}{\sum_{i=1}^{N}}
+\newcommand{\Ai}{A_{i}}
+\newcommand{\Ki}{K_{i}}
+\newcommand{\ui}{u_{i}}
+\newcommand{\Qi}{Q_{i}}
+\newcommand{\Fb}{\mbox{$\bf{F}$}}
+\newcommand{\sptwo}{\mbox{\ \ }}
+\newcommand{\xP}{\vrsb{x}{P}}
+\newcommand{\tP}{\vrsb{t}{P}}
+\newcommand{\cP}{\vrsb{c}{P}}
+\newcommand{\uP}{\vrsb{u}{P}}
+\newcommand{\xL}{\vrsb{x}{L}}
+\newcommand{\tL}{\vrsb{t}{L}}
+\newcommand{\cL}{\vrsb{c}{L}}
+\newcommand{\uL}{\vrsb{u}{L}}
+\newcommand{\xR}{\vrsb{x}{R}}
+\newcommand{\tR}{\vrsb{t}{R}}
+\newcommand{\cR}{\vrsb{c}{R}}
+\newcommand{\uR}{\vrsb{u}{R}}
+\newcommand{\xj}{\vrsb{x}{j}}
+\newcommand{\xjp}{\vrsb{x}{j+1}}
+\newcommand{\xjh}{\vrsb{x}{j+1/2}}
+\newcommand{\tn}{\vrsb{t}{n}}
+\newcommand{\tnp}{\vrsb{t}{n+1}}
+\newcommand{\tnh}{\vrsb{t}{n+1/2}}
+\newcommand{\tnm}{\vrsb{t}{n-1}}
+\newcommand{\fj}{\vrsb{f}{j}}
+\newcommand{\fjp}{\vrsb{f}{j+1}}
+\newcommand{\fjh}{\vrsb{f}{j+1/2}}
+\newcommand{\yn}{\vrss{y}{}{n}}
+\newcommand{\ynm}{\vrss{y}{}{n-1}}
+\newcommand{\fjn}{\vrss{f}{j}{n}}
+\newcommand{\hj}{\vrsb{h}{j}}
+\newcommand{\hjp}{\vrsb{h}{j+1}}
+\newcommand{\hn}{\vrss{h}{}{n}}
+\newcommand{\hnp}{\vrss{h}{}{n+1}}
+\newcommand{\hjn}{\vrss{h}{j}{n}}
+\newcommand{\hjpn}{\vrss{h}{j+1}{n}}
+\newcommand{\hjnp}{\vrss{h}{j}{n+1}}
+\newcommand{\hjpnp}{\vrss{h}{j+1}{n+1}}
+\newcommand{\hjs}{\vrss{h}{j}{*}}
+\newcommand{\hjps}{\vrss{h}{j+1}{*}}
+\newcommand{\qn}{\vrss{q}{}{n}}
+\newcommand{\qnp}{\vrss{q}{}{n+1}}
+\newcommand{\xjint}{\vrss{\int}{\xj}{\xjp}}
+\newcommand{\tnint}{\vrss{\int}{\tn}{\tnp}}
+\newcommand{\Dx}{\Delta x}
+\newcommand{\Dt}{\Delta t}
+\newcommand{\sump}{\vrss{\sum}{p=1}{P}}
+\newcommand{\mc}[2]{\multicolumn{1}{#1}{#2}}
+
+
+
+%\newcommand{\memohead[2]{
+%  \thispagestyle{empty}%
+%  \vspace*{1in}%
+%  \centerline{\bf Memorandum}%
+%  \begin{tabular}{rp{5.6in}}%
+%    Date:& \today \\%
+%    From:& David B. Thompson, Civil Engineering Department \\%
+%    To:& #1 \\%
+%    Subject:& #2 \\%
+%  \end{tabular}}
+
+\hyphenation{cli-ma-tol-ogy}
+
+\typeout{.....dbt changed footnote indentation}
+%
+% From "article.doc" as of 14 Janvier 1992 for LaTeX 2.09
+%
+%        The following macro indents all lines of the footnote by 10pt,
+%        and indents the first line of a new paragraph by 1em.  To
+%        change these dimensions, just substitute the desired value for
+%        '10pt' [in both places] or '1em'.  The mark is flushright
+%        against the footnote.
+%
+% Changed this to NO indentation for the first line, ie parindent0pt
+%
+\long\def\@makefntext#1{\@setpar{\@@par\@tempdima \hsize
+     \advance\@tempdima-10pt\parshape \@ne 10pt \@tempdima}\par
+     \parindent0pt %% <-----------------changed here from 1em indentation
+     \noindent
+     \hbox to \z@{\hss$\m@th^{\@thefnmark}$}#1}
+
+\typeout{.....dbt changed labels to arabic}
+% The following Stolen unabashedly from jeep.sty
+% Change the labels of enumerate and outline to arabic numbers.
+
+% \def\labelenumi{\arabic{enumi}.}
+% \def\theenumi{\arabic{enumi}}
+% \def\labelenumii{\arabic{enumii}.}
+% \def\theenumii{\arabic{enumii}}
+% \def\p@enumii{\theenumi.}
+% \def\labelenumiii{\arabic{enumiii}.}
+% \def\theenumiii{\arabic{enumiii}}
+% \def\p@enumiii{\theenumi.\theenumii.}
+% \def\labelenumiv{\arabic{enumiv}.}
+% \def\theenumiv{\arabic{enumiv}}
+% \def\p@enumiv{\p@enumiii.\theenumiii}
+%
+% % Outline is a new list style--the same as enumerate with
+% % less space between the items.
+%
+% \def\outline{\ifnum \@enumdepth >3 \@toodeep\else
+%       \advance\@enumdepth \@ne
+%       \edef\@enumctr{enum\romannumeral\the\@enumdepth}\list
+%       {\csname label\@enumctr\endcsname}{\usecounter
+%         {\@enumctr}\def\makelabel##1{\hss\llap{##1}}
+%          \parsep \z@ \itemsep \z@
+%          \ifnum \@enumdepth > 1 \topsep \z@ \fi}\fi}
+%
+% \let\endoutline =\endlist
+
+\typeout{.....dbt included milestone charts}
+% Used to make milestone charts
+% Usage:
+%       \begin{milestone}[width,offset]{startmonth-endmonth,tickmonth}
+%       \task number (name) \duration start-end \deliverables num num num.
+%               ...
+%       \end{milestone}
+% e.g.
+% \begin{milestone}[\hsize,1.3in]{1-36,6}
+% \task 1 (Test Bed) \duration 10-22 \deliverables 22.
+% \task 2 (PolyAnna) \duration 1-9 \deliverables 9.
+% \task 3 (Apply PolyAnna) \duration 10-27 \deliverables 15 21 27.
+% \task 4 (Formal) \duration 10-24 \deliverables 13 24.
+% \task 5 (Software) \duration 12-36 \deliverables 35 37.
+% \end{milestone}
+%
+% width and offset are optional
+
+
+\newcount\mile@i
+\newcount\mile@j
+\newcount\mile@startmonth
+\newcount\mile@endmonth
+\newcount\mile@major
+\newdimen\mile@month
+\newdimen\mile@width
+\newdimen\mile@shift
+\newdimen\mile@trheight
+\newdimen\mile@trdepth
+% axis height is \fontdimen22\textfont2
+\edef\mile@axisheight{\fontdimen22\textfont2}
+%\mile@trheight1ex\mile@trheight=0.5\mile@trheight\mile@trdepth-\mile@trheight
+%\mile@trheight\mile@axisheight\mile@trdepth-\mile@trheight
+\advance\mile@trheight0.7pt\advance\mile@trdepth0.7pt
+
+\def\mile@tick#1{\vrule height #1pt depth #1pt}
+\def\mile@smalltick#1{\vrule width .2pt height 0pt depth #1pt}
+%
+\def\mile@segment{\mile@j=1\hbox
+to\mile@major\mile@month{\loop\ifnum\mile@j<\mile@major\advance\mile@j
+        by 1\hrulefill\mile@smalltick4\repeat\hrulefill\mile@tick4}}
+%
+\def\mile@toprule{\message{Top Rule...}
+    \mile@i=\mile@startmonth
+        \hbox{\hskip\mile@shift
+            \hbox to\mile@offset{\hss {\sc Month\ }\hskip1\mile@month}%
+            \strut
+            \loop
+                \llap{\hbox to \mile@month{\hss\the\mile@i\hss}}%
+            \ifnum\mile@i<\mile@endmonth
+                \advance\mile@i by\mile@major \hskip\mile@major\mile@month
+\repeat}%
+        \mile@i=\mile@startmonth
+        \hbox{\hskip\mile@shift\hskip\mile@offset\mile@tick4%
+            \loop\ifnum\mile@i<\mile@endmonth
+                \advance\mile@i by\mile@major\hbox
+to\mile@major\mile@month{\mile@segment}\repeat}\vskip\baselineskip
+}
+
+\def\mile@taskrule#1-#2.{\hbox to 0pt{\count255=#1\advance\count255-1%
+    \hskip\count255\mile@month
+    \count255-\count255\advance\count255by#2%
+    \vrule height\mile@trheight depth\mile@trdepth width
+\count255\mile@month\hss}}
+%
+\def\mile@deliver#1{\hbox to 0pt{\hskip#1\mile@month\mile@pointer\hss}}
+%
+\def\mile@pointer{\setbox0=\hbox to 0pt{\hss\hskip1pt$\triangle$\hss}%
+    \dimen0=\ht0\advance\dimen0 by\mile@trdepth
+    \advance\dimen0by2pt\lower\dimen0\box0}
+
+% Lists begin with ! end with space and are separated by spaces
+\def\mile@lop#1\to#2{\expandafter\mile@lopoff#1\mile@lopoff#1#2}
+\long\def\mile@lopoff!#1 #2\mile@lopoff#3#4{\def#4{#1}\def#3{!#2}%
+    \ifx\mile@bang#3\let#3=\mile@emptylist\fi}
+\def\mile@emptylist{! }\def\mile@bang{!}
+
+\newif\ifmile@full % Tells whether a list has anything in it
+
+\def\mile@centerspace{\leftskip=0pt plus4em%
+    \rightskip=\leftskip\parindent=0pt\parfillskip=0pt}
+
+\def\task #1 (#2) \duration #3 \deliverables #4.{
+    \message{Task #1...}
+    \def\mile@durations{!#3 }\def\mile@deliverables{!#4 }
+    \hbox{\hskip\mile@shift
+    \hbox to\mile@offset{\hss$\vcenter{\hsize=\mile@offset\let\\=\break
+        \mile@centerspace {\bf Task #1}\break (#2)\par}$\hss}%
+    \loop
+    \ifx\mile@durations\mile@emptylist\mile@fullfalse\else\mile@fulltrue\fi
+        \ifmile@full\mile@lop\mile@durations\to\mile@duration
+        \expandafter\mile@taskrule\mile@duration.\repeat
+    \loop
+\ifx\mile@deliverables\mile@emptylist\mile@fullfalse\else\mile@fulltrue\fi
+        \ifmile@full
+\mile@lop\mile@deliverables\to\mile@deliverable
+        \mile@deliver{\mile@deliverable}\repeat
+    }\vskip\baselineskip
+}
+
+\def\@milestone[#1,#2]#3{\mile@setmonths#3\mile@width=#1\def\mile@offset{#2}
+    \mile@shift=\hsize\advance\mile@shift by-\mile@width
+    \mile@shift=0.5\mile@shift
+    \advance\mile@width by -\mile@offset
+    \count255=\mile@endmonth\advance\count255-\mile@startmonth
+    \mile@month=\mile@width \divide\mile@month by\count255
+    \vskip\baselineskip
+    \mile@toprule}
+\def\endmilestone{\par The triangles ($\triangle$) indicate when
+deliverables are due.\par\vskip\baselineskip}
+\def\mile@setmonths#1-#2,#3{\mile@startmonth=#1\advance\mile@startmonth-1
+   \mile@endmonth=#2\mile@major=#3}
+\def\milestone{\@ifnextchar [{\@milestone}{\@milestone[6.2in,1.4in]}}
+
+
+
+%***** eof *****
