@@ -10,7 +10,7 @@
 \pagestyle{fancy}
 \lhead{CE 5364 -- Groundwater Transport Phenomena }
 \rhead{FALL 2024}
-\lfoot{ES1}
+\lfoot{ES3}
 \cfoot{}
 \rfoot{Page \thepage\ of \pageref{LastPage}}
 \renewcommand\headrulewidth{0pt}
@@ -19,47 +19,139 @@
 
 \begin{document}
 \begin{center}
-{\textbf{{ CE 5364 Groundwater Transport Phenomena } \\ {Exercise Set 2}}}
+{\textbf{{ CE 5364 Groundwater Transport Phenomena } \\ {Exercise Set 3}}}
 \end{center}
 
 \section*{\small{Exercises}}
-\begin{enumerate}
-\item (Problem 6-1, pg. 567)
-Chloride ($Cl^{-}$) is injected as a continuous source into a 1-D column 50 centimeters long at a seepage velocity of $10^{-3}~\frac{cm}{s}$.  The effluent concentration measured at $t=1800~s$ from the start of the injection is $0.3$ of the initial concentration, and at $t=2700~s$ the effluent concentration is measured to be $0.4$ of the initial concentration.
+\begin{enumerate} %% Problem Counter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item (Problem 6-7, pg. 588)
+
+An instantaneous release of biodegradable constituients occurs in a 1-D aquifer. The mass released is $1.0 ~kg$ over a $10~m^2$ area normal to the flow direction, $\alpha_l = 1.0~m$, the seepage velocity is 1.0 $\frac{m}{day}$, and the half-life of the decaying constituient is 33 years.
 
 Determine:
-\begin{enumerate}
+\begin{enumerate} %% Deliverable Counter
 \item Sketch the system.
-\item The longitudinal dispersivity.
-\item The dispersion coefficient.
+\item The maximum concentration at 100 meters from the source.
+\item Plot a concentration history (annual intervals) for a 40 year period from release date for a location 100 meters from the source.
 %\item The volumetric flow rate through the column.
-\end{enumerate}
+\end{enumerate} %% Deliverable Counter
 
-\item (Problem 6-2, pg. 567)
-Chloride ($Cl^{-}$) is injected as a continuous source into a 1-D column.
-The system has Darcy velocity of $5.18 \times 10^{-3}~\frac{in}{day}$, a porosity of $n=0.30$, and longitudinal dispersivity of $5 m$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item (Problem 6-9, pg. 589)
+
+Discharge from a point source introduced $10~kg$ of contaminant to an aquifer. The seepage velocity is $0.1~\frac{ft}{day}$ in the $+x$ direction.  The longitudinal and transverse dispersion coefficients are $D_x = 0.01 \frac{ft^2}{day}$, and $D_y = D_z = 0.001 \frac{ft^2}{day}$, respectively.
 
 Determine:
-\begin{enumerate}
+\begin{enumerate} %% Deliverable Counter
 \item Sketch the system.
-\item The ratio $\frac{C}{C_0}$ at a location 0.3 meters from the injection location after 5 days of injection. 
-\item The ratio $\frac{C}{C_0}$ at a location 0.3 meters from the injection location after 5 days of injection, if the dispersivity is 4 times larger ($20 m$).
-\item Comment on the difference in results.
-\end{enumerate}
+\item The maximum concentration at $x=100~ft$ and $t=5~years$.
+\item The concentration at $(x,y,z,t) = (200~ft,5~ft,2~ft,5~years)$
+\end{enumerate} %% Deliverable Counter
+%\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item (Problem 6-10, pg. 589)
 
+Using the Domenico and Schwartz (1998) planar source model (pg. 182) to a continuous source that has been leaking contaminant into an aquifer for 15 years.  The source had width $Y=6~m$ and depth $Z=6~m$. The source concentration is $10~\frac{mg}{l}$. The seepage velocity is $0.057~\frac{m}{day}$. The longitudinal, transverse, and vertical dispervities are $1~m$,$0.1~m$, and $0.01~m$ respectively.
+
+Determine:
+\begin{enumerate} %% Deliverable Counter
+\item Sketch the system.
+\item The contaminant concentration history at a location $x=200~m$ from the source using 1-year increments for 30 years.
+\end{enumerate} %% Deliverable Counter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item (Data Analysis)
+
+A batch isotherm test was performed with several 1-L solutions of the chemical of interest and one soil type, 20 g in each solution container.  The initial and final solution concentrations are shown in Table \ref{tab:Isotherm}.  Fit the linear, Freundlich, and Langmuir isotherm equations to this data.  
+
+% Requires the booktabs if the memoir class is not being used
+\begin{table}[htbp]
+\centering
+\caption{Isotherm Observations}
+\begin{tabular}{p{1.5in}p{1.5in}} % Column formatting, @{} suppresses leading/trailing space
+Initial Concentration (mg/L) & Equilibrium Concentration (mg/L)\\
+\hline
+\hline
+7.10&6.71\\
+4.53&4.18\\
+1.89&1.63\\
+1.31&1.10\\
+1.03&0.85\\
+\hline
+\end{tabular}
+\label{tab:Isotherm}
+\end{table}
+
+Determine:
+\begin{enumerate} %% Deliverable Counter
+\item The Linear isotherm equation for these data (i.e. fit the isotherm model to the data), plot the isotherm and data
+\item The Freundlich isotherm equation for these data, plot the isotherm and data
+\item The Langmuir isotherm equation for these data, plot the isotherm and data
+\item Which isotherm model produces the best fit for these data?
+\end{enumerate} %% Deliverable Counter
+
+Show calculations and identify all fitted parameter values.
 \clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\item (Problem 6-3, pg. 587)
-The estimated mass from an instantaneous release of benzene is $107 \frac{kg}{m^2}$ of a 1-D aquifer system. The aquifer has a seepage velocity of $0.03 \frac{in}{day}$ and a longitudinal **dispersion coefficient** of $9 \times 10^{-4}\frac{m^2}{day}$
+\item (Data Analysis)
+
+The following table (Table \ref{tab:ColumnData})has data from a column test with bromide (conservative) and chromium (sorbed).  
+The porosity of the soil was 0.485, the bulk density was 1.85 g/cc, velocity was 0.244 cm/min, and the column was 25.4 cm long with a diameter of 2.54 cm.  
+
+% Requires the booktabs if the memoir class is not being used
+\begin{table}[h!]
+\centering
+\caption{Effluent Breakthrough Observations}
+\begin{tabular}{p{1.5in}p{1.5in}p{1.5in}} % Column formatting, @{} suppresses leading/trailing space
+Time (min) & Bromide $\frac{C}{Co}$ & Chromium $\frac{C}{Co}$ \\
+\hline
+\hline
+0&0.000&0.000\\
+15&0.000&0.000\\
+30&0.005&0.000\\
+45&0.003&0.000\\
+60&0.013&0.000\\
+75&0.075&0.000\\
+90&0.137&0.000\\
+105&0.530&0.000\\
+120&0.841&0.000\\
+135&1.000&0.000\\
+150&1.000&0.000\\
+165&1.000&0.009\\
+180&1.000&0.186\\
+195&1.000&0.595\\
+210&1.000&0.791\\
+225&1.000&0.875\\
+240&1.000&0.913\\
+255&1.000&0.946\\
+270&1.000&0.946\\
+285&1.000&1.000\\
+300&1.000&1.000\\
+315&1.000&1.000\\
+330&1.000&1.000\\
+345&1.000&1.000\\
+360&1.000&1.000\\
+\hline
+\end{tabular}
+\label{tab:ColumnData}
+\end{table}
 
 Determine:
-\begin{enumerate}
-\item Sketch the system.
-\item Plot a concentration profile at $t = 1~\text{year}$ for $x = 0$ to $x = 50$ inches, in 1-inch increments.
-\item Plot a concentration history at $x=v\times (1~\text{year})$ (this value stays constant) for $t = 0$ to $t = 2 $ years in $\frac{1}{12}$-year increments.
-\item The maximum concentration at $t = 1~\text{year}$ and its location.
-\end{enumerate}
+\begin{enumerate} %% Deliverable Counter
+    \item Sketch the system.
+    \item The dispersivity in $cm$ 
+   \item The retardation coefficient for $Cr$.
+\end{enumerate} %% Deliverable Counter
 
+%%%%%%%%%%%%%%%
 
-\end{enumerate}
+\end{enumerate}%% Problem Counter
+
 \end{document}  
