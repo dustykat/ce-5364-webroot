@@ -1,0 +1,193 @@
+% ============PREAMBLE SECTION==========================================
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{daves,fancyhdr,natbib,graphicx,dcolumn,amsmath,lastpage,url}
+\usepackage{amsmath,amssymb,epstopdf,longtable}
+
+
+% other
+\usepackage{paralist}  % need to modify standard enumerate blocks
+%=========Longtable environment
+\usepackage{setspace}                % allow single and double space environment
+\usepackage{longtable}                % allow table to span multiple pages
+\usepackage{caption}                    % consistent caption package
+\usepackage{url}					% Ubiquitious url formatting package
+%===========
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\pagestyle{fancy}
+\lhead{Student Name: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ }
+\rhead{FALL 2024}
+\lfoot{CE 5364 Groundwater Transport }
+\cfoot{EXAM 2}
+\rfoot{Page \thepage\ of \pageref{LastPage}}
+\renewcommand\headrulewidth{0pt}
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%============================================================================
+\begin{document}
+
+\begingroup
+\begin{centering}
+\textbf{CE 5364 Groundwater Transport Phenomena } \\
+\textbf{Exam 2 , Fall 2024}\\
+\end{centering}
+~\\
+\endgroup
+
+Provide short answers to the following questions:
+\begin{enumerate}
+
+\item Distinguish between the application of a numerical groundwater transport model as a predictive tool and as a screening tool.  Which type (predicitve or screening) of model use takes more effort by a model user?
+%A numerical groundwater transport model used as a predictive tool aims to provide detailed, site-specific forecasts of contaminant transport, requiring precise input data, calibration, and validation to achieve reliable results. In contrast, a screening tool simplifies assumptions to identify potential risks or prioritize areas for further investigation, emphasizing rapid assessments over precision. 
+
+%Using a model as a predictive tool typically takes more effort, as it demands extensive data collection, fine-tuning of parameters, and rigorous analysis to ensure accuracy and reliability.
+\item Explain why it is important to have a proper conceptual model of the system to be simulated before moving forward to discretization and selection of parameters.
+%A proper conceptual model is crucial because it defines the system's physical, chemical, and hydrological processes, ensuring the numerical model accurately represents real-world conditions. Without a solid conceptual model, discretization and parameter selection may misrepresent critical features, leading to errors in simulations and unreliable results.
+\item  Explain how MODFLOW6 and FloPy allows the user to establish the initial concentration distribution in a similation domain.  Is the approach generic to where it can be applied for other initial conditions or parameters?
+%MODFLOW6 and FloPy allow users to establish the initial concentration distribution in a simulation domain through the Initial Conditions (IC) package when simulating transport with the Groundwater Transport (GWT) model. Users specify initial concentrations by defining values at individual grid cells, typically through arrays or using uniform concentrations across zones. FloPy streamlines this process by enabling users to create and manipulate these arrays programmatically, leveraging Python's flexibility for efficient data management and customization.
+
+%The approach is highly generic, as it supports defining spatially variable initial conditions based on real-world measurements or synthetic scenarios. This capability extends beyond concentration distributions and can be applied to other initial conditions or parameters, such as hydraulic heads in the Flow model or temperature fields in coupled heat-transport simulations. FloPy's tools for data interpolation and integration with GIS software make it adaptable to various modeling contexts, ensuring versatility across a wide range of hydrogeological applications.
+\item Describe how one could determine particle travel times from an initial location or the particle until its exit point from the solution domain?  Does MODFLOW6 and FloPy have necessary tools to make such calculations?  
+%To determine particle travel times from an initial location to the exit point of the solution domain: Calculate the groundwater flow paths and velocities using the flow field derived from the hydraulic head distribution. The particle travel time is the total time it takes for a particle to traverse along its pathline, determined by integrating the velocity along the flow path.
+%Using MODFLOW6 and FloPy: MODFLOW6 generates the velocity field through the ADVANCED-GWF package, which calculates cell-by-cell flow rates. FloPy provides tools to integrate MODFLOW6 results with MODPATH, a particle-tracking program that works seamlessly with MODFLOW models. Using MODPATH, define particle starting locations and calculate pathlines, velocities, and travel times.
+%Steps in FloPy:
+%Import the necessary FloPy modules.
+%Load the MODFLOW6 model and associated simulation results.
+%Configure MODPATH using the hydraulic head and flow field data from MODFLOW6.
+%Assign particle starting points and run the MODPATH simulation to track particles.
+%Retrieve particle travel times from the MODPATH output.
+\item What are the four types of transport processes that MODFLOW6 readily simulates? 
+%Advection, Dispersion, Adsorbtion, Decay
+\item What four types of site characterization information can be obtained from consturction and use of a monitoring well?
+%Groundwater Levels: Measure hydraulic head to determine the water table or potentiometric surface.
+%Water Quality: Collect samples to analyze chemical, biological, and physical properties.
+%Hydraulic Properties: Conduct tests (e.g., slug tests, pump tests) to estimate hydraulic conductivity and storage coefficients.
+%Geological Information: Analyze borehole logs for stratigraphy, lithology, and soil/rock properties.
+\item Suggest four possible sources of soil characteristic curve data that may be used when describing flow and transport in the unsaturated zone.
+%Laboratory Experiments: Results from soil column or pressure plate tests.
+%Field Measurements: Data from in-situ tests such as tensiometers or lysimeters.
+%Published Databases: Existing soil characteristic curve datasets, like those from the USDA NRCS or UNSODA.
+%Empirical Models: Estimated curves using pedotransfer functions based on soil texture and bulk density.
+\item Explain the concept of capillary pressure head for water in the unsaturated zone. Why is it negative?
+%Capillary Pressure Head:
+%In the unsaturated zone, water exists in the pores of the soil but does not fully saturate them. The capillary pressure head represents the energy state of water relative to atmospheric pressure. It is the result of surface tension forces acting at the interface of water and air within the soil pores, creating suction that holds water against the pull of gravity.
+
+%Why It Is Negative:
+%Capillary pressure head is defined as the pressure difference between the air phase (higher pressure) and the water phase (lower pressure) in the soil pores. Since water is being "sucked" into the soil pores by surface tension, its pressure is lower than the atmospheric pressure. Therefore, the capillary pressure head is represented as a negative value in the energy balance. This negative value quantifies the suction needed to draw water out of the soil and is crucial for describing unsaturated flow.
+
+%Key Factors Affecting Capillary Pressure Head:
+
+%    Soil Texture: Fine-grained soils like clays have smaller pores and higher suction (more negative pressure head).
+%    Moisture Content: The drier the soil, the greater the suction forces and the more negative the capillary pressure head.
+
+%Significance in Flow and Transport:
+
+%    It influences the movement of water and solutes in the unsaturated zone, as water flows from areas of high to low capillary pressure (less negative to more negative).
+%    Essential in modeling processes like infiltration, evaporation, and contaminant transport.
+\item Identify and describe three main categories of groundwater and soil remediation, including approaches for containment, source control, and mass reduction.
+%Containment:
+
+%    Techniques designed to isolate contaminants and prevent their spread to unaffected areas.
+%    Examples: Slurry walls, impermeable caps, hydraulic barriers (e.g., groundwater pumping to create hydraulic containment), and reactive barriers.
+
+%Source Control:
+
+%    Measures aimed at stabilizing, removing, or immobilizing the primary contamination source to prevent further release.
+%    Examples: Excavation and removal of contaminated soil, capping to block exposure pathways, and solidification/stabilization of contaminants.
+
+%Mass Reduction:
+
+%    Methods focused on reducing the volume or concentration of contaminants in soil and groundwater.
+%    Examples: Pump-and-treat systems, soil vapor extraction, in-situ chemical oxidation, bioremediation, and thermal desorption.
+\item Explain the concept of entry pressure as it applies to DNAPL movement through the capillary fringe.
+%Entry Pressure: Entry pressure is the minimum pressure that a DNAPL must exert to overcome the capillary forces and displace water from soil pores in the capillary fringe. It depends on the pore size, surface tension, and the contact angle between the DNAPL, water, and soil.
+
+%In the capillary fringe, the pores are saturated with water, and capillary forces are strong, requiring the DNAPL to reach a threshold pressure to penetrate. Larger pores have lower entry pressures, while smaller pores require higher pressures.
+
+%This concept is critical in understanding DNAPL migration, as it dictates where and how DNAPLs can penetrate the subsurface and accumulate.
+\item Distinguish between the conditions for DNAPL residuals in the unsaturated zone, saturated zone, and free phase zone.  Which zone tends to have the highest DNAPL saturation? Which zone tends to have the lowest?
+%Unsaturated Zone: DNAPLs exist as isolated blobs or films in soil pores due to capillary forces. Saturation is typically low.
+%Saturated Zone: DNAPLs accumulate in pore spaces, often below the water table, as residuals trapped by capillary forces. Moderate saturation is common.
+%Free Phase Zone: DNAPLs form a continuous phase at high saturations, often pooling at impermeable layers or low-permeability zones. This zone has the highest saturation.
+
+%Highest Saturation: Free Phase Zone.
+%Lowest Saturation: Unsaturated Zone.
+\item Describe a possible groundwater contaminant situation in which the application of a structural containment barrier would be appropriate.  State what type of barrier you would specify.
+%Situation: A structural containment barrier would be appropriate for a site with a leaking underground storage tank (UST) containing hazardous chemicals, such as chlorinated solvents or hydrocarbons. These contaminants pose a risk of spreading through groundwater to nearby drinking water wells.
+
+%Type of Barrier: A slurry wall would be specified. This impermeable barrier, constructed using a mix of bentonite clay and soil or cement, prevents the lateral migration of contaminants by surrounding the contaminated area. The slurry wall should extend below the water table and into a low-permeability layer to ensure complete containment. Additional measures, like groundwater extraction within the containment zone, may also be employed to control hydraulic gradients.
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item  An LPST site has been characterized for subsurface total petroleum hydrocarbons contamination in ths soil and groundwater. The impacted aquifer is unconfined, and the subsurface sediments have an average porosity of 0.37 and bulk density of $130~\frac{lb}{ft^3}$($2080~\frac{kg}{m^3}$)
+
+The free phase LNAPL (specific gravity = 0.80) has been found in several monitoring wells, and the average thickness of LNAPL in the monitoring wells was 1.50 ft.  The estimated extent of the LNAPL lens is about 40 ft. by 60 ft, and the average LNAPL saturation in the lens is estimated at 0.75.
+
+Determine:
+\begin{enumerate}
+\item The thickness of the free phase LNAPL in the formation in ft.
+\item The volume of LNAPL in the free phase in gallons.
+\end{enumerate}
+
+\item Continuing with the previous scenario. Residual TPH concentrations in the soil beneath the leaking tank pit were found to average 2500 mg TPH/kg soil.  These residuals lie beneath the pit area of 20 ft by 40 ft and extend from the bottom of the pit downward 25 ft to the capillary fringe/water table.
+
+Determine:
+\begin{enumerate}
+\item The mass of TPH in the unsaturated zone in kg.
+\item The volume of TPH in gallons.
+\end{enumerate}
+
+\item Continuing with the previous scenario. A plume of contaminated groundwater has also been delineated.  The plume is 200 ft. long, 80 ft. wide and extends across the saturated thickness of the aquifer, which is 80 ft.  The average concentration in the plume is 0.50 mg/L.
+
+Determine:
+\begin{enumerate}
+\item The mass of TPH in the saturated zone in kg.
+\item The volume of TPH (not the water) in gallons.
+\end{enumerate}
+
+\item Continuing with the previous scenario. The site owner estimates from inventory checks, that 3500 gallons of fuel are lost.  
+
+Determine:
+\begin{enumerate}
+\item If this estimate compares well with your results.
+\item What other fates of hydrocarbons have not been accounted for in the estimates above.
+\end{enumerate}
+
+\clearpage %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Groundwater samples have been collected quarterly for the last 18 months and analyzed for TCE in parts per billion.  The table lists the results for one monitoring well.
+
+\begin{table}[htbp]
+\centering
+\caption{TCE Observations in an Aquifer}
+\begin{tabular}{p{1.5in}p{1.5in}} % Column formatting, @{} suppresses leading/trailing space
+~&~\\
+Date&TCE (ppb)\\
+\hline
+\hline
+~3/2019&15\\
+~6/2019&12\\
+~9/2019&28\\
+12/2019&16\\
+~3/2020&10\\
+~6/2020&30\\
+\hline
+\end{tabular}
+\label{tab:TCEobserve}
+\end{table}
+
+Determine:
+\begin{enumerate}[a)]
+\item An appropriate method to detect and quantify a trend for small sample sizes.
+\item If the data show a trend.
+\item If the trend is increasing or decreasing.
+\end{enumerate}
+\clearpage %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{enumerate}
+
+\end{document}
+
