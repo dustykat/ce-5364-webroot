@@ -62,7 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03site.mapping.tools/site.mapping.tools';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="1. Introduction to Groundwater Contaminant Transport" href="../00introduction/00introduction.html" />
+    <link rel="next" title="6. Site Characterization" href="../03site.characterization/site.characterization.html" />
+    <link rel="prev" title="3. Fundamentals (Practice)" href="../01fundamentals/01fundamentals.practice.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -181,13 +182,23 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction to Groundwater Contaminant Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00syllabus/ce5364-syllabus-2025-3.html">0. Syllabus (Fall 2025)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.science.html">2. Fundamentals (Science)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.practice.html">3. Fundamentals (Practice)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Site Mapping Tools</a></li>
 
 
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="../03site.characterization/site.characterization.html">6. Site Characterization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/physical.transport.html">7. Physical Transport</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/modeling.advection.html">8. Modeling Advection</a></li>
 </ul>
 
     </div>
@@ -416,9 +427,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="alert alert-block alert-info">
-    <b><h1>Groundwater Transport Phenomena  </h1></b> 
-</div> <section class="tex2jax_ignore mathjax_ignore" id="site-mapping-tools">
+  <section class="tex2jax_ignore mathjax_ignore" id="site-mapping-tools">
 <h1>5. Site Mapping Tools<a class="headerlink" href="#site-mapping-tools" title="Link to this heading">#</a></h1>
 <p>This chapter—<em>site.mapping.tools</em>—builds a small, reusable toolkit for various kinds of mapping.</p>
 <div class="admonition-course-website admonition">
@@ -435,25 +444,6 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html"><style> table {margin-left: 0 !important;} </style>
 </div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">subprocess</span>
-<span class="n">hostname</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="s2">&quot;hostname&quot;</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">();</span> <span class="n">username</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="s2">&quot;whoami&quot;</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-<span class="n">python_executable</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">;</span> <span class="n">python_version</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">;</span> <span class="n">python_version_info</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hostname: </span><span class="si">{</span><span class="n">hostname</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="sa">f</span><span class="s2">&quot;User: </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="sa">f</span><span class="s2">&quot;Python Executable: </span><span class="si">{</span><span class="n">python_executable</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="sa">f</span><span class="s2">&quot;Python Version: </span><span class="si">{</span><span class="n">python_version</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="sa">f</span><span class="s2">&quot;Python Version Info: </span><span class="si">{</span><span class="n">python_version_info</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hostname: ip-172-26-5-168
-User: sensei
-Python Executable: /opt/jupyterhub/bin/python3
-Python Version: 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]
-Python Version Info: sys.version_info(major=3, minor=10, micro=12, releaselevel=&#39;final&#39;, serial=0)
-</pre></div>
-</div>
-</div>
 </div>
 <section id="readings">
 <h2>Readings<a class="headerlink" href="#readings" title="Link to this heading">#</a></h2>
@@ -891,9 +881,9 @@ Python Version Info: sys.version_info(major=3, minor=10, micro=12, releaselevel=
 </div>
 <div class="cell_output docutils container">
 <img alt="../../_images/9b57713f4b0689c7ff84ea69d805288422a601ee785f20ce472500c92dd07ab8.png" src="../../_images/9b57713f4b0689c7ff84ea69d805288422a601ee785f20ce472500c92dd07ab8.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.tri._triangulation.Triangulation at 0x71aa1c8e2c50&gt;,
- &lt;matplotlib.tri._tricontour.TriContourSet at 0x71aa1c948910&gt;,
- &lt;matplotlib.tri._triinterpolate.LinearTriInterpolator at 0x71aa1c970e50&gt;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.tri._triangulation.Triangulation at 0x7e1cc2762770&gt;,
+ &lt;matplotlib.tri._tricontour.TriContourSet at 0x7e1cc27c28c0&gt;,
+ &lt;matplotlib.tri._triinterpolate.LinearTriInterpolator at 0x7e1cc27e8e20&gt;,
  &lt;Axes: title={&#39;center&#39;: &#39;Contour Plot from ARS-W1-XYZ.txt&#39;}, xlabel=&#39;X Coordinate (Easting)&#39;, ylabel=&#39;Y Coordinate (Northing)&#39;&gt;)
 </pre></div>
 </div>
@@ -1137,7 +1127,7 @@ Python Version Info: sys.version_info(major=3, minor=10, micro=12, releaselevel=
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>471.053705
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.tri._tricontour.TriContourSet at 0x71aa18dff970&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.tri._tricontour.TriContourSet at 0x7e1cc0cfb730&gt;
 </pre></div>
 </div>
 </div>
@@ -2044,7 +2034,7 @@ Python Version Info: sys.version_info(major=3, minor=10, micro=12, releaselevel=
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">2025-08-13 22:27:54.712 (   1.590s) [    71AA5E0911C0]vtkXOpenGLRenderWindow.:1458  WARN| bad X server connection. DISPLAY=</span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">2025-08-26 23:12:00.530 (   1.805s) [    7E1D05F841C0]vtkXOpenGLRenderWindow.:1458  WARN| bad X server connection. DISPLAY=</span>
 </pre></div>
 </div>
 <img alt="../../_images/0cf0b61840567e0fee8a0f3540ed8716c3fbfefcc9d170c991d6023d923acefd.png" src="../../_images/0cf0b61840567e0fee8a0f3540ed8716c3fbfefcc9d170c991d6023d923acefd.png" />
@@ -2209,7 +2199,7 @@ Python Version Info: sys.version_info(major=3, minor=10, micro=12, releaselevel=
 </div>
 <div class="cell_output docutils container">
 <img alt="../../_images/41a22ef69fcaba3741628b7ffa9ba2e91cf2952adb4861ae3a4303d10bafcfd4.png" src="../../_images/41a22ef69fcaba3741628b7ffa9ba2e91cf2952adb4861ae3a4303d10bafcfd4.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(PolyData (0x71aa05d4eec0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(PolyData (0x7e1cc080e920)
    N Cells:    4361
    N Points:   4500
    N Strips:   0
@@ -2217,7 +2207,7 @@ Python Version Info: sys.version_info(major=3, minor=10, micro=12, releaselevel=
    Y Bounds:   4.669e-01, 8.995e+02
    Z Bounds:   3.318e+01, 2.481e+03
    N Arrays:   1,
- &lt;pyvista.plotting.plotter.Plotter at 0x71aa05dc4280&gt;)
+ &lt;pyvista.plotting.plotter.Plotter at 0x7e1cadfdc2e0&gt;)
 </pre></div>
 </div>
 </div>
@@ -2231,7 +2221,7 @@ Python Version Info: sys.version_info(major=3, minor=10, micro=12, releaselevel=
 </div>
 <div class="cell_output docutils container">
 <img alt="../../_images/d9168ce297429fe365af18accc137073939b25ca2971d078d0dedc9aae110286.png" src="../../_images/d9168ce297429fe365af18accc137073939b25ca2971d078d0dedc9aae110286.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(PolyData (0x71aa05ddc8e0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(PolyData (0x7e1cc0cd2da0)
    N Cells:    5831
    N Points:   6000
    N Strips:   0
@@ -2239,7 +2229,7 @@ Python Version Info: sys.version_info(major=3, minor=10, micro=12, releaselevel=
    Y Bounds:   4.500e+02, 4.500e+02
    Z Bounds:   3.318e+01, 2.481e+03
    N Arrays:   1,
- &lt;pyvista.plotting.plotter.Plotter at 0x71aa184a5690&gt;)
+ &lt;pyvista.plotting.plotter.Plotter at 0x7e1cc06b50c0&gt;)
 </pre></div>
 </div>
 </div>
@@ -2283,13 +2273,22 @@ Python Version Info: sys.version_info(major=3, minor=10, micro=12, releaselevel=
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../00introduction/00introduction.html"
+       href="../01fundamentals/01fundamentals.practice.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">1. Introduction to Groundwater Contaminant Transport</p>
+        <p class="prev-next-title">3. Fundamentals (Practice)</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../03site.characterization/site.characterization.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">6. Site Characterization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
