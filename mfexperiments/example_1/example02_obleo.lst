@@ -1,0 +1,274 @@
+                                   MODFLOW 6
+                U.S. GEOLOGICAL SURVEY MODULAR HYDROLOGIC MODEL
+                          GROUNDWATER FLOW MODEL (GWF)
+                            VERSION 6.6.1 02/10/2025
+
+   MODFLOW 6 compiled Feb 14 2025 13:39:18 with Intel(R) Fortran Intel(R) 64
+   Compiler Classic for applications running on Intel(R) 64, Version 2021.7.0
+                             Build 20220726_000000
+
+This software has been approved for release by the U.S. Geological 
+Survey (USGS). Although the software has been subjected to rigorous 
+review, the USGS reserves the right to update the software as needed 
+pursuant to further analysis and review. No warranty, expressed or 
+implied, is made by the USGS or the U.S. Government as to the 
+functionality of the software and related material nor shall the 
+fact of release constitute any such warranty. Furthermore, the 
+software is released on condition that neither the USGS nor the U.S. 
+Government shall be held liable for any damages resulting from its 
+authorized or unauthorized use. Also refer to the USGS Water 
+Resources Software User Rights Notice for complete use, copyright, 
+and distribution information.
+
+
+As a work of the United States Government, this USGS product is 
+in the public domain within the United States. You can copy, 
+modify, distribute, and perform the work, even for commercial 
+purposes, all without asking permission. Additionally, USGS 
+waives copyright and related rights in the work worldwide 
+through CC0 1.0 Universal Public Domain Dedication 
+(https://creativecommons.org/publicdomain/zero/1.0/).
+
+The following GNU Lesser General Public License (LGPL) libraries
+are used in this USGS product:
+
+    SPARSKIT version 2.0
+      ilut, luson, and qsplit 
+      (https://www-users.cse.umn.edu/~saad/software/SPARSKIT/)
+
+    RCM - Reverse Cuthill McKee Ordering
+      (https://people.math.sc.edu/Burkardt/f_src/rcm/rcm.html)
+
+    BLAS - Basic Linear Algebra Subprograms Level 1
+      (https://people.math.sc.edu/Burkardt/f_src/blas1_d/blas1_d.html)
+
+    SPARSEKIT - Sparse Matrix Utility Package
+      amux, dperm, dvperm, rperm, and cperm
+      (https://people.sc.fsu.edu/~jburkardt/f77_src/sparsekit/sparsekit.html)
+
+The following BSD-3 License libraries are used in this USGS product:
+
+    Modern Fortran DAG Library
+      Copyright (c) 2018, Jacob Williams
+      All rights reserved.
+      (https://github.com/jacobwilliams/daglib)
+
+MODFLOW 6 compiler options: -Ilinux/obj_mf6 -O2 -no-heap-arrays -fpe0
+-traceback -Qdiag-disable:7416 -Qdiag-disable:7025 -Qdiag-disable:5268 -fpp
+-module linux/mod_mf6/ -c -o linux/obj_mf6/compilerversion.o
+
+System command used to initiate simulation:
+/home/sensei/mfplayground/modflow-python/mf6.4.1_linux/bin/mf6
+
+MODFLOW was compiled using uniform precision.
+
+Real Variables
+  KIND: 8
+  TINY (smallest non-zero value):    2.225074-308
+  HUGE (largest value):    1.797693+308
+  PRECISION: 15
+  SIZE IN BITS: 64
+
+Integer Variables
+  KIND: 4
+  HUGE (largest value): 2147483647
+  SIZE IN BITS: 32
+
+Long Integer Variables
+  KIND: 8
+  HUGE (largest value): 9223372036854775807
+  SIZE IN BITS: 64
+
+Logical Variables
+  KIND: 4
+  SIZE IN BITS: 32
+ 
+ NAMEFILE OPTIONS:
+ END NAMEFILE OPTIONS:
+
+ DIS -- STRUCTURED GRID DISCRETIZATION PACKAGE, VERSION 2 : 3/27/2014 - INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE02_OBLEO/DIS                     
+
+
+ NPF -- NODE PROPERTY FLOW PACKAGE, VERSION 1, 3/30/2015 INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE02_OBLEO/NPF                     
+
+
+ IC -- Initial Conditions Package, Version 8, 3/28/2015 input read from mempath: __INPUT__/EXAMPLE02_OBLEO/IC                      
+
+
+ Setting Discretization Options
+ End Setting Discretization Options
+
+ Setting Discretization Dimensions
+    NLAY = 1
+    NROW = 11
+    NCOL = 11
+ End Setting Discretization Dimensions
+
+ Setting Discretization Griddata
+    DELR set from input file
+    DELC set from input file
+    TOP set from input file
+    BOTM set from input file
+ End Setting Discretization Griddata
+
+ Setting NPF Options
+    Cell-by-cell flow information will be saved to binary file whenever ICBCFL is not zero.
+ End Setting NPF Options
+
+ Setting NPF Griddata
+    ICELLTYPE set from input file
+    K set from input file
+    K33 not provided.  Setting K33 = K.
+    K22 not provided.  Setting K22 = K.
+ End Setting NPF Griddata
+
+
+ WEL   -- WEL PACKAGE, VERSION 8, 2/22/2014 INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE02_OBLEO/WEL_0                   
+
+ PROCESSING WEL BASE OPTIONS
+ END OF WEL BASE OPTIONS
+
+ PROCESSING WEL OPTIONS
+ END OF WEL OPTIONS
+
+ PROCESSING WEL BASE DIMENSIONS
+    MAXBOUND =       1
+ END OF WEL BASE DIMENSIONS
+
+ RCH   -- RCH PACKAGE, VERSION 8, 2/22/2014 INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE02_OBLEO/RCHA_0                  
+
+ PROCESSING RCH BASE OPTIONS
+ END OF RCH BASE OPTIONS
+
+ PROCESSING RCHA OPTIONS
+    RECHARGE INPUT WILL BE READ AS ARRAY(S).
+ END OF RCHA OPTIONS
+
+ CHD   -- CHD PACKAGE, VERSION 8, 2/22/2014 INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE02_OBLEO/CHD_0                   
+
+ PROCESSING CHD BASE OPTIONS
+    FLOWS WILL BE SAVED TO BUDGET FILE SPECIFIED IN OUTPUT CONTROL
+ END OF CHD BASE OPTIONS
+
+ PROCESSING CHD BASE DIMENSIONS
+    MAXBOUND =      22
+ END OF CHD BASE DIMENSIONS
+    STRT set from input file
+    BINARY GRID INFORMATION WILL BE WRITTEN TO:
+      UNIT NUMBER: 1014
+      FILE NAME: example02_obleo.dis.grb
+
+ OPENED example02_obleo.dis.grb
+ FILE TYPE:DATA(BINARY)   UNIT 1014   STATUS:REPLACE             
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+ ACTION:READWRITE           
+
+      THE LAST TIME STEP WILL BE PRINTED
+      THE LAST TIME STEP WILL BE PRINTED
+ # File generated by Flopy version 3.9.2 on 07/18/2025 at 16:45:56.
+
+ PROCESSING OC OPTIONS
+
+    BUDGET INFORMATION WILL BE WRITTEN TO:
+      UNIT NUMBER: 1015
+      FILE NAME: example02_obleo.cbb
+
+ OPENED example02_obleo.cbb
+ FILE TYPE:DATA(BINARY)   UNIT 1015   STATUS:REPLACE             
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+ ACTION:READWRITE           
+
+    HEAD INFORMATION WILL BE WRITTEN TO:
+      UNIT NUMBER: 1016
+      FILE NAME: example02_obleo.hds
+
+ OPENED example02_obleo.hds
+ FILE TYPE:DATA(BINARY)   UNIT 1016   STATUS:REPLACE             
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+ ACTION:READWRITE           
+
+ END OF OC OPTIONS
+
+start timestep kper="1" kstp="1" mode="normal"
+
+
+ BEGIN READING OUTPUT CONTROL FOR STRESS PERIOD 1
+      ALL TIME STEPS WILL BE SAVED
+      ALL TIME STEPS WILL BE SAVED
+      THE LAST TIME STEP WILL BE PRINTED
+
+ END READING OUTPUT CONTROL FOR STRESS PERIOD 1
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1015 AT TIME STEP      1, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE02_OBLEO  PACKAGE EXAMPLE02_OBLEO CONNECTED TO MODEL EXAMPLE02_OBLEO  PACKAGE CHD_0            ON UNIT   1015 AT TIME STEP      1, STRESS PERIOD      1
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP   1 IN STRESS PERIOD    1
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    0.000      -22.78      -44.48      -63.00      -75.83      -80.50      -75.83      -63.00      -44.48      -22.78    
+        0.000    
+   2    0.000      -24.50      -48.22      -69.11      -84.22      -90.01      -84.22      -69.11      -48.22      -24.50    
+        0.000    
+   3    0.000      -27.75      -55.50      -81.58      -102.4      -111.6      -102.4      -81.58      -55.50      -27.75    
+        0.000    
+   4    0.000      -31.96      -65.50      -100.4      -133.5      -153.1      -133.5      -100.4      -65.50      -31.96    
+        0.000    
+   5    0.000      -35.92      -75.76      -123.0      -181.4      -241.0      -181.4      -123.0      -75.76      -35.92    
+        0.000    
+   6    0.000      -37.74      -81.14      -138.6      -236.7      -563.4      -236.7      -138.6      -81.14      -37.74    
+        0.000    
+   7    0.000      -35.92      -75.76      -123.0      -181.4      -241.0      -181.4      -123.0      -75.76      -35.92    
+        0.000    
+   8    0.000      -31.96      -65.50      -100.4      -133.5      -153.1      -133.5      -100.4      -65.50      -31.96    
+        0.000    
+   9    0.000      -27.75      -55.50      -81.58      -102.4      -111.6      -102.4      -81.58      -55.50      -27.75    
+        0.000    
+  10    0.000      -24.50      -48.22      -69.11      -84.22      -90.01      -84.22      -69.11      -48.22      -24.50    
+        0.000    
+  11    0.000      -22.78      -44.48      -63.00      -75.83      -80.50      -75.83      -63.00      -44.48      -22.78    
+        0.000    
+
+ HEAD WILL BE SAVED ON UNIT 1016 AT END OF TIME STEP    1, STRESS PERIOD    1
+
+
+  VOLUME BUDGET FOR ENTIRE MODEL AT END OF TIME STEP    1, STRESS PERIOD   1
+  ---------------------------------------------------------------------------------------------------
+
+     CUMULATIVE VOLUME      L**3       RATES FOR THIS TIME STEP      L**3/T          PACKAGE NAME    
+     ------------------                 ------------------------                     ----------------
+
+           IN:                                      IN:
+           ---                                      ---
+                 WEL =           0.0000                   WEL =           0.0000     WEL_0                            
+                RCHA =    24750000.0000                  RCHA =    24750000.0000     RCHA_0                           
+                 CHD =  2089250000.0244                   CHD =  2089250000.0244     CHD_0                            
+
+            TOTAL IN =  2114000000.0244              TOTAL IN =  2114000000.0244
+
+          OUT:                                     OUT:
+          ----                                     ----
+                 WEL =  2114000000.0000                   WEL =  2114000000.0000     WEL_0                            
+                RCHA =           0.0000                  RCHA =           0.0000     RCHA_0                           
+                 CHD =           0.0000                   CHD =           0.0000     CHD_0                            
+
+           TOTAL OUT =  2114000000.0000             TOTAL OUT =  2114000000.0000
+
+            IN - OUT =       2.4354E-02              IN - OUT =       2.4354E-02
+
+ PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
+
+
+
+
+         TIME SUMMARY AT END OF TIME STEP    1 IN STRESS PERIOD    1
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH 3.15576E+07 5.25960E+05  8766.0      365.25      1.0000    
+ STRESS PERIOD TIME 3.15576E+07 5.25960E+05  8766.0      365.25      1.0000    
+         TOTAL TIME 3.15576E+07 5.25960E+05  8766.0      365.25      1.0000    
+
+
+end timestep
+

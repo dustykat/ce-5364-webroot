@@ -1,719 +1,545 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Essential Groundwater Review &#8212; Groundwater Transport Phenomena</title>
-    
-  <link href="../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    <title>2. Conceptual Models of Contaminant Fate and Transport &#8212; Groundwater Transport Phenomena</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-      
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/2essentialgroundwater/essentialgwreview';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Pollutants" href="../4pollutants/4pollutants.html" />
-    <link rel="prev" title="Computational Tools" href="../1computationaltools/1computationaltools.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-    
+    <link rel="next" title="3. Regulatory Overview and Risk Assessment" href="../4pollutants/4pollutants.html" />
+    <link rel="prev" title="1. Introduction to Groundwater Contaminant Transport" href="../00introduction/00introduction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../_static/gwtransport.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Groundwater Transport Phenomena</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   Preface
-  </a>
- </li>
+    
+    
+    <img src="../../_static/gwtransport.png" class="logo__image only-light" alt="Groundwater Transport Phenomena - Home"/>
+    <script>document.write(`<img src="../../_static/gwtransport.png" class="logo__image only-dark" alt="Groundwater Transport Phenomena - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction to Groundwater Contaminant Transport</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Conceptual Models of Contaminant Fate and Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4pollutants/4pollutants.html">3. Regulatory Overview and Risk Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04computationaltools/04computationaltools.html">4. Introduction to Modeling Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05analyticalmodels1d/05analyticalmodels1d.html">5. 1-D Transport by Advection and Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06reactivemodels1d/06reactivemodels1d.html">6. 1-D Transport with Sorption and Decay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07analyticalmodels2d/07analyticalmodels2d.html">7. 2-D Analytical Transport Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08plumeandcapture/08plumeandcapture.html">8. Plume Evolution and Capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09heterogenity/09heterogenity.html">9. Heterogeneity and Stochastic Approaches in Analytical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10mf6introduction/10mf6introduction.html">10. MODFLOW6 Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11mf6simple/11mf6simple.html">11. Building a Simple MODFLOW Model in FLOPY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12mf6transport/12mf6transport.html">12. Solute Transport Modeling in MODFLOW (MT3DMS and MODFLOW6)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../5nonreactivetransport/5nonreactivetransport.html">Non-Reactive Transport</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../5nonreactivetransport/1tracerhypothesis.html">The Tracer Hypothesis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5nonreactivetransport/2flux.html">Flux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5nonreactivetransport/3advection.html">Advection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../6nonreactivetransport/4diffusion.html">Diffusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../6nonreactivetransport/5dispersion.html">Dispersion</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../0introduction/0introduction.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../1computationaltools/1computationaltools.html">
-   Computational Tools
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Essential Groundwater Review
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../4pollutants/4pollutants.html">
-   Pollutants
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../5nonreactivetransport/5nonreactivetransport.html">
-   Non-Reactive Transport
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5nonreactivetransport/1tracerhypothesis.html">
-     The Tracer Hypothesis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5nonreactivetransport/2flux.html">
-     Flux
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5nonreactivetransport/3advection.html">
-     Advection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../6nonreactivetransport/4diffusion.html">
-     Diffusion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../6nonreactivetransport/5dispersion.html">
-     Dispersion
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../7analyticalmodels/analyticalmodels.html">
-   Analytical Models
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/impulse.html">
-     1D Impulse (Instantaneous Source) Solution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/ogatabanks.html">
-     1D Ogata-Banks Solution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/sauty.html">
-     1D Sauty Solution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/huntsolution.html">
-     2D Plume in Regional Flow (Hunt Solution)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/domenico.html">
-     Domenico-Robbins Solutions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/2Dfinitewidth.html">
-     2D - Advection-Dispersion, Finite-Width, Constant Source
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/2Dfwidth-pulse.html">
-     2D - Advection-Dispersion, Finite-Width, Finite-Duration Source
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/3Dfinitearea.html">
-     3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../8reactivetransport/8reactivetransport.html">
-   Reactive Transport
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../8reactivetransport/6reactions.html">
-     Adsorbtion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../8reactivetransport/7decay.html">
-     Decay
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/reactivemodels.html">
-     Analytical Models with Decay and Adsorbtion
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../11modelingadvection/0modelingadvection.html">
-   Modeling Advection
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../11modelingadvection/1particletracking.html">
-     Modeling Advection by Particle Tracking
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../11modelingadvection/2upwindfdm.html">
-     Upwind Formulation Finite-Difference
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../12usgsmocmodel/usgsmoc.html">
-   USGS MOC Software
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/winmoc.html">
-     Windows Build
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/armmoc.html">
-     ARM7/AARCH 64 Build
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/dprw.html">
-     Discrete Particle Random Walk (Future Semester)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">
-   Site Investigations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../15datacollection/datacollection.html">
-   Sample Collection and Data Analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../17unsaturatedzone/unsaturated.html">
-   Unsaturated Zone Flow
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../18untransport/unsaturatedtransport.html">
-   Unsaturated Zone Transport
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../18untransport/napls.html">
-     Non-Aqueous Phase Liquids
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../19chemflow/chemflow.html">
-   CHEMFLO-2000
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../19chemflow/chemflowwinders.html">
-     Windows Install
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../19chemflow/chemflowaarch.html">
-     ARM7/AARCH Install
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../19chemflow/chemflowexamples.html">
-     CHEMFLOW Examples
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../22remediation/remediation.html">
-   Remediation Technologies
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../23risk/risk.html">
-   Risk Assessment
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../26regulatory/regulatory.html">
-   Groundwater Protection Legal Framework
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../91exercises/2-Exercises.html">
-   Exercises
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES1/ES1.html">
-     F23 Exercise Set 1
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES1/src-sol/ES1-WS.html">
-     F23 ES1 Solution Sketch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES2/ES2.html">
-     F23 Exercise Set 2
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES2/src-sol/ES2-WS.html">
-     F23 ES2 Solution Sketch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES3/ES3.html">
-     F23 Exercise Set 3
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES3/src-sol/ES3-WS.html">
-     F23 ES3 Solution Sketch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES4/ES4.html">
-     F23 Exercise Set 4
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES4/src-sol/ES4-WS.html">
-     F23 ES4 Solution Sketch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES5/ES5.html">
-     F23 Exercise Set 5
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES5/src-sol/ES5-WS.html">
-     F23 ES5 Solution Sketch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES6/ES6.html">
-     F23 Exercise Set 6
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES6/src-sol/ES6-WS.html">
-     F23 ES6 Solution Sketch
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../93projects/Projects.html">
-   Projects
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../93projects/PR2/PR2.html">
-     USGS MOC Project 1
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../93projects/PR3/PR3.html">
-     USGS MOC Project 3 (Site Investigation/Remediation Design)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../93projects/PR4/PR4.html">
-     USGS MOC Project (Casing Failure)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../93projects/PR5/PR5.html">
-     Chemflow 2000 Project 2
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../92exams/exams.html">
-   Exams
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../92exams/EX1/EX1.html">
-     F23 Exam 1 Deploy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../92exams/EX1/src-sol/EX1-WS.html">
-     F23 Exam 1 Solution Sketch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../92exams/EX2/EX2.html">
-     F23 Exam 2 Deploy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../92exams/EX2/src-sol/EX2-WS.html">
-     F23 Exam 2 Solution Sketch
-    </a>
-   </li>
-  </ul>
- </li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../7analyticalmodels/analyticalmodels.html">Analytical Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../7analyticalmodels/impulse.html">1D Impulse (Instantaneous Source) Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7analyticalmodels/ogatabanks.html">1D Ogata-Banks Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7analyticalmodels/sauty.html">1D Sauty Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7analyticalmodels/huntsolution.html">2D Plume in Regional Flow (Hunt Solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7analyticalmodels/domenico.html">Domenico-Robbins Solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7analyticalmodels/2Dfinitewidth.html">2D - Advection-Dispersion, Finite-Width, Constant Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7analyticalmodels/2Dfwidth-pulse.html">2D - Advection-Dispersion, Finite-Width, Finite-Duration Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7analyticalmodels/3Dfinitearea.html">3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../8.0reactivetransport/8reactivetransport.html">Reactive Transport</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../8.0reactivetransport/6reactions.html">Adsorbtion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../8.0reactivetransport/7decay.html">Decay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../8.1analyticalmodels/reactivemodels.html">Analytical Models with Reaction Terms</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../8.1analyticalmodels/wilsonmiller.html">2D Plume in Regional Flow with 1st-Order Decay (Wilson and Miller Solution)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../11modelingadvection/0modelingadvection.html">Modeling Advection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../11modelingadvection/2upwindfdm.html">Upwind Formulation Finite-Difference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11modelingadvection/1particletracking.html">Modeling Advection by Particle Tracking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../12.01usgsmodflow6/usgsmodflow6.html">MODFLOW6 and Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../12.01usgsmodflow6/flowmodel1.html">Steady Flow, Single Layer Aquifer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.01usgsmodflow6/flowmodel2.html">Transient Flow, Single Layer Aquifer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.01usgsmodflow6/flowmodel3.html">Transient Flow, Mulitple-Layer Aquifer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.01usgsmodflow6/transportmodel1.html">Transport Model using MT3DMS Problem 9 Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.01usgsmodflow6/transportmodel2.1.html">Transport Model using MT3DMS and USGS MOC (circa 1980s Example)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.02usgsmocmodel/usgsmoc.html">USGS MOC Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.02usgsmocmodel/winmoc.html">Windows Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.02usgsmocmodel/armmoc.html">ARM7/AARCH 64 Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.02usgsmocmodel/dprw.html">Discrete Particle Random Walk (Future Semester)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">Site Investigations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15datacollection/datacollection.html">Sample Collection and Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17unsaturatedzone/unsaturated.html">Unsaturated Zone Flow</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../18untransport/unsaturatedtransport.html">Unsaturated Zone Transport</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../18untransport/napls.html">Non-Aqueous Phase Liquids</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../19chemflow/chemflow.html">CHEMFLO-2000</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../19chemflow/chemflowwinders.html">Windows Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../19chemflow/chemflowaarch.html">ARM7/AARCH Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../19chemflow/chemflowexamples.html">CHEMFLOW Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../22remediation/remediation.html">Remediation Technologies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23risk/risk.html">Risk Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26regulatory/regulatory.html">Groundwater Protection Legal Framework</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../91exercises/2-Exercises.html">Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES1/ES1.html">F23 Exercise Set 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES1/src-sol/ES1-WS.html">F23 ES1 Solution Sketch</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES2/ES2.html">F23 Exercise Set 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES2/src-sol/ES2-WS.html">F23 ES2 Solution Sketch</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES3/ES3.html">F23 Exercise Set 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES3/src-sol/ES3-WS.html">F23 ES3 Solution Sketch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES4/ES4.html">F23 Exercise Set 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES4/src-sol/ES4-WS.html">F23 ES4 Solution Sketch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES5/ES5.html">F23 Exercise Set 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES5/src-sol/ES5-WS.html">F23 ES5 Solution Sketch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES6/ES6.html">F23 Exercise Set 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES6/src-sol/ES6-WS.html">F23 ES6 Solution Sketch</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../93projects/Projects.html">Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../93projects/PR2/PR2.html">USGS MOC Project 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../93projects/PR3/PR3.html">USGS MOC Project 3 (Site Investigation/Remediation Design)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../93projects/PR4/PR4.html">USGS MOC Project (Casing Failure)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../93projects/PR5/PR5.html">Chemflow 2000 Project 2</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../92exams/exams.html">Exams</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../92exams/EX1/EX1.html">F23 Exam 1 Deploy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../92exams/EX1/src-sol/EX1-WS.html">F23 Exam 1 Solution Sketch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../92exams/EX2/EX2.html">F23 Exam 2 Deploy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../92exams/EX2/src-sol/EX2-WS.html">F23 Exam 2 Solution Sketch</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../99legacy/99legacy.html">Legacy Content</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/chapters/2essentialgroundwater/essentialgwreview.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/2essentialgroundwater/essentialgwreview.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/2essentialgroundwater/essentialgwreview.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/2essentialgroundwater/essentialgwreview.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/2essentialgroundwater/essentialgwreview.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2. Conceptual Models of Contaminant Fate and Transport</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#porous-media-pp-15-21">
-   Porous Media (pp. 15-21)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#saturated-zone-pp-16-17">
-   Saturated Zone (pp. 16-17)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#unsaturated-zone-pp-289-297">
-   Unsaturated Zone (pp. 289-297)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aquifers-pp-18-23">
-   Aquifers (pp. 18-23)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#storage">
-   Storage
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transport-of-water">
-   Transport (of Water)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#darcy-s-law">
-   Darcy’s Law
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pore-velocity">
-   Pore Velocity
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#anisotropy">
-   Anisotropy
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#principal-directions-of-hydraulic-conductivity">
-     Principal Directions of Hydraulic Conductivity
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cell-balance-models-flow">
-   Cell Balance Models (Flow)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#flownets-pp-30-34">
-   Flownets (pp. 30-34)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-in-python">
-     Example in Python
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#velocity-potential">
-       Velocity Potential
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#stream-function">
-       Stream Function
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sheetpile-under-a-dam-flownet">
-     Sheetpile under a dam flownet
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#flownet-example-2-pore-pressure-under-a-dam-domain-decomposition-approach">
-     Flownet Example 2 : Pore Pressure under a Dam (Domain Decomposition approach)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#essential-groundwater-review">Essential Groundwater Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#porous-media-pp-15-21">Porous Media (pp. 15-21)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saturated-zone-pp-16-17">Saturated Zone (pp. 16-17)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsaturated-zone-pp-289-297">Unsaturated Zone (pp. 289-297)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aquifers-pp-18-23">Aquifers (pp. 18-23)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storage">Storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transport-of-water">Transport (of Water)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#darcy-s-law">Darcy’s Law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pore-velocity">Pore Velocity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anisotropy">Anisotropy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-directions-of-hydraulic-conductivity">Principal Directions of Hydraulic Conductivity</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-balance-models-flow">Cell Balance Models (Flow)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flownets-pp-30-34">Flownets (pp. 30-34)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-in-python">Example in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-potential">Velocity Potential</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stream-function">Stream Function</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sheetpile-under-a-dam-flownet">Sheetpile under a dam flownet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flownet-example-2-pore-pressure-under-a-dam-domain-decomposition-approach">Flownet Example 2 : Pore Pressure under a Dam (Domain Decomposition approach)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="essential-groundwater-review">
-<h1>Essential Groundwater Review<a class="headerlink" href="#essential-groundwater-review" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="conceptual-models-of-contaminant-fate-and-transport">
+<h1>2. Conceptual Models of Contaminant Fate and Transport<a class="headerlink" href="#conceptual-models-of-contaminant-fate-and-transport" title="Link to this heading">#</a></h1>
+<section id="scope">
+<h2>Scope<a class="headerlink" href="#scope" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Sources of contamination</p></li>
+<li><p>Hydrogeologic framework and transport pathways</p></li>
+<li><p>Role of retardation and degradation</p></li>
+</ul>
+</section>
+<section id="essential-groundwater-review">
+<h2>Essential Groundwater Review<a class="headerlink" href="#essential-groundwater-review" title="Link to this heading">#</a></h2>
 <p>This essential review of groundwater should remind the reader of important aspects of:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Introduction to Groundwater including: A definition of groundwater, the importance of groundwater as a natural resource, and the distinction between surface water and groundwater.</p></li>
 <li><p>Aquifers and Aquitards including: An explanation of aquifers and their properties, the role of aquitards in groundwater containment, types of aquifers (unconfined, confined, etc.).</p></li>
 <li><p>Groundwater Movement: Darcy’s Law and groundwater flow, factors influencing groundwater flow rates, flow patterns in aquifers (radial flow, regional flow, etc.)</p></li>
@@ -721,19 +547,20 @@
 <li><p>Groundwater Flow Modeling: Overview of groundwater flow modeling, application of numerical models (MODFLOW, FEMWATER, etc.), use of models for aquifer characterization and contamination prediction</p></li>
 <li><p>Groundwater Extraction and Wells: Types of groundwater wells (e.g., artesian wells, extraction wells), pumping tests and their significance, groundwater extraction for drinking water, remediation, and irrigation.</p></li>
 </ol>
-<div class="section" id="porous-media-pp-15-21">
-<h2>Porous Media (pp. 15-21)<a class="headerlink" href="#porous-media-pp-15-21" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="porous-media-pp-15-21">
+<h2>Porous Media (pp. 15-21)<a class="headerlink" href="#porous-media-pp-15-21" title="Link to this heading">#</a></h2>
 <p>Porous media refers to a class of materials that have <strong>interconnected</strong> void spaces or pores, allowing the flow and transport of fluids. In the context of groundwater, porous media plays a crucial role as it forms the subsurface medium through which water flows and contaminants can be transported. The properties and characteristics of the porous media significantly influence the movement of groundwater and the fate of contaminants within an aquifer.</p>
 <p>Two fundamental properties govern behavior of fluids in a porous media:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>The <strong>porosity</strong>, which represents the volume of void spaces within the material, determines the storage capacity for fluid within the porous media and affects the flow rate. Porous media with high porosity can concievably store more water, but it may also delay movement of groundwater because of reduced size of individual pores.</p></li>
 <li><p>The <strong>permeability</strong>, which describes the ease with which fluids can flow through the porous media, depends on factors such as pore size, shape, and connectivity. High-permeability materials, like coarse sand or gravel, allow water to flow more easily, whereas low-permeability materials, like clay or silt, impede water movement. Permeability influences the speed and direction of groundwater flow, as well as the potential for contaminants to migrate through the aquifer.</p></li>
 </ol>
 <p>Porous media also exhibits <strong>heterogeneity</strong>, meaning it can have spatial variations in these fundamental properties. This heterogeneity arises from geological processes, such as sediment deposition, compaction, and tectonic activity. Variations in porosity and permeability within a porous medium lead to complex flow patterns, preferential flow paths, and the potential for localized contaminant accumulation or dispersion. Understanding the heterogeneity of porous media is crucial for accurately predicting groundwater flow and contaminant transport.</p>
 <p>Interactions between fluids and porous media involves various physical and chemical processes. <strong>Advection</strong>, the bulk movement of groundwater, is influenced by the permeability and hydraulic gradient. <strong>Dispersion</strong>, the spreading of solutes due to molecular diffusion and mechanical mixing, occurs as water moves through the porous medium. <strong>Adsorption</strong> refers to the attachment of contaminants to the solid surfaces of the porous media, affecting their mobility and persistence. These processes, along with others like biodegradation and chemical reactions, shape the fate and transport of contaminants in groundwater.</p>
-</div>
-<div class="section" id="saturated-zone-pp-16-17">
-<h2>Saturated Zone (pp. 16-17)<a class="headerlink" href="#saturated-zone-pp-16-17" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="saturated-zone-pp-16-17">
+<h2>Saturated Zone (pp. 16-17)<a class="headerlink" href="#saturated-zone-pp-16-17" title="Link to this heading">#</a></h2>
 <p>The saturated zone refers to the region within the subsurface where all the available pore spaces are filled with water, creating a saturated condition. It is an important concept in groundwater hydrology and plays a crucial role in groundwater flow and contaminant transport.</p>
 <p>The saturated zone begins at the water table, which represents the boundary between the unsaturated zone (where there is both air and water in the pore spaces) and the saturated zone (where all pore spaces are filled with water). The depth of the saturated zone can vary depending on factors such as topography, geology, and seasonality.</p>
 <p><img alt="" src="../../_images/vertdist1.png" /></p>
@@ -741,21 +568,21 @@
 <p>The properties of the saturated zone, such as its permeability, porosity, and heterogeneity, have a significant impact on groundwater flow. Permeability determines how easily water can move through the saturated zone. Materials with high permeability, like gravel or sand, allow for faster groundwater flow, while low-permeability materials, such as clay or shale, impede flow. Porosity, the volume of void spaces, determines the amount of water that can be stored in the saturated zone.</p>
 <p>Heterogeneity in the saturated zone refers to variations in the properties of the porous medium, such as permeability and porosity, over space. This heterogeneity can influence the flow of groundwater by creating preferential flow paths or areas of localized flow convergence or divergence. Understanding the heterogeneity of the saturated zone is important for accurate modeling and prediction of groundwater flow patterns.</p>
 <p>Contaminant transport also occurs within the saturated zone. Once contaminants enter the groundwater system, they can be transported through the interconnected pore spaces. The movement of contaminants is influenced by factors such as advection (bulk movement of groundwater), dispersion (spreading of contaminants due to mechanical mixing and molecular diffusion), and sorption (attachment of contaminants to solid surfaces). The saturated zone acts as a medium for the migration and dispersion of contaminants, and its properties influence the rate and extent of contaminant transport.</p>
-</div>
-<div class="section" id="unsaturated-zone-pp-289-297">
-<h2>Unsaturated Zone (pp. 289-297)<a class="headerlink" href="#unsaturated-zone-pp-289-297" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="unsaturated-zone-pp-289-297">
+<h2>Unsaturated Zone (pp. 289-297)<a class="headerlink" href="#unsaturated-zone-pp-289-297" title="Link to this heading">#</a></h2>
 <p>The unsaturated zone, also known as the vadose zone or the zone of aeration, is the region within the subsurface where the pore spaces contain both air and water. In this zone, the water content is less than the total porosity of the material. The unsaturated zone extends from the land surface down to the water table, where it transitions into the saturated zone.</p>
 <p><img alt="" src="../../_images/vertdist3.png" /></p>
 <p>The unsaturated zone is characterized by a dynamic water content profile that changes over time due to factors such as precipitation, evaporation, and plant uptake. At the land surface, water infiltrates through the soil and rock layers until it reaches a point where the pore spaces are completely saturated. This point is known as the water table, which marks the transition to the saturated zone.</p>
 <p>The movement of water in the unsaturated zone is influenced by capillary forces and gravity. Capillary forces cause water to rise in small pores against the force of gravity, allowing it to be retained in the unsaturated zone. The rate of water movement through the unsaturated zone is generally slower compared to the saturated zone due to the presence of air and the lower hydraulic conductivity of unsaturated materials.</p>
 <p>The unsaturated zone plays a crucial role in controlling the recharge of groundwater. It acts as a buffer, allowing for the filtration, storage, and gradual release of water to the underlying aquifer. The unsaturated zone also contributes to the purification of water through processes such as filtration, adsorption, and biodegradation as water percolates through the soil and rock layers.</p>
 <p>In terms of contaminant transport, the unsaturated zone can act as a barrier or filter, reducing the potential for contaminants to reach the groundwater system. The unsaturated materials can adsorb or retain contaminants, and the slower movement of water through this zone provides additional time for degradation or removal of contaminants.</p>
-</div>
-<div class="section" id="aquifers-pp-18-23">
-<h2>Aquifers (pp. 18-23)<a class="headerlink" href="#aquifers-pp-18-23" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="aquifers-pp-18-23">
+<h2>Aquifers (pp. 18-23)<a class="headerlink" href="#aquifers-pp-18-23" title="Link to this heading">#</a></h2>
 <p>An <a class="reference external" href="https://civillearners.com/2021/11/07/types-of-aquifers-detailed-explanation/"><strong>aquifer</strong></a> is a geologic formation that (i) contains and (ii) transmits water in economically useful quantities under normal field conditions.</p>
 <p>Some related terms include:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>An <strong>aquitard</strong> is a geologic formation or layer that has low permeability, restricting the flow of groundwater. It acts as a barrier or confining layer that limits the movement of water between aquifers. Unlike aquifers, which are capable of storing and transmitting water, aquitards have a lower hydraulic conductivity, impeding or retarding the flow of groundwater. Aquitards can consist of various materials such as clay, silt, shale, or unconsolidated sediment, which offer limited pathways for groundwater movement. They play a crucial role in groundwater systems by confining and isolating aquifers, influencing groundwater storage, and controlling the vertical movement of water.</p></li>
 <li><p>An <strong>aquifuge</strong> is a geologic formation or layer that is essentially impermeable to groundwater flow. Unlike aquitards, which have limited permeability, aquifuges are completely impermeable, meaning they do not allow the movement of water. Aquifuges act as barriers that prevent the flow of groundwater between aquifers and restrict the vertical or lateral movement of water. They are typically composed of dense and impermeable materials such as unfractured bedrock, solid clay, or thick layers of compacted till. Aquifuges are important in groundwater hydrology as they create boundaries or seals that confine and isolate aquifers, preventing the intermixing or contamination of groundwater between different layers.</p></li>
 <li><p>An <strong>aquiclude</strong> is a geologic formation or layer that is completely impermeable to groundwater flow. It is similar to an aquifuge in that it acts as a barrier to the movement of water, but it differs in that it is typically much thicker and more extensive. Aquicludes are composed of highly impermeable materials, such as solid rock or dense clay, which do not allow water to pass through them. They effectively impede the flow of groundwater and can serve as long-lasting barriers between aquifers. Aquicludes are important features in groundwater systems as they help confine and isolate aquifers, preventing the vertical or lateral movement of water and maintaining the integrity of groundwater resources.</p></li>
@@ -791,23 +618,23 @@
 <p>A <strong>leaky aquifer</strong> refers to an aquifer that exhibits characteristics of both an aquifer and an aquitard. It is a geological formation that has varying degrees of permeability and acts as a partial barrier to the flow of groundwater. In a leaky aquifer, the presence of semi-permeable layers or zones with lower permeability allows some water to pass through, while also impeding or retarding the flow to some extent.</p>
 <p>Leaky aquifers are distinct from fully confined aquifers or unconfined aquifers, as they possess intermediate characteristics. They can be seen as “leaky” due to the reduced hydraulic conductivity of the semi-permeable layers present within the aquifer system. These semi-permeable layers act as partial barriers, restricting or slowing down the movement of groundwater between different zones or layers.</p>
 <p>The presence of leaky aquifers can have significant implications for groundwater management and hydrogeological assessments. They can influence the flow paths, distribution, and quality of groundwater within an aquifer system. Understanding the extent and properties of leaky aquifers is crucial for accurately modeling groundwater flow, assessing contaminant transport, and managing water resources effectively.</p>
-</div>
-<div class="section" id="storage">
-<h2>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="storage">
+<h2>Storage<a class="headerlink" href="#storage" title="Link to this heading">#</a></h2>
 <p>Storativity is the amount of water added to/released from storage per unit change in head per unit area of aquifer.  Mechanisms of storage are draining and filling of the pore space (unconfined) and compression/decompression of the solid matrix and water (confined).</p>
 <p>In confined aquifers the storage coefficient is denoted by the symbol <span class="math notranslate nohighlight">\(S\)</span>.  In unconfined aquifers the storage coefficient is the specific yield and is denoted by <span class="math notranslate nohighlight">\(S_y\)</span>.  The amount remaining is called the specific retention <span class="math notranslate nohighlight">\(S_r\)</span>.  The sum of these two terms is  the porosity.</p>
-</div>
-<div class="section" id="transport-of-water">
-<h2>Transport (of Water)<a class="headerlink" href="#transport-of-water" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="transport-of-water">
+<h2>Transport (of Water)<a class="headerlink" href="#transport-of-water" title="Link to this heading">#</a></h2>
 <p>The ability to convey water is measured by the permeability, in the case of water it is called the hydraulic conductivtiy.  It is a combined property of porous media properties and fluid properties, the usual symbol is <span class="math notranslate nohighlight">\(K\)</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The hydraulic conductivity for porous media plays the same role as the friction factor in pipe flow, which is also a combined property of pipe material and fluid properties.:::</p>
 <p>The ability of an entire thickness of aquifer to transmit water is called the transmissivity; the usual symbol is <span class="math notranslate nohighlight">\(T\)</span></p>
 </div>
-</div>
-<div class="section" id="darcy-s-law">
-<h2>Darcy’s Law<a class="headerlink" href="#darcy-s-law" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="darcy-s-law">
+<h2>Darcy’s Law<a class="headerlink" href="#darcy-s-law" title="Link to this heading">#</a></h2>
 <p>Darcy’s Law is a fundamental principle in hydrogeology that describes the movement of groundwater through porous media and its transport of contaminants. It provides a mathematical relationship between the flow rate of groundwater, the hydraulic gradient, and the properties of the porous medium.</p>
 <p>In the context of groundwater flow, Darcy’s Law states that the flow rate of groundwater (Q) is directly proportional to the hydraulic conductivity (K) of the porous medium, the cross-sectional area perpendicular to the flow (A), and the hydraulic gradient (∇h) along which the groundwater is moving. Mathematically, it can be expressed as:</p>
 <p>Q = -K * A * ∇h</p>
@@ -816,20 +643,20 @@
 <p>Q = -D * A * (∇C / C)</p>
 <p>This modified form describes the movement of contaminants within the flowing groundwater. The dispersion coefficient accounts for the spreading and mixing of the contaminant as it moves through the porous medium, due to the heterogeneity of the subsurface.</p>
 <p>Overall, Darcy’s Law serves as a cornerstone in groundwater hydrology and contaminant transport studies, providing a quantitative basis for understanding and modeling the behavior of groundwater flow and mass transport in various geological settings.</p>
-</div>
-<div class="section" id="pore-velocity">
-<h2>Pore Velocity<a class="headerlink" href="#pore-velocity" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pore-velocity">
+<h2>Pore Velocity<a class="headerlink" href="#pore-velocity" title="Link to this heading">#</a></h2>
 <p>Pore velocity, in the context of groundwater flow, refers to the speed at which water molecules move through the interconnected void spaces (pores) within a porous medium, such as soil or rock. It is a measure of the actual velocity of water within these tiny channels and cavities, which collectively form the pathways for groundwater movement.</p>
 <p>Pore velocity is influenced by several factors, including the hydraulic gradient (the change in hydraulic head per unit distance), the hydraulic conductivity of the porous medium (which dictates how easily water can flow through it), and the porosity of the material (the volume of pore space compared to the total volume of the material). Additionally, the degree of saturation and the properties of the fluid itself also play a role in determining pore velocity.</p>
 <p>Understanding pore velocity is crucial for assessing groundwater flow rates, transport of contaminants, and the overall behavior of groundwater within subsurface formations. It helps hydrogeologists and scientists model and predict the movement of groundwater and the transport of dissolved substances, providing valuable insights into water resource management, environmental impact assessment, and remediation efforts.</p>
-</div>
-<div class="section" id="anisotropy">
-<h2>Anisotropy<a class="headerlink" href="#anisotropy" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="anisotropy">
+<h2>Anisotropy<a class="headerlink" href="#anisotropy" title="Link to this heading">#</a></h2>
 <p>Anisotropy in the context of groundwater flow refers to the property of subsurface materials that causes the flow of groundwater to exhibit varying degrees of preferential directionality. In other words, the hydraulic conductivity of the underground formation is not the same in all directions. This anisotropic behavior is often observed in geological formations composed of layered or oriented materials such as sedimentary rocks, fractured bedrock, or layered aquifer systems.</p>
 <p>Anisotropy can significantly impact the movement of groundwater. When the hydraulic conductivity is higher in one direction compared to another, groundwater will tend to flow more readily along the path of least resistance, following the direction of higher conductivity. This can lead to uneven flow patterns and the development of preferential flow pathways within the subsurface.</p>
 <p>Understanding anisotropy is crucial for accurate modeling and prediction of groundwater movement and contaminant transport. Groundwater flow simulations must account for anisotropic behavior to effectively predict the direction and rate of groundwater flow, as well as the dispersion and spread of contaminants through the subsurface. Neglecting anisotropy can lead to inaccurate predictions and improper management of groundwater resources and contamination issues.</p>
-<div class="section" id="principal-directions-of-hydraulic-conductivity">
-<h3>Principal Directions of Hydraulic Conductivity<a class="headerlink" href="#principal-directions-of-hydraulic-conductivity" title="Permalink to this headline">¶</a></h3>
+<section id="principal-directions-of-hydraulic-conductivity">
+<h3>Principal Directions of Hydraulic Conductivity<a class="headerlink" href="#principal-directions-of-hydraulic-conductivity" title="Link to this heading">#</a></h3>
 <p>To determine the principal values of the hydraulic conductivity tensor in 2D, you would typically follow these steps:</p>
 <blockquote>
 <div><p><strong>Define the Hydraulic Conductivity Tensor</strong>: The hydraulic conductivity tensor represents the anisotropic properties of the subsurface material in terms of its ability to transmit water. In 2D, the hydraulic conductivity tensor is a symmetric matrix with three components: Kxx, Kyy, and Kxy (or Kyx). Kxx represents the hydraulic conductivity in the x-direction, Kyy represents the hydraulic conductivity in the y-direction, and Kxy (or Kyx) represents the cross-component.</p>
@@ -874,24 +701,24 @@ K_{zx} &amp; K_{zy} &amp; K_{zz} \\
 ~
 \end{gather}
 \end{split}\]</div>
-</div>
-</div>
-<div class="section" id="cell-balance-models-flow">
-<h2>Cell Balance Models (Flow)<a class="headerlink" href="#cell-balance-models-flow" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="cell-balance-models-flow">
+<h2>Cell Balance Models (Flow)<a class="headerlink" href="#cell-balance-models-flow" title="Link to this heading">#</a></h2>
 <p>Insert notes on aquifer models (to support flownets below)</p>
 <p><a class="reference external" href="https://pubs.usgs.gov/wsp/wsp1536-E/pdf/wsp_1536-E.pdf">Well Hydraulics and Aquifer Tests</a></p>
-</div>
-<div class="section" id="id1">
-<h2><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="id2">
-<h2><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="flownets-pp-30-34">
-<h2>Flownets (pp. 30-34)<a class="headerlink" href="#flownets-pp-30-34" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id1">
+<h2><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+</section>
+<section id="id2">
+<h2><a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+</section>
+<section id="flownets-pp-30-34">
+<h2>Flownets (pp. 30-34)<a class="headerlink" href="#flownets-pp-30-34" title="Link to this heading">#</a></h2>
 <p>A flow net is a graphical representation that depicts the flow of groundwater within an aquifer or through porous media. It consists of a network of flow lines and equipotential lines that together provide a clear visualization of the groundwater flow direction and hydraulic head distribution within a given geological formation. Flow lines represent the path that groundwater particles would take as they move through the aquifer, while equipotential lines represent lines of equal hydraulic head. These lines intersect orthogonally, forming a grid-like pattern, with the density of flow lines increasing where the groundwater flow is faster.</p>
 <p>Flow nets are employed in various aspects of groundwater modeling:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Delineating Flow Patterns: Flow nets are instrumental in identifying the direction and velocity of groundwater flow within an aquifer. By studying the flow lines and equipotential lines, hydrogeologists can determine the dominant flow pathways and areas of groundwater recharge and discharge.</p></li>
 <li><p>Designing Well Fields: When designing well fields for groundwater extraction, it is crucial to understand the local groundwater flow patterns. Flow nets help in optimizing the placement and pumping rates of wells, ensuring efficient water supply without causing adverse effects on nearby groundwater-dependent ecosystems.</p></li>
 <li><p>Contaminant Transport Modeling: Flow nets are an essential component of contaminant transport modeling. They provide the basis for predicting the movement of contaminants through the subsurface, allowing for the assessment of potential risks and the development of remediation strategies.</p></li>
@@ -903,15 +730,15 @@ K_{zx} &amp; K_{zy} &amp; K_{zz} \\
 <p>Numerical generation of flownets can be accomplished using a spreadsheet, python script, or MODFLOW.</p>
 <p>A simple spreadsheet example is available from</p>
 <p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/5nonreactivetransport/VelocityPotential-StreamFunction-FDM.xls">Cleveland, T.G. (1997) <em>Velocity Potential - Stream Function Ideal Flow Model (circa 1999) (Excel)</em></a></p>
-<div class="section" id="example-in-python">
-<h3>Example in Python<a class="headerlink" href="#example-in-python" title="Permalink to this headline">¶</a></h3>
+<section id="example-in-python">
+<h3>Example in Python<a class="headerlink" href="#example-in-python" title="Link to this heading">#</a></h3>
 <p>In steady aquifer flow, the flow is irrotational (or at least can be modeled as such).
 There exists an orthogonal function called the stream function (it is the function that exists in the flow field when vorticity is zero).
 A really good explaination of stream functions (and streamlines) appears on pages 381–398 in Zheng(1995).</p>
 <p>This function can be used to generate plots of streamlines for the same system.
 The principal changes are the material properties representation and the boundary conditions.</p>
-<div class="section" id="velocity-potential">
-<h4>Velocity Potential<a class="headerlink" href="#velocity-potential" title="Permalink to this headline">¶</a></h4>
+<section id="velocity-potential">
+<h4>Velocity Potential<a class="headerlink" href="#velocity-potential" title="Link to this heading">#</a></h4>
 <p>The velocity potential function is usually Darcy’s law applied to the head distribution <span class="math notranslate nohighlight">\(\phi = \frac{T}{b}h\)</span></p>
 <p>If we start with a steady flow description of GW flow like:</p>
 <div class="math notranslate nohighlight">
@@ -972,9 +799,9 @@ h_{i,j} = \frac{[A_{i,j}h_{i-1,j} + B_{i,j}h_{i+1,j} + C_{i,j}h_{i,j-1} + D_{i,j
 <p>This difference equation represents an approximation to the governing flow equation, the accuracy depending on the cell
 size. Boundary conditions are applied directly into the analogs (another name for the difference equations) at appropriate
 locations on the computational grid. We can generate solutions either by iteration or solving the resulting linear system; iteration is really easy to program, so for exploratory work that’s usually the approach.</p>
-</div>
-<div class="section" id="stream-function">
-<h4>Stream Function<a class="headerlink" href="#stream-function" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="stream-function">
+<h4>Stream Function<a class="headerlink" href="#stream-function" title="Link to this heading">#</a></h4>
 <p>The stream function <span class="math notranslate nohighlight">\(\Psi\)</span> is a function that is orthogonal to the velocity potential function and expressed as a partial differential equation is</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1021,10 +848,10 @@ D_{i,j} = \frac{1}{2 \Delta y^2}(T_{x,(i,j)}^{-1}+T_{x,(i,j+1)}^{-1})   \\ ~~ \\
 A no-flow head-domain boundary is a constant value stream function-domain boundary.
 A constant value head-domain boundary is a zero-gradient stream function-domain boundary.</p>
 <p>So a script that first solves for the head distribution, then the stream function could be used to create a flownet.</p>
-</div>
-</div>
-<div class="section" id="sheetpile-under-a-dam-flownet">
-<h3>Sheetpile under a dam flownet<a class="headerlink" href="#sheetpile-under-a-dam-flownet" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="sheetpile-under-a-dam-flownet">
+<h3>Sheetpile under a dam flownet<a class="headerlink" href="#sheetpile-under-a-dam-flownet" title="Link to this heading">#</a></h3>
 <p>Compare to the example shown on pp. 30-34.</p>
 <p>The figure below is a schematic of a dam built upon a permeable ground layer 80 meters thick (segment A to I).</p>
 <p><img alt="" src="../../_images/sheetpile1.png" /></p>
@@ -1033,7 +860,7 @@ A constant value head-domain boundary is a zero-gradient stream function-domain 
 <p>The flow field (mathematically) extends an infinite distance upstream and downstream, but as a practical matter the contribution to seepage far upstream of the dam is negligible, and hence is approximated by the finite domain depicted.</p>
 <p>Using the tools we have already we can simply build an input file, run our script and determine the head distribution (and thus compute the discharges under the dam. Then rerun with same script, but modify the boundary conditions and material properties to obtain the stream function - plot both solutions on the same contour map and viola we have a flownet.</p>
 <p>The first is to represent the domain as shown, and make the following specifications in the boundary condition information, and we will treat the sheetpile cutoff wall as a low permeability inclusion (much like the the prior example). The boundary conditions are:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>The segment from A to B is a constant head boundary with value equal to 10.</p></li>
 <li><p>The segment from B to F is a zero-flux boundary.</p></li>
 <li><p>The segment from B to C to D to U to E to F should be treated as a zero-flux boundary, but our mask does not extend into the interior – however the sheetpile itself can be approximated by providing a very small permeability. Alternately we could (should) modify the code to handle interior boundaries – but that is outside the scope of this chapter.</p></li>
@@ -1252,9 +1079,7 @@ Iterations    =  443
 Closure Error =  0.0
 Head Map
 ----
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 [10.    10.    10.    10.    10.    10.    10.    10.    10.    10.
+0 [10.    10.    10.    10.    10.    10.    10.    10.    10.    10.
  10.    10.    10.    10.     9.478  0.524  0.     0.     0.     0.
   0.     0.     0.     0.     0.     0.     0.     0.     0.     0.
   0.   ]
@@ -1296,7 +1121,7 @@ Head Map
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Contour Plot of Heads from Sheetpile1 Input&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/essentialgwreview_21_3.png" src="../../_images/essentialgwreview_21_3.png" />
+<img alt="../../_images/b63403a92c82f504bf963242af37c59ee153f12018bf1f24073ba672a6c0e530.png" src="../../_images/b63403a92c82f504bf963242af37c59ee153f12018bf1f24073ba672a6c0e530.png" />
 </div>
 </div>
 <p>Now we reuse the code, but change <code class="docutils literal notranslate"><span class="pre">head</span></code> to <code class="docutils literal notranslate"><span class="pre">stream</span></code> and modify the contour plot variable names as well as modify the input file to reflect the changed material properties and boundary conditions.</p>
@@ -1552,7 +1377,7 @@ Stream Function Map
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Contour Plot of Stream Function for Sheetpile1 Input&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/essentialgwreview_23_2.png" src="../../_images/essentialgwreview_23_2.png" />
+<img alt="../../_images/415fadf0c7d84324bb476438fbd9a4f4c6c652f50de3515eba5d08db838e5236.png" src="../../_images/415fadf0c7d84324bb476438fbd9a4f4c6c652f50de3515eba5d08db838e5236.png" />
 </div>
 </div>
 <p>Now both plots on same canvass</p>
@@ -1579,14 +1404,14 @@ Stream Function Map
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Flownet for Sheetpile1 Input&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/essentialgwreview_25_1.png" src="../../_images/essentialgwreview_25_1.png" />
+<img alt="../../_images/b1ef8ba8490c511df09c6db9c86ffa09e7fbfbb2af21f2763d6bfa59d8f8e3e7.png" src="../../_images/b1ef8ba8490c511df09c6db9c86ffa09e7fbfbb2af21f2763d6bfa59d8f8e3e7.png" />
 </div>
 </div>
 <hr>
 <hr>
-</div>
-<div class="section" id="flownet-example-2-pore-pressure-under-a-dam-domain-decomposition-approach">
-<h3>Flownet Example 2 : Pore Pressure under a Dam (Domain Decomposition approach)<a class="headerlink" href="#flownet-example-2-pore-pressure-under-a-dam-domain-decomposition-approach" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="flownet-example-2-pore-pressure-under-a-dam-domain-decomposition-approach">
+<h3>Flownet Example 2 : Pore Pressure under a Dam (Domain Decomposition approach)<a class="headerlink" href="#flownet-example-2-pore-pressure-under-a-dam-domain-decomposition-approach" title="Link to this heading">#</a></h3>
 <p>The second way to solve this example, and perhaps better is to take advantage of
 the symmetry and cut the domain in half, as</p>
 <p><img alt="" src="../../_images/sheetpile2.png" /></p>
@@ -1825,7 +1650,7 @@ Head Map
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Contour Plot of Heads from Sheetpile2 Input&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/essentialgwreview_27_2.png" src="../../_images/essentialgwreview_27_2.png" />
+<img alt="../../_images/d59a9047d3f3950dadffe6e47d50c903527e01811c4c301b9a788cef9c055bad.png" src="../../_images/d59a9047d3f3950dadffe6e47d50c903527e01811c4c301b9a788cef9c055bad.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -2066,7 +1891,7 @@ Stream Function Map
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Contour Plot of Stream Function for Sheetpile2 Input&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/essentialgwreview_29_2.png" src="../../_images/essentialgwreview_29_2.png" />
+<img alt="../../_images/f4a6fc346c4e741b3fb1a566cd340e3490aebda63ae2909ccb7ee2adcdf32f4d.png" src="../../_images/f4a6fc346c4e741b3fb1a566cd340e3490aebda63ae2909ccb7ee2adcdf32f4d.png" />
 </div>
 </div>
 <p>Now try both contour plot same plot canvas</p>
@@ -2093,24 +1918,24 @@ Stream Function Map
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Flownet for Sheetpile2 Input&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/essentialgwreview_31_1.png" src="../../_images/essentialgwreview_31_1.png" />
+<img alt="../../_images/19314820b98420d8d9b92098a4be60a1eed5f0fef9cf763d2bb6998d2f096a5d.png" src="../../_images/19314820b98420d8d9b92098a4be60a1eed5f0fef9cf763d2bb6998d2f096a5d.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
 <li><p><a class="reference external" href="https://pubs.usgs.gov/circ/circ1139/">Ground Water and Surface Water A Single Resource</a></p></li>
 <li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/GroundwaterReview.pdf">Cleveland, T.G. (1997) <em>Groundwater Review</em> Notes to accompany “CIVE 7332 Flow and Transport Modeling for Environmental Engineering” at University of Houston</a></p></li>
 <li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/3advection/Advection.PDF">Zheng, C. and Bennett, G.D. (1995) pp. 3-23 <em>Applied Contaminant Transport Modeling</em> Van Nostrand Reinhold</a></p></li>
 <li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/flownet_1.pdf">Cleveland, T.G. (2002) <em>Flownets</em> Notes to accompany “CIVE 7332 Flow and Transport Modeling for Environmental Engineering” at University of Houston</a></p></li>
 <li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/5nonreactivetransport/VelocityPotential-StreamFunction-FDM.xls">Cleveland, T.G. (1997) <em>Velocity Potential - Stream Function Ideal Flow Model (circa 1999) (Excel)</em></a></p></li>
 <li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/AdvectionNotes.pdf">Cleveland, T.G. (2002) <em>Advection</em> Notes to accompany “CIVE 7332 Flow and Transport Modeling for Environmental Engineering” at University of Houston</a></p></li>
-<li><p><a class="reference external" href="https://d1wqtxts1xzle7.cloudfront.net/31171747/195055535-libre.pdf?1392371142=&amp;response-content-disposition=inline%3B+filename%3DDynamics_of_fluids_in_porous_media.pdf&amp;Expires=1695231543&amp;Signature=fcj7Wef3HIA7wlTx~LJhmfFgQJIrRLnrwEgqd2KIjnsouiRrFZpLAgMw-gRJ7oxI1~h89bo-YpAQuhLHZc1vtNFq5d0QBrxwYRbAvr5jztdUDHWZrfjBPYBgujy5WCnrrtoN7GKrziCwbk7mDi1AUyBnC4RDidrKgBV-bMOpJR4ZR8~L6BTEPXhBAQJbLohdpWi8Ni6VUl33~rEQaum8NMcY11P6okNvXbXKft3vdYwjEK5NXezeVe6dQpYIiBcyPVqkFahRD9CFLXLHZsxXryzDT~x9pszx86ka0kXYN9y1Y7RzyAgZQaB5YWD8XZhK4w2PoIEVgIvGeuCxxt099Q__&amp;Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA">Bear, J. (1972) <em>Dynamics of Fluids in Porous Media</em> McGraw Hill (pp. 236-241)</a></p></li>
+<li><p><a class="reference external" href="https://d1wqtxts1xzle7.cloudfront.net/31171747/195055535-libre.pdf?1392371142=&amp;amp;response-content-disposition=inline%3B+filename%3DDynamics_of_fluids_in_porous_media.pdf&amp;amp;Expires=1695231543&amp;amp;Signature=fcj7Wef3HIA7wlTx~LJhmfFgQJIrRLnrwEgqd2KIjnsouiRrFZpLAgMw-gRJ7oxI1~h89bo-YpAQuhLHZc1vtNFq5d0QBrxwYRbAvr5jztdUDHWZrfjBPYBgujy5WCnrrtoN7GKrziCwbk7mDi1AUyBnC4RDidrKgBV-bMOpJR4ZR8~L6BTEPXhBAQJbLohdpWi8Ni6VUl33~rEQaum8NMcY11P6okNvXbXKft3vdYwjEK5NXezeVe6dQpYIiBcyPVqkFahRD9CFLXLHZsxXryzDT~x9pszx86ka0kXYN9y1Y7RzyAgZQaB5YWD8XZhK4w2PoIEVgIvGeuCxxt099Q__&amp;amp;Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA">Bear, J. (1972) <em>Dynamics of Fluids in Porous Media</em> McGraw Hill (pp. 236-241)</a></p></li>
 </ol>
-<!--(http://54.243.252.9/ce-5364-webroot/3-Readings/DFPM-Flownets.pdf)--></div>
-</div>
+<!--(http://54.243.252.9/ce-5364-webroot/3-Readings/DFPM-Flownets.pdf)--></section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2124,7 +1949,7 @@ Stream Function Map
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./chapters/2essentialgroundwater"
         },
         predefinedOutput: true
@@ -2132,56 +1957,130 @@ Stream Function Map
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-        
-            
 
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="../1computationaltools/1computationaltools.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Computational Tools</p>
-            </div>
-        </a>
-    </div>
-     <div id="next">
-        <a class="right-next" href="../4pollutants/4pollutants.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Pollutants</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
-</div>
-        
-        </div>
-    </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Theodore G. Cleveland, PhD<br/>
-        
-            &copy; Copyright 2023.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
-
-
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../00introduction/00introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">1. Introduction to Groundwater Contaminant Transport</p>
       </div>
-    </div>
-  
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+    </a>
+    <a class="right-next"
+       href="../4pollutants/4pollutants.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">3. Regulatory Overview and Risk Assessment</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#essential-groundwater-review">Essential Groundwater Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#porous-media-pp-15-21">Porous Media (pp. 15-21)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saturated-zone-pp-16-17">Saturated Zone (pp. 16-17)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsaturated-zone-pp-289-297">Unsaturated Zone (pp. 289-297)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aquifers-pp-18-23">Aquifers (pp. 18-23)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storage">Storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transport-of-water">Transport (of Water)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#darcy-s-law">Darcy’s Law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pore-velocity">Pore Velocity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anisotropy">Anisotropy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-directions-of-hydraulic-conductivity">Principal Directions of Hydraulic Conductivity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-balance-models-flow">Cell Balance Models (Flow)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flownets-pp-30-34">Flownets (pp. 30-34)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-in-python">Example in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-potential">Velocity Potential</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stream-function">Stream Function</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sheetpile-under-a-dam-flownet">Sheetpile under a dam flownet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flownet-example-2-pore-pressure-under-a-dam-domain-decomposition-approach">Flownet Example 2 : Pore Pressure under a Dam (Domain Decomposition approach)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
+  <div class="footer-item">
+    
+<p class="component-author">
+By Theodore G. Cleveland, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

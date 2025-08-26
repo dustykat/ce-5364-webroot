@@ -1,0 +1,333 @@
+# Hvorslev Slug Test Analysis (Original)
+import math
+
+def HwHo(time,radius,conductivity,shape):
+    HwHo=math.exp(time*(-conductivity*shape)/(math.pi*radius**2))
+    return HwHo
+    
+#Inputs
+r = 0.083  #well radius
+R = 0.083  #filter pack radius
+L = 10.0   #filter pack length
+K = 8.64e-04 #K guess - adjust 
+A = 2*math.pi*L/math.log(L/R) #Shape factor (formula changes with geometry - read original document)
+dref = 13.99 #Pre-test depth to water
+
+#Test Observations
+etime=[0.,1.,2.,3.,4.,5.,6.,7.,8.,9.]
+depth=[14.87,14.59,14.37,14.2,14.11,14.05,14.03,14.01,14,13.99]
+#Computed Values
+Hw = [0 for i in range(len(depth))]
+for i in range(len(depth)):
+    Hw[i]=depth[i]-dref
+HwHoObs = [0 for i in range(len(depth))]
+HwHoMod = [0 for i in range(len(depth))]
+for i in range(len(depth)):
+    HwHoObs[i]=Hw[i]/Hw[0]
+    HwHoMod[i]=HwHo(etime[i],r,K,A)
+    print(etime[i],HwHoObs[i],HwHoMod[i])
+
+# Hvorslev Slug Test Analysis with Newton fit for K
+# Adds the ability to ignore selected observations during fitting
+import math
+import matplotlib.pyplot as plt
+
+def HwHo(time, radius, conductivity, shape):
+    """Model: H/H0 at time t for radius r, conductivity K, shape factor A."""
+    return math.exp(time * (-conductivity * shape) / (math.pi * radius**2))
+
+def sumsq_residuals(K, etime, HwHoObs, r, A):
+    """Objective S(K) = sum (Obs - Model(K))^2 over provided (etime, HwHoObs)."""
+    s = 0.0
+    for t, o in zip(etime, HwHoObs):
+        m = HwHo(t, r, K, A)
+        if math.isfinite(m):
+            s += (o - m) ** 2
+    return s
+
+def newton_fit_K(K0, etime_fit, HwHoObs_fit, r, A, max_iter=50, tol=1e-12):
+    """
+    Newton's method on S(K), with finite-difference S'(K), S''(K).
+    Uses only the provided *_fit arrays (already filtered/masked).
+    """
+    if len(etime_fit) == 0:
+        raise ValueError("No data points available for fitting (all were ignored).")
+
+    K = float(K0)
+    history = []
+    for it in range(1, max_iter + 1):
+        h = max(1e-12, 1e-3 * max(K, 1.0))
+        S0 = sumsq_residuals(K, etime_fit, HwHoObs_fit, r, A)
+        Sp = sumsq_residuals(K + h, etime_fit, HwHoObs_fit, r, A)
+        Sm = sumsq_residuals(max(K - h, 1e-16), etime_fit, HwHoObs_fit, r, A)
+
+        S1 = (Sp - Sm) / (2.0 * h)             # S'(K)
+        S2 = (Sp - 2.0 * S0 + Sm) / (h * h)    # S''(K)
+
+        if abs(S2) < 1e-24:
+            history.append((it, K, S0, S1, S2, 0.0, "break: |S''| too small"))
+            break
+
+        step = S1 / S2
+        K_new = K - step
+
+        # Backtracking to keep K>0 and ensure S decreases
+        bt = 0
+        while (K_new <= 0) or (sumsq_residuals(K_new, etime_fit, HwHoObs_fit, r, A) > S0):
+            step *= 0.5
+            K_new = K - step
+            bt += 1
+            if bt > 25:
+                break
+
+        S_new = sumsq_residuals(max(K_new, 1e-16), etime_fit, HwHoObs_fit, r, A)
+        history.append((it, K, S0, S1, S2, step, f"bt={bt}"))
+
+        if abs(step) <= tol * max(1.0, abs(K)):
+            K = max(K_new, 1e-16)
+            break
+        if abs(S_new - S0) <= 1e-14 * max(1.0, S0):
+            K = max(K_new, 1e-16)
+            break
+
+        K = max(K_new, 1e-16)
+
+    return K, history
+
+# ---------------- Inputs ----------------
+r = 0.083      # well radius
+R = 0.083      # filter pack radius
+L = 10.0       # filter pack length
+K_guess = 1.64e-04  # initial guess for K
+A = 2 * math.pi * L / math.log(L / R)  # Shape factor (geometry-dependent)
+dref = 13.99   # Pre-test depth to water
+
+# Ignoring controls:
+ignore_last = 0          # e.g., ignore the last N points in the fit
+ignore_indices = []      # e.g., [0, 1] to ignore specific indices (0-based)
+
+print("\n=== INPUTS ===")
+print(f"{'well radius r':>22s}: {r}")
+print(f"{'filter radius R':>22s}: {R}")
+print(f"{'filter length L':>22s}: {L}")
+print(f"{'K initial guess':>22s}: {K_guess}")
+print(f"{'shape factor A':>22s}: {A}")
+print(f"{'reference depth dref':>22s}: {dref}")
+print(f"{'ignore_last':>22s}: {ignore_last}")
+print(f"{'ignore_indices':>22s}: {ignore_indices}")
+
+# --------------- Test data ---------------
+etime = [0.,1.,2.,3.,4.,5.,6.,7.,8.,9.]
+depth = [14.87,14.59,14.37,14.2,14.11,14.05,14.03,14.01,14,13.99]
+
+print("\n=== TEST DATA (Time, Depth) ===")
+print(f"{'Time':>10s}  {'Depth':>10s}")
+for t_i, d_i in zip(etime, depth):
+    print(f"{t_i:10.6g}  {d_i:10.6g}")
+
+# --------------- Compute H/H0 ---------------
+Hw = [d - dref for d in depth]
+HwHoObs = [Hw_i / Hw[0] if Hw[0] != 0 else float('nan') for Hw_i in Hw]
+
+# --------------- Build fit mask ---------------
+n = len(etime)
+use = [True] * n
+
+# Ignore last N points
+if ignore_last > 0:
+    for i in range(max(0, n - ignore_last), n):
+        use[i] = False
+
+# Ignore by explicit indices (takes precedence)
+for idx in ignore_indices:
+    if 0 <= idx < n:
+        use[idx] = False
+
+# Prepare fit-only arrays
+etime_fit = [t for t, u in zip(etime, use) if u]
+HwHoObs_fit = [o for o, u in zip(HwHoObs, use) if u]
+
+# Report mask
+kept_idxs = [i for i, u in enumerate(use) if u]
+ignored_idxs = [i for i, u in enumerate(use) if not u]
+print("\n=== FITTING MASK ===")
+print("Used indices   :", kept_idxs)
+print("Ignored indices:", ignored_idxs)
+
+# --------------- Fit K by Newton (using only 'used' points) ---------------
+K_fit, hist = newton_fit_K(K_guess, etime_fit, HwHoObs_fit, r, A, max_iter=50, tol=1e-12)
+
+print("\n=== NEWTON ITERATIONS (minimize S(K)) ===")
+print("{:>3s} {:>14s} {:>14s} {:>14s} {:>14s} {:>14s}  {}".format(
+    "it", "K", "S(K)", "S'(K)", "S''(K)", "step", "note"))
+for it, K_i, S0, S1, S2, step, note in hist:
+    print(f"{it:3d} {K_i:14.6e} {S0:14.6e} {S1:14.6e} {S2:14.6e} {step:14.6e}  {note}")
+
+print(f"\nBest-fit K (using selected points): {K_fit:.6e}")
+
+# --------------- Model over ALL times (for display) ---------------
+HwHoMod = [HwHo(t_i, r, K_fit, A) for t_i in etime]
+
+# --------------- Side-by-side table ---------------
+print("\n=== OBSERVED vs MODELED (aligned by time index) ===")
+print(f"{'idx':>3s} {'Time':>10s}  {'HwHoObs':>12s}  {'HwHoMod':>12s}  {'Used?':>6s}  {'Diff(Obs-Mod)':>14s}")
+for i, (t_i, o_i, m_i, u_i) in enumerate(zip(etime, HwHoObs, HwHoMod, use)):
+    diff = o_i - m_i
+    print(f"{i:3d} {t_i:10.6g}  {o_i:12.6g}  {m_i:12.6g}  {str(u_i):>6s}  {diff:14.6g}")
+
+# --------------- Plot (linear time axis) ---------------
+plt.figure(figsize=(7,5))
+
+# Plot used observations (filled circles)
+t_used  = [t for t, u in zip(etime, use) if u]
+o_used  = [o for o, u in zip(HwHoObs, use) if u]
+plt.plot(t_used, o_used, marker='o', linestyle='none', label='HwHoObs (used)')
+
+# Plot ignored observations (x markers)
+t_ign   = [t for t, u in zip(etime, use) if not u]
+o_ign   = [o for o, u in zip(HwHoObs, use) if not u]
+if len(t_ign) > 0:
+    plt.plot(t_ign, o_ign, marker='x', linestyle='none', label='HwHoObs (ignored)')
+
+# Model line across all times
+plt.plot(etime, HwHoMod, linewidth=2, label=f'HwHoMod (Model, K={K_fit:.3e})')
+plt.yscale('log') # set y-axis to display a logarithmic scale ######
+plt.xlabel("Elapsed Time")
+plt.ylabel("H/H0")
+plt.title("Hvorslev Slug Test: H/H0 vs Time (linear time axis)")
+plt.grid(True, linestyle=':')
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+
+# Hvorslev Slug Test Analysis with Newton's method fit for K
+import math
+import matplotlib.pyplot as plt
+
+def HwHo(time, radius, conductivity, shape):
+    """Model: H/H0 at time t for radius r, conductivity K, shape factor A."""
+    return math.exp(time * (-conductivity * shape) / (math.pi * radius**2))
+
+def sumsq_residuals(K, etime, HwHoObs, r, A):
+    """Objective S(K) = sum (Obs - Model(K))^2."""
+    s = 0.0
+    for t, o in zip(etime, HwHoObs):
+        m = HwHo(t, r, K, A)
+        if math.isfinite(m):
+            s += (o - m) ** 2
+    return s
+
+def newton_fit_K(K0, etime, HwHoObs, r, A, max_iter=25, tol=1e-10):
+    """
+    Newton's method on S(K), with finite-difference S'(K), S''(K).
+    Safeguards:
+      - keep K > 0 with backtracking
+      - stop if step is tiny or S decreases very little
+    """
+    K = float(K0)
+    history = []
+    for it in range(1, max_iter + 1):
+        # step size for finite differences (relative to K, but bounded)
+        h = max(1e-12, 1e-3 * max(K, 1.0))
+        S0 = sumsq_residuals(K, etime, HwHoObs, r, A)
+        Sp = sumsq_residuals(K + h, etime, HwHoObs, r, A)
+        Sm = sumsq_residuals(max(K - h, 1e-16), etime, HwHoObs, r, A)  # keep positive
+        # central differences
+        S1 = (Sp - Sm) / (2.0 * h)                  # S'(K)
+        S2 = (Sp - 2.0 * S0 + Sm) / (h * h)         # S''(K)
+
+        # Guard against near-zero curvature
+        if abs(S2) < 1e-24:
+            history.append((it, K, S0, S1, S2, 0.0, "break: |S''| too small"))
+            break
+
+        step = S1 / S2
+        K_new = K - step
+
+        # Backtracking if K_new <= 0 or if S worsens
+        bt_count = 0
+        while (K_new <= 0) or (sumsq_residuals(K_new, etime, HwHoObs, r, A) > S0):
+            step *= 0.5
+            K_new = K - step
+            bt_count += 1
+            if bt_count > 25:  # give up if too many backtracks
+                break
+
+        S_new = sumsq_residuals(max(K_new, 1e-16), etime, HwHoObs, r, A)
+        history.append((it, K, S0, S1, S2, step, f"bt={bt_count}"))
+
+        # Convergence checks
+        if abs(step) <= tol * max(1.0, abs(K)):
+            K = max(K_new, 1e-16)
+            break
+        if abs(S_new - S0) <= 1e-14 * max(1.0, S0):
+            K = max(K_new, 1e-16)
+            break
+
+        K = max(K_new, 1e-16)
+
+    return K, history
+
+# ---------------- Inputs ----------------
+r = 0.083      # well radius
+R = 0.083      # filter pack radius
+L = 10.0       # filter pack length
+K_guess = 1.64e-04  # initial guess for K
+A = 2 * math.pi * L / math.log(L / R)  # Shape factor (geometry-dependent)
+dref = 13.99   # Pre-test depth to water
+
+print("\n=== INPUTS ===")
+print(f"{'well radius r':>22s}: {r}")
+print(f"{'filter radius R':>22s}: {R}")
+print(f"{'filter length L':>22s}: {L}")
+print(f"{'K initial guess':>22s}: {K_guess}")
+print(f"{'shape factor A':>22s}: {A}")
+print(f"{'reference depth dref':>22s}: {dref}")
+
+# --------------- Test data ---------------
+etime = [0.,1.,2.,3.,4.,5.,6.,7.,8.,9.]
+depth = [14.87,14.59,14.37,14.2,14.11,14.05,14.03,14.01,14,13.99]
+
+print("\n=== TEST DATA (Time, Depth) ===")
+print(f"{'Time':>10s}  {'Depth':>10s}")
+for t_i, d_i in zip(etime, depth):
+    print(f"{t_i:10.6g}  {d_i:10.6g}")
+
+# --------------- Compute H/H0 ---------------
+Hw = [d - dref for d in depth]
+HwHoObs = [Hw_i / Hw[0] if Hw[0] != 0 else float('nan') for Hw_i in Hw]
+
+# --------------- Fit K by Newton ---------------
+K_fit, hist = newton_fit_K(K_guess, etime, HwHoObs, r, A, max_iter=50, tol=1e-12)
+
+print("\n=== NEWTON ITERATIONS (minimize S(K)) ===")
+print("{:>3s} {:>14s} {:>14s} {:>14s} {:>14s} {:>14s}  {}".format(
+    "it", "K", "S(K)", "S'(K)", "S''(K)", "step", "note"))
+for it, K_i, S0, S1, S2, step, note in hist:
+    print(f"{it:3d} {K_i:14.6e} {S0:14.6e} {S1:14.6e} {S2:14.6e} {step:14.6e}  {note}")
+
+print(f"\nBest-fit K: {K_fit:.6e}")
+
+# --------------- Build model with K_fit ---------------
+HwHoMod = [HwHo(t_i, r, K_fit, A) for t_i in etime]
+
+# --------------- Side-by-side table ---------------
+print("\n=== OBSERVED vs MODELED (aligned by time index) ===")
+print(f"{'Time':>10s}  {'HwHoObs':>12s}  {'HwHoMod':>12s}  {'Diff(Obs-Mod)':>14s}")
+for t_i, o_i, m_i in zip(etime, HwHoObs, HwHoMod):
+    diff = o_i - m_i
+    print(f"{t_i:10.6g}  {o_i:12.6g}  {m_i:12.6g}  {diff:14.6g}")
+
+# --------------- Plot (linear time axis) ---------------
+plt.figure(figsize=(5,9))
+plt.plot(etime, HwHoObs, marker='o', linestyle='none', label='HwHoObs (Observed)')
+plt.plot(etime, HwHoMod, linewidth=2, label=f'HwHoMod (Model, K={K_fit:.3e})')
+plt.yscale('log') # set y-axis to display a logarithmic scale ######
+plt.xlabel("Elapsed Time")
+plt.ylabel("H/H0")
+plt.title("Hvorslev Slug Test: H/H0 vs Time (linear time axis)")
+plt.grid(True, linestyle=':')
+plt.legend()
+plt.tight_layout()
+plt.show()

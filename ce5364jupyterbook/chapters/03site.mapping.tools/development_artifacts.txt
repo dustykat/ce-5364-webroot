@@ -1,0 +1,180 @@
+
+
+
+import pandas
+import numpy
+import matplotlib.pyplot
+from scipy.interpolate import griddata
+#######################################################################
+# Irregular data are interpolated onto a regular grid before plotting #
+#######################################################################
+# === Load Data ===
+filename = 'ARS-W1-XYZ.txt'
+my_xyz = pandas.read_csv(filename, sep='\t')
+my_xyz = pandas.DataFrame(my_xyz)
+
+coord_x = my_xyz['X-Easting'].values.tolist()
+coord_y = my_xyz['Y-Northing'].values.tolist()
+coord_z = my_xyz['Z-Elevation'].values.tolist()
+coord_xy = numpy.column_stack((coord_x, coord_y))
+
+# === Create Grid ===
+lon = numpy.linspace(min(coord_x), max(coord_x), 200)
+lat = numpy.linspace(min(coord_y), max(coord_y), 200)
+X, Y = numpy.meshgrid(lon, lat)
+Z = griddata(numpy.array(coord_xy), numpy.array(coord_z), (X, Y), method='cubic', fill_value=numpy.nan)
+
+# === Plotting ===
+use_basemap = False  # <- Flip to True if you ever want to bring it back
+
+if use_basemap:
+    matplotlib.pyplot.rcParams["figure.figsize"] = [10.0, 10.0]
+    matplotlib.pyplot.rcParams["figure.autolayout"] = True
+    im = matplotlib.pyplot.imread("SomewhereUSABaseMap.png")
+
+fig, ax = matplotlib.pyplot.subplots()
+
+if use_basemap:
+    ax.imshow(im, extent=[0, 3361, 0, 1458])
+
+# Contours
+levels = [float(i) for i in range(81,103,1)]
+CS = ax.contour(X, Y, Z, levels, linewidths=1)
+ax.clabel(CS, inline=2, fontsize=12)
+
+# Titles and limits
+ax.set_title(f'Contour Plot from {filename}')
+ax.set_xlim([min(coord_x), max(coord_x)])
+ax.set_ylim([min(coord_y), max(coord_y)])
+ax.set_aspect('equal', adjustable='box')  # <- Enforce 1:1 aspect ratio
+
+# Plot a line segment to represent the weir wall
+# Line segment coordinates
+x1, y1 = -485, -40
+x2, y2 = -180, -44
+
+# Draw the line segment
+ax.plot([x1, x2], [y1, y2], color='grey', linewidth=6)
+
+# Annotate the segment
+ax.annotate("Weir Wall",             # Text label
+            xy=(x2, y2),   # Point being annotated
+            xytext=(x2 + 100, y2 + 100),  # Label position
+            arrowprops=dict(arrowstyle='->', color='black'),
+            fontsize=12, color='black')
+
+# Plot a red filled circle at the gage location
+x_marker = -390
+y_marker = -45
+ax.plot(x_marker, y_marker, 'o', markersize=16, color='red')
+
+# Annotate the marker
+ax.annotate("Weir Outlet",             # Text label
+            xy=(x_marker, y_marker),   # Point being annotated
+            xytext=(x_marker + 100, y_marker + 100),  # Label position
+            arrowprops=dict(arrowstyle='->', color='black'),
+            fontsize=12, color='black')
+
+ax.set_xlabel("X Coordinate (Easting, ft)")
+ax.set_ylabel("Y Coordinate (Northing, ft)")
+
+ax.grid(True)
+
+# Add scatter plot of original XYZ data
+ax.scatter(coord_x, coord_y, color='black', s=2, label='Survey Data Points')
+ax.legend(loc='lower right')
+
+matplotlib.pyplot.show()
+
+
+# === Wireframe (gridded from scattered XYZ) ===
+import numpy as np
+import pandas
+import matplotlib.pyplot as plt
+from scipy.interpolate import griddata
+from mpl_toolkits.mplot3d import Axes3D  # noqa: F401
+
+# === Load Data ===
+filename = 'ARS-W1-XYZ.txt'
+my_xyz = pandas.read_csv(filename, sep='\t')
+my_xyz = pandas.DataFrame(my_xyz)
+
+# Reuse data already loaded as my_xyz
+x = my_xyz['X-Easting'].to_numpy()
+y = my_xyz['Y-Northing'].to_numpy()
+z = my_xyz['Z-Elevation'].to_numpy()
+xy = np.column_stack([x, y])
+
+# Build a regular grid (adjust resolution if needed)
+nx, ny = 120, 120
+xi = np.linspace(x.min(), x.max(), nx)
+yi = np.linspace(y.min(), y.max(), ny)
+Xg, Yg = np.meshgrid(xi, yi)
+
+# Interpolate. Use linear for stability near edges; then fill any NaNs with nearest.
+Z_lin = griddata(xy, z, (Xg, Yg), method='linear')
+if np.isnan(Z_lin).any():
+    Z_nn = griddata(xy, z, (Xg, Yg), method='nearest')
+    Z_lin[np.isnan(Z_lin)] = Z_nn[np.isnan(Z_lin)]
+
+# Plot a true wireframe
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection='3d')
+ax.plot_wireframe(Xg, Yg, Z_lin, rstride=3, cstride=3, linewidth=0.5, color='k')
+
+ax.set_title('3D Wireframe (Interpolated Grid)')
+ax.set_xlabel("X Coordinate (Easting, ft)")
+ax.set_ylabel("Y Coordinate (Northing, ft)")
+ax.set_zlabel("Elevation (ft)")
+
+# Make axes aspect feel right (not perfect cube, but proportional)
+
+vertical_exag = 20.0 # Exaggerate the vertical scale
+
+ax.set_box_aspect((
+    np.ptp(x),           # range of X
+    np.ptp(y),           # range of Y
+    (z.max() - z.min())*vertical_exag    # range of Z
+))
+plt.tight_layout()
+plt.show()
+
+# === Triangulated wireframe-like surface (no gridding) ===
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.tri as mtri
+from mpl_toolkits.mplot3d import Axes3D  # noqa: F401
+
+# === Load Data ===
+filename = 'ARS-W1-XYZ.txt'
+my_xyz = pandas.read_csv(filename, sep='\t')
+my_xyz = pandas.DataFrame(my_xyz)
+
+x = my_xyz['X-Easting'].to_numpy()
+y = my_xyz['Y-Northing'].to_numpy()
+z = my_xyz['Z-Elevation'].to_numpy()
+
+tri = mtri.Triangulation(x, y)
+
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection='3d')
+
+# Draw a thin-edged surface; faces minimally shaded to keep a “wire” appearance
+surf = ax.plot_trisurf(tri, z, linewidth=0.3, edgecolor='k', antialiased=True, shade=False, alpha=0.15)
+# ^ Increase alpha if you want a bit more face fill; decrease toward 0.0 for more “wire-only” look.
+
+ax.set_title('3D Triangulated Psuedo-Surface (Wireframe Style)')
+ax.set_xlabel("X Coordinate (Easting, ft)")
+ax.set_ylabel("Y Coordinate (Northing, ft)")
+ax.set_zlabel("Elevation (ft)")
+# Make axes aspect feel right (not perfect cube, but proportional)
+
+vertical_exag = 20.0 # Exaggerate the vertical scale
+
+ax.set_box_aspect((
+    np.ptp(x),           # range of X
+    np.ptp(y),           # range of Y
+    (z.max() - z.min())*vertical_exag    # range of Z
+))
+plt.tight_layout()
+plt.show()

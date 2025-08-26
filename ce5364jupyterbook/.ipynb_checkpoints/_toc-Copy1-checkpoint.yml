@@ -1,0 +1,132 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+############## Module 1 ##################################
+- file: chapters/00introduction/00introduction
+#- file: chapters/1computationaltools/1computationaltools
+- file: chapters/2essentialgroundwater/essentialgwreview
+#- file: chapters/3essentialgroundwater/essentialgwreview2
+- file: chapters/4pollutants/4pollutants 
+- file: chapters/04computationaltools/04computationaltools
+############## Module 2 ##################################
+- file: chapters/05analyticalmodels1d/05analyticalmodels1d
+- file: chapters/06reactivemodels1d/06reactivemodels1d
+- file: chapters/07analyticalmodels2d/07analyticalmodels2d
+- file: chapters/08plumeandcapture/08plumeandcapture
+- file: chapters/09heterogenity/09heterogenity
+############### Module 3 #################################
+- file: chapters/10mf6introduction/10mf6introduction
+- file: chapters/11mf6simple/11mf6simple
+- file: chapters/12mf6transport/12mf6transport
+#- file: chapters/13mf6bcsources/12mf6bcsources
+#- file: chapters/14mf6calibrate/12mf6calibrate
+############### Module 4 #################################
+# Unsaturated 15
+#16
+#17
+#18
+#19
+############### Module 5 #################################
+#20 Introduction to Groundwater Remediation
+#21 Remediation System Design and Performance
+#22 Regulatory Session: Remediation Case Studies and Legal Frameworks
+############### Module 6 #################################
+- file: chapters/5nonreactivetransport/5nonreactivetransport 
+  sections:
+  - file: chapters/5nonreactivetransport/1tracerhypothesis
+  - file: chapters/5nonreactivetransport/2flux 
+  - file: chapters/5nonreactivetransport/3advection 
+  - file: chapters/6nonreactivetransport/4diffusion
+  - file: chapters/6nonreactivetransport/5dispersion
+- file: chapters/7analyticalmodels/analyticalmodels
+  sections:
+  - file: chapters/7analyticalmodels/impulse
+  - file: chapters/7analyticalmodels/ogatabanks
+  - file: chapters/7analyticalmodels/sauty
+  - file: chapters/7analyticalmodels/huntsolution
+  - file: chapters/7analyticalmodels/domenico
+  - file: chapters/7analyticalmodels/2Dfinitewidth
+  - file: chapters/7analyticalmodels/2Dfwidth-pulse
+  - file: chapters/7analyticalmodels/3Dfinitearea
+- file: chapters/8.0reactivetransport/8reactivetransport 
+  sections:
+  - file: chapters/8.0reactivetransport/6reactions
+  - file: chapters/8.0reactivetransport/7decay
+- file: chapters/8.1analyticalmodels/reactivemodels
+  sections:
+  - file: chapters/8.1analyticalmodels/wilsonmiller
+  
+- file: chapters/11modelingadvection/0modelingadvection
+  sections:
+  - file: chapters/11modelingadvection/2upwindfdm
+  - file: chapters/11modelingadvection/1particletracking
+
+
+#
+#- file: chapters/12.01usgsmodflow6/usgsmodflow6
+#  sections:
+#  - file: chapters/12.01usgsmodflow6/flowmodel1
+#  - file: chapters/12.01usgsmodflow6/flowmodel2
+#  - file: chapters/12.01usgsmodflow6/flowmodel3
+#  - file: chapters/12.01usgsmodflow6/transportmodel1
+#  - file: chapters/12.01usgsmodflow6/transportmodel2.1
+#  - file: chapters/12.02usgsmocmodel/usgsmoc
+#  - file: chapters/12.02usgsmocmodel/winmoc
+#  - file: chapters/12.02usgsmocmodel/armmoc
+# - file: chapters/12.02usgsmocmodel/dprw
+#
+
+  
+- file: chapters/16siteinvestigation/siteinvestigation
+- file: chapters/15datacollection/datacollection
+- file: chapters/17unsaturatedzone/unsaturated
+- file: chapters/18untransport/unsaturatedtransport
+  sections:
+  - file: chapters/18untransport/napls
+- file: chapters/19chemflow/chemflow
+  sections:
+  - file: chapters/19chemflow/chemflowwinders
+  - file: chapters/19chemflow/chemflowaarch
+  - file: chapters/19chemflow/chemflowexamples
+
+- file: chapters/22remediation/remediation
+- file: chapters/23risk/risk
+- file: chapters/26regulatory/regulatory
+
+
+
+- file: chapters/91exercises/2-Exercises
+  sections:
+  - file: chapters/91exercises/ES1/ES1
+  - file: chapters/91exercises/ES1/src-sol/ES1-WS
+  - file: chapters/91exercises/ES2/ES2
+  - file: chapters/91exercises/ES2/src-sol/ES2-WS
+  - file: chapters/91exercises/ES3/ES3
+  - file: chapters/91exercises/ES3/src-sol/ES3-WS
+  - file: chapters/91exercises/ES4/ES4
+  - file: chapters/91exercises/ES4/src-sol/ES4-WS
+  - file: chapters/91exercises/ES5/ES5
+  - file: chapters/91exercises/ES5/src-sol/ES5-WS
+  - file: chapters/91exercises/ES6/ES6
+  - file: chapters/91exercises/ES6/src-sol/ES6-WS
+  
+- file: chapters/93projects/Projects
+  sections:
+#  - file: chapters/93projects/PR1/
+  - file: chapters/93projects/PR2/PR2
+  - file: chapters/93projects/PR3/PR3
+  - file: chapters/93projects/PR4/PR4
+  - file: chapters/93projects/PR5/PR5
+  
+- file: chapters/92exams/exams
+  sections:
+  - file: chapters/92exams/EX1/EX1
+  - file: chapters/92exams/EX1/src-sol/EX1-WS
+  - file: chapters/92exams/EX2/EX2
+  - file: chapters/92exams/EX2/src-sol/EX2-WS
+  
+- file: chapters/99legacy/99legacy
+

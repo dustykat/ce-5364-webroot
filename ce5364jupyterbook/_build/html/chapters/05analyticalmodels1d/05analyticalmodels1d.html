@@ -1,0 +1,621 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>5. 1-D Transport by Advection and Dispersion &#8212; Groundwater Transport Phenomena</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05analyticalmodels1d/05analyticalmodels1d';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gwtransport.png" class="logo__image only-light" alt="Groundwater Transport Phenomena - Home"/>
+    <script>document.write(`<img src="../../_static/gwtransport.png" class="logo__image only-dark" alt="Groundwater Transport Phenomena - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00syllabus/ce5364-syllabus-2025-3.html">0. Syllabus (Fall 2025)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction to Groundwater Contaminant Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.science.html">2. Fundamentals (Science)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.practice.html">3. Fundamentals (Practice)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03site.mapping.tools/site.mapping.tools.html">5. Site Mapping Tools</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03site.characterization/site.characterization.html">6. Site Characterization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/physical.transport.html">7. Physical Transport</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/modeling.advection.html">8. Modeling Advection</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/05analyticalmodels1d/05analyticalmodels1d.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/05analyticalmodels1d/05analyticalmodels1d.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>5. 1-D Transport by Advection and Dispersion</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-solutions">Analytical Solutions:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-models">Numerical Models:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison">Comparison:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-dimensionality">Spatial Dimensionality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-profiles">Concentration Profiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-histories">Concentration Histories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="d-transport-by-advection-and-dispersion">
+<h1>5. 1-D Transport by Advection and Dispersion<a class="headerlink" href="#d-transport-by-advection-and-dispersion" title="Link to this heading">#</a></h1>
+<section id="scope">
+<h2>Scope<a class="headerlink" href="#scope" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Derivation of the Advection-Dispersion Equation (ADE)</p></li>
+<li><p>Analytical solutions using Jupyter Notebooks and Spreadsheets</p></li>
+</ul>
+<p>Analytical Models</p>
+<p>Partial Differential Equations (PDEs) are powerful mathematical tools used to describe and understand a wide range of physical phenomena, from heat diffusion to fluid flow. When dealing with PDEs, two primary approaches are commonly employed: analytical solutions and numerical models.</p>
+</section>
+<section id="analytical-solutions">
+<h2>Analytical Solutions:<a class="headerlink" href="#analytical-solutions" title="Link to this heading">#</a></h2>
+<p>Analytical solutions to PDEs involve finding exact mathematical expressions that describe the behavior of a system without resorting to approximation or numerical computation. These solutions are derived through mathematical techniques such as separation of variables, Fourier analysis, and Laplace transforms. The advantages of analytical solutions include:</p>
+<ul class="simple">
+<li><p><strong>Precision:</strong> Analytical solutions provide precise, closed-form expressions that yield exact solutions for specific initial and boundary conditions. This accuracy is particularly valuable in situations where precision is crucial, such as in fundamental scientific research or engineering design.</p></li>
+<li><p><strong>Insight:</strong> Analytical solutions offer deep insight into the underlying physics of the problem. They reveal how various parameters and variables influence the system’s behavior, facilitating a fundamental understanding of the problem at hand.</p></li>
+<li><p><strong>Computational Efficiency:</strong> Analytical solutions are typically computationally efficient, requiring significantly less computational power compared to numerical methods, which can be advantageous when working with complex or time-sensitive problems.</p></li>
+</ul>
+</section>
+<section id="numerical-models">
+<h2>Numerical Models:<a class="headerlink" href="#numerical-models" title="Link to this heading">#</a></h2>
+<p>Numerical models, on the other hand, involve discretizing the domain of the PDE into a grid or mesh and approximating the solution at discrete points. Numerical methods, such as finite difference, finite element, and finite volume methods, are used to solve the resulting system of algebraic equations. The key characteristics of numerical models include:</p>
+<ul class="simple">
+<li><p><strong>Approximation:</strong> Numerical models inherently involve approximation, as they operate with discretized values. The accuracy of the solution depends on the grid size and the chosen numerical method. Smaller grid sizes yield more accurate results but require more computational resources.</p></li>
+<li><p><strong>Versatility:</strong> Numerical models are versatile and can handle complex geometries and boundary conditions. They are particularly well-suited for solving PDEs that lack analytical solutions or when analytical solutions are impractical due to complexity.</p></li>
+<li><p><strong>Computational Resources:</strong> Numerical models can be computationally intensive, especially for high-resolution simulations or large-scale problems. High-performance computing resources may be necessary for timely solutions.</p></li>
+</ul>
+<section id="comparison">
+<h3>Comparison:<a class="headerlink" href="#comparison" title="Link to this heading">#</a></h3>
+<p>The choice between analytical solutions and numerical models depends on the nature of the problem and the specific objectives of the analysis:</p>
+<ul class="simple">
+<li><p>Analytical solutions are preferred when exact, closed-form expressions are achievable, offering precise insights into the system’s behavior. They are particularly useful for fundamental research and for understanding the underlying physics.</p></li>
+<li><p>Numerical models excel when dealing with complex geometries or when no analytical solutions are available. They offer flexibility and can handle a wide range of practical problems, making them indispensable in engineering, environmental modeling, and simulating real-world scenarios.</p></li>
+</ul>
+</section>
+</section>
+<section id="spatial-dimensionality">
+<h2>Spatial Dimensionality<a class="headerlink" href="#spatial-dimensionality" title="Link to this heading">#</a></h2>
+<p>Spatial dimensionality in modeling refers to the number of spatial dimensions or coordinates used to describe the physical or geometric aspects of a system or problem. In various scientific and engineering contexts, models are often used to represent and understand how a system behaves or evolves in space. Spatial dimensionality plays a crucial role in defining the complexity and realism of these models.</p>
+<p>Here’s a breakdown of what spatial dimensionality means in modeling:</p>
+<ul class="simple">
+<li><p><strong>One-Dimensional (1D) Models:</strong> In one-dimensional models, the system or problem is simplified to a single spatial dimension. For example, a heat conduction model in a rod with heat varying only along its length can be represented as a 1D model. These models are suitable for problems with significant simplification in spatial variation.</p></li>
+<li><p><strong>Two-Dimensional (2D) Models:</strong> In two-dimensional models, the system is represented in two spatial dimensions, typically on a flat plane. This is common in scenarios where variations occur both horizontally and vertically. Examples include flow in a thin aquifer or heat diffusion on a flat surface.</p></li>
+<li><p><strong>Three-Dimensional (3D) Models:</strong> Three-dimensional models account for variations in three spatial dimensions, forming a 3D space. These models are used for systems with complex spatial variations in all three directions. Examples include simulating groundwater flow in a 3D aquifer or airflow in a 3D room.</p></li>
+<li><p><strong>Higher-Dimensional Models:</strong> In some cases, particularly in theoretical physics and mathematics, models may involve more than three spatial dimensions. Such models are rare in practical applications but can be used to explore abstract or theoretical concepts.</p></li>
+</ul>
+<p>The choice of spatial dimensionality in modeling depends on the nature of the problem being studied and the level of detail required to capture its essential characteristics. Simplifying a problem to fewer dimensions can make it more tractable and computationally efficient but may lead to a loss of accuracy if important spatial variations are neglected. On the other hand, using a higher spatial dimensionality can provide a more realistic representation of a complex system but may come at the cost of increased computational complexity.</p>
+</section>
+<section id="concentration-profiles">
+<h2>Concentration Profiles<a class="headerlink" href="#concentration-profiles" title="Link to this heading">#</a></h2>
+<p>In transport modeling, a “concentration profile” refers to the spatial distribution of the concentration of a substance (such as a solute or pollutant) within a medium at a specific point in time. It represents how the concentration of the substance varies across different locations or spatial coordinates within the medium.</p>
+<p>The concentration profile is a fundamental concept in the study of transport phenomena, particularly in fields like hydrogeology, environmental science, and chemical engineering. It provides crucial information about how substances disperse, spread, or migrate through various media, such as air, water, soil, or porous materials. Understanding concentration profiles is essential for assessing the movement and behavior of substances in the environment and predicting their impact on ecosystems, human health, or industrial processes.</p>
+<p>Key characteristics of a concentration profile include:</p>
+<ul class="simple">
+<li><p><strong>Spatial Variation:</strong> A concentration profile shows how the concentration of the substance changes as you move from one location to another within the medium. It typically represents this variation along one or more spatial dimensions (e.g., depth, distance, height, or time).</p></li>
+<li><p><strong>Peak Concentration:</strong> The concentration profile often indicates where the highest concentration of the substance occurs within the medium, which is known as the “peak concentration” or “maximum concentration.”</p></li>
+<li><p><strong>Concentration Gradients:</strong> Concentration profiles also reveal the gradients or slopes in concentration, indicating the rate at which the concentration changes over distance or time. Steeper gradients imply faster changes.</p></li>
+<li><p><strong>Boundary Conditions:</strong> The shape and characteristics of the concentration profile are influenced by various factors, including initial conditions, boundary conditions (e.g., sources or sinks), and the transport processes at play (e.g., advection, dispersion, diffusion).</p></li>
+<li><p><strong>Temporal Evolution:</strong> Concentration profiles can change over time as substances are transported, mixed, or degraded within the medium. Dynamic modeling often involves tracking how these profiles evolve.</p></li>
+</ul>
+<p>Concentration profiles are commonly visualized using graphs or plots, with concentration (C) on the y-axis and spatial coordinates (e.g., distance or depth) on the x-axis. The resulting graph provides a visual representation of how the substance’s concentration varies spatially, helping researchers and modelers gain insights into the behavior and fate of the substance in the system.</p>
+</section>
+<section id="concentration-histories">
+<h2>Concentration Histories<a class="headerlink" href="#concentration-histories" title="Link to this heading">#</a></h2>
+<p>In transport modeling, “concentration history” refers to the temporal evolution or record of the concentration of a substance (such as a solute or pollutant) at a specific location or point within a medium over a period of time. It provides information about how the concentration of the substance changes at that particular location as time progresses.</p>
+<p>The concentration history is a critical aspect of transport modeling and is used to track and analyze how the concentration of a substance responds to various transport and fate processes, including advection, dispersion, diffusion, chemical reactions, and source/sink terms. It is particularly relevant in fields such as environmental science, hydrogeology, chemical engineering, and pollution assessment. Understanding concentration histories is essential for predicting the behavior of contaminants, the spread of pollutants, and the effectiveness of remediation or mitigation measures.</p>
+<p>Key characteristics and components of a concentration history include:</p>
+<ul class="simple">
+<li><p><strong>Temporal Variation:</strong> The concentration history shows how the concentration of the substance changes over time at a specific location. This temporal variation can reveal important trends, fluctuations, or trends in concentration levels.</p></li>
+<li><p><strong>Initial Conditions:</strong> The concentration history often begins with an initial concentration value at the starting time (t=0). This initial condition represents the state of the substance at the beginning of the simulation or observation period.</p></li>
+<li><p><strong>Transport Processes:</strong> Changes in concentration over time are influenced by various transport processes, including advection (bulk movement of fluid), dispersion (mechanical mixing), diffusion (molecular movement), chemical reactions, and any sources or sinks of the substance.</p></li>
+<li><p><strong>Boundary Conditions:</strong> Concentration histories are also affected by boundary conditions, which may include inflows, outflows, or other interactions at the system’s boundaries.</p></li>
+<li><p><strong>Equations and Models:</strong> Concentration histories are typically generated using mathematical models that describe the relevant transport and fate processes. These models are often based on partial differential equations or discrete numerical methods.</p></li>
+</ul>
+<p>Concentration histories can be visualized using plots or graphs, with time (t) on the x-axis and concentration (C) on the y-axis. This graphical representation allows modelers and researchers to observe concentration trends and patterns. Concentration histories are essential for various applications, such as assessing the impact of contaminants on groundwater quality, tracking the dispersion of pollutants in surface water bodies, monitoring the progress of chemical reactions in industrial processes, and evaluating the performance of remediation strategies.</p>
+<p><img alt="" src="chapters/05analyticalmodels1d/profilehistory.png" /></p>
+<p>The image above is an illustration of the <span class="math notranslate nohighlight">\(x-t\)</span> plane, with the vertical axis the <span class="math notranslate nohighlight">\(C(x,t)\)</span> axis. At the source, the concentration is some fixed value. From the origin, moving upward and to the right is the time axis. From the origin, moving downward and to the right is the space (distance) axis. A yellow line in the <span class="math notranslate nohighlight">\(x-t\)</span> plane is <span class="math notranslate nohighlight">\(x=vt\)</span> (sometimes called the trajectory). Along the time axis, is a point in time indicated by <span class="math notranslate nohighlight">\(t^*\)</span>. From this point moving downward and to the right is a plot (increasing distance) which is a concentration profile plot.  Along the space  axis, is a point in space indicated by <span class="math notranslate nohighlight">\(x^*\)</span>. From this point moving upward and to the right is a plot (increasing time) which is a concentration history plot.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.amazon.com/Dynamics-Fluids-Porous-Mechanical-Engineering/dp/0486656756">Bear, J. (1972) <em>Dynamics of Fluids in Porous Media</em> McGraw Hill (pp. 628-629)</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/yuan_thesis/Groundwater_transport.pdf">Yuan, D, (1995)  <em>Accurate approximations for one-, two-, and three-dimensional groundwater mass transport from an exponentially decaying contaminant source.</em> MS Thesis, Department of Civil and Environmental Engineering, University of Houston. </a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/ants_dissertation/Luke_Chuang.pdf">Chuang, Lu-Chia, (1998) <em>A guidance system for choosing analytical contaminant transport models.</em> Doctoral Dissertation, Department of Civil and Environmental Engineering, University of Houston, Houston, Texas. 222p.</a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/publication/ofr8956">Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow
+Open-File Report 89-56</a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/publication/twri03B7">Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow
+Techniques of Water-Resources Investigations 03-B7 (supercedes above reference)</a></p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/05analyticalmodels1d"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-solutions">Analytical Solutions:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-models">Numerical Models:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison">Comparison:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-dimensionality">Spatial Dimensionality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-profiles">Concentration Profiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-histories">Concentration Histories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Theodore G. Cleveland, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

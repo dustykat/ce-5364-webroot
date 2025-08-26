@@ -1,0 +1,952 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>6. Site Characterization &#8212; Groundwater Transport Phenomena</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03site.characterization/site.characterization';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="5. Site Mapping Tools" href="../03site.mapping.tools/site.mapping.tools.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gwtransport.png" class="logo__image only-light" alt="Groundwater Transport Phenomena - Home"/>
+    <script>document.write(`<img src="../../_static/gwtransport.png" class="logo__image only-dark" alt="Groundwater Transport Phenomena - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00syllabus/ce5364-syllabus-2025-3.html">0. Syllabus (Fall 2025)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction to Groundwater Contaminant Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.science.html">2. Fundamentals (Science)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.practice.html">3. Fundamentals (Practice)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03site.mapping.tools/site.mapping.tools.html">5. Site Mapping Tools</a></li>
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Site Characterization</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/03site.characterization/site.characterization.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/03site.characterization/site.characterization.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>6. Site Characterization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">Readings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-roadmap">Lesson Roadmap</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrogeologic-frameworks">Hydrogeologic Frameworks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-unsaturated-vadose-zone">The Unsaturated (Vadose) Zone</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-saturated-aquifer-zone">The Saturated (Aquifer) Zone</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groundwater-motion">Groundwater Motion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concepts-of-investigations">Concepts of Investigations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-exploration-concepts">Subsurface Exploration Concepts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drilling-boreholes">Drilling Boreholes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-considerations">Sampling Considerations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoring-wells">Monitoring Wells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qa-qc-considerations">QA/QC Considerations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slug-tests">Slug Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pumping-tests">Pumping Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracer-tests">Tracer Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="site-characterization">
+<h1>6. Site Characterization<a class="headerlink" href="#site-characterization" title="Link to this heading">#</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/Bedient_et_al/Bedient_et_al._Chapter_5.pdf">textbook (pp. 113-158)</a> has a decent description of how to perform an overall site investigation.</p>
+</div>
+<div class="admonition-course-website admonition">
+<p class="admonition-title">Course Website</p>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/">Link to Course Website</a></p>
+</div>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
+<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span><span class="w"> </span><span class="nt">table</span><span class="w"> </span><span class="p">{</span><span class="k">margin-left</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="cp">!important</span><span class="p">;}</span><span class="w"> </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style> table {margin-left: 0 !important;} </style>
+</div></div>
+</div>
+<p>In the previous lesson on site mapping, we examined how to determine and map the extent of contamination, focusing on delineating plume boundaries and identifying zones of concern. With that foundation in place, we now turn to the physical characteristics of the aquifer itself. Understanding these hydraulic properties is essential for predicting how contaminants will migrate and for selecting effective remediation strategies.</p>
+<section id="readings">
+<h2>Readings<a class="headerlink" href="#readings" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/journal_papers/type_curve_jgw_1996/type_curve_jgw_1996.pdf">Cleveland, T.G., 1996. ”Type-Curve Matching using a Computer Spreadsheet,”
+Ground Water, Vol. 34, No. 3.</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/journal_papers/type_curve_jgw_1996/">Cleveland, T.G., 1996. ”Type-Curve Matching using a Computer Spreadsheet,”
+Ground Water, Vol. 34, No. 3. (Spreadsheets in the Document (XLS))</a></p></li>
+<li><p><a class="reference external" href="https://health.hawaii.gov/heer/files/2021/07/Hvorslev1951.pdf">Hvorslev, 1951. “Time Lag and Soil Permeability in Ground Water Observations”, Bulletin No. 36, U.S. Army Corps of Engineers p. 50.</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-4363-webroot/ce4363notes/lessons/10gwflow2wells/Lecture010.PDF">Cleveland, T.G., (2001) <em>Groundwater Hydrology - Lecture 010</em> Lecture Notes to accompany CE 6361 at the University of Houston</a></p></li>
+<li><p><a class="reference external" href="https://dem.ri.gov/sites/g/files/xkgbur861/files/pubs/sops/wmsr2046.pdf">Slug Tests SOP#2046 US. EPA</a></p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1111/j.1745-6592.1989.tb01147.x">Chirlin G. R. (1989) A Critique of the Hvorslev Method for Slug Test Analysis: The Fully Penetrating Well</a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/publication/wri914034">Springer, R.K. and L.W. Gelhar, 1991. Characterization of large-scale aquifer heterogeneity in glacial outwash by analysis of slug tests with oscillatory response, Cape Cod, Massachusetts, U.S. Geol. Surv. Water Res. Invest. Rep. 91-4034, pp. 36-40.</a></p></li>
+<li><p>Bouwer, H. and R.C. Rice, 1976. A slug test method for determining hydraulic conductivity of unconfined aquifers with completely or partially penetrating wells, Water Resources Research, vol. 12, no. 3, pp. 423-428.</p></li>
+<li><p><a class="reference external" href="https://www.kgs.ku.edu/Hydro/Publications/OFR00_40/index.html">Butler, J.J., Jr. and E.J. Garnett, 2000. Simple procedures for analysis of slug tests in formations of high hydraulic conductivity using spreadsheet and scientific graphics software, Kansas Geological Survey Open-File Rept. 2000-40.</a></p></li>
+</ol>
+<p>The first steps beyond identifying the contaminant plume is to understand the physical characteristics of the subsurface that control groundwater movement and contaminant transport. This process, broadly referred to as site characterization, provides the foundation for selecting, designing, and evaluating remediation strategies.</p>
+<p>In this lesson, we will focus on characterizing the hydraulic properties of an aquifer, since these govern both the rate and direction of groundwater flow. Two properties that are particularly important are:</p>
+<ul class="simple">
+<li><p>Hydraulic Conductivity (<span class="math notranslate nohighlight">\(K\)</span>): a measure of how easily water can move through pore spaces or fractures.</p></li>
+<li><p>Porosity (<span class="math notranslate nohighlight">\(n\)</span>): the fraction of the subsurface volume that is void space, influencing both groundwater storage and contaminant residence time.</p></li>
+</ul>
+<p>To estimate these properties in practice, hydrogeologists rely on field-based hydraulic methods and, in some cases, tracer tests:</p>
+<ul class="simple">
+<li><p>Slug tests provide localized estimates of aquifer response by observing how water levels recover after a sudden displacement in a well.</p></li>
+<li><p>Pumping tests involve sustained pumping from a well and observing drawdown in surrounding wells, yielding information about aquifer transmissivity and storage at a larger scale.</p></li>
+<li><p>Tracer tests—the intentional release and monitoring of a harmless tracer—reveal information about porosity, flow paths, and dispersion that cannot be obtained from hydraulic data alone.</p></li>
+</ul>
+<p>Combined, these methods allow us to quantify how groundwater moves, how fast contaminants might spread, and how the subsurface will respond to remediation measures. By the end of this lesson, you should be able to explain the purpose of each method, interpret typical results, and understand their role in developing a conceptual model of a contaminated site.</p>
+<section id="lesson-roadmap">
+<h3>Lesson Roadmap<a class="headerlink" href="#lesson-roadmap" title="Link to this heading">#</a></h3>
+<p>In this lesson, we will:</p>
+<ul class="simple">
+<li><p>Examine “hydrogeologic frameworks” to inform any design or risk assessment decisions.</p></li>
+<li><p>Review key hydraulic properties (hydraulic conductivity and porosity) and their significance in contaminant transport.</p></li>
+<li><p>Introduce slug tests as a method for measuring local aquifer response.</p></li>
+<li><p>Examine pumping tests for larger-scale characterization of transmissivity and storage.</p></li>
+<li><p>Explore tracer tests as a tool to investigate porosity, flow paths, and dispersion.</p></li>
+<li><p>Discuss practical considerations and limitations of each method, emphasizing their role in building a conceptual site model.</p></li>
+</ul>
+</section>
+</section>
+<section id="hydrogeologic-frameworks">
+<h2>Hydrogeologic Frameworks<a class="headerlink" href="#hydrogeologic-frameworks" title="Link to this heading">#</a></h2>
+<section id="the-unsaturated-vadose-zone">
+<h3>The Unsaturated (Vadose) Zone<a class="headerlink" href="#the-unsaturated-vadose-zone" title="Link to this heading">#</a></h3>
+<p>The unsaturated, or vadose, zone is a vital component of the Earth’s subsurface that plays a pivotal role in the quality of groundwater resources. Situated above the saturated zone, where groundwater is found, the unsaturated zone acts as a barrier that contaminants must traverse before reaching the underlying aquifers.</p>
+<p><strong>Characteristics of the Unsaturated Zone:</strong></p>
+<ul class="simple">
+<li><p>Overlying the Saturated Zone
+The unsaturated zone is the region that overlies the saturated zone, which contains groundwater. It acts as the initial layer of defense against potential contamination, as any substances entering the unsaturated zone must pass through it before they can reach the underlying aquifers.</p></li>
+<li><p>Contaminant Migration
+Contaminants introduced into the environment almost invariably encounter the unsaturated zone on their journey to the aquifers. This zone is the first line of defense against pollutants, as it often serves as a natural filter, removing or attenuating contaminants before they can impact the groundwater.</p></li>
+<li><p>Fluid Movement
+Fluid movement within the unsaturated zone is governed by a complex interplay of physical forces, including surface tension, capillarity, and gravity. These forces influence the direction and rate at which water and other fluids move through the unsaturated zone. Surface tension and capillarity can draw water upward against the force of gravity, creating a dynamic and intricate flow regime.</p></li>
+<li><p>Non-Homogeneous Nature
+The unsaturated zone is non-homogeneous, meaning it lacks uniformity in terms of soil and rock properties. This heterogeneity can make accurate description of the geologic makeup a challenging task. To understand the composition and structure of the unsaturated zone, extensive subsurface investigations are often required, involving techniques such as borehole drilling, soil sampling, and geophysical surveys.</p></li>
+</ul>
+<p><strong>Processes Governing Flow in the Unsaturated Zone:</strong></p>
+<p>Several critical processes influence the flow of fluids within the unsaturated zone, ultimately determining its effectiveness as a protective barrier for groundwater. These processes include:</p>
+<ul class="simple">
+<li><p>Hysteresis
+Hysteresis describes the phenomenon where the wetting and drying paths of the unsaturated zone do not coincide. The relationship between moisture content and pressure or suction varies depending on whether the unsaturated zone is drying out or becoming wetter. Understanding hysteresis is essential for accurate modeling and prediction of fluid flow in this region.</p></li>
+<li><p>Macropore Flow
+Macropores are relatively large openings in the subsurface, such as fractures, root channels, and wormholes, that allow for rapid flow of water and contaminants. Macropore flow can significantly influence the movement of water and contaminants in the unsaturated zone, often bypassing the slower matrix flow and presenting challenges in contamination remediation.</p></li>
+<li><p>Capillary Movement
+Capillary action is the phenomenon responsible for water’s ability to move upward in narrow soil pores against the force of gravity. Capillarity is a critical mechanism in the unsaturated zone that influences moisture distribution, particularly in fine-textured soils, and can facilitate the transport of contaminants.</p></li>
+<li><p>Darcian Flow
+Darcian flow is the slow, matrix flow of fluids through the unsaturated zone. It occurs when water moves through the interconnected pores and fractures within the soil and rock. This process can filter and attenuate contaminants, making it a key mechanism in protecting aquifers.</p></li>
+</ul>
+</section>
+<section id="the-saturated-aquifer-zone">
+<h3>The Saturated (Aquifer) Zone<a class="headerlink" href="#the-saturated-aquifer-zone" title="Link to this heading">#</a></h3>
+<p>Underlying the unsaturated (vadose) zone, where water, air, and contaminants navigate, the saturated zone is completely inundated with water.</p>
+<p><strong>Characteristics of the Saturated Zone:</strong></p>
+<ul class="simple">
+<li><p>Complete Saturation
+The most defining characteristic of the saturated zone is its complete saturation with water. Unlike the unsaturated zone, which allows for the presence of both air and water, this realm beneath the surface is fully immersed in water. Consequently, it is the reservoir for groundwater storage.</p></li>
+</ul>
+<p><strong>Geologic Environments of the Saturated Zone:</strong></p>
+<p>The saturated zone can be encountered in various geologic settings, each with its unique attributes and groundwater potential. These environments include:</p>
+<ul class="simple">
+<li><p>Igneous-Metamorphic Systems
+In igneous and metamorphic rock environments, the saturated zone is often less abundant. These rocks are typically dry and do not yield significant amounts of groundwater. Flow within these systems primarily occurs in fractures, and in some cases, it may be substantial, contributing to localized groundwater resources.</p></li>
+<li><p>Sedimentary Systems
+Sedimentary environments, comprising sediments and limestones, are more conducive to groundwater abundance compared to igneous-metamorphic systems. In these settings, groundwater typically flows between the grains and voids of the sedimentary layers, with fractures also playing a role in certain cases. The relatively permeable nature of sedimentary rocks allows for the movement and storage of substantial groundwater resources.</p></li>
+<li><p>Alluvial-Fluvial Systems
+Alluvial and fluvial systems represent an abundant source of groundwater. These systems are characterized by the deposition of sediments carried by fluvial processes in shallow or deep basins. Groundwater is plentiful in these environments, with most systems comprised of clay and sand beds. The geometry of interbedding within these systems influences the behavior of groundwater flow, making it a dynamic and complex setting for hydrogeological investigations.</p></li>
+</ul>
+<p><strong>Flow Behavior in the Saturated Zone:</strong></p>
+<p>The flow dynamics within the saturated zone are influenced by the specific geologic environment in which it is found:</p>
+<ul class="simple">
+<li><p>Fracture Flow
+In igneous-metamorphic systems, fracture flow is a significant factor. Water flows primarily through fractures and faults in the rock, which act as conduits for groundwater movement. The effectiveness of fracture flow in these systems depends on the density and connectivity of fractures.</p></li>
+<li><p>Intergranular Flow
+Sedimentary systems exhibit intergranular flow, where water moves between the grains and voids of the sedimentary layers. This flow mechanism allows for the storage and movement of groundwater within the porous sedimentary rock.</p></li>
+<li><p>Alluvial-Fluvial Influences
+Alluvial and fluvial systems present unique flow dynamics. The abundance of groundwater in these systems is influenced by the composition and geometry of the interbedding of clay and sand beds. The interaction of fluvial processes and sediment deposition plays a crucial role in groundwater availability and movement in these environments.</p></li>
+</ul>
+</section>
+<section id="groundwater-motion">
+<h3>Groundwater Motion<a class="headerlink" href="#groundwater-motion" title="Link to this heading">#</a></h3>
+<p>Discharge is proportional to driving energy (hydraulic gradient) cross sectional area (<span class="math notranslate nohighlight">\(A\)</span>), and ease of conductance (hydraulic conductivity, <span class="math notranslate nohighlight">\(K\)</span>) formally represented by Darcy’s law</p>
+<div class="math notranslate nohighlight">
+\[\vec{Q} = - KA \nabla(h)\]</div>
+<p>The interstitial (seepage) velocity is estimated as</p>
+<div class="math notranslate nohighlight">
+\[\vec{v} = \frac{1}{n}\vec{\frac{Q}{A}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the porosity.</p>
+</section>
+</section>
+<section id="concepts-of-investigations">
+<h2>Concepts of Investigations<a class="headerlink" href="#concepts-of-investigations" title="Link to this heading">#</a></h2>
+<p>Site investigation in hydrogeology is a critical step in understanding the complex interplay between geological features, groundwater flow, and potential contamination risks. The primary goal of such investigations is to collect comprehensive and accurate data to define the extent of contamination, allowing for the design of effective remediation strategies.</p>
+<p><strong>Defining the Extent of Contamination:</strong></p>
+<p>Site investigations serve as the foundation for delineating the extent of contamination within an area. Accurate data collection is vital to ensure that contamination plumes are well-defined, enabling the design of tailored and efficient remediation approaches. As the costs associated with remediation can be substantial, the need for precise information cannot be overstated.</p>
+<p><strong>The Role of Site Geology:</strong></p>
+<p>Site geology plays a pivotal role in forming the physical framework that governs the movement of groundwater and contaminants. The geological characteristics, such as the presence of aquifers, confining layers, and structural features, profoundly influence the flow pathways and dispersion of contaminants. Thus, a thorough understanding of site geology is essential for both contamination assessment and remediation design.</p>
+<p><strong>Scale and Specificity:</strong></p>
+<p>Site investigations in hydrogeology are fundamentally different from other hydrogeologic studies, such as regional water resource assessments. These investigations focus on small areas in intricate detail, rather than broad-scale assessments. In such cases, the devil is in the details, as small features can significantly impact groundwater flow and contamination migration.</p>
+<p><strong>Small-Scale Features of Significance:</strong></p>
+<ul class="simple">
+<li><p>Shallow Water Zones
+One of the primary objectives of site investigations is to identify shallow water zones that may not typically be used as water resources. These zones may be close to the surface and can be more susceptible to contamination, making their assessment vital for environmental protection.</p></li>
+<li><p>Geological Study
+Site geological studies provide the foundation for understanding the subsurface characteristics. Strata a few inches thick, animal burrows, root holes, cracks, decayed piping, and foundation drains are all small features that can influence groundwater flow, making their detailed quantification crucial.</p></li>
+</ul>
+<p><strong>Field Strategy:</strong></p>
+<p>A strategic approach to site investigation involves combining traditional water resources quantification methods with a detailed focus on small-scale features. This strategy allows for a comprehensive assessment of the site, ensuring that both the broader hydrogeological context and the specific intricacies are taken into account. Traditional techniques might include hydrogeological testing and monitoring well installation, while the detailed assessment would encompass close examination and quantification of small-scale features that could impact groundwater flow and contamination movement.</p>
+<p><img alt="" src="../../_images/conceptualsite1.png" /> <img alt="" src="../../_images/background1.png" /></p>
+<section id="subsurface-exploration-concepts">
+<h3>Subsurface Exploration Concepts<a class="headerlink" href="#subsurface-exploration-concepts" title="Link to this heading">#</a></h3>
+<p><img alt="" src="../../_images/subsurface1.png" />
+<img alt="" src="../../_images/logistics1.png" /></p>
+<p><img alt="" src="../../_images/geodatacollect1.png" /></p>
+</section>
+<section id="drilling-boreholes">
+<h3>Drilling Boreholes<a class="headerlink" href="#drilling-boreholes" title="Link to this heading">#</a></h3>
+<p><img alt="" src="../../_images/drillingandsampling1.png" /> <img alt="" src="../../_images/hollowstemsample1.png" /></p>
+<p><img alt="" src="../../_images/drillingmethods1.png" /></p>
+<p><strong>Videos</strong></p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=NbmfcXJLFNM">Dry Auger Drilling (youtube)</a></p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=H6N0x8BnOKE">Cable Tool Drilling (youtube)</a></p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=hPV3_PXvQnc">Air Rotary Drilling (youtube)</a></p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=7VCTv30WcLQ">Reverse-Circulation Rotary (youtube)</a></p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=wsnN_xuR4EQ">Mud-Rotary Drilling (youtube)</a></p>
+</section>
+<section id="sampling-considerations">
+<h3>Sampling Considerations<a class="headerlink" href="#sampling-considerations" title="Link to this heading">#</a></h3>
+<p><img alt="" src="../../_images/decontamination1.png" /></p>
+<p><strong>Shelby-Tube Sample Probe</strong></p>
+<p><img alt="" src="../../_images/shelby1.png" /></p>
+<p><strong>Split Spoon Sample Probe (Typ.)</strong></p>
+<p><img alt="Split Spoon Sample Probe (Typical)" src="../../_images/splitspoon1.png" /></p>
+<p><strong>Piston-Core Sample Probe</strong></p>
+<p><img alt="" src="../../_images/pistoncore1.png" /></p>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/16siteinvestigation/SamplerPaper.pdf">Getting high-quality samples in ‘sensitive’ soils for advanced
+laboratory tests. Innov. Infrastruct. Solut. (2017) 2:34</a></p>
+<p><img alt="" src="../../_images/drilltypes1.png" /> <img alt="" src="../../_images/hollowstemsample1.png" /></p>
+<p><img alt="" src="../../_images/procondrilling1.png" /></p>
+<p><img alt="" src="../../_images/boreholelogging1.png" /> <img alt="" src="../../_images/gwinboring1.png" /></p>
+</section>
+<section id="monitoring-wells">
+<h3>Monitoring Wells<a class="headerlink" href="#monitoring-wells" title="Link to this heading">#</a></h3>
+<p><img alt="" src="../../_images/mwconsider1.png" /> <img alt="" src="../../_images/wellscreen1.png" /></p>
+<p><img alt="" src="../../_images/surfacecomplete1.png" /> <img alt="" src="../../_images/completewell1.png" /></p>
+<p><strong>Cluster Wells</strong></p>
+<p><img alt="" src="../../_images/clusterwell1.png" /></p>
+<p><img alt="" src="../../_images/gwsampling1.png" /> <img alt="" src="../../_images/laboratories1.png" /></p>
+<p><img alt="" src="../../_images/protocols1.png" /></p>
+</section>
+<section id="qa-qc-considerations">
+<h3>QA/QC Considerations<a class="headerlink" href="#qa-qc-considerations" title="Link to this heading">#</a></h3>
+<p><img alt="" src="../../_images/qaqc1.png" /></p>
+<p><img alt="" src="../../_images/bias1.png" /> <img alt="" src="../../_images/duplicates1.png" /></p>
+<p><img alt="" src="../../_images/samplecollection1.png" /> <img alt="" src="../../_images/collectingsample1.png" /></p>
+<p><img alt="" src="../../_images/samplers1.png" /></p>
+<p><img alt="" src="../../_images/lowK1.png" /> <img alt="" src="../../_images/vadosesampler1.png" /></p>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/chapters/03site.characterization/HydrogeologyPractice.pdf">Keller Landfill Hydrogeology Example</a></p>
+</section>
+</section>
+<section id="slug-tests">
+<h2>Slug Tests<a class="headerlink" href="#slug-tests" title="Link to this heading">#</a></h2>
+<p>A slug test is a localized field method used to estimate aquifer hydraulic conductivity by observing how groundwater levels in a well respond to a sudden, small change in water level. This change—called a “slug”—is usually introduced by quickly adding or removing a known volume of water, or by inserting/removing a solid object. The subsequent water level recovery is recorded over time and analyzed to infer aquifer properties in the immediate vicinity of the well.</p>
+<p>Slug tests are particularly valued in contaminated settings because they do not require sustained pumping and therefore avoid the need to withdraw, handle, and dispose of potentially contaminated water. However, the trade-off is that slug tests represent only a very small zone around the test well, limiting their spatial validity compared to larger-scale methods such as pumping tests.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Slug_test">Slug Test wikipedia</a></p>
+<p><strong>Hvorslov’s Approach</strong></p>
+<p><img alt="" src="../../_images/slug1.png" /></p>
+<p><img alt="" src="../../_images/slug2.png" /></p>
+<p><img alt="" src="../../_images/slug3.png" /></p>
+<p><img alt="" src="../../_images/slug4.png" /></p>
+<p><img alt="" src="../../_images/slug5.png" /></p>
+<p><img alt="" src="../../_images/slug6.png" /></p>
+<p>The spreadsheet above is located at <a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/chapters/03site.characterization/Slugtest_Hvorslev.xls">Slugtest_Hvorslev.xls</a></p>
+<p>A python script to perform similar analysis (K is selected by guess-and-check) is shown below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hvorslev Slug Test Analysis (enhanced I/O + log-log plot)</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">HwHo</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">conductivity</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">time</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">conductivity</span> <span class="o">*</span> <span class="n">shape</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># --- Inputs ---</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mf">0.083</span>      <span class="c1"># well radius</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">0.083</span>      <span class="c1"># filter pack radius</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mf">10.0</span>       <span class="c1"># filter pack length</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mf">.000864</span>    <span class="c1"># K guess - larger to make model plot flatter</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">L</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">L</span> <span class="o">/</span> <span class="n">R</span><span class="p">)</span>  <span class="c1"># Shape factor (geometry-dependent)</span>
+<span class="n">dref</span> <span class="o">=</span> <span class="mf">13.99</span>   <span class="c1"># Pre-test depth to water</span>
+
+<span class="c1"># --- Print inputs (1) ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== INPUTS ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;well radius r&#39;</span><span class="si">:</span><span class="s2">&gt;22s</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;filter radius R&#39;</span><span class="si">:</span><span class="s2">&gt;22s</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">R</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;filter length L&#39;</span><span class="si">:</span><span class="s2">&gt;22s</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;hydraulic K&#39;</span><span class="si">:</span><span class="s2">&gt;22s</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">K</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;shape factor A&#39;</span><span class="si">:</span><span class="s2">&gt;22s</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;reference depth dref&#39;</span><span class="si">:</span><span class="s2">&gt;22s</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">dref</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Test Observations ---</span>
+<span class="n">etime</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mf">3.</span><span class="p">,</span><span class="mf">4.</span><span class="p">,</span><span class="mf">5.</span><span class="p">,</span><span class="mf">6.</span><span class="p">,</span><span class="mf">7.</span><span class="p">,</span><span class="mf">8.</span><span class="p">,</span><span class="mf">9.</span><span class="p">]</span>
+<span class="n">depth</span> <span class="o">=</span> <span class="p">[</span><span class="mf">14.87</span><span class="p">,</span><span class="mf">14.59</span><span class="p">,</span><span class="mf">14.37</span><span class="p">,</span><span class="mf">14.2</span><span class="p">,</span><span class="mf">14.11</span><span class="p">,</span><span class="mf">14.05</span><span class="p">,</span><span class="mf">14.03</span><span class="p">,</span><span class="mf">14.01</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mf">13.99</span><span class="p">]</span>
+
+<span class="c1"># --- Print test data in two columns (2) ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== TEST DATA (Time, Depth) ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Time&#39;</span><span class="si">:</span><span class="s2">&gt;10s</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="s1">&#39;Depth&#39;</span><span class="si">:</span><span class="s2">&gt;10s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">t_i</span><span class="p">,</span> <span class="n">d_i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">etime</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">t_i</span><span class="si">:</span><span class="s2">10.6g</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">d_i</span><span class="si">:</span><span class="s2">10.6g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Computed Values ---</span>
+<span class="n">Hw</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="o">-</span> <span class="n">dref</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">depth</span><span class="p">]</span>
+<span class="n">HwHoObs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">depth</span><span class="p">)</span>
+<span class="n">HwHoMod</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">depth</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">t_i</span><span class="p">,</span> <span class="n">Hw_i</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">etime</span><span class="p">,</span> <span class="n">Hw</span><span class="p">)):</span>
+    <span class="n">HwHoObs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Hw_i</span> <span class="o">/</span> <span class="n">Hw</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">Hw</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
+    <span class="n">HwHoMod</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">HwHo</span><span class="p">(</span><span class="n">t_i</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># --- Print side-by-side (3): Time, HwHoObs, HwHoMod, Diff ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== OBSERVED vs MODELED (aligned by time index) ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Time&#39;</span><span class="si">:</span><span class="s2">&gt;10s</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="s1">&#39;HwHoObs&#39;</span><span class="si">:</span><span class="s2">&gt;12s</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="s1">&#39;HwHoMod&#39;</span><span class="si">:</span><span class="s2">&gt;12s</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="s1">&#39;Diff(Obs-Mod)^2&#39;</span><span class="si">:</span><span class="s2">&gt;14s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">t_i</span><span class="p">,</span> <span class="n">o_i</span><span class="p">,</span> <span class="n">m_i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">etime</span><span class="p">,</span> <span class="n">HwHoObs</span><span class="p">,</span> <span class="n">HwHoMod</span><span class="p">):</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">o_i</span> <span class="o">-</span> <span class="n">m_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">t_i</span><span class="si">:</span><span class="s2">10.6g</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">o_i</span><span class="si">:</span><span class="s2">12.6g</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">m_i</span><span class="si">:</span><span class="s2">12.6g</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">diff</span><span class="si">:</span><span class="s2">14.6g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Plot (4): linear time axis ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">etime</span><span class="p">,</span> <span class="n">HwHoObs</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;HwHoObs (Observed)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">etime</span><span class="p">,</span> <span class="n">HwHoMod</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;HwHoMod (Model)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span> <span class="c1"># set y-axis to display a logarithmic scale ######</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Elapsed Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;H/H0&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hvorslev Slug Test: H/H0 vs Time (linear time axis)</span><span class="se">\n</span><span class="s2"> K=</span><span class="si">{</span><span class="n">K</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== INPUTS ===
+         well radius r: 0.083
+       filter radius R: 0.083
+       filter length L: 10.0
+           hydraulic K: 0.000864
+        shape factor A: 13.113191310477738
+  reference depth dref: 13.99
+
+=== TEST DATA (Time, Depth) ===
+      Time       Depth
+         0       14.87
+         1       14.59
+         2       14.37
+         3        14.2
+         4       14.11
+         5       14.05
+         6       14.03
+         7       14.01
+         8          14
+         9       13.99
+
+=== OBSERVED vs MODELED (aligned by time index) ===
+      Time       HwHoObs       HwHoMod  Diff(Obs-Mod)^2
+         0             1             1               0
+         1      0.681818      0.592444      0.00798778
+         2      0.431818       0.35099      0.00653325
+         3      0.238636      0.207942     0.000942166
+         4      0.136364      0.123194     0.000173446
+         5     0.0681818     0.0729854      2.3074e-05
+         6     0.0454545     0.0432397     4.90543e-06
+         7     0.0227273     0.0256171     8.35114e-06
+         8     0.0113636     0.0151767     1.45394e-05
+         9             0    0.00899134     8.08442e-05
+</pre></div>
+</div>
+<img alt="../../_images/bf0b220f84f12afefbf8aa9ace66c8a79546cba3df3f63ccba123dce50db43f0.png" src="../../_images/bf0b220f84f12afefbf8aa9ace66c8a79546cba3df3f63ccba123dce50db43f0.png" />
+</div>
+</div>
+<p><strong>Nugyen and Pinder Approach</strong></p>
+<p><img alt="" src="../../_images/np1.png" /></p>
+<p><img alt="" src="../../_images/np2.png" /></p>
+<p><img alt="" src="../../_images/np3.png" /></p>
+<p>A python script would function quite similarly and is left to the reader to construct (or you can buy one from <a class="reference external" href="http://www.aqtesolv.com/slug-tests/slug-tests.htm">www.aqtesolv.com</a>)</p>
+</section>
+<section id="pumping-tests">
+<h2>Pumping Tests<a class="headerlink" href="#pumping-tests" title="Link to this heading">#</a></h2>
+<p>A pumping test is a larger-scale method used to estimate aquifer transmissivity and storage properties by pumping groundwater from a well at a controlled rate and measuring the resulting drawdown in that well and in nearby observation wells. The analysis of drawdown over time and distance allows hydrogeologists to characterize aquifer behavior at a scale that reflects natural groundwater flow more accurately than slug tests.</p>
+<p>Pumping tests provide broader spatial validity, capturing aquifer properties over tens to hundreds of meters, which is useful for developing regional groundwater models and evaluating remediation strategies. However, in contaminated aquifers they present practical challenges: water extracted during the test must be managed and disposed of safely, adding cost and regulatory complexity.</p>
+</section>
+<section id="tracer-tests">
+<h2>Tracer Tests<a class="headerlink" href="#tracer-tests" title="Link to this heading">#</a></h2>
+<p>A tracer test involves introducing a non-reactive or minimally reactive substance into the groundwater system and monitoring its movement over time at downstream wells. By observing the arrival time, concentration, and dispersion of the tracer, hydrogeologists can estimate effective porosity, identify flow paths, and quantify dispersion and mixing processes in the aquifer.</p>
+<p>Tracer tests provide valuable insight into how contaminants may migrate in real conditions, capturing transport behavior that hydraulic methods alone cannot reveal. However, their results are strongly influenced by the monitoring network design and subsurface heterogeneity, and they require careful planning to ensure the tracer is both environmentally safe and analytically detectable.</p>
+<p>Taken together, slug tests, pumping tests, and tracer tests form a complementary toolkit for site characterization. Each method provides a different scale of information: slug tests are quick and localized, pumping tests extend to a broader aquifer response, and tracer tests capture transport processes along flow paths. Understanding their relative strengths and limitations helps hydrogeologists design investigations that balance practicality, cost, and the need for reliable data.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Slug Test</p></th>
+<th class="head"><p>Pumping Test</p></th>
+<th class="head"><p>Tracer Test</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Scale of influence</strong></p></td>
+<td><p>Very local (near the well, ~1–3 m radius)</p></td>
+<td><p>Regional (tens to hundreds of meters)</p></td>
+<td><p>Variable; depends on tracer path (tens to hundreds of meters)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Hydraulic property</strong></p></td>
+<td><p>Hydraulic conductivity (K)</p></td>
+<td><p>Transmissivity (T) and storage properties (S)</p></td>
+<td><p>Effective porosity, flow paths, dispersion</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Water handling</strong></p></td>
+<td><p>No water withdrawal (preferred in contaminated settings)</p></td>
+<td><p>Requires withdrawal and safe disposal of potentially contaminated water</p></td>
+<td><p>Introduces a non-toxic tracer; no pumping required unless combined with pumping test</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Duration</strong></p></td>
+<td><p>Short (minutes to hours)</p></td>
+<td><p>Longer (hours to days)</p></td>
+<td><p>Variable (hours to weeks, depending on monitoring)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cost &amp; logistics</strong></p></td>
+<td><p>Low cost, simple equipment</p></td>
+<td><p>Higher cost, pumping equipment and monitoring network required</p></td>
+<td><p>Moderate; requires tracer chemical and sampling/analysis program</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Spatial validity</strong></p></td>
+<td><p>Limited; may not represent broader aquifer</p></td>
+<td><p>Broad; reflects larger-scale aquifer behavior</p></td>
+<td><p>Reveals flow and transport processes along flow paths, but depends on monitoring well network</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In summary, no single method provides a complete picture of aquifer behavior. Slug tests are efficient for localized estimates, pumping tests extend characterization across a wider scale, and tracer tests reveal transport processes that hydraulic methods cannot capture. By considering the advantages and limitations of each, site characterization efforts can be tailored to the hydrogeologic setting and the practical constraints of contaminated site investigation.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/MySiteInvestigation.pdf">Cleveland, T.G. (circa 1995) “Site Investigations” in <em>Notes to accompany CE 6361 Groundwater Hydrology at University of Houston</em> </a></p></li>
+<li><p><a class="reference external" href="https://www.epa.gov/sites/default/files/documents/rcragwguiddoc-rpt_0.pdf">U.S. Environmental Protection Agency, Office of Solid Waste. (1986) RCRA ground-water monitoring technical enforcement guidance document. OSWER-9950.1</a></p></li>
+<li><p><a class="reference external" href="https://www.usgs.gov/mission-areas/water-resources/science/national-field-manual-collection-water-quality-data-nfm">USGS National Field Manual for Collection of Water Quality Data (2019)</a></p></li>
+<li><p><a class="reference external" href="https://codes.findlaw.com/ca/health-and-safety-code/hsc-sect-25208-8/">California Code, Health and Safety Code - HSC § 25208.8 (Good specification of hydrological report contents)</a></p></li>
+<li><p><a class="reference external" href="https://www.waterboards.ca.gov/laws_regulations/docs/portercologne.pdf">Porter-Cologne Water Quality Control Act (2023 Edition)</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/journal_papers/ASCE_JWRPM_1990A/ASCE_JWRPM_1990A.pdf">Cleveland, T.G. and W. W-G. Yeh, 1990. Sampling Network Design for Transport Parameter Identification, Journal of Water Resources Planning and Management, American Society of Civil Engineers, Vol. 116, No. 6, pp 764-782.</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/journal_papers/optimal_tracer_asce_1991/optimal_tracer_asce_1991.pdf">Cleveland, T.G. and W. W-G. Yeh, 1991. Optimal Configuration and Scheduling of a Groundwater Tracer Test, Journal of Water Resources Planning and Management, American Society of Civil Engineers, Vol. 117, No. 1, pp 37-51</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/BF00422549.pdf">Lee S-L. and Kitanidis P. K. 1996. Optimization of Monitoring Well Installation Time and Location During Aquifer Decontamination, Water Resources Management 10: 439-462</a></p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/03site.characterization"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../03site.mapping.tools/site.mapping.tools.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">5. Site Mapping Tools</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">Readings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-roadmap">Lesson Roadmap</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrogeologic-frameworks">Hydrogeologic Frameworks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-unsaturated-vadose-zone">The Unsaturated (Vadose) Zone</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-saturated-aquifer-zone">The Saturated (Aquifer) Zone</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groundwater-motion">Groundwater Motion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concepts-of-investigations">Concepts of Investigations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-exploration-concepts">Subsurface Exploration Concepts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drilling-boreholes">Drilling Boreholes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-considerations">Sampling Considerations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoring-wells">Monitoring Wells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qa-qc-considerations">QA/QC Considerations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slug-tests">Slug Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pumping-tests">Pumping Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracer-tests">Tracer Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Theodore G. Cleveland, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

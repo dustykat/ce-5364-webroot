@@ -1,659 +1,519 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Steady Flow, Single Layer Aquifer &#8212; Groundwater Transport Phenomena</title>
-    
-  <link href="../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
-
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/12.01usgsmodflow6/flowmodel1';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Transient Flow, Single Layer Aquifer" href="flowmodel2.html" />
     <link rel="prev" title="MODFLOW6 and Python" href="usgsmodflow6.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../_static/gwtransport.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Groundwater Transport Phenomena</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   Preface
-  </a>
- </li>
+    
+    
+    <img src="../../_static/gwtransport.png" class="logo__image only-light" alt="Groundwater Transport Phenomena - Home"/>
+    <script>document.write(`<img src="../../_static/gwtransport.png" class="logo__image only-dark" alt="Groundwater Transport Phenomena - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction to Groundwater Contaminant Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2essentialgroundwater/essentialgwreview.html">2. Conceptual Models of Contaminant Fate and Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4pollutants/4pollutants.html">3. Regulatory Overview and Risk Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04computationaltools/04computationaltools.html">4. Introduction to Modeling Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05analyticalmodels1d/05analyticalmodels1d.html">5. 1-D Transport by Advection and Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06reactivemodels1d/06reactivemodels1d.html">6. 1-D Transport with Sorption and Decay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07analyticalmodels2d/07analyticalmodels2d.html">7. 2-D Analytical Transport Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08plumeandcapture/08plumeandcapture.html">8. Plume Evolution and Capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09heterogenity/09heterogenity.html">9. Heterogeneity and Stochastic Approaches in Analytical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10mf6introduction/10mf6introduction.html">10. MODFLOW6 Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11mf6simple/11mf6simple.html">11. Building a Simple MODFLOW Model in FLOPY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12mf6transport/12mf6transport.html">12. Solute Transport Modeling in MODFLOW (MT3DMS and MODFLOW6)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../5nonreactivetransport/5nonreactivetransport.html">Non-Reactive Transport</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../5nonreactivetransport/1tracerhypothesis.html">The Tracer Hypothesis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5nonreactivetransport/2flux.html">Flux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5nonreactivetransport/3advection.html">Advection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../6nonreactivetransport/4diffusion.html">Diffusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../6nonreactivetransport/5dispersion.html">Dispersion</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../0introduction/0introduction.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../1computationaltools/1computationaltools.html">
-   Computational Tools
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../2essentialgroundwater/essentialgwreview.html">
-   Essential Groundwater Review
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../4pollutants/4pollutants.html">
-   Pollutants
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../5nonreactivetransport/5nonreactivetransport.html">
-   Non-Reactive Transport
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5nonreactivetransport/1tracerhypothesis.html">
-     The Tracer Hypothesis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5nonreactivetransport/2flux.html">
-     Flux
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5nonreactivetransport/3advection.html">
-     Advection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../6nonreactivetransport/4diffusion.html">
-     Diffusion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../6nonreactivetransport/5dispersion.html">
-     Dispersion
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../7analyticalmodels/analyticalmodels.html">
-   Analytical Models
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/impulse.html">
-     1D Impulse (Instantaneous Source) Solution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/ogatabanks.html">
-     1D Ogata-Banks Solution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/sauty.html">
-     1D Sauty Solution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/huntsolution.html">
-     2D Plume in Regional Flow (Hunt Solution)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/domenico.html">
-     Domenico-Robbins Solutions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/2Dfinitewidth.html">
-     2D - Advection-Dispersion, Finite-Width, Constant Source
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/2Dfwidth-pulse.html">
-     2D - Advection-Dispersion, Finite-Width, Finite-Duration Source
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/3Dfinitearea.html">
-     3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../8reactivetransport/8reactivetransport.html">
-   Reactive Transport
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../8reactivetransport/6reactions.html">
-     Adsorbtion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../8reactivetransport/7decay.html">
-     Decay
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../7analyticalmodels/reactivemodels.html">
-     Analytical Models with Decay and Adsorbtion
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../11modelingadvection/0modelingadvection.html">
-   Modeling Advection
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../11modelingadvection/1particletracking.html">
-     Modeling Advection by Particle Tracking
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../11modelingadvection/2upwindfdm.html">
-     Upwind Formulation Finite-Difference
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="usgsmodflow6.html">
-   MODFLOW6 and Python
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Steady Flow, Single Layer Aquifer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="flowmodel2.html">
-     Transient Flow, Single Layer Aquifer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="flowmodel3.html">
-     Transient Flow, Mulitple-Layer Aquifer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="transportmodel1.html">
-     Transport Model using MT3DMS Problem 9 Example
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../12usgsmocmodel/usgsmoc.html">
-   USGS MOC Software
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/winmoc.html">
-     Windows Build
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/armmoc.html">
-     ARM7/AARCH 64 Build
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../12usgsmocmodel/dprw.html">
-     Discrete Particle Random Walk (Future Semester)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">
-   Site Investigations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../15datacollection/datacollection.html">
-   Sample Collection and Data Analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../17unsaturatedzone/unsaturated.html">
-   Unsaturated Zone Flow
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../18untransport/unsaturatedtransport.html">
-   Unsaturated Zone Transport
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../18untransport/napls.html">
-     Non-Aqueous Phase Liquids
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../19chemflow/chemflow.html">
-   CHEMFLO-2000
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../19chemflow/chemflowwinders.html">
-     Windows Install
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../19chemflow/chemflowaarch.html">
-     ARM7/AARCH Install
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../19chemflow/chemflowexamples.html">
-     CHEMFLOW Examples
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../22remediation/remediation.html">
-   Remediation Technologies
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../23risk/risk.html">
-   Risk Assessment
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../26regulatory/regulatory.html">
-   Groundwater Protection Legal Framework
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../91exercises/2-Exercises.html">
-   Exercises
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES1/ES1.html">
-     F23 Exercise Set 1
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES1/src-sol/ES1-WS.html">
-     F23 ES1 Solution Sketch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES2/ES2.html">
-     F23 Exercise Set 2
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES2/src-sol/ES2-WS.html">
-     F23 ES2 Solution Sketch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES3/ES3.html">
-     F23 Exercise Set 3
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES3/src-sol/ES3-WS.html">
-     F23 ES3 Solution Sketch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES4/ES4.html">
-     F23 Exercise Set 4
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES4/src-sol/ES4-WS.html">
-     F23 ES4 Solution Sketch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES5/ES5.html">
-     F23 Exercise Set 5
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES5/src-sol/ES5-WS.html">
-     F23 ES5 Solution Sketch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES6/ES6.html">
-     F23 Exercise Set 6
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../91exercises/ES6/src-sol/ES6-WS.html">
-     F23 ES6 Solution Sketch
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../93projects/Projects.html">
-   Projects
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../93projects/PR2/PR2.html">
-     USGS MOC Project 1
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../93projects/PR3/PR3.html">
-     USGS MOC Project 3 (Site Investigation/Remediation Design)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../93projects/PR4/PR4.html">
-     USGS MOC Project (Casing Failure)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../93projects/PR5/PR5.html">
-     Chemflow 2000 Project 2
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../92exams/exams.html">
-   Exams
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../92exams/EX1/EX1.html">
-     F23 Exam 1 Deploy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../92exams/EX1/src-sol/EX1-WS.html">
-     F23 Exam 1 Solution Sketch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../92exams/EX2/EX2.html">
-     F23 Exam 2 Deploy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../92exams/EX2/src-sol/EX2-WS.html">
-     F23 Exam 2 Solution Sketch
-    </a>
-   </li>
-  </ul>
- </li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../7analyticalmodels/analyticalmodels.html">Analytical Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../7analyticalmodels/impulse.html">1D Impulse (Instantaneous Source) Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7analyticalmodels/ogatabanks.html">1D Ogata-Banks Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7analyticalmodels/sauty.html">1D Sauty Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7analyticalmodels/huntsolution.html">2D Plume in Regional Flow (Hunt Solution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7analyticalmodels/domenico.html">Domenico-Robbins Solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7analyticalmodels/2Dfinitewidth.html">2D - Advection-Dispersion, Finite-Width, Constant Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7analyticalmodels/2Dfwidth-pulse.html">2D - Advection-Dispersion, Finite-Width, Finite-Duration Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7analyticalmodels/3Dfinitearea.html">3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../8.0reactivetransport/8reactivetransport.html">Reactive Transport</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../8.0reactivetransport/6reactions.html">Adsorbtion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../8.0reactivetransport/7decay.html">Decay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../8.1analyticalmodels/reactivemodels.html">Analytical Models with Reaction Terms</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../8.1analyticalmodels/wilsonmiller.html">2D Plume in Regional Flow with 1st-Order Decay (Wilson and Miller Solution)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../11modelingadvection/0modelingadvection.html">Modeling Advection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../11modelingadvection/2upwindfdm.html">Upwind Formulation Finite-Difference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11modelingadvection/1particletracking.html">Modeling Advection by Particle Tracking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="usgsmodflow6.html">MODFLOW6 and Python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Steady Flow, Single Layer Aquifer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flowmodel2.html">Transient Flow, Single Layer Aquifer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flowmodel3.html">Transient Flow, Mulitple-Layer Aquifer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transportmodel1.html">Transport Model using MT3DMS Problem 9 Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transportmodel2.1.html">Transport Model using MT3DMS and USGS MOC (circa 1980s Example)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.02usgsmocmodel/usgsmoc.html">USGS MOC Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.02usgsmocmodel/winmoc.html">Windows Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.02usgsmocmodel/armmoc.html">ARM7/AARCH 64 Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.02usgsmocmodel/dprw.html">Discrete Particle Random Walk (Future Semester)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../16siteinvestigation/siteinvestigation.html">Site Investigations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15datacollection/datacollection.html">Sample Collection and Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17unsaturatedzone/unsaturated.html">Unsaturated Zone Flow</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../18untransport/unsaturatedtransport.html">Unsaturated Zone Transport</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../18untransport/napls.html">Non-Aqueous Phase Liquids</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../19chemflow/chemflow.html">CHEMFLO-2000</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../19chemflow/chemflowwinders.html">Windows Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../19chemflow/chemflowaarch.html">ARM7/AARCH Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../19chemflow/chemflowexamples.html">CHEMFLOW Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../22remediation/remediation.html">Remediation Technologies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23risk/risk.html">Risk Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26regulatory/regulatory.html">Groundwater Protection Legal Framework</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../91exercises/2-Exercises.html">Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES1/ES1.html">F23 Exercise Set 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES1/src-sol/ES1-WS.html">F23 ES1 Solution Sketch</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES2/ES2.html">F23 Exercise Set 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES2/src-sol/ES2-WS.html">F23 ES2 Solution Sketch</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES3/ES3.html">F23 Exercise Set 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES3/src-sol/ES3-WS.html">F23 ES3 Solution Sketch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES4/ES4.html">F23 Exercise Set 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES4/src-sol/ES4-WS.html">F23 ES4 Solution Sketch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES5/ES5.html">F23 Exercise Set 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES5/src-sol/ES5-WS.html">F23 ES5 Solution Sketch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES6/ES6.html">F23 Exercise Set 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../91exercises/ES6/src-sol/ES6-WS.html">F23 ES6 Solution Sketch</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../93projects/Projects.html">Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../93projects/PR2/PR2.html">USGS MOC Project 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../93projects/PR3/PR3.html">USGS MOC Project 3 (Site Investigation/Remediation Design)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../93projects/PR4/PR4.html">USGS MOC Project (Casing Failure)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../93projects/PR5/PR5.html">Chemflow 2000 Project 2</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../92exams/exams.html">Exams</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../92exams/EX1/EX1.html">F23 Exam 1 Deploy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../92exams/EX1/src-sol/EX1-WS.html">F23 Exam 1 Solution Sketch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../92exams/EX2/EX2.html">F23 Exam 2 Deploy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../92exams/EX2/src-sol/EX2-WS.html">F23 Exam 2 Solution Sketch</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../99legacy/99legacy.html">Legacy Content</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/chapters/12.01usgsmodflow6/flowmodel1.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/12.01usgsmodflow6/flowmodel1.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/12.01usgsmodflow6/flowmodel1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapters/12.01usgsmodflow6/flowmodel1.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/12.01usgsmodflow6/flowmodel1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Steady Flow, Single Layer Aquifer</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#obleo-aquifer-example">
-   Obleo Aquifer Example
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#obleo-aquifer-example">Obleo Aquifer Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end-of-section">End of Section</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="steady-flow-single-layer-aquifer">
-<h1>Steady Flow, Single Layer Aquifer<a class="headerlink" href="#steady-flow-single-layer-aquifer" title="Permalink to this headline">¶</a></h1>
-<p>This section is a worked example using <code class="docutils literal notranslate"><span class="pre">FLOPY</span></code> and <code class="docutils literal notranslate"><span class="pre">MODFLOW6</span></code> installed on a <code class="docutils literal notranslate"><span class="pre">aarch-64</span></code> computer.  <code class="docutils literal notranslate"><span class="pre">x86-...</span></code> architectures should use the <code class="docutils literal notranslate"><span class="pre">!</span> <span class="pre">get-modflow</span></code> method to download (in near real time) current binaries</p>
-<div class="section" id="obleo-aquifer-example">
-<h2>Obleo Aquifer Example<a class="headerlink" href="#obleo-aquifer-example" title="Permalink to this headline">¶</a></h2>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="steady-flow-single-layer-aquifer">
+<h1>Steady Flow, Single Layer Aquifer<a class="headerlink" href="#steady-flow-single-layer-aquifer" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section was orginally a worked example using <code class="docutils literal notranslate"><span class="pre">FLOPY</span></code> and <code class="docutils literal notranslate"><span class="pre">MODFLOW6</span></code> installed on a <code class="docutils literal notranslate"><span class="pre">aarch-64</span></code> computer.  <code class="docutils literal notranslate"><span class="pre">x86-...</span></code> architectures should use the <code class="docutils literal notranslate"><span class="pre">!</span> <span class="pre">get-modflow</span></code> method to download (in near real time) current binaries.  Modifications to the notes were made to get it to run natively on AWS:::</p>
+</div>
+<section id="obleo-aquifer-example">
+<h2>Obleo Aquifer Example<a class="headerlink" href="#obleo-aquifer-example" title="Link to this heading">#</a></h2>
 <p>This is a steady-state model of the Obleo aquifer system depicted below:</p>
-<p><img alt="" src="../../_images/obleoaquifer.png" /></p>
+<p><img alt="" src="../../_images/obleoaquifer1.png" /></p>
 <p>Sone added information about the system is:</p>
-<p><img alt="" src="../../_images/obleoparticulars.png" /></p>
+<p><img alt="" src="../../_images/obleoparticulars1.png" /></p>
 <p>The general goals for the analysis are:</p>
-<p><img alt="" src="../../_images/obleogoals.png" /></p>
+<p><img alt="" src="../../_images/obleogoals1.png" /></p>
 <p>So with a little infomration regarding how we will manage elevations we can move forward with the modeling effort.</p>
-<p><img alt="" src="../../_images/obleovertdatum.png" /></p>
+<p><img alt="" src="../../_images/obleovertdatum1.png" /></p>
 <p>Now onto <strong>modflow</strong></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -689,8 +549,12 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Workspace and Executibles</span>
-<span class="n">binary</span> <span class="o">=</span> <span class="s2">&quot;/home/sensei/ce-4363-webroot/ModflowExperimental/mf6-arm/mf6&quot;</span>  <span class="c1"># location on MY computer of the compiled modflow program</span>
-<span class="n">workarea</span> <span class="o">=</span> <span class="s2">&quot;/home/sensei/ce-4363-webroot/ModflowExperimental/mf6-arm/example_2&quot;</span> <span class="c1"># location on MY computer to store files this example (directory must already exist)</span>
+<span class="c1">#binary = &quot;/home/sensei/ce-4363-webroot/ModflowExperimental/mf6-arm/mf6&quot;  # location on MY computer of the compiled modflow program</span>
+<span class="c1">#workarea = &quot;/home/sensei/ce-4363-webroot/ModflowExperimental/mf6-arm/example_2&quot; # location on MY computer to store files this example (directory must already exist)</span>
+
+<span class="n">binary</span> <span class="o">=</span> <span class="s2">&quot;/home/sensei/mfplayground/modflow-python/mf6.4.1_linux/bin/mf6&quot;</span>  <span class="c1"># location on AWS computer of the compiled modflow program</span>
+<span class="n">workarea</span> <span class="o">=</span> <span class="s2">&quot;/home/sensei/ce-5364-webroot/mfexperiments/example_1&quot;</span> <span class="c1"># location on MY computer to store files this example (directory must already exist)</span>
+
 
 <span class="c1"># Set Simulation Name</span>
 <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;example02_obleo&quot;</span>
@@ -699,12 +563,6 @@
 <span class="n">sim</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">MFSimulation</span><span class="p">(</span>
     <span class="n">sim_name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">exe_name</span><span class="o">=</span><span class="n">binary</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;mf6&quot;</span><span class="p">,</span> <span class="n">sim_ws</span><span class="o">=</span><span class="n">workarea</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
 </pre></div>
 </div>
 </div>
@@ -721,12 +579,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -739,12 +591,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -753,12 +599,6 @@
 
 <span class="c1">##### FLOPY Build Model Name framework ####</span>
 <span class="n">gwf</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwf</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">modelname</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">model_nam_file</span><span class="o">=</span><span class="n">model_nam_file</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
 </pre></div>
 </div>
 </div>
@@ -785,12 +625,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -800,12 +634,6 @@
 
 <span class="c1">##### FLOPY Build Initial Conditions framework ###</span>
 <span class="n">ic</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfic</span><span class="p">(</span><span class="n">gwf</span><span class="p">,</span> <span class="n">pname</span><span class="o">=</span><span class="s2">&quot;ic&quot;</span><span class="p">,</span> <span class="n">strt</span><span class="o">=</span><span class="n">start</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
 </pre></div>
 </div>
 </div>
@@ -823,12 +651,6 @@
 <span class="n">npf</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfnpf</span><span class="p">(</span><span class="n">gwf</span><span class="p">,</span> <span class="n">icelltype</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">save_flows</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
 <span class="c1"># setting icelltype &gt; 0 is unconfined </span>
 <span class="c1"># https://flopy.readthedocs.io/en/3.3.5/source/flopy.mf6.modflow.mfgwfnpf.html?highlight=icelltype#flopy.mf6.modflow.mfgwfnpf.ModflowGwfnpf.icelltype</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
 </pre></div>
 </div>
 </div>
@@ -855,12 +677,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -875,28 +691,15 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define recharge</span>
 <span class="n">rech_val</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="c1">#  rate as depth/year</span>
 <span class="n">rech_rec</span> <span class="o">=</span> <span class="n">rech_val</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">Nrow</span><span class="p">,</span> <span class="n">Ncol</span><span class="p">))</span> <span class="c1"># set recharge top layer only</span>
-
-<span class="n">rch</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfrcha</span><span class="p">(</span><span class="n">gwf</span><span class="p">,</span> <span class="n">maxbound</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">rech_rec</span><span class="p">),</span><span class="n">recharge</span><span class="o">=</span><span class="n">rech_rec</span><span class="p">)</span>
-
+<span class="c1">#rch = flopy.mf6.ModflowGwfrcha(gwf, maxbound=len(rech_rec),recharge=rech_rec)</span>
+<span class="n">rch</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfrcha</span><span class="p">(</span><span class="n">gwf</span><span class="p">,</span><span class="n">recharge</span><span class="o">=</span><span class="n">rech_rec</span><span class="p">)</span>
 <span class="c1">#rch = flopy.mf6.ModflowGwfrcha(gwf, recharge=rech_val) # default entry format</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
 </pre></div>
 </div>
 </div>
@@ -906,12 +709,6 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># something to do with stress periods</span>
 <span class="n">iper</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">ra</span> <span class="o">=</span> <span class="n">chd</span><span class="o">.</span><span class="n">stress_period_data</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">iper</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
 </pre></div>
 </div>
 </div>
@@ -937,12 +734,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -952,14 +743,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>writing simulation...
   writing simulation name file...
   writing simulation tdis package...
-  writing ims package ims...
+  writing solution package ims...
   writing model example02_obleo...
     writing model name file...
     writing package dis...
@@ -983,16 +770,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FloPy is using the following executable to run the model: /home/sensei/ce-4363-webroot/ModflowExperimental/mf6-arm/mf6
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FloPy is using the following executable to run the model: ../../../mfplayground/modflow-python/mf6.4.1_linux/bin/mf6
                                    MODFLOW 6
                 U.S. GEOLOGICAL SURVEY MODULAR HYDROLOGIC MODEL
-                        VERSION 6.4.1 Release 12/09/2022
+                            VERSION 6.6.1 02/10/2025
 
-         MODFLOW 6 compiled Apr 16 2023 18:27:14 with GCC version 9.4.0
+   MODFLOW 6 compiled Feb 14 2025 13:39:18 with Intel(R) Fortran Intel(R) 64
+   Compiler Classic for applications running on Intel(R) 64, Version 2021.7.0
+                             Build 20220726_000000
 
 This software has been approved for release by the U.S. Geological 
 Survey (USGS). Although the software has been subjected to rigorous 
@@ -1007,17 +792,21 @@ authorized or unauthorized use. Also refer to the USGS Water
 Resources Software User Rights Notice for complete use, copyright, 
 and distribution information.
 
-
- Run start date and time (yyyy/mm/dd hh:mm:ss): 2024/09/18 20:12:56
-
+ 
+ MODFLOW runs in SEQUENTIAL mode
+ 
+ Run start date and time (yyyy/mm/dd hh:mm:ss): 2025/02/17 16:45:14
+ 
  Writing simulation list file: mfsim.lst
  Using Simulation name file: mfsim.nam
-
-    Solving:  Stress period:     1    Time step:     1
-
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2024/09/18 20:12:56
- Elapsed run time:  0.033 Seconds
-
+ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:     1
+ 
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2025/02/17 16:45:14
+ Elapsed run time:  0.144 Seconds
+ 
  Normal termination of simulation.
 </pre></div>
 </div>
@@ -1046,11 +835,7 @@ and distribution information.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
-</pre></div>
-</div>
-<img alt="../../_images/flowmodel1_19_1.png" src="../../_images/flowmodel1_19_1.png" />
+<img alt="../../_images/9f933696337c8c0a404e3eaee33fad1a2adf096e43026565325d5202c74149eb.png" src="../../_images/9f933696337c8c0a404e3eaee33fad1a2adf096e43026565325d5202c74149eb.png" />
 </div>
 </div>
 <p>Now for pretty mapping!</p>
@@ -1080,11 +865,7 @@ and distribution information.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
-</pre></div>
-</div>
-<img alt="../../_images/flowmodel1_21_1.png" src="../../_images/flowmodel1_21_1.png" />
+<img alt="../../_images/74a3f5994bf23081c6c36fbd5a308a5937a40f464d7cfd93d0f1a002394571d8.png" src="../../_images/74a3f5994bf23081c6c36fbd5a308a5937a40f464d7cfd93d0f1a002394571d8.png" />
 </div>
 </div>
 <p>So this seems like a working model next we need to see if the heads are no less than -650 meters (the minimum allowed saturated thickness).  We already have this information contained in the output object.</p>
@@ -1104,14 +885,13 @@ Pumping at P-1 is: -2114.0  Mm^3/yr
 Minimum Head is: -563.4  meters
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/lib/python3.8/site-packages/ipykernel/ipkernel.py:287: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
-</pre></div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+<section id="end-of-section">
+<h2>End of Section<a class="headerlink" href="#end-of-section" title="Link to this heading">#</a></h2>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1125,7 +905,7 @@ Minimum Head is: -563.4  meters
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./chapters/12.01usgsmodflow6"
         },
         predefinedOutput: true
@@ -1133,56 +913,104 @@ Minimum Head is: -563.4  meters
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-        
-            
 
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="usgsmodflow6.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">MODFLOW6 and Python</p>
-            </div>
-        </a>
-    </div>
-     <div id="next">
-        <a class="right-next" href="flowmodel2.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Transient Flow, Single Layer Aquifer</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
-</div>
-        
-        </div>
-    </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Theodore G. Cleveland, PhD<br/>
-        
-            &copy; Copyright 2023.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
-
-
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="usgsmodflow6.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MODFLOW6 and Python</p>
       </div>
-    </div>
-  
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+    </a>
+    <a class="right-next"
+       href="flowmodel2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Transient Flow, Single Layer Aquifer</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#obleo-aquifer-example">Obleo Aquifer Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end-of-section">End of Section</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
+  <div class="footer-item">
+    
+<p class="component-author">
+By Theodore G. Cleveland, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

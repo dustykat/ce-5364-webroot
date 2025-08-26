@@ -1,0 +1,196 @@
+Maps  ||| \\practice
+
+I have code to make the plume maps from XYZ data (where Z is a concentration value).  I would like to extend the lesson to include a) Making "wireframe" renderings from same XYZ datasets. b) making 3D geological models from sets of XYZ+Z_high + attributes where Z would be an elevation, Z_high is another elevtaion (hence a range), and attribute some string that describes the range.  Is that something one can do in python (and matplotlib)?
+
+
+ChatGPT said:
+
+Thought for 31s
+Short answer: yes—Python can handle both, and you can go surprisingly far with just NumPy + SciPy + Matplotlib. For more realistic 3D geology, PyVista (VTK) is nicer, but I’ll show pure-Matplotlib first and note the PyVista path at the end.
+
+A) Wireframe from scattered XYZ (same input as your plume maps)
+Works with scattered points; we’ll grid them, then draw a 3D wireframe.
+
+python
+Copy
+Edit
+import numpy as np
+import pandas as pd
+from scipy.interpolate import griddata
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D  # noqa: F401 (activates 3D)
+# df has columns ['x','y','z'] where z is concentration (or elevation)
+
+def wireframe_from_xyz(df, nx=100, ny=100, method='linear'):
+    x, y, z = df['x'].to_numpy(), df['y'].to_numpy(), df['z'].to_numpy()
+
+    # build a regular grid over convex hull of data
+    xi = np.linspace(x.min(), x.max(), nx)
+    yi = np.linspace(y.min(), y.max(), ny)
+    Xg, Yg = np.meshgrid(xi, yi)
+
+    Zg = griddata(points=np.c_[x, y], values=z, xi=(Xg, Yg), method=method)
+
+    fig = plt.figure(figsize=(8,6))
+    ax = fig.add_subplot(111, projection='3d')
+    # wireframe needs a structured grid
+    ax.plot_wireframe(Xg, Yg, Zg, rstride=3, cstride=3, linewidth=0.6)
+    ax.set_xlabel('X'); ax.set_ylabel('Y'); ax.set_zlabel('Z')
+    ax.set_title('Wireframe (interpolated)')
+    plt.tight_layout()
+    plt.show()
+    return Xg, Yg, Zg
+Notes:
+
+If you prefer to avoid gridding, you can use matplotlib.tri.Triangulation and ax.plot_trisurf(...) (surface with thin lines). True “wireframe” requires a structured grid.
+
+B) Simple 3D geology: extruding intervals between Z_low and Z_high
+For units like “Clay 200–180 m, Sand 180–150 m,” you can render each cell as an extruded prism and color by attribute. Two ways:
+
+B1. Surface-pair rendering (top & base surfaces)
+Good for continuous units (no gaps):
+
+python
+Copy
+Edit
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+
+def surface_pair(ax, X, Y, Ztop, Zbase, facecolor='C0', alpha=0.6, edgecolor='k', lw=0.4):
+    # draw top and base surfaces
+    ax.plot_surface(X, Y, Ztop, linewidth=0, alpha=alpha, shade=True, edgecolor='none', facecolor=facecolor)
+    ax.plot_surface(X, Y, Zbase, linewidth=0, alpha=alpha*0.9, shade=True, edgecolor='none', facecolor=facecolor)
+
+    # draw vertical "curtain" around perimeter so it reads like a volume
+    polys = []
+    # four sides (index order matters)
+    for i in [0, -1]:
+        # side along i in Y direction
+        polys.append(list(zip(X[i,:], Y[i,:], Ztop[i,:])))
+        polys.append(list(zip(X[i,:][::-1], Y[i,:][::-1], Zbase[i,:][::-1])))
+    for j in [0, -1]:
+        polys.append(list(zip(X[:,j], Y[:,j], Ztop[:,j])))
+        polys.append(list(zip(X[:,j][::-1], Y[:,j][::-1], Zbase[:,j][::-1])))
+
+    pc = Poly3DCollection(polys, facecolor=facecolor, alpha=alpha, edgecolor=edgecolor, linewidths=lw)
+    ax.add_collection3d(pc)
+Usage: build Ztop/Zbase for each unit (e.g., interpolate two surfaces from points), call surface_pair for each with different colors.
+
+B2. Cell-wise prisms (attribute ranges)
+If your data are tabular as x,y,z_low,z_high,attr, rasterize to a grid and draw prisms:
+
+python
+Copy
+Edit
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+import matplotlib.cm as cm
+import matplotlib.colors as mcolors
+
+def prisms_from_ranges(df_ranges, cell=10.0):
+    # df_ranges: columns ['x','y','z_low','z_high','attr'] (attr is string)
+    # snap points to a grid to form small pillars
+    df = df_ranges.copy()
+    df['gx'] = (df['x']/cell).round().astype(int)*cell
+    df['gy'] = (df['y']/cell).round().astype(int)*cell
+
+    # color map per attribute
+    attrs = sorted(df['attr'].unique())
+    cmap = cm.get_cmap('tab20', len(attrs))
+    lut = {a: cmap(i) for i, a in enumerate(attrs)}
+    return df, lut
+
+def add_prisms(ax, df, lut, cell=10.0, alpha=0.7, lw=0.2):
+    half = cell/2
+    for _, r in df.iterrows():
+        x0, y0 = r['gx']-half, r['gy']-half
+        x1, y1 = r['gx']+half, r['gy']+half
+        z0, z1 = r['z_low'], r['z_high']
+        color = lut[r['attr']]
+
+        # 8 corners of the box
+        corners = np.array([
+            [x0,y0,z0],[x1,y0,z0],[x1,y1,z0],[x0,y1,z0],  # bottom
+            [x0,y0,z1],[x1,y0,z1],[x1,y1,z1],[x0,y1,z1],  # top
+        ])
+        # 6 faces (as vertex indices)
+        faces = [
+            [0,1,2,3], [4,5,6,7],  # bottom, top
+            [0,1,5,4], [1,2,6,5],
+            [2,3,7,6], [3,0,4,7]
+        ]
+        poly3d = [[corners[i] for i in f] for f in faces]
+        pc = Poly3DCollection(poly3d, facecolors=color, edgecolors='k', linewidths=lw, alpha=alpha)
+        ax.add_collection3d(pc)
+
+def demo_prisms(df_ranges, cell=10.0):
+    fig = plt.figure(figsize=(8,7))
+    ax = fig.add_subplot(111, projection='3d')
+    dfg, lut = prisms_from_ranges(df_ranges, cell=cell)
+    add_prisms(ax, dfg, lut, cell=cell)
+
+    ax.set_xlabel('X'); ax.set_ylabel('Y'); ax.set_zlabel('Elevation')
+    ax.set_box_aspect((1,1,0.5))
+    plt.tight_layout(); plt.show()
+This gives you a “Lego” model where each attribute interval is a colored block between z_low and z_high.
+
+B3. Voxel model (fast, gridded volumes)
+If you already have layered grids (e.g., raster tops/bases), ax.voxels can fill a 3D boolean array and color by facies. It’s quick for teaching, but memory-heavy for fine grids.
+
+python
+Copy
+Edit
+def voxel_demo():
+    fig = plt.figure(figsize=(7,6))
+    ax = fig.add_subplot(111, projection='3d')
+
+    # tiny toy example
+    nx, ny, nz = 20, 20, 20
+    filled = np.zeros((nx, ny, nz), dtype=bool)
+    # fill a wedge to illustrate
+    for i in range(nx):
+        for j in range(ny):
+            top = 5 + (i+j)//5
+            filled[i, j, :top] = True
+
+    # colors per voxel (optional)
+    facecolors = np.empty(filled.shape + (4,), dtype=float)
+    facecolors[filled] = (0.2, 0.5, 0.8, 0.7)
+
+    ax.voxels(filled, facecolors=facecolors, edgecolor='k', linewidth=0.2)
+    ax.set_xlabel('i'); ax.set_ylabel('j'); ax.set_zlabel('k')
+    ax.set_box_aspect((1,1,0.6))
+    plt.tight_layout(); plt.show()
+C) Teaching flow you could use on 09 Sep
+Start with the same scattered XYZ you use for plume contours.
+
+Show interpolation → wireframe → surface (tie back to contour map).
+
+Introduce top/base elevation points for a unit → interpolate two surfaces → surface-pair rendering.
+
+Show attribute intervals (e.g., lithology codes) → prisms per cell for a block model.
+
+Wrap by discussing pros/cons of Matplotlib vs PyVista/VTK for real projects.
+
+D) When to switch to PyVista (VTK)
+You want slicing, isosurfaces, clipping by planes, interactive pickers, or larger models.
+
+Code is much simpler for 3D geology than hand-rolling Poly3DCollections.
+
+Sketch (same ideas, 10× less code):
+
+python
+Copy
+Edit
+import pyvista as pv
+import numpy as np
+
+# surfaces
+grid = pv.StructuredGrid(Xg, Yg, Ztop)  # if you have structured surfaces
+# or pv.PolyData for arbitrary meshes
+
+# volume from top/base rasters (as 3D mesh or thresholded uniform grid)
+vol = pv.ImageData(dimensions=(nx, ny, nz), spacing=(dx, dy, dz))
+vol['facies'] = facies_codes_3d.ravel(order='F')
+p = pv.Plotter()
+p.add_mesh(vol.threshold(0.5), scalars='facies', show_edges=False)
+p.show()
+If you want, I can wrap any of the above into a ready-to-run Jupyter cell using your existing plume dataset structure (column names, units, and plot titles to match your style).

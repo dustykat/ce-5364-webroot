@@ -1,0 +1,943 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. Fundamentals (Science) &#8212; Groundwater Transport Phenomena</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/01fundamentals/01fundamentals.science';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3. Fundamentals (Practice)" href="01fundamentals.practice.html" />
+    <link rel="prev" title="1. Introduction to Groundwater Contaminant Transport" href="../00introduction/00introduction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gwtransport.png" class="logo__image only-light" alt="Groundwater Transport Phenomena - Home"/>
+    <script>document.write(`<img src="../../_static/gwtransport.png" class="logo__image only-dark" alt="Groundwater Transport Phenomena - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00syllabus/ce5364-syllabus-2025-3.html">0. Syllabus (Fall 2025)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction to Groundwater Contaminant Transport</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Fundamentals (Science)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01fundamentals.practice.html">3. Fundamentals (Practice)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03site.mapping.tools/site.mapping.tools.html">5. Site Mapping Tools</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03site.characterization/site.characterization.html">6. Site Characterization</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/01fundamentals/01fundamentals.science.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/01fundamentals/01fundamentals.science.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2. Fundamentals (Science)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">Videos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spreadsheets-programs-data">Spreadsheets/Programs/Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-concepts">Preliminary Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-reactive-constituients">Non-reactive constituients</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#essential-groundwater-review">Essential Groundwater Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#porous-media">Porous Media</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saturated-zone">Saturated Zone</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsaturated-zone">Unsaturated Zone</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aquifers">Aquifers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storage">Storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transport-of-water">Transport (of Water)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#darcy-s-law">Darcy’s Law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pore-velocity">Pore Velocity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anisotropy">Anisotropy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-directions-of-hydraulic-conductivity">Principal Directions of Hydraulic Conductivity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transport-processes">Transport Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advection">Advection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion">Diffusion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion">Dispersion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="fundamentals-science">
+<h1>2. Fundamentals (Science)<a class="headerlink" href="#fundamentals-science" title="Link to this heading">#</a></h1>
+<p>This chapter presents a scientific and practical framework that explains what makes groundwater transport complex, introduces (without extensive derivations) governing equations, scales, and parameters, and emphasizes conceptual foundations and dimensional reasoning.</p>
+<div class="admonition-course-website admonition">
+<p class="admonition-title">Course Website</p>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/">Link to Course Website</a></p>
+</div>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
+<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span><span class="w"> </span><span class="nt">table</span><span class="w"> </span><span class="p">{</span><span class="k">margin-left</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="cp">!important</span><span class="p">;}</span><span class="w"> </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style> table {margin-left: 0 !important;} </style>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">!</span><span class="w"> </span>hostname
+<span class="o">!</span><span class="w"> </span>whoami
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ip-172-26-5-168
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sensei
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/bin/python3
+3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]
+sys.version_info(major=3, minor=10, micro=12, releaselevel=&#39;final&#39;, serial=0)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="readings">
+<h2>Readings<a class="headerlink" href="#readings" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.amazon.com/Ground-Water-Contamination-Transport-Remediation/dp/0130138401">Bedient, P.B., Rifai, H. S., and Newell, C. J. (1999). <em>Groundwater Contamination: Transport, and Remediation</em> Prentice Hall. pp. 15-34, 289-297.</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Becquerel">Becquerel (radioactivity unit) - Wikipedia</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/FluidPropertiesReading.pdf"><em>Fluid Properties</em> excerpt from: Casey, T.J. (1992) Water and Wastewater Engineering Hydraulics. Oxford University Press pp. 1-27</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/TransportPhenomenonReading.pdf"><em>Transport Phenomenon</em> excerpt from: Nazarov, W.W. and Alvarez-Cohen, L (19XX) Environmental Engineering Science. Wiley. pp. 159-199 </a></p></li>
+<li><p><a class="reference internal" href="#dummy"><span class="xref myst"><em>Advective and Dispersive Transport</em> excerpt from: Cheng and Bennett (20XX) Applied Contaminant Transport Modeling. Academic Press. pp. 3-59</span></a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/FluidMechanicsReview.PDF">Fluid Mechanics Review (handwritten notes)</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/ModelingPollution.PDF">Modeling Pollution (handwritten notes)</a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/circ/circ1139/">Ground Water and Surface Water A Single Resource</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/GroundwaterReview.pdf">Cleveland, T.G. (1997) <em>Groundwater Review</em> Notes to accompany “CIVE 7332 Flow and Transport Modeling for Environmental Engineering” at University of Houston</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/3advection/Advection.PDF">Zheng, C. and Bennett, G.D. (1995) pp. 3-23 <em>Applied Contaminant Transport Modeling</em> Van Nostrand Reinhold</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/flownet_1.pdf">Cleveland, T.G. (2002) <em>Flownets</em> Notes to accompany “CIVE 7332 Flow and Transport Modeling for Environmental Engineering” at University of Houston</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/5nonreactivetransport/VelocityPotential-StreamFunction-FDM.xls">Cleveland, T.G. (1997) <em>Velocity Potential - Stream Function Ideal Flow Model (circa 1999) (Excel)</em></a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/AdvectionNotes.pdf">Cleveland, T.G. (2002) <em>Advection</em> Notes to accompany “CIVE 7332 Flow and Transport Modeling for Environmental Engineering” at University of Houston</a></p></li>
+<li><p><a class="reference external" href="https://d1wqtxts1xzle7.cloudfront.net/31171747/195055535-libre.pdf?1392371142=&amp;amp;response-content-disposition=inline%3B+filename%3DDynamics_of_fluids_in_porous_media.pdf&amp;amp;Expires=1695231543&amp;amp;Signature=fcj7Wef3HIA7wlTx~LJhmfFgQJIrRLnrwEgqd2KIjnsouiRrFZpLAgMw-gRJ7oxI1~h89bo-YpAQuhLHZc1vtNFq5d0QBrxwYRbAvr5jztdUDHWZrfjBPYBgujy5WCnrrtoN7GKrziCwbk7mDi1AUyBnC4RDidrKgBV-bMOpJR4ZR8~L6BTEPXhBAQJbLohdpWi8Ni6VUl33~rEQaum8NMcY11P6okNvXbXKft3vdYwjEK5NXezeVe6dQpYIiBcyPVqkFahRD9CFLXLHZsxXryzDT~x9pszx86ka0kXYN9y1Y7RzyAgZQaB5YWD8XZhK4w2PoIEVgIvGeuCxxt099Q__&amp;amp;Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA">Bear, J. (1972) <em>Dynamics of Fluids in Porous Media</em> McGraw Hill (pp. 236-241)</a></p></li>
+</ol>
+<!--(http://54.243.252.9/ce-5364-webroot/3-Readings/DFPM-Flownets.pdf)-->
+</section>
+<hr class="docutils" />
+<section id="videos">
+<h2>Videos<a class="headerlink" href="#videos" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>None</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="spreadsheets-programs-data">
+<h2>Spreadsheets/Programs/Data<a class="headerlink" href="#spreadsheets-programs-data" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>None</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="preliminary-concepts">
+<h2>Preliminary Concepts<a class="headerlink" href="#preliminary-concepts" title="Link to this heading">#</a></h2>
+<p>Solvent phase (soil, air, water) is the phase that contains the solute (constituient) phase. The amount of solute contained in the solvent is usually expressed as some kind of concentration,</p>
+<p>Concentrations are expressed in a variety of units:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Symbol</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Volumetric</p></td>
+<td><p>mass/volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{mg}{L}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Massic</p></td>
+<td><p>mass/mass</p></td>
+<td><p><span class="math notranslate nohighlight">\(ppm\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Molarity</p></td>
+<td><p>moles/volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(M=\frac{mol}{L}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Molality</p></td>
+<td><p>moles/mass</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(m=\frac{mol}{kg}\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td><p>Mole Fraction (also partial pressures)</p></td>
+<td><p>moles/moles</p></td>
+<td><p><span class="math notranslate nohighlight">\(X_{species}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Equivalents</p></td>
+<td><p>moles<span class="math notranslate nohighlight">\(\times\)</span>valence/volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(Eq\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Activity</p></td>
+<td><p>disintegrations/second/volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{Bq}{L}\)</span> - a contrived unit</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The most common in environmental flow and transport models are volumetric and massic.</p>
+<p>There are cases where multiple phases are present (multi-phase transport) and multiple components in a solute mixture (multi-component).</p>
+<p>Emulsions are a special kind of two-(or more)phase system where the emulsion behaves as a single phase with respect to motion.  Oil-in-water, water-in-oil, biosolids-in-water (technically a slurry), coal-in-water (a slurry) are examples of common emulsions.</p>
+<p>I use the terms constituients and pollutants more or less interchangeably; however a pollutant reflects a value judgement - if the particular constituient is undesirable, for example methyl-ethyl death in water - then its a pollutant, otherwise its just a lowly constituient.  The distinction is irrelevant unless lawyers, judges, and money are involved - then be careful; someone goes to jail, and someone loses their doublewide if you get your mords wixed!</p>
+</section>
+<section id="non-reactive-constituients">
+<h2>Non-reactive constituients<a class="headerlink" href="#non-reactive-constituients" title="Link to this heading">#</a></h2>
+<p>Non-reactive constituients are constituients that <strong>do not</strong> undergo changes, exchanges, or reactions while traversing a region of interest.</p>
+<p>Solutes are constituients that are soluible in the solvent or are larger aggregates that to not constitute a distinct mobile phase from the transporting or host fluid.</p>
+<p>Examples include:</p>
+<ol class="arabic simple">
+<li><p>Chemicals dissolved in water</p></li>
+<li><p>Solids suspended in water (liquid-solid emulsion)</p></li>
+<li><p>Oil <strong>dispersed</strong> in water (liquid-liquid emulsion)</p></li>
+<li><p>Water dispersed in air (liquid-gas emulsion)</p></li>
+<li><p>nitrogen dissolved in air (mixture)</p></li>
+</ol>
+<p>Examples of systems that are not strictly solvent-solute pairs is an oil-water system where each liquid has a distinct phase, such as an oil slick in an estuary (distinct from produced water from a well which is almost always an emulsion) - such a system would be a two-phase system and is dealt with using different but related tools.</p>
+</section>
+<section id="scope">
+<h2>Scope<a class="headerlink" href="#scope" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Sources of contamination</p></li>
+<li><p>Hydrogeologic framework and transport pathways</p></li>
+<li><p>Role of retardation and degradation</p></li>
+</ul>
+</section>
+<section id="essential-groundwater-review">
+<h2>Essential Groundwater Review<a class="headerlink" href="#essential-groundwater-review" title="Link to this heading">#</a></h2>
+<p>This essential review of groundwater should remind the reader of important aspects of:</p>
+<ol class="arabic simple">
+<li><p>Introduction to Groundwater including: A definition of groundwater, the importance of groundwater as a natural resource, and the distinction between surface water and groundwater.</p></li>
+<li><p>Aquifers and Aquitards including: An explanation of aquifers and their properties, the role of aquitards in groundwater containment, types of aquifers (unconfined, confined, etc.).</p></li>
+<li><p>Groundwater Movement: Darcy’s Law and groundwater flow, factors influencing groundwater flow rates, flow patterns in aquifers (radial flow, regional flow, etc.)</p></li>
+<li><p>Groundwater Storage and Recharge: Methods of groundwater recharge, Groundwater storage and water table fluctuations, Sustainable groundwater management</p></li>
+<li><p>Groundwater Flow Modeling: Overview of groundwater flow modeling, application of numerical models (MODFLOW, FEMWATER, etc.), use of models for aquifer characterization and contamination prediction</p></li>
+<li><p>Groundwater Extraction and Wells: Types of groundwater wells (e.g., artesian wells, extraction wells), pumping tests and their significance, groundwater extraction for drinking water, remediation, and irrigation.</p></li>
+</ol>
+</section>
+<section id="porous-media">
+<h2>Porous Media<a class="headerlink" href="#porous-media" title="Link to this heading">#</a></h2>
+<p>Porous media refers to a class of materials that have <strong>interconnected</strong> void spaces or pores, allowing the flow and transport of fluids. In the context of groundwater, porous media plays a crucial role as it forms the subsurface medium through which water flows and contaminants can be transported. The properties and characteristics of the porous media significantly influence the movement of groundwater and the fate of contaminants within an aquifer.</p>
+<p>Two fundamental properties govern behavior of fluids in a porous media:</p>
+<ol class="arabic simple">
+<li><p>The <strong>porosity</strong>, which represents the volume of void spaces within the material, determines the storage capacity for fluid within the porous media and affects the flow rate. Porous media with high porosity can concievably store more water, but it may also delay movement of groundwater because of reduced size of individual pores.</p></li>
+<li><p>The <strong>permeability</strong>, which describes the ease with which fluids can flow through the porous media, depends on factors such as pore size, shape, and connectivity. High-permeability materials, like coarse sand or gravel, allow water to flow more easily, whereas low-permeability materials, like clay or silt, impede water movement. Permeability influences the speed and direction of groundwater flow, as well as the potential for contaminants to migrate through the aquifer.</p></li>
+</ol>
+<p>Porous media also exhibits <strong>heterogeneity</strong>, meaning it can have spatial variations in these fundamental properties. This heterogeneity arises from geological processes, such as sediment deposition, compaction, and tectonic activity. Variations in porosity and permeability within a porous medium lead to complex flow patterns, preferential flow paths, and the potential for localized contaminant accumulation or dispersion. Understanding the heterogeneity of porous media is crucial for accurately predicting groundwater flow and contaminant transport.</p>
+<p>Interactions between fluids and porous media involves various physical and chemical processes. <strong>Advection</strong>, the bulk movement of groundwater, is influenced by the permeability and hydraulic gradient. <strong>Dispersion</strong>, the spreading of solutes due to molecular diffusion and mechanical mixing, occurs as water moves through the porous medium. <strong>Adsorption</strong> refers to the attachment of contaminants to the solid surfaces of the porous media, affecting their mobility and persistence. These processes, along with others like biodegradation and chemical reactions, shape the fate and transport of contaminants in groundwater.</p>
+</section>
+<section id="saturated-zone">
+<h2>Saturated Zone<a class="headerlink" href="#saturated-zone" title="Link to this heading">#</a></h2>
+<p>The saturated zone refers to the region within the subsurface where all the available pore spaces are filled with water, creating a saturated condition. It is an important concept in groundwater hydrology and plays a crucial role in groundwater flow and contaminant transport.</p>
+<p>The saturated zone begins at the water table, which represents the boundary between the unsaturated zone (where there is both air and water in the pore spaces) and the saturated zone (where all pore spaces are filled with water). The depth of the saturated zone can vary depending on factors such as topography, geology, and seasonality.</p>
+<p><img alt="" src="../../_images/vertdist11.png" /></p>
+<p>Within the saturated zone, groundwater flow occurs as water moves through the interconnected pore spaces under the influence of gravity. The direction and speed of groundwater flow are governed by hydraulic gradients, which are the differences in hydraulic head (a measure of the potential energy of groundwater) between different locations. The saturated zone acts as a conduit for the movement of water from areas of higher hydraulic head to areas of lower hydraulic head.</p>
+<p>The properties of the saturated zone, such as its permeability, porosity, and heterogeneity, have a significant impact on groundwater flow. Permeability determines how easily water can move through the saturated zone. Materials with high permeability, like gravel or sand, allow for faster groundwater flow, while low-permeability materials, such as clay or shale, impede flow. Porosity, the volume of void spaces, determines the amount of water that can be stored in the saturated zone.</p>
+<p>Heterogeneity in the saturated zone refers to variations in the properties of the porous medium, such as permeability and porosity, over space. This heterogeneity can influence the flow of groundwater by creating preferential flow paths or areas of localized flow convergence or divergence. Understanding the heterogeneity of the saturated zone is important for accurate modeling and prediction of groundwater flow patterns.</p>
+<p>Contaminant transport also occurs within the saturated zone. Once contaminants enter the groundwater system, they can be transported through the interconnected pore spaces. The movement of contaminants is influenced by factors such as advection (bulk movement of groundwater), dispersion (spreading of contaminants due to mechanical mixing and molecular diffusion), and sorption (attachment of contaminants to solid surfaces). The saturated zone acts as a medium for the migration and dispersion of contaminants, and its properties influence the rate and extent of contaminant transport.</p>
+</section>
+<section id="unsaturated-zone">
+<h2>Unsaturated Zone<a class="headerlink" href="#unsaturated-zone" title="Link to this heading">#</a></h2>
+<p>The unsaturated zone, also known as the vadose zone or the zone of aeration, is the region within the subsurface where the pore spaces contain both air and water. In this zone, the water content is less than the total porosity of the material. The unsaturated zone extends from the land surface down to the water table, where it transitions into the saturated zone.</p>
+<p><img alt="" src="../../_images/vertdist31.png" /></p>
+<p>The unsaturated zone is characterized by a dynamic water content profile that changes over time due to factors such as precipitation, evaporation, and plant uptake. At the land surface, water infiltrates through the soil and rock layers until it reaches a point where the pore spaces are completely saturated. This point is known as the water table, which marks the transition to the saturated zone.</p>
+<p>The movement of water in the unsaturated zone is influenced by capillary forces and gravity. Capillary forces cause water to rise in small pores against the force of gravity, allowing it to be retained in the unsaturated zone. The rate of water movement through the unsaturated zone is generally slower compared to the saturated zone due to the presence of air and the lower hydraulic conductivity of unsaturated materials.</p>
+<p>The unsaturated zone plays a crucial role in controlling the recharge of groundwater. It acts as a buffer, allowing for the filtration, storage, and gradual release of water to the underlying aquifer. The unsaturated zone also contributes to the purification of water through processes such as filtration, adsorption, and biodegradation as water percolates through the soil and rock layers.</p>
+<p>In terms of contaminant transport, the unsaturated zone can act as a barrier or filter, reducing the potential for contaminants to reach the groundwater system. The unsaturated materials can adsorb or retain contaminants, and the slower movement of water through this zone provides additional time for degradation or removal of contaminants.</p>
+</section>
+<section id="aquifers">
+<h2>Aquifers<a class="headerlink" href="#aquifers" title="Link to this heading">#</a></h2>
+<p>An <a class="reference external" href="https://civillearners.com/2021/11/07/types-of-aquifers-detailed-explanation/"><strong>aquifer</strong></a> is a geologic formation that (i) contains and (ii) transmits water in economically useful quantities under normal field conditions.</p>
+<p>Some related terms include:</p>
+<ol class="arabic simple">
+<li><p>An <strong>aquitard</strong> is a geologic formation or layer that has low permeability, restricting the flow of groundwater. It acts as a barrier or confining layer that limits the movement of water between aquifers. Unlike aquifers, which are capable of storing and transmitting water, aquitards have a lower hydraulic conductivity, impeding or retarding the flow of groundwater. Aquitards can consist of various materials such as clay, silt, shale, or unconsolidated sediment, which offer limited pathways for groundwater movement. They play a crucial role in groundwater systems by confining and isolating aquifers, influencing groundwater storage, and controlling the vertical movement of water.</p></li>
+<li><p>An <strong>aquifuge</strong> is a geologic formation or layer that is essentially impermeable to groundwater flow. Unlike aquitards, which have limited permeability, aquifuges are completely impermeable, meaning they do not allow the movement of water. Aquifuges act as barriers that prevent the flow of groundwater between aquifers and restrict the vertical or lateral movement of water. They are typically composed of dense and impermeable materials such as unfractured bedrock, solid clay, or thick layers of compacted till. Aquifuges are important in groundwater hydrology as they create boundaries or seals that confine and isolate aquifers, preventing the intermixing or contamination of groundwater between different layers.</p></li>
+<li><p>An <strong>aquiclude</strong> is a geologic formation or layer that is completely impermeable to groundwater flow. It is similar to an aquifuge in that it acts as a barrier to the movement of water, but it differs in that it is typically much thicker and more extensive. Aquicludes are composed of highly impermeable materials, such as solid rock or dense clay, which do not allow water to pass through them. They effectively impede the flow of groundwater and can serve as long-lasting barriers between aquifers. Aquicludes are important features in groundwater systems as they help confine and isolate aquifers, preventing the vertical or lateral movement of water and maintaining the integrity of groundwater resources.</p></li>
+</ol>
+<p>Aquifers are typically categorized as <strong>confined</strong> or <strong>unconfined</strong>; these two types of aquifers that differ in their geological characteristics and water storage conditions.</p>
+<p><img alt="" src="../../_images/aquifersystems1.png" /></p>
+<blockquote>
+<div><p><strong>Definition</strong>:<br>
+<strong>Confined Aquifer</strong>: A confined aquifer, also known as an artesian aquifer, is an aquifer that is bounded above and below by impermeable layers, such as clay or dense rock, which confine the groundwater within a confined space.<br>
+<strong>Unconfined Aquifer</strong>: An unconfined aquifer, also called a water table aquifer, is an aquifer where the upper boundary, known as the water table, is not confined by an impermeable layer, allowing water to freely move up and down through the aquifer.<br></p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Recharge</strong>:<br>
+<strong>Confined Aquifer</strong>: Confined aquifers are typically recharged in areas where the confining layers are absent or fractured, allowing water to infiltrate from the surface. Recharge to confined aquifers can be more limited and localized.<br>
+<strong>Unconfined Aquifer</strong>: Unconfined aquifers are primarily recharged through precipitation, where water percolates through the unsaturated zone until it reaches the water table. Recharge to unconfined aquifers can occur over larger areas.<br></p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Water Storage and Pressure</strong>:<br>
+<strong>Confined Aquifer</strong>: Due to the confining layers, water in confined aquifers is under higher pressure and can be stored under artesian conditions. When a well is drilled into a confined aquifer, the water may rise above the ground level due to the pressure exerted by the confined aquifer.<br>
+<strong>Unconfined Aquifer</strong>: Water in unconfined aquifers is not under significant pressure and is stored under the water table. The height of the water table fluctuates based on factors such as recharge rates, extraction, and seasonality.<br></p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Vulnerability to Contamination</strong>:<br>
+<strong>Confined Aquifer</strong>: Confined aquifers are generally less vulnerable to contamination compared to unconfined aquifers. The presence of confining layers acts as a barrier, limiting the potential for contaminants to infiltrate the aquifer.<br>
+<strong>Unconfined Aquifer</strong>: Unconfined aquifers are more susceptible to contamination as there is no confining layer to impede the movement of contaminants. Contaminants can more easily reach the water table and potentially affect the groundwater quality.
+<br></p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Extraction and Well Productivity</strong>:<br>
+<strong>Confined Aquifer</strong>: Extraction of water from a confined aquifer typically yields higher well productivity due to the increased pressure within the aquifer. Wells drilled into confined aquifers can have a steady and sustained water supply.<br>
+<strong>Unconfined Aquifer</strong>: Extraction from unconfined aquifers may yield variable well productivity depending on the fluctuating water table. The yield of wells in unconfined aquifers may be influenced by seasonal variations in recharge and the proximity to other water sources.</p>
+</div></blockquote>
+<p>A <strong>leaky aquifer</strong> refers to an aquifer that exhibits characteristics of both an aquifer and an aquitard. It is a geological formation that has varying degrees of permeability and acts as a partial barrier to the flow of groundwater. In a leaky aquifer, the presence of semi-permeable layers or zones with lower permeability allows some water to pass through, while also impeding or retarding the flow to some extent.</p>
+<p>Leaky aquifers are distinct from fully confined aquifers or unconfined aquifers, as they possess intermediate characteristics. They can be seen as “leaky” due to the reduced hydraulic conductivity of the semi-permeable layers present within the aquifer system. These semi-permeable layers act as partial barriers, restricting or slowing down the movement of groundwater between different zones or layers.</p>
+<p>The presence of leaky aquifers can have significant implications for groundwater management and hydrogeological assessments. They can influence the flow paths, distribution, and quality of groundwater within an aquifer system. Understanding the extent and properties of leaky aquifers is crucial for accurately modeling groundwater flow, assessing contaminant transport, and managing water resources effectively.</p>
+</section>
+<section id="storage">
+<h2>Storage<a class="headerlink" href="#storage" title="Link to this heading">#</a></h2>
+<p>Storativity is the amount of water added to/released from storage per unit change in head per unit area of aquifer.  Mechanisms of storage are draining and filling of the pore space (unconfined) and compression/decompression of the solid matrix and water (confined).</p>
+<p>In confined aquifers the storage coefficient is denoted by the symbol <span class="math notranslate nohighlight">\(S\)</span>.  In unconfined aquifers the storage coefficient is the specific yield and is denoted by <span class="math notranslate nohighlight">\(S_y\)</span>.  The amount remaining is called the specific retention <span class="math notranslate nohighlight">\(S_r\)</span>.  The sum of these two terms is  the porosity.</p>
+</section>
+<section id="transport-of-water">
+<h2>Transport (of Water)<a class="headerlink" href="#transport-of-water" title="Link to this heading">#</a></h2>
+<p>The ability to convey water is measured by the permeability, in the case of water it is called the hydraulic conductivtiy.  It is a combined property of porous media properties and fluid properties, the usual symbol is <span class="math notranslate nohighlight">\(K\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The hydraulic conductivity for porous media plays the same role as the friction factor in pipe flow, which is also a combined property of pipe material and fluid properties.:::</p>
+<p>The ability of an entire thickness of aquifer to transmit water is called the transmissivity; the usual symbol is <span class="math notranslate nohighlight">\(T\)</span></p>
+</div>
+</section>
+<section id="darcy-s-law">
+<h2>Darcy’s Law<a class="headerlink" href="#darcy-s-law" title="Link to this heading">#</a></h2>
+<p>Darcy’s Law is a fundamental principle in hydrogeology that describes the movement of groundwater through porous media and its transport of contaminants. It provides a mathematical relationship between the flow rate of groundwater, the hydraulic gradient, and the properties of the porous medium.</p>
+<p>In the context of groundwater flow, Darcy’s Law states that the flow rate of groundwater (Q) is directly proportional to the hydraulic conductivity (K) of the porous medium, the cross-sectional area perpendicular to the flow (A), and the hydraulic gradient (∇h) along which the groundwater is moving. Mathematically, it can be expressed as:</p>
+<p>Q = -K * A * ∇h</p>
+<p>Here, the negative sign indicates that groundwater flows from higher hydraulic head (pressure) to lower hydraulic head.</p>
+<p>Darcy’s Law is also applicable to the transport of dissolved contaminants in groundwater. In this case, it is modified to include the concentration of the contaminant (C) and its dispersion coefficient (D):</p>
+<p>Q = -D * A * (∇C / C)</p>
+<p>This modified form describes the movement of contaminants within the flowing groundwater. The dispersion coefficient accounts for the spreading and mixing of the contaminant as it moves through the porous medium, due to the heterogeneity of the subsurface.</p>
+<p>Overall, Darcy’s Law serves as a cornerstone in groundwater hydrology and contaminant transport studies, providing a quantitative basis for understanding and modeling the behavior of groundwater flow and mass transport in various geological settings.</p>
+</section>
+<section id="pore-velocity">
+<h2>Pore Velocity<a class="headerlink" href="#pore-velocity" title="Link to this heading">#</a></h2>
+<p>Pore velocity, in the context of groundwater flow, refers to the speed at which water molecules move through the interconnected void spaces (pores) within a porous medium, such as soil or rock. It is a measure of the actual velocity of water within these tiny channels and cavities, which collectively form the pathways for groundwater movement.</p>
+<p>Pore velocity is influenced by several factors, including the hydraulic gradient (the change in hydraulic head per unit distance), the hydraulic conductivity of the porous medium (which dictates how easily water can flow through it), and the porosity of the material (the volume of pore space compared to the total volume of the material). Additionally, the degree of saturation and the properties of the fluid itself also play a role in determining pore velocity.</p>
+<p>Understanding pore velocity is crucial for assessing groundwater flow rates, transport of contaminants, and the overall behavior of groundwater within subsurface formations. It helps hydrogeologists and scientists model and predict the movement of groundwater and the transport of dissolved substances, providing valuable insights into water resource management, environmental impact assessment, and remediation efforts.</p>
+</section>
+<section id="anisotropy">
+<h2>Anisotropy<a class="headerlink" href="#anisotropy" title="Link to this heading">#</a></h2>
+<p>Anisotropy in the context of groundwater flow refers to the property of subsurface materials that causes the flow of groundwater to exhibit varying degrees of preferential directionality. In other words, the hydraulic conductivity of the underground formation is not the same in all directions. This anisotropic behavior is often observed in geological formations composed of layered or oriented materials such as sedimentary rocks, fractured bedrock, or layered aquifer systems.</p>
+<p>Anisotropy can significantly impact the movement of groundwater. When the hydraulic conductivity is higher in one direction compared to another, groundwater will tend to flow more readily along the path of least resistance, following the direction of higher conductivity. This can lead to uneven flow patterns and the development of preferential flow pathways within the subsurface.</p>
+<p>Understanding anisotropy is crucial for accurate modeling and prediction of groundwater movement and contaminant transport. Groundwater flow simulations must account for anisotropic behavior to effectively predict the direction and rate of groundwater flow, as well as the dispersion and spread of contaminants through the subsurface. Neglecting anisotropy can lead to inaccurate predictions and improper management of groundwater resources and contamination issues.</p>
+<section id="principal-directions-of-hydraulic-conductivity">
+<h3>Principal Directions of Hydraulic Conductivity<a class="headerlink" href="#principal-directions-of-hydraulic-conductivity" title="Link to this heading">#</a></h3>
+<p>To determine the principal values of the hydraulic conductivity tensor in 2D, you would typically follow these steps:</p>
+<blockquote>
+<div><p><strong>Define the Hydraulic Conductivity Tensor</strong>: The hydraulic conductivity tensor represents the anisotropic properties of the subsurface material in terms of its ability to transmit water. In 2D, the hydraulic conductivity tensor is a symmetric matrix with three components: Kxx, Kyy, and Kxy (or Kyx). Kxx represents the hydraulic conductivity in the x-direction, Kyy represents the hydraulic conductivity in the y-direction, and Kxy (or Kyx) represents the cross-component.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Formulate the Hydraulic Conductivity Matrix</strong>: Arrange the components of the hydraulic conductivity tensor into a 2x2 matrix, typically denoted as [K]. In matrix form, the hydraulic conductivity tensor for 2D becomes:</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{gather}
+\mathbf{K} =
+\begin{pmatrix}
+K_{xx} &amp; K_{xy} \\
+~\\
+K_{yx} &amp; K_{yy} \\
+\end{pmatrix}
+~
+\end{gather}
+\end{split}\]</div>
+<blockquote>
+<div><p><strong>Solve for Eigenvalues</strong>: Determine the eigenvalues of the hydraulic conductivity matrix [K]. Eigenvalues represent the principal values of the matrix and provide information about the directional properties of the hydraulic conductivity tensor.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Calculate Principal Values</strong>: The eigenvalues of the hydraulic conductivity matrix [K] correspond to the principal values of the hydraulic conductivity tensor. These principal values represent the maximum and minimum hydraulic conductivities in the directions determined by the corresponding eigenvectors.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Interpret the Results</strong>: The principal values of the hydraulic conductivity tensor provide insights into the anisotropic nature of fluid flow in the subsurface. The larger eigenvalue corresponds to the direction of maximum hydraulic conductivity, while the smaller eigenvalue represents the direction of minimum hydraulic conductivity.</p>
+</div></blockquote>
+<p>Obtaining accurate values for the hydraulic conductivity components involves field measurements and laboratory testing of soil or rock samples.</p>
+<p>In 3D the determination is simply the natural extension of the 2D process.  The matrix (tensor) is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{gather}
+\mathbf{K} =
+\begin{pmatrix}
+K_{xx} &amp; K_{xy} &amp; K_{xz}\\
+~\\
+K_{yx} &amp; K_{yy} &amp; K_{yz} \\
+~\\
+K_{zx} &amp; K_{zy} &amp; K_{zz} \\
+\end{pmatrix}
+~
+\end{gather}
+\end{split}\]</div>
+</section>
+</section>
+<section id="transport-processes">
+<h2>Transport Processes<a class="headerlink" href="#transport-processes" title="Link to this heading">#</a></h2>
+<p>The main physical transport processes are listed below, these are exanined in detail later in the notes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reactions are essentially treated as boundary conditions and while they affect behavior they are not in themselves considered as transport processes. They are most definitely fate processes, so we won’t get to ignore them!</p>
+</div>
+<section id="advection">
+<h3>Advection<a class="headerlink" href="#advection" title="Link to this heading">#</a></h3>
+<p>Advection is the process by which a physical property, such as heat or a chemical substance, is transported by the motion of a fluid. This motion can be due to <em>convection</em>, where a fluid is heated or cooled and subsequently moves because of intrinsic density changes, or it can be due to the movement of the fluid itself by pressure gradients, such as in a river or ocean current, which is called <em>forced convection</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In meteorology, advection refers to the horizontal movement of air or other atmospheric properties, such as moisture or temperature, by the wind. For example, warm air moving from the tropics to the poles is an example of advection.</p>
+<p>In oceanography, advection refers to the horizontal movement of water or other oceanic properties, such as salinity or nutrients, by ocean currents.</p>
+</div>
+<p>In our discussion herein, advection is the transport of solutes by the motion of the host fluid.</p>
+</section>
+<section id="diffusion">
+<h3>Diffusion<a class="headerlink" href="#diffusion" title="Link to this heading">#</a></h3>
+<p>Solute diffusion in groundwater is the process by which solutes, such as dissolved contaminants or nutrients, move through the pore spaces and fractures of soil and rock in the subsurface. The rate and direction of solute diffusion are influenced by several factors, including the concentration gradient, the properties of the solute and the porous medium, and the temperature and pressure of the groundwater.</p>
+<p>The movement of solutes in groundwater can occur through both advection and diffusion. Advection refers to the movement of solutes due to the bulk flow of groundwater, while diffusion refers to the movement of solutes from areas of high concentration to areas of low concentration due to the random motion of molecules.</p>
+<p>The diffusion of solutes in groundwater is affected by the porosity and permeability of the subsurface, as well as the molecular properties of the solutes. For example, larger and more complex molecules may diffuse more slowly than smaller, simpler molecules. The temperature of the groundwater can also affect solute diffusion, as higher temperatures generally result in faster molecular motion and increased diffusion rates.</p>
+<p>Understanding solute diffusion in groundwater is important for predicting the movement and fate of contaminants in the subsurface, as well as for managing and protecting groundwater resources. Models of solute diffusion can be used to predict the transport of contaminants in the subsurface and to evaluate the effectiveness of different remediation strategies.</p>
+<p>A more compact definition is that diffusion is the mixing of solutes by Brownian (random) motion processes. Net transport is proportional to concentration gradients.</p>
+</section>
+<section id="dispersion">
+<h3>Dispersion<a class="headerlink" href="#dispersion" title="Link to this heading">#</a></h3>
+<p>Solute dispersion in groundwater refers to the spreading and mixing of solutes, such as dissolved contaminants or nutrients, as they move through the pore spaces and fractures of soil and rock in the subsurface. The rate and extent of solute dispersion are influenced by several factors, including the properties of the solute and the porous medium, the flow velocity of the groundwater, and the geometry of the flow paths.</p>
+<p>The movement of solutes in groundwater can occur through both advection and dispersion. Advection refers to the movement of solutes due to the bulk flow of groundwater, while dispersion refers to the spreading and mixing of solutes as they move through the subsurface due to variations in the velocity and direction of groundwater flow.</p>
+<p>Solute dispersion in groundwater can be characterized by several different parameters, including the longitudinal dispersivity, which describes the spreading of solutes parallel to the direction of groundwater flow, and the transverse dispersivity, which describes the spreading of solutes perpendicular to the direction of groundwater flow.</p>
+<p>Understanding solute dispersion in groundwater is important for predicting the movement and fate of contaminants in the subsurface, as well as for managing and protecting groundwater resources. Models of solute dispersion can be used to predict the transport of contaminants in the subsurface and to evaluate the effectiveness of different remediation strategies.</p>
+<p>Observe the definition is practically the same as that for diffusion, except the temperature importance is replaced by the concepts of dispersivity.</p>
+<p>The similarity arises in part because ultimately a Fickian-type descrpition is used to explain behavior for either process (the meanings and magnitudes of the dispersion coeficient and the diffusion coefficient are quite different).
+A compact definition is that dispersion is the mixing of solutes by small and large scale variations in the velocity field of the host fluid caused by shear resistance, turbulent fluctuations, and the braided flow paths.  Net transport is usually modeled as proportional to concentration gradients.</p>
+<p>Dispersion appears in several types:</p>
+<ol class="arabic simple">
+<li><p>Shear induced dispersion (pipes and open channel flows)</p></li>
+<li><p>Turbulent dispersion (open flows)</p></li>
+<li><p>Hydrodynamic dispersion (porous flows)</p></li>
+</ol>
+<p>Pull chapter from Groundwater to fit here.</p>
+<p><a class="reference external" href="https://pubs.usgs.gov/wsp/wsp1536-E/pdf/wsp_1536-E.pdf">Well Hydraulics and Aquifer Tests</a></p>
+</section>
+</section>
+<section id="id1">
+<h2><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+</section>
+<section id="id2">
+<h2><a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/01fundamentals"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../00introduction/00introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">1. Introduction to Groundwater Contaminant Transport</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01fundamentals.practice.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">3. Fundamentals (Practice)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">Videos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spreadsheets-programs-data">Spreadsheets/Programs/Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-concepts">Preliminary Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-reactive-constituients">Non-reactive constituients</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#essential-groundwater-review">Essential Groundwater Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#porous-media">Porous Media</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saturated-zone">Saturated Zone</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsaturated-zone">Unsaturated Zone</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aquifers">Aquifers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storage">Storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transport-of-water">Transport (of Water)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#darcy-s-law">Darcy’s Law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pore-velocity">Pore Velocity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anisotropy">Anisotropy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-directions-of-hydraulic-conductivity">Principal Directions of Hydraulic Conductivity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transport-processes">Transport Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advection">Advection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion">Diffusion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion">Dispersion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Theodore G. Cleveland, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,809 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>7. Physical Transport &#8212; Groundwater Transport Phenomena</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/04physical.transport/physical.transport';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8. Modeling Advection" href="modeling.advection.html" />
+    <link rel="prev" title="6. Site Characterization" href="../03site.characterization/site.characterization.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gwtransport.png" class="logo__image only-light" alt="Groundwater Transport Phenomena - Home"/>
+    <script>document.write(`<img src="../../_static/gwtransport.png" class="logo__image only-dark" alt="Groundwater Transport Phenomena - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00syllabus/ce5364-syllabus-2025-3.html">0. Syllabus (Fall 2025)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction to Groundwater Contaminant Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.science.html">2. Fundamentals (Science)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.practice.html">3. Fundamentals (Practice)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03site.mapping.tools/site.mapping.tools.html">5. Site Mapping Tools</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03site.characterization/site.characterization.html">6. Site Characterization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Physical Transport</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="modeling.advection.html">8. Modeling Advection</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/04physical.transport/physical.transport.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/04physical.transport/physical.transport.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>7. Physical Transport</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">7. Physical Transport</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">Videos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-transport-mechanisms">Physical Transport Mechanisms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-tracer-hypothesis">The Tracer Hypothesis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flux">Flux</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#advection">Advection</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-advection">Modeling Advection</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion">Diffusion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kinetic-molecular-model-of-diffusion">Kinetic-Molecular Model of Diffusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-diffusion">Importance of Diffusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-modeling">Diffusion Modeling</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion">Dispersion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shear-induced-dispersion-pipe-and-open-flows">Shear-Induced Dispersion (Pipe and Open Flows)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turbulent-diffusion-pipe-and-open-flows">Turbulent Diffusion (Pipe and Open Flows)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrodynamic-dispersion-porous-flows">Hydrodynamic Dispersion (Porous Flows)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="physical-transport">
+<h1>7. Physical Transport<a class="headerlink" href="#physical-transport" title="Link to this heading">#</a></h1>
+<div class="admonition-course-website admonition">
+<p class="admonition-title">Course Website</p>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/">Link to Course Website</a></p>
+</div>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
+<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span><span class="w"> </span><span class="nt">table</span><span class="w"> </span><span class="p">{</span><span class="k">margin-left</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="cp">!important</span><span class="p">;}</span><span class="w"> </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style> table {margin-left: 0 !important;} </style>
+</div></div>
+</div>
+<section id="readings">
+<h2>Readings<a class="headerlink" href="#readings" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/3advection/Advection.PDF">Zheng, C. and Bennett, G.D. (1995) pp. 3-23 <em>Applied Contaminant Transport Modeling</em> Van Nostrand Reinhold</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/AdvectionNotes.pdf">Cleveland, T.G. (2002) <em>Advection</em> Notes to accompany <em>“CIVE 7332 Flow and Transport Modeling for Environmental Engineering” at University of Houston</em></a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/parttrack_1.pdf">Cleveland, T.G. (2002) <em>Particle Tracking in a Spreadsheet</em> Notes to accompany “CIVE 7332 Flow and Transport Modeling for Environmental Engineering” at University of Houston</a> Need to move to modeling section</p></li>
+<li><p><a class="reference external" href="https://d1wqtxts1xzle7.cloudfront.net/31171747/195055535-libre.pdf?1392371142=&amp;amp;response-content-disposition=inline%3B+filename%3DDynamics_of_fluids_in_porous_media.pdf&amp;amp;Expires=1695231543&amp;amp;Signature=fcj7Wef3HIA7wlTx~LJhmfFgQJIrRLnrwEgqd2KIjnsouiRrFZpLAgMw-gRJ7oxI1~h89bo-YpAQuhLHZc1vtNFq5d0QBrxwYRbAvr5jztdUDHWZrfjBPYBgujy5WCnrrtoN7GKrziCwbk7mDi1AUyBnC4RDidrKgBV-bMOpJR4ZR8~L6BTEPXhBAQJbLohdpWi8Ni6VUl33~rEQaum8NMcY11P6okNvXbXKft3vdYwjEK5NXezeVe6dQpYIiBcyPVqkFahRD9CFLXLHZsxXryzDT~x9pszx86ka0kXYN9y1Y7RzyAgZQaB5YWD8XZhK4w2PoIEVgIvGeuCxxt099Q__&amp;amp;Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA">Bear, J. (1972) <em>Dynamics of Fluids in Porous Media</em> McGraw Hill (pp. 236-241)</a></p></li>
+</ol>
+<!--(http://54.243.252.9/ce-5364-webroot/3-Readings/DFPM-Flownets.pdf)-->
+</section>
+<section id="videos">
+<h2>Videos<a class="headerlink" href="#videos" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=9ZmvKGHwagw">Drone Footage of Dispersion of Environmental Safe Tracer</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=jslzDvzNHBA">Flow Visualization of Jack Rabbit II Trial 5 (Gas Release, so not strictly Advection/Diffusion but illustrative of spreading beyond that from advection alone)</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=5ts31cMKviQ">Advection</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=9pAcdRZ9iBk">Diffusion</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=OnSrSS83EZI">Dispersion (I think there is a sign error in the last two equations - it is corrected in the next video below, so no great damage)</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=zbtQ5oFbaks">Advection Dispersion Finite Difference</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=VpBJb0ArfBk">Contaminant Transport - Diffusion, Dispersion, Advection (YouTube - about an hour + commercials)</a></p></li>
+</ol>
+</section>
+<section id="physical-transport-mechanisms">
+<h2>Physical Transport Mechanisms<a class="headerlink" href="#physical-transport-mechanisms" title="Link to this heading">#</a></h2>
+<p>Groundwater contaminants, once introduced into the subsurface, are redistributed by fundamental physical transport mechanisms. These processes operate at different scales — from the molecular to the aquifer — and together determine how a contaminant plume moves, spreads, and mixes over time. A clear understanding of these mechanisms is essential for building the mathematical framework that describes solute transport and, ultimately, for developing reliable predictive models.</p>
+<p>In this chapter, we will examine three key mechanisms:</p>
+<ul class="simple">
+<li><p>Advection, the movement of solutes with the bulk groundwater flow;</p></li>
+<li><p>Diffusion, the molecular spreading of solute due to concentration gradients; and</p></li>
+<li><p>Dispersion, the additional spreading that arises from velocity variations at pore and field scales.</p></li>
+</ul>
+<p>We begin, however, with two preliminary ideas that prepare the ground for these mechanisms: the Tracer Hypothesis (assuming we can follow a non-reactive constituent) and the concept of flux as a measure of transport across a control surface. These concepts give us the language to formulate transport balances in terms of mass fluxes.</p>
+<p>Building these foundations, we will define:</p>
+<ul class="simple">
+<li><p>Tracer Hypothesis — introduce the simplifying assumption of non-reactive solutes and why this is crucial for isolating physical processes.</p></li>
+<li><p>Flux — define flux as a mass transport rate per unit area, establishing the link between concentration, velocity, and transport.</p></li>
+<li><p>Advection — develop a cell-balance derivation that shows how solute is transported with the average linear velocity of groundwater.</p></li>
+<li><p>Diffusion — present Fick’s Law and outline a pseudo-derivation connecting concentration gradients to molecular mixing.</p></li>
+<li><p>Dispersion — extend the cell-balance concept to describe mechanical mixing and heterogeneity-driven spreading.</p></li>
+</ul>
+<p>The chapter culminates in the Advection–Dispersion Equation (ADE), a governing partial differential equation that integrates all three mechanisms into a single framework. At this stage we will simply present the PDE itself, but not yet pursue solutions.</p>
+<p>The following chapter will build on this foundation by exploring modeling approaches: particle tracking of advective transport, finite difference schemes for the ADE (with upwinding to handle flow directionality), and practical applications such as travel-time estimation and capture-zone delineation.</p>
+</section>
+<section id="the-tracer-hypothesis">
+<h2>The Tracer Hypothesis<a class="headerlink" href="#the-tracer-hypothesis" title="Link to this heading">#</a></h2>
+<p>The tracer hypothesis is an assumption that is often used in groundwater contaminant transport models.
+The hypothesis states that the movement of a conservative tracer (a substance that is not affected by chemical reactions or other processes that alter its concentration) through a porous medium can be used to determine the movement of other, non-conservative substances (such as contaminants) through that same medium.</p>
+<p>In other words, if we introduce a known quantity of a conservative tracer into a groundwater system, we can track its movement over time and use that information to estimate how other substances, such as pollutants or contaminants, might be moving through the same system. This can be a useful tool for understanding and predicting the behavior of contaminants in groundwater, and for designing effective remediation strategies.</p>
+<p>It is a widely used and well-established concept in groundwater contaminant transport modeling.</p>
+<p>It is especially helpful in providing a way to approximate transport of constituients that react with the solid matrix using a concept called retardation (apparent species velocities are retarded relative to non-reactive species).</p>
+</section>
+<section id="flux">
+<h2>Flux<a class="headerlink" href="#flux" title="Link to this heading">#</a></h2>
+<p>Transport of materials is quantified in terms of flux density or flux.  Flux density is the amount of material that passes a point in space per unit area per unit time.  Flux is a vector quantity with magnitude and direction.  Flux vectors point in the direction of net material motion and their magnitude indicates the rate of motion in that direction.</p>
+<p><img alt="" src="../../_images/frux1.png" /></p>
+<p>The figure depicts how a flux vector is defined.  Imagine a frame centered at (x,y,z), oriented perpendicular to the plume time average flow line.  The mass of pollutant that passes through this frame per unit time divided by the area of the frame is called the pollutant mass flux.   The amount of fluid momentum passing through the frame would be called the momentum flux.  Any quantity can be defined in terms of its flux although mass, energy, and momentum are the most common quantities studied in engineering.</p>
+<p><img alt="" src="../../_images/fruxMath1.png" />
+<img alt="" src="../../_images/fruxMath21.png" /></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="advection">
+<h1>Advection<a class="headerlink" href="#advection" title="Link to this heading">#</a></h1>
+<p>Advection (convection) is the transport of dissolved or suspended material by motion of the host fluid. The prediction of the direction and amount of material transported requires knowledge of the fluid velocity field (the velocity of a fluid particle).</p>
+<p><img alt="" src="../../_images/labeledparcel1.png" /></p>
+<p>The figure depicts the flow of a labeled fluid in a tube.  One can use the sketch to define various useful properties of the labeled fluid portion as listed.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Expression</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Mass of labeled fluid</p></td>
+<td><p><span class="math notranslate nohighlight">\(m=\rho A\Delta L\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Mass of tracer</p></td>
+<td><p><span class="math notranslate nohighlight">\(m=C A\Delta L\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Distance traveled by leading (trailing edge)</p></td>
+<td><p><span class="math notranslate nohighlight">\(x=\Delta L\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Time required to travel distance</p></td>
+<td><p><span class="math notranslate nohighlight">\(time = \Delta t\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Velocity of leading edge</p></td>
+<td><p><span class="math notranslate nohighlight">\(u = \frac{x}{time} = \frac{\Delta L}{\Delta t}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Mass through circular frame/unit time</p></td>
+<td><p><span class="math notranslate nohighlight">\(m=\frac{\rho A\Delta L}{\Delta t}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Tracer through circular frame/unit time</p></td>
+<td><p><span class="math notranslate nohighlight">\(m=\frac{C A\Delta L}{\Delta t}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Fluid mass flux</p></td>
+<td><p><span class="math notranslate nohighlight">\(J=\rho\frac{UA}{A}=\rho\frac{Q}{A}=\rho U\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Tracer mass flux</p></td>
+<td><p><span class="math notranslate nohighlight">\(J=C\frac{UA}{A}=C\frac{Q}{A}=C U\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The advective flux is the product of the quantity of interest (in this case mass of either host fluid or tracer) and the velocity term.  Typically the mean section velocity is used (pipe flow, open channel flow) because fine scale resolution of the velocity field is impossible.  In porous media, the pore velocity or average linear velocity is used.
+Advection calculations usually use mean section velocity based on discharge measurements.</p>
+<section id="modeling-advection">
+<h2>Modeling Advection<a class="headerlink" href="#modeling-advection" title="Link to this heading">#</a></h2>
+<p>To build models, we simply apply the Reynolds Transport Theorem to the advective flux component something like:</p>
+<p><img alt="" src="../../_images/advectivefrux2.png" /></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="diffusion">
+<h1>Diffusion<a class="headerlink" href="#diffusion" title="Link to this heading">#</a></h1>
+<p>The sketch below represents three snapshots of a closed system with two ideal gasses.</p>
+<p><img alt="" src="../../_images/diffusionsketch1.png" /></p>
+<p>Initially the closed system consists of two different ideal gasses at the same pressure separated by a partition (a).  When the partition is removed, spontaneous mixing occurs (b).  The sharp concentration profiles are rounded.  After enough time has elapsed, equilibrium is reached and the concentration of gasses in the system is uniform (c).<br />
+This mixing process is called molecular diffusion.</p>
+<p>When the diffusing materials are dilute relative to the host fluid (mole fraction &lt;&lt; 1), then the host fluid acts as a conduit and does not need to move for the materials to move.  When the materials are not dilute (as in the example above), significant bulk flow occurs of both the diffusing materials and the host fluid.  In most civil and environmental engineering problems, the infinite (dilute) dilution condition is appropriate and one ignores the motion effect that the diffusing materials cause on the host fluid.</p>
+<p>The sketch below depicts a physical system with a volatile liquid in contact with the atmosphere through a narrow bore tube.  The liquid molecules evaporate to maintain a constant partial pressure equal to the vapor pressure of the liquid.  Random motion of these gas molecules takes some of them out of the tube where they are mixed in with the atmosphere.</p>
+<p><img alt="" src="../../_images/volatilesketch11.png" /></p>
+<p>As these molecules leave the tube, more liquid must evaporate to maintain the constant vapor pressure – after a short time the rate of vaporization will become constant.  The rate of escape of the molecules is inversely proportional the length of the tube, proportional to the area of the tube, and proportional to the partial pressure of the liquid.</p>
+<p>One can incorporate these observations as:</p>
+<div class="math notranslate nohighlight">
+\[\dot m \propto -\frac{C_L - C_o}{L}A \]</div>
+<p>The constant of proportionality is called the diffusion coefficient and the diffusive flux is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[J= -D\frac{\partial C}{\partial x}\]</div>
+<p>This expression is called Fick’s first law of diffusion.  It can be generalized into three-dimensions as</p>
+<div class="math notranslate nohighlight">
+\[ \overrightarrow{J} = -D(\frac{\partial C}{\partial x}\overrightarrow{i} + \frac{\partial C}{\partial y}\overrightarrow{j} + \frac{\partial C}{\partial z}\overrightarrow{k}) = - D \cdot \nabla(C)\]</div>
+<p>The diffusion coefficient is a property of the diffusing species, the host fluid, the temperature, and the pressure.</p>
+<section id="kinetic-molecular-model-of-diffusion">
+<h2>Kinetic-Molecular Model of Diffusion<a class="headerlink" href="#kinetic-molecular-model-of-diffusion" title="Link to this heading">#</a></h2>
+<p><img alt="" src="../../_images/kineticmodel1.png" /></p>
+<p>Consider 3 small adjacent cells as depicted in the figure above. Each particle (molecule) has energy proportional to the square of its molecular velocity – while these velocities might be huge, the particles don’t move far before they hit a wall, another particle and their direction changes.</p>
+<div class="math notranslate nohighlight">
+\[ E = \frac{1}{2} m |\bar V^2| \]</div>
+<p>On average the velocities will have the same magnitude for any species (all tigers run the same speed, all bears run the same speed, but tigers and bears have different speeds).  If we consider the energy in each cell we have an energy gradient from cell A to cell C. (We are using the particle number in each cell as a measure of the energy – 10 particles in cell A, 3 in cell C)</p>
+<div class="math notranslate nohighlight">
+\[ E_A = \frac{10}{2} m |\bar V^2|~;~E_B = \frac{6}{2} m |\bar V^2|~;~E_C = \frac{3}{2} m |\bar V^2| \]</div>
+<p>From mechanics principles one can argue that on average more particles will cross from A to B  than from B to A in a short time period.  Thus cell B will accumulate particles while cell A will tend to lose particles.  When the number of particles in each cell is equal, then these will be no further <strong>net</strong> accumulation in either cell.  If we divide each cell by its volume we see that the energy term has dimensions of a concentration multiplied by velocity squared (nearly the same dimension as the diffusion coefficient).</p>
+<div class="math notranslate nohighlight">
+\[\frac{E_A}{\delta V} = \frac{10}{2} \frac{m |\bar V^2|}{\delta V} = C_A \frac{|\bar V^2|}{2} \]</div>
+<p>Now if we express the difference in energy in adjacent cells as a gradient</p>
+<div class="math notranslate nohighlight">
+\[\nabla E_{A \rightarrow B}  \frac{C_B - C_A}{\delta x}\frac{|V^2|}{2} = \frac{\partial C}{\partial x}\frac{|V^2|}{2}\]</div>
+<p>Thus one can conclude that the gradient of energy is proportional to the gradient of concentration.  Flux is the flow of energy per unit time from high concentration to low concentration – using this mechanical model it can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[J\propto -\frac{\partial C}{\partial x}\frac{|V^2|}{2}\]</div>
+<p>Observe that the flux incorporates the molecular velocity of the molecule relative to the host fluid (a function of molecule size, temperature, and shape).  To obtain correct dimensionality we need to express the gradient as energy per unit weight of material (not unit volume) and relate velocity to host fluid properties – ultimately one can arrive at an explanation that matches Fick’s law.</p>
+</section>
+<section id="importance-of-diffusion">
+<h2>Importance of Diffusion<a class="headerlink" href="#importance-of-diffusion" title="Link to this heading">#</a></h2>
+<p>In air the diffusion coefficients for a wide range of molecules of various molecular weights and functionalities range from <span class="math notranslate nohighlight">\(0.05 ~\frac{ cm^2}{s}\)</span> (large volatile organics) to <span class="math notranslate nohighlight">\(0.6 ~\frac{ cm^2}{s}\)</span> (hydrogen) – a variation of about one order of magnitude.  In water the diffusion coefficients range from <span class="math notranslate nohighlight">\(0.8 \times 10^{–5}~\frac{ cm^2}{s}\)</span> to <span class="math notranslate nohighlight">\(4.5 \times 10^{–5}~\frac{ cm^2}{s}\)</span> for similar compounds – a variation of about ½ an order of magnitude.</p>
+<p>The distance a molecule will travel is proportional to the square root of the product of time and diffusion coefficient – in air 1 meter/per day is reasonable; in water 1 cm/day is reasonable – thus as a process for bulk transport, diffusion is meaningless except at interfaces where it may be the only process.  It can achieve huge transport rates at interfaces because of large gradients that occur in these regions.</p>
+<p>However at low host fluid velocities, diffusion can matter and more importantly the structure of the mathematical model is similar to the dispersion process.</p>
+</section>
+<section id="diffusion-modeling">
+<h2>Diffusion Modeling<a class="headerlink" href="#diffusion-modeling" title="Link to this heading">#</a></h2>
+<p>As with advection one can examine a small volume in space in terms of flux and construct the equations of mass transport - as bafore its really the Reynolds Transport Theorem applied to the diffusive flux.</p>
+<p><img alt="" src="../../_images/diffusionEquations1.png" /></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="dispersion">
+<h1>Dispersion<a class="headerlink" href="#dispersion" title="Link to this heading">#</a></h1>
+<p>In actual releases of pollutants into the environment advection based on mean section velocity computations/measurements and diffusion alone cannot explain observed behavior. <!--As an example, consider the release of smoke particles (0.1 m) on the left coast of the USA (California) into a westerly wind (wind blowing from west to east) at a speed of 5 meters/sec. Assuming a transcontinental trip, one would expect a spreading of the smoke particles of less than 4 cm over the distance of 10000 meters – thus these two processes alone cannot explain actual behavior.--></p>
+<p>In actual flows, speeds (velocities) are neither uniform nor steady – the mixing caused by non-uniform flows is called dispersion. Dispersion is a consequence, in modeling, of not being able to accurately describe the velocity field at a small enough scale spatially and temporally to account for the continuous changes in directions and speeds that occurs in real flows. (Read any fluid mechanics textbook – especially the section on turbulent correlation coefficients). There are several processes that arise in fluid flow modeling and measurements that can be called dispersion: shear-induced dispersion; turbulent diffusion; hydrodynamic dispersion.</p>
+<section id="shear-induced-dispersion-pipe-and-open-flows">
+<h2>Shear-Induced Dispersion (Pipe and Open Flows)<a class="headerlink" href="#shear-induced-dispersion-pipe-and-open-flows" title="Link to this heading">#</a></h2>
+<p>Shear-induced dispersion occurs in a flow field where the fluid velocity varies with position in a direction perpendicular to the mean section velocity. If contaminant concentrations in a shearing flow field vary in the direction of mean flow, then a
+dispersive mixing phenomenon will be observed, producing a net transport of pollutants from regions of high concentration to low concentration.</p>
+<p><img alt="" src="../../_images/sheardispersion1.png" /></p>
+<p>Typically a Fickian-type model using the section average concentration is used to explain shear-induced dispersion. The diffusion coefficient is called the shear-flow dispersivity.</p>
+<div class="math notranslate nohighlight">
+\[J_{shear} = - \epsilon_{shear} \frac{\partial \bar C}{\partial x}  \]</div>
+<p>The dispersivity is often estimated from a ratio of velocity variation and a characteristic mixing length based on the dimensions of the flow field.</p>
+</section>
+<section id="turbulent-diffusion-pipe-and-open-flows">
+<h2>Turbulent Diffusion (Pipe and Open Flows)<a class="headerlink" href="#turbulent-diffusion-pipe-and-open-flows" title="Link to this heading">#</a></h2>
+<p>Most flows are turbulent – often we model the flows using ideal (laminar) flow theories and use turbulent flow equations of motion to determine mean velocity values, and turbulent flow variation models to explain the random nature of fluctuations about the mean flow values. In many cases the fluctuations themselves are uninteresting, but their effect on mixing is critical. The mixing caused by the turbulent variations in speed and direction is called turbulent diffusion.</p>
+<p>Again a Fickian type model is used, but the point concentration replaces the section average concentration</p>
+<div class="math notranslate nohighlight">
+\[J_{turbulent} = - \epsilon_{turbulent} \frac{\partial C}{\partial x}  \]</div>
+<p>In three dimensions the flux is represented as (isotropic representation – off diagional terms are not necessarily zero)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \overrightarrow{J}_{turbulent} = -(\epsilon_{xx}\frac{\partial C}{\partial x}\overrightarrow{i} + \epsilon_{yy}\frac{\partial C}{\partial y}\overrightarrow{j} + \epsilon_{zz}\frac{\partial C}{\partial z}\overrightarrow{k}) = - \begin{gather}
+\begin{pmatrix}
+\epsilon_{xx} &amp; 0 &amp; 0 \\
+0 &amp; \epsilon_{yy} &amp; 0 \\
+0 &amp; 0 &amp; \epsilon_{zz} \\
+\end{pmatrix}
+\end{gather} \cdot \nabla(C)\end{split}\]</div>
+<p>The diffusion coefficients are known as turbulent diffusion coefficients, or eddy diffusivities. The values of eddy diffusivity vary in space, time, and direction. They are strongly dependent on the nature of the flow field (related to velocity at any location). Closure models (correlations between geometry, flow speed, and eddy diffusivities) are still incomplete, although for many flow systems good predictions are possible.</p>
+</section>
+<section id="hydrodynamic-dispersion-porous-flows">
+<h2>Hydrodynamic Dispersion (Porous Flows)<a class="headerlink" href="#hydrodynamic-dispersion-porous-flows" title="Link to this heading">#</a></h2>
+<p>Conceptually hydrodynamic dispersion is similar to shear-induced dispersion in pipe and open flows. It occurs because of sectional velocity variation at the pore scale and because of macroscopic flow variation because of medium non-homogeneity. It is not a consequence of turbulence because it occurs even in laminar flows in porous media. Again the working model is a Fickian type model:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \overrightarrow{J}_{hydrodynamic} = -(\epsilon_{xx}\frac{\partial C}{\partial x}\overrightarrow{i} + \epsilon_{yy}\frac{\partial C}{\partial y}\overrightarrow{j} + \epsilon_{zz}\frac{\partial C}{\partial z}\overrightarrow{k}) = - \begin{gather}
+\begin{pmatrix}
+\epsilon_{xx} &amp; 0 &amp; 0 \\
+0 &amp; \epsilon_{yy} &amp; 0 \\
+0 &amp; 0 &amp; \epsilon_{zz} \\
+\end{pmatrix}
+\end{gather} \cdot \nabla(C)\end{split}\]</div>
+<p>In hydrodynamic dispersion the diffusion coefficients are called hydrodynamic dispersion coefficients and are directly proportional to the local average linear velocity.</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>Dispersion is a mixing process that is modeled using a model that is structurally identical to diffusion. The dispersion coefficients are dependent on the flow field for both magnitude and direction. The dispersion coefficients in most flows are orders of magnitude larger than diffusion coefficients making their accurate representation critical for good predictive modeling of pollutant transport.
+To model pollutant transport one must first determine the nature of the flow (velocity) field – thus in this course we will devote a great deal of effort in determing flow and discharge characteristics before trying to move pollutants in the flow field.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python-my-env",
+            path: "./chapters/04physical.transport"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python-my-env'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../03site.characterization/site.characterization.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">6. Site Characterization</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="modeling.advection.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">8. Modeling Advection</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">7. Physical Transport</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">Videos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-transport-mechanisms">Physical Transport Mechanisms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-tracer-hypothesis">The Tracer Hypothesis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flux">Flux</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#advection">Advection</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-advection">Modeling Advection</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion">Diffusion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kinetic-molecular-model-of-diffusion">Kinetic-Molecular Model of Diffusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-diffusion">Importance of Diffusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-modeling">Diffusion Modeling</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion">Dispersion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shear-induced-dispersion-pipe-and-open-flows">Shear-Induced Dispersion (Pipe and Open Flows)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turbulent-diffusion-pipe-and-open-flows">Turbulent Diffusion (Pipe and Open Flows)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrodynamic-dispersion-porous-flows">Hydrodynamic Dispersion (Porous Flows)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Theodore G. Cleveland, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

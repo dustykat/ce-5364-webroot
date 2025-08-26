@@ -1,0 +1,1028 @@
+                                   MODFLOW 6
+                U.S. GEOLOGICAL SURVEY MODULAR HYDROLOGIC MODEL
+                          GROUNDWATER FLOW MODEL (GWF)
+                            VERSION 6.6.1 02/10/2025
+
+   MODFLOW 6 compiled Feb 14 2025 13:39:18 with Intel(R) Fortran Intel(R) 64
+   Compiler Classic for applications running on Intel(R) 64, Version 2021.7.0
+                             Build 20220726_000000
+
+This software has been approved for release by the U.S. Geological 
+Survey (USGS). Although the software has been subjected to rigorous 
+review, the USGS reserves the right to update the software as needed 
+pursuant to further analysis and review. No warranty, expressed or 
+implied, is made by the USGS or the U.S. Government as to the 
+functionality of the software and related material nor shall the 
+fact of release constitute any such warranty. Furthermore, the 
+software is released on condition that neither the USGS nor the U.S. 
+Government shall be held liable for any damages resulting from its 
+authorized or unauthorized use. Also refer to the USGS Water 
+Resources Software User Rights Notice for complete use, copyright, 
+and distribution information.
+
+
+As a work of the United States Government, this USGS product is 
+in the public domain within the United States. You can copy, 
+modify, distribute, and perform the work, even for commercial 
+purposes, all without asking permission. Additionally, USGS 
+waives copyright and related rights in the work worldwide 
+through CC0 1.0 Universal Public Domain Dedication 
+(https://creativecommons.org/publicdomain/zero/1.0/).
+
+The following GNU Lesser General Public License (LGPL) libraries
+are used in this USGS product:
+
+    SPARSKIT version 2.0
+      ilut, luson, and qsplit 
+      (https://www-users.cse.umn.edu/~saad/software/SPARSKIT/)
+
+    RCM - Reverse Cuthill McKee Ordering
+      (https://people.math.sc.edu/Burkardt/f_src/rcm/rcm.html)
+
+    BLAS - Basic Linear Algebra Subprograms Level 1
+      (https://people.math.sc.edu/Burkardt/f_src/blas1_d/blas1_d.html)
+
+    SPARSEKIT - Sparse Matrix Utility Package
+      amux, dperm, dvperm, rperm, and cperm
+      (https://people.sc.fsu.edu/~jburkardt/f77_src/sparsekit/sparsekit.html)
+
+The following BSD-3 License libraries are used in this USGS product:
+
+    Modern Fortran DAG Library
+      Copyright (c) 2018, Jacob Williams
+      All rights reserved.
+      (https://github.com/jacobwilliams/daglib)
+
+MODFLOW 6 compiler options: -Ilinux/obj_mf6 -O2 -no-heap-arrays -fpe0
+-traceback -Qdiag-disable:7416 -Qdiag-disable:7025 -Qdiag-disable:5268 -fpp
+-module linux/mod_mf6/ -c -o linux/obj_mf6/compilerversion.o
+
+System command used to initiate simulation:
+/home/sensei/mfplayground/modflow-python/mf6.4.1_linux/bin/mf6
+
+MODFLOW was compiled using uniform precision.
+
+Real Variables
+  KIND: 8
+  TINY (smallest non-zero value):    2.225074-308
+  HUGE (largest value):    1.797693+308
+  PRECISION: 15
+  SIZE IN BITS: 64
+
+Integer Variables
+  KIND: 4
+  HUGE (largest value): 2147483647
+  SIZE IN BITS: 32
+
+Long Integer Variables
+  KIND: 8
+  HUGE (largest value): 9223372036854775807
+  SIZE IN BITS: 64
+
+Logical Variables
+  KIND: 4
+  SIZE IN BITS: 32
+ 
+ NAMEFILE OPTIONS:
+ END NAMEFILE OPTIONS:
+
+ DIS -- STRUCTURED GRID DISCRETIZATION PACKAGE, VERSION 2 : 3/27/2014 - INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE_2/DIS                           
+
+
+ NPF -- NODE PROPERTY FLOW PACKAGE, VERSION 1, 3/30/2015 INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE_2/NPF                           
+
+
+ IC -- Initial Conditions Package, Version 8, 3/28/2015 input read from mempath: __INPUT__/EXAMPLE_2/IC                            
+
+
+ Setting Discretization Options
+ End Setting Discretization Options
+
+ Setting Discretization Dimensions
+    NLAY = 1
+    NROW = 11
+    NCOL = 11
+ End Setting Discretization Dimensions
+
+ Setting Discretization Griddata
+    DELR set from input file
+    DELC set from input file
+    TOP set from input file
+    BOTM set from input file
+ End Setting Discretization Griddata
+
+ Setting NPF Options
+    Cell-by-cell flow information will be saved to binary file whenever ICBCFL is not zero.
+ End Setting NPF Options
+
+ Setting NPF Griddata
+    ICELLTYPE set from input file
+    K set from input file
+    K33 not provided.  Setting K33 = K.
+    K22 not provided.  Setting K22 = K.
+ End Setting NPF Griddata
+
+
+ WEL   -- WEL PACKAGE, VERSION 8, 2/22/2014 INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE_2/WEL_0                         
+
+ PROCESSING WEL BASE OPTIONS
+ END OF WEL BASE OPTIONS
+
+ PROCESSING WEL OPTIONS
+ END OF WEL OPTIONS
+
+ PROCESSING WEL BASE DIMENSIONS
+    MAXBOUND =       1
+ END OF WEL BASE DIMENSIONS
+
+ RCH   -- RCH PACKAGE, VERSION 8, 2/22/2014 INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE_2/RCHA_0                        
+
+ PROCESSING RCH BASE OPTIONS
+ END OF RCH BASE OPTIONS
+
+ PROCESSING RCHA OPTIONS
+    RECHARGE INPUT WILL BE READ AS ARRAY(S).
+ END OF RCHA OPTIONS
+
+ CHD   -- CHD PACKAGE, VERSION 8, 2/22/2014 INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE_2/CHD_0                         
+
+ PROCESSING CHD BASE OPTIONS
+    FLOWS WILL BE SAVED TO BUDGET FILE SPECIFIED IN OUTPUT CONTROL
+ END OF CHD BASE OPTIONS
+
+ PROCESSING CHD BASE DIMENSIONS
+    MAXBOUND =      22
+ END OF CHD BASE DIMENSIONS
+    STRT set from input file
+
+ STO -- STORAGE PACKAGE, VERSION 1, 5/19/2014 INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE_2/STO                           
+
+
+ PROCESSING STORAGE OPTIONS
+ END OF STORAGE OPTIONS
+    BINARY GRID INFORMATION WILL BE WRITTEN TO:
+      UNIT NUMBER: 1015
+      FILE NAME: example_2.dis.grb
+
+ OPENED example_2.dis.grb
+ FILE TYPE:DATA(BINARY)   UNIT 1015   STATUS:REPLACE             
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+ ACTION:READWRITE           
+
+      THE LAST TIME STEP WILL BE PRINTED
+      THE LAST TIME STEP WILL BE PRINTED
+ # File generated by Flopy version 3.9.2 on 02/17/2025 at 16:45:19.
+
+ PROCESSING OC OPTIONS
+
+    BUDGET INFORMATION WILL BE WRITTEN TO:
+      UNIT NUMBER: 1016
+      FILE NAME: example_2.cbb
+
+ OPENED example_2.cbb
+ FILE TYPE:DATA(BINARY)   UNIT 1016   STATUS:REPLACE             
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+ ACTION:READWRITE           
+
+    HEAD INFORMATION WILL BE WRITTEN TO:
+      UNIT NUMBER: 1017
+      FILE NAME: example_2.hds
+
+ OPENED example_2.hds
+ FILE TYPE:DATA(BINARY)   UNIT 1017   STATUS:REPLACE             
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+ ACTION:READWRITE           
+
+ END OF OC OPTIONS
+
+start timestep kper="1" kstp="1" mode="normal"
+
+
+ BEGIN READING OUTPUT CONTROL FOR STRESS PERIOD 1
+      ALL TIME STEPS WILL BE SAVED
+      ALL TIME STEPS WILL BE SAVED
+      THE LAST TIME STEP WILL BE PRINTED
+
+ END READING OUTPUT CONTROL FOR STRESS PERIOD 1
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      1, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      1, STRESS PERIOD      1
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP   1 IN STRESS PERIOD    1
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    0.000      0.3331      0.5911      0.7748      0.8847      0.9213      0.8847      0.7748      0.5911      0.3331    
+        0.000    
+   2    0.000      0.3331      0.5911      0.7748      0.8847      0.9213      0.8847      0.7748      0.5911      0.3331    
+        0.000    
+   3    0.000      0.3331      0.5911      0.7748      0.8847      0.9213      0.8847      0.7748      0.5911      0.3331    
+        0.000    
+   4    0.000      0.3331      0.5911      0.7748      0.8847      0.9213      0.8847      0.7748      0.5911      0.3331    
+        0.000    
+   5    0.000      0.3331      0.5911      0.7748      0.8847      0.9213      0.8847      0.7748      0.5911      0.3331    
+        0.000    
+   6    0.000      0.3331      0.5911      0.7748      0.8847      0.9213      0.8847      0.7748      0.5911      0.3331    
+        0.000    
+   7    0.000      0.3331      0.5911      0.7748      0.8847      0.9213      0.8847      0.7748      0.5911      0.3331    
+        0.000    
+   8    0.000      0.3331      0.5911      0.7748      0.8847      0.9213      0.8847      0.7748      0.5911      0.3331    
+        0.000    
+   9    0.000      0.3331      0.5911      0.7748      0.8847      0.9213      0.8847      0.7748      0.5911      0.3331    
+        0.000    
+  10    0.000      0.3331      0.5911      0.7748      0.8847      0.9213      0.8847      0.7748      0.5911      0.3331    
+        0.000    
+  11    0.000      0.3331      0.5911      0.7748      0.8847      0.9213      0.8847      0.7748      0.5911      0.3331    
+        0.000    
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    1, STRESS PERIOD    1
+
+
+  VOLUME BUDGET FOR ENTIRE MODEL AT END OF TIME STEP    1, STRESS PERIOD   1
+  ---------------------------------------------------------------------------------------------------
+
+     CUMULATIVE VOLUME      L**3       RATES FOR THIS TIME STEP      L**3/T          PACKAGE NAME    
+     ------------------                 ------------------------                     ----------------
+
+           IN:                                      IN:
+           ---                                      ---
+              STO-SS =           0.0000                STO-SS =           0.0000     STORAGE                          
+                 WEL =           0.0000                   WEL =           0.0000     WEL_0                            
+                RCHA =    24750000.0000                  RCHA =    24750000.0000     RCHA_0                           
+                 CHD =           0.0000                   CHD =           0.0000     CHD_0                            
+
+            TOTAL IN =    24750000.0000              TOTAL IN =    24750000.0000
+
+          OUT:                                     OUT:
+          ----                                     ----
+              STO-SS =      669776.1518                STO-SS =      669776.1518     STORAGE                          
+                 WEL =           0.0000                   WEL =           0.0000     WEL_0                            
+                RCHA =           0.0000                  RCHA =           0.0000     RCHA_0                           
+                 CHD =    24080223.8718                   CHD =    24080223.8718     CHD_0                            
+
+           TOTAL OUT =    24750000.0236             TOTAL OUT =    24750000.0236
+
+            IN - OUT =      -2.3601E-02              IN - OUT =      -2.3601E-02
+
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =          -0.00
+
+
+
+
+         TIME SUMMARY AT END OF TIME STEP    1 IN STRESS PERIOD    1
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH 3.15576E+07 5.25960E+05  8766.0      365.25      1.0000    
+ STRESS PERIOD TIME 3.15576E+07 5.25960E+05  8766.0      365.25      1.0000    
+         TOTAL TIME 3.15576E+07 5.25960E+05  8766.0      365.25      1.0000    
+
+
+end timestep
+
+
+start timestep kper="2" kstp="1" mode="normal"
+
+
+ END OF FILE DETECTED IN OUTPUT CONTROL.
+ CURRENT OUTPUT CONTROL SETTINGS WILL BE 
+ REPEATED UNTIL THE END OF THE SIMULATION.
+
+ OUTPUT CONTROL FOR STRESS PERIOD 2 IS REPEATED USING SETTINGS FROM A PREVIOUS STRESS PERIOD.
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      1, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      1, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    1, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="2" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      2, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      2, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    2, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="3" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      3, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      3, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    3, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="4" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      4, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      4, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    4, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="5" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      5, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      5, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    5, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="6" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      6, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      6, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    6, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="7" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      7, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      7, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    7, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="8" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      8, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      8, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    8, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="9" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      9, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      9, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    9, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="10" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     10, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     10, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   10, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="11" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     11, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     11, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   11, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="12" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     12, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     12, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   12, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="13" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     13, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     13, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   13, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="14" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     14, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     14, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   14, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="15" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     15, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     15, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   15, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="16" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     16, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     16, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   16, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="17" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     17, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     17, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   17, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="18" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     18, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     18, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   18, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="19" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     19, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     19, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   19, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="20" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     20, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     20, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   20, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="21" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     21, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     21, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   21, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="22" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     22, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     22, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   22, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="23" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     23, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     23, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   23, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="24" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     24, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     24, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   24, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="25" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     25, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     25, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   25, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="26" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     26, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     26, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   26, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="27" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     27, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     27, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   27, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="28" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     28, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     28, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   28, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="29" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     29, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     29, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   29, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="30" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     30, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     30, STRESS PERIOD      2
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD    2
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    0.000      -10.51      -20.42      -28.79      -34.52      -36.60      -34.52      -28.79      -20.42      -10.51    
+        0.000    
+   2    0.000      -11.32      -22.14      -31.55      -38.29      -40.86      -38.29      -31.55      -22.14      -11.32    
+        0.000    
+   3    0.000      -12.83      -25.48      -37.17      -46.38      -50.40      -46.38      -37.17      -25.48      -12.83    
+        0.000    
+   4    0.000      -14.79      -30.03      -45.54      -59.95      -68.32      -59.95      -45.54      -30.03      -14.79    
+        0.000    
+   5    0.000      -16.63      -34.67      -55.47      -80.17      -104.1      -80.17      -55.47      -34.67      -16.63    
+        0.000    
+   6    0.000      -17.47      -37.10      -62.26      -102.5      -194.8      -102.5      -62.26      -37.10      -17.47    
+        0.000    
+   7    0.000      -16.63      -34.67      -55.47      -80.17      -104.1      -80.17      -55.47      -34.67      -16.63    
+        0.000    
+   8    0.000      -14.79      -30.03      -45.54      -59.95      -68.32      -59.95      -45.54      -30.03      -14.79    
+        0.000    
+   9    0.000      -12.83      -25.48      -37.17      -46.38      -50.40      -46.38      -37.17      -25.48      -12.83    
+        0.000    
+  10    0.000      -11.32      -22.14      -31.55      -38.29      -40.86      -38.29      -31.55      -22.14      -11.32    
+        0.000    
+  11    0.000      -10.51      -20.42      -28.79      -34.52      -36.60      -34.52      -28.79      -20.42      -10.51    
+        0.000    
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   30, STRESS PERIOD    2
+
+
+  VOLUME BUDGET FOR ENTIRE MODEL AT END OF TIME STEP   30, STRESS PERIOD   2
+  ---------------------------------------------------------------------------------------------------
+
+     CUMULATIVE VOLUME      L**3       RATES FOR THIS TIME STEP      L**3/T          PACKAGE NAME    
+     ------------------                 ------------------------                     ----------------
+
+           IN:                                      IN:
+           ---                                      ---
+              STO-SS =    39277358.0047                STO-SS =       4.8132E-07     STORAGE                          
+                 WEL =           0.0000                   WEL =           0.0000     WEL_0                            
+                RCHA =   767250000.0000                  RCHA =    24750000.0000     RCHA_0                           
+                 CHD = 29218222641.0103                   CHD =   975249999.9999     CHD_0                            
+
+            TOTAL IN = 30024749999.0149              TOTAL IN =   999999999.9999
+
+          OUT:                                     OUT:
+          ----                                     ----
+              STO-SS =      669776.1532                STO-SS =           0.0000     STORAGE                          
+                 WEL = 30000000000.0000                   WEL =  1000000000.0000     WEL_0                            
+                RCHA =           0.0000                  RCHA =           0.0000     RCHA_0                           
+                 CHD =    24080223.8718                   CHD =           0.0000     CHD_0                            
+
+           TOTAL OUT = 30024750000.0251             TOTAL OUT =  1000000000.0000
+
+            IN - OUT =          -1.0101              IN - OUT =      -1.4043E-04
+
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =          -0.00
+
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD    2
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH 3.15576E+07 5.25960E+05  8766.0      365.25      1.0000    
+ STRESS PERIOD TIME 9.46728E+08 1.57788E+07 2.62980E+05  10958.      30.000    
+         TOTAL TIME 9.78286E+08 1.63048E+07 2.71746E+05  11323.      31.000    
+
+
+end timestep
+
+
+start timestep kper="3" kstp="1" mode="normal"
+
+
+ OUTPUT CONTROL FOR STRESS PERIOD 3 IS REPEATED USING SETTINGS FROM A PREVIOUS STRESS PERIOD.
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      1, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      1, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    1, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="2" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      2, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      2, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    2, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="3" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      3, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      3, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    3, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="4" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      4, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      4, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    4, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="5" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      5, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      5, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    5, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="6" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      6, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      6, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    6, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="7" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      7, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      7, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    7, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="8" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      8, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      8, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    8, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="9" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      9, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      9, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    9, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="10" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     10, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     10, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   10, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="11" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     11, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     11, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   11, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="12" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     12, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     12, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   12, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="13" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     13, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     13, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   13, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="14" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     14, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     14, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   14, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="15" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     15, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     15, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   15, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="16" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     16, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     16, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   16, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="17" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     17, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     17, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   17, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="18" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     18, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     18, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   18, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="19" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     19, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     19, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   19, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="20" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     20, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     20, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   20, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="21" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     21, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     21, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   21, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="22" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     22, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     22, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   22, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="23" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     23, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     23, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   23, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="24" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     24, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     24, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   24, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="25" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     25, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     25, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   25, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="26" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     26, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     26, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   26, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="27" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     27, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     27, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   27, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="28" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     28, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     28, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   28, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="29" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     29, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     29, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   29, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="30" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     30, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_2        PACKAGE EXAMPLE_2       CONNECTED TO MODEL EXAMPLE_2        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     30, STRESS PERIOD      3
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD    3
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    0.000      -22.79      -44.50      -63.03      -75.87      -80.54      -75.87      -63.03      -44.50      -22.79    
+        0.000    
+   2    0.000      -24.51      -48.24      -69.14      -84.26      -90.06      -84.26      -69.14      -48.24      -24.51    
+        0.000    
+   3    0.000      -27.76      -55.53      -81.62      -102.5      -111.6      -102.5      -81.62      -55.53      -27.76    
+        0.000    
+   4    0.000      -31.97      -65.53      -100.4      -133.6      -153.2      -133.6      -100.4      -65.53      -31.97    
+        0.000    
+   5    0.000      -35.94      -75.80      -123.0      -181.5      -241.2      -181.5      -123.0      -75.80      -35.94    
+        0.000    
+   6    0.000      -37.76      -81.18      -138.7      -236.8      -564.3      -236.8      -138.7      -81.18      -37.76    
+        0.000    
+   7    0.000      -35.94      -75.80      -123.0      -181.5      -241.2      -181.5      -123.0      -75.80      -35.94    
+        0.000    
+   8    0.000      -31.97      -65.53      -100.4      -133.6      -153.2      -133.6      -100.4      -65.53      -31.97    
+        0.000    
+   9    0.000      -27.76      -55.53      -81.62      -102.5      -111.6      -102.5      -81.62      -55.53      -27.76    
+        0.000    
+  10    0.000      -24.51      -48.24      -69.14      -84.26      -90.06      -84.26      -69.14      -48.24      -24.51    
+        0.000    
+  11    0.000      -22.79      -44.50      -63.03      -75.87      -80.54      -75.87      -63.03      -44.50      -22.79    
+        0.000    
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   30, STRESS PERIOD    3
+
+
+  VOLUME BUDGET FOR ENTIRE MODEL AT END OF TIME STEP   30, STRESS PERIOD   3
+  ---------------------------------------------------------------------------------------------------
+
+     CUMULATIVE VOLUME      L**3       RATES FOR THIS TIME STEP      L**3/T          PACKAGE NAME    
+     ------------------                 ------------------------                     ----------------
+
+           IN:                                      IN:
+           ---                                      ---
+              STO-SS =    87632658.5918                STO-SS =       1.1107E-03     STORAGE                          
+                 WEL =           0.0000                   WEL =           0.0000     WEL_0                            
+                RCHA =  1509750000.0000                  RCHA =    24750000.0000     RCHA_0                           
+                 CHD = 91877367333.3443                   CHD =  2090249999.8586     CHD_0                            
+
+            TOTAL IN = 93474749991.9361              TOTAL IN =  2114999999.8598
+
+          OUT:                                     OUT:
+          ----                                     ----
+              STO-SS =      669776.1853                STO-SS =           0.0000     STORAGE                          
+                 WEL = 93450000000.0000                   WEL =  2115000000.0000     WEL_0                            
+                RCHA =           0.0000                  RCHA =           0.0000     RCHA_0                           
+                 CHD =    24080223.8718                   CHD =           0.0000     CHD_0                            
+
+           TOTAL OUT = 93474750000.0571             TOTAL OUT =  2115000000.0000
+
+            IN - OUT =          -8.1211              IN - OUT =          -0.1402
+
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =          -0.00
+
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD    3
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH 3.15576E+07 5.25960E+05  8766.0      365.25      1.0000    
+ STRESS PERIOD TIME 9.46728E+08 1.57788E+07 2.62980E+05  10958.      30.000    
+         TOTAL TIME 1.92501E+09 3.20836E+07 5.34726E+05  22280.      61.000    
+
+
+end timestep
+

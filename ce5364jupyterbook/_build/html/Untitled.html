@@ -1,0 +1,576 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Revised Modular Topic Outline – CE 5364 &#8212; Groundwater Transport Phenomena</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Untitled';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/gwtransport.png" class="logo__image only-light" alt="Groundwater Transport Phenomena - Home"/>
+    <script>document.write(`<img src="_static/gwtransport.png" class="logo__image only-dark" alt="Groundwater Transport Phenomena - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapters/00introduction/00introduction.html">1. Introduction to Groundwater Contaminant Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/03site.mapping.tools/site.mapping.tools.html">Site Mapping Tools</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FUntitled.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Untitled.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Revised Modular Topic Outline – CE 5364</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="revised-modular-topic-outline-ce-5364">
+<h1>Revised Modular Topic Outline – CE 5364<a class="headerlink" href="#revised-modular-topic-outline-ce-5364" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Module</p></th>
+<th class="head"><p>Science Lecture Topic</p></th>
+<th class="head"><p>Practice Lecture Topic</p></th>
+<th class="head"><p>Theme</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1. Fundamentals</strong></p></td>
+<td><p>What makes groundwater transport complex?</p></td>
+<td><p>Governing equations, scales, and parameters</p></td>
+<td><p>Conceptual foundations and dimensional reasoning</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>2. Regulatory Overview</strong></p></td>
+<td><p>exposure sources, receptor pathways;  concept of risk via dose-response and toxicity</p></td>
+<td><p>regulatory view of contaminant transport/fate</p></td>
+<td><p>general regulatory context and motivating framework</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>2. Physical Transport</strong></p></td>
+<td><p>Advection, diffusion, dispersion, hydrodynamic chromatography</p></td>
+<td><p>1D transport solutions in spreadsheets and Python; MODFLOW flow fields</p></td>
+<td><p>Hands-on visualization and parameter sensitivity</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>3. Reactive Transport</strong></p></td>
+<td><p>Sorption (linear/nonlinear), first-order decay, dual-porosity effects</p></td>
+<td><p>MT3DMS simulations of reactive transport and plume retardation</p></td>
+<td><p>Parameter estimation and observable consequences</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>4. Analytical Models</strong></p></td>
+<td><p>Superposition and convolution; plume symmetry; limitations of analytical solutions</p></td>
+<td><p>Domenico model + spreadsheets; model fit to conceptual plume geometries</p></td>
+<td><p>Pattern recognition and analytical simplification</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>5. Site Characterization</strong></p></td>
+<td><p>Field heterogeneity and scale effects; conceptual model construction</p></td>
+<td><p>Borehole data interpretation; K and n estimates; tracer tests and site cross-sections</p></td>
+<td><p>Data-driven model realism</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>6. Modern Software Tools</strong></p></td>
+<td><p>Numerical modeling concepts; grid design, unsaturated zone theory</p></td>
+<td><p>MODFLOW/FloPy/MT3D/MT3DMS workflows; CHEMFLO; hands-on project setup</p></td>
+<td><p>Scriptable modeling and workflow literacy</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>7. Remediation and Risk</strong></p></td>
+<td><p>Plume behavior: NAPLs, PFAS, reactive limits; role of uncertainty</p></td>
+<td><p>Design of pump-and-treat or barriers; case studies with regulatory framing</p></td>
+<td><p>Modeling as a decision support tool</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><a class="reference external" href="https://people.wou.edu/~taylors/g302/Contouring_Techniques.pdf">https://people.wou.edu/~taylors/g302/Contouring_Techniques.pdf</a></p>
+<p>Pedagogical Sequence: Unsaturated Flow and Transport (HYDRUS-1D → MODFLOW6/FloPy)
+Module 1 – Conceptual Foundation
+Objective: Ensure students understand the physics of variably saturated flow and transport before touching software.</p>
+<p>Lecture / Whiteboard:</p>
+<p>Saturated vs. unsaturated conditions.</p>
+<p>Soil water retention curve (θ–h) and hydraulic conductivity–moisture relationships.</p>
+<p>Richards’ equation (flow) and advection–dispersion (transport) in conceptual terms.</p>
+<p>Typical boundary conditions: constant head, flux (rainfall), atmospheric boundary.</p>
+<p>Solute transport basics: advection, dispersion, retardation, decay.</p>
+<p>Quick Activity: Paper-based infiltration problem with two soils (sand vs. clay) to see qualitative differences.</p>
+<p>Module 2 – First Contact with HYDRUS-1D
+Objective: Use the GUI to link parameters to real-world behavior without code overhead.</p>
+<p>Instructor Demo:</p>
+<p>Show main project tree (geometry, soil hydraulic properties, initial/boundary conditions, time controls).</p>
+<p>Load a pre-built infiltration example with measured soil parameters.</p>
+<p>Visualize: moisture content profiles over time, cumulative infiltration, drainage flux.</p>
+<p>Student Hands-On:</p>
+<p>Open the example project.</p>
+<p>Change only soil texture (sand vs. loam vs. clay) → observe differences in infiltration and drainage.</p>
+<p>Export a profile plot and cumulative infiltration curve.</p>
+<p>Module 3 – Adding Transport
+Objective: Connect water movement to solute movement and retention.</p>
+<p>Instructor Demo:</p>
+<p>Add a non-reactive solute pulse to rainfall (tracer experiment).</p>
+<p>Show breakthrough curve at a depth (e.g., bottom of root zone).</p>
+<p>Student Hands-On:</p>
+<p>Change dispersivity and observe tailing in breakthrough.</p>
+<p>Introduce sorption coefficient (Kd) and/or first-order decay, compare curves.</p>
+<p>Module 4 – Scenario Building and Interpretation
+Objective: Build confidence interpreting model behavior as an engineering tool.</p>
+<p>Student Exercise:</p>
+<p>Given a “storm event” dataset (rainfall + ET), simulate:</p>
+<p>Moisture recharge of a root zone.</p>
+<p>Solute leaching from a fertilizer application.</p>
+<p>Output: compare total drainage at the bottom boundary for two soil textures.</p>
+<p>Deliverable: Short note describing why results differ between textures, with annotated plots.</p>
+<p>Module 5 – Transition to MODFLOW6 + FloPy
+Objective: Show that the same physical principles extend to 3D and coupled systems.</p>
+<p>Instructor Bridge Lecture:</p>
+<p>HYDRUS-1D handles vertical, 1D flow in detail, ideal for soil column or profile analysis.</p>
+<p>MODFLOW’s UZF package implements similar unsaturated flow physics (conceptually simpler) for 3D regional systems.</p>
+<p>FloPy enables automation and linking with other packages (GWF, GWT).</p>
+<p>Quick Demo:</p>
+<p>Show a simple MODFLOW6 + UZF model with FloPy that mimics a vertical profile.</p>
+<p>Compare output style to HYDRUS-1D results.</p>
+<p>Teaching Notes
+Keep HYDRUS-1D as GUI-only in the first half: reduces setup friction and cognitive overload.</p>
+<p>Introduce Python scripting only in the MODFLOW6 phase so students see the payoff in automation, parameter sweeps, and reproducibility.</p>
+<p>Assessment Idea:</p>
+<p>HYDRUS portion → short lab report with plots &amp; interpretation.</p>
+<p>MODFLOW/FloPy portion → Jupyter Notebook submission with code + plots.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python-my-env",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python-my-env'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Theodore G. Cleveland, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

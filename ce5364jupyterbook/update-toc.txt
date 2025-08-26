@@ -1,0 +1,13 @@
+############### Revised Modular Topics #################################
+- file: chapters/50fundamentals/intro
+- file: chapters/51physicaltransport/transport
+- file: chapters/52reactivetransport/science
+- file: chapters/52reactivetransport/practice
+- file: chapters/53analyticalmodels/science
+- file: chapters/53analyticalmodels/practice
+- file: chapters/54sitecharacterization/science
+- file: chapters/54sitecharacterization/practice
+- file: chapters/55softwaretools/science
+- file: chapters/55softwaretools/practice
+- file: chapters/56remediationrisk/science
+- file: chapters/56remediationrisk/practice

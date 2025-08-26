@@ -1,0 +1,2673 @@
+                                   MODFLOW 6
+                U.S. GEOLOGICAL SURVEY MODULAR HYDROLOGIC MODEL
+                          GROUNDWATER FLOW MODEL (GWF)
+                            VERSION 6.6.1 02/10/2025
+
+   MODFLOW 6 compiled Feb 14 2025 13:39:18 with Intel(R) Fortran Intel(R) 64
+   Compiler Classic for applications running on Intel(R) 64, Version 2021.7.0
+                             Build 20220726_000000
+
+This software has been approved for release by the U.S. Geological 
+Survey (USGS). Although the software has been subjected to rigorous 
+review, the USGS reserves the right to update the software as needed 
+pursuant to further analysis and review. No warranty, expressed or 
+implied, is made by the USGS or the U.S. Government as to the 
+functionality of the software and related material nor shall the 
+fact of release constitute any such warranty. Furthermore, the 
+software is released on condition that neither the USGS nor the U.S. 
+Government shall be held liable for any damages resulting from its 
+authorized or unauthorized use. Also refer to the USGS Water 
+Resources Software User Rights Notice for complete use, copyright, 
+and distribution information.
+
+
+As a work of the United States Government, this USGS product is 
+in the public domain within the United States. You can copy, 
+modify, distribute, and perform the work, even for commercial 
+purposes, all without asking permission. Additionally, USGS 
+waives copyright and related rights in the work worldwide 
+through CC0 1.0 Universal Public Domain Dedication 
+(https://creativecommons.org/publicdomain/zero/1.0/).
+
+The following GNU Lesser General Public License (LGPL) libraries
+are used in this USGS product:
+
+    SPARSKIT version 2.0
+      ilut, luson, and qsplit 
+      (https://www-users.cse.umn.edu/~saad/software/SPARSKIT/)
+
+    RCM - Reverse Cuthill McKee Ordering
+      (https://people.math.sc.edu/Burkardt/f_src/rcm/rcm.html)
+
+    BLAS - Basic Linear Algebra Subprograms Level 1
+      (https://people.math.sc.edu/Burkardt/f_src/blas1_d/blas1_d.html)
+
+    SPARSEKIT - Sparse Matrix Utility Package
+      amux, dperm, dvperm, rperm, and cperm
+      (https://people.sc.fsu.edu/~jburkardt/f77_src/sparsekit/sparsekit.html)
+
+The following BSD-3 License libraries are used in this USGS product:
+
+    Modern Fortran DAG Library
+      Copyright (c) 2018, Jacob Williams
+      All rights reserved.
+      (https://github.com/jacobwilliams/daglib)
+
+MODFLOW 6 compiler options: -Ilinux/obj_mf6 -O2 -no-heap-arrays -fpe0
+-traceback -Qdiag-disable:7416 -Qdiag-disable:7025 -Qdiag-disable:5268 -fpp
+-module linux/mod_mf6/ -c -o linux/obj_mf6/compilerversion.o
+
+System command used to initiate simulation:
+/home/sensei/mfplayground/modflow-python/mf6.4.1_linux/bin/mf6
+
+MODFLOW was compiled using uniform precision.
+
+Real Variables
+  KIND: 8
+  TINY (smallest non-zero value):    2.225074-308
+  HUGE (largest value):    1.797693+308
+  PRECISION: 15
+  SIZE IN BITS: 64
+
+Integer Variables
+  KIND: 4
+  HUGE (largest value): 2147483647
+  SIZE IN BITS: 32
+
+Long Integer Variables
+  KIND: 8
+  HUGE (largest value): 9223372036854775807
+  SIZE IN BITS: 64
+
+Logical Variables
+  KIND: 4
+  SIZE IN BITS: 32
+ 
+ NAMEFILE OPTIONS:
+ END NAMEFILE OPTIONS:
+
+ DIS -- STRUCTURED GRID DISCRETIZATION PACKAGE, VERSION 2 : 3/27/2014 - INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE_3/DIS                           
+
+
+ NPF -- NODE PROPERTY FLOW PACKAGE, VERSION 1, 3/30/2015 INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE_3/NPF                           
+
+
+ IC -- Initial Conditions Package, Version 8, 3/28/2015 input read from mempath: __INPUT__/EXAMPLE_3/IC                            
+
+
+ Setting Discretization Options
+ End Setting Discretization Options
+
+ Setting Discretization Dimensions
+    NLAY = 5
+    NROW = 24
+    NCOL = 11
+ End Setting Discretization Dimensions
+
+ Setting Discretization Griddata
+    DELR set from input file
+    DELC set from input file
+    TOP set from input file
+    BOTM set from input file
+ End Setting Discretization Griddata
+
+ Setting NPF Options
+    Cell-by-cell flow information will be saved to binary file whenever ICBCFL is not zero.
+ End Setting NPF Options
+
+ Setting NPF Griddata
+    ICELLTYPE set from input file
+    K set from input file
+    K33 not provided.  Setting K33 = K.
+    K22 not provided.  Setting K22 = K.
+ End Setting NPF Griddata
+
+
+ WEL   -- WEL PACKAGE, VERSION 8, 2/22/2014 INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE_3/WEL_0                         
+
+ PROCESSING WEL BASE OPTIONS
+ END OF WEL BASE OPTIONS
+
+ PROCESSING WEL OPTIONS
+ END OF WEL OPTIONS
+
+ PROCESSING WEL BASE DIMENSIONS
+    MAXBOUND =       6
+ END OF WEL BASE DIMENSIONS
+
+ RCH   -- RCH PACKAGE, VERSION 8, 2/22/2014 INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE_3/RCHA_0                        
+
+ PROCESSING RCH BASE OPTIONS
+ END OF RCH BASE OPTIONS
+
+ PROCESSING RCHA OPTIONS
+    RECHARGE INPUT WILL BE READ AS ARRAY(S).
+ END OF RCHA OPTIONS
+
+ CHD   -- CHD PACKAGE, VERSION 8, 2/22/2014 INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE_3/CHD_0                         
+
+ PROCESSING CHD BASE OPTIONS
+    FLOWS WILL BE SAVED TO BUDGET FILE SPECIFIED IN OUTPUT CONTROL
+ END OF CHD BASE OPTIONS
+
+ PROCESSING CHD BASE DIMENSIONS
+    MAXBOUND =      11
+ END OF CHD BASE DIMENSIONS
+    STRT set from input file
+
+ STO -- STORAGE PACKAGE, VERSION 1, 5/19/2014 INPUT READ FROM MEMPATH: __INPUT__/EXAMPLE_3/STO                           
+
+
+ PROCESSING STORAGE OPTIONS
+ END OF STORAGE OPTIONS
+    BINARY GRID INFORMATION WILL BE WRITTEN TO:
+      UNIT NUMBER: 1015
+      FILE NAME: example_3.dis.grb
+
+ OPENED example_3.dis.grb
+ FILE TYPE:DATA(BINARY)   UNIT 1015   STATUS:REPLACE             
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+ ACTION:READWRITE           
+
+      THE LAST TIME STEP WILL BE PRINTED
+      THE LAST TIME STEP WILL BE PRINTED
+ # File generated by Flopy version 3.9.2 on 02/19/2025 at 15:11:35.
+
+ PROCESSING OC OPTIONS
+
+    BUDGET INFORMATION WILL BE WRITTEN TO:
+      UNIT NUMBER: 1016
+      FILE NAME: example_3.cbb
+
+ OPENED example_3.cbb
+ FILE TYPE:DATA(BINARY)   UNIT 1016   STATUS:REPLACE             
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+ ACTION:READWRITE           
+
+    HEAD INFORMATION WILL BE WRITTEN TO:
+      UNIT NUMBER: 1017
+      FILE NAME: example_3.hds
+
+ OPENED example_3.hds
+ FILE TYPE:DATA(BINARY)   UNIT 1017   STATUS:REPLACE             
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+ ACTION:READWRITE           
+
+ END OF OC OPTIONS
+
+start timestep kper="1" kstp="1" mode="normal"
+
+
+ BEGIN READING OUTPUT CONTROL FOR STRESS PERIOD 1
+      ALL TIME STEPS WILL BE SAVED
+      ALL TIME STEPS WILL BE SAVED
+      THE LAST TIME STEP WILL BE PRINTED
+
+ END READING OUTPUT CONTROL FOR STRESS PERIOD 1
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      1, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      1, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    1, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="2" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      2, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      2, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    2, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="3" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      3, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      3, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    3, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="4" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      4, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      4, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    4, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="5" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      5, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      5, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    5, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="6" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      6, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      6, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    6, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="7" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      7, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      7, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    7, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="8" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      8, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      8, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    8, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="9" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      9, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      9, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    9, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="10" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     10, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     10, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   10, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="11" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     11, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     11, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   11, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="12" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     12, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     12, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   12, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="13" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     13, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     13, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   13, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="14" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     14, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     14, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   14, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="15" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     15, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     15, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   15, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="16" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     16, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     16, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   16, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="17" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     17, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     17, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   17, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="18" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     18, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     18, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   18, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="19" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     19, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     19, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   19, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="20" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     20, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     20, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   20, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="21" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     21, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     21, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   21, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="22" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     22, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     22, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   22, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="23" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     23, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     23, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   23, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="24" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     24, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     24, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   24, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="25" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     25, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     25, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   25, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="26" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     26, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     26, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   26, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="27" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     27, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     27, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   27, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="28" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     28, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     28, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   28, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="29" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     29, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     29, STRESS PERIOD      1
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   29, STRESS PERIOD    1
+
+end timestep
+
+
+start timestep kper="1" kstp="30" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     30, STRESS PERIOD      1
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     30, STRESS PERIOD      1
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD    1
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    155.4       155.4       155.4       155.4       155.4       155.4       155.4       155.4       155.4       155.4    
+        155.4    
+   2    155.2       155.2       155.2       155.2       155.2       155.2       155.2       155.2       155.2       155.2    
+        155.2    
+   3    154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8    
+        154.8    
+   4    154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2    
+        154.2    
+   5    153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4    
+        153.4    
+   6    152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4    
+        152.4    
+   7    151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0    
+        151.0    
+   8    154.6       154.6       154.6       154.6       154.6       154.6       154.6       154.6       154.6       154.6    
+        154.6    
+   9    157.7       157.7       157.7       157.7       157.7       157.7       157.7       157.7       157.7       157.7    
+        157.7    
+  10    160.6       160.6       160.6       160.6       160.6       160.6       160.6       160.6       160.6       160.6    
+        160.6    
+  11    163.2       163.2       163.2       163.2       163.2       163.2       163.2       163.2       163.2       163.2    
+        163.2    
+  12    165.6       165.6       165.6       165.6       165.6       165.6       165.6       165.6       165.6       165.6    
+        165.6    
+  13    167.8       167.8       167.8       167.8       167.8       167.8       167.8       167.8       167.8       167.8    
+        167.8    
+  14    169.8       169.8       169.8       169.8       169.8       169.8       169.8       169.8       169.8       169.8    
+        169.8    
+  15    171.6       171.6       171.6       171.6       171.6       171.6       171.6       171.6       171.6       171.6    
+        171.6    
+  16    173.2       173.2       173.2       173.2       173.2       173.2       173.2       173.2       173.2       173.2    
+        173.2    
+  17    174.6       174.6       174.6       174.6       174.6       174.6       174.6       174.6       174.6       174.6    
+        174.6    
+  18    175.9       175.9       175.9       175.9       175.9       175.9       175.9       175.9       175.9       175.9    
+        175.9    
+  19    176.9       176.9       176.9       176.9       176.9       176.9       176.9       176.9       176.9       176.9    
+        176.9    
+  20    177.7       177.7       177.7       177.7       177.7       177.7       177.7       177.7       177.7       177.7    
+        177.7    
+  21    178.4       178.4       178.4       178.4       178.4       178.4       178.4       178.4       178.4       178.4    
+        178.4    
+  22    178.9       178.9       178.9       178.9       178.9       178.9       178.9       178.9       178.9       178.9    
+        178.9    
+  23    179.3       179.3       179.3       179.3       179.3       179.3       179.3       179.3       179.3       179.3    
+        179.3    
+  24    179.4       179.4       179.4       179.4       179.4       179.4       179.4       179.4       179.4       179.4    
+        179.4    
+1
+  HEAD IN LAYER   2 AT END OF TIME STEP  30 IN STRESS PERIOD    1
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    155.4       155.4       155.4       155.4       155.4       155.4       155.4       155.4       155.4       155.4    
+        155.4    
+   2    155.2       155.2       155.2       155.2       155.2       155.2       155.2       155.2       155.2       155.2    
+        155.2    
+   3    154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8    
+        154.8    
+   4    154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2    
+        154.2    
+   5    153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4    
+        153.4    
+   6    152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4    
+        152.4    
+   7    151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0    
+        151.0    
+   8    154.6       154.6       154.6       154.6       154.6       154.6       154.6       154.6       154.6       154.6    
+        154.6    
+   9    157.7       157.7       157.7       157.7       157.7       157.7       157.7       157.7       157.7       157.7    
+        157.7    
+  10    160.6       160.6       160.6       160.6       160.6       160.6       160.6       160.6       160.6       160.6    
+        160.6    
+  11    163.2       163.2       163.2       163.2       163.2       163.2       163.2       163.2       163.2       163.2    
+        163.2    
+  12    165.6       165.6       165.6       165.6       165.6       165.6       165.6       165.6       165.6       165.6    
+        165.6    
+  13    167.8       167.8       167.8       167.8       167.8       167.8       167.8       167.8       167.8       167.8    
+        167.8    
+  14    169.8       169.8       169.8       169.8       169.8       169.8       169.8       169.8       169.8       169.8    
+        169.8    
+  15    171.6       171.6       171.6       171.6       171.6       171.6       171.6       171.6       171.6       171.6    
+        171.6    
+  16    173.2       173.2       173.2       173.2       173.2       173.2       173.2       173.2       173.2       173.2    
+        173.2    
+  17    174.6       174.6       174.6       174.6       174.6       174.6       174.6       174.6       174.6       174.6    
+        174.6    
+  18    175.9       175.9       175.9       175.9       175.9       175.9       175.9       175.9       175.9       175.9    
+        175.9    
+  19    176.9       176.9       176.9       176.9       176.9       176.9       176.9       176.9       176.9       176.9    
+        176.9    
+  20    177.7       177.7       177.7       177.7       177.7       177.7       177.7       177.7       177.7       177.7    
+        177.7    
+  21    178.4       178.4       178.4       178.4       178.4       178.4       178.4       178.4       178.4       178.4    
+        178.4    
+  22    178.9       178.9       178.9       178.9       178.9       178.9       178.9       178.9       178.9       178.9    
+        178.9    
+  23    179.3       179.3       179.3       179.3       179.3       179.3       179.3       179.3       179.3       179.3    
+        179.3    
+  24    179.4       179.4       179.4       179.4       179.4       179.4       179.4       179.4       179.4       179.4    
+        179.4    
+1
+  HEAD IN LAYER   3 AT END OF TIME STEP  30 IN STRESS PERIOD    1
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    155.4       155.4       155.4       155.4       155.4       155.4       155.4       155.4       155.4       155.4    
+        155.4    
+   2    155.2       155.2       155.2       155.2       155.2       155.2       155.2       155.2       155.2       155.2    
+        155.2    
+   3    154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8    
+        154.8    
+   4    154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2    
+        154.2    
+   5    153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4    
+        153.4    
+   6    152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4    
+        152.4    
+   7    151.2       151.2       151.2       151.2       151.2       151.2       151.2       151.2       151.2       151.2    
+        151.2    
+   8    154.6       154.6       154.6       154.6       154.6       154.6       154.6       154.6       154.6       154.6    
+        154.6    
+   9    157.7       157.7       157.7       157.7       157.7       157.7       157.7       157.7       157.7       157.7    
+        157.7    
+  10    160.6       160.6       160.6       160.6       160.6       160.6       160.6       160.6       160.6       160.6    
+        160.6    
+  11    163.2       163.2       163.2       163.2       163.2       163.2       163.2       163.2       163.2       163.2    
+        163.2    
+  12    165.6       165.6       165.6       165.6       165.6       165.6       165.6       165.6       165.6       165.6    
+        165.6    
+  13    167.8       167.8       167.8       167.8       167.8       167.8       167.8       167.8       167.8       167.8    
+        167.8    
+  14    169.8       169.8       169.8       169.8       169.8       169.8       169.8       169.8       169.8       169.8    
+        169.8    
+  15    171.6       171.6       171.6       171.6       171.6       171.6       171.6       171.6       171.6       171.6    
+        171.6    
+  16    173.2       173.2       173.2       173.2       173.2       173.2       173.2       173.2       173.2       173.2    
+        173.2    
+  17    174.6       174.6       174.6       174.6       174.6       174.6       174.6       174.6       174.6       174.6    
+        174.6    
+  18    175.9       175.9       175.9       175.9       175.9       175.9       175.9       175.9       175.9       175.9    
+        175.9    
+  19    176.9       176.9       176.9       176.9       176.9       176.9       176.9       176.9       176.9       176.9    
+        176.9    
+  20    177.7       177.7       177.7       177.7       177.7       177.7       177.7       177.7       177.7       177.7    
+        177.7    
+  21    178.4       178.4       178.4       178.4       178.4       178.4       178.4       178.4       178.4       178.4    
+        178.4    
+  22    178.9       178.9       178.9       178.9       178.9       178.9       178.9       178.9       178.9       178.9    
+        178.9    
+  23    179.3       179.3       179.3       179.3       179.3       179.3       179.3       179.3       179.3       179.3    
+        179.3    
+  24    179.4       179.4       179.4       179.4       179.4       179.4       179.4       179.4       179.4       179.4    
+        179.4    
+1
+  HEAD IN LAYER   4 AT END OF TIME STEP  30 IN STRESS PERIOD    1
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    155.4       155.4       155.4       155.4       155.4       155.4       155.4       155.4       155.4       155.4    
+        155.4    
+   2    155.2       155.2       155.2       155.2       155.2       155.2       155.2       155.2       155.2       155.2    
+        155.2    
+   3    154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8    
+        154.8    
+   4    154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2    
+        154.2    
+   5    153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4    
+        153.4    
+   6    152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4    
+        152.4    
+   7    151.4       151.4       151.4       151.4       151.4       151.4       151.4       151.4       151.4       151.4    
+        151.4    
+   8    154.6       154.6       154.6       154.6       154.6       154.6       154.6       154.6       154.6       154.6    
+        154.6    
+   9    157.7       157.7       157.7       157.7       157.7       157.7       157.7       157.7       157.7       157.7    
+        157.7    
+  10    160.6       160.6       160.6       160.6       160.6       160.6       160.6       160.6       160.6       160.6    
+        160.6    
+  11    163.2       163.2       163.2       163.2       163.2       163.2       163.2       163.2       163.2       163.2    
+        163.2    
+  12    165.6       165.6       165.6       165.6       165.6       165.6       165.6       165.6       165.6       165.6    
+        165.6    
+  13    167.8       167.8       167.8       167.8       167.8       167.8       167.8       167.8       167.8       167.8    
+        167.8    
+  14    169.8       169.8       169.8       169.8       169.8       169.8       169.8       169.8       169.8       169.8    
+        169.8    
+  15    171.6       171.6       171.6       171.6       171.6       171.6       171.6       171.6       171.6       171.6    
+        171.6    
+  16    173.2       173.2       173.2       173.2       173.2       173.2       173.2       173.2       173.2       173.2    
+        173.2    
+  17    174.6       174.6       174.6       174.6       174.6       174.6       174.6       174.6       174.6       174.6    
+        174.6    
+  18    175.8       175.8       175.8       175.8       175.8       175.8       175.8       175.8       175.8       175.8    
+        175.8    
+  19    176.9       176.9       176.9       176.9       176.9       176.9       176.9       176.9       176.9       176.9    
+        176.9    
+  20    177.7       177.7       177.7       177.7       177.7       177.7       177.7       177.7       177.7       177.7    
+        177.7    
+  21    178.4       178.4       178.4       178.4       178.4       178.4       178.4       178.4       178.4       178.4    
+        178.4    
+  22    178.9       178.9       178.9       178.9       178.9       178.9       178.9       178.9       178.9       178.9    
+        178.9    
+  23    179.3       179.3       179.3       179.3       179.3       179.3       179.3       179.3       179.3       179.3    
+        179.3    
+  24    179.4       179.4       179.4       179.4       179.4       179.4       179.4       179.4       179.4       179.4    
+        179.4    
+1
+  HEAD IN LAYER   5 AT END OF TIME STEP  30 IN STRESS PERIOD    1
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    155.4       155.4       155.4       155.4       155.4       155.4       155.4       155.4       155.4       155.4    
+        155.4    
+   2    155.2       155.2       155.2       155.2       155.2       155.2       155.2       155.2       155.2       155.2    
+        155.2    
+   3    154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8    
+        154.8    
+   4    154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2    
+        154.2    
+   5    153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4    
+        153.4    
+   6    152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4    
+        152.4    
+   7    151.4       151.4       151.4       151.4       151.4       151.4       151.4       151.4       151.4       151.4    
+        151.4    
+   8    154.6       154.6       154.6       154.6       154.6       154.6       154.6       154.6       154.6       154.6    
+        154.6    
+   9    157.7       157.7       157.7       157.7       157.7       157.7       157.7       157.7       157.7       157.7    
+        157.7    
+  10    160.6       160.6       160.6       160.6       160.6       160.6       160.6       160.6       160.6       160.6    
+        160.6    
+  11    163.2       163.2       163.2       163.2       163.2       163.2       163.2       163.2       163.2       163.2    
+        163.2    
+  12    165.6       165.6       165.6       165.6       165.6       165.6       165.6       165.6       165.6       165.6    
+        165.6    
+  13    167.8       167.8       167.8       167.8       167.8       167.8       167.8       167.8       167.8       167.8    
+        167.8    
+  14    169.8       169.8       169.8       169.8       169.8       169.8       169.8       169.8       169.8       169.8    
+        169.8    
+  15    171.6       171.6       171.6       171.6       171.6       171.6       171.6       171.6       171.6       171.6    
+        171.6    
+  16    173.2       173.2       173.2       173.2       173.2       173.2       173.2       173.2       173.2       173.2    
+        173.2    
+  17    174.6       174.6       174.6       174.6       174.6       174.6       174.6       174.6       174.6       174.6    
+        174.6    
+  18    175.8       175.8       175.8       175.8       175.8       175.8       175.8       175.8       175.8       175.8    
+        175.8    
+  19    176.9       176.9       176.9       176.9       176.9       176.9       176.9       176.9       176.9       176.9    
+        176.9    
+  20    177.7       177.7       177.7       177.7       177.7       177.7       177.7       177.7       177.7       177.7    
+        177.7    
+  21    178.4       178.4       178.4       178.4       178.4       178.4       178.4       178.4       178.4       178.4    
+        178.4    
+  22    178.9       178.9       178.9       178.9       178.9       178.9       178.9       178.9       178.9       178.9    
+        178.9    
+  23    179.3       179.3       179.3       179.3       179.3       179.3       179.3       179.3       179.3       179.3    
+        179.3    
+  24    179.4       179.4       179.4       179.4       179.4       179.4       179.4       179.4       179.4       179.4    
+        179.4    
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   30, STRESS PERIOD    1
+
+
+  VOLUME BUDGET FOR ENTIRE MODEL AT END OF TIME STEP   30, STRESS PERIOD   1
+  ---------------------------------------------------------------------------------------------------
+
+     CUMULATIVE VOLUME      L**3       RATES FOR THIS TIME STEP      L**3/T          PACKAGE NAME    
+     ------------------                 ------------------------                     ----------------
+
+           IN:                                      IN:
+           ---                                      ---
+              STO-SS =       6.5553E-03                STO-SS =       2.0360E-04     STORAGE                          
+                 WEL =           0.0000                   WEL =           0.0000     WEL_0                            
+                RCHA =  1897500000.0000                  RCHA =    63250000.0000     RCHA_0                           
+                 CHD =           0.0000                   CHD =           0.0000     CHD_0                            
+
+            TOTAL IN =  1897500000.0066              TOTAL IN =    63250000.0002
+
+          OUT:                                     OUT:
+          ----                                     ----
+              STO-SS =     7084266.4608                STO-SS =       1.2298E-03     STORAGE                          
+                 WEL =           1.8000                   WEL =       6.0000E-02     WEL_0                            
+                RCHA =           0.0000                  RCHA =           0.0000     RCHA_0                           
+                 CHD =  1890415683.1619                   CHD =    63249997.9511     CHD_0                            
+
+           TOTAL OUT =  1897499951.4227             TOTAL OUT =    63249998.0123
+
+            IN - OUT =          48.5839              IN - OUT =           1.9879
+
+ PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
+
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD    1
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH 3.15576E+07 5.25960E+05  8766.0      365.25      1.0000    
+ STRESS PERIOD TIME 9.46728E+08 1.57788E+07 2.62980E+05  10958.      30.000    
+         TOTAL TIME 9.46728E+08 1.57788E+07 2.62980E+05  10958.      30.000    
+
+
+end timestep
+
+
+start timestep kper="2" kstp="1" mode="normal"
+
+
+ END OF FILE DETECTED IN OUTPUT CONTROL.
+ CURRENT OUTPUT CONTROL SETTINGS WILL BE 
+ REPEATED UNTIL THE END OF THE SIMULATION.
+
+ OUTPUT CONTROL FOR STRESS PERIOD 2 IS REPEATED USING SETTINGS FROM A PREVIOUS STRESS PERIOD.
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      1, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      1, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    1, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="2" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      2, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      2, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    2, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="3" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      3, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      3, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    3, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="4" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      4, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      4, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    4, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="5" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      5, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      5, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    5, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="6" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      6, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      6, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    6, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="7" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      7, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      7, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    7, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="8" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      8, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      8, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    8, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="9" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      9, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      9, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    9, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="10" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     10, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     10, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   10, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="11" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     11, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     11, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   11, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="12" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     12, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     12, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   12, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="13" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     13, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     13, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   13, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="14" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     14, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     14, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   14, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="15" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     15, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     15, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   15, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="16" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     16, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     16, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   16, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="17" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     17, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     17, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   17, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="18" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     18, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     18, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   18, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="19" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     19, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     19, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   19, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="20" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     20, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     20, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   20, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="21" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     21, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     21, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   21, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="22" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     22, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     22, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   22, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="23" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     23, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     23, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   23, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="24" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     24, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     24, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   24, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="25" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     25, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     25, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   25, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="26" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     26, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     26, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   26, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="27" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     27, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     27, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   27, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="28" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     28, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     28, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   28, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="29" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     29, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     29, STRESS PERIOD      2
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   29, STRESS PERIOD    2
+
+end timestep
+
+
+start timestep kper="2" kstp="30" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     30, STRESS PERIOD      2
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     30, STRESS PERIOD      2
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD    2
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3    
+        155.3    
+   2    155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1    
+        155.1    
+   3    154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8    
+        154.8    
+   4    154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2    
+        154.2    
+   5    153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4    
+        153.4    
+   6    152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4    
+        152.4    
+   7    151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0    
+        151.0    
+   8    153.8       153.8       153.8       153.8       153.8       153.8       153.8       153.8       153.8       153.8    
+        153.8    
+   9    156.3       156.3       156.3       156.3       156.3       156.3       156.3       156.3       156.3       156.3    
+        156.3    
+  10    158.5       158.5       158.5       158.5       158.5       158.5       158.5       158.5       158.5       158.5    
+        158.5    
+  11    160.4       160.4       160.4       160.4       160.4       160.4       160.4       160.4       160.4       160.4    
+        160.4    
+  12    162.2       162.2       162.2       162.2       162.2       162.2       162.2       162.2       162.2       162.2    
+        162.2    
+  13    163.8       163.8       163.8       163.8       163.8       163.8       163.8       163.8       163.8       163.8    
+        163.8    
+  14    165.2       165.1       165.1       165.1       165.1       165.1       165.1       165.1       165.1       165.1    
+        165.2    
+  15    166.3       166.3       166.3       166.3       166.3       166.3       166.3       166.3       166.3       166.3    
+        166.3    
+  16    167.3       167.3       167.3       167.3       167.3       167.3       167.3       167.3       167.3       167.3    
+        167.3    
+  17    168.2       168.1       168.1       168.1       168.0       168.0       168.0       168.1       168.1       168.1    
+        168.2    
+  18    168.8       168.8       168.7       168.7       168.6       168.6       168.6       168.7       168.7       168.8    
+        168.8    
+  19    169.3       169.3       169.2       169.1       168.9       168.9       168.9       169.1       169.2       169.3    
+        169.3    
+  20    169.7       169.6       169.5       169.3       169.0       168.9       169.0       169.3       169.5       169.6    
+        169.7    
+  21    170.0       169.9       169.7       169.3       168.9       168.4       168.9       169.3       169.7       169.9    
+        170.0    
+  22    170.1       170.0       169.8       169.3       168.6       166.7       168.6       169.3       169.8       170.0    
+        170.1    
+  23    170.3       170.1       169.9       169.5       169.0       168.6       169.0       169.5       169.9       170.1    
+        170.3    
+  24    170.3       170.2       170.0       169.7       169.4       169.1       169.4       169.7       170.0       170.2    
+        170.3    
+1
+  HEAD IN LAYER   2 AT END OF TIME STEP  30 IN STRESS PERIOD    2
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3    
+        155.3    
+   2    155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1    
+        155.1    
+   3    154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8       154.8    
+        154.8    
+   4    154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2    
+        154.2    
+   5    153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4    
+        153.4    
+   6    152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4    
+        152.4    
+   7    151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0    
+        151.0    
+   8    153.8       153.8       153.8       153.8       153.8       153.8       153.8       153.8       153.8       153.8    
+        153.8    
+   9    156.3       156.3       156.3       156.3       156.3       156.3       156.3       156.3       156.3       156.3    
+        156.3    
+  10    158.5       158.5       158.5       158.5       158.5       158.5       158.5       158.5       158.5       158.5    
+        158.5    
+  11    160.4       160.4       160.4       160.4       160.4       160.4       160.4       160.4       160.4       160.4    
+        160.4    
+  12    162.2       162.2       162.2       162.2       162.2       162.2       162.2       162.2       162.2       162.2    
+        162.2    
+  13    163.8       163.8       163.8       163.8       163.8       163.8       163.8       163.8       163.8       163.8    
+        163.8    
+  14    165.2       165.1       165.1       165.1       165.1       165.1       165.1       165.1       165.1       165.1    
+        165.2    
+  15    166.3       166.3       166.3       166.3       166.3       166.3       166.3       166.3       166.3       166.3    
+        166.3    
+  16    167.3       167.3       167.3       167.3       167.3       167.3       167.3       167.3       167.3       167.3    
+        167.3    
+  17    168.2       168.1       168.1       168.1       168.0       168.0       168.0       168.1       168.1       168.1    
+        168.2    
+  18    168.8       168.8       168.7       168.7       168.6       168.6       168.6       168.7       168.7       168.8    
+        168.8    
+  19    169.3       169.3       169.2       169.1       168.9       168.9       168.9       169.1       169.2       169.3    
+        169.3    
+  20    169.7       169.6       169.5       169.3       169.0       168.9       169.0       169.3       169.5       169.6    
+        169.7    
+  21    169.9       169.9       169.6       169.3       168.9       168.4       168.9       169.3       169.6       169.9    
+        169.9    
+  22    170.1       170.0       169.8       169.3       168.6       166.8       168.6       169.3       169.8       170.0    
+        170.1    
+  23    170.3       170.1       169.9       169.5       169.0       168.5       169.0       169.5       169.9       170.1    
+        170.3    
+  24    170.3       170.2       170.0       169.7       169.3       169.1       169.3       169.7       170.0       170.2    
+        170.3    
+1
+  HEAD IN LAYER   3 AT END OF TIME STEP  30 IN STRESS PERIOD    2
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3    
+        155.3    
+   2    155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1    
+        155.1    
+   3    154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7    
+        154.7    
+   4    154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2       154.2    
+        154.2    
+   5    153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4    
+        153.4    
+   6    152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4    
+        152.4    
+   7    151.2       151.2       151.2       151.2       151.2       151.2       151.2       151.2       151.2       151.2    
+        151.2    
+   8    153.8       153.8       153.8       153.8       153.8       153.8       153.8       153.8       153.8       153.8    
+        153.8    
+   9    156.3       156.3       156.3       156.3       156.3       156.3       156.3       156.3       156.3       156.3    
+        156.3    
+  10    158.5       158.5       158.5       158.4       158.4       158.4       158.4       158.4       158.5       158.5    
+        158.5    
+  11    160.4       160.4       160.4       160.4       160.4       160.4       160.4       160.4       160.4       160.4    
+        160.4    
+  12    162.2       162.2       162.2       162.2       162.2       162.2       162.2       162.2       162.2       162.2    
+        162.2    
+  13    163.8       163.8       163.8       163.8       163.8       163.8       163.8       163.8       163.8       163.8    
+        163.8    
+  14    165.1       165.1       165.1       165.1       165.1       165.1       165.1       165.1       165.1       165.1    
+        165.1    
+  15    166.3       166.3       166.3       166.3       166.3       166.3       166.3       166.3       166.3       166.3    
+        166.3    
+  16    167.3       167.3       167.3       167.3       167.2       167.2       167.2       167.3       167.3       167.3    
+        167.3    
+  17    168.1       168.1       168.1       168.1       168.0       168.0       168.0       168.1       168.1       168.1    
+        168.1    
+  18    168.8       168.8       168.7       168.6       168.6       168.6       168.6       168.6       168.7       168.8    
+        168.8    
+  19    169.3       169.3       169.2       169.0       168.9       168.9       168.9       169.0       169.2       169.3    
+        169.3    
+  20    169.7       169.6       169.5       169.3       169.0       168.9       169.0       169.3       169.5       169.6    
+        169.7    
+  21    169.9       169.9       169.6       169.3       168.9       168.4       168.9       169.3       169.6       169.9    
+        169.9    
+  22    170.1       170.0       169.8       169.3       168.6       166.8       168.6       169.3       169.8       170.0    
+        170.1    
+  23    170.3       170.1       169.9       169.5       169.0       168.5       169.0       169.5       169.9       170.1    
+        170.3    
+  24    170.3       170.2       170.0       169.7       169.3       169.1       169.3       169.7       170.0       170.2    
+        170.3    
+1
+  HEAD IN LAYER   4 AT END OF TIME STEP  30 IN STRESS PERIOD    2
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3    
+        155.3    
+   2    155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1    
+        155.1    
+   3    154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7    
+        154.7    
+   4    154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1    
+        154.1    
+   5    153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4    
+        153.4    
+   6    152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4    
+        152.4    
+   7    151.3       151.3       151.3       151.3       151.3       151.3       151.3       151.3       151.3       151.3    
+        151.3    
+   8    153.8       153.8       153.8       153.8       153.8       153.8       153.8       153.8       153.8       153.8    
+        153.8    
+   9    156.2       156.2       156.2       156.2       156.2       156.2       156.2       156.2       156.2       156.2    
+        156.2    
+  10    158.4       158.4       158.4       158.4       158.4       158.4       158.4       158.4       158.4       158.4    
+        158.4    
+  11    160.4       160.4       160.4       160.4       160.4       160.4       160.4       160.4       160.4       160.4    
+        160.4    
+  12    162.2       162.2       162.2       162.2       162.2       162.2       162.2       162.2       162.2       162.2    
+        162.2    
+  13    163.8       163.8       163.8       163.7       163.7       163.7       163.7       163.7       163.8       163.8    
+        163.8    
+  14    165.1       165.1       165.1       165.1       165.1       165.1       165.1       165.1       165.1       165.1    
+        165.1    
+  15    166.3       166.3       166.3       166.3       166.3       166.3       166.3       166.3       166.3       166.3    
+        166.3    
+  16    167.3       167.3       167.3       167.3       167.2       167.2       167.2       167.3       167.3       167.3    
+        167.3    
+  17    168.1       168.1       168.1       168.0       168.0       168.0       168.0       168.0       168.1       168.1    
+        168.1    
+  18    168.8       168.8       168.7       168.6       168.6       168.5       168.6       168.6       168.7       168.8    
+        168.8    
+  19    169.3       169.3       169.2       169.0       168.9       168.9       168.9       169.0       169.2       169.3    
+        169.3    
+  20    169.7       169.6       169.5       169.3       169.0       168.9       169.0       169.3       169.5       169.6    
+        169.7    
+  21    169.9       169.9       169.6       169.3       168.9       168.4       168.9       169.3       169.6       169.9    
+        169.9    
+  22    170.1       170.0       169.8       169.3       168.6       166.8       168.6       169.3       169.8       170.0    
+        170.1    
+  23    170.3       170.1       169.9       169.5       169.0       168.5       169.0       169.5       169.9       170.1    
+        170.3    
+  24    170.3       170.2       170.0       169.7       169.3       169.1       169.3       169.7       170.0       170.2    
+        170.3    
+1
+  HEAD IN LAYER   5 AT END OF TIME STEP  30 IN STRESS PERIOD    2
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3    
+        155.3    
+   2    155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1    
+        155.1    
+   3    154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7    
+        154.7    
+   4    154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1    
+        154.1    
+   5    153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4       153.4    
+        153.4    
+   6    152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4       152.4    
+        152.4    
+   7    151.3       151.3       151.3       151.3       151.3       151.3       151.3       151.3       151.3       151.3    
+        151.3    
+   8    153.8       153.8       153.8       153.8       153.8       153.8       153.8       153.8       153.8       153.8    
+        153.8    
+   9    156.2       156.2       156.2       156.2       156.2       156.2       156.2       156.2       156.2       156.2    
+        156.2    
+  10    158.4       158.4       158.4       158.4       158.4       158.4       158.4       158.4       158.4       158.4    
+        158.4    
+  11    160.4       160.4       160.4       160.4       160.4       160.4       160.4       160.4       160.4       160.4    
+        160.4    
+  12    162.2       162.2       162.2       162.2       162.2       162.2       162.2       162.2       162.2       162.2    
+        162.2    
+  13    163.8       163.8       163.8       163.7       163.7       163.7       163.7       163.7       163.8       163.8    
+        163.8    
+  14    165.1       165.1       165.1       165.1       165.1       165.1       165.1       165.1       165.1       165.1    
+        165.1    
+  15    166.3       166.3       166.3       166.3       166.3       166.3       166.3       166.3       166.3       166.3    
+        166.3    
+  16    167.3       167.3       167.3       167.3       167.2       167.2       167.2       167.3       167.3       167.3    
+        167.3    
+  17    168.1       168.1       168.1       168.0       168.0       168.0       168.0       168.0       168.1       168.1    
+        168.1    
+  18    168.8       168.8       168.7       168.6       168.6       168.5       168.6       168.6       168.7       168.8    
+        168.8    
+  19    169.3       169.3       169.2       169.0       168.9       168.9       168.9       169.0       169.2       169.3    
+        169.3    
+  20    169.7       169.6       169.5       169.3       169.0       168.9       169.0       169.3       169.5       169.6    
+        169.7    
+  21    169.9       169.9       169.6       169.3       168.9       168.4       168.9       169.3       169.6       169.9    
+        169.9    
+  22    170.1       170.0       169.8       169.3       168.6       166.8       168.6       169.3       169.8       170.0    
+        170.1    
+  23    170.3       170.1       169.9       169.5       169.0       168.5       169.0       169.5       169.9       170.1    
+        170.3    
+  24    170.3       170.2       170.0       169.7       169.3       169.1       169.3       169.7       170.0       170.2    
+        170.3    
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   30, STRESS PERIOD    2
+
+
+  VOLUME BUDGET FOR ENTIRE MODEL AT END OF TIME STEP   30, STRESS PERIOD   2
+  ---------------------------------------------------------------------------------------------------
+
+     CUMULATIVE VOLUME      L**3       RATES FOR THIS TIME STEP      L**3/T          PACKAGE NAME    
+     ------------------                 ------------------------                     ----------------
+
+           IN:                                      IN:
+           ---                                      ---
+              STO-SS =     1946963.9172                STO-SS =       5.3182E-04     STORAGE                          
+                 WEL =           0.0000                   WEL =           0.0000     WEL_0                            
+                RCHA =  3795000000.0000                  RCHA =    63250000.0000     RCHA_0                           
+                 CHD =           0.0000                   CHD =           0.0000     CHD_0                            
+
+            TOTAL IN =  3796946963.9172              TOTAL IN =    63250000.0005
+
+          OUT:                                     OUT:
+          ----                                     ----
+              STO-SS =     7084266.4653                STO-SS =       4.6434E-06     STORAGE                          
+                 WEL =   300000013.8000                   WEL =    10000000.4000     WEL_0                            
+                RCHA =           0.0000                  RCHA =           0.0000     RCHA_0                           
+                 CHD =  3489862654.2793                   CHD =    53250000.4103     CHD_0                            
+
+           TOTAL OUT =  3796946934.5446             TOTAL OUT =    63250000.8103
+
+            IN - OUT =          29.3726              IN - OUT =          -0.8098
+
+ PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =          -0.00
+
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD    2
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH 3.15576E+07 5.25960E+05  8766.0      365.25      1.0000    
+ STRESS PERIOD TIME 9.46728E+08 1.57788E+07 2.62980E+05  10958.      30.000    
+         TOTAL TIME 1.89346E+09 3.15576E+07 5.25960E+05  21915.      60.000    
+
+
+end timestep
+
+
+start timestep kper="3" kstp="1" mode="normal"
+
+
+ OUTPUT CONTROL FOR STRESS PERIOD 3 IS REPEATED USING SETTINGS FROM A PREVIOUS STRESS PERIOD.
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      1, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      1, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    1, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="2" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      2, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      2, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    2, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="3" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      3, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      3, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    3, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="4" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      4, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      4, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    4, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="5" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      5, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      5, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    5, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="6" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      6, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      6, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    6, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="7" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      7, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      7, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    7, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="8" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      8, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      8, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    8, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="9" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      9, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      9, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    9, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="10" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     10, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     10, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   10, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="11" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     11, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     11, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   11, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="12" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     12, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     12, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   12, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="13" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     13, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     13, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   13, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="14" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     14, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     14, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   14, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="15" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     15, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     15, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   15, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="16" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     16, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     16, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   16, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="17" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     17, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     17, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   17, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="18" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     18, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     18, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   18, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="19" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     19, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     19, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   19, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="20" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     20, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     20, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   20, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="21" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     21, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     21, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   21, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="22" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     22, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     22, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   22, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="23" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     23, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     23, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   23, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="24" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     24, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     24, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   24, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="25" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     25, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     25, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   25, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="26" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     26, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     26, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   26, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="27" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     27, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     27, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   27, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="28" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     28, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     28, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   28, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="29" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     29, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     29, STRESS PERIOD      3
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   29, STRESS PERIOD    3
+
+end timestep
+
+
+start timestep kper="3" kstp="30" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     30, STRESS PERIOD      3
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     30, STRESS PERIOD      3
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD    3
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3    
+        155.3    
+   2    155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1    
+        155.1    
+   3    154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7    
+        154.7    
+   4    154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1    
+        154.1    
+   5    153.3       153.3       153.3       153.3       153.3       153.3       153.3       153.3       153.3       153.3    
+        153.3    
+   6    152.3       152.3       152.3       152.3       152.3       152.3       152.3       152.3       152.3       152.3    
+        152.3    
+   7    151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0    
+        151.0    
+   8    152.7       152.7       152.7       152.7       152.6       152.6       152.6       152.6       152.6       152.6    
+        152.6    
+   9    154.1       154.1       154.1       154.0       153.9       153.9       153.8       153.8       153.8       153.8    
+        153.9    
+  10    155.3       155.3       155.2       155.1       155.0       154.9       154.9       154.8       154.9       154.9    
+        154.9    
+  11    156.4       156.3       156.2       156.1       155.9       155.7       155.6       155.6       155.7       155.7    
+        155.8    
+  12    157.3       157.2       157.0       156.8       156.5       156.3       156.1       156.2       156.3       156.4    
+        156.5    
+  13    158.0       157.9       157.7       157.4       157.0       156.5       156.2       156.4       156.7       157.0    
+        157.1    
+  14    158.7       158.6       158.3       157.9       157.3       156.5       155.6       156.3       157.0       157.4    
+        157.6    
+  15    159.3       159.2       158.9       158.4       157.7       156.3       153.6       156.1       157.3       157.9    
+        158.2    
+  16    159.9       159.7       159.5       159.0       158.4       157.6       156.7       157.4       158.1       158.6    
+        158.8    
+  17    160.4       160.3       160.0       159.7       159.2       158.7       158.4       158.6       159.0       159.3    
+        159.4    
+  18    160.8       160.7       160.5       160.2       159.8       159.5       159.4       159.5       159.7       159.9    
+        160.0    
+  19    161.1       161.0       160.8       160.5       160.2       160.0       160.0       160.1       160.2       160.4    
+        160.5    
+  20    161.4       161.3       161.0       160.7       160.4       160.1       160.2       160.4       160.6       160.8    
+        160.9    
+  21    161.6       161.4       161.2       160.8       160.2       159.6       160.1       160.5       160.8       161.0    
+        161.2    
+  22    161.7       161.6       161.3       160.8       159.9       157.9       159.8       160.6       161.0       161.2    
+        161.4    
+  23    161.8       161.7       161.4       161.0       160.4       159.8       160.3       160.8       161.2       161.4    
+        161.5    
+  24    161.9       161.7       161.5       161.1       160.7       160.4       160.6       161.0       161.3       161.5    
+        161.6    
+1
+  HEAD IN LAYER   2 AT END OF TIME STEP  30 IN STRESS PERIOD    3
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3    
+        155.3    
+   2    155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1    
+        155.1    
+   3    154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7    
+        154.7    
+   4    154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1    
+        154.1    
+   5    153.3       153.3       153.3       153.3       153.3       153.3       153.3       153.3       153.3       153.3    
+        153.3    
+   6    152.3       152.3       152.3       152.3       152.3       152.3       152.3       152.3       152.3       152.3    
+        152.3    
+   7    151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0    
+        151.0    
+   8    152.7       152.7       152.7       152.7       152.6       152.6       152.6       152.6       152.6       152.6    
+        152.6    
+   9    154.1       154.1       154.1       154.0       153.9       153.9       153.8       153.8       153.8       153.8    
+        153.9    
+  10    155.3       155.3       155.2       155.1       155.0       154.9       154.9       154.8       154.9       154.9    
+        154.9    
+  11    156.4       156.3       156.2       156.1       155.9       155.7       155.6       155.6       155.7       155.7    
+        155.8    
+  12    157.3       157.2       157.0       156.8       156.5       156.3       156.1       156.2       156.3       156.4    
+        156.5    
+  13    158.0       157.9       157.7       157.4       157.0       156.5       156.2       156.4       156.7       157.0    
+        157.1    
+  14    158.7       158.6       158.3       157.9       157.3       156.5       155.6       156.3       157.0       157.4    
+        157.6    
+  15    159.3       159.2       158.9       158.4       157.6       156.3       153.5       156.1       157.3       157.9    
+        158.2    
+  16    159.9       159.7       159.5       159.0       158.4       157.6       156.7       157.4       158.1       158.6    
+        158.8    
+  17    160.4       160.2       160.0       159.7       159.2       158.7       158.4       158.6       159.0       159.3    
+        159.4    
+  18    160.8       160.7       160.5       160.2       159.8       159.5       159.4       159.5       159.7       159.9    
+        160.0    
+  19    161.1       161.0       160.8       160.5       160.2       160.0       160.0       160.1       160.2       160.4    
+        160.5    
+  20    161.4       161.3       161.0       160.7       160.4       160.1       160.2       160.4       160.6       160.8    
+        160.9    
+  21    161.6       161.4       161.2       160.8       160.2       159.6       160.1       160.5       160.8       161.0    
+        161.2    
+  22    161.7       161.6       161.3       160.8       159.9       157.9       159.8       160.6       161.0       161.2    
+        161.4    
+  23    161.8       161.7       161.4       161.0       160.4       159.8       160.3       160.8       161.1       161.4    
+        161.5    
+  24    161.9       161.7       161.5       161.1       160.7       160.4       160.6       160.9       161.2       161.5    
+        161.6    
+1
+  HEAD IN LAYER   3 AT END OF TIME STEP  30 IN STRESS PERIOD    3
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3    
+        155.3    
+   2    155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1    
+        155.1    
+   3    154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7    
+        154.7    
+   4    154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1    
+        154.1    
+   5    153.3       153.3       153.3       153.3       153.3       153.3       153.3       153.3       153.3       153.3    
+        153.3    
+   6    152.3       152.3       152.3       152.3       152.3       152.3       152.3       152.3       152.3       152.3    
+        152.3    
+   7    151.1       151.1       151.1       151.1       151.1       151.1       151.1       151.1       151.1       151.1    
+        151.1    
+   8    152.7       152.7       152.7       152.7       152.6       152.6       152.6       152.6       152.6       152.6    
+        152.6    
+   9    154.1       154.1       154.0       154.0       153.9       153.9       153.8       153.8       153.8       153.8    
+        153.8    
+  10    155.3       155.3       155.2       155.1       155.0       154.9       154.9       154.8       154.9       154.9    
+        154.9    
+  11    156.4       156.3       156.2       156.0       155.9       155.7       155.6       155.6       155.7       155.7    
+        155.8    
+  12    157.2       157.2       157.0       156.8       156.5       156.3       156.1       156.1       156.3       156.4    
+        156.5    
+  13    158.0       157.9       157.7       157.4       157.0       156.5       156.2       156.4       156.7       157.0    
+        157.1    
+  14    158.7       158.6       158.3       157.9       157.3       156.5       155.6       156.3       157.0       157.4    
+        157.6    
+  15    159.3       159.2       158.9       158.4       157.6       156.2       153.0       156.1       157.3       157.9    
+        158.2    
+  16    159.9       159.7       159.5       159.0       158.4       157.6       156.7       157.4       158.1       158.6    
+        158.8    
+  17    160.4       160.2       160.0       159.6       159.2       158.7       158.4       158.6       159.0       159.3    
+        159.4    
+  18    160.8       160.7       160.5       160.2       159.8       159.5       159.4       159.5       159.7       159.9    
+        160.0    
+  19    161.1       161.0       160.8       160.5       160.2       160.0       160.0       160.1       160.2       160.4    
+        160.5    
+  20    161.4       161.3       161.0       160.7       160.4       160.1       160.2       160.4       160.6       160.8    
+        160.9    
+  21    161.6       161.4       161.2       160.8       160.2       159.6       160.1       160.5       160.8       161.0    
+        161.2    
+  22    161.7       161.6       161.3       160.8       159.9       158.0       159.8       160.6       161.0       161.2    
+        161.4    
+  23    161.8       161.7       161.4       161.0       160.4       159.8       160.3       160.8       161.1       161.4    
+        161.5    
+  24    161.9       161.7       161.5       161.1       160.7       160.4       160.6       160.9       161.2       161.5    
+        161.6    
+1
+  HEAD IN LAYER   4 AT END OF TIME STEP  30 IN STRESS PERIOD    3
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3    
+        155.3    
+   2    155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1    
+        155.1    
+   3    154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7    
+        154.7    
+   4    154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1    
+        154.1    
+   5    153.3       153.3       153.3       153.3       153.3       153.3       153.3       153.3       153.3       153.3    
+        153.3    
+   6    152.3       152.3       152.3       152.3       152.3       152.3       152.3       152.3       152.3       152.3    
+        152.3    
+   7    151.2       151.2       151.2       151.2       151.2       151.2       151.2       151.2       151.2       151.2    
+        151.2    
+   8    152.7       152.7       152.7       152.7       152.6       152.6       152.6       152.6       152.6       152.6    
+        152.6    
+   9    154.1       154.1       154.0       154.0       153.9       153.9       153.8       153.8       153.8       153.8    
+        153.8    
+  10    155.3       155.3       155.2       155.1       155.0       154.9       154.8       154.8       154.8       154.9    
+        154.9    
+  11    156.3       156.3       156.2       156.0       155.9       155.7       155.6       155.6       155.7       155.7    
+        155.8    
+  12    157.2       157.2       157.0       156.8       156.5       156.3       156.1       156.1       156.3       156.4    
+        156.5    
+  13    158.0       157.9       157.7       157.4       157.0       156.5       156.2       156.4       156.7       156.9    
+        157.1    
+  14    158.7       158.6       158.3       157.9       157.3       156.4       155.5       156.3       157.0       157.4    
+        157.6    
+  15    159.3       159.2       158.9       158.4       157.6       156.2       152.5       156.1       157.3       157.9    
+        158.2    
+  16    159.9       159.7       159.5       159.0       158.4       157.6       156.6       157.4       158.1       158.6    
+        158.8    
+  17    160.4       160.2       160.0       159.6       159.2       158.7       158.4       158.6       159.0       159.3    
+        159.4    
+  18    160.8       160.7       160.5       160.2       159.8       159.5       159.4       159.5       159.7       159.9    
+        160.0    
+  19    161.1       161.0       160.8       160.5       160.2       160.0       160.0       160.1       160.2       160.4    
+        160.5    
+  20    161.4       161.3       161.0       160.7       160.4       160.1       160.2       160.4       160.6       160.8    
+        160.9    
+  21    161.6       161.4       161.2       160.8       160.2       159.6       160.1       160.5       160.8       161.0    
+        161.2    
+  22    161.7       161.6       161.3       160.8       159.9       158.0       159.8       160.6       161.0       161.2    
+        161.4    
+  23    161.8       161.7       161.4       161.0       160.4       159.8       160.3       160.8       161.1       161.4    
+        161.5    
+  24    161.9       161.7       161.5       161.1       160.7       160.4       160.6       160.9       161.2       161.5    
+        161.6    
+1
+  HEAD IN LAYER   5 AT END OF TIME STEP  30 IN STRESS PERIOD    3
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3       155.3    
+        155.3    
+   2    155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1       155.1    
+        155.1    
+   3    154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7       154.7    
+        154.7    
+   4    154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1       154.1    
+        154.1    
+   5    153.3       153.3       153.3       153.3       153.3       153.3       153.3       153.3       153.3       153.3    
+        153.3    
+   6    152.3       152.3       152.3       152.3       152.3       152.3       152.3       152.3       152.3       152.3    
+        152.3    
+   7    151.3       151.3       151.2       151.2       151.2       151.2       151.2       151.2       151.2       151.2    
+        151.2    
+   8    152.7       152.7       152.7       152.7       152.6       152.6       152.6       152.6       152.6       152.6    
+        152.6    
+   9    154.1       154.1       154.0       154.0       153.9       153.9       153.8       153.8       153.8       153.8    
+        153.8    
+  10    155.3       155.3       155.2       155.1       155.0       154.9       154.8       154.8       154.8       154.9    
+        154.9    
+  11    156.3       156.3       156.2       156.0       155.9       155.7       155.6       155.6       155.7       155.7    
+        155.8    
+  12    157.2       157.2       157.0       156.8       156.5       156.3       156.1       156.1       156.3       156.4    
+        156.5    
+  13    158.0       157.9       157.7       157.4       157.0       156.5       156.2       156.4       156.7       156.9    
+        157.1    
+  14    158.7       158.6       158.3       157.9       157.3       156.4       155.5       156.3       157.0       157.4    
+        157.6    
+  15    159.3       159.2       158.9       158.4       157.6       156.2       152.5       156.1       157.3       157.9    
+        158.2    
+  16    159.9       159.7       159.5       159.0       158.4       157.6       156.6       157.4       158.1       158.6    
+        158.8    
+  17    160.4       160.2       160.0       159.6       159.2       158.7       158.4       158.6       159.0       159.3    
+        159.4    
+  18    160.8       160.7       160.5       160.2       159.8       159.5       159.4       159.5       159.7       159.9    
+        160.0    
+  19    161.1       161.0       160.8       160.5       160.2       160.0       160.0       160.1       160.2       160.4    
+        160.5    
+  20    161.4       161.3       161.0       160.7       160.4       160.1       160.2       160.4       160.6       160.8    
+        160.9    
+  21    161.6       161.4       161.2       160.8       160.2       159.6       160.1       160.5       160.8       161.0    
+        161.2    
+  22    161.7       161.6       161.3       160.8       159.9       158.0       159.8       160.6       161.0       161.2    
+        161.4    
+  23    161.8       161.7       161.4       161.0       160.4       159.8       160.3       160.8       161.1       161.4    
+        161.5    
+  24    161.9       161.7       161.5       161.1       160.7       160.4       160.6       160.9       161.2       161.5    
+        161.6    
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   30, STRESS PERIOD    3
+
+
+  VOLUME BUDGET FOR ENTIRE MODEL AT END OF TIME STEP   30, STRESS PERIOD   3
+  ---------------------------------------------------------------------------------------------------
+
+     CUMULATIVE VOLUME      L**3       RATES FOR THIS TIME STEP      L**3/T          PACKAGE NAME    
+     ------------------                 ------------------------                     ----------------
+
+           IN:                                      IN:
+           ---                                      ---
+              STO-SS =     4301000.1836                STO-SS =       1.4208E-03     STORAGE                          
+                 WEL =           0.0000                   WEL =           0.0000     WEL_0                            
+                RCHA =  5692500000.0000                  RCHA =    63250000.0000     RCHA_0                           
+                 CHD =           0.0000                   CHD =           0.0000     CHD_0                            
+
+            TOTAL IN =  5696801000.1836              TOTAL IN =    63250000.0014
+
+          OUT:                                     OUT:
+          ----                                     ----
+              STO-SS =     7084266.4676                STO-SS =       3.1841E-05     STORAGE                          
+                 WEL =  1080000019.8000                   WEL =    26000000.2000     WEL_0                            
+                RCHA =           0.0000                  RCHA =           0.0000     RCHA_0                           
+                 CHD =  4609716722.8010                   CHD =    37250001.5542     CHD_0                            
+
+           TOTAL OUT =  5696801009.0686             TOTAL OUT =    63250001.7542
+
+            IN - OUT =          -8.8850              IN - OUT =          -1.7528
+
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =          -0.00
+
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD    3
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH 3.15576E+07 5.25960E+05  8766.0      365.25      1.0000    
+ STRESS PERIOD TIME 9.46728E+08 1.57788E+07 2.62980E+05  10958.      30.000    
+         TOTAL TIME 2.84018E+09 4.73364E+07 7.88940E+05  32872.      90.000    
+
+
+end timestep
+
+
+start timestep kper="4" kstp="1" mode="normal"
+
+
+ OUTPUT CONTROL FOR STRESS PERIOD 4 IS REPEATED USING SETTINGS FROM A PREVIOUS STRESS PERIOD.
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      1, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      1, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    1, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="2" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      2, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      2, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    2, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="3" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      3, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      3, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    3, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="4" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      4, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      4, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    4, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="5" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      5, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      5, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    5, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="6" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      6, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      6, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    6, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="7" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      7, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      7, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    7, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="8" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      8, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      8, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    8, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="9" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP      9, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP      9, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP    9, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="10" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     10, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     10, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   10, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="11" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     11, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     11, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   11, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="12" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     12, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     12, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   12, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="13" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     13, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     13, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   13, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="14" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     14, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     14, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   14, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="15" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     15, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     15, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   15, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="16" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     16, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     16, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   16, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="17" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     17, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     17, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   17, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="18" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     18, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     18, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   18, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="19" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     19, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     19, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   19, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="20" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     20, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     20, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   20, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="21" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     21, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     21, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   21, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="22" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     22, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     22, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   22, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="23" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     23, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     23, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   23, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="24" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     24, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     24, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   24, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="25" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     25, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     25, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   25, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="26" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     26, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     26, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   26, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="27" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     27, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     27, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   27, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="28" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     28, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     28, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   28, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="29" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     29, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     29, STRESS PERIOD      4
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   29, STRESS PERIOD    4
+
+end timestep
+
+
+start timestep kper="4" kstp="30" mode="normal"
+
+ UBDSV1 SAVING     FLOW-JA-FACE ON UNIT   1016 AT TIME STEP     30, STRESS PERIOD      4
+ UBDSV06 SAVING              CHD IN MODEL EXAMPLE_3        PACKAGE EXAMPLE_3       CONNECTED TO MODEL EXAMPLE_3        PACKAGE CHD_0            ON UNIT   1016 AT TIME STEP     30, STRESS PERIOD      4
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD    4
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    154.4       154.4       154.3       154.2       154.1       154.0       153.9       153.9       154.0       154.0    
+        154.1    
+   2    154.3       154.2       154.1       154.0       153.9       153.8       153.7       153.7       153.8       153.8    
+        153.9    
+   3    154.0       153.9       153.8       153.7       153.5       153.3       153.1       153.2       153.4       153.5    
+        153.6    
+   4    153.5       153.4       153.3       153.2       152.9       152.5       152.1       152.5       152.8       153.0    
+        153.1    
+   5    152.9       152.8       152.7       152.6       152.2       151.6       150.3       151.6       152.2       152.4    
+        152.6    
+   6    152.1       152.1       152.0       151.9       151.7       151.4       151.0       151.4       151.7       151.8    
+        151.9    
+   7    151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0    
+        151.0    
+   8    152.7       152.7       152.7       152.6       152.6       152.6       152.6       152.6       152.6       152.6    
+        152.6    
+   9    154.1       154.1       154.0       154.0       153.9       153.8       153.8       153.8       153.8       153.8    
+        153.8    
+  10    155.3       155.3       155.2       155.1       155.0       154.9       154.8       154.8       154.8       154.9    
+        154.9    
+  11    156.3       156.3       156.2       156.0       155.9       155.7       155.6       155.6       155.7       155.7    
+        155.8    
+  12    157.2       157.2       157.0       156.8       156.5       156.3       156.1       156.1       156.3       156.4    
+        156.5    
+  13    158.0       157.9       157.7       157.4       157.0       156.5       156.2       156.4       156.7       156.9    
+        157.1    
+  14    158.7       158.6       158.3       157.9       157.3       156.4       155.6       156.3       157.0       157.4    
+        157.6    
+  15    159.3       159.2       158.9       158.4       157.6       156.2       153.5       156.1       157.3       157.9    
+        158.2    
+  16    159.9       159.7       159.4       159.0       158.4       157.5       156.7       157.4       158.1       158.6    
+        158.8    
+  17    160.3       160.2       160.0       159.6       159.2       158.7       158.4       158.6       159.0       159.2    
+        159.4    
+  18    160.8       160.7       160.4       160.1       159.8       159.5       159.4       159.5       159.7       159.9    
+        160.0    
+  19    161.1       161.0       160.8       160.5       160.2       160.0       159.9       160.0       160.2       160.4    
+        160.5    
+  20    161.4       161.2       161.0       160.7       160.3       160.1       160.1       160.4       160.6       160.8    
+        160.8    
+  21    161.5       161.4       161.1       160.7       160.2       159.6       160.0       160.5       160.8       161.0    
+        161.1    
+  22    161.7       161.5       161.2       160.7       159.9       157.9       159.7       160.5       161.0       161.2    
+        161.3    
+  23    161.8       161.6       161.4       160.9       160.4       159.8       160.3       160.8       161.1       161.4    
+        161.5    
+  24    161.8       161.7       161.4       161.1       160.7       160.4       160.6       160.9       161.2       161.4    
+        161.5    
+1
+  HEAD IN LAYER   2 AT END OF TIME STEP  30 IN STRESS PERIOD    4
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    154.4       154.4       154.3       154.2       154.1       154.0       153.9       153.9       154.0       154.0    
+        154.0    
+   2    154.3       154.2       154.1       154.0       153.9       153.8       153.7       153.7       153.8       153.8    
+        153.9    
+   3    154.0       153.9       153.8       153.7       153.5       153.3       153.1       153.2       153.4       153.5    
+        153.6    
+   4    153.5       153.4       153.3       153.2       152.9       152.5       152.1       152.5       152.8       153.0    
+        153.1    
+   5    152.9       152.8       152.7       152.6       152.2       151.6       150.3       151.6       152.2       152.4    
+        152.5    
+   6    152.1       152.1       152.0       151.9       151.7       151.4       151.0       151.4       151.7       151.8    
+        151.9    
+   7    151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0       151.0    
+        151.0    
+   8    152.7       152.7       152.7       152.6       152.6       152.6       152.6       152.6       152.6       152.6    
+        152.6    
+   9    154.1       154.1       154.0       154.0       153.9       153.8       153.8       153.8       153.8       153.8    
+        153.8    
+  10    155.3       155.3       155.2       155.1       155.0       154.9       154.8       154.8       154.8       154.9    
+        154.9    
+  11    156.3       156.3       156.2       156.0       155.9       155.7       155.6       155.6       155.7       155.7    
+        155.8    
+  12    157.2       157.2       157.0       156.8       156.5       156.2       156.1       156.1       156.3       156.4    
+        156.5    
+  13    158.0       157.9       157.7       157.4       157.0       156.5       156.2       156.4       156.7       156.9    
+        157.1    
+  14    158.7       158.6       158.3       157.9       157.3       156.4       155.6       156.3       157.0       157.4    
+        157.6    
+  15    159.3       159.2       158.9       158.4       157.6       156.2       153.5       156.1       157.3       157.9    
+        158.2    
+  16    159.9       159.7       159.4       159.0       158.4       157.5       156.7       157.4       158.1       158.6    
+        158.8    
+  17    160.3       160.2       160.0       159.6       159.2       158.7       158.4       158.6       159.0       159.2    
+        159.4    
+  18    160.8       160.7       160.4       160.1       159.8       159.5       159.4       159.5       159.7       159.9    
+        160.0    
+  19    161.1       161.0       160.8       160.5       160.2       160.0       159.9       160.0       160.2       160.4    
+        160.5    
+  20    161.4       161.2       161.0       160.7       160.3       160.1       160.1       160.4       160.6       160.7    
+        160.8    
+  21    161.5       161.4       161.1       160.7       160.2       159.6       160.0       160.5       160.8       161.0    
+        161.1    
+  22    161.7       161.5       161.2       160.7       159.9       157.9       159.7       160.5       161.0       161.2    
+        161.3    
+  23    161.8       161.6       161.4       160.9       160.4       159.8       160.3       160.8       161.1       161.4    
+        161.5    
+  24    161.8       161.7       161.4       161.1       160.7       160.4       160.6       160.9       161.2       161.4    
+        161.5    
+1
+  HEAD IN LAYER   3 AT END OF TIME STEP  30 IN STRESS PERIOD    4
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    154.4       154.4       154.3       154.2       154.1       154.0       153.9       153.9       154.0       154.0    
+        154.0    
+   2    154.3       154.2       154.1       154.0       153.9       153.7       153.7       153.7       153.8       153.8    
+        153.9    
+   3    153.9       153.9       153.8       153.7       153.5       153.3       153.1       153.2       153.4       153.5    
+        153.6    
+   4    153.5       153.4       153.3       153.2       152.9       152.5       152.1       152.5       152.8       153.0    
+        153.1    
+   5    152.9       152.8       152.7       152.6       152.2       151.6       150.0       151.5       152.2       152.4    
+        152.5    
+   6    152.1       152.1       152.0       151.9       151.7       151.4       151.0       151.4       151.7       151.8    
+        151.9    
+   7    151.1       151.1       151.1       151.1       151.1       151.1       151.1       151.1       151.1       151.1    
+        151.1    
+   8    152.7       152.7       152.7       152.6       152.6       152.6       152.5       152.5       152.5       152.6    
+        152.6    
+   9    154.1       154.1       154.0       154.0       153.9       153.8       153.8       153.8       153.8       153.8    
+        153.8    
+  10    155.3       155.3       155.2       155.1       155.0       154.9       154.8       154.8       154.8       154.9    
+        154.9    
+  11    156.3       156.3       156.2       156.0       155.8       155.7       155.6       155.6       155.6       155.7    
+        155.7    
+  12    157.2       157.1       157.0       156.8       156.5       156.2       156.1       156.1       156.3       156.4    
+        156.5    
+  13    158.0       157.9       157.7       157.4       157.0       156.5       156.2       156.4       156.7       156.9    
+        157.1    
+  14    158.7       158.6       158.3       157.9       157.3       156.4       155.5       156.3       157.0       157.4    
+        157.6    
+  15    159.3       159.2       158.9       158.4       157.6       156.2       153.0       156.1       157.3       157.9    
+        158.2    
+  16    159.8       159.7       159.4       159.0       158.4       157.5       156.6       157.4       158.1       158.5    
+        158.8    
+  17    160.3       160.2       160.0       159.6       159.2       158.7       158.4       158.6       159.0       159.2    
+        159.4    
+  18    160.8       160.6       160.4       160.1       159.8       159.5       159.4       159.5       159.7       159.9    
+        160.0    
+  19    161.1       161.0       160.8       160.5       160.2       160.0       159.9       160.0       160.2       160.4    
+        160.5    
+  20    161.4       161.2       161.0       160.7       160.3       160.1       160.1       160.4       160.6       160.7    
+        160.8    
+  21    161.5       161.4       161.1       160.7       160.2       159.6       160.0       160.5       160.8       161.0    
+        161.1    
+  22    161.7       161.5       161.2       160.7       159.8       157.9       159.7       160.5       161.0       161.2    
+        161.3    
+  23    161.8       161.6       161.4       160.9       160.4       159.8       160.3       160.8       161.1       161.4    
+        161.5    
+  24    161.8       161.7       161.4       161.1       160.7       160.4       160.6       160.9       161.2       161.4    
+        161.5    
+1
+  HEAD IN LAYER   4 AT END OF TIME STEP  30 IN STRESS PERIOD    4
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    154.4       154.4       154.3       154.2       154.1       154.0       153.9       153.9       154.0       154.0    
+        154.0    
+   2    154.3       154.2       154.1       154.0       153.9       153.7       153.7       153.7       153.7       153.8    
+        153.9    
+   3    153.9       153.9       153.8       153.7       153.5       153.2       153.1       153.2       153.3       153.5    
+        153.5    
+   4    153.5       153.4       153.3       153.2       152.9       152.5       152.0       152.4       152.8       153.0    
+        153.1    
+   5    152.8       152.8       152.7       152.5       152.2       151.6       149.7       151.5       152.2       152.4    
+        152.5    
+   6    152.1       152.0       152.0       151.9       151.7       151.4       151.0       151.4       151.7       151.8    
+        151.9    
+   7    151.2       151.2       151.2       151.2       151.2       151.2       151.1       151.2       151.2       151.2    
+        151.2    
+   8    152.7       152.7       152.7       152.6       152.6       152.6       152.5       152.5       152.5       152.6    
+        152.6    
+   9    154.1       154.1       154.0       154.0       153.9       153.8       153.8       153.8       153.8       153.8    
+        153.8    
+  10    155.3       155.2       155.2       155.1       155.0       154.9       154.8       154.8       154.8       154.8    
+        154.9    
+  11    156.3       156.3       156.2       156.0       155.8       155.7       155.6       155.6       155.6       155.7    
+        155.7    
+  12    157.2       157.1       157.0       156.8       156.5       156.2       156.1       156.1       156.2       156.4    
+        156.5    
+  13    158.0       157.9       157.7       157.4       157.0       156.5       156.2       156.3       156.7       156.9    
+        157.1    
+  14    158.7       158.5       158.3       157.9       157.3       156.4       155.5       156.3       157.0       157.4    
+        157.6    
+  15    159.3       159.1       158.9       158.4       157.6       156.2       152.5       156.0       157.3       157.9    
+        158.1    
+  16    159.8       159.7       159.4       159.0       158.4       157.5       156.6       157.4       158.1       158.5    
+        158.7    
+  17    160.3       160.2       160.0       159.6       159.2       158.7       158.4       158.6       158.9       159.2    
+        159.4    
+  18    160.7       160.6       160.4       160.1       159.8       159.5       159.4       159.5       159.7       159.8    
+        160.0    
+  19    161.1       161.0       160.8       160.5       160.2       160.0       159.9       160.0       160.2       160.4    
+        160.5    
+  20    161.4       161.2       161.0       160.7       160.3       160.1       160.1       160.4       160.6       160.7    
+        160.8    
+  21    161.5       161.4       161.1       160.7       160.2       159.6       160.0       160.5       160.8       161.0    
+        161.1    
+  22    161.7       161.5       161.2       160.7       159.8       157.9       159.7       160.5       161.0       161.2    
+        161.3    
+  23    161.8       161.6       161.4       160.9       160.4       159.8       160.3       160.8       161.1       161.4    
+        161.5    
+  24    161.8       161.7       161.4       161.1       160.7       160.4       160.6       160.9       161.2       161.4    
+        161.5    
+1
+  HEAD IN LAYER   5 AT END OF TIME STEP  30 IN STRESS PERIOD    4
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+           11
+ ....................................................................................................................................
+   1    154.4       154.4       154.3       154.2       154.1       154.0       153.9       153.9       154.0       154.0    
+        154.0    
+   2    154.3       154.2       154.1       154.0       153.9       153.7       153.7       153.7       153.7       153.8    
+        153.9    
+   3    153.9       153.9       153.8       153.7       153.5       153.2       153.1       153.2       153.3       153.5    
+        153.5    
+   4    153.5       153.4       153.3       153.2       152.9       152.5       152.0       152.4       152.8       153.0    
+        153.1    
+   5    152.8       152.8       152.7       152.5       152.2       151.6       149.7       151.5       152.2       152.4    
+        152.5    
+   6    152.1       152.0       152.0       151.9       151.7       151.4       151.0       151.4       151.7       151.8    
+        151.9    
+   7    151.2       151.2       151.2       151.2       151.2       151.2       151.1       151.2       151.2       151.2    
+        151.2    
+   8    152.7       152.7       152.7       152.6       152.6       152.6       152.5       152.5       152.5       152.6    
+        152.6    
+   9    154.1       154.1       154.0       154.0       153.9       153.8       153.8       153.8       153.8       153.8    
+        153.8    
+  10    155.3       155.2       155.2       155.1       155.0       154.9       154.8       154.8       154.8       154.8    
+        154.9    
+  11    156.3       156.3       156.2       156.0       155.8       155.7       155.6       155.6       155.6       155.7    
+        155.7    
+  12    157.2       157.1       157.0       156.8       156.5       156.2       156.1       156.1       156.2       156.4    
+        156.5    
+  13    158.0       157.9       157.7       157.4       157.0       156.5       156.2       156.3       156.7       156.9    
+        157.1    
+  14    158.7       158.5       158.3       157.9       157.3       156.4       155.5       156.3       157.0       157.4    
+        157.6    
+  15    159.3       159.1       158.9       158.4       157.6       156.2       152.5       156.0       157.3       157.9    
+        158.1    
+  16    159.8       159.7       159.4       159.0       158.4       157.5       156.6       157.4       158.1       158.5    
+        158.7    
+  17    160.3       160.2       160.0       159.6       159.2       158.7       158.4       158.6       158.9       159.2    
+        159.4    
+  18    160.7       160.6       160.4       160.1       159.8       159.5       159.4       159.5       159.7       159.8    
+        160.0    
+  19    161.1       161.0       160.8       160.5       160.2       160.0       159.9       160.0       160.2       160.4    
+        160.5    
+  20    161.4       161.2       161.0       160.7       160.3       160.1       160.1       160.4       160.6       160.7    
+        160.8    
+  21    161.5       161.4       161.1       160.7       160.2       159.6       160.0       160.5       160.8       161.0    
+        161.1    
+  22    161.7       161.5       161.2       160.7       159.8       158.0       159.7       160.5       161.0       161.2    
+        161.3    
+  23    161.8       161.6       161.4       160.9       160.4       159.8       160.3       160.8       161.1       161.4    
+        161.5    
+  24    161.8       161.7       161.4       161.1       160.7       160.4       160.6       160.9       161.2       161.4    
+        161.5    
+
+ HEAD WILL BE SAVED ON UNIT 1017 AT END OF TIME STEP   30, STRESS PERIOD    4
+
+
+  VOLUME BUDGET FOR ENTIRE MODEL AT END OF TIME STEP   30, STRESS PERIOD   4
+  ---------------------------------------------------------------------------------------------------
+
+     CUMULATIVE VOLUME      L**3       RATES FOR THIS TIME STEP      L**3/T          PACKAGE NAME    
+     ------------------                 ------------------------                     ----------------
+
+           IN:                                      IN:
+           ---                                      ---
+              STO-SS =     4438397.1285                STO-SS =       1.4091E-03     STORAGE                          
+                 WEL =           0.0000                   WEL =           0.0000     WEL_0                            
+                RCHA =  7590000000.0000                  RCHA =    63250000.0000     RCHA_0                           
+                 CHD =           0.0000                   CHD =           0.0000     CHD_0                            
+
+            TOTAL IN =  7594438397.1285              TOTAL IN =    63250000.0014
+
+          OUT:                                     OUT:
+          ----                                     ----
+              STO-SS =     7084266.4740                STO-SS =       9.3637E-05     STORAGE                          
+                 WEL =  2100000019.8000                   WEL =    34000000.0000     WEL_0                            
+                RCHA =           0.0000                  RCHA =           0.0000     RCHA_0                           
+                 CHD =  5487354170.2713                   CHD =    29250001.9207     CHD_0                            
+
+           TOTAL OUT =  7594438456.5453             TOTAL OUT =    63250001.9208
+
+            IN - OUT =         -59.4168              IN - OUT =          -1.9194
+
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =          -0.00
+
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD    4
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH 3.15576E+07 5.25960E+05  8766.0      365.25      1.0000    
+ STRESS PERIOD TIME 9.46728E+08 1.57788E+07 2.62980E+05  10958.      30.000    
+         TOTAL TIME 3.78691E+09 6.31152E+07 1.05192E+06  43830.      120.00    
+
+
+end timestep
+
