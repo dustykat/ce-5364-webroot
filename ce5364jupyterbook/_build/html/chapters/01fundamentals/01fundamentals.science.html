@@ -410,14 +410,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-directions-of-hydraulic-conductivity">Principal Directions of Hydraulic Conductivity</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transport-processes">Transport Processes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advection">Advection</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion">Diffusion</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion">Dispersion</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-end">Section End</a></li>
 </ul>
             </nav>
         </div>
@@ -500,10 +495,20 @@ document.write(`
 <p>Porous media refers to a class of materials that have <strong>interconnected</strong> void spaces or pores, allowing the flow and transport of fluids. In the context of groundwater, porous media plays a crucial role as it forms the subsurface medium through which water flows and contaminants can be transported. The properties and characteristics of the porous media significantly influence the movement of groundwater and the fate of contaminants within an aquifer.</p>
 <p>Two fundamental properties govern behavior of fluids in a porous media:</p>
 <ol class="arabic simple">
-<li><p>The <strong>porosity</strong>, which represents the volume of void spaces within the material, determines the storage capacity for fluid within the porous media and affects the flow rate. Porous media with high porosity can concievably store more water, but it may also delay movement of groundwater because of reduced size of individual pores.</p></li>
-<li><p>The <strong>permeability</strong>, which describes the ease with which fluids can flow through the porous media, depends on factors such as pore size, shape, and connectivity. High-permeability materials, like coarse sand or gravel, allow water to flow more easily, whereas low-permeability materials, like clay or silt, impede water movement. Permeability influences the speed and direction of groundwater flow, as well as the potential for contaminants to migrate through the aquifer.</p></li>
+<li><p>The <strong>porosity</strong>, which represents the volume of void spaces within the material, determines the storage capacity for fluid within the porous media and affects the flow rate. Porous media with high porosity can concievably store more water, but it may also delay movement of groundwater because of reduced size of individual pores. <br> <center> <img alt="" src="../../_images/porositytable.png" /> </center> <br>  Usually, the void space is made up of two parts: an interconnected portion, through which a fluid can move from any point to any other point within this portion, and a non-interconnected portion. A fluid present in the latter portion of the void space cannot leave it, except by crossing solid phase boundaries. Because we are interested primarily in the transport of mass of fluid phases and chemical species within the void space, unless otherwise specified, we shall use the term porosity to indicate only the interconnected portion of the void space. The terms <em>interconnected porosity</em> and <em>effective porosity</em> are sometimes used for this purpose.</p></li>
+<li><p>The <strong>permeability</strong>, which describes the ease with which fluids can flow through the porous media, depends on factors such as pore size, shape, and connectivity. High-permeability materials, like coarse sand or gravel, allow water to flow more easily, whereas low-permeability materials, like clay or silt, impede water movement. Permeability influences the speed and direction of groundwater flow, as well as the potential for contaminants to migrate through the aquifer. <br> <center> <img alt="" src="../../_images/permeabilitytable.png" /> </center> <br></p></li>
 </ol>
 <p>Porous media also exhibits <strong>heterogeneity</strong>, meaning it can have spatial variations in these fundamental properties. This heterogeneity arises from geological processes, such as sediment deposition, compaction, and tectonic activity. Variations in porosity and permeability within a porous medium lead to complex flow patterns, preferential flow paths, and the potential for localized contaminant accumulation or dispersion. Understanding the heterogeneity of porous media is crucial for accurately predicting groundwater flow and contaminant transport.</p>
+<blockquote>
+<div><p>(from Bear 1972) “A porous medium domain is said to be homogeneous if its permeability is the same at all its points. Otherwise, the domain is said to be heterogeneous (or inhomogeneous). Most subsurface domains are highly heterogeneous. The heterogeneity of the subsurface is a consequence of the way the latter has been shaped and reshaped over millions of years by geological processes.</p>
+<p>When the permeability at a considered point is independent of direction, the medium is said to be isotropic at that point. Similar considerations apply
+to the hydraulic conductivity, K, and to the transmissivity, T, of an aquifer; in the latter case, the considered directions are only in the xy plane.
+In many cases, aquifers are anisotropic, with the vertical permeability being higher than the horizontal one. This may happen, for example, when the
+sediments comprising the aquifer are such (e.g., flat shaped mica particles) that when deposited, the resulting porous medium has a higher permeability in one direction (usually the horizontal one, unless later tilting of the formation occurs) than in other directions. Both sedimentation and pressure
+of overlying material cause flat particles to be oriented with their longest dimension parallel to the plane on which they settle. Later this produces
+flow channels parallel to the bedding plane, which are different from those oriented normal to this plane, thus rendering the medium anisotropic. If the
+flow through a formation takes place in some predominant direction over prolonged periods of time, it may produce a more developed network of channels parallel to that direction by removing fine material. In carbonate rocks, flowing water may dissolve the rock, producing solution channels beginning as very thin fissures in the direction of the predominant flow. In some soils, structural fissures develop more readily in one direction than in others, and the soil will exhibit anisotropy. In certain rocks, fractures produce a very high permeability in the direction of the fractures. All these circumstances contribute to anisotropy in permeability.</p>
+</div></blockquote>
 <p>Interactions between fluids and porous media involves various physical and chemical processes. <strong>Advection</strong>, the bulk movement of groundwater, is influenced by the permeability and hydraulic gradient. <strong>Dispersion</strong>, the spreading of solutes due to molecular diffusion and mechanical mixing, occurs as water moves through the porous medium. <strong>Adsorption</strong> refers to the attachment of contaminants to the solid surfaces of the porous media, affecting their mobility and persistence. These processes, along with others like biodegradation and chemical reactions, shape the fate and transport of contaminants in groundwater.</p>
 </section>
 <section id="saturated-zone">
@@ -586,12 +591,14 @@ document.write(`
 <section id="darcy-s-law">
 <h2>Darcy’s Law<a class="headerlink" href="#darcy-s-law" title="Link to this heading">#</a></h2>
 <p>Darcy’s Law is a fundamental principle in hydrogeology that describes the movement of groundwater through porous media and its transport of contaminants. It provides a mathematical relationship between the flow rate of groundwater, the hydraulic gradient, and the properties of the porous medium.</p>
+<p><br><center> <img alt="" src="../../_images/darcyscolumn.png" /> </center><br></p>
 <p>In the context of groundwater flow, Darcy’s Law states that the flow rate of groundwater (Q) is directly proportional to the hydraulic conductivity (K) of the porous medium, the cross-sectional area perpendicular to the flow (A), and the hydraulic gradient (∇h) along which the groundwater is moving. Mathematically, it can be expressed as:</p>
-<p>Q = -K * A * ∇h</p>
+<p><span class="math notranslate nohighlight">\(Q = -K * A * \nabla h\)</span></p>
 <p>Here, the negative sign indicates that groundwater flows from higher hydraulic head (pressure) to lower hydraulic head.</p>
-<p>Darcy’s Law is also applicable to the transport of dissolved contaminants in groundwater. In this case, it is modified to include the concentration of the contaminant (C) and its dispersion coefficient (D):</p>
-<p>Q = -D * A * (∇C / C)</p>
-<p>This modified form describes the movement of contaminants within the flowing groundwater. The dispersion coefficient accounts for the spreading and mixing of the contaminant as it moves through the porous medium, due to the heterogeneity of the subsurface.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Darcy’s law is typically extended into 3 spatial dimensions, then used as the equation of motion in the continunity equation, to construct the various equations of groundwater flow.</p>
+</div>
 <p>Overall, Darcy’s Law serves as a cornerstone in groundwater hydrology and contaminant transport studies, providing a quantitative basis for understanding and modeling the behavior of groundwater flow and mass transport in various geological settings.</p>
 </section>
 <section id="pore-velocity">
@@ -599,6 +606,13 @@ document.write(`
 <p>Pore velocity, in the context of groundwater flow, refers to the speed at which water molecules move through the interconnected void spaces (pores) within a porous medium, such as soil or rock. It is a measure of the actual velocity of water within these tiny channels and cavities, which collectively form the pathways for groundwater movement.</p>
 <p>Pore velocity is influenced by several factors, including the hydraulic gradient (the change in hydraulic head per unit distance), the hydraulic conductivity of the porous medium (which dictates how easily water can flow through it), and the porosity of the material (the volume of pore space compared to the total volume of the material). Additionally, the degree of saturation and the properties of the fluid itself also play a role in determining pore velocity.</p>
 <p>Understanding pore velocity is crucial for assessing groundwater flow rates, transport of contaminants, and the overall behavior of groundwater within subsurface formations. It helps hydrogeologists and scientists model and predict the movement of groundwater and the transport of dissolved substances, providing valuable insights into water resource management, environmental impact assessment, and remediation efforts.</p>
+<blockquote>
+<div><p>In actual measurement, for example, in a laboratory porous medium column, the specific discharge (also called the Darcy velocity), <span class="math notranslate nohighlight">\(q=\frac{Q}{A}\)</span>, is measured as the volume of water passing through a unit cross-sectional area of the column, per unit time. The hydraulic conductivity is then interpreted on the basis of such area averaged measurement.
+<br><center><img alt="" src="../../_images/surfaceporosity.png" /></center><br>
+However as depicted above only a portion of the cross sectional area is open (liquid phase), the remainder is solid.  The pore velocity is the velocity of the actual liquid parcels required to satisfy continunity for the section.  In the above figure</p>
+<div class="math notranslate nohighlight">
+\[v_{pore} = \frac{q}{n} = \frac{Q}{nA}\]</div>
+</div></blockquote>
 </section>
 <section id="anisotropy">
 <h2>Anisotropy<a class="headerlink" href="#anisotropy" title="Link to this heading">#</a></h2>
@@ -653,55 +667,14 @@ K_{zx} &amp; K_{zy} &amp; K_{zz} \\
 \end{split}\]</div>
 </section>
 </section>
-<section id="transport-processes">
-<h2>Transport Processes<a class="headerlink" href="#transport-processes" title="Link to this heading">#</a></h2>
-<p>The main physical transport processes are listed below, these are exanined in detail later in the notes.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Reactions are essentially treated as boundary conditions and while they affect behavior they are not in themselves considered as transport processes. They are most definitely fate processes, so we won’t get to ignore them!</p>
-</div>
-<section id="advection">
-<h3>Advection<a class="headerlink" href="#advection" title="Link to this heading">#</a></h3>
-<p>Advection is the process by which a physical property, such as heat or a chemical substance, is transported by the motion of a fluid. This motion can be due to <em>convection</em>, where a fluid is heated or cooled and subsequently moves because of intrinsic density changes, or it can be due to the movement of the fluid itself by pressure gradients, such as in a river or ocean current, which is called <em>forced convection</em>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In meteorology, advection refers to the horizontal movement of air or other atmospheric properties, such as moisture or temperature, by the wind. For example, warm air moving from the tropics to the poles is an example of advection.</p>
-<p>In oceanography, advection refers to the horizontal movement of water or other oceanic properties, such as salinity or nutrients, by ocean currents.</p>
-</div>
-<p>In our discussion herein, advection is the transport of solutes by the motion of the host fluid.</p>
-</section>
-<section id="diffusion">
-<h3>Diffusion<a class="headerlink" href="#diffusion" title="Link to this heading">#</a></h3>
-<p>Solute diffusion in groundwater is the process by which solutes, such as dissolved contaminants or nutrients, move through the pore spaces and fractures of soil and rock in the subsurface. The rate and direction of solute diffusion are influenced by several factors, including the concentration gradient, the properties of the solute and the porous medium, and the temperature and pressure of the groundwater.</p>
-<p>The movement of solutes in groundwater can occur through both advection and diffusion. Advection refers to the movement of solutes due to the bulk flow of groundwater, while diffusion refers to the movement of solutes from areas of high concentration to areas of low concentration due to the random motion of molecules.</p>
-<p>The diffusion of solutes in groundwater is affected by the porosity and permeability of the subsurface, as well as the molecular properties of the solutes. For example, larger and more complex molecules may diffuse more slowly than smaller, simpler molecules. The temperature of the groundwater can also affect solute diffusion, as higher temperatures generally result in faster molecular motion and increased diffusion rates.</p>
-<p>Understanding solute diffusion in groundwater is important for predicting the movement and fate of contaminants in the subsurface, as well as for managing and protecting groundwater resources. Models of solute diffusion can be used to predict the transport of contaminants in the subsurface and to evaluate the effectiveness of different remediation strategies.</p>
-<p>A more compact definition is that diffusion is the mixing of solutes by Brownian (random) motion processes. Net transport is proportional to concentration gradients.</p>
-</section>
-<section id="dispersion">
-<h3>Dispersion<a class="headerlink" href="#dispersion" title="Link to this heading">#</a></h3>
-<p>Solute dispersion in groundwater refers to the spreading and mixing of solutes, such as dissolved contaminants or nutrients, as they move through the pore spaces and fractures of soil and rock in the subsurface. The rate and extent of solute dispersion are influenced by several factors, including the properties of the solute and the porous medium, the flow velocity of the groundwater, and the geometry of the flow paths.</p>
-<p>The movement of solutes in groundwater can occur through both advection and dispersion. Advection refers to the movement of solutes due to the bulk flow of groundwater, while dispersion refers to the spreading and mixing of solutes as they move through the subsurface due to variations in the velocity and direction of groundwater flow.</p>
-<p>Solute dispersion in groundwater can be characterized by several different parameters, including the longitudinal dispersivity, which describes the spreading of solutes parallel to the direction of groundwater flow, and the transverse dispersivity, which describes the spreading of solutes perpendicular to the direction of groundwater flow.</p>
-<p>Understanding solute dispersion in groundwater is important for predicting the movement and fate of contaminants in the subsurface, as well as for managing and protecting groundwater resources. Models of solute dispersion can be used to predict the transport of contaminants in the subsurface and to evaluate the effectiveness of different remediation strategies.</p>
-<p>Observe the definition is practically the same as that for diffusion, except the temperature importance is replaced by the concepts of dispersivity.</p>
-<p>The similarity arises in part because ultimately a Fickian-type descrpition is used to explain behavior for either process (the meanings and magnitudes of the dispersion coeficient and the diffusion coefficient are quite different).
-A compact definition is that dispersion is the mixing of solutes by small and large scale variations in the velocity field of the host fluid caused by shear resistance, turbulent fluctuations, and the braided flow paths.  Net transport is usually modeled as proportional to concentration gradients.</p>
-<p>Dispersion appears in several types:</p>
-<ol class="arabic simple">
-<li><p>Shear induced dispersion (pipes and open channel flows)</p></li>
-<li><p>Turbulent dispersion (open flows)</p></li>
-<li><p>Hydrodynamic dispersion (porous flows)</p></li>
-</ol>
-<p>Pull chapter from Groundwater to fit here.</p>
-<p><a class="reference external" href="https://pubs.usgs.gov/wsp/wsp1536-E/pdf/wsp_1536-E.pdf">Well Hydraulics and Aquifer Tests</a></p>
-</section>
-</section>
 <section id="id1">
 <h2><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 </section>
 <section id="id2">
 <h2><a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+</section>
+<section id="section-end">
+<h2>Section End<a class="headerlink" href="#section-end" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -785,14 +758,9 @@ A compact definition is that dispersion is the mixing of solutes by small and la
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-directions-of-hydraulic-conductivity">Principal Directions of Hydraulic Conductivity</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transport-processes">Transport Processes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advection">Advection</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion">Diffusion</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion">Dispersion</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-end">Section End</a></li>
 </ul>
   </nav></div>
 
