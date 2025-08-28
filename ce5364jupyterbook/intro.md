@@ -11,7 +11,7 @@ Many (but not all) underlined/bold items are working hyperlinks to the resource.
 :::
 
 ## Syllabus
-The syllabus is located at [ce-5364-2024-3-syllabus](http://54.243.252.9/ce-5364-webroot/0-Syllabus/syllabus.ce5364-2024-3.pdf).
+The syllabus is located at [ce-5364-2025-3-syllabus](http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/_build/html/chapters/00syllabus/ce5364-syllabus-2025-3.html).
 
 ## Suggested Citation
 
