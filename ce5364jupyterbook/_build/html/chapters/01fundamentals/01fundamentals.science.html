@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="3. Fundamentals (Practice)" href="01fundamentals.practice.html" />
-    <link rel="prev" title="1. Introduction to Groundwater Contaminant Transport" href="../00introduction/00introduction.html" />
+    <link rel="prev" title="1. Introduction" href="../00introduction/00introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,7 +184,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00syllabus/ce5364-syllabus-2025-3.html">0. Syllabus (Fall 2025)</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction to Groundwater Contaminant Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Fundamentals (Science)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01fundamentals.practice.html">3. Fundamentals (Practice)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03site.mapping.tools/site.mapping.tools.html">5. Site Mapping Tools</a></li>
@@ -194,6 +194,11 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="../03site.characterization/site.characterization.html">6. Site Characterization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/physical.transport.html">7. Physical Transport</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/modeling.advection.html">8. Modeling Advection</a></li>
 </ul>
 
     </div>
@@ -392,9 +397,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">Readings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">Videos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spreadsheets-programs-data">Spreadsheets/Programs/Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-concepts">Preliminary Concepts</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-reactive-constituients">Non-reactive constituients</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#essential-groundwater-review">Essential Groundwater Review</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#porous-media">Porous Media</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saturated-zone">Saturated Zone</a></li>
@@ -446,31 +448,6 @@ document.write(`
 <div class="output text_html"><style> table {margin-left: 0 !important;} </style>
 </div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="o">!</span><span class="w"> </span>hostname
-<span class="o">!</span><span class="w"> </span>whoami
-<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ip-172-26-5-168
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sensei
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/jupyterhub/bin/python3
-3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]
-sys.version_info(major=3, minor=10, micro=12, releaselevel=&#39;final&#39;, serial=0)
-</pre></div>
-</div>
-</div>
-</div>
 <section id="readings">
 <h2>Readings<a class="headerlink" href="#readings" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
@@ -506,76 +483,6 @@ sys.version_info(major=3, minor=10, micro=12, releaselevel=&#39;final&#39;, seri
 </ul>
 </section>
 <hr class="docutils" />
-<section id="preliminary-concepts">
-<h2>Preliminary Concepts<a class="headerlink" href="#preliminary-concepts" title="Link to this heading">#</a></h2>
-<p>Solvent phase (soil, air, water) is the phase that contains the solute (constituient) phase. The amount of solute contained in the solvent is usually expressed as some kind of concentration,</p>
-<p>Concentrations are expressed in a variety of units:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Type</p></th>
-<th class="head"><p>Meaning</p></th>
-<th class="head"><p>Symbol</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Volumetric</p></td>
-<td><p>mass/volume</p></td>
-<td><p><span class="math notranslate nohighlight">\(\frac{mg}{L}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Massic</p></td>
-<td><p>mass/mass</p></td>
-<td><p><span class="math notranslate nohighlight">\(ppm\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Molarity</p></td>
-<td><p>moles/volume</p></td>
-<td><p><span class="math notranslate nohighlight">\(M=\frac{mol}{L}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Molality</p></td>
-<td><p>moles/mass</p></td>
-<td><p>$<span class="math notranslate nohighlight">\(m=\frac{mol}{kg}\)</span>$</p></td>
-</tr>
-<tr class="row-even"><td><p>Mole Fraction (also partial pressures)</p></td>
-<td><p>moles/moles</p></td>
-<td><p><span class="math notranslate nohighlight">\(X_{species}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Equivalents</p></td>
-<td><p>moles<span class="math notranslate nohighlight">\(\times\)</span>valence/volume</p></td>
-<td><p><span class="math notranslate nohighlight">\(Eq\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Activity</p></td>
-<td><p>disintegrations/second/volume</p></td>
-<td><p><span class="math notranslate nohighlight">\(\frac{Bq}{L}\)</span> - a contrived unit</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>The most common in environmental flow and transport models are volumetric and massic.</p>
-<p>There are cases where multiple phases are present (multi-phase transport) and multiple components in a solute mixture (multi-component).</p>
-<p>Emulsions are a special kind of two-(or more)phase system where the emulsion behaves as a single phase with respect to motion.  Oil-in-water, water-in-oil, biosolids-in-water (technically a slurry), coal-in-water (a slurry) are examples of common emulsions.</p>
-<p>I use the terms constituients and pollutants more or less interchangeably; however a pollutant reflects a value judgement - if the particular constituient is undesirable, for example methyl-ethyl death in water - then its a pollutant, otherwise its just a lowly constituient.  The distinction is irrelevant unless lawyers, judges, and money are involved - then be careful; someone goes to jail, and someone loses their doublewide if you get your mords wixed!</p>
-</section>
-<section id="non-reactive-constituients">
-<h2>Non-reactive constituients<a class="headerlink" href="#non-reactive-constituients" title="Link to this heading">#</a></h2>
-<p>Non-reactive constituients are constituients that <strong>do not</strong> undergo changes, exchanges, or reactions while traversing a region of interest.</p>
-<p>Solutes are constituients that are soluible in the solvent or are larger aggregates that to not constitute a distinct mobile phase from the transporting or host fluid.</p>
-<p>Examples include:</p>
-<ol class="arabic simple">
-<li><p>Chemicals dissolved in water</p></li>
-<li><p>Solids suspended in water (liquid-solid emulsion)</p></li>
-<li><p>Oil <strong>dispersed</strong> in water (liquid-liquid emulsion)</p></li>
-<li><p>Water dispersed in air (liquid-gas emulsion)</p></li>
-<li><p>nitrogen dissolved in air (mixture)</p></li>
-</ol>
-<p>Examples of systems that are not strictly solvent-solute pairs is an oil-water system where each liquid has a distinct phase, such as an oil slick in an estuary (distinct from produced water from a well which is almost always an emulsion) - such a system would be a two-phase system and is dealt with using different but related tools.</p>
-</section>
-<section id="scope">
-<h2>Scope<a class="headerlink" href="#scope" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Sources of contamination</p></li>
-<li><p>Hydrogeologic framework and transport pathways</p></li>
-<li><p>Role of retardation and degradation</p></li>
-</ul>
-</section>
 <section id="essential-groundwater-review">
 <h2>Essential Groundwater Review<a class="headerlink" href="#essential-groundwater-review" title="Link to this heading">#</a></h2>
 <p>This essential review of groundwater should remind the reader of important aspects of:</p>
@@ -603,7 +510,10 @@ sys.version_info(major=3, minor=10, micro=12, releaselevel=&#39;final&#39;, seri
 <h2>Saturated Zone<a class="headerlink" href="#saturated-zone" title="Link to this heading">#</a></h2>
 <p>The saturated zone refers to the region within the subsurface where all the available pore spaces are filled with water, creating a saturated condition. It is an important concept in groundwater hydrology and plays a crucial role in groundwater flow and contaminant transport.</p>
 <p>The saturated zone begins at the water table, which represents the boundary between the unsaturated zone (where there is both air and water in the pore spaces) and the saturated zone (where all pore spaces are filled with water). The depth of the saturated zone can vary depending on factors such as topography, geology, and seasonality.</p>
-<p><img alt="" src="../../_images/vertdist11.png" /></p>
+<div style="display:flex; gap:0.75rem;">
+  <img src="vertdist3.png" style="width:59%; max-width:100%; height:auto;">
+  <img src="vertdist2.png" style="width:39%; max-width:100%; height:auto;">
+</div>
 <p>Within the saturated zone, groundwater flow occurs as water moves through the interconnected pore spaces under the influence of gravity. The direction and speed of groundwater flow are governed by hydraulic gradients, which are the differences in hydraulic head (a measure of the potential energy of groundwater) between different locations. The saturated zone acts as a conduit for the movement of water from areas of higher hydraulic head to areas of lower hydraulic head.</p>
 <p>The properties of the saturated zone, such as its permeability, porosity, and heterogeneity, have a significant impact on groundwater flow. Permeability determines how easily water can move through the saturated zone. Materials with high permeability, like gravel or sand, allow for faster groundwater flow, while low-permeability materials, such as clay or shale, impede flow. Porosity, the volume of void spaces, determines the amount of water that can be stored in the saturated zone.</p>
 <p>Heterogeneity in the saturated zone refers to variations in the properties of the porous medium, such as permeability and porosity, over space. This heterogeneity can influence the flow of groundwater by creating preferential flow paths or areas of localized flow convergence or divergence. Understanding the heterogeneity of the saturated zone is important for accurate modeling and prediction of groundwater flow patterns.</p>
@@ -612,7 +522,10 @@ sys.version_info(major=3, minor=10, micro=12, releaselevel=&#39;final&#39;, seri
 <section id="unsaturated-zone">
 <h2>Unsaturated Zone<a class="headerlink" href="#unsaturated-zone" title="Link to this heading">#</a></h2>
 <p>The unsaturated zone, also known as the vadose zone or the zone of aeration, is the region within the subsurface where the pore spaces contain both air and water. In this zone, the water content is less than the total porosity of the material. The unsaturated zone extends from the land surface down to the water table, where it transitions into the saturated zone.</p>
-<p><img alt="" src="../../_images/vertdist31.png" /></p>
+<div style="display:flex; gap:0.75rem;">
+  <img src="vertdist3.png" style="width:59%; max-width:100%; height:auto;">
+  <img src="vertdist2.png" style="width:39%; max-width:100%; height:auto;">
+</div>
 <p>The unsaturated zone is characterized by a dynamic water content profile that changes over time due to factors such as precipitation, evaporation, and plant uptake. At the land surface, water infiltrates through the soil and rock layers until it reaches a point where the pore spaces are completely saturated. This point is known as the water table, which marks the transition to the saturated zone.</p>
 <p>The movement of water in the unsaturated zone is influenced by capillary forces and gravity. Capillary forces cause water to rise in small pores against the force of gravity, allowing it to be retained in the unsaturated zone. The rate of water movement through the unsaturated zone is generally slower compared to the saturated zone due to the presence of air and the lower hydraulic conductivity of unsaturated materials.</p>
 <p>The unsaturated zone plays a crucial role in controlling the recharge of groundwater. It acts as a buffer, allowing for the filtration, storage, and gradual release of water to the underlying aquifer. The unsaturated zone also contributes to the purification of water through processes such as filtration, adsorption, and biodegradation as water percolates through the soil and rock layers.</p>
@@ -656,6 +569,9 @@ sys.version_info(major=3, minor=10, micro=12, releaselevel=&#39;final&#39;, seri
 <strong>Unconfined Aquifer</strong>: Extraction from unconfined aquifers may yield variable well productivity depending on the fluctuating water table. The yield of wells in unconfined aquifers may be influenced by seasonal variations in recharge and the proximity to other water sources.</p>
 </div></blockquote>
 <p>A <strong>leaky aquifer</strong> refers to an aquifer that exhibits characteristics of both an aquifer and an aquitard. It is a geological formation that has varying degrees of permeability and acts as a partial barrier to the flow of groundwater. In a leaky aquifer, the presence of semi-permeable layers or zones with lower permeability allows some water to pass through, while also impeding or retarding the flow to some extent.</p>
+<div style="display:flex; gap:0.75rem;">
+  <img src="aquifers.png" style="width:99%; max-width:100%; height:auto;">
+</div>
 <p>Leaky aquifers are distinct from fully confined aquifers or unconfined aquifers, as they possess intermediate characteristics. They can be seen as “leaky” due to the reduced hydraulic conductivity of the semi-permeable layers present within the aquifer system. These semi-permeable layers act as partial barriers, restricting or slowing down the movement of groundwater between different zones or layers.</p>
 <p>The presence of leaky aquifers can have significant implications for groundwater management and hydrogeological assessments. They can influence the flow paths, distribution, and quality of groundwater within an aquifer system. Understanding the extent and properties of leaky aquifers is crucial for accurately modeling groundwater flow, assessing contaminant transport, and managing water resources effectively.</p>
 </section>
@@ -831,7 +747,7 @@ A compact definition is that dispersion is the mixing of solutes by small and la
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">1. Introduction to Groundwater Contaminant Transport</p>
+        <p class="prev-next-title">1. Introduction</p>
       </div>
     </a>
     <a class="right-next"
@@ -862,9 +778,6 @@ A compact definition is that dispersion is the mixing of solutes by small and la
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">Readings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">Videos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spreadsheets-programs-data">Spreadsheets/Programs/Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-concepts">Preliminary Concepts</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-reactive-constituients">Non-reactive constituients</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#essential-groundwater-review">Essential Groundwater Review</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#porous-media">Porous Media</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saturated-zone">Saturated Zone</a></li>
