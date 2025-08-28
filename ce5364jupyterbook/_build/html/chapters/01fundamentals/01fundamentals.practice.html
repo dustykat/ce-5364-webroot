@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="5. Site Mapping Tools" href="../03site.mapping.tools/site.mapping.tools.html" />
-    <link rel="prev" title="2. Fundamentals (Science)" href="01fundamentals.science.html" />
+    <link rel="prev" title="2. Fundamentals I" href="01fundamentals.science.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,8 +184,8 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00syllabus/ce5364-syllabus-2025-3.html">0. Syllabus (Fall 2025)</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction to Groundwater Contaminant Transport</a></li>
-<li class="toctree-l1"><a class="reference internal" href="01fundamentals.science.html">2. Fundamentals (Science)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01fundamentals.science.html">2. Fundamentals I</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Fundamentals (Practice)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03site.mapping.tools/site.mapping.tools.html">5. Site Mapping Tools</a></li>
 
@@ -193,6 +193,12 @@
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="../03site.characterization/site.characterization.html">6. Site Characterization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/physical.transport.html">7. Physical Transport</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/modeling.advection.html">8. Modeling Advection</a></li>
 </ul>
 
     </div>
@@ -881,7 +887,7 @@ A constant value head-domain boundary is a zero-gradient stream function-domain 
 <h3>Sheetpile under a dam flownet<a class="headerlink" href="#sheetpile-under-a-dam-flownet" title="Link to this heading">#</a></h3>
 <p>Compare to the example shown on pp. 30-34.</p>
 <p>The figure below is a schematic of a dam built upon a permeable ground layer 80 meters thick (segment A to I).</p>
-<p><img alt="" src="../../_images/sheetpile11.png" /></p>
+<p><img alt="" src="../../_images/sheetpile1.png" /></p>
 <p>The dam has a base 60 meters long (segment B to F), with an upstream water depth of 10 meters. The downstream side of the dam is at 0 meters depth (otherwise its not a very good dam!). A sheetpile cutoff wall is installed beneath the dam (segment C to D to U to E). The ground layer has a hydraulic conductivity of K = 1 × 10−4 meters per second.</p>
 <p>Important engineering questions are what is the pore water pressure under the dam, and is what is the total seepage under the dam? The pore water pressure can be found by solving for heads under the dam then subtracting the elevation of the computation location relative to a datum. The flow is found by Darcy’s law applied under the dam (shown as locations 1,2,3,4, and 5 in the sketch), which in turn requires computation of head under the dam. Thus the questions are answered by finding the head distribution under the dam.</p>
 <p>The flow field (mathematically) extends an infinite distance upstream and downstream, but as a practical matter the contribution to seepage far upstream of the dam is negligible, and hence is approximated by the finite domain depicted.</p>
@@ -1938,7 +1944,7 @@ Goal: keep your code correct, make it clearer/faster/safer—and learn something
 <h3>Flownet Example 2 : Pore Pressure under a Dam (Domain Decomposition approach)<a class="headerlink" href="#flownet-example-2-pore-pressure-under-a-dam-domain-decomposition-approach" title="Link to this heading">#</a></h3>
 <p>The second way to solve this example, and perhaps better is to take advantage of
 the symmetry and cut the domain in half, as</p>
-<p><img alt="" src="../../_images/sheetpile21.png" /></p>
+<p><img alt="" src="../../_images/sheetpile2.png" /></p>
 <p>In this method we can actually specify the sheetpile as a boundary, and we will obtain the about same results, but
 only need to supply half as much input data.</p>
 <p>Here’s the input file for the half-domain head calculations</p>
@@ -2074,7 +2080,7 @@ only need to supply half as much input data.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">2. Fundamentals (Science)</p>
+        <p class="prev-next-title">2. Fundamentals I</p>
       </div>
     </a>
     <a class="right-next"

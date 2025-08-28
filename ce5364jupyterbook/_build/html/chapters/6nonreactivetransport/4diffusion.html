@@ -184,8 +184,8 @@
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00syllabus/ce5364-syllabus-2025-3.html">0. Syllabus (Fall 2025)</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction to Groundwater Contaminant Transport</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.science.html">2. Fundamentals (Science)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.science.html">2. Fundamentals I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.practice.html">3. Fundamentals (Practice)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03site.mapping.tools/site.mapping.tools.html">5. Site Mapping Tools</a></li>
 
@@ -198,6 +198,7 @@
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/modeling.advection.html">8. Modeling Advection</a></li>
 </ul>
 
     </div>
@@ -410,12 +411,12 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="diffusion">
 <h1>Diffusion<a class="headerlink" href="#diffusion" title="Link to this heading">#</a></h1>
 <p>The sketch below represents three snapshots of a closed system with two ideal gasses.</p>
-<p><img alt="" src="../../_images/diffusionsketch.png" /></p>
+<p><img alt="" src="../../_images/diffusionsketch1.png" /></p>
 <p>Initially the closed system consists of two different ideal gasses at the same pressure separated by a partition (a).  When the partition is removed, spontaneous mixing occurs (b).  The sharp concentration profiles are rounded.  After enough time has elapsed, equilibrium is reached and the concentration of gasses in the system is uniform (c).<br />
 This mixing process is called molecular diffusion.</p>
 <p>When the diffusing materials are dilute relative to the host fluid (mole fraction &lt;&lt; 1), then the host fluid acts as a conduit and does not need to move for the materials to move.  When the materials are not dilute (as in the example above), significant bulk flow occurs of both the diffusing materials and the host fluid.  In most civil and environmental engineering problems, the infinite (dilute) dilution condition is appropriate and one ignores the motion effect that the diffusing materials cause on the host fluid.</p>
 <p>The sketch below depicts a physical system with a volatile liquid in contact with the atmosphere through a narrow bore tube.  The liquid molecules evaporate to maintain a constant partial pressure equal to the vapor pressure of the liquid.  Random motion of these gas molecules takes some of them out of the tube where they are mixed in with the atmosphere.</p>
-<p><img alt="" src="../../_images/volatilesketch1.png" /></p>
+<p><img alt="" src="../../_images/volatilesketch11.png" /></p>
 <p>As these molecules leave the tube, more liquid must evaporate to maintain the constant vapor pressure – after a short time the rate of vaporization will become constant.  The rate of escape of the molecules is inversely proportional the length of the tube, proportional to the area of the tube, and proportional to the partial pressure of the liquid.</p>
 <p>One can incorporate these observations as:</p>
 <div class="math notranslate nohighlight">
@@ -429,7 +430,7 @@ This mixing process is called molecular diffusion.</p>
 <p>The diffusion coefficient is a property of the diffusing species, the host fluid, the temperature, and the pressure.</p>
 <section id="kinetic-molecular-model-of-diffusion">
 <h2>Kinetic-Molecular Model of Diffusion<a class="headerlink" href="#kinetic-molecular-model-of-diffusion" title="Link to this heading">#</a></h2>
-<p><img alt="" src="../../_images/kineticmodel.png" /></p>
+<p><img alt="" src="../../_images/kineticmodel1.png" /></p>
 <p>Consider 3 small adjacent cells as depicted in the figure above. Each particle (molecule) has energy proportional to the square of its molecular velocity – while these velocities might be huge, the particles don’t move far before they hit a wall, another particle and their direction changes.</p>
 <div class="math notranslate nohighlight">
 \[ E = \frac{1}{2} m |\bar V^2| \]</div>
@@ -456,7 +457,7 @@ This mixing process is called molecular diffusion.</p>
 <section id="diffusion-modeling">
 <h2>Diffusion Modeling<a class="headerlink" href="#diffusion-modeling" title="Link to this heading">#</a></h2>
 <p>As with advection one can examine a small volume in space in terms of flux and construct the equations of mass transport - as bafore its really the Reynolds Transport Theorem applied to the diffusive flux.</p>
-<p><img alt="" src="../../_images/diffusionEquations.png" /></p>
+<p><img alt="" src="../../_images/diffusionEquations1.png" /></p>
 </section>
 </section>
 

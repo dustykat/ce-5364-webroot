@@ -182,8 +182,23 @@
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction to Groundwater Contaminant Transport</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../03site.mapping.tools/site.mapping.tools.html">Site Mapping Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00syllabus/ce5364-syllabus-2025-3.html">0. Syllabus (Fall 2025)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.science.html">2. Fundamentals I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.practice.html">3. Fundamentals (Practice)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03site.mapping.tools/site.mapping.tools.html">5. Site Mapping Tools</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03site.characterization/site.characterization.html">6. Site Characterization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/physical.transport.html">7. Physical Transport</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/modeling.advection.html">8. Modeling Advection</a></li>
 </ul>
 
     </div>
@@ -427,7 +442,7 @@ document.write(`
 <li><p>Only the simple-linear scheme preserves cell-by-cell mass balances.</p></li>
 </ul>
 <p>The figure below illustrates simple linear interpolation.</p>
-<p><img alt="" src="../../_images/particle_track_interpolation.png" /></p>
+<p><img alt="" src="../../_images/particle_track_interpolation1.png" /></p>
 <ul class="simple">
 <li><p>Typical computational grid for heads.</p></li>
 <li><p>Arrows are the interfacial fluxes.</p></li>
@@ -435,10 +450,10 @@ document.write(`
 <li><p>The simple scheme assgins the right and bottom flux to <span class="math notranslate nohighlight">\((x_2,y_2)\)</span>.</p></li>
 </ul>
 <p>The particle velocity is determined by position of the particle relative to the velocity grid.</p>
-<p><img alt="" src="../../_images/pt_find_particle.png" /></p>
+<p><img alt="" src="../../_images/pt_find_particle1.png" /></p>
 <p>Uses the same grid as the head scheme.
 Velocity is the distance weighted average of the cell that the particle occupies.</p>
-<p><img alt="" src="../../_images/pt_get_velo.png" /></p>
+<p><img alt="" src="../../_images/pt_get_velo1.png" /></p>
 <p>From the above figure, the particle’s velocities (x- and y- directions) are:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(u_p = \frac{1-\delta x}{\Delta x}u(x_1,y_1)+\frac{\delta x}{\Delta x}u(x_2,y_2)\)</span></p></li>
@@ -453,14 +468,14 @@ Velocity is the distance weighted average of the cell that the particle occupies
 <p>To illustrate particle tracking the simple velocity scheme is used.<br />
 Extension to higher order schemes is straight forward.</p>
 <p>Illustrate with simple scheme. Consider:</p>
-<p><img alt="" src="../../_images/ss_fig1.png" /></p>
+<p><img alt="" src="../../_images/ss_fig11.png" /></p>
 <ul class="simple">
 <li><p>Large rectangles represent the velocity grid.</p></li>
 <li><p>Circles represent the geometric location where velocity is known.</p></li>
 <li><p>Small rectangle represents the particle that we wish to track.</p></li>
 </ul>
 <p><strong>Cell Indexing</strong></p>
-<p><img alt="" src="../../_images/ss_fig2.png" /></p>
+<p><img alt="" src="../../_images/ss_fig21.png" /></p>
 <ul class="simple">
 <li><p>Each cell represents a grid location in the velocity field.  Thus each cell has a unique row and column index.</p></li>
 <li><p>Each cell centroid also has a unique geomteric (x,y) location.</p></li>
@@ -513,13 +528,13 @@ The particle is then “moved” by the simple kinematic calculation:</p>
 </ul>
 <p><strong>Illustrative Example</strong></p>
 <p>An example with 3 particles is shown below - the spreadsheet is kind of big because iterative computations are intentionally avoided.</p>
-<p><img alt="" src="../../_images/pt_seg0.png" /></p>
+<p><img alt="" src="../../_images/pt_seg01.png" /></p>
 <p>Closer view for particle 1:</p>
-<p><img alt="" src="../../_images/pt_seg1.png" /></p>
+<p><img alt="" src="../../_images/pt_seg11.png" /></p>
 <p>Closer view for particle 2:</p>
-<p><img alt="" src="../../_images/pt_seg2.png" /></p>
+<p><img alt="" src="../../_images/pt_seg21.png" /></p>
 <p>Closer view for particle 3:</p>
-<p><img alt="" src="../../_images/pt_seg3.png" /></p>
+<p><img alt="" src="../../_images/pt_seg31.png" /></p>
 <p><strong>Summary</strong></p>
 <ul class="simple">
 <li><p>Particle tracking is a tool to determine the position of a fluid particle in a flow field.</p></li>
@@ -1041,7 +1056,7 @@ xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
 <span class="n">TY</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">np</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Total particles </span>
 <span class="n">XP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>
-<span class="n">YP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">290</span><span class="p">)</span>
+<span class="n">YP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">550</span><span class="p">)</span>
 <span class="n">UP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">VP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">ip</span><span class="o">=</span><span class="n">np</span><span class="o">-</span><span class="mi">1</span> 
@@ -1081,7 +1096,7 @@ xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   Initial Particle Position 900 290 0 0 0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   Initial Particle Position 900 550 0 0 0
 </pre></div>
 </div>
 </div>
@@ -1120,7 +1135,7 @@ xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&#39;
 </pre></div>
 </div>
-<img alt="../../_images/fb5ddea0229206a21aa77048a2da44090718f0efaff475516692f49c953ad5f9.png" src="../../_images/fb5ddea0229206a21aa77048a2da44090718f0efaff475516692f49c953ad5f9.png" />
+<img alt="../../_images/a0771ff432ba6d92891fa5fbd8eb429aa4cb535c71fe44c47cb317095512c1a9.png" src="../../_images/a0771ff432ba6d92891fa5fbd8eb429aa4cb535c71fe44c47cb317095512c1a9.png" />
 </div>
 </div>
 <section id="extensions">

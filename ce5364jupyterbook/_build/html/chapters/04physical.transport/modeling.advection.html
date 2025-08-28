@@ -183,8 +183,8 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00syllabus/ce5364-syllabus-2025-3.html">0. Syllabus (Fall 2025)</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction to Groundwater Contaminant Transport</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.science.html">2. Fundamentals (Science)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.science.html">2. Fundamentals I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.practice.html">3. Fundamentals (Practice)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03site.mapping.tools/site.mapping.tools.html">5. Site Mapping Tools</a></li>
 
@@ -482,7 +482,7 @@ document.write(`
 <p>While the methods in this notebook would be fine, practical “for money” modeling will usually employ specialized software; especially if lawyers will somehow get involved.</p>
 </div>
 <p>To build models, we simply apply the Reynolds Transport Theorem to the advective flux component to produce something like:</p>
-<p><img alt="" src="../../_images/advectivefrux2.png" /></p>
+<p><img alt="" src="../../_images/advectivefrux.png" /></p>
 </section>
 </section>
 <section id="modeling-advection-by-particle-tracking">
@@ -502,7 +502,7 @@ document.write(`
 <li><p>Only the simple-linear scheme preserves cell-by-cell mass balances.</p></li>
 </ul>
 <p>The figure below illustrates simple linear interpolation.</p>
-<p><img alt="" src="../../_images/particle_track_interpolation1.png" /></p>
+<p><img alt="" src="../../_images/particle_track_interpolation.png" /></p>
 <ul class="simple">
 <li><p>Typical computational grid for heads.</p></li>
 <li><p>Arrows are the interfacial fluxes.</p></li>
@@ -510,10 +510,10 @@ document.write(`
 <li><p>The simple scheme assgins the right and bottom flux to <span class="math notranslate nohighlight">\((x_2,y_2)\)</span>.</p></li>
 </ul>
 <p>The particle velocity is determined by position of the particle relative to the velocity grid.</p>
-<p><img alt="" src="../../_images/pt_find_particle1.png" /></p>
+<p><img alt="" src="../../_images/pt_find_particle.png" /></p>
 <p>Uses the same grid as the head scheme.
 Velocity is the distance weighted average of the cell that the particle occupies.</p>
-<p><img alt="" src="../../_images/pt_get_velo1.png" /></p>
+<p><img alt="" src="../../_images/pt_get_velo.png" /></p>
 <p>From the above figure, the particle’s velocities (x- and y- directions) are:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(u_p = \frac{1-\delta x}{\Delta x}u(x_1,y_1)+\frac{\delta x}{\Delta x}u(x_2,y_2)\)</span></p></li>
@@ -529,14 +529,14 @@ Velocity is the distance weighted average of the cell that the particle occupies
 <p>To illustrate particle tracking the simple velocity scheme is used.<br />
 Extension to higher order schemes is straight forward.</p>
 <p>Illustrate with simple scheme. Consider:</p>
-<p><img alt="" src="../../_images/ss_fig11.png" /></p>
+<p><img alt="" src="../../_images/ss_fig1.png" /></p>
 <ul class="simple">
 <li><p>Large rectangles represent the velocity grid.</p></li>
 <li><p>Circles represent the geometric location where velocity is known.</p></li>
 <li><p>Small rectangle represents the particle that we wish to track.</p></li>
 </ul>
 <p><strong>Cell Indexing</strong></p>
-<p><img alt="" src="../../_images/ss_fig21.png" /></p>
+<p><img alt="" src="../../_images/ss_fig2.png" /></p>
 <ul class="simple">
 <li><p>Each cell represents a grid location in the velocity field.  Thus each cell has a unique row and column index.</p></li>
 <li><p>Each cell centroid also has a unique geomteric (x,y) location.</p></li>
@@ -589,13 +589,13 @@ The particle is then “moved” by the simple kinematic calculation:</p>
 </ul>
 <p><strong>Illustrative Example</strong></p>
 <p>An example with 3 particles is shown below - the spreadsheet is kind of big because iterative computations are intentionally avoided.</p>
-<p><img alt="" src="../../_images/pt_seg01.png" /></p>
+<p><img alt="" src="../../_images/pt_seg0.png" /></p>
 <p>Closer view for particle 1:</p>
-<p><img alt="" src="../../_images/pt_seg11.png" /></p>
+<p><img alt="" src="../../_images/pt_seg1.png" /></p>
 <p>Closer view for particle 2:</p>
-<p><img alt="" src="../../_images/pt_seg21.png" /></p>
+<p><img alt="" src="../../_images/pt_seg2.png" /></p>
 <p>Closer view for particle 3:</p>
-<p><img alt="" src="../../_images/pt_seg31.png" /></p>
+<p><img alt="" src="../../_images/pt_seg3.png" /></p>
 <p><strong>Summary</strong></p>
 <ul class="simple">
 <li><p>Particle tracking is a tool to determine the position of a fluid particle in a flow field.</p></li>
@@ -1009,7 +1009,7 @@ $<span class="math notranslate nohighlight">\(\frac{\partial C}{\partial x} \app
 <p>The parts with the absolute value are a sneaky way to handle the upwinding automatically.</p>
 <p>As long as <span class="math notranslate nohighlight">\(V_i &lt;= \frac{\Delta t}{\Delta x}\)</span> this difference scheme is stable, it is also reasonably accurate if <span class="math notranslate nohighlight">\(V_i \approx \frac{\Delta t}{\Delta x}\)</span></p>
 <p>Below is a simple spreadsheet implementation of the explicit scheme above.</p>
-<p><img alt="" src="../../_images/UpwindExplicit1.png" /></p>
+<p><img alt="" src="../../_images/UpwindExplicit.png" /></p>
 <p>In MODFLOW6 transport model, a choice of upwind (called upstream in the toolkit) tries to match internal time steps to maintain numerical stability.  As you will see in class when we run a spreadsheet example. Its impossible for perfect accuracy and stability, but it is possible to stay close.  We will see examples of numerical diffusion as we depart from the accuracy requirement.</p>
 </section>
 <section id="centered-formulation">
@@ -1018,7 +1018,7 @@ $<span class="math notranslate nohighlight">\(\frac{\partial C}{\partial x} \app
 \[C_i^{n+1} = C_i^n + \frac{\Delta t}{2 \Delta x}(V_{i-1}*C_{i-1}^n - V_{i}*C_{i+1}^n)\]</div>
 <p>This scheme will exhibit substantial numerical diffusion in part because it is a non-upwind formulation.</p>
 <p>Below is a simple spreadsheet implementation of the explicit, centered in space scheme above.</p>
-<p><img alt="" src="../../_images/CenteredExplicit1.png" /></p>
+<p><img alt="" src="../../_images/CenteredExplicit.png" /></p>
 <p>The spreadsheet above nicely exhibits numerical diffusion, apparent in the profile plot as well as oscillation in the time history.
 Professional tools address this phenomenon by a variety of approaches, upwinding and flux limiters being common reliable methods, a method of characteristics is another way to deal with the issue.</p>
 <div class="admonition note">
