@@ -410,8 +410,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-directions-of-hydraulic-conductivity">Principal Directions of Hydraulic Conductivity</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-s">Exercise(s)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-end">Section End</a></li>
 </ul>
             </nav>
@@ -612,11 +611,17 @@ flow through a formation takes place in some predominant direction over prolonge
 However as depicted above only a portion of the cross sectional area is open (liquid phase), the remainder is solid.  The pore velocity is the velocity of the actual liquid parcels required to satisfy continunity for the section.  In the above figure</p>
 <div class="math notranslate nohighlight">
 \[v_{pore} = \frac{q}{n} = \frac{Q}{nA}\]</div>
+<p>The pore velocity is the speed at which constituients transported by <em>advection</em> would travel, hence its obvious importance.</p>
 </div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>At one of my first jobs, I forgot to divide the discharge by the porosity so the subsequent travel times were way off (favorable for landfill operator, but wrong).  At some point I realized the mistake and made the correction(s).  But its easier to just do it right the first time.</p>
+</div>
 </section>
 <section id="anisotropy">
 <h2>Anisotropy<a class="headerlink" href="#anisotropy" title="Link to this heading">#</a></h2>
-<p>Anisotropy in the context of groundwater flow refers to the property of subsurface materials that causes the flow of groundwater to exhibit varying degrees of preferential directionality. In other words, the hydraulic conductivity of the underground formation is not the same in all directions. This anisotropic behavior is often observed in geological formations composed of layered or oriented materials such as sedimentary rocks, fractured bedrock, or layered aquifer systems.</p>
+<p>Anisotropy (already mentioned above) in the context of groundwater flow refers to the property of subsurface materials that causes the flow of groundwater to exhibit varying degrees of preferential directionality. In other words, the hydraulic conductivity of the underground formation is not the same in all directions. This anisotropic behavior is often observed in geological formations composed of layered or oriented materials such as sedimentary rocks, fractured bedrock, or layered aquifer systems.</p>
+<p><br><center><img alt="" src="../../_images/layers.png" /></center><br></p>
 <p>Anisotropy can significantly impact the movement of groundwater. When the hydraulic conductivity is higher in one direction compared to another, groundwater will tend to flow more readily along the path of least resistance, following the direction of higher conductivity. This can lead to uneven flow patterns and the development of preferential flow pathways within the subsurface.</p>
 <p>Understanding anisotropy is crucial for accurate modeling and prediction of groundwater movement and contaminant transport. Groundwater flow simulations must account for anisotropic behavior to effectively predict the direction and rate of groundwater flow, as well as the dispersion and spread of contaminants through the subsurface. Neglecting anisotropy can lead to inaccurate predictions and improper management of groundwater resources and contamination issues.</p>
 <section id="principal-directions-of-hydraulic-conductivity">
@@ -667,11 +672,23 @@ K_{zx} &amp; K_{zy} &amp; K_{zz} \\
 \end{split}\]</div>
 </section>
 </section>
-<section id="id1">
-<h2><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-</section>
-<section id="id2">
-<h2><a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="exercise-s">
+<h2>Exercise(s)<a class="headerlink" href="#exercise-s" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/chapters/01fundamentals/ce5364-es1-2025-3.pdf">ce5364-es1-2025-3</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># autobuild exercise</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">&quot;pdflatex&quot;</span><span class="p">,</span> <span class="s2">&quot;ce5364-es1-2025-3.tex&quot;</span><span class="p">],</span> 
+                   <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Build failed. Check your LaTeX source file.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="section-end">
 <h2>Section End<a class="headerlink" href="#section-end" title="Link to this heading">#</a></h2>
@@ -758,8 +775,7 @@ K_{zx} &amp; K_{zy} &amp; K_{zz} \\
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-directions-of-hydraulic-conductivity">Principal Directions of Hydraulic Conductivity</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-s">Exercise(s)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-end">Section End</a></li>
 </ul>
   </nav></div>
