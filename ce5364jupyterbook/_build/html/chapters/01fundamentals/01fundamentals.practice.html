@@ -561,19 +561,13 @@ document.write(`
 <p>Insert Darcy’s law <span class="math notranslate nohighlight">\(𝑞=−𝐾 \nabla h\)</span> as the equation of motion  into continuity:</p>
 <p><span class="math notranslate nohighlight">\(S_s\frac{\partial h}{\partial t}+ \nabla \cdot (−K \nabla h) = W \to S_s\frac{\partial h}{\partial t}= \nabla \cdot (K \nabla h) + W\)</span></p>
 <p>which in components gives the 3D confined equation:</p>
-<p>$S_s \frac{\partial h}{\partial t} = \frac{\partial}{\partial x}(K_x\frac{\partial h}{\partial x})</p>
-<ul class="simple">
-<li><p>\frac{\partial}{\partial y}(K_y\frac{\partial h}{\partial y}) + \frac{\partial}{\partial z}(K_z\frac{\partial h}{\partial z})\pm W (source/sink) $</p></li>
-</ul>
+<p><span class="math notranslate nohighlight">\(S_s \frac{\partial h}{\partial t} = \frac{\partial}{\partial x}(K_x\frac{\partial h}{\partial x}) + \frac{\partial}{\partial y}(K_y\frac{\partial h}{\partial y}) + \frac{\partial}{\partial z}(K_z\frac{\partial h}{\partial z})\pm W (source/sink)\)</span></p>
 <p><strong>Confined aquifer, vertically integrated (2D)</strong></p>
 <p>Integrate the 3D equation from
 <span class="math notranslate nohighlight">\(z_{bot}\)</span> to <span class="math notranslate nohighlight">\(z_{top}\)</span> (aquifer thickness <span class="math notranslate nohighlight">\(B\)</span>. Define:</p>
 <p><span class="math notranslate nohighlight">\(T_x = \int_{z_{bot}}^{z_{top}} K_x(z) dz~(\approx~K_xB)~~~~\)</span>   <span class="math notranslate nohighlight">\(T_y = \int_{z_{bot}}^{z_{top}} K_y(z) dz~(\approx~K_yB)~~~~\)</span>  <span class="math notranslate nohighlight">\(S = \int_{z_{bot}}^{z_{top}} S_s(z) dz~(\approx~S_sB)\)</span></p>
 <p>Assuming <span class="math notranslate nohighlight">\(h\)</span> is nearly uniform with depth (Dupuit-type vertical averaging for confined systems), the vertical terms cancel on integration and sources/sinks convert to areal rates <span class="math notranslate nohighlight">\(W'\)</span>. The result is:</p>
-<p>$S \frac{\partial h}{\partial t} = \frac{\partial}{\partial x}(T_x\frac{\partial h}{\partial x})</p>
-<ul class="simple">
-<li><p>\frac{\partial}{\partial y}(T_y\frac{\partial h}{\partial y}) \pm W’ (source/sink) $</p></li>
-</ul>
+<p><span class="math notranslate nohighlight">\(S \frac{\partial h}{\partial t} = \frac{\partial}{\partial x}(T_x\frac{\partial h}{\partial x}) + \frac{\partial}{\partial y}(T_y\frac{\partial h}{\partial y}) \pm W' (source/sink)\)</span></p>
 <p>which is the 2D confined equation.</p>
 <p><strong>Unconfined aquifer (Boussinesq form)</strong></p>
 <p>For unconfined conditions, the saturated thickness equals the head above the impermeable base (take datum
@@ -584,10 +578,7 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(q_x=-K_x h \frac{\partial h}{\partial x}~~~~\)</span>,<span class="math notranslate nohighlight">\(q_y=-K_y h \frac{\partial h}{\partial y}~~~~\)</span>,</p>
 <p>after invoking a Dupuit assumption (vertical gradients small compared to horizontal; vertical head distribution is nearly hydrostatic).</p>
 <p>Insert into continuity (plan-view):</p>
-<p>$S_y \frac{\partial h}{\partial t} = \frac{\partial}{\partial x}(K_x h \frac{\partial h}{\partial x})</p>
-<ul class="simple">
-<li><p>\frac{\partial}{\partial y}(K_y h \frac{\partial h}{\partial y}) \pm W’ (source/sink) $</p></li>
-</ul>
+<p><span class="math notranslate nohighlight">\(S_y \frac{\partial h}{\partial t} = \frac{\partial}{\partial x}(K_x h \frac{\partial h}{\partial x}) + \frac{\partial}{\partial y}(K_y h \frac{\partial h}{\partial y}) \pm W' (source/sink)\)</span></p>
 <p>which is the Boussinesq equation used for unconfined flow (the equation above, with optional sources/sinks).</p>
 </div>
 </section>

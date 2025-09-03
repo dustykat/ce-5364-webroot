@@ -11,6 +11,7 @@ chapters:
 - file: chapters/00introduction/00introduction
 - file: chapters/01fundamentals/01fundamentals.science
 - file: chapters/01fundamentals/01fundamentals.practice
+- file: chapters/02regulatory.overview/regulatory.overview
 - file: chapters/03site.mapping.tools/site.mapping.tools
 - file: chapters/03site.characterization/site.characterization
 - file: chapters/04physical.transport/physical.transport
