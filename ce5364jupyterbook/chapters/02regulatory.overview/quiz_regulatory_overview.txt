@@ -1,0 +1,69 @@
+1. What is the primary concern with pollutants in groundwater?
+A. Temperature variation
+B. Migration to surface water and drinking water sources
+C. Loss of aquifer recharge
+D. Corrosion of infrastructure  
+**Answer: B**
+
+2. What document defines the procedures used to prioritize hazardous waste sites for Superfund?
+A. RCRA
+B. CERCLA
+C. HRS Guidance Manual
+D. EPA Method 1311  
+**Answer: C**
+
+3. Which term best describes the lowest dose at which a particular response may occur?
+A. LD50
+B. Threshold dose
+C. Maximum contaminant level
+D. Toxicity index  
+**Answer: B**
+
+4. The dose-response relationship helps determine:
+A. Chemical solubility
+B. Groundwater recharge rate
+C. The effect of a contaminant at varying exposure levels
+D. Pipe sizing requirements  
+**Answer: C**
+
+5. Which agency developed the ecological risk assessment framework referenced in the lesson?
+A. USGS
+B. WHO
+C. EPA
+D. DOE  
+**Answer: C**
+
+6. A high Hazard Ranking System (HRS) score typically implies:
+A. Site is safe for immediate development
+B. Risk communication is unnecessary
+C. Site may be eligible for Superfund listing
+D. Contaminant is biodegradable  
+**Answer: C**
+
+7. The unit “Becquerel” is associated with which pollutant property?
+A. Toxicity
+B. Volatility
+C. Radioactivity
+D. Solubility  
+**Answer: C**
+
+8. Which of the following is a correct pairing?
+A. Toxicity – Chemical’s color
+B. Dose-response – Exposure duration only
+C. Threshold – Minimum level before measurable effect
+D. LD50 – Level of dilution in water  
+**Answer: C**
+
+9. Which reading provides legacy insight from CE 6361 at University of Houston?
+A. EPA Risk Communication Seminar
+B. Asante-Duah (1993)
+C. Cleveland’s Regulatory Framework Notes
+D. Dose-Response (Wikipedia)  
+**Answer: C**
+
+10. The purpose of risk communication is to:
+A. Reduce pollutant concentrations in groundwater
+B. Communicate uncertainties and decisions to the public and stakeholders
+C. Identify remediation cost
+D. Classify aquifer layers  
+**Answer: B**
