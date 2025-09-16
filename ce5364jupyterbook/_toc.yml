@@ -16,5 +16,6 @@ chapters:
 - file: chapters/03site.characterization/site.characterization
 - file: chapters/04physical.transport/physical.transport
 - file: chapters/04physical.transport/modeling.advection
+- file: chapters/05analytical.models1d/05analytical.models1d
 
 
