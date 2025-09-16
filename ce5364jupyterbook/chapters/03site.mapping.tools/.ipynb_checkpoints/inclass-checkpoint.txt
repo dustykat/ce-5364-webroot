@@ -1,0 +1,5 @@
+X-Easting	Y-Northing	Z-Elevation
+1000	300	133
+1100	400	121
+1600	1300	112
+400	700	128

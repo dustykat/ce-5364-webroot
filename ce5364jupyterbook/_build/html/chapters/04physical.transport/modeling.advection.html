@@ -185,7 +185,9 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.science.html">2. Fundamentals I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.practice.html">3. Fundamentals (Practice)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.practice.html">3. Fundamentals II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02regulatory.overview/regulatory.overview.html">3. Regulatory Overview and Risk Assessment</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="../03site.mapping.tools/site.mapping.tools.html">5. Site Mapping Tools</a></li>
 
 
@@ -394,24 +396,25 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">Videos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-tracking">Particle Tracking:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#upwind-finite-difference">Upwind Finite Difference:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-advection-by-particle-tracking">Modeling Advection by Particle Tracking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-advection-by-particle-tracking-lagrangian-approach">Modeling Advection by Particle Tracking (Lagrangian Approach)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-linear-interpolation">Multi-Linear Interpolation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spreadsheet-approach">Spreadsheet Approach</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spreadsheet-excel-approach">Spreadsheet (Excel) Approach</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spreadsheet-examples">Spreadsheet Examples</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-particle-tracking">Example of Particle Tracking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-tracking-in-python">Particle Tracking in Python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-need-to-digitize-the-head-map">Step 1. Need to Digitize the Head Map</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-check-the-digitization-results">Step 2 Check the Digitization Results</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensions">Extensions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eulerian-finite-difference-approach">Eulerian (Finite-Difference) Approach</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-advection-by-finite-difference-eulerian-approach">Modeling Advection by Finite-Difference (Eulerian Approach)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-difference-method">Finite-Difference Method</a></li>
 </ul>
 </li>
@@ -421,6 +424,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#centered-formulation">Centered formulation</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-advection-modelingparticles-vs-grids-and-hybrids">Summary: Advection Modeling—Particles vs. Grids (and Hybrids)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-to-2-spatial-dimensions">Extension to 2 Spatial Dimensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-s">Exercise(s)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-end">Section End</a></li>
 </ul>
             </nav>
         </div>
@@ -434,6 +441,23 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="modeling-advection">
 <h1>8. Modeling Advection<a class="headerlink" href="#modeling-advection" title="Link to this heading">#</a></h1>
+<p>This section demonstrates advection modeling using two approaches: particle tracking and an upwind finite-difference scheme. These methods represent two distinct classes of simulation, chosen according to the needs of the problem. The underlying numerical-analysis details are covered in other courses. Note that advection is governed by hyperbolic PDEs, and effective solution techniques remain an active area of research.</p>
+<div class="admonition-course-website admonition">
+<p class="admonition-title">Course Website</p>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/">Link to Course Website</a></p>
+</div>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
+<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span><span class="w"> </span><span class="nt">table</span><span class="w"> </span><span class="p">{</span><span class="k">margin-left</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="cp">!important</span><span class="p">;}</span><span class="w"> </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style> table {margin-left: 0 !important;} </style>
+</div></div>
+</div>
 <section id="readings">
 <h2>Readings<a class="headerlink" href="#readings" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
@@ -442,6 +466,18 @@ document.write(`
 <li><p><a class="reference external" href="https://pdf.sciencedirectassets.com/271718/1-s2.0-S0309170800X00206/1-s2.0-S0309170897000079/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEO%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIQDnoA3cV9bojVQfPNNC5216IOqSfA3CC9oNpKqm7jsg%2BAIgPNHP7BORGCHJOPXblsR7OgkpZOL4TiorvYNFoF7DzzoqvAUI2P%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAFGgwwNTkwMDM1NDY4NjUiDMtHVnMRegEZxZu%2FZiqQBTx7ackkzlJkdep3XgGsyzfLKPWiZki7LjIGbfJzfz8ghafQjvK87AoSeOQbPszA9n%2BA%2B98Cg4Td9L1s2sGvfQbmSP6y3cX55ettaeiK7IpLsVoN0Xj%2FCN00ZNLkFrbQvJx1Rf4mIj75YEI9csluicZQ16%2BFfPnaKMwguwCEtT13YL%2F%2B%2BNhpahdG5TZ8iMzgHNsyQWoMUM2CgnQU2G9HuKlIqUQWWQE5muKj2t1m5bVStiFX%2BYrsdCCwAAIAQXi%2BzNsjMY%2B92CE9Y%2BUjLXzOmb2nTemS7oJ3khktN7mbimpf5bXQvBxiwU%2B5fdOqJfkssnBrIUa%2BH4NVqtC%2F33cB%2FGJLSBstPPnTIDhObNPUnKNrwduwFa7nPcWKBhdTbjN%2B4C31UI8VV5ktT22TeFxtIxU7WPb4%2FiorI0bYgWh4rjiIWP3LewwsNVH3BeLhqVdmq8rISfyQVosTxpXvmzWVZi027h6PvICdSHIqjTUdg5%2BIN9IEeT0vibYXLIrGXPJH%2F5cRpmDnxDBZP86qyvJ7yO%2BjciEzesPfrMAeiV30eKsxyMU6mQVARd8AVHR4OUpJ3HjW6PCWaP6KHqDUDeDE9YcQpOVyHbpTojE%2BMXun6K8cVL2eghCu9JqpwaqhRnwFMSoE66sD%2F0QMDzTQhpMZOuuwwMkPwM25MXLOIUzkI%2B1Iyuz5IPWeBoMWUMmINQxMaMuXRUkajR3PEJw9Q78IurKMz3MYU%2BM2Lq2CrMulkGfB5ICmOSEAA2oDym6oVyNA13MiwgyhXfyROEtxF4dMBKkOOdcAzSR7BH%2FwefmvFZtNXn5CuqSr6TZCx%2BrQQkPgCPWlZaIhQvC3yDST7dSeHOpNEGEA6%2FKjUWmyCR0ILmJIMLOOrKgGOrEBqqrXj4L7AVYSVhfpXTtIOpQFLkzWXqlkYtxWyPxmOYgnaiBfzRsplcRE8Z15zosf35r%2Fv1DVKUie%2BNqMgcszd2tH89iZ3z29JkvRAlgCmD2cFwTzwyoTuCWGTQhZtm9B5HGkQ%2F6OkQUNmbl%2FtQzkdEdKqFTsnD8Rqr7j78eB82fPB94%2BdPFSfFDCfSNDbT4aEZtq0Gys4IxXE0fpr%2BwJrmqqffzX2WsQAcdnQKJsAZ8u&amp;amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;amp;X-Amz-Date=20230920T152957Z&amp;amp;X-Amz-SignedHeaders=host&amp;amp;X-Amz-Expires=300&amp;amp;X-Amz-Credential=ASIAQ3PHCVTY3SEVAUPT%2F20230920%2Fus-east-1%2Fs3%2Faws4_request&amp;amp;X-Amz-Signature=32d7e0fcf2047a83bd395b8a01396547b1df965c3919265e1df97af08e546058&amp;amp;hash=98e447ef758882bdc500f581d99984707720145e14f6f213ed170521c1a545bf&amp;amp;host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&amp;amp;pii=S0309170897000079&amp;amp;tid=spdf-9915bbf9-f314-4721-8f97-e5760a05c1dd&amp;amp;sid=2f575b1c213689494e48a5227441297408a8gxrqa&amp;amp;type=client&amp;amp;tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&amp;amp;ua=0f15595e560d5f03560907&amp;amp;rr=809b1b5fcec7479a&amp;amp;cc=us"><em>Modeling plume behavior for nonlinearly sorbing solutes in saturated homogeneous porous media</em> in Advances in Water Resources 21 (1998) 487-498 Elsevier Science Limited</a></p></li>
 <li><p><a class="reference external" href="https://www.amazon.com/Dynamics-Fluids-Porous-Mechanical-Engineering/dp/0486656756">Bear, J. (1972) <em>Dynamics of Fluids in Porous Media</em> McGraw Hill (pp. 236-241)</a></p></li>
 <li><p><a class="reference external" href="https://archive.org/details/elementsofcomput0000kout">Koutitas,C.G. (1983) <em>Elements of computational hydraulics</em> Pentech Press ; New York : Distributed in the USA by Chapman and Hall </a> Link is to internet book archive.</p></li>
+<li><p><a class="reference external" href="https://iopscience.iop.org/article/10.1088/1361-6501/ab0786/ampdf">A Clark et al (2019) <em>A quantitative study of track initialization of the four-frame best estimate
+algorithm for three-dimensional Lagrangian particle tracking</em> Meas. Sci. Technol. 30 045302</a></p></li>
+</ol>
+</section>
+<section id="videos">
+<h2>Videos<a class="headerlink" href="#videos" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=l3BpHJp_mUk&amp;amp;list=PLGeAqY8D2iZNV4kQiL6sHYjTZy_KcvYZM&amp;amp;index=1">SPREADSHEET FOR 2D PARTICLE TRACKING MULTIPLE WELLS RANDOM WALK DISPERSION</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=KNb50Xl-g_s&amp;amp;list=PLGeAqY8D2iZNV4kQiL6sHYjTZy_KcvYZM&amp;amp;index=2">SPREADSHEET FOR PARTICLE TRACKING - MULTIPLE WELLS </a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=HvxLlYnRuxs">Particle Tracking </a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=T7vNCeKcmpo">Particle Tracking Simulation with Model Muse and Modpath - Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=DEvYyu15Mi4">Euler-Lagrange modelling of particle-laden flows</a></p></li>
 </ol>
 <p>Modeling advective transport in groundwater is a critical component of hydrogeology and environmental science, as it allows us to understand and predict the movement of contaminants and the transport of solutes through subsurface aquifers. Advective transport refers to the bulk movement of water and the substances it carries, driven primarily by hydraulic gradients and pressure differences within the groundwater system. This process plays a fundamental role in determining the fate and transport of pollutants, nutrients, and other substances in the subsurface environment.</p>
 <p>A variety of widely used methods and techniques are used; These methodologies are essential for comprehending the dynamics of groundwater flow and the transport of substances within aquifers. Two popular methods for modeling advective transport in groundwater are numerical modeling and analytical solutions.</p>
@@ -485,8 +521,8 @@ document.write(`
 <p><img alt="" src="../../_images/advectivefrux.png" /></p>
 </section>
 </section>
-<section id="modeling-advection-by-particle-tracking">
-<h2>Modeling Advection by Particle Tracking<a class="headerlink" href="#modeling-advection-by-particle-tracking" title="Link to this heading">#</a></h2>
+<section id="modeling-advection-by-particle-tracking-lagrangian-approach">
+<h2>Modeling Advection by Particle Tracking (Lagrangian Approach)<a class="headerlink" href="#modeling-advection-by-particle-tracking-lagrangian-approach" title="Link to this heading">#</a></h2>
 <p>Later on we will use USGS-MOC (which incorporates particle tracking to define characteristic trajectories), so we will illustrate particle tracking keeping MOC in mind.</p>
 <ul class="simple">
 <li><p>Particle or front tracking is typically performed using special software.</p></li>
@@ -524,8 +560,8 @@ Velocity is the distance weighted average of the cell that the particle occupies
 <h2>Multi-Linear Interpolation<a class="headerlink" href="#multi-linear-interpolation" title="Link to this heading">#</a></h2>
 <p>Higher order schemes produce smoother velocity fields at the expense of cell mass balances and computational ease. The USGS-MOC model uses a bi-linear scheme where the velocities at the four corners of the occupied cell are used. When transient flow fields occur, averaging in time is also used. The differences in the schemes are hard to detect when the grid spacing is small and the flow field is smoothly varying.</p>
 </section>
-<section id="spreadsheet-approach">
-<h2>Spreadsheet Approach<a class="headerlink" href="#spreadsheet-approach" title="Link to this heading">#</a></h2>
+<section id="spreadsheet-excel-approach">
+<h2>Spreadsheet (Excel) Approach<a class="headerlink" href="#spreadsheet-excel-approach" title="Link to this heading">#</a></h2>
 <p>To illustrate particle tracking the simple velocity scheme is used.<br />
 Extension to higher order schemes is straight forward.</p>
 <p>Illustrate with simple scheme. Consider:</p>
@@ -613,9 +649,9 @@ The particle is then “moved” by the simple kinematic calculation:</p>
 <section id="spreadsheet-examples">
 <h3>Spreadsheet Examples<a class="headerlink" href="#spreadsheet-examples" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/chapters/11modelingadvection/PartTrack_10.xls">Cleveland, T.G. (1997) <em>Particle Tracking Spreadsheet (10X10) (Excel)</em></a></p></li>
-<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/chapters/11modelingadvection/PartTrack_20.xls">Cleveland, T.G. (1997) <em>Particle Tracking Spreadsheet (20X20) (Excel)</em></a></p></li>
-<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/chapters/11modelingadvection/PartTrack.xls">Cleveland, T.G. (1997) <em>Particle Tracking Spreadsheet (5X5 same as example above) (Excel)</em></a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/chapters/04physical.transport/PartTrack_10.xls">Cleveland, T.G. (1997) <em>Particle Tracking Spreadsheet (10X10) (Excel)</em></a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/chapters/04physical.transport/PartTrack_20.xls">Cleveland, T.G. (1997) <em>Particle Tracking Spreadsheet (20X20) (Excel)</em></a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/chapters/04physical.transport/PartTrack.xls">Cleveland, T.G. (1997) <em>Particle Tracking Spreadsheet (5X5 same as example above) (Excel)</em></a></p></li>
 </ol>
 <p>Performing the calculations in a python script is illustrated in the next section.</p>
 <div class="admonition note">
@@ -624,8 +660,8 @@ The particle is then “moved” by the simple kinematic calculation:</p>
 </div>
 </section>
 </section>
-<section id="example-of-particle-tracking">
-<h2>Example of Particle Tracking<a class="headerlink" href="#example-of-particle-tracking" title="Link to this heading">#</a></h2>
+<section id="particle-tracking-in-python">
+<h2>Particle Tracking in Python<a class="headerlink" href="#particle-tracking-in-python" title="Link to this heading">#</a></h2>
 <p>Here we illustrate using particle tracking to address a homework problem.</p>
 <hr><hr>
 <p>The figure below shows a piezometric map for a shallow sand aquifer.  The hydraulic conductivtiy is estimated to be <span class="math notranslate nohighlight">\(1.5 \times 10^{-2}~\frac{cm}{s}\)</span>, the saturated thickness is 40 feet, and the effective porosity is 0.3.</p>
@@ -870,8 +906,8 @@ xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
 <span class="n">TX</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">#trajectory vector</span>
 <span class="n">TY</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">np</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Total particles </span>
-<span class="n">XP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>
-<span class="n">YP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">290</span><span class="p">)</span>
+<span class="n">XP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">825</span><span class="p">)</span>
+<span class="n">YP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">325</span><span class="p">)</span>
 <span class="n">UP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">VP</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">ip</span><span class="o">=</span><span class="n">np</span><span class="o">-</span><span class="mi">1</span> 
@@ -911,7 +947,7 @@ xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   Initial Particle Position 900 290 0 0 0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   Initial Particle Position 825 325 0 0 0
 </pre></div>
 </div>
 </div>
@@ -950,7 +986,7 @@ xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&#39;
 </pre></div>
 </div>
-<img alt="../../_images/2d5a50b6cfc0c345520f288fea59ed08caf8872051c4f49919d324408e54f67c.png" src="../../_images/2d5a50b6cfc0c345520f288fea59ed08caf8872051c4f49919d324408e54f67c.png" />
+<img alt="../../_images/bbae6304d363b7919857c128f6777543b034a3cd5a2023445fa1f50c40943b1c.png" src="../../_images/bbae6304d363b7919857c128f6777543b034a3cd5a2023445fa1f50c40943b1c.png" />
 </div>
 </div>
 <section id="extensions">
@@ -962,8 +998,8 @@ xyz upper right corner  909.090909090909 588.8888888888889 6.663235234576626
 <p>The method is not limited to groundwater hydrology, it is useful for surface water hydrology to find flow paths for time-of-concentration calculations; extension to the 3rd spatial dimension is also straightforward.</p>
 </section>
 </section>
-<section id="eulerian-finite-difference-approach">
-<h2>Eulerian (Finite-Difference) Approach<a class="headerlink" href="#eulerian-finite-difference-approach" title="Link to this heading">#</a></h2>
+<section id="modeling-advection-by-finite-difference-eulerian-approach">
+<h2>Modeling Advection by Finite-Difference (Eulerian Approach)<a class="headerlink" href="#modeling-advection-by-finite-difference-eulerian-approach" title="Link to this heading">#</a></h2>
 <p>The transport equations are partial differential equations (PDEs), which describe the evolution of a quantity over space and time. One of the most common methods for solving these equations numerically is the finite-difference method (FDM). This approach discretizes space and time into a grid and approximates the derivatives of the governing equations.</p>
 <section id="finite-difference-method">
 <h3>Finite-Difference Method<a class="headerlink" href="#finite-difference-method" title="Link to this heading">#</a></h3>
@@ -1011,6 +1047,359 @@ $<span class="math notranslate nohighlight">\(\frac{\partial C}{\partial x} \app
 <p>Below is a simple spreadsheet implementation of the explicit scheme above.</p>
 <p><img alt="" src="../../_images/UpwindExplicit.png" /></p>
 <p>In MODFLOW6 transport model, a choice of upwind (called upstream in the toolkit) tries to match internal time steps to maintain numerical stability.  As you will see in class when we run a spreadsheet example. Its impossible for perfect accuracy and stability, but it is possible to stay close.  We will see examples of numerical diffusion as we depart from the accuracy requirement.</p>
+<p>Below is a flexible NumPy framework for  1-D upwind (Godunov) advection updating. It implements a flux-splitting form that’s algebraically equivalent to the simple upwind formulation but avoids division by zero when <span class="math notranslate nohighlight">\(V=0\)</span>.</p>
+<p>The code below uses the equivalent flux-splitting form where the cell interface fluxes are computed as:</p>
+<p><span class="math notranslate nohighlight">\(F_{i+1/2}=max(V_i,0) \cdot C_i + min(V_i,0) \cdot C_{i+1}\)</span></p>
+<p>and the resulting mass balance is:</p>
+<p><span class="math notranslate nohighlight">\(C_i^{n+1}=C_i^n +\frac{\Delta t}{\Delta x}(F_{i−1/2}−F_{i+1/2})\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">upwind_1d</span><span class="p">(</span>
+    <span class="n">C0</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">v</span><span class="p">,</span>                     <span class="c1"># scalar, (nx,), (nt,), or (nt, nx)</span>
+    <span class="n">dx</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">dt</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">nt</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">C_left</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>           <span class="c1"># left Dirichlet BC: scalar or array length nt+1/nt</span>
+    <span class="n">C_right</span><span class="o">=</span><span class="kc">None</span>           <span class="c1"># right Dirichlet BC: scalar or array length nt+1/nt</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    First-order upwind finite-difference solver for 1D advection:</span>
+<span class="sd">        C_i^{n+1} = C_i^n + (dt/dx) * (F_{i-1/2} - F_{i+1/2})</span>
+<span class="sd">    with interface flux (Godunov/flux-splitting):</span>
+<span class="sd">        F_{i+1/2} = max(v_i,0)*C_i + min(v_i,0)*C_{i+1}</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    C0 : (nx,) array</span>
+<span class="sd">        Initial concentration profile at t=0.</span>
+<span class="sd">    v : scalar | (nx,) | (nt,) | (nt,nx)</span>
+<span class="sd">        Velocity. Interpreted at cell interfaces i = 0..nx-2 as v[i].</span>
+<span class="sd">        - scalar: constant in space &amp; time</span>
+<span class="sd">        - (nx,): spatially varying, constant in time</span>
+<span class="sd">        - (nt,): time-varying, uniform in space</span>
+<span class="sd">        - (nt,nx): varying in space &amp; time (uses v[n, i] at interfaces)</span>
+<span class="sd">    dx, dt : float</span>
+<span class="sd">        Grid spacing and time step.</span>
+<span class="sd">    nt : int</span>
+<span class="sd">        Number of time steps to advance.</span>
+<span class="sd">    C_left, C_right : scalar | array | None</span>
+<span class="sd">        Dirichlet boundary concentration at x=0 and x=L.</span>
+<span class="sd">        If array, may be length nt or nt+1; if scalar, held constant.</span>
+<span class="sd">        If None, defaults:</span>
+<span class="sd">            - left: hold C[0] fixed at its initial value</span>
+<span class="sd">            - right: zero-gradient outflow (C[-1] = C[-2] each step)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    C : (nt+1, nx) array</span>
+<span class="sd">        Concentration field over time (including the initial state).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">C0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">nx</span> <span class="o">=</span> <span class="n">C0</span><span class="o">.</span><span class="n">size</span>
+    <span class="k">if</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;C0 must have length &gt;= 2.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># --- Broadcast velocity to shape (nt, nx) for convenience ---</span>
+    <span class="n">v_arr</span> <span class="o">=</span> <span class="n">_broadcast_velocity</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>
+
+    <span class="c1"># --- Prepare boundary series ---</span>
+    <span class="n">left_series</span>  <span class="o">=</span> <span class="n">_expand_bc</span><span class="p">(</span><span class="n">C_left</span><span class="p">,</span>  <span class="n">nt</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">C0</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">right_series</span> <span class="o">=</span> <span class="n">_expand_bc</span><span class="p">(</span><span class="n">C_right</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># None =&gt; outflow</span>
+
+    <span class="c1"># --- CFL check (conservative, using max over provided v) ---</span>
+    <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">v_arr</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">vmax</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="p">(</span><span class="n">dt</span><span class="o">/</span><span class="n">dx</span><span class="p">)</span> <span class="o">*</span> <span class="n">vmax</span> <span class="o">&gt;</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="mf">1e-12</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️ CFL warning: (dt/dx)*max|v| = </span><span class="si">{</span><span class="p">(</span><span class="n">dt</span><span class="o">/</span><span class="n">dx</span><span class="p">)</span><span class="o">*</span><span class="n">vmax</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> &gt; 1. &quot;</span>
+              <span class="s2">&quot;First-order upwind may become unstable. Consider reducing dt.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># --- Allocate solution ---</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">nx</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">C0</span>
+
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nt</span><span class="p">):</span>
+        <span class="c1"># Apply/hold left Dirichlet at time level n before fluxes</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">left_series</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>  <span class="c1"># if left_series is default, this holds C[0] fixed</span>
+
+        <span class="c1"># Velocity at interfaces for this step: use first nx-1 entries</span>
+        <span class="n">v_n</span> <span class="o">=</span> <span class="n">v_arr</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="p">:]</span>
+
+        <span class="c1"># Interface fluxes between i and i+1 for i = 0..nx-2</span>
+        <span class="c1"># F[i] = flux through the interface between cell i and cell i+1</span>
+        <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">v_n</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">v_n</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span>
+
+        <span class="c1"># Update interior cells i = 1..nx-2</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">dt</span><span class="o">/</span><span class="n">dx</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">F</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+
+        <span class="c1"># Left boundary (Dirichlet at next time)</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">left_series</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># Right boundary</span>
+        <span class="k">if</span> <span class="n">right_series</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Zero-gradient (advective outflow): copy neighbor after update</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Dirichlet at the right boundary</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">right_series</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">C</span>
+
+
+<span class="c1"># ---------- Helpers ----------</span>
+
+<span class="k">def</span> <span class="nf">_broadcast_velocity</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">nx</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return velocity array of shape (nt, nx).</span>
+<span class="sd">    Interprets v[..., i] as the velocity used at interface i (between i and i+1).</span>
+<span class="sd">    The last column (i = nx-1) is unused and may be ignored, but we keep shape uniform.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+        <span class="n">v_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">nt</span><span class="p">,</span> <span class="n">nx</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">nx</span><span class="p">:</span>
+                <span class="n">v_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:],</span> <span class="n">nt</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">v</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">nt</span><span class="p">:</span>
+                <span class="n">v_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">v</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">nx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;v length must be nx or nt if 1D.&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">v</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="p">(</span><span class="n">nt</span><span class="p">,</span> <span class="n">nx</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;v shape must be (nt, nx) if 2D; got </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="n">v_arr</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;v must be scalar, 1D, or 2D.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">v_arr</span>
+
+
+<span class="k">def</span> <span class="nf">_expand_bc</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Normalize boundary condition to a series of length nt+1.</span>
+<span class="sd">    - If bc is None: returns default behavior</span>
+<span class="sd">        * left: return an array that repeats default (Dirichlet hold)</span>
+<span class="sd">        * right: returns None to signal outflow handling</span>
+<span class="sd">    - If scalar: constant BC over time</span>
+<span class="sd">    - If array-like length nt or nt+1: broadcast to length nt+1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">bc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># left: use default value; right: signal open boundary with None</span>
+        <span class="k">return</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">default</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">default</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">bc</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">bc</span><span class="p">))</span>
+
+    <span class="n">bc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">bc</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">nt</span><span class="p">:</span>
+        <span class="c1"># Extend by repeating the last value</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">bc</span><span class="p">,</span> <span class="n">bc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]])</span>
+    <span class="k">if</span> <span class="n">bc</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">nt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">bc</span>
+
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Boundary series must be scalar or length nt or nt+1.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">plot_profiles</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Profiles at selected times&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot C(x, t) for several physical times.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    C : array, shape (nt+1, nx)</span>
+<span class="sd">        Solution including initial condition at t=0.</span>
+<span class="sd">    x : array, shape (nx,)</span>
+<span class="sd">        Grid coordinates.</span>
+<span class="sd">    times : list/array of floats</span>
+<span class="sd">        Physical times to plot (same units as dt).</span>
+<span class="sd">    dt : float</span>
+<span class="sd">        Time step size.</span>
+<span class="sd">    ax : matplotlib.axes.Axes or None</span>
+<span class="sd">        Optional axis to draw on. Creates one if None.</span>
+<span class="sd">    title : str</span>
+<span class="sd">        Plot title.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ax : matplotlib.axes.Axes</span>
+<span class="sd">    used_times : ndarray of floats</span>
+<span class="sd">        The actual times used (snapped to the time grid).</span>
+<span class="sd">    used_indices : ndarray of ints</span>
+<span class="sd">        The corresponding time indices.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">C</span><span class="p">);</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">nt</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="c1"># Map requested times to nearest indices</span>
+    <span class="n">k_list</span><span class="p">,</span> <span class="n">t_used</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">times</span><span class="p">):</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">t</span> <span class="o">/</span> <span class="n">dt</span><span class="p">))</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">nt</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+        <span class="n">k_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">t_used</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="n">k_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">k_list</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">t_used</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_used</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">tval</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">k_list</span><span class="p">,</span> <span class="n">t_used</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">C</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;t = </span><span class="si">{</span><span class="n">tval</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">ax</span><span class="p">,</span> <span class="n">t_used</span><span class="p">,</span> <span class="n">k_list</span>
+
+
+<span class="k">def</span> <span class="nf">plot_histories</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x_locs</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;coord&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Concentration Histories at selected locations&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot C(t) at several spatial locations.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    C : array, shape (nt+1, nx)</span>
+<span class="sd">        Solution including initial condition at t=0.</span>
+<span class="sd">    x : array, shape (nx,)</span>
+<span class="sd">        Grid coordinates.</span>
+<span class="sd">    x_locs : list/array</span>
+<span class="sd">        If by=&#39;coord&#39;: physical x-locations to sample (floats).</span>
+<span class="sd">        If by=&#39;index&#39;: integer node indices.</span>
+<span class="sd">    dt : float</span>
+<span class="sd">        Time step size.</span>
+<span class="sd">    ax : matplotlib.axes.Axes or None</span>
+<span class="sd">        Optional axis to draw on. Creates one if None.</span>
+<span class="sd">    by : {&#39;coord&#39;,&#39;index&#39;}</span>
+<span class="sd">        How to interpret x_locs.</span>
+<span class="sd">    title : str</span>
+<span class="sd">        Plot title.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ax : matplotlib.axes.Axes</span>
+<span class="sd">    used_indices : ndarray of ints</span>
+<span class="sd">        Grid indices actually plotted.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">C</span><span class="p">);</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">nt</span><span class="p">,</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+
+    <span class="c1"># Map requested locations to indices</span>
+    <span class="n">j_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">by</span> <span class="o">==</span> <span class="s2">&quot;coord&quot;</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">x0</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">x_locs</span><span class="p">):</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">x0</span><span class="p">))))</span>
+            <span class="n">j_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">by</span> <span class="o">==</span> <span class="s2">&quot;index&quot;</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">x_locs</span><span class="p">):</span>
+            <span class="n">j_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">j</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;by must be &#39;coord&#39; or &#39;index&#39;.&quot;</span><span class="p">)</span>
+
+    <span class="n">j_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">j_list</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">j_list</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C</span><span class="p">[:,</span> <span class="n">j</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;x ≈ </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2"> (j=</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">ax</span><span class="p">,</span> <span class="n">j_list</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">rectangular_pulse_centered</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">C0</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Node-based top-hat: C(x) = C0 for |x - x0| &lt;= width/2, else 0.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">half</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">C0</span> <span class="o">*</span> <span class="p">((</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">x0</span> <span class="o">-</span> <span class="n">half</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">x0</span> <span class="o">+</span> <span class="n">half</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">rectangular_pulse_segment</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">C0</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Node-based top-hat: C(x) = C0 for x1 &lt;= x &lt;= x2, else 0.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">C0</span> <span class="o">*</span> <span class="p">((</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">lo</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">hi</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rectangular_pulse_cellavg</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">C0</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cell-averaged top-hat for uniform grid with centers at x and spacing dx.</span>
+<span class="sd">    For each cell, compute overlap length with [x1, x2] and scale by C0*(overlap/dx).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+    <span class="n">left_edges</span>  <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">dx</span>
+    <span class="n">right_edges</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">dx</span>
+    <span class="n">overlap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">right_edges</span><span class="p">,</span> <span class="n">hi</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">left_edges</span><span class="p">,</span> <span class="n">lo</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">C0</span> <span class="o">*</span> <span class="p">(</span><span class="n">overlap</span> <span class="o">/</span> <span class="n">dx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grid</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">201</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Gaussian pulse centered at x0 with sd w and height C0</span>
+<span class="n">x0</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">C0</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">,</span> <span class="mf">100.0</span>
+<span class="n">C_init</span> <span class="o">=</span> <span class="n">C0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)</span><span class="o">/</span><span class="n">w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>   
+<span class="c1"># Rectangular pulse centered at x0 with width w and height C0</span>
+<span class="c1">#x0, w, C0 = 0.05, 0.10, 0.0</span>
+<span class="c1"># Option A: node-based</span>
+<span class="c1">#C_init = rectangular_pulse_centered(x, x0, w, C0=C0)</span>
+<span class="c1"># Option B: exact cell-average (better for narrow pulses)</span>
+<span class="c1"># C_init = rectangular_pulse_cellavg(x, dx, x0 - w/2, x0 + w/2, C0=C0)</span>
+
+<span class="c1"># Time / velocity and run</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.40</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">/</span> <span class="nb">abs</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>   <span class="c1"># CFL = 0.4</span>
+<span class="n">nt</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">upwind_1d</span><span class="p">(</span><span class="n">C_init</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">C_left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>  <span class="c1"># uses the solver from earlier</span>
+
+<span class="c1"># Plots (helpers from earlier)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plot_profiles</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">times</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Upwind formulation advection&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plot_histories</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x_locs</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">],</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;coord&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a91ba0b16636dec0898796f0c444cc6cc9bc1cf09cff32218efe5ffc269cefaf.png" src="../../_images/a91ba0b16636dec0898796f0c444cc6cc9bc1cf09cff32218efe5ffc269cefaf.png" />
+<img alt="../../_images/0546cf302e001ed52e7c8ed27703934861a276e86b99f4658444ee21580c9356.png" src="../../_images/0546cf302e001ed52e7c8ed27703934861a276e86b99f4658444ee21580c9356.png" />
+</div>
+</div>
 </section>
 <section id="centered-formulation">
 <h3>Centered formulation<a class="headerlink" href="#centered-formulation" title="Link to this heading">#</a></h3>
@@ -1021,9 +1410,174 @@ $<span class="math notranslate nohighlight">\(\frac{\partial C}{\partial x} \app
 <p><img alt="" src="../../_images/CenteredExplicit.png" /></p>
 <p>The spreadsheet above nicely exhibits numerical diffusion, apparent in the profile plot as well as oscillation in the time history.
 Professional tools address this phenomenon by a variety of approaches, upwinding and flux limiters being common reliable methods, a method of characteristics is another way to deal with the issue.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Need to build python examples</p>
+<p>Below is a centered-difference (Forward Time Centered Space) version (of the python example) that demonstrates oscillations and instability (and “worse” numerical dispersion) compared to upwind formulations. It uses the conservative flux form with a centered interface flux:</p>
+<p><span class="math notranslate nohighlight">\(F_{i+\frac{1}{2}} =\frac{1}{2} V_{i+\frac{1}{2}} \cdot (C_i + C_{i+1})\)</span></p>
+<p>The update portion is same as above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">central_1d</span><span class="p">(</span>
+    <span class="n">C0</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">v</span><span class="p">,</span>                     <span class="c1"># scalar, (nx,), (nt,), or (nt, nx) — same conventions as before</span>
+    <span class="n">dx</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">dt</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">nt</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">C_left</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>           <span class="c1"># left Dirichlet BC: scalar or array length nt/nt+1; default = hold C0[0]</span>
+    <span class="n">C_right</span><span class="o">=</span><span class="kc">None</span>           <span class="c1"># right Dirichlet BC: scalar or array length nt/nt+1; default = outflow (zero-gradient)</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Forward-Time / Centered-Space (FTCS) for 1D advection in conservative form:</span>
+<span class="sd">        C^{n+1}_i = C^n_i + (dt/dx) * (F_{i-1/2} - F_{i+1/2})</span>
+<span class="sd">    with centered interface flux:</span>
+<span class="sd">        F_{i+1/2} = 0.5 * v_{i+1/2} * (C_i + C_{i+1})</span>
+
+<span class="sd">    IMPORTANT: FTCS for pure advection is unconditionally unstable.</span>
+<span class="sd">    Use for demonstration of oscillations/instability and dispersive artifacts.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    C0 : (nx,) array</span>
+<span class="sd">        Initial concentration at t=0.</span>
+<span class="sd">    v : scalar | (nx,) | (nt,) | (nt,nx)</span>
+<span class="sd">        Velocity evaluated at interfaces (i+1/2). Same broadcasting rules as in the upwind solver.</span>
+<span class="sd">    dx, dt : float</span>
+<span class="sd">        Grid spacing and time step.</span>
+<span class="sd">    nt : int</span>
+<span class="sd">        Number of steps.</span>
+<span class="sd">    C_left, C_right : scalar | array | None</span>
+<span class="sd">        Dirichlet BCs. If None:</span>
+<span class="sd">          - left defaults to holding C[0] at its initial value (Dirichlet)</span>
+<span class="sd">          - right defaults to zero-gradient outflow (C[-1] = C[-2] at each step)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    C : (nt+1, nx) array</span>
+<span class="sd">        Solution including initial state.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">C0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">nx</span> <span class="o">=</span> <span class="n">C0</span><span class="o">.</span><span class="n">size</span>
+    <span class="k">if</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;C0 must have length &gt;= 2.&quot;</span><span class="p">)</span>
+
+    <span class="n">v_arr</span> <span class="o">=</span> <span class="n">_broadcast_velocity</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>
+
+    <span class="c1"># Boundary series</span>
+    <span class="n">left_series</span>  <span class="o">=</span> <span class="n">_expand_bc</span><span class="p">(</span><span class="n">C_left</span><span class="p">,</span>  <span class="n">nt</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">C0</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Dirichlet or hold</span>
+    <span class="n">right_series</span> <span class="o">=</span> <span class="n">_expand_bc</span><span class="p">(</span><span class="n">C_right</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>   <span class="c1"># None =&gt; outflow</span>
+
+    <span class="c1"># Heads-up for students: FTCS is unstable (CFL won&#39;t save it)</span>
+    <span class="n">umax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">v_arr</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">umax</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ Note: FTCS (centered) for advection is unconditionally unstable.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Courant max = </span><span class="si">{</span><span class="p">(</span><span class="n">umax</span><span class="o">*</span><span class="n">dt</span><span class="o">/</span><span class="n">dx</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> (shown for reference only).&quot;</span><span class="p">)</span>
+
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">nx</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">C0</span>
+
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nt</span><span class="p">):</span>
+        <span class="c1"># Enforce BCs at current time level BEFORE computing fluxes</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">left_series</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">right_series</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>       <span class="c1"># zero-gradient outflow (ghost equal to interior)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">right_series</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+        <span class="c1"># Interface velocities for this step (i = 0..nx-2)</span>
+        <span class="n">v_n</span> <span class="o">=</span> <span class="n">v_arr</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="p">:]</span>
+
+        <span class="c1"># Centered interface flux: F[i] = 0.5 * v[i] * (C[i] + C[i+1])</span>
+        <span class="n">F</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">v_n</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">:])</span>   <span class="c1"># length nx-1</span>
+
+        <span class="c1"># Update interior cells</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">dt</span><span class="o">/</span><span class="n">dx</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">F</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+
+        <span class="c1"># Next-time BCs</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">left_series</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">right_series</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">right_series</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">C</span>
+
+
+<span class="c1"># ---- helpers (same as earlier; include here if not already defined) ----</span>
+
+<span class="k">def</span> <span class="nf">_broadcast_velocity</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">nx</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return velocity array of shape (nt, nx).</span>
+<span class="sd">    Interprets v[n, i] at interfaces i=0..nx-2 (last column unused).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">nt</span><span class="p">,</span> <span class="n">nx</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">nx</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:],</span> <span class="n">nt</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">nt</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">v</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">nx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;v length must be nx or nt if 1D.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">nt</span><span class="p">,</span> <span class="n">nx</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">v</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;v must be scalar, (nx,), (nt,), or (nt,nx).&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_expand_bc</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Normalize BC to a series of length nt+1.</span>
+<span class="sd">    - None: left -&gt; hold default; right -&gt; None (signals outflow)</span>
+<span class="sd">    - scalar: constant series</span>
+<span class="sd">    - array: length nt or nt+1 accepted</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">bc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">default</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">default</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">bc</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">bc</span><span class="p">))</span>
+    <span class="n">bc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">bc</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">nt</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">bc</span><span class="p">,</span> <span class="n">bc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]])</span>
+    <span class="k">if</span> <span class="n">bc</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">nt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">bc</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Boundary series must be scalar or length nt or nt+1.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grid &amp; initial rectangular pulse</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">201</span>
+<span class="n">x</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">rectangular_pulse_centered</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">C0</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="n">half</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">width</span>
+    <span class="k">return</span> <span class="n">C0</span> <span class="o">*</span> <span class="p">((</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">x0</span><span class="o">-</span><span class="n">half</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">x0</span><span class="o">+</span><span class="n">half</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">C0</span> <span class="o">=</span> <span class="n">rectangular_pulse_centered</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span> <span class="n">C0</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># Velocity &amp; time</span>
+<span class="n">v</span>  <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">/</span> <span class="nb">abs</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>   <span class="c1"># (CFL shown for reference; FTCS still unstable)</span>
+<span class="n">nt</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="c1"># Solve with centered FTCS</span>
+<span class="n">C_cen</span> <span class="o">=</span> <span class="n">central_1d</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">C_left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="c1"># Plot (using your earlier helpers)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plot_profiles</span><span class="p">(</span><span class="n">C_cen</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">times</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;FTCS centered: expect wiggles/instability&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plot_histories</span><span class="p">(</span><span class="n">C_cen</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x_locs</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">],</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;coord&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Histories (FTCS centered)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>⚠️ Note: FTCS (centered) for advection is unconditionally unstable.
+   Courant max = 0.400 (shown for reference only).
+</pre></div>
+</div>
+<img alt="../../_images/25d4aeec60ad5e7ebcd224e1fff98ce0a59e37553a8fd8dfb5d8cb6ad18f3bb1.png" src="../../_images/25d4aeec60ad5e7ebcd224e1fff98ce0a59e37553a8fd8dfb5d8cb6ad18f3bb1.png" />
+<img alt="../../_images/9e1d8afe2c08795024c339e240244ca2045a167c71126982118add6088693807.png" src="../../_images/9e1d8afe2c08795024c339e240244ca2045a167c71126982118add6088693807.png" />
+</div>
 </div>
 <p><strong>Numerical Diffusion</strong>
 When solving advection-dominated partial differential equations (PDEs) using numerical methods, one common issue is numerical diffusion (also called numerical dissipation). This artifact of the numerical scheme can significantly affect the accuracy of the solution, particularly when sharp gradients or fronts are present, as in contaminant transport or shock waves.</p>
@@ -1050,6 +1604,373 @@ What is Numerical Diffusion?</p>
 <p>To reduce or eliminate numerical diffusion, upwinding schemes are commonly used. The upwind finite-difference method ensures that the spatial derivative is calculated using values from the upstream direction, thus preventing the unwanted smoothing that central differencing introduces. Although upwinding itself introduces some numerical dissipation, this dissipation is somewhat controlled and aligned with the flow direction, making it more suitable for advection-dominated problems.</p>
 <p>Marker-in-Cell and Method of Characteristic models are hybrids that leverage a particle tracking approach to locate mean values, then dispersion about that mean value to honor the hyperbolic component while preserving the diffusion-like nature of the non-advective terms.</p>
 </section>
+</section>
+<section id="summary-advection-modelingparticles-vs-grids-and-hybrids">
+<h2>Summary: Advection Modeling—Particles vs. Grids (and Hybrids)<a class="headerlink" href="#summary-advection-modelingparticles-vs-grids-and-hybrids" title="Link to this heading">#</a></h2>
+<p><strong>Two viewpoints</strong></p>
+<ol class="arabic simple">
+<li><p>Lagrangian (particle tracking): follow particles through a velocity field (from heads).</p>
+<ul class="simple">
+<li><p>Strengths: exact advection along pathlines; travel times/paths are natural outputs; easy to include decay along trajectories.</p></li>
+<li><p>Limits: no Eulerian concentration field unless you bin/Kernel-density the particles; mixing/dispersion must be modeled explicitly.</p></li>
+</ul>
+</li>
+<li><p>Eulerian (finite differences on a grid): evolve <span class="math notranslate nohighlight">\(C(x,t)\)</span> on cells.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Strengths: full fields for mass balances, boundary/source terms, reactions, diffusion/dispersion.</p></li>
+<li><p>Limits: subject to numerical diffusion/dispersion and stability constraints (CFL).</p></li>
+</ul>
+<p><strong>Two finite-difference advection schemes above</strong>:</p>
+<ol class="arabic simple">
+<li><p>Upwind (first-order)</p></li>
+</ol>
+<ul class="simple">
+<li><p>Stable under <span class="math notranslate nohighlight">\(|v|\frac{\Delta t}{\Delta x} \le 1\)</span></p></li>
+<li><p>Introduces numerical diffusion (controlled and aligned with flow).</p></li>
+<li><p>Good baseline for advection-dominated problems when you must avoid spurious wiggles.</p></li>
+<li><p>Rule-of-thumb: effective artificial diffusion scales like <span class="math notranslate nohighlight">\(D_{num} \approx \frac{1}{2} |v| \Delta x\)</span> (order of magnitude)</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Forward time centered space (FTCS)</p></li>
+</ol>
+<ul class="simple">
+<li><p>Unconditionally unstable for pure advection; exhibits oscillations/odd–even wiggles.</p></li>
+<li><p>Useful as a counterexample to show why upwinding (or better schemes) are employed.</p></li>
+</ul>
+<blockquote>
+<div><p>To suppress spurious oscillations in advection, practitioners commonly use upwinding. It does add dissipation, but in a controlled, flow-aligned way.
+To reduce that dissipation without re-introducing wiggles, move to higher-order upwind (e.g., Lax–Wendroff with limiters, MUSCL/TVD, flux limiters).</p>
+</div></blockquote>
+<p><strong>Hybrids that bridge the views</strong></p>
+<ol class="arabic simple">
+<li><p>Marker-in-Cell / Particle-in-Cell and Method of Characteristics (MOC):</p></li>
+</ol>
+<ul class="simple">
+<li><p>Carry advective motion with particles/characteristics, then deposit/average to the grid to handle diffusion/reaction.</p></li>
+<li><p>Preserve sharp fronts better than low-order Eulerian schemes while still giving a grid-based <span class="math notranslate nohighlight">\(C(x,t)\)</span>.</p></li>
+</ul>
+<p><strong>When to use what (decision guide)</strong></p>
+<ol class="arabic simple">
+<li><p>Only care about paths &amp; travel times → Particle tracking (simpler, fast, minimal numerics).</p></li>
+<li><p>Need concentrations, sources/sinks, reactions, diffusion → Eulerian grid (start with upwind; consider TVD/limited higher-order if fronts matter).</p></li>
+<li><p>Advection-dominated with fronts + need <span class="math notranslate nohighlight">\(C(x,t)\)</span> → Hybrids (MOC/MiC/PIC) or TVD schemes.</p></li>
+</ol>
+<p>Practical reminders:</p>
+<ul class="simple">
+<li><p>Always report the Courant number <span class="math notranslate nohighlight">\(CFL = |v|\frac{\Delta t}{\Delta x}\)</span> and the cell Péclet number <span class="math notranslate nohighlight">\(Pe_{cell}=∣v∣Δx/D\)</span> when diffusion is present.</p></li>
+<li><p>Check mass conservation (Eulerian) or particle count (Lagrangian) to diagnose numerical artifacts.</p></li>
+<li><p>Choose the method to match the question: pathlines vs. plume shape and concentrations.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If your goal is travel times and flow paths, particle methods are often the most direct and transparent—even if you give up the convenience of a full Eulerian concentration field.</p>
+</div>
+</section>
+<section id="extension-to-2-spatial-dimensions">
+<h2>Extension to 2 Spatial Dimensions<a class="headerlink" href="#extension-to-2-spatial-dimensions" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Extension of the upwind to 2D is shown below as a work-in-progress</p>
+</div>
+<ul class="simple">
+<li><p>Method: 2-D first-order upwind (Godunov/flux-splitting) solver for advection with velocities <span class="math notranslate nohighlight">\((u,v)\)</span> on a uniform <span class="math notranslate nohighlight">\((x,y)\)</span> grid, plus a contour plotting prototype function.</p></li>
+<li><p>Defaults: Dirichlet on the left and bottom (held to initial boundary values if you don’t pass BCs) and advective outflow (zero-gradient) on the right and top.</p></li>
+<li><p>Face velocities are computed by averaging adjacent cell-center values; if you already have <span class="math notranslate nohighlight">\(u,v\)</span> on faces, you can pass them via (nt,ny,nx) and replace the averaging with your face arrays (shifted appropriately).</p></li>
+<li><p>Outflow copies the last interior row/column along the outward normal each step (zero gradient).</p></li>
+<li><p>For spatially varying or time-varying velocities, pass u and v as (ny,nx) or (nt,ny,nx) (or (nt,) for uniform-in-space time series).</p></li>
+<li><p>Stability: the solver prints a warning if max(|u|*dt/dx + |v|*dt/dy) &gt; 1.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># =========================</span>
+<span class="c1"># 2-D UPWIND ADVECTION</span>
+<span class="c1"># =========================</span>
+<span class="k">def</span> <span class="nf">upwind_2d</span><span class="p">(</span>
+    <span class="n">C0</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>        <span class="c1"># shape (ny, nx) at t=0</span>
+    <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span>                  <span class="c1"># scalar | (ny,nx) | (nt,) | (nt,ny,nx)</span>
+    <span class="n">dx</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">dy</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">dt</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">nt</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">C_left</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>           <span class="c1"># Dirichlet at x=0: scalar | (ny,) | (nt+1,ny) | (nt,ny)</span>
+    <span class="n">C_right</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>          <span class="c1"># Dirichlet at x=Lx; None =&gt; outflow</span>
+    <span class="n">C_bottom</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>         <span class="c1"># Dirichlet at y=0: scalar | (nx,) | (nt+1,nx) | (nt,nx)</span>
+    <span class="n">C_top</span><span class="o">=</span><span class="kc">None</span>             <span class="c1"># Dirichlet at y=Ly; None =&gt; outflow</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    First-order upwind (Godunov) scheme in 2-D, explicit time-stepping.</span>
+
+<span class="sd">    Conservative form:</span>
+<span class="sd">        C^{n+1}_{j,i} = C^n_{j,i}</span>
+<span class="sd">            + (dt/dx) * (F_x[j, i-1] - F_x[j, i])</span>
+<span class="sd">            + (dt/dy) * (F_y[j-1, i] - F_y[j, i])</span>
+
+<span class="sd">    Face fluxes (flux-splitting):</span>
+<span class="sd">        F_x[j, i] = max(u_face[j,i], 0)*C[j, i] + min(u_face[j,i], 0)*C[j, i+1]</span>
+<span class="sd">        F_y[j, i] = max(v_face[j,i], 0)*C[j, i] + min(v_face[j,i], 0)*C[j+1, i]</span>
+
+<span class="sd">    where i indexes x (columns), j indexes y (rows).</span>
+<span class="sd">    u_face has shape (ny, nx-1) on x-interfaces; v_face has shape (ny-1, nx) on y-interfaces.</span>
+
+<span class="sd">    Velocity inputs u, v:</span>
+<span class="sd">      - scalar: constant everywhere</span>
+<span class="sd">      - (ny,nx): spatially varying, constant in time</span>
+<span class="sd">      - (nt,): time-varying, uniform in space</span>
+<span class="sd">      - (nt,ny,nx): fully varying in space &amp; time</span>
+<span class="sd">    u, v are treated as **cell-centered**; face velocities are arithmetic averages.</span>
+
+<span class="sd">    Boundary conditions:</span>
+<span class="sd">      - Left/Bottom default: Dirichlet, held to initial boundary values</span>
+<span class="sd">      - Right/Top default: outflow (zero-gradient)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    C : array, shape (nt+1, ny, nx)</span>
+<span class="sd">        Concentration field over time, including t=0.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">C0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">ny</span><span class="p">,</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">C0</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">if</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;C0 must be at least 2x2.&quot;</span><span class="p">)</span>
+
+    <span class="n">u_arr</span> <span class="o">=</span> <span class="n">_broadcast_vel_2d</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>
+    <span class="n">v_arr</span> <span class="o">=</span> <span class="n">_broadcast_vel_2d</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>
+
+    <span class="c1"># Expand boundary condition time series</span>
+    <span class="n">left_series</span>   <span class="o">=</span> <span class="n">_expand_edge_bc</span><span class="p">(</span><span class="n">C_left</span><span class="p">,</span>   <span class="n">nt</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">C0</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>   <span class="c1"># (nt+1, ny)</span>
+    <span class="n">right_series</span>  <span class="o">=</span> <span class="n">_expand_edge_bc</span><span class="p">(</span><span class="n">C_right</span><span class="p">,</span>  <span class="n">nt</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>       <span class="c1"># None =&gt; outflow</span>
+    <span class="n">bottom_series</span> <span class="o">=</span> <span class="n">_expand_edge_bc</span><span class="p">(</span><span class="n">C_bottom</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">nx</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">C0</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:])</span>   <span class="c1"># (nt+1, nx)</span>
+    <span class="n">top_series</span>    <span class="o">=</span> <span class="n">_expand_edge_bc</span><span class="p">(</span><span class="n">C_top</span><span class="p">,</span>    <span class="n">nt</span><span class="p">,</span> <span class="n">nx</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>       <span class="c1"># None =&gt; outflow</span>
+
+    <span class="c1"># CFL check: conservative 2-D explicit condition  max(|u|*dt/dx + |v|*dt/dy) &lt;= 1</span>
+    <span class="n">umax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">u_arr</span><span class="p">))</span>
+    <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">v_arr</span><span class="p">))</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">umax</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">vmax</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">cfl</span> <span class="o">=</span> <span class="p">(</span><span class="n">umax</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">dx</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">vmax</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">dy</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cfl</span> <span class="o">&gt;</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="mf">1e-12</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️ CFL warning: max(|u|*dt/dx + |v|*dt/dy) = </span><span class="si">{</span><span class="n">cfl</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> &gt; 1. &quot;</span>
+                  <span class="s2">&quot;Reduce dt or refine grid.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Allocate solution</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">nx</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">C0</span>
+
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nt</span><span class="p">):</span>
+        <span class="c1"># -- Apply BCs at current time level BEFORE fluxes --</span>
+        <span class="c1"># Left (Dirichlet) or hold; Right (outflow unless Dirichlet)</span>
+        <span class="k">if</span> <span class="n">left_series</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">left_series</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">right_series</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>   <span class="c1"># outflow</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">right_series</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+        <span class="c1"># Bottom (Dirichlet) or hold; Top (outflow unless Dirichlet)</span>
+        <span class="k">if</span> <span class="n">bottom_series</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">bottom_series</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">top_series</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>   <span class="c1"># outflow</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">top_series</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+        <span class="c1"># -- Face velocities (cell-centered -&gt; face-centered by averaging) --</span>
+        <span class="n">u_n</span> <span class="o">=</span> <span class="n">u_arr</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>  <span class="c1"># (ny, nx)</span>
+        <span class="n">v_n</span> <span class="o">=</span> <span class="n">v_arr</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>  <span class="c1"># (ny, nx)</span>
+        <span class="n">u_face</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">u_n</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">u_n</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:])</span>  <span class="c1"># (ny, nx-1), x-interfaces</span>
+        <span class="n">v_face</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">v_n</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">v_n</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:])</span>  <span class="c1"># (ny-1, nx), y-interfaces</span>
+
+        <span class="c1"># -- Fluxes --</span>
+        <span class="n">Fx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">u_face</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">u_face</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">:]</span>
+        <span class="n">Fy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">v_face</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">v_face</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">:,</span> <span class="p">:]</span>
+
+        <span class="c1"># -- Update interior cells (vectorized) --</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="o">+</span> <span class="p">(</span><span class="n">dt</span><span class="o">/</span><span class="n">dx</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">Fx</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">Fx</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:])</span>
+            <span class="o">+</span> <span class="p">(</span><span class="n">dt</span><span class="o">/</span><span class="n">dy</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">Fy</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">Fy</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="p">)</span>
+
+        <span class="c1"># -- Next-time BCs --</span>
+        <span class="k">if</span> <span class="n">left_series</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">left_series</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">right_series</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">right_series</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">bottom_series</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">bottom_series</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">top_series</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">top_series</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">C</span>
+
+
+<span class="c1"># ---------- Helpers ----------</span>
+
+<span class="k">def</span> <span class="nf">_broadcast_vel_2d</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">nx</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Broadcast v to shape (nt, ny, nx).</span>
+<span class="sd">    Accepts: scalar | (ny,nx) | (nt,) | (nt,ny,nx)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">nt</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">nx</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">ny</span><span class="p">,</span> <span class="n">nx</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">nt</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">v</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">nt</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">v</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">ny</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">nt</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">nx</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">v</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Velocity must be scalar, (ny,nx), (nt,), or (nt,ny,nx).&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_expand_edge_bc</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">nedge</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Expand an edge Dirichlet BC to (nt+1, nedge).</span>
+<span class="sd">    - bc=None:</span>
+<span class="sd">        * if default is None -&gt; return None (signals outflow)</span>
+<span class="sd">        * else -&gt; return constant array set to default values</span>
+<span class="sd">    - bc scalar -&gt; constant in time/space</span>
+<span class="sd">    - bc 1D (nedge,) -&gt; constant in time, varies along edge</span>
+<span class="sd">    - bc 2D (nt,) or (nt+1,) -&gt; uniform along edge over time</span>
+<span class="sd">    - bc 2D (nt+1, nedge) or (nt, nedge) -&gt; full specification</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">bc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">default</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">default</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">default</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="n">nedge</span><span class="p">:</span>
+            <span class="c1"># Allow scalar default</span>
+            <span class="k">if</span> <span class="n">default</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">default</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">nedge</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">default</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Default BC length mismatch.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">default</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:],</span> <span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">bc</span><span class="p">):</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">nedge</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">bc</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">arr</span>
+
+    <span class="n">bc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="c1"># (nedge,) -&gt; replicate over time</span>
+    <span class="k">if</span> <span class="n">bc</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">bc</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">nedge</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">bc</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:],</span> <span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># (nt,) or (nt+1,) -&gt; uniform along edge over time</span>
+    <span class="k">if</span> <span class="n">bc</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="p">(</span><span class="n">bc</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">nt</span> <span class="ow">or</span> <span class="n">bc</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">series</span> <span class="o">=</span> <span class="n">bc</span> <span class="k">if</span> <span class="n">bc</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">nt</span><span class="o">+</span><span class="mi">1</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">bc</span><span class="p">,</span> <span class="n">bc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]])</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">series</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">nedge</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># (nt, nedge) or (nt+1, nedge)</span>
+    <span class="k">if</span> <span class="n">bc</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">bc</span><span class="o">.</span><span class="n">shape</span> <span class="ow">in</span> <span class="p">[(</span><span class="n">nt</span><span class="p">,</span> <span class="n">nedge</span><span class="p">),</span> <span class="p">(</span><span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">nedge</span><span class="p">)]:</span>
+        <span class="k">return</span> <span class="n">bc</span> <span class="k">if</span> <span class="n">bc</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">nt</span><span class="o">+</span><span class="mi">1</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">bc</span><span class="p">,</span> <span class="n">bc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:]])</span>
+
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unsupported BC shape; see docstring for allowed forms.&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># =========================</span>
+<span class="c1"># PLOTTING (contour at time t)</span>
+<span class="c1"># =========================</span>
+<span class="k">def</span> <span class="nf">plot_contour_at_time</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t_req</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Contour (or filled contour) of C(x,y,t) at the requested physical time.</span>
+<span class="sd">    C shape: (nt+1, ny, nx); x: (nx,), y: (ny,)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y</span><span class="p">);</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">nt</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span>
+
+    <span class="n">k</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">t_req</span> <span class="o">/</span> <span class="n">dt</span><span class="p">))</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">nt</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+    <span class="n">t_used</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">dt</span>
+
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">))</span>
+
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">filled</span><span class="p">:</span>
+        <span class="n">cs</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">C</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cs</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">C</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">)</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;C(x,y,t) at t ≈ </span><span class="si">{</span><span class="n">t_used</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">adjustable</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">ax</span><span class="p">,</span> <span class="n">t_used</span><span class="p">,</span> <span class="n">k</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Minimal (testing) example: <span class="math notranslate nohighlight">\((u,v)=(1,0.5)\)</span>, a rectangular patch as the initial condition, outflow on right/top.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grid</span>
+<span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="mi">121</span><span class="p">,</span> <span class="mi">81</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">ny</span><span class="p">)</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Initial condition: 2-D rectangular patch</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">C0</span> <span class="o">=</span> <span class="p">((</span><span class="mf">0.2</span> <span class="o">&lt;=</span> <span class="n">X</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">X</span> <span class="o">&lt;=</span> <span class="mf">0.35</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mf">0.4</span> <span class="o">&lt;=</span> <span class="n">Y</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">Y</span> <span class="o">&lt;=</span> <span class="mf">0.6</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># Velocities (cell-centered); constants here</span>
+<span class="n">u</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="c1"># Time step from conservative 2-D CFL: |u|*dt/dx + |v|*dt/dy &lt;= 1</span>
+<span class="n">CFL</span> <span class="o">=</span> <span class="mf">0.6</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">CFL</span> <span class="o">/</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">/</span><span class="n">dx</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">/</span><span class="n">dy</span><span class="p">)</span>
+<span class="n">nt</span> <span class="o">=</span> <span class="mi">250</span>
+
+<span class="c1"># Left &amp; bottom Dirichlet (hold at initial boundary); right &amp; top: outflow</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">upwind_2d</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span>
+              <span class="n">C_left</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">C_right</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">C_bottom</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">C_top</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># Plot at selected times</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plot_contour_at_time</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t_req</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>   <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;t=0.0&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plot_contour_at_time</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t_req</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>  <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;t≈0.25&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plot_contour_at_time</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t_req</span><span class="o">=</span><span class="mf">0.50</span><span class="p">,</span>  <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;t≈0.50&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/367fb6671eb72d4d3db46387680b7f58602db1c2da13b61ab5deda41355b8c96.png" src="../../_images/367fb6671eb72d4d3db46387680b7f58602db1c2da13b61ab5deda41355b8c96.png" />
+<img alt="../../_images/9f23e80141946debea69702d1da944d43a22bea515c275940e5d8f9831fc1f0a.png" src="../../_images/9f23e80141946debea69702d1da944d43a22bea515c275940e5d8f9831fc1f0a.png" />
+<img alt="../../_images/eefb5717a6525314ae0221ee255f34197c7c486280b724af5d779e1d62c8178d.png" src="../../_images/eefb5717a6525314ae0221ee255f34197c7c486280b724af5d779e1d62c8178d.png" />
+</div>
+</div>
+</section>
+<section id="exercise-s">
+<h2>Exercise(s)<a class="headerlink" href="#exercise-s" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/chapters/04physical.transport/ce5364-es4-2025-3.pdf">ce5364-es4-2025-3.pdf</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># autobuild exercise</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">&quot;pdflatex&quot;</span><span class="p">,</span> <span class="s2">&quot;ce5364-es4-2025-3.tex&quot;</span><span class="p">],</span> 
+                   <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Build failed. Check your LaTeX source file.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-end">
+<h2>Section End<a class="headerlink" href="#section-end" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="http://54.243.252.9/">ce5364-es4-2025-3-ExampleReport.pdf</a> PLACEHOLDER</p>
 </section>
 </section>
 
@@ -1109,24 +2030,25 @@ What is Numerical Diffusion?</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">Videos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-tracking">Particle Tracking:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#upwind-finite-difference">Upwind Finite Difference:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-advection-by-particle-tracking">Modeling Advection by Particle Tracking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-advection-by-particle-tracking-lagrangian-approach">Modeling Advection by Particle Tracking (Lagrangian Approach)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-linear-interpolation">Multi-Linear Interpolation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spreadsheet-approach">Spreadsheet Approach</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spreadsheet-excel-approach">Spreadsheet (Excel) Approach</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spreadsheet-examples">Spreadsheet Examples</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-particle-tracking">Example of Particle Tracking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-tracking-in-python">Particle Tracking in Python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-need-to-digitize-the-head-map">Step 1. Need to Digitize the Head Map</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-check-the-digitization-results">Step 2 Check the Digitization Results</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensions">Extensions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eulerian-finite-difference-approach">Eulerian (Finite-Difference) Approach</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-advection-by-finite-difference-eulerian-approach">Modeling Advection by Finite-Difference (Eulerian Approach)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-difference-method">Finite-Difference Method</a></li>
 </ul>
 </li>
@@ -1136,6 +2058,10 @@ What is Numerical Diffusion?</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#centered-formulation">Centered formulation</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-advection-modelingparticles-vs-grids-and-hybrids">Summary: Advection Modeling—Particles vs. Grids (and Hybrids)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-to-2-spatial-dimensions">Extension to 2 Spatial Dimensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-s">Exercise(s)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-end">Section End</a></li>
 </ul>
   </nav></div>
 
