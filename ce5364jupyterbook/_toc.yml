@@ -17,5 +17,5 @@ chapters:
 - file: chapters/04physical.transport/physical.transport
 - file: chapters/04physical.transport/modeling.advection
 - file: chapters/05analytical.models1d/05analytical.models1d
-
+- file: chapters/05analytical.solutions2d/05analytical.solutions2d
 

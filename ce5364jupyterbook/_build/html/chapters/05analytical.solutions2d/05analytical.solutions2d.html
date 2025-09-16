@@ -1,0 +1,1753 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Analytical Solutions (2D) &#8212; Groundwater Transport Phenomena</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05analytical.solutions2d/05analytical.solutions2d';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="9. Analytical Solutions (1D)" href="../05analytical.models1d/05analytical.models1d.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gwtransport.png" class="logo__image only-light" alt="Groundwater Transport Phenomena - Home"/>
+    <script>document.write(`<img src="../../_static/gwtransport.png" class="logo__image only-dark" alt="Groundwater Transport Phenomena - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00syllabus/ce5364-syllabus-2025-3.html">0. Syllabus (Fall 2025)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.science.html">2. Fundamentals I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.practice.html">3. Fundamentals II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02regulatory.overview/regulatory.overview.html">3. Regulatory Overview and Risk Assessment</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03site.mapping.tools/site.mapping.tools.html">5. Site Mapping Tools</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03site.characterization/site.characterization.html">6. Site Characterization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/physical.transport.html">7. Physical Transport</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/modeling.advection.html">8. Modeling Advection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05analytical.models1d/05analytical.models1d.html">9. Analytical Solutions (1D)</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analytical Solutions (2D)</a></li>
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/05analytical.solutions2d/05analytical.solutions2d.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/05analytical.solutions2d/05analytical.solutions2d.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analytical Solutions (2D)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Analytical Solutions (2D)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">Videos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-and-significance">Applications and Significance</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-advection-dispersion-finite-width-constant-source">2D - Advection-Dispersion, Finite-Width, Constant Source</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-advection-dispersion-finite-width-finite-duration-source">2D - Advection-Dispersion, Finite-Width, Finite-Duration Source</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-plume-in-regional-flow-hunt-solution">2D Plume in Regional Flow (Hunt Solution)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leaky-well-function">Leaky Well Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hunt-solution-prototype-function">Hunt Solution (Prototype Function)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#driver-script">Driver Script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-script">Plotting Script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spreadsheet-model">Spreadsheet Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-code-listings">Useful Code Listings</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-plume-in-regional-flow-with-1st-order-decay-wilson-and-miller-solution">2D Plume in Regional Flow with 1st-Order Decay (Wilson and Miller Solution)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Leaky Well Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wilson-and-miller-solution-prototype-function">Wilson and Miller Solution (Prototype Function)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Driver Script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Plotting Script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Spreadsheet Model</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-advection-dispersion-finite-area-constant-production-injection-source">3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-s">Exercise(s)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end-section">End Section</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analytical-solutions-2d">
+<h1>Analytical Solutions (2D)<a class="headerlink" href="#analytical-solutions-2d" title="Link to this heading">#</a></h1>
+<p>Domenico and Robbins (1985) conjectured that orthogonal (1D) solutions could be combined using superposition (and convolution) to create approximations to 2D and 3D behavior for simple, but useful geometries such as</p>
+<p><img alt="" src="../../_images/3Dgeom11.png" /></p>
+<div class="admonition-course-website admonition">
+<p class="admonition-title">Course Website</p>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/">Link to Course Website</a></p>
+</div>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
+<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span><span class="w"> </span><span class="nt">table</span><span class="w"> </span><span class="p">{</span><span class="k">margin-left</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="cp">!important</span><span class="p">;}</span><span class="w"> </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style> table {margin-left: 0 !important;} </style>
+</div></div>
+</div>
+<section id="readings">
+<h2>Readings<a class="headerlink" href="#readings" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://ngwa.onlinelibrary.wiley.com/doi/10.1111/j.1745-6584.1985.tb01497.x">Domenico, P.A. and Robbins, G.A. (1985), A New Method of Contaminant Plume Analysis. Groundwater, 23: 476-485. https://doi.org/10.1111/j.1745-6584.1985.tb01497.x</a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/gwatnorev.pdf">Paladino, O. , Moranda, A.,  Massabó, M., and  Robbins, G. (2017). Analytical Solutions of Three-Dimensional Contaminant Transport Models with Exponential Source Decay. Groundwater. 56. 10.1111/gwat.12564. </a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/yuan_thesis/Groundwater_transport.pdf">Yuan, D, (1995)  <em>Accurate approximations for one-, two-, and three-dimensional groundwater mass transport from an exponentially decaying contaminant source.</em> MS Thesis, Department of Civil and Environmental Engineering, University of Houston. </a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/ants_dissertation/Luke_Chuang.pdf">Chuang, Lu-Chia, (1998) <em>A guidance system for choosing analytical contaminant transport models.</em> Doctoral Dissertation, Department of Civil and Environmental Engineering, University of Houston, Houston, Texas. 222p.</a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/publication/ofr8956">Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow
+Open-File Report 89-56</a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/publication/twri03B7">Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow
+Techniques of Water-Resources Investigations 03-B7 (supercedes above reference)</a></p></li>
+<li><p>Hunt, B. (1978) Dispersive sources in uniform ground water flow. Journal of the Hydraulics Division, 104 (HY1), 75-85.</p></li>
+<li><p><a class="reference external" href="https://ascelibrary.org/doi/10.1061/JYCEAJ.0004975">Wilson, J.L. and Miller, P.J. (1978) Two-dimensional plumes in uniform groundwater flow. J. Hyd. Div., ASCE, 104:503–514, 1978.</a></p></li>
+</ol>
+</section>
+<section id="videos">
+<h2>Videos<a class="headerlink" href="#videos" title="Link to this heading">#</a></h2>
+<p>The Domenico-Robbins (1985) solution is a heuristic simplification of an analytical solution to the advection-dispersion equation with sorption and reaction terms that can be programmed into spreadsheets or scripting environments without a full commitment to learning … The simplification comes with advantages that make it a reasonable alternative to exact solutions for simulations representative of many realistic scenarios.</p>
+</section>
+<section id="applications-and-significance">
+<h2>Applications and Significance<a class="headerlink" href="#applications-and-significance" title="Link to this heading">#</a></h2>
+<p>The 2D/3D Domenico solutions have been widely used by regulators, practitioners, and researchers due its ease of use and analytical origin. However, the lack of mathematical rigor in its derivation has raised questions about its accuracy with differing conclusions about its suitability for continued use.</p>
+<blockquote>
+<div><p>It has been used as a regulatory tool as recently as 2014 (e.g. <a class="reference external" href="https://files.dep.state.pa.us/environmentalcleanupbrownfields/LandRecyclingProgram/LandRecyclingProgramPortalFiles/GuidanceTechTools/QD_manual_v3b%2002-28-2014.pdf">User’s Manual for the Quick Domenico Groundwater Fate-and-Transport Model (2014) Pensylvania Department of Environmental Protection</a>).</p>
+</div></blockquote>
+<p>Its significance lies in its ability to provide a rapid approximation of groundwater contamination scenarios, allowing for improved decision-making and risk assessment.
+As already stated there is criticism that the Domenico solution is unsuitable for use in professional and research applications because of departures from exact solutions under certain conditions.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Given that all models are approximations its kind of a sorry critique. If you are modeling for real money, it would be prudent to apply multiple tools and not make decisions using only these analytical solutions.</p>
+<blockquote>
+<div><p>… there is no need to ask ‘is the model true?’ The answer is ‘No.’ The only question of interest is ‘Is the model illuminating and useful?’  (<a class="reference external" href="https://en.wikipedia.org/wiki/All_models_are_wrong">Box, 1979</a> )</p>
+</div></blockquote>
+<p>It is worth noting that the strongest argument against use of the Domenico solution is that
+modern computers and readily available $oftware can provide users with exact solutions or well established numerical models so there is no justification for using anything less. This position has some merit where decisions of weight with financial or environmental consequences depend on the modeling result.</p>
+<p>As a side note readily available $oftware is NOT easy to install and use; the graphical interfaces tend to tied to specific architecture (x86-64) and specific operating systems. Hence availability does not imply the tools will get used - these simplified models still have value and will for a long time.</p>
+</div>
+<p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/yuan_thesis/Groundwater_transport.pdf">Yuan (1995)</a> examined the “mathematical rigor” and provides detailed derivations of various solutions using convolution of elementry solutions (<a class="reference external" href="http://54.243.252.9/ce-4363-webroot/3-Readings/carslaw-and-jaeger-conduction-of-heat-in-solids-1959isbn-0198533683.pdf">Carslaw and Jaeger 1959</a>).  While not at all resolving the critique, it provides interested readers with background and insight into the
+Domenico solution approximation(s).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="d-advection-dispersion-finite-width-constant-source">
+<h1>2D - Advection-Dispersion, Finite-Width, Constant Source<a class="headerlink" href="#d-advection-dispersion-finite-width-constant-source" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is one of several Domenico-based multi-dimension solutions.  More will be added as time permits.  Bear in mind that spatial convolution can be applied for constructing different source geometries, as can convolution (superposition in time) for different input histories.</p>
+</div>
+<p>The sketch depicts a finite-length horizontal line source (complete mixing in <span class="math notranslate nohighlight">\(z\)</span> is assumed - i.e. no verticial variation) in an aquifer of infinite extent located at <span class="math notranslate nohighlight">\((x,y)=(0,0)\)</span>. The length of the source zone (line) is <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<p><img alt="" src="../../_images/2Dgeom11.png" /></p>
+<p>The source history is depicted beneath the sketch. The system starts with initial concentration of zero everywhere, at time <span class="math notranslate nohighlight">\(t=0\)</span>, the concentration in the source line increases to <span class="math notranslate nohighlight">\(C_0\)</span> suddenly, and is maintained at that value from then on.</p>
+<p>The transport processes modeled are advection along the x-axis, and dispersion in the x-direction (longitudinal) and in the y-direction (transverse).</p>
+<p>The analytical model (Domenico and Robbins, 1985) was obtained by convolution of instantaneous sources (described in detail in Yuan, 1995):</p>
+<div class="math notranslate nohighlight">
+\[ C(x,y,t) = \frac{C_0}{4} \cdot \textit{erfc}[\frac{(x - v t) }{ (2 \sqrt{D_x  t))}}] \cdot [\textit{erf}(\frac{(y + \frac{Y}{2}) }{ (2 \sqrt{\frac{D_y}{v} x))}}) - \textit{erf} (\frac{(y - \frac{Y}{2}) }{ (2 \sqrt{\frac{D_y}{v} x))}})]\]</div>
+<p>A prototype function is</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># prototype 2D domenico robbins ADE function</span>
+<span class="k">def</span> <span class="nf">c2ad</span><span class="p">(</span><span class="n">conc0</span><span class="p">,</span> <span class="n">distx</span><span class="p">,</span> <span class="n">disty</span><span class="p">,</span> <span class="n">dispx</span><span class="p">,</span> <span class="n">dispy</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">lenY</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span><span class="p">,</span> <span class="n">erfc</span> <span class="c1"># scipy needs to already be loaded into the kernel</span>
+    <span class="n">vadj</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">/</span> <span class="mf">1.0</span> <span class="c1"># structure is in anticipation of adding adsorbtion and decay</span>
+    <span class="n">dispXadj</span> <span class="o">=</span> <span class="n">dispx</span> <span class="o">/</span> <span class="mf">1.0</span>
+    <span class="n">dispYadj</span> <span class="o">=</span> <span class="n">dispy</span> <span class="o">/</span> <span class="mf">1.0</span>
+    <span class="n">lambadj</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">/</span> <span class="mf">1.0</span>
+
+    <span class="n">uuu</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">4.0</span><span class="o">*</span><span class="n">lambadj</span><span class="o">*</span><span class="n">dispXadj</span><span class="o">/</span><span class="n">vadj</span><span class="p">)</span>
+    <span class="n">ypp</span> <span class="o">=</span> <span class="p">(</span><span class="n">disty</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">lenY</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispYadj</span><span class="o">*</span><span class="n">distx</span><span class="p">))</span>
+    <span class="n">ymm</span> <span class="o">=</span> <span class="p">(</span><span class="n">disty</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">lenY</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispYadj</span><span class="o">*</span><span class="n">distx</span><span class="p">))</span>
+
+    <span class="n">arg1</span> <span class="o">=</span> <span class="p">(</span><span class="n">distx</span> <span class="o">-</span> <span class="n">vadj</span><span class="o">*</span><span class="n">time</span><span class="o">*</span><span class="n">uuu</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispXadj</span><span class="o">*</span><span class="n">vadj</span><span class="o">*</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">arg2</span> <span class="o">=</span> <span class="p">(</span><span class="n">distx</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dispXadj</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">uuu</span><span class="p">)</span>
+
+    <span class="n">term0</span> <span class="o">=</span> <span class="n">conc0</span> <span class="o">/</span> <span class="mi">4</span>
+    <span class="n">term1</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">arg2</span><span class="p">)</span>
+    <span class="n">term2</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(</span><span class="n">arg1</span><span class="p">)</span>
+    <span class="n">term3</span> <span class="o">=</span> <span class="p">(</span><span class="n">erf</span><span class="p">(</span><span class="n">ypp</span><span class="p">)</span> <span class="o">-</span> <span class="n">erf</span><span class="p">(</span><span class="n">ymm</span><span class="p">))</span>
+
+    <span class="n">c2ad</span> <span class="o">=</span> <span class="n">term0</span> <span class="o">*</span> <span class="n">term1</span> <span class="o">*</span> <span class="n">term2</span> <span class="o">*</span> <span class="n">term3</span>
+    <span class="k">return</span> <span class="n">c2ad</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Supply model conditions, evaluate specific point in space and time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inputs</span>
+<span class="n">c_initial</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="c1"># g/m^3</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="mi">100</span>          <span class="c1"># meters</span>
+<span class="n">yy</span> <span class="o">=</span> <span class="mi">0</span>            <span class="c1"># meters</span>
+<span class="n">Dx</span> <span class="o">=</span> <span class="mf">0.50</span>          <span class="c1"># m^2/day</span>
+<span class="n">Dy</span> <span class="o">=</span> <span class="mf">0.05</span>          <span class="c1"># m^2/day</span>
+<span class="n">V</span>  <span class="o">=</span> <span class="mf">1.0</span>           <span class="c1"># m/day</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mf">100.0</span>      <span class="c1"># days</span>
+<span class="n">Y</span>  <span class="o">=</span> <span class="mf">10.0</span>          <span class="c1"># meters</span>
+<span class="n">alphax</span> <span class="o">=</span> <span class="n">Dx</span><span class="o">/</span><span class="n">V</span>
+<span class="n">alphay</span> <span class="o">=</span> <span class="n">Dy</span><span class="o">/</span><span class="n">V</span>
+<span class="n">output</span><span class="o">=</span><span class="n">c2ad</span><span class="p">(</span><span class="n">c_initial</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">alphax</span><span class="p">,</span> <span class="n">alphay</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; y= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; t= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot; C(x,y,t) = &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x=  100  y=  0  t=  100.0  C(x,y,t) =  44.308
+</pre></div>
+</div>
+</div>
+</div>
+<p>Construct 2D contour plots (equivalent to a profile plot)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a plot</span>
+<span class="n">x_max</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="n">y_max</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="c1"># build a grid</span>
+<span class="n">nrows</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltax</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_max</span><span class="p">)</span><span class="o">/</span><span class="n">nrows</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00001</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">deltax</span><span class="p">)</span>
+
+<span class="n">ncols</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltay</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_max</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ncols</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">y_max</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00001</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">deltay</span><span class="p">)</span>
+    
+<span class="c1">#y</span>
+
+<span class="c1">#y = [i*deltay for i in range(how_many_points)] # constructor notation</span>
+<span class="c1">#y[0]=0.001</span>
+<span class="n">ccc</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+        <span class="n">ccc</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span> <span class="o">=</span> <span class="n">c2ad</span><span class="p">(</span><span class="n">c_initial</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span> <span class="n">alphax</span><span class="p">,</span> <span class="n">alphay</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+        
+<span class="c1">#y</span>
+
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># empty list</span>
+<span class="n">count</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+        <span class="n">my_xyz</span><span class="o">.</span><span class="n">append</span><span class="p">([</span> <span class="n">x</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="n">ccc</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span> <span class="p">])</span>
+       <span class="c1"># print(count)</span>
+        <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span>
+        
+<span class="c1">#print(len(my_xyz))</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_xyz</span><span class="p">)</span> <span class="c1"># convert into a data frame</span>
+<span class="kn">import</span> <span class="nn">numpy</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">griddata</span>
+<span class="c1"># extract lists from the dataframe</span>
+<span class="n">coord_x</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 0 of dataframe</span>
+<span class="n">coord_y</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 1 of dataframe</span>
+<span class="n">coord_z</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 2 of dataframe</span>
+<span class="c1">#print(min(coord_x), max(coord_x)) # activate to examine the dataframe</span>
+<span class="c1">#print(min(coord_y), max(coord_y))</span>
+<span class="n">coord_xy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">coord_y</span><span class="p">))</span>
+<span class="c1"># Set plotting range in original data units</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="mi">64</span><span class="p">)</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="mi">64</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+<span class="c1"># Grid the data; use linear interpolation (choices are nearest, linear, cubic)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_xy</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_z</span><span class="p">),</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="c1"># Build the map</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">99</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Concentration Map at Elapsed Time &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39; days&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9282e201edfb7b564a008973e0e0a89753aa173e8a903822c41887f7e538de75.png" src="../../_images/9282e201edfb7b564a008973e0e0a89753aa173e8a903822c41887f7e538de75.png" />
+</div>
+</div>
+<p>Evaluate specific points</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="d-advection-dispersion-finite-width-finite-duration-source">
+<h1>2D - Advection-Dispersion, Finite-Width, Finite-Duration Source<a class="headerlink" href="#d-advection-dispersion-finite-width-finite-duration-source" title="Link to this heading">#</a></h1>
+<p><img alt="" src="../../_images/2Dgeom21.png" /></p>
+<p>The sketch depicts a finite-length horizontal line source in an aquifer of infinite extent located at <span class="math notranslate nohighlight">\((x,y)=(0,0)\)</span> (again no variation in the <span class="math notranslate nohighlight">\(z\)</span> direction). The length of the source zone (line) is Y. The source history is depicted beneath the sketch. The system starts with initial concentration of zero everywhere, at time <span class="math notranslate nohighlight">\(t=0\)</span>, the concentration in the source line increases to <span class="math notranslate nohighlight">\(C_0\)</span> suddenly, and is maintained at that value for a specified duration (<span class="math notranslate nohighlight">\(\tau\)</span>), when the source then decreases back to zero.</p>
+<p>An analytical model based on Domenico and Robbins (1985) was obtained by convolution (temporal superposition) of two continuous sources shifted in time relative to one another, with the later source having opposite sense (sign) (This  particular solution is described in detail in Yuan, 1995):</p>
+<div class="math notranslate nohighlight">
+\[ C(x,y,t) = \frac{C_0}{4} \cdot \textit{erfc}[\frac{(x - v t) }{ (2 \sqrt{D_x  t))}}] \cdot [\textit{erf}(\frac{(y + \frac{Y}{2}) }{ (2 \sqrt{\frac{D_y}{v} x))}}) - \textit{erf} (\frac{(y - \frac{Y}{2}) }{ (2 \sqrt{\frac{D_y}{v} x))}})]  ~ - \frac{C_0}{4} \cdot \textit{erfc}[\frac{(x - v (t-\tau)) }{ (2 \sqrt{D_x  (t-\tau)))}}] \cdot [\textit{erf}(\frac{(y + \frac{Y}{2}) }{ (2 \sqrt{\frac{D_y}{v} x))}}) - \textit{erf} (\frac{(y - \frac{Y}{2}) }{ (2 \sqrt{\frac{D_y}{v} x))}})]\]</div>
+<p>A prototype function is constructed from <code class="docutils literal notranslate"><span class="pre">c2ad</span></code> as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># prototype 2D domenico robbins ADE function</span>
+<span class="k">def</span> <span class="nf">c2adfd</span><span class="p">(</span><span class="n">conc0</span><span class="p">,</span> <span class="n">distx</span><span class="p">,</span> <span class="n">disty</span><span class="p">,</span> <span class="n">dispx</span><span class="p">,</span> <span class="n">dispy</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">lenY</span><span class="p">,</span> <span class="n">tau</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span><span class="p">,</span> <span class="n">erfc</span> <span class="c1"># scipy needs to already be loaded into the kernel</span>
+<span class="c1"># internal definition of ordinary c2ad function ########################</span>
+    <span class="k">def</span> <span class="nf">c2ad</span><span class="p">(</span><span class="n">conc0</span><span class="p">,</span> <span class="n">distx</span><span class="p">,</span> <span class="n">disty</span><span class="p">,</span> <span class="n">dispx</span><span class="p">,</span> <span class="n">dispy</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">lenY</span><span class="p">):</span>
+
+        <span class="n">vadj</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">/</span> <span class="mf">1.0</span> <span class="c1"># structure is in anticipation of adding adsorbtion and decay</span>
+        <span class="n">dispXadj</span> <span class="o">=</span> <span class="n">dispx</span> <span class="o">/</span> <span class="mf">1.0</span>
+        <span class="n">dispYadj</span> <span class="o">=</span> <span class="n">dispy</span> <span class="o">/</span> <span class="mf">1.0</span>
+        <span class="n">lambadj</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">/</span> <span class="mf">1.0</span>
+
+        <span class="n">uuu</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">4.0</span><span class="o">*</span><span class="n">lambadj</span><span class="o">*</span><span class="n">dispXadj</span><span class="o">/</span><span class="n">vadj</span><span class="p">)</span>
+        <span class="n">ypp</span> <span class="o">=</span> <span class="p">(</span><span class="n">disty</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">lenY</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispYadj</span><span class="o">*</span><span class="n">distx</span><span class="p">))</span>
+        <span class="n">ymm</span> <span class="o">=</span> <span class="p">(</span><span class="n">disty</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">lenY</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispYadj</span><span class="o">*</span><span class="n">distx</span><span class="p">))</span>
+
+        <span class="n">arg1</span> <span class="o">=</span> <span class="p">(</span><span class="n">distx</span> <span class="o">-</span> <span class="n">vadj</span><span class="o">*</span><span class="n">time</span><span class="o">*</span><span class="n">uuu</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispXadj</span><span class="o">*</span><span class="n">vadj</span><span class="o">*</span><span class="n">time</span><span class="p">))</span>
+        <span class="n">arg2</span> <span class="o">=</span> <span class="p">(</span><span class="n">distx</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dispXadj</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">uuu</span><span class="p">)</span>
+
+        <span class="n">term0</span> <span class="o">=</span> <span class="n">conc0</span> <span class="o">/</span> <span class="mi">4</span>
+        <span class="n">term1</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">arg2</span><span class="p">)</span>
+        <span class="n">term2</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(</span><span class="n">arg1</span><span class="p">)</span>
+        <span class="n">term3</span> <span class="o">=</span> <span class="p">(</span><span class="n">erf</span><span class="p">(</span><span class="n">ypp</span><span class="p">)</span> <span class="o">-</span> <span class="n">erf</span><span class="p">(</span><span class="n">ymm</span><span class="p">))</span>
+
+        <span class="n">c2ad</span> <span class="o">=</span> <span class="n">term0</span> <span class="o">*</span> <span class="n">term1</span> <span class="o">*</span> <span class="n">term2</span> <span class="o">*</span> <span class="n">term3</span>
+        <span class="k">return</span> <span class="n">c2ad</span>
+<span class="c1">#########################################################################</span>
+    <span class="n">part1</span> <span class="o">=</span> <span class="n">c2ad</span><span class="p">(</span><span class="n">conc0</span><span class="p">,</span> <span class="n">distx</span><span class="p">,</span> <span class="n">disty</span><span class="p">,</span> <span class="n">dispx</span><span class="p">,</span> <span class="n">dispy</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">lenY</span><span class="p">)</span>
+    <span class="n">part2</span> <span class="o">=</span> <span class="n">c2ad</span><span class="p">(</span><span class="n">conc0</span><span class="p">,</span> <span class="n">distx</span><span class="p">,</span> <span class="n">disty</span><span class="p">,</span> <span class="n">dispx</span><span class="p">,</span> <span class="n">dispy</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">time</span><span class="o">-</span><span class="n">tau</span> <span class="p">,</span> <span class="n">lenY</span><span class="p">)</span> <span class="c1">#time-shift here</span>
+    <span class="n">c2adfd</span> <span class="o">=</span> <span class="n">part1</span><span class="o">-</span><span class="n">part2</span>
+    <span class="k">return</span> <span class="n">c2adfd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Supply model conditions, evaluate specific point in space and time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inputs</span>
+<span class="n">c_initial</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="c1"># g/m^3</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="mi">75</span>          <span class="c1"># meters</span>
+<span class="n">yy</span> <span class="o">=</span> <span class="mi">0</span>            <span class="c1"># meters</span>
+<span class="n">Dx</span> <span class="o">=</span> <span class="mf">0.50</span>          <span class="c1"># m^2/day</span>
+<span class="n">Dy</span> <span class="o">=</span> <span class="mf">0.05</span>          <span class="c1"># m^2/day</span>
+<span class="n">V</span>  <span class="o">=</span> <span class="mf">1.0</span>           <span class="c1"># m/day</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mf">365.0</span>      <span class="c1"># days</span>
+<span class="n">tau</span>  <span class="o">=</span> <span class="mf">90.0</span>      <span class="c1"># days</span>
+<span class="n">Y</span>  <span class="o">=</span> <span class="mf">10.0</span>          <span class="c1"># meters</span>
+<span class="n">alphax</span> <span class="o">=</span> <span class="n">Dx</span><span class="o">/</span><span class="n">V</span>
+<span class="n">alphay</span> <span class="o">=</span> <span class="n">Dy</span><span class="o">/</span><span class="n">V</span>
+<span class="n">output</span><span class="o">=</span><span class="n">c2adfd</span><span class="p">(</span><span class="n">c_initial</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">alphax</span><span class="p">,</span> <span class="n">alphay</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; y= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; t= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot; C(x,y,t) = &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x=  75  y=  0  t=  365.0  C(x,y,t) =  0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Construct 2D contour plots (equivalent to a profile plot)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a plot</span>
+<span class="n">x_max</span> <span class="o">=</span> <span class="mi">900</span>
+<span class="n">y_max</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="c1"># build a grid</span>
+<span class="n">nrows</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltax</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_max</span><span class="p">)</span><span class="o">/</span><span class="n">nrows</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00001</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">deltax</span><span class="p">)</span>
+
+<span class="n">ncols</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltay</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_max</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ncols</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">y_max</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00001</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">deltay</span><span class="p">)</span>
+    
+<span class="c1">#y</span>
+
+<span class="c1">#y = [i*deltay for i in range(how_many_points)] # constructor notation</span>
+<span class="c1">#y[0]=0.001</span>
+<span class="n">ccc</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+        <span class="n">ccc</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span> <span class="o">=</span> <span class="n">c2adfd</span><span class="p">(</span><span class="n">c_initial</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span> <span class="n">alphax</span><span class="p">,</span> <span class="n">alphay</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">)</span>
+        
+<span class="c1">#y</span>
+
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># empty list</span>
+<span class="n">count</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+        <span class="n">my_xyz</span><span class="o">.</span><span class="n">append</span><span class="p">([</span> <span class="n">x</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="n">ccc</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span> <span class="p">])</span>
+       <span class="c1"># print(count)</span>
+        <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span>
+        
+<span class="c1">#print(len(my_xyz))</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_xyz</span><span class="p">)</span> <span class="c1"># convert into a data frame</span>
+<span class="kn">import</span> <span class="nn">numpy</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">griddata</span>
+<span class="c1"># extract lists from the dataframe</span>
+<span class="n">coord_x</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 0 of dataframe</span>
+<span class="n">coord_y</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 1 of dataframe</span>
+<span class="n">coord_z</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 2 of dataframe</span>
+<span class="c1">#print(min(coord_x), max(coord_x)) # activate to examine the dataframe</span>
+<span class="c1">#print(min(coord_y), max(coord_y))</span>
+<span class="n">coord_xy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">coord_y</span><span class="p">))</span>
+<span class="c1"># Set plotting range in original data units</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="mi">64</span><span class="p">)</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="mi">64</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+<span class="c1"># Grid the data; use linear interpolation (choices are nearest, linear, cubic)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_xy</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_z</span><span class="p">),</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="c1"># Build the map</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">99</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Concentration Map at Elapsed Time &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39; days&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/fec15f7fdb9f00a0b321265f998a569e2b6db12427333ce5177c6eb1e5f2be69.png" src="../../_images/fec15f7fdb9f00a0b321265f998a569e2b6db12427333ce5177c6eb1e5f2be69.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="d-plume-in-regional-flow-hunt-solution">
+<h1>2D Plume in Regional Flow (Hunt Solution)<a class="headerlink" href="#d-plume-in-regional-flow-hunt-solution" title="Link to this heading">#</a></h1>
+<p>The sketch depicts a vertical line source in an aquifer of infinite extent located at (x,y)=(0,0) some time after constant injection has begun.</p>
+<p><img alt="" src="../../_images/huntsetup2.png" /></p>
+<p>For the line source (injection well) whose fluid contribution makes negligible impact on the local hydraulics as depicted in the sketch the initial, boundary, and mass conservation conditions are:</p>
+<div class="math notranslate nohighlight">
+\[C(x,y,0)=0\]</div>
+<div class="math notranslate nohighlight">
+\[C(\pm \infty,\pm \infty,t)=0\]</div>
+<div class="math notranslate nohighlight">
+\[\int_{- \infty}^{\infty}\int_{-\infty}^{\infty}C(x,y,t)dxdy = C_0 Q t\]</div>
+<p>A solution obtained by time-convolution of an elementary line source solution (Hunt, 1978) is</p>
+<div class="math notranslate nohighlight">
+\[C(x,y,t) = \frac{C_0 Q}{4 \pi n L}\frac{1}{\sqrt{D_x D_y}}exp(\frac{x v}{2 D_x})W(a,b)\]</div>
+<p>where <span class="math notranslate nohighlight">\(W(a,b)\)</span> is the leaky aquifer (Hantush) well function with</p>
+<div class="math notranslate nohighlight">
+\[a=\frac{(x^2+y^2(\frac{D_x}{D_y}))}{4 D_x t}\]</div>
+<div class="math notranslate nohighlight">
+\[b=\frac{\sqrt{(x^2+y^2(\frac{D_x}{D_y})}}{2D_x}\]</div>
+<p>The solution is presented in (Bear, 1972) as a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the integration routine); Hunt (1978) noticed that the integral was the leaky well function with appropriate substitutions and completed the solution.</p>
+<p>The leaky aquifer function can be evaluated numerically using a recursive definition, or efficient approximations can be used. Listings for these approximations appear below after the references</p>
+<p>The solution is applicable for porous media flow, where the velocity (below) is the mean section velocity (seepage velocity divided by the porosity). The solution can also be used with streams and pipes (porosity = 1). Negative values of distance in x-axis would correspond to locations upgradient of the injection location.</p>
+<p>Scripts to generate solutions are listed below:</p>
+<section id="leaky-well-function">
+<h2>Leaky Well Function<a class="headerlink" href="#leaky-well-function" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wh</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">rho</span><span class="p">):</span> <span class="c1"># Hantush Leaky aquifer well function</span>
+    <span class="kn">import</span> <span class="nn">numpy</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns Hantush&#39;s well function values</span>
+
+<span class="sd">    Note: works only for scalar values of u and rho</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    u : scalar  (u= r^2 * S / (4 * kD * t))</span>
+<span class="sd">    rho : sclaar (rho =r / lambda, lambda = sqrt(kD * c))</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">    Wh(u, rho) : Hantush well function value for (u, rho)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">u</span> <span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">rho</span> <span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;u and rho must be scalars.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
+
+    <span class="n">LOGINF</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">LOGINF</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">ym</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span>  <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">wh</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">ym</span> <span class="o">-</span> <span class="p">(</span><span class="n">rho</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">ym</span> <span class="p">)</span> <span class="o">*</span> <span class="n">dy</span> <span class="o">/</span> <span class="n">ym</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">wh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="hunt-solution-prototype-function">
+<h2>Hunt Solution (Prototype Function)<a class="headerlink" href="#hunt-solution-prototype-function" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">chunt</span><span class="p">(</span><span class="n">c_injection</span><span class="p">,</span><span class="n">q_injection</span><span class="p">,</span><span class="n">l_thickness</span><span class="p">,</span><span class="n">d_x</span><span class="p">,</span><span class="n">d_y</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">x_location</span><span class="p">,</span><span class="n">y_location</span><span class="p">,</span><span class="n">time</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="n">rsq</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_location</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y_location</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">d_x</span><span class="o">/</span><span class="n">d_y</span><span class="p">))</span>
+    <span class="n">rrr</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rsq</span><span class="p">)</span>
+    <span class="n">aaa</span> <span class="o">=</span> <span class="n">rsq</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">d_x</span><span class="o">*</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">bbb</span> <span class="o">=</span> <span class="p">(</span><span class="n">rrr</span><span class="o">*</span><span class="n">velocity</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">d_x</span><span class="p">)</span>
+<span class="c1">#    print(rsq,rrr,aaa,bbb)</span>
+    <span class="n">term1</span> <span class="o">=</span> <span class="n">c_injection</span><span class="o">*</span><span class="n">q_injection</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">l_thickness</span><span class="p">)</span>
+    <span class="n">term2</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d_x</span><span class="o">*</span><span class="n">d_y</span><span class="p">))</span>
+    <span class="n">term3</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">x_location</span><span class="o">*</span><span class="n">velocity</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">d_x</span><span class="p">))</span>
+<span class="c1">#    term4 = leakyfn(aaa,bbb)</span>
+    <span class="n">term4</span> <span class="o">=</span> <span class="n">wh</span><span class="p">(</span><span class="n">aaa</span><span class="p">,</span><span class="n">bbb</span><span class="p">)</span>
+
+    <span class="c1">#if term4 &lt;= 0.0: term4 = 0.0</span>
+<span class="c1">#    print(term1,term2,term3,term4)</span>
+    <span class="n">chunt</span> <span class="o">=</span> <span class="n">term1</span><span class="o">*</span><span class="n">term2</span><span class="o">*</span><span class="n">term3</span><span class="o">*</span><span class="n">term4</span>
+    <span class="k">return</span> <span class="n">chunt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="driver-script">
+<h2>Driver Script<a class="headerlink" href="#driver-script" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inputs</span>
+<span class="n">c_injection</span> <span class="o">=</span> <span class="mi">133</span>
+<span class="n">q_injection</span> <span class="o">=</span> <span class="mf">3.66</span>
+<span class="n">l_thickness</span> <span class="o">=</span> <span class="mf">1.75</span>
+<span class="n">d_x</span> <span class="o">=</span> <span class="mf">0.920</span>
+<span class="n">d_y</span> <span class="o">=</span> <span class="mf">0.092</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mf">0.187</span>
+<span class="n">x_location</span> <span class="o">=</span> <span class="mi">123</span>
+<span class="n">y_location</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mi">36500</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="n">c_injection</span><span class="o">*</span><span class="n">q_injection</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">chunt</span><span class="p">(</span><span class="n">c_injection</span><span class="p">,</span><span class="n">q_injection</span><span class="p">,</span><span class="n">l_thickness</span><span class="p">,</span><span class="n">d_x</span><span class="p">,</span><span class="n">d_y</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">x_location</span><span class="p">,</span><span class="n">y_location</span><span class="p">,</span><span class="n">time</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Concentration at x = &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">x_location</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; y= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">y_location</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">,</span><span class="s2">&quot; t= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">,</span><span class="s2">&quot; = &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="c1">#</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concentration at x =  123  y=  0  t=  36500  =  53.424
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plotting-script">
+<h2>Plotting Script<a class="headerlink" href="#plotting-script" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a plot</span>
+<span class="n">x_max</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">y_max</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="c1"># build a grid</span>
+<span class="n">nrows</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltax</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_max</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="n">nrows</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">x_max</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00001</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">deltax</span><span class="p">)</span>
+
+<span class="n">ncols</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltay</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_max</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ncols</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">y_max</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00001</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">deltay</span><span class="p">)</span>
+    
+<span class="c1">#y</span>
+
+<span class="c1">#y = [i*deltay for i in range(how_many_points)] # constructor notation</span>
+<span class="c1">#y[0]=0.001</span>
+<span class="n">ccc</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+        <span class="n">ccc</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span> <span class="o">=</span> <span class="n">chunt</span><span class="p">(</span><span class="n">c_injection</span><span class="p">,</span><span class="n">q_injection</span><span class="p">,</span><span class="n">l_thickness</span><span class="p">,</span><span class="n">d_x</span><span class="p">,</span><span class="n">d_y</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="n">time</span><span class="p">)</span>
+        
+<span class="c1">#y</span>
+
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># empty list</span>
+<span class="n">count</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+        <span class="n">my_xyz</span><span class="o">.</span><span class="n">append</span><span class="p">([</span> <span class="n">x</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="n">ccc</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span> <span class="p">])</span>
+       <span class="c1"># print(count)</span>
+        <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span>
+        
+<span class="c1">#print(len(my_xyz))</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_xyz</span><span class="p">)</span> <span class="c1"># convert into a data frame</span>
+<span class="kn">import</span> <span class="nn">numpy</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">griddata</span>
+<span class="c1"># extract lists from the dataframe</span>
+<span class="n">coord_x</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 0 of dataframe</span>
+<span class="n">coord_y</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 1 of dataframe</span>
+<span class="n">coord_z</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 2 of dataframe</span>
+<span class="c1">#print(min(coord_x), max(coord_x)) # activate to examine the dataframe</span>
+<span class="c1">#print(min(coord_y), max(coord_y))</span>
+<span class="n">coord_xy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">coord_y</span><span class="p">))</span>
+<span class="c1"># Set plotting range in original data units</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="mi">64</span><span class="p">)</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="mi">64</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+<span class="c1"># Grid the data; use linear interpolation (choices are nearest, linear, cubic)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_xy</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_z</span><span class="p">),</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="c1"># Build the map</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">50</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Concentration Map at Elapsed Time &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39; days&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/5bd94c40175e6d53a5cd6fcd9a0e7d9bc48f5aa7fa9d98935b9ef9895ab6b38b.png" src="../../_images/5bd94c40175e6d53a5cd6fcd9a0e7d9bc48f5aa7fa9d98935b9ef9895ab6b38b.png" />
+</div>
+</div>
+</section>
+<section id="spreadsheet-model">
+<h2>Spreadsheet Model<a class="headerlink" href="#spreadsheet-model" title="Link to this heading">#</a></h2>
+<p>A spreadsheet implementation is available at <a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/HuntModel.xlsm">http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/HuntModel.xlsm</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This model requires Analysis Tool Pack Add-In and the VBA Macro Enabled.  May no longer work in current cloud-based Excel</p>
+</div>
+<!--
+from scipy import *
+from scipy import special
+from scipy.special import kn as BesselK
+#from scipy.special import expn as ExpInt
+from math import sqrt as sqrt
+from math import cosh as cosh
+from math import log as ln # in python: log(x)=Ln(x)
+import numpy
+
+def ExpInt(n,u):
+
+    # n wordt niet gebruikt
+
+    # Fast approximation for Wu according to equation 7a and 7b from Srivastava(1998)
+    gamma = 0.5772 # Euler-Macheroni constant
+
+    # Wu for u<1
+    u0  = numpy.where(u<1.0,u,1) # u=1 is just a dummy to make ln() work on all values
+    Wu0 = numpy.lib.scimath.log(numpy.exp(-gamma)/u0) + 0.9653*u - 0.1690*u0**2
+
+    #Wu for u>=1
+    u1 = numpy.where(u>=1.0,u,1) # u=1 is just a dummy to make ln() work on all values
+    Wu1 = 1/(u1*numpy.exp(u1))*(u1+0.3575)/(u1+1.280)
+
+    # combine Wu0 and Wu1
+    Wu = numpy.where(u<1.0,Wu0,Wu1)
+    return Wu
+
+def func_F(rho,tau):
+# func_F is a fast approximation of Hantush well function W
+
+    # Calculate parameter w
+    w = (ExpInt(1,rho)-BesselK(0,rho))/(ExpInt(1,rho)-ExpInt(1,rho/2))
+
+    # Calculate F(rho,tau)
+    if tau <= 0:
+        F = w*ExpInt(1,rho/2*e**(-tau))-(w-1)*ExpInt(1,rho*cosh(tau))
+    else:
+        F = 2*BesselK(0,rho) - w*ExpInt(1,rho/2*e**tau) + (w-1)*ExpInt(1,rho*cosh(tau))
+
+    # return calculated value of F(rho,tau)
+    return F
+--></section>
+<section id="useful-code-listings">
+<h2>Useful Code Listings<a class="headerlink" href="#useful-code-listings" title="Link to this heading">#</a></h2>
+<p><strong>Polynomial Approximation</strong></p>
+<p>The approximations below are coded in python, and can convert to spreadsheet using VBA fairly easily. These are based on polynomial approximations in:</p>
+<p>Abramowitz, M. and I.A. Stegun, 1964. Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables. U.S. Department of Commerce, National Bureau of Standards, Applied Mathematics Series, Vol 55.</p>
+<p>And seem to produce nearly the same results as the recursive version above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#######################</span>
+<span class="c1"># Theis Well Function # </span>
+<span class="c1">#######################</span>
+<span class="k">def</span> <span class="nf">wellfn</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="k">if</span> <span class="p">((</span><span class="n">u</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">u</span> <span class="o">&lt;=</span><span class="mi">1</span><span class="p">)):</span>
+<span class="c1"># polynomial approximation constants</span>
+        <span class="n">a0</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.57721566</span>
+        <span class="n">a1</span> <span class="o">=</span>  <span class="mf">0.99999193</span>
+        <span class="n">a2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.24991055</span>
+        <span class="n">a3</span> <span class="o">=</span>  <span class="mf">0.05519968</span>
+        <span class="n">a4</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.00976004</span>
+        <span class="n">a5</span> <span class="o">=</span>  <span class="mf">0.00107857</span>
+        <span class="n">wellfn</span> <span class="o">=</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">+</span> <span class="n">a0</span> <span class="o">+</span> <span class="n">a1</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="n">a2</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a3</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">a4</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="n">a5</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">5</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">wellfn</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="p">((</span><span class="n">u</span> <span class="o">&gt;</span><span class="mi">1</span><span class="p">)):</span>
+<span class="c1"># polynomial approximation constants</span>
+        <span class="n">a1</span> <span class="o">=</span>  <span class="mf">8.5733287401</span>
+        <span class="n">a2</span> <span class="o">=</span> <span class="mf">18.0590169730</span>
+        <span class="n">a3</span> <span class="o">=</span>  <span class="mf">8.6347608925</span>
+        <span class="n">a4</span> <span class="o">=</span>  <span class="mf">0.2677737343</span>
+        <span class="n">b1</span> <span class="o">=</span>  <span class="mf">9.5733223454</span>
+        <span class="n">b2</span> <span class="o">=</span> <span class="mf">25.6329561486</span>
+        <span class="n">b3</span> <span class="o">=</span> <span class="mf">21.0996530827</span>
+        <span class="n">b4</span> <span class="o">=</span>  <span class="mf">3.9584969228</span>
+        <span class="n">frac1</span> <span class="o">=</span> <span class="n">u</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="n">a1</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">a2</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a3</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="n">a4</span>
+        <span class="n">frac2</span> <span class="o">=</span> <span class="n">u</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="n">b1</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">b2</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b3</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="n">b4</span>
+        <span class="n">frac3</span> <span class="o">=</span> <span class="n">u</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">wellfn</span> <span class="o">=</span> <span class="p">(</span><span class="n">frac1</span><span class="o">/</span><span class="n">frac2</span><span class="p">)</span><span class="o">/</span><span class="n">frac3</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">wellfn</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error in wellfn&#39;</span><span class="p">)</span>
+        <span class="n">wellfn</span> <span class="o">=</span> <span class="o">-</span><span class="mf">999.0</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">wellfn</span><span class="p">)</span>
+
+<span class="c1">#######################</span>
+<span class="c1"># Leaky Well Function #</span>
+<span class="c1">#######################</span>
+<span class="k">def</span> <span class="nf">leakyfn</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="kn">import</span> <span class="nn">numpy</span>
+    <span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">kn</span> <span class="k">as</span> <span class="n">besselK</span>
+    <span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">iv</span> <span class="k">as</span> <span class="n">besselI</span>
+<span class="c1"># finite series recursion constants</span>
+    <span class="n">c12</span> <span class="o">=</span>  <span class="mf">0.0277777777777778</span>
+<span class="c1">#</span>
+    <span class="n">c14</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.00347222222222222</span>
+    <span class="n">c15</span> <span class="o">=</span>  <span class="mf">0.00173611111111111</span>
+<span class="c1">#</span>
+    <span class="n">c17</span> <span class="o">=</span>  <span class="mf">0.000416666666666667</span>
+    <span class="n">c18</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.000138888888888889</span>
+    <span class="n">c19</span> <span class="o">=</span>  <span class="mf">0.0000694444444444444</span>
+<span class="c1">#</span>
+    <span class="n">c21</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.0000462962962962963</span>
+    <span class="n">c22</span> <span class="o">=</span>  <span class="mf">0.0000115740740740741</span>
+    <span class="n">c23</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.85802469135802E-06</span>
+    <span class="n">c24</span> <span class="o">=</span>  <span class="mf">1.92901234567901E-06</span>
+<span class="c1">#</span>
+    <span class="n">c26</span> <span class="o">=</span>  <span class="mf">4.72411186696901E-06</span>
+    <span class="n">c27</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.44822373393802E-07</span>
+    <span class="n">c28</span> <span class="o">=</span>  <span class="mf">2.3620559334845E-07</span>
+    <span class="n">c29</span> <span class="o">=</span> <span class="o">-</span><span class="mf">7.87351977828168E-08</span>
+    <span class="n">c30</span> <span class="o">=</span>  <span class="mf">3.93675988914084E-08</span>
+<span class="c1">#</span>
+    <span class="n">c32</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.42885487528345E-07</span>
+    <span class="n">c33</span> <span class="o">=</span>  <span class="mf">7.38142479213908E-08</span>
+    <span class="n">c34</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.47628495842782E-08</span>
+    <span class="n">c35</span> <span class="o">=</span>  <span class="mf">3.69071239606954E-09</span>
+    <span class="n">c36</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.23023746535651E-09</span>
+    <span class="n">c37</span> <span class="o">=</span>  <span class="mf">6.15118732678257E-10</span>
+<span class="c1">#</span>
+<span class="c1"># entry point </span>
+    <span class="n">a3</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span>  
+<span class="c1"># if leakance term is negligible, then return well function</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">leakyfn</span> <span class="o">=</span> <span class="n">wellfn</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
+<span class="c1"># if leakance/time term is large enough, then return besselKo</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a3</span><span class="o">/</span><span class="n">u</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">leakyfn</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">besselK</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
+<span class="c1">#  }</span>
+<span class="c1"># finite series approximation for u&gt;1, v&lt;=2</span>
+    <span class="k">if</span> <span class="p">((</span><span class="n">u</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">v</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">))</span> <span class="p">:</span>
+    <span class="c1"># recursion terms built by-hand (ported from SSANTS)</span>
+        <span class="n">g11</span> <span class="o">=</span> <span class="n">c12</span><span class="o">*</span><span class="n">a3</span>
+        <span class="n">g12</span> <span class="o">=</span> <span class="n">c14</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">g21</span> <span class="o">=</span> <span class="n">c15</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g22</span> <span class="o">=</span> <span class="n">c17</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g23</span> <span class="o">=</span> <span class="n">c18</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">g31</span> <span class="o">=</span> <span class="n">c19</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g32</span> <span class="o">=</span> <span class="n">c21</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g33</span> <span class="o">=</span> <span class="n">c22</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g34</span> <span class="o">=</span> <span class="n">c23</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">g41</span> <span class="o">=</span> <span class="n">c24</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">g42</span> <span class="o">=</span> <span class="n">c26</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">g43</span> <span class="o">=</span> <span class="n">c27</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g44</span> <span class="o">=</span> <span class="n">c28</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g45</span> <span class="o">=</span> <span class="n">c29</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">g51</span> <span class="o">=</span> <span class="n">c30</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">g52</span> <span class="o">=</span> <span class="n">c32</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">g53</span> <span class="o">=</span> <span class="n">c33</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">g54</span> <span class="o">=</span> <span class="n">c34</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g55</span> <span class="o">=</span> <span class="n">c35</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g56</span> <span class="o">=</span> <span class="n">c36</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">g61</span> <span class="o">=</span> <span class="n">c37</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span>
+    <span class="c1"># sum them up!</span>
+        <span class="n">a34list</span> <span class="o">=</span> <span class="p">[</span><span class="n">g11</span><span class="p">,</span><span class="n">g12</span><span class="p">,</span><span class="n">g21</span><span class="p">,</span><span class="n">g22</span><span class="p">,</span><span class="n">g23</span><span class="p">,</span><span class="n">g31</span><span class="p">,</span><span class="n">g32</span><span class="p">,</span><span class="n">g33</span><span class="p">,</span><span class="n">g34</span><span class="p">,</span><span class="n">g41</span><span class="p">,</span><span class="n">g42</span><span class="p">,</span><span class="n">g43</span><span class="p">,</span><span class="n">g44</span><span class="p">,</span><span class="n">g45</span><span class="p">,</span><span class="n">g51</span><span class="p">,</span><span class="n">g52</span><span class="p">,</span><span class="n">g53</span><span class="p">,</span><span class="n">g54</span><span class="p">,</span><span class="n">g55</span><span class="p">,</span><span class="n">g56</span><span class="p">,</span><span class="n">g61</span><span class="p">]</span>
+        <span class="n">a34</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a34list</span><span class="p">)</span>
+        <span class="n">a35</span> <span class="o">=</span> <span class="n">a34</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">a36</span> <span class="o">=</span> <span class="n">a3</span><span class="o">/</span><span class="n">u</span>
+        <span class="n">a37</span> <span class="o">=</span> <span class="n">besselI</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">a38</span> <span class="o">=</span> <span class="n">wellfn</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">a37</span>
+        <span class="n">a39</span> <span class="o">=</span> <span class="mf">0.5772</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a36</span><span class="p">)</span> <span class="o">+</span> <span class="n">wellfn</span><span class="p">(</span><span class="n">a36</span><span class="p">)</span> <span class="o">-</span> <span class="n">a36</span> <span class="o">+</span><span class="p">(</span><span class="n">besselI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">u</span>
+        <span class="n">a40</span> <span class="o">=</span> <span class="n">a39</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">leakyfn</span> <span class="o">=</span> <span class="n">a38</span> <span class="o">-</span> <span class="n">a40</span> <span class="o">+</span> <span class="n">a35</span>
+        <span class="n">leakyfn</span><span class="o">=</span><span class="nb">abs</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
+<span class="c1"># finite series approximation for u&lt;=1, v&lt;=2</span>
+    <span class="k">if</span> <span class="p">((</span><span class="n">u</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">v</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">))</span> <span class="p">:</span>
+    <span class="c1"># recursion terms built by-hand (ported from SSANTS)</span>
+        <span class="n">g11</span> <span class="o">=</span> <span class="n">c12</span><span class="o">*</span><span class="n">a3</span>
+        <span class="n">g12</span> <span class="o">=</span> <span class="n">c14</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">g21</span> <span class="o">=</span> <span class="n">c15</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g22</span> <span class="o">=</span> <span class="n">c17</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g23</span> <span class="o">=</span> <span class="n">c18</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">g31</span> <span class="o">=</span> <span class="n">c19</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g32</span> <span class="o">=</span> <span class="n">c21</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g33</span> <span class="o">=</span> <span class="n">c22</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g34</span> <span class="o">=</span> <span class="n">c23</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">g41</span> <span class="o">=</span> <span class="n">c24</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">g42</span> <span class="o">=</span> <span class="n">c26</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">g43</span> <span class="o">=</span> <span class="n">c27</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g44</span> <span class="o">=</span> <span class="n">c28</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g45</span> <span class="o">=</span> <span class="n">c29</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">g51</span> <span class="o">=</span> <span class="n">c30</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">g52</span> <span class="o">=</span> <span class="n">c32</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">g53</span> <span class="o">=</span> <span class="n">c33</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">g54</span> <span class="o">=</span> <span class="n">c34</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g55</span> <span class="o">=</span> <span class="n">c35</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">g56</span> <span class="o">=</span> <span class="n">c36</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">g61</span> <span class="o">=</span> <span class="n">c37</span><span class="o">*</span><span class="p">(</span><span class="n">a3</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span>
+    <span class="c1"># sum them up!  </span>
+        <span class="n">a70list</span> <span class="o">=</span> <span class="p">[</span><span class="n">g11</span><span class="p">,</span><span class="n">g12</span><span class="p">,</span><span class="n">g21</span><span class="p">,</span><span class="n">g22</span><span class="p">,</span><span class="n">g23</span><span class="p">,</span><span class="n">g31</span><span class="p">,</span><span class="n">g32</span><span class="p">,</span><span class="n">g33</span><span class="p">,</span><span class="n">g34</span><span class="p">,</span><span class="n">g41</span><span class="p">,</span><span class="n">g42</span><span class="p">,</span><span class="n">g43</span><span class="p">,</span><span class="n">g44</span><span class="p">,</span><span class="n">g45</span><span class="p">,</span><span class="n">g51</span><span class="p">,</span><span class="n">g52</span><span class="p">,</span><span class="n">g53</span><span class="p">,</span><span class="n">g54</span><span class="p">,</span><span class="n">g55</span><span class="p">,</span><span class="n">g56</span><span class="p">,</span><span class="n">g61</span><span class="p">]</span>
+        <span class="n">a70</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a70list</span><span class="p">)</span>
+        <span class="n">a71</span> <span class="o">=</span> <span class="n">u</span><span class="o">*</span><span class="n">a70</span>
+        <span class="n">a72</span> <span class="o">=</span> <span class="n">a3</span><span class="o">/</span><span class="n">u</span>
+        <span class="n">a73</span> <span class="o">=</span> <span class="mf">0.5772</span><span class="o">+</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">+</span><span class="n">wellfn</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">-</span><span class="n">u</span><span class="o">+</span><span class="p">(</span><span class="n">besselI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">a72</span><span class="p">)</span>
+        <span class="n">a74</span> <span class="o">=</span> <span class="n">a73</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a72</span><span class="p">)</span>
+        <span class="n">a75</span> <span class="o">=</span> <span class="n">besselI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">wellfn</span><span class="p">(</span><span class="n">a72</span><span class="p">)</span>
+        <span class="n">a76</span> <span class="o">=</span> <span class="n">a75</span> <span class="o">-</span> <span class="n">a74</span> <span class="o">+</span> <span class="n">a71</span>
+        <span class="n">a77</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">besselK</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">leakyfn</span> <span class="o">=</span> <span class="p">(</span><span class="n">a77</span><span class="o">-</span><span class="n">a76</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
+<span class="c1"># approximation for v &gt; 2</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">v</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">term1</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">v</span><span class="p">))</span>
+        <span class="n">term2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">term3</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">v</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+        <span class="n">term4</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">erfc</span><span class="p">(</span><span class="n">term3</span><span class="p">)</span>
+        <span class="n">leakyfn</span> <span class="o">=</span> <span class="n">term1</span><span class="o">*</span><span class="n">term2</span><span class="o">*</span><span class="n">term4</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error in leakyfn&#39;</span><span class="p">)</span>
+        <span class="n">leakyfn</span> <span class="o">=</span> <span class="o">-</span><span class="mf">999.0</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">leakyfn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="d-plume-in-regional-flow-with-1st-order-decay-wilson-and-miller-solution">
+<h1>2D Plume in Regional Flow with 1st-Order Decay (Wilson and Miller Solution)<a class="headerlink" href="#d-plume-in-regional-flow-with-1st-order-decay-wilson-and-miller-solution" title="Link to this heading">#</a></h1>
+<p>The sketch depicts a vertical line source in an aquifer of infinite extent located at (x,y)=(0,0) some time after constant injection has begun.</p>
+<p><img alt="" src="../../_images/huntsetup2.png" /></p>
+<p>For the line source (injection well) whose fluid contribution makes negligible impact on the local hydraulics as depicted in the sketch the initial, boundary, and mass conservation conditions are:</p>
+<div class="math notranslate nohighlight">
+\[C(x,y,0)=0\]</div>
+<div class="math notranslate nohighlight">
+\[C(\pm \infty,\pm \infty,t)=0\]</div>
+<div class="math notranslate nohighlight">
+\[\int_{- \infty}^{\infty}\int_{-\infty}^{\infty}C(x,y,t)dxdy = C_0 Q t\]</div>
+<p>A solution obtained by time-convolution of an elementary line source solution with 1st order decay term is (Wilson and Miller, 1978) is</p>
+<div class="math notranslate nohighlight">
+\[C(x,y,t) = \frac{C_0 Q}{4 \pi n L}\frac{1}{\sqrt{D_x D_y}}exp(\frac{x v}{2 D_x})W(u,\frac{r}{B})\]</div>
+<p>where <span class="math notranslate nohighlight">\(W(u,\frac{r}{B})\)</span> is the leaky aquifer (Hantush) well function with</p>
+<div class="math notranslate nohighlight">
+\[B=\frac{2D_x}{v}\]</div>
+<div class="math notranslate nohighlight">
+\[d=1+\frac{2B\lambda}{v}\]</div>
+<div class="math notranslate nohighlight">
+\[r= {\sqrt{(x^2+y^2\frac{D_x}{D_y})d}}\]</div>
+<div class="math notranslate nohighlight">
+\[u=\frac{r^2}{4 d D_x t}\]</div>
+<p>The solution is presented in (Bear and Cheng, 2010) as</p>
+<p><img alt="" src="../../_images/wilsonmiller21.png" />
+<img alt="" src="../../_images/wilsonmiller11.png" />
+a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the integration routine); Hunt (1978) noticed that the integral was the leaky well function with appropriate substitutions and completed the solution.</p>
+<p>The leaky aquifer function can be evaluated numerically using a recursive definition, or efficient approximations can be used. Listings for these approximations appear below after the references</p>
+<p>The solution is applicable for porous media flow, where the velocity (below) is the mean section velocity (seepage velocity divided by the porosity). The solution can also be used with streams and pipes (porosity = 1). Negative values of distance in x-axis would correspond to locations upgradient of the injection location.</p>
+<p>Scripts to generate solutions are listed below:</p>
+<section id="id1">
+<h2>Leaky Well Function<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wh</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">rho</span><span class="p">):</span> <span class="c1"># Hantush Leaky aquifer well function</span>
+    <span class="kn">import</span> <span class="nn">numpy</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns Hantush&#39;s well function values</span>
+
+<span class="sd">    Note: works only for scalar values of u and rho</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    u : scalar  (u= r^2 * S / (4 * kD * t))</span>
+<span class="sd">    rho : sclaar (rho =r / lambda, lambda = sqrt(kD * c))</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">    Wh(u, rho) : Hantush well function value for (u, rho)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">u</span> <span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">rho</span> <span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;u and rho must be scalars.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
+
+    <span class="n">LOGINF</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">LOGINF</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">ym</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span>  <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">wh</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">ym</span> <span class="o">-</span> <span class="p">(</span><span class="n">rho</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">ym</span> <span class="p">)</span> <span class="o">*</span> <span class="n">dy</span> <span class="o">/</span> <span class="n">ym</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">wh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="wilson-and-miller-solution-prototype-function">
+<h2>Wilson and Miller Solution (Prototype Function)<a class="headerlink" href="#wilson-and-miller-solution-prototype-function" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">willsonmiller</span><span class="p">(</span><span class="n">c_injection</span><span class="p">,</span><span class="n">q_injection</span><span class="p">,</span><span class="n">l_thickness</span><span class="p">,</span><span class="n">d_x</span><span class="p">,</span><span class="n">d_y</span><span class="p">,</span><span class="n">decay</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">x_location</span><span class="p">,</span><span class="n">y_location</span><span class="p">,</span><span class="n">time</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="n">B</span>   <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">d_x</span><span class="o">/</span><span class="n">velocity</span>
+    <span class="n">d</span>   <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">B</span><span class="o">*</span><span class="n">decay</span><span class="o">/</span><span class="n">velocity</span>
+    <span class="n">rsq</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_location</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y_location</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">d_x</span><span class="o">/</span><span class="n">d_y</span><span class="p">))</span><span class="o">*</span><span class="n">d</span>
+    <span class="n">r</span>   <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rsq</span><span class="p">)</span>
+    <span class="n">u</span>   <span class="o">=</span> <span class="n">rsq</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">d</span><span class="o">*</span><span class="n">d_x</span><span class="o">*</span><span class="n">time</span><span class="p">)</span>
+<span class="c1">#    print(B,d,rsq,r,u,r/B)</span>
+<span class="c1">#    print(rsq,rrr,aaa,bbb)</span>
+    <span class="n">term1</span> <span class="o">=</span> <span class="n">c_injection</span><span class="o">*</span><span class="n">q_injection</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">l_thickness</span><span class="p">)</span>
+    <span class="n">term2</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d_x</span><span class="o">*</span><span class="n">d_y</span><span class="p">))</span>
+    <span class="n">term3</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">x_location</span><span class="o">*</span><span class="n">velocity</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">d_x</span><span class="p">))</span>
+    <span class="n">term4</span> <span class="o">=</span> <span class="n">wh</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">r</span><span class="o">/</span><span class="n">B</span><span class="p">)</span>
+
+    <span class="c1">#if term4 &lt;= 0.0: term4 = 0.0</span>
+<span class="c1">#    print(term1,term2,term3,term4)</span>
+    <span class="k">if</span> <span class="n">term1</span><span class="o">*</span><span class="n">term2</span><span class="o">*</span><span class="n">term3</span><span class="o">*</span><span class="n">term4</span> <span class="o">&lt;=</span><span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">term1</span><span class="o">*</span><span class="n">term2</span><span class="o">*</span><span class="n">term3</span><span class="o">*</span><span class="n">term4</span>
+    <span class="n">willsonmiller</span> <span class="o">=</span> <span class="n">temp</span>
+    <span class="k">return</span> <span class="n">willsonmiller</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>Driver Script<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inputs</span>
+<span class="n">decay</span> <span class="o">=</span> <span class="mi">0</span><span class="c1">#0.0024 # added 1st order decay</span>
+<span class="n">c_injection</span> <span class="o">=</span> <span class="mi">133</span>
+<span class="n">q_injection</span> <span class="o">=</span> <span class="mf">3.66</span>
+<span class="n">l_thickness</span> <span class="o">=</span> <span class="mf">1.75</span>
+<span class="n">d_x</span> <span class="o">=</span> <span class="mf">0.920</span>
+<span class="n">d_y</span> <span class="o">=</span> <span class="mf">0.092</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mf">0.187</span>
+<span class="n">x_location</span> <span class="o">=</span> <span class="mi">123</span>
+<span class="n">y_location</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mi">36500</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="n">c_injection</span><span class="o">*</span><span class="n">q_injection</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">willsonmiller</span><span class="p">(</span><span class="n">c_injection</span><span class="p">,</span><span class="n">q_injection</span><span class="p">,</span><span class="n">l_thickness</span><span class="p">,</span><span class="n">d_x</span><span class="p">,</span><span class="n">d_y</span><span class="p">,</span><span class="n">decay</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">x_location</span><span class="p">,</span><span class="n">y_location</span><span class="p">,</span><span class="n">time</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Concentration at x = &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">x_location</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; y= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">y_location</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">,</span><span class="s2">&quot; t= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">,</span><span class="s2">&quot; = &quot;</span><span class="p">,</span><span class="nb">repr</span><span class="p">(</span><span class="n">output</span><span class="p">))</span>
+<span class="c1">#</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wh</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">61.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concentration at x =  123  y=  0  t=  36500  =  np.float64(53.424298876849655)
+6.232529667098016e-28
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># forward define and initialize vectors for a profile plot</span>
+<span class="c1">#</span>
+<span class="n">how_many_points</span> <span class="o">=</span> <span class="mi">29</span>   
+<span class="n">deltat</span> <span class="o">=</span> <span class="mf">12.3</span>
+<span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span>  <span class="c1"># constructor notation</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span>  <span class="c1"># constructor notation</span>
+
+<span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mf">1e-5</span> <span class="c1">#cannot have zero time, so use really small value first position in list</span>
+<span class="c1">#</span>
+<span class="c1"># build the profile predictions</span>
+<span class="c1">#</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">how_many_points</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">deltat</span>
+    <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">willsonmiller</span><span class="p">(</span><span class="n">c_injection</span><span class="p">,</span><span class="n">q_injection</span><span class="p">,</span><span class="n">l_thickness</span><span class="p">,</span><span class="n">d_x</span><span class="p">,</span><span class="n">d_y</span><span class="p">,</span><span class="n">decay</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">x_location</span><span class="p">,</span><span class="n">y_location</span><span class="p">,</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1">#</span>
+<span class="c1"># Import graphics routines for picture making</span>
+<span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="c1">#</span>
+<span class="c1"># Build and Render the Plot</span>
+<span class="c1">#</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span><span class="p">)</span>  <span class="c1"># make the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot; Concentration History </span><span class="se">\n</span><span class="s2"> Space: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">x_location</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># caption the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot; Time since release &quot;</span><span class="p">)</span> <span class="c1"># label x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot; Concentration        &quot;</span><span class="p">)</span> <span class="c1"># label y-axis</span>
+<span class="c1">#plt.savefig(&quot;ogatabanksplot.png&quot;) # optional generates just a plot for embedding into a report</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># plot to stdio -- has to be last call as it kills prior objects</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span> <span class="c1"># needed when plt.show call not invoked, optional here</span>
+<span class="c1">#sys.exit() # used to elegant exit for CGI-BIN use</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ae0303d53c089f2f799be32e05572ee306f668d0588bb06ec50605bd8527e160.png" src="../../_images/ae0303d53c089f2f799be32e05572ee306f668d0588bb06ec50605bd8527e160.png" />
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>Plotting Script<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a plot</span>
+<span class="n">x_max</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">y_max</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="c1"># build a grid</span>
+<span class="n">nrows</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltax</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_max</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="n">nrows</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">x_max</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00001</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">deltax</span><span class="p">)</span>
+
+<span class="n">ncols</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltay</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_max</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ncols</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">y_max</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00001</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">deltay</span><span class="p">)</span>
+    
+<span class="c1">#y</span>
+
+<span class="c1">#y = [i*deltay for i in range(how_many_points)] # constructor notation</span>
+<span class="c1">#y[0]=0.001</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mi">36500</span>
+<span class="n">ccc</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+        <span class="n">ccc</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span> <span class="o">=</span> <span class="n">willsonmiller</span><span class="p">(</span><span class="n">c_injection</span><span class="p">,</span><span class="n">q_injection</span><span class="p">,</span><span class="n">l_thickness</span><span class="p">,</span><span class="n">d_x</span><span class="p">,</span><span class="n">d_y</span><span class="p">,</span><span class="n">decay</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="n">time</span><span class="p">)</span>
+        
+<span class="c1">#y</span>
+
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># empty list</span>
+<span class="n">count</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+        <span class="n">my_xyz</span><span class="o">.</span><span class="n">append</span><span class="p">([</span> <span class="n">x</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="n">ccc</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span> <span class="p">])</span>
+       <span class="c1"># print(count)</span>
+        <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span>
+        
+<span class="c1">#print(len(my_xyz))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_xyz</span><span class="p">)</span> <span class="c1"># convert into a data frame</span>
+<span class="kn">import</span> <span class="nn">numpy</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">griddata</span>
+<span class="c1"># extract lists from the dataframe</span>
+<span class="n">coord_x</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 0 of dataframe</span>
+<span class="n">coord_y</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 1 of dataframe</span>
+<span class="n">coord_z</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 2 of dataframe</span>
+<span class="c1">#print(min(coord_x), max(coord_x)) # activate to examine the dataframe</span>
+<span class="c1">#print(min(coord_y), max(coord_y))</span>
+<span class="n">coord_xy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">coord_y</span><span class="p">))</span>
+<span class="c1"># Set plotting range in original data units</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="mi">64</span><span class="p">)</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="mi">64</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+<span class="c1"># Grid the data; use linear interpolation (choices are nearest, linear, cubic)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_xy</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_z</span><span class="p">),</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="c1"># Build the map</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">50</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Concentration Map at Elapsed Time &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39; days&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/5bd94c40175e6d53a5cd6fcd9a0e7d9bc48f5aa7fa9d98935b9ef9895ab6b38b.png" src="../../_images/5bd94c40175e6d53a5cd6fcd9a0e7d9bc48f5aa7fa9d98935b9ef9895ab6b38b.png" />
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>Spreadsheet Model<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>A spreadsheet implementation is available at <a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/WilsonMillerModel.xlsm">http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/WilsonMillerModel.xlsm</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This model requires Analysis Tool Pack Add-In and the VBA Macro Enabled. Likely no longer working in recent Excel which is not backward compatable.</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="d-advection-dispersion-finite-area-constant-production-injection-source">
+<h1>3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source<a class="headerlink" href="#d-advection-dispersion-finite-area-constant-production-injection-source" title="Link to this heading">#</a></h1>
+<p>The sketch depicts a planar source zone Y units wide and Z units tall, centered at (0,0,0).</p>
+<p><img alt="" src="../../_images/3Dgeom21.png" /></p>
+<p>The analytical model (Domenico and Robbins, 1985) is obtained by convolution of instantaneous sources (described in detail in Yuan, 1995):</p>
+<div class="math notranslate nohighlight">
+\[ C(x,y,t) = \frac{C_0}{8} \cdot \textit{erfc}[\frac{(x - v t) }{ (2 \sqrt{D_x t))}}] \cdot [\textit{erf}(\frac{(y + \frac{Y}{2}) }{ (2 \sqrt{\frac{D_y}{v} x))}}) - \textit{erf} (\frac{(y - \frac{Y}{2}) }{ (2 \sqrt{\frac{D_y}{v} x))}})] \cdot [\textit{erf}(\frac{(z + \frac{Z}{2}) }{ (2 \sqrt{\frac{D_z}{v} x))}}) - \textit{erf} (\frac{(z - \frac{Z}{2}) }{ (2 \sqrt{\frac{D_z}{v} x))}})]\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This solution is identical to Equation 6.33, with <span class="math notranslate nohighlight">\(\lambda = 0\)</span>, <span class="math notranslate nohighlight">\(R = 1\)</span>.</p>
+</div>
+<p>A prototype function is</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">c3dad</span><span class="p">(</span><span class="n">conc0</span><span class="p">,</span> <span class="n">distx</span><span class="p">,</span> <span class="n">disty</span><span class="p">,</span> <span class="n">distz</span><span class="p">,</span> <span class="n">lenX</span><span class="p">,</span> <span class="n">lenY</span><span class="p">,</span> <span class="n">lenZ</span><span class="p">,</span> <span class="n">dispx</span><span class="p">,</span> <span class="n">dispy</span><span class="p">,</span> <span class="n">dispz</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">etime</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span><span class="p">,</span> <span class="n">erfc</span> <span class="c1"># scipy needs to already be loaded into the kernel</span>
+    <span class="c1"># Constant of integration</span>
+    <span class="n">term1</span> <span class="o">=</span> <span class="n">conc0</span> <span class="o">/</span> <span class="mf">8.0</span>
+
+    <span class="c1"># Centerline axis solution</span>
+    <span class="n">arg1</span> <span class="o">=</span> <span class="p">(</span><span class="n">distx</span> <span class="o">-</span> <span class="n">velocity</span><span class="o">*</span><span class="n">etime</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispx</span><span class="o">*</span><span class="n">velocity</span><span class="o">*</span><span class="n">etime</span><span class="p">))</span> <span class="c1">#dispx is dispersivity</span>
+    <span class="n">term2</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(</span><span class="n">arg1</span><span class="p">)</span>
+
+    <span class="c1"># Off-axis solution, Y direction</span>
+<span class="c1">#    arg2 = 2.0 * math.sqrt(dispy*distx / velocity)</span>
+    <span class="n">arg2</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispy</span><span class="o">*</span><span class="n">distx</span><span class="p">)</span> <span class="c1">#dispy is dispersivity</span>
+    <span class="n">arg3</span> <span class="o">=</span> <span class="n">disty</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">lenY</span>
+    <span class="n">arg4</span> <span class="o">=</span> <span class="n">disty</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">lenY</span>
+    <span class="n">term3</span> <span class="o">=</span> <span class="n">erf</span><span class="p">(</span><span class="n">arg3</span> <span class="o">/</span> <span class="n">arg2</span><span class="p">)</span> <span class="o">-</span> <span class="n">erf</span><span class="p">(</span><span class="n">arg4</span> <span class="o">/</span> <span class="n">arg2</span><span class="p">)</span>
+
+    <span class="c1"># Off-axis solution, Z direction</span>
+<span class="c1">#    arg5 = 2.0 * math.sqrt(dispz*distx / velocity)</span>
+    <span class="n">arg5</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispz</span><span class="o">*</span><span class="n">distx</span><span class="p">)</span> <span class="c1">#dispz is dispersivity</span>
+    <span class="n">arg6</span> <span class="o">=</span> <span class="n">distz</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">lenZ</span>
+    <span class="n">arg7</span> <span class="o">=</span> <span class="n">distz</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">lenZ</span>
+    <span class="n">term4</span> <span class="o">=</span> <span class="n">erf</span><span class="p">(</span><span class="n">arg6</span> <span class="o">/</span> <span class="n">arg5</span><span class="p">)</span> <span class="o">-</span> <span class="n">erf</span><span class="p">(</span><span class="n">arg7</span> <span class="o">/</span> <span class="n">arg5</span><span class="p">)</span>
+
+    <span class="c1"># Convolve the solutions</span>
+    <span class="n">c3dad</span> <span class="o">=</span> <span class="n">term1</span> <span class="o">*</span> <span class="n">term2</span> <span class="o">*</span> <span class="n">term3</span> <span class="o">*</span> <span class="n">term4</span>
+    <span class="k">return</span> <span class="n">c3dad</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The is 3D code is incomplete. Needs</p>
+<ul class="simple">
+<li><p>An example</p></li>
+<li><p>Refactor to enforce best code practices</p></li>
+<li><p>Script to render an xyz density plot</p></li>
+</ul>
+</div>
+<section id="exercise-s">
+<h2>Exercise(s)<a class="headerlink" href="#exercise-s" title="Link to this heading">#</a></h2>
+<p>Link</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># autobuild</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="end-section">
+<h2>End Section<a class="headerlink" href="#end-section" title="Link to this heading">#</a></h2>
+<!--
+from scipy import *
+from scipy import special
+from scipy.special import kn as BesselK
+#from scipy.special import expn as ExpInt
+from math import sqrt as sqrt
+from math import cosh as cosh
+from math import log as ln # in python: log(x)=Ln(x)
+import numpy
+
+def ExpInt(n,u):
+
+    # n wordt niet gebruikt
+
+    # Fast approximation for Wu according to equation 7a and 7b from Srivastava(1998)
+    gamma = 0.5772 # Euler-Macheroni constant
+
+    # Wu for u<1
+    u0  = numpy.where(u<1.0,u,1) # u=1 is just a dummy to make ln() work on all values
+    Wu0 = numpy.lib.scimath.log(numpy.exp(-gamma)/u0) + 0.9653*u - 0.1690*u0**2
+
+    #Wu for u>=1
+    u1 = numpy.where(u>=1.0,u,1) # u=1 is just a dummy to make ln() work on all values
+    Wu1 = 1/(u1*numpy.exp(u1))*(u1+0.3575)/(u1+1.280)
+
+    # combine Wu0 and Wu1
+    Wu = numpy.where(u<1.0,Wu0,Wu1)
+    return Wu
+
+def func_F(rho,tau):
+# func_F is a fast approximation of Hantush well function W
+
+    # Calculate parameter w
+    w = (ExpInt(1,rho)-BesselK(0,rho))/(ExpInt(1,rho)-ExpInt(1,rho/2))
+
+    # Calculate F(rho,tau)
+    if tau <= 0:
+        F = w*ExpInt(1,rho/2*e**(-tau))-(w-1)*ExpInt(1,rho*cosh(tau))
+    else:
+        F = 2*BesselK(0,rho) - w*ExpInt(1,rho/2*e**tau) + (w-1)*ExpInt(1,rho*cosh(tau))
+
+    # return calculated value of F(rho,tau)
+    return F
+--></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/05analytical.solutions2d"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../05analytical.models1d/05analytical.models1d.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">9. Analytical Solutions (1D)</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Analytical Solutions (2D)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">Videos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-and-significance">Applications and Significance</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-advection-dispersion-finite-width-constant-source">2D - Advection-Dispersion, Finite-Width, Constant Source</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-advection-dispersion-finite-width-finite-duration-source">2D - Advection-Dispersion, Finite-Width, Finite-Duration Source</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-plume-in-regional-flow-hunt-solution">2D Plume in Regional Flow (Hunt Solution)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leaky-well-function">Leaky Well Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hunt-solution-prototype-function">Hunt Solution (Prototype Function)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#driver-script">Driver Script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-script">Plotting Script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spreadsheet-model">Spreadsheet Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-code-listings">Useful Code Listings</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-plume-in-regional-flow-with-1st-order-decay-wilson-and-miller-solution">2D Plume in Regional Flow with 1st-Order Decay (Wilson and Miller Solution)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Leaky Well Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wilson-and-miller-solution-prototype-function">Wilson and Miller Solution (Prototype Function)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Driver Script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Plotting Script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Spreadsheet Model</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-advection-dispersion-finite-area-constant-production-injection-source">3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-s">Exercise(s)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end-section">End Section</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Theodore G. Cleveland, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
