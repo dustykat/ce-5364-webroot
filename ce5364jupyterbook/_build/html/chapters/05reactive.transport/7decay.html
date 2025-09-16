@@ -1,0 +1,800 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Decay &#8212; Groundwater Transport Phenomena</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05reactive.transport/7decay';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gwtransport.png" class="logo__image only-light" alt="Groundwater Transport Phenomena - Home"/>
+    <script>document.write(`<img src="../../_static/gwtransport.png" class="logo__image only-dark" alt="Groundwater Transport Phenomena - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00syllabus/ce5364-syllabus-2025-3.html">0. Syllabus (Fall 2025)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.science.html">2. Fundamentals I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.practice.html">3. Fundamentals II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02regulatory.overview/regulatory.overview.html">3. Regulatory Overview and Risk Assessment</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03site.mapping.tools/site.mapping.tools.html">5. Site Mapping Tools</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03site.characterization/site.characterization.html">6. Site Characterization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/physical.transport.html">7. Physical Transport</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/modeling.advection.html">8. Modeling Advection</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/05reactive.transport/7decay.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/05reactive.transport/7decay.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Decay</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#st-order-decay">1-st Order Decay</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrolysis">Hydrolysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electron-transfer">Electron Transfer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incorporation-into-ade">Incorporation into ADE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-constant-source-retardation-decaying-species">1D Constant Source, Retardation, Decaying Species</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-exponentially-decaying-source-zone-decaying-species">1D Exponentially decaying source zone, decaying species</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="decay">
+<h1>Decay<a class="headerlink" href="#decay" title="Link to this heading">#</a></h1>
+<p>Exponential decay of constituents in groundwater describes the gradual reduction in the concentration of dissolved substances in groundwater over time due to natural attenuation processes such as radioactive decay, biodegredation, and hydrolysis. Typically, as groundwater flows through an aquifer, constituents such as contaminants or dissolved solutes may undergo degradation, or other reactive processes. These processes may follow exponential decay kinetics, where the rate of decrease in concentration is proportional to the remaining concentration. As a result, the concentration of constituents diminishes rapidly initially and then gradually approaches a stable, lower level over time. Understanding exponential decay in groundwater is critical for assessing the long-term behavior of contaminants, designing effective groundwater remediation strategies, and safeguarding the quality of groundwater resources.</p>
+<section id="st-order-decay">
+<h2>1-st Order Decay<a class="headerlink" href="#st-order-decay" title="Link to this heading">#</a></h2>
+<p>First-order decay is a mathematical model used to describe the exponential decrease in the concentration of a substance over time. It is commonly applied in various fields, including chemistry, physics, biology, and environmental science, to represent processes such as radioactive decay, chemical reactions, and the natural attenuation of contaminants. The mathematics of first-order decay is defined by the following equation:</p>
+<div class="math notranslate nohighlight">
+\[C(t)=C_0 \cdot e^{-\lambda t}\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C(t)\)</span> represents the concentration of the substance at time <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_0\)</span> is the initial concentration of the substance at <span class="math notranslate nohighlight">\(t=0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda\)</span> is the first-order rate constant, which determines the rate of decay.</p></li>
+</ul>
+<p>Key points about first-order decay:</p>
+<ul class="simple">
+<li><p>Exponential Decrease: The concentration C(t)C(t) decreases exponentially over time. This means that the rate of decrease is proportional to the current concentration, resulting in a continuous, smooth curve that approaches zero but never reaches it completely.</p></li>
+<li><p>Rate Constant (<span class="math notranslate nohighlight">\(\lambda\)</span>): The rate constant <span class="math notranslate nohighlight">\(\lambda\)</span> is a positive constant that characterizes the speed of the decay process. It is unique to each specific decay or reaction and is often expressed in units of reciprocal time (e.g., per day, per year). A larger <span class="math notranslate nohighlight">\(\lambda\)</span> value indicates a faster decay rate.</p></li>
+<li><p>Half-Life: The half-life (<span class="math notranslate nohighlight">\(t_{1/2}\)</span>) is a valuable parameter associated with first-order decay. It represents the time it takes for the concentration to decrease to half of its initial value (<span class="math notranslate nohighlight">\(\frac{C_0}{2}\)</span>). The relationship between the rate constant and half-life is given by <span class="math notranslate nohighlight">\(t_{1/2}=0.693 \lambda\)</span>.</p></li>
+<li><p>Independence of Concentration: The rate of decay is independent of the initial concentration <span class="math notranslate nohighlight">\(C_0\)</span>. This means that substances undergoing first-order decay will always decrease by the same proportion in a given time interval, regardless of their initial concentrations.</p></li>
+</ul>
+</section>
+<section id="hydrolysis">
+<h2>Hydrolysis<a class="headerlink" href="#hydrolysis" title="Link to this heading">#</a></h2>
+<p>Hydrolysis is a chemical reaction in the fate and transport of contaminants in groundwater. It involves the breakdown of certain chemical compounds when they come into contact with water molecules. In the context of groundwater contaminants, hydrolysis can transform hazardous substances into less harmful or more easily degradable forms. This reaction can alter the chemical composition and reactivity of contaminants, affecting their persistence in the subsurface environment. Understanding the occurrence and rate of hydrolysis reactions is crucial for predicting the behavior and potential risks associated with groundwater contaminants, especially for compounds like pesticides and industrial chemicals that are prone to hydrolytic degradation. Contaminant hydrolysis can be a key factor in groundwater remediation strategies and in the assessment of long-term environmental impacts.</p>
+<p>While temperature sensitive hydrolysis is typically described using a first-order decay model</p>
+</section>
+<section id="electron-transfer">
+<h2>Electron Transfer<a class="headerlink" href="#electron-transfer" title="Link to this heading">#</a></h2>
+<p>Electron transfer, often referred to as oxidation-reduction (redox) reactions, plays a pivotal role in the fate and transformation of contaminants in groundwater. These reactions involve the exchange of electrons between different chemical species, leading to changes in the oxidation states of the participating compounds. In the context of groundwater contaminants, redox reactions can either facilitate the degradation or transformation of pollutants or, conversely, promote their persistence and mobility. For instance, certain contaminants may undergo reduction reactions, gaining electrons and becoming less toxic or mobile. Conversely, oxidation reactions can render contaminants more mobile or transform them into more harmful forms. Understanding the redox chemistry of groundwater contaminants is crucial for assessing the potential risks, remediation strategies, and long-term behavior of these substances in the subsurface environment. It is a complex yet fundamental aspect of contaminant fate in groundwater systems.</p>
+<p>Like hydrolysis electron transfer processes are typically modeled using a first-order decay model.</p>
+</section>
+<section id="incorporation-into-ade">
+<h2>Incorporation into ADE<a class="headerlink" href="#incorporation-into-ade" title="Link to this heading">#</a></h2>
+<p>1-st order decay is incorporated into the transport equation as another source/sink term:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial C}{\partial t}  =  \frac{\partial}{\partial x} D_x \frac{\partial C}{\partial x} - v_x \frac{\partial C}{\partial x} - \lambda C\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Obviously other reactions can be included - they simply appear as a source/sink term.  Whether they manifest as simply as the terms herein depends on the nature of the process.</p>
+</div>
+<p>To modify our existing analytical solutions for 1-st order decay of the species, and a linear equilibrium isotherm (e.g. a constant <span class="math notranslate nohighlight">\(R\)</span>) we simply have:</p>
+<div class="math notranslate nohighlight">
+\[R\frac{\partial C}{\partial t}  =  \frac{\partial}{\partial x} D_x \frac{\partial C}{\partial x} - v_x \frac{\partial C}{\partial x} - \lambda C\]</div>
+<p>We can increase dimensionality as needed (e.g for 3 spatial dimensions):</p>
+<div class="math notranslate nohighlight">
+\[R\frac{\partial C}{\partial t}  =  [\frac{\partial}{\partial x} D_x \frac{\partial C}{\partial x} - v_x \frac{\partial C}{\partial x}]
++ [\frac{\partial}{\partial y} D_y \frac{\partial C}{\partial y} - v_y] + [\frac{\partial}{\partial z} D_z \frac{\partial C}{\partial z} - v_z \frac{\partial C}{\partial z}] - \lambda C\]</div>
+<p>We can reuse our already built analytical solutions either by defining parameters as</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(D^*_{i} = \frac{D^~_{i}}{R}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v^*_{i} = \frac{v^~_{i}}{R}\)</span></p></li>
+</ul>
+<p>and use our existing solutions</p>
+<section id="d-constant-source-retardation-decaying-species">
+<h3>1D Constant Source, Retardation, Decaying Species<a class="headerlink" href="#d-constant-source-retardation-decaying-species" title="Link to this heading">#</a></h3>
+<p>For example a 1D prototype function for a constant source from <a class="reference external" href="https://pubs.usgs.gov/of/1989/0056/report.pdf">Wexler, 1989</a> is:</p>
+<p><img alt="" src="../../_images/wexler11.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># prototype decaying species function</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">c1dadrd</span><span class="p">(</span><span class="n">c_source</span><span class="p">,</span><span class="n">space</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">dispersion</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">retardation</span><span class="p">,</span><span class="n">decay</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span><span class="n">erf</span><span class="p">,</span><span class="n">erfc</span><span class="p">,</span><span class="n">exp</span>  <span class="c1"># get special math functions</span>
+    <span class="n">dee</span> <span class="o">=</span> <span class="n">dispersion</span><span class="o">/</span><span class="n">retardation</span>
+    <span class="n">vee</span> <span class="o">=</span> <span class="n">velocity</span><span class="o">/</span><span class="n">retardation</span>
+    <span class="n">uuu</span> <span class="o">=</span> <span class="p">(</span><span class="n">vee</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">4.0</span><span class="o">*</span><span class="n">decay</span><span class="o">*</span><span class="n">dee</span><span class="p">)</span>
+    <span class="n">uuu</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">uuu</span><span class="p">)</span>
+    <span class="n">arg1</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span><span class="o">*</span><span class="p">(</span><span class="n">vee</span><span class="o">-</span><span class="n">uuu</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">dee</span><span class="p">)</span>
+    <span class="n">arg2</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span> <span class="o">-</span> <span class="n">uuu</span><span class="o">*</span><span class="n">time</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dee</span><span class="o">*</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">arg3</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span><span class="o">*</span><span class="p">(</span><span class="n">vee</span><span class="o">+</span><span class="n">uuu</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">dee</span><span class="p">)</span>
+    <span class="n">arg4</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span> <span class="o">+</span> <span class="n">uuu</span><span class="o">*</span><span class="n">time</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dee</span><span class="o">*</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">temp1</span> <span class="o">=</span> <span class="n">c_source</span><span class="o">/</span><span class="mf">2.0</span>
+    <span class="n">temp2</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">arg1</span><span class="p">)</span>
+    <span class="n">temp3</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(</span><span class="n">arg2</span><span class="p">)</span>
+    <span class="n">temp4</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">arg3</span><span class="p">)</span>
+    <span class="n">temp5</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(</span><span class="n">arg4</span><span class="p">)</span>
+    
+    <span class="n">c1dadrd</span> <span class="o">=</span> <span class="n">temp1</span><span class="o">*</span><span class="p">(</span><span class="n">temp2</span><span class="o">*</span><span class="n">temp3</span><span class="o">+</span><span class="n">temp4</span><span class="o">*</span><span class="n">temp5</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">c1dadrd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># example inputs</span>
+<span class="c1">#</span>
+<span class="n">c_source</span> <span class="o">=</span> <span class="mf">1000.0</span> <span class="c1"># source concentration</span>
+<span class="n">space</span> <span class="o">=</span> <span class="mf">100.</span>      <span class="c1"># how far in X-direction to extend the plot</span>
+<span class="n">time</span>  <span class="o">=</span> <span class="mf">50.</span>       <span class="c1"># time since release</span>
+<span class="n">dispersion</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># dispersion coefficient</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mf">1.0</span>    <span class="c1"># pore velocity</span>
+<span class="n">retardation</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">decay</span> <span class="o">=</span> <span class="mf">0.00001</span>
+<span class="c1">#</span>
+<span class="c1"># forward define and initialize vectors for a profile plot</span>
+<span class="c1">#</span>
+<span class="n">how_many_points</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltax</span> <span class="o">=</span> <span class="n">space</span><span class="o">/</span><span class="n">how_many_points</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">deltax</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span> <span class="c1"># constructor notation</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span>      <span class="c1"># constructor notation</span>
+<span class="c1">#</span>
+<span class="c1"># build the profile predictions</span>
+<span class="c1">#</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">how_many_points</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">c1dadrd</span><span class="p">(</span><span class="n">c_source</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">time</span><span class="p">,</span><span class="n">dispersion</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">retardation</span><span class="p">,</span><span class="n">decay</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># Import graphics routines for picture making</span>
+<span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="c1">#</span>
+<span class="c1"># Build and Render the Plot</span>
+<span class="c1">#</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span><span class="p">)</span>  <span class="c1"># make the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot; Concentration Profile </span><span class="se">\n</span><span class="s2"> Time: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; time units </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot; Dispersion: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">dispersion</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; length^2/time units </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot; Velocity: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; length/time units </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># caption the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot; Distance from Source &quot;</span><span class="p">)</span> <span class="c1"># label x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot; Concentration        &quot;</span><span class="p">)</span> <span class="c1"># label y-axis</span>
+<span class="c1">#plt.savefig(&quot;ogatabanksplot.png&quot;) # optional generates just a plot for embedding into a report</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># plot to stdio -- has to be last call as it kills prior objects</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span> <span class="c1"># needed when plt.show call not invoked, optional here</span>
+<span class="c1">#sys.exit() # used to elegant exit for CGI-BIN use</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a860e2eae4b39e754b98a9fc518e247ab03788d6a59e045c10afa25ad08bbbe2.png" src="../../_images/a860e2eae4b39e754b98a9fc518e247ab03788d6a59e045c10afa25ad08bbbe2.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="d-exponentially-decaying-source-zone-decaying-species">
+<h2>1D Exponentially decaying source zone, decaying species<a class="headerlink" href="#d-exponentially-decaying-source-zone-decaying-species" title="Link to this heading">#</a></h2>
+<p>We can also implement the concepts of the source zone itself decaying, employing for example a solution by <a class="reference external" href="https://doi.org/10.1111/j.1752-1688.1974.tb00542.x">Marino 1974</a> our model is:</p>
+<p><img alt="" src="../../_images/marino741.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I have assumed the source decay rate can be different than the species rate, one would need to re-read the original work to determine if that is a correct assumption - given that the solution is a convolution of infinite point sources decaying exponentially at some rate that could concievable by different than the species decay rate the assumption is probably fine.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># prototype decaying sourze zone function</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">c1dadrdsrd</span><span class="p">(</span><span class="n">c_source</span><span class="p">,</span><span class="n">space</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">dispersion</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">retardation</span><span class="p">,</span><span class="n">decay</span><span class="p">,</span><span class="n">source_decay</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span><span class="n">erf</span><span class="p">,</span><span class="n">erfc</span><span class="p">,</span><span class="n">exp</span>  <span class="c1"># get special math functions</span>
+    <span class="n">dee</span> <span class="o">=</span> <span class="n">dispersion</span><span class="o">/</span><span class="n">retardation</span>
+    <span class="n">vee</span> <span class="o">=</span> <span class="n">velocity</span><span class="o">/</span><span class="n">retardation</span>
+    <span class="n">uuu</span> <span class="o">=</span> <span class="p">(</span><span class="n">vee</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">4.0</span><span class="o">*</span><span class="n">decay</span><span class="o">*</span><span class="n">dee</span><span class="p">)</span>
+    <span class="n">uuu</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">uuu</span><span class="p">)</span>
+    <span class="n">arg1</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span><span class="o">*</span><span class="p">(</span><span class="n">vee</span><span class="o">-</span><span class="n">uuu</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">dee</span><span class="p">)</span>
+    <span class="n">arg2</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span> <span class="o">-</span> <span class="n">uuu</span><span class="o">*</span><span class="n">time</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dee</span><span class="o">*</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">arg3</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span><span class="o">*</span><span class="p">(</span><span class="n">vee</span><span class="o">+</span><span class="n">uuu</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">dee</span><span class="p">)</span>
+    <span class="n">arg4</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span> <span class="o">+</span> <span class="n">uuu</span><span class="o">*</span><span class="n">time</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dee</span><span class="o">*</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">temp0</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">source_decay</span><span class="o">*</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">temp1</span> <span class="o">=</span> <span class="n">c_source</span><span class="o">/</span><span class="mf">2.0</span>
+    <span class="n">temp2</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">arg1</span><span class="p">)</span>
+    <span class="n">temp3</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(</span><span class="n">arg2</span><span class="p">)</span>
+    <span class="n">temp4</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">arg3</span><span class="p">)</span>
+    <span class="n">temp5</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(</span><span class="n">arg4</span><span class="p">)</span>
+    
+    <span class="n">c1dadrdsrd</span> <span class="o">=</span> <span class="n">temp0</span><span class="o">*</span><span class="n">temp1</span><span class="o">*</span><span class="p">(</span><span class="n">temp2</span><span class="o">*</span><span class="n">temp3</span><span class="o">+</span><span class="n">temp4</span><span class="o">*</span><span class="n">temp5</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">c1dadrdsrd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s a sample profile plot</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># example inputs</span>
+<span class="c1">#</span>
+<span class="n">c_source</span> <span class="o">=</span> <span class="mf">1000.0</span> <span class="c1"># source concentration</span>
+<span class="n">space</span> <span class="o">=</span> <span class="mf">100.</span>      <span class="c1"># how far in X-direction to extend the plot</span>
+<span class="n">time</span>  <span class="o">=</span> <span class="mf">50.</span>       <span class="c1"># time since release</span>
+<span class="n">dispersion</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># dispersion coefficient</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mf">1.0</span>    <span class="c1"># pore velocity</span>
+<span class="n">retardation</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">decay</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># species decay rate</span>
+<span class="n">decay_s</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># source zone decay rate (e.g. washout rate)</span>
+<span class="c1">#</span>
+<span class="c1"># forward define and initialize vectors for a profile plot</span>
+<span class="c1">#</span>
+<span class="n">how_many_points</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltax</span> <span class="o">=</span> <span class="n">space</span><span class="o">/</span><span class="n">how_many_points</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">deltax</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span> <span class="c1"># constructor notation</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span>      <span class="c1"># constructor notation</span>
+<span class="c1">#</span>
+<span class="c1"># build the profile predictions</span>
+<span class="c1">#</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">how_many_points</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">c1dadrdsrd</span><span class="p">(</span><span class="n">c_source</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">time</span><span class="p">,</span><span class="n">dispersion</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">retardation</span><span class="p">,</span><span class="n">decay</span><span class="p">,</span><span class="n">decay_s</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># Import graphics routines for picture making</span>
+<span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="c1">#</span>
+<span class="c1"># Build and Render the Plot</span>
+<span class="c1">#</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span><span class="p">)</span>  <span class="c1"># make the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot; Concentration Profile </span><span class="se">\n</span><span class="s2"> Time: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; time units </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot; Dispersion: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">dispersion</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; length^2/time units </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot; Velocity: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; length/time units </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># caption the plot object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot; Distance from Source &quot;</span><span class="p">)</span> <span class="c1"># label x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot; Concentration        &quot;</span><span class="p">)</span> <span class="c1"># label y-axis</span>
+<span class="c1">#plt.savefig(&quot;ogatabanksplot.png&quot;) # optional generates just a plot for embedding into a report</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># plot to stdio -- has to be last call as it kills prior objects</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span> <span class="c1"># needed when plt.show call not invoked, optional here</span>
+<span class="c1">#sys.exit() # used to elegant exit for CGI-BIN use</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f3af3297f31b142ab23a200527cca38f1df1d12f8549194e1227a0ee345d7339.png" src="../../_images/f3af3297f31b142ab23a200527cca38f1df1d12f8549194e1227a0ee345d7339.png" />
+</div>
+</div>
+<p>Application of Domenico and Robbin’s methodology to extend dimensionality would be reasonable (and is essentially the approach taken by Domenico 1987 that appears in your book as equation 6.33)</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/adsorb_2.pdf">Cleveland, T.G. (1998) <em>Adsorbtion-2</em> Notes to accompany <em>“CIVE 7332 Flow and Transport Modeling for Environmental Engineering” at University of Houston</em></a></p></li>
+<li><p><a class="reference external" href="https://wwwbrr.cr.usgs.gov/projects/GWC_coupled/phreeqc/html/final-22.html">Advection-Dispersion adjusted time from <em>USGS PHREEQ documentation</em></a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/of/1989/0056/report.pdf">
+Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow. Open-File Report 89-56</a></p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1111/j.1752-1688.1974.tb00542.x">Marino, M.A. (1974), NUMERICAL AND ANALYTICAL SOLUTIONS OF DISPERSION IN A FINITE, ADSORBING POROUS MEDIUM. JAWRA Journal of the American Water Resources Association, 10: 81-90. </a></p></li>
+<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/3-Readings/tb1661.pdf">M. Th. van Genuchten and W. J. Alves. 1982. Analytical Solutions of the One-Dimensional Convective-Dispersive Solute Transport Equation. U.S. Department of Agriculture, Technical Bulletin No. 1661, 151 p.</a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/publication/ofr8956">Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow
+Open-File Report 89-56</a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/publication/twri03B7">Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow
+Techniques of Water-Resources Investigations 03-B7 (supercedes above reference)</a></p></li>
+</ol>
+<!--
+
+Quiz: Chemical Reactions in Groundwater Transport
+
+    What is the difference between fast and slow reactions in groundwater transport?
+        Answer: Fast reactions reach equilibrium almost instantly, such as ion exchange or carbonate equilibria, while slow reactions, such as biodegradation or mineral precipitation, occur over longer timeframes and can limit contaminant movement.
+
+    How do reversible reactions affect contaminant mobility in groundwater?
+        Answer: Reversible reactions allow contaminants to re-enter the mobile phase under changing conditions, making contaminants more persistent. For example, contaminants can desorb from soil particles back into groundwater.
+
+    Give an example of an irreversible reaction in groundwater transport.
+        Answer: The precipitation of metals, such as the reaction of dissolved iron with oxygen to form insoluble iron oxides, is an example of an irreversible reaction, permanently removing the contaminant from the water phase.
+
+    What is a homogeneous reaction in the context of groundwater transport?
+        Answer: A homogeneous reaction occurs uniformly in the aqueous phase and involves only dissolved species, such as the dissolution of carbon dioxide in water.
+
+    What distinguishes a heterogeneous reaction from a homogeneous one?
+        Answer: A heterogeneous reaction involves multiple phases, typically occurring at the interface between solid and liquid phases, such as adsorption of contaminants onto soil or the reduction of nitrate on mineral surfaces.
+
+    Why are slow reactions significant when considering long-term contaminant transport in groundwater?
+        Answer: Slow reactions, such as biodegradation, can cause contaminants to persist for longer periods in groundwater, influencing the size and duration of contaminant plumes and affecting long-term remediation efforts.
+
+    How do surface reactions differ from classical reactions in groundwater systems?
+        Answer: Surface reactions occur at solid-liquid interfaces, such as the adsorption of contaminants on mineral surfaces, while classical (bulk) reactions occur uniformly in the aqueous phase, involving only dissolved species.
+
+    What role do fast reactions typically play in modeling groundwater transport?
+        Answer: Fast reactions are often assumed to reach equilibrium instantaneously, simplifying models by allowing equilibrium conditions to be applied throughout the system, which helps in predicting contaminant behavior over short timeframes.
+
+    Why are reversible reactions important for understanding contaminant fate during groundwater remediation?
+        Answer: Reversible reactions allow contaminants to desorb from soil or mineral surfaces back into groundwater under changing environmental conditions, which can prolong contamination and complicate remediation efforts.
+
+    What factors influence the rate of surface reactions in groundwater systems?
+        Answer: Surface reactions are influenced by factors such as the available surface area of the solid phase, the mineral composition of the soil or substrate, and the specific surface chemistry of the interacting materials.
+
+--></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/05reactive.transport"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#st-order-decay">1-st Order Decay</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrolysis">Hydrolysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electron-transfer">Electron Transfer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incorporation-into-ade">Incorporation into ADE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-constant-source-retardation-decaying-species">1D Constant Source, Retardation, Decaying Species</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-exponentially-decaying-source-zone-decaying-species">1D Exponentially decaying source zone, decaying species</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Theodore G. Cleveland, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

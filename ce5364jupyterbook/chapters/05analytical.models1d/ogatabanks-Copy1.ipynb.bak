@@ -1,0 +1,249 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Ogata-Banks Solution\n",
+    "\n",
+    "The figure below depicts the physical system, and the analytical model system at three different times.\n",
+    "\n",
+    "![](1DADR.png)\n",
+    "\n",
+    "**Panel A** is a depiction of the physical system and the concentration profile along the x-axis at time less than zero. The concentration is zero everywhere.\n",
+    "\n",
+    "**Panel B** is a depection of the physical system and the concentration profile along the x-axis at time equal zero (like the Big Bang!). At x < 0, the concentration is suddenly raised to a value of $C_0$ everywhere to the left of the origin, x=0. This condition represents a step function input and is a suitable approximation of some upstream source zone that has a constant concentration. The concentration to the right of the origin (x > 0) is still zero.\n",
+    "\n",
+    "**Panel C** is a depiction of the physical system and the concentration profile aling the x-axis at some time greater than zero. The source mass has moved to the right of the origin a distance determined by the species velocity and dispersed along the translational front proportional to the dispersivity in the system. \n",
+    "\n",
+    "The analytical solution (Ogata and Banks, 1961) for this situation is: \n",
+    "\n",
+    "$$ C(x,t) = \\frac{C_0}{2}[erfc(\\frac{x-vt}{2\\sqrt{Dt}})+ exp(\\frac{xv}{D}) \\cdot erfc(\\frac{x+vt}{2\\sqrt{Dt}})]$$\n",
+    "\n",
+    "The solution is applicable for porous media flow, where the velocity (below) is the mean section velocity (seepage velocity divided by the porosity). The solution can also be used with streams and pipes (porosity = 1)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Building a Model\n",
+    "\n",
+    "This particular model is all over the internet as an on-line calculator,  but sometimes we have need to build our own version.  In Jupyter Notebooks running a python kernel we need to script the equation above and structure the equation into a useable function.\n",
+    "\n",
+    "### Forward Define the Functions\n",
+    "This step is important, the functions must be defined before they are called -- in an interpreter, this is usually done at the top of the script.  Other scripting languages store the scripts at the end (JavaScript usually keeps scripts at end of the file -- it internally promotes then to the top before it runs its JIT bytecode compiler).\n",
+    "\n",
+    "In a compiled language, this step is not as necessary (predefinition is, location not so much). \n",
+    "\n",
+    "These prototype functions are usually written so that they are organic with respect to their variables, so there is no leakage -- in these two functions, the input list is just names, and the output is just a value that must be assigned in the calling script."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# This is script is a test for SERVER-SIDE computation\n",
+    "# Values to enter via a web interface and leave in a graphic\n",
+    "# T Cleveland 2016-0216\n",
+    "#\n",
+    "# Import mathlibrary to get special functions\n",
+    "#\n",
+    "from math import sqrt,erf,erfc,exp  # get special math functions\n",
+    "#\n",
+    "# Import graphics routines for picture making\n",
+    "#\n",
+    "from matplotlib import pyplot as plt\n",
+    "#\n",
+    "# Import system calls to nicely exit the program -- may need to change for server-side processing\n",
+    "#\n",
+    "#import sys ## used in the html/cgi-bin, not needed here\n",
+    "\n",
+    "# contaminant function\n",
+    "def conc1D(c_initial,c_source,space,time,t_pulse,dispersion,velocity,retardation,mu,lamda):\n",
+    "# PARAMETERS (ARGUMENTS)\n",
+    "# c_initial == concentration everywhere at time = 0, excpet at source\n",
+    "# c_source == concentration at source (x=0), for any time\n",
+    "# space == distance from source at x=0\n",
+    "# time  == elapsed time from t=0\n",
+    "# t_pulse == duration of finite source pulse\n",
+    "# dispersion == dispersion (diffusion) coefficient (length^2/time)\n",
+    "# velocity == species velocity (mean section velocity/porosity) (length/time)  Calculate before call function\n",
+    "# retardation == retardation coefficient (adjusted time) Calculate before call function\n",
+    "# mu == 1st order decay rate coefficient (time^-1)\n",
+    "# lamda == 0th order rate constant (concentration/time)\n",
+    "#################################################\n",
+    "## COMPUTE A                                   ##\n",
+    "#################################################\n",
+    "    termA1 = (1.0-0.5*erfc(((retardation*space)-(velocity*time))/(2.0*sqrt(dispersion*retardation*time))))\n",
+    "    termA2 = (-0.5*exp(velocity*space/dispersion)*erfc(((retardation*space)+(velocity*time))/(2.0*sqrt(dispersion*retardation*time))))\n",
+    "    termA3 = (exp(-mu*time/retardation))\n",
+    "    termA = termA1*(termA2+termA3)\n",
+    "#################################################\n",
+    "# error handler for negative (undefined) time ###\n",
+    "#################################################\n",
+    "    if(time < 0):\n",
+    "        print(\"negative time -- no solution\")\n",
+    "        concentration = (-999.9)\n",
+    "        return (concentration)\n",
+    "################################################\n",
+    "# During the finite pulse                    ###\n",
+    "################################################\n",
+    "    if(time <= t_pulse):\n",
+    "        concentration = (lamda/mu)+(c_initial - lamda/mu)*termA + (c_source - lamda/mu)*termB(space,time,velocity,dispersion,retardation,mu)\n",
+    "        return(concentration)\n",
+    "    else:\n",
+    "        concentration = (lamda/mu)+(c_initial - lamda/mu)*termA + (c_source - lamda/mu)*termB(space,time,velocity,dispersion,retardation,mu) -c_source*termB(space,time-t_pulse,velocity,disersion,retardation,mu)\n",
+    "        return(concentration)\n",
+    "#################################################\n",
+    "# error handler for impossible\n",
+    "    print(\"no path to this message\")\n",
+    "    concentration = -999.0\n",
+    "    return(concentration)\n",
+    "#################################################\n",
+    "# term B function to handle time shift\n",
+    "def termB(space,time,velocity,dispersion,retardation,mu):\n",
+    "## COMPUTE B ##\n",
+    "## Compute adjusted velocity\n",
+    "    u = velocity* sqrt(1.0+(4.0*mu*dispersion)/(velocity**2)) # cm/day\n",
+    "#\n",
+    "    termB1 =(0.5)*exp(0.5*((velocity-u)*space)/(dispersion))\n",
+    "    termB2 = erfc(((retardation*space)-(u*time))/(2.0*sqrt(dispersion*retardation*time)))\n",
+    "    termB3 = termB1*termB2\n",
+    "#\n",
+    "    termB4 =(0.5)*exp(0.5*((velocity+u)*space)/(dispersion))\n",
+    "    termB5 = erfc(((retardation*space)+(u*time))/(2.0*sqrt(dispersion*retardation*time)))\n",
+    "    termB6 = termB4*termB5\n",
+    "#\n",
+    "    termB = termB3+termB6\n",
+    "    return(termB)\n",
+    "\n",
+    "#################################################\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAYsAAAElCAYAAAAV9s4VAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjMuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/Il7ecAAAACXBIWXMAAAsTAAALEwEAmpwYAAApoUlEQVR4nO3deZhcVZ3/8feHJASaYDZCIIGkA0QaUIGkZRnR8QeOEtGAowLaKjCMUfRxGdQRxBFkjIrjiDIoEhYN0gMoigQHVAQcQRGmw74TlmwECDshAgn5/v44p0mlqe6qTld1Lf15PU89VffcW/d8b1VS377n3HuOIgIzM7O+bFLrAMzMrP45WZiZWUlOFmZmVpKThZmZleRkYWZmJTlZmJlZSU4WZjUm6a2S7q11HKVIOkbSY5JWSRqfn3fI634q6Ru1jtGqx8nCakbJZyXdIekFScsk/ULSG2sdWzGS3i5pWQX2E5J26l6OiGsjYueB7rdIPa25rlX58bCk4zZyXyOA7wHvjIhREfFkfn6wslFbvRpe6wBsSPsBcBDwceDPwDDgfbns9hrGtdEkDY+ItbWOo4cxEbFW0r7AVZJuiYjfFm5QRtwTgc2AO6sZqNUvn1lYTUiaDnwa+FBEXB0RL0XE6ojojIhv521GSzpP0kpJiyV9VdImed2Rkq6T9F1JT0t6SNKsgv2Pk/QTSY/k9b8uWPceSbdIekbSXyS9qWDdw5K+KOk2Sc9KukjSZpK2AK4AJhX8pT5J0kmSLpZ0vqTngCMl7SXp+rz/FZJOl7Rp3v+fclW35n0c1vOMRdIukv6Y33+npNkF634q6YeS/kfS85JukLRjOZ95RFxP+rF/Q3edkr4s6VHgJ5JGSvp+/sweya9HSno90N1M9oykq3MsG5wh9fh+e/2MrTE5WVitHAAsi4gb+9jmv4DRwA7A3wMfA44qWL836UdsK+A7wDmSlNf9DGgBdgO2Bk4FkLQncC7wCWA8cCawQNLIgv0eChwITAPeBBwZES8As4BHcvPLqIh4JG9/MHAxMAboBF4B/iXHtW8+1k8BRMTb8nt2z/u4qPCAc3PPZcDvc9yfATolFTZTHQ58HRgLLALm9vEZdu9Xkt6SP4+bc/E2wDhgKjAHOAHYB9gD2B3YC/hqRNyX3wfpLGX/EnWV8xlbg3GysFoZD6zobaWkYaQfxeMj4vmIeBj4T+CjBZstjoizIuIVYD6wLTBR0rakH/ZPRsTTEbEmIv43v2cOcGZE3BARr0TEfOAl0o9kt9Mi4pGIeIr0w71HiWO5PiJ+HRHrIuJvEbEwIv4aEWtz3GeSkl059gFGAd+OiJcj4mrgN8CHCra5JCJuzM1GnWXE9wTwFHA2cFxEXJXL1wEn5rO6vwEdwMkR8XhErCQlpI8W3WPfyvmMrcG4z8Jq5UnSj3tvtgJGAIsLyhYDkwuWH+1+ERGr80nFKNJfy09FxNNF9jsVOELSZwrKNgUmFdsvsLrHumKWFi7kZpvvAe2ks5vhwMIS++g2CVgaEesKyno97hzfqBL73KqX/oiVEfFij7p7ft6ljr2Ycj5jazA+s7BauQrYTlJ7L+ufANaQfni6TQGWl7HvpcA4SWN6WTc3IsYUPFoi4oIy9tvbEM09y88A7gGmR8TrgK8Aes27insE2L67byYr97j7q2fcj/Daz/sR+m8gn7HVKScLq4mIuB/4EXBB7mzdNHckHy7puNy09HNgrqQtJU0FjgXOL2PfK0id0T+SNFbSCEndfQVnAZ+UtHdux99C0kGStiwj7MeA8ZJGl9huS+A5YJWkNuCYIvvZoZf33kA6W/jXHPfbgfcCF5YR30BdAHxV0gRJWwFfo4zPu4iBfMZWp5wsrJY+C5wO/BB4BniAdOnsZXn9Z4AXgAeB64D/JnWcluOjpDOTe4DHgc8DREQX6VLd04GnSR3ER5azw4i4h/SD+mC+yqe3ZpUvAh8Gnif9cF7UY/1JwPy8j0N71PEyKTnMIp1d/Qj4WK672r4BdAG3kS5dvimX9ctAPmOrX/LkR2ZmVorPLMzMrCQnCzMzK8nJwszMSnKyMDOzkpwsrG6pYAjsoULSVySdXes4SsljVr291nHY4HGysJqQNKVgQL5VeVC6FwqW3zpYQ2BLeoOk30l6QtJrLg9UGpTwkhzfYkkf7mNfknSKpCfz45SC8ap6bvuaIc8j4psR8c8DP6rqiojdIuKPAEqDKW7M/RjWQDzch9VERCyhYJiK/CO9e0QsqkE4a0g3AP4I+HWR9T8EXiYN070H8D+Sbo2IYsN1zwEOIQ3EF8CVwEPAjysdtNlg8pmF1a3CIbDz0Nw/knRFPvP4s6Rt8jDaT0u6J4922v3eSZJ+qTS8+UOSPttbPRFxb0ScQ5G5GpSGJn8/8G8RsSoirgMW0PsAe0cA/xkRyyJiOWnwwyN72W9vQ56fn7fpnrzoKElL83F+UtKblYZQf0bS6T32+0+S7s7b/i7f+V7ss33NWY3S8OzvyK9PkvRzpSHin8/NTu09t5V0IGk4k8PyMdya1x8p6cH83ockdfTyeVmDcLKwRnIo8FXSIIMvAdeT7jLeijRE+PcAlMZVugy4lTQA3wHA5yW9K6/fT9IzZdb5emBtHqa7262sH7K7p93y+j63LTHkeU97A9OBw4Dvk4YSf0fe76GS/j4f18GkH+5/BCYA15LuON9Ys0nDjIwhJcjTe26QJ1H6JnBRPobdcyI8DZgVEVsCfwfcMoA4rA44WVgjuSQP//0icAnwYkScl8eRugjoPrN4MzAhIk7Ow3w/SBp243CAiLguIsaUWeco0jhPhZ4ljf/U2/bP9th2VG/9FmX694h4MSJ+Txr+5II8jPhyUkLoPu5PAt+KiLvzKLPfBPbo7eyiDNdFxOX58/0ZqWmtXOtIkyxtHhEremmyswbiZGGN5LGC138rstzdBzKV1LzzTPeD9Bf3xI2ocxXwuh5lryON+1TO9q8DVsXAxtXpz3H/oOCYnyKNdls4vHl/9BwKfTNJJfs581nTYaTktUJpVr+2jYzB6oSThTWjpcBDPYbI3jIi3r0R+7oPGK40DWy33el9Luo72fAv8L62rfTAbEuBT/Q47s0j4i9Ftn2BNNcG8OpkUxM2st7XHEdE/C4i/oE0Z8k9pDM7a2BOFtaMbgSeV5pfenNJw/LlsW8utnG+3HUz0gQ9KA2VPhJe/Sv5V8DJSkNtv4U0jerPeqn7POBYSZOVRqX9AvDTXrYtd8jzcv0YOF7Sbvk4Rkv6YC/b3kc6UzhIaSrXrwIbO+3pY0Cr1s+PPlHSwbnv4iXS2da6vnZg9c/JwppObmN/D+ky14dIQ32fTZrPG0lvlbSq4C1TSc053WcAfyPN7d3tU8DmpKHOLwCO6W6DL7KvM0md67cDdwD/k8uKxVnukOdliYhLgFOACyU9l+uf1cu2z+bjOps0sdILwLJi25bhF/n5SUk3kX5XjiVNnPQUaUrZnnN6WIPxEOVmZlaSzyzMzKwkJwszMyvJycLMzEpysjAzs5KaciDBrbbaKlpbW2sdhplZQ1m4cOETEVH0fpumTBatra10dXXVOgwzs4YiaXFv69wMZWZmJTlZmJlZSU4WZmZWkpOFmZmV5GRhZmYlVS1ZSDpX0uOS7igoGyfpSkn35+exuVySTpO0KE8XOaPgPUfk7e+XdES14gWgsxNaW2GTTdJzZ2dVqzMzaxTVPLP4KXBgj7LjgKsiYjpwVV6GNDLm9PyYA5wBKbkAJ5KmldwLOLE7wVRcZyfMmQOLF0NEep4zxwnDzIwqJouI+BNpeOJCBwPz8+v5wCEF5edF8ldgjKRtgXcBV0bEUxHxNHAlr01AlXHCCbB69YZlq1encjOzIW6w+ywmRsSK/PpR1k9zOZk0y1e3Zbmst/LXkDRHUpekrpUrV/Y/siVL+lduZjaE1KyDO89JXLHJNCJiXkS0R0T7hAkbMTvklCn9KzczG0IGO1k8lpuXyM+P5/LlwPYF222Xy3orr7y5c6GlZcOylpZUbmY2xA12slgAdF/RdARwaUH5x/JVUfsAz+bmqt8B75Q0NndsvzOXVV5HB8ybB5PyzJZjxqTljo6qVGdm1kiqNpCgpAuAtwNbSVpGuqrp28DPJR0NLAYOzZtfDrwbWASsBo4CiIinJP078H95u5MjomeneeV0dKTHXnvBunVOFGZmWdWSRUR8qJdVBxTZNoBP97Kfc4FzKxhaaYcfDl/4Atx/P0yfPqhVm5nVI9/BXcyh+YTnootqG4eZWZ1wsihmu+3grW+FCy+sdSRmZnXByaI3hx8Od94Jd9xRelszsybnZNGbD3wgjRHlswszMyeLXm29NRxwQEoWUbF7B83MGpKTRV8OOwweeAAWLqx1JGZmNeVk0Zf3vQ9GjHBTlJkNeU4WfRk3Dt71rnQJ7bp1tY7GzKxmnCxKOfxwWLYM/vKXWkdiZlYzThalzJ4Nw4fDrFmeQc/MhqyqDffRNBYsSFdDrVqVlrtn0AOPHWVmQ4bPLEo54QR45ZUNyzyDnpkNMU4WpXgGPTMzJ4uSPIOemZmTRUmeQc/MzMmipO4Z9MaPT8uTJnkGPTMbcpwsytHRAVdfnV5/5ztOFGY25DhZlGvXXWGzzTxOlJkNSU4W5Ro+HPbYw8nCzIYkJ4v+mDkTbrrJ40SZ2ZDjZNEf7e3pTu777qt1JGZmg8rJoj9mzkzPbooysyHGyaI/dtkFNt/cycLMhhwni/4YPhx23x26umodiZnZoHKy6K/2drj5Zndym9mQ4mTRXzNnupPbzIYcJ4v+cie3mQ1BThb91d3J7X4LMxtCnCz6y3dym9kQ5GSxMWbOTJ3cPWfQMzNrUk4WG8Od3GY2xNQkWUj6F0l3SrpD0gWSNpM0TdINkhZJukjSpnnbkXl5UV7fWouYN9Denp7dFGVmQ8SgJwtJk4HPAu0R8QZgGHA4cApwakTsBDwNHJ3fcjTwdC4/NW9XW21tvpPbzIaUWjVDDQc2lzQcaAFWAPsDF+f184FD8uuD8zJ5/QGSNHihFuFObjMbYgY9WUTEcuC7wBJSkngWWAg8ExFr82bLgMn59WRgaX7v2rz9+J77lTRHUpekrpUrV1b3IGD9cOXu5DazIaAWzVBjSWcL04BJwBbAgQPdb0TMi4j2iGifMGHCQHdXWns7vPCCO7nNbEioRTPUO4CHImJlRKwBfgW8BRiTm6UAtgOW59fLge0B8vrRwJODG3IRvpPbzIaQWiSLJcA+klpy38MBwF3ANcAH8jZHAJfm1wvyMnn91RERgxhvce7kNrMhpBZ9FjeQOqpvAm7PMcwDvgwcK2kRqU/inPyWc4DxufxY4LjBjrmo4cNhzz097IeZDQnDS29SeRFxInBij+IHgb2KbPsi8MHBiKvfZs6Ec89NndzDhtU6GjOzqvEd3APx0kupk3vECGhthc7OWkdkZlYVThYbq7MTzjsvvY6AxYthzhwnDDNrSk4WG+uEE+DFFzcsW706lZuZNRkni421ZEn/ys3MGpiTxcaaMqV/5WZmDczJYmPNnQstLRuWtbSkcjOzJuNksbE6OmDePOgeWmSbbdJyR0dt4zIzqwIni4Ho6IA//zm9/ta3nCjMrGk5WQzUtGmw6aZwzz21jsTMrGqcLAZq+HCYPt3JwsyampNFJbS1OVmYWVNzsqiEtjZYtAhefrnWkZiZVYWTRSW0taXBBB94oNaRmJlVhZNFJbS1pWc3RZlZk3KyqISdd07PThZm1qScLCphyy1h8mQnCzNrWk4WlbLLLk4WZta0nCwqpfvy2TqYHtzMrNKcLCqlrQ2eew5WrKh1JGZmFedkUSm+IsrMmpiTRaU4WZhZE3OyqJRJk2DUKCcLM2tKThaVInmMKDNrWk4WleTLZ82sSTlZVFJbGyxdCqtW1ToSM7OKcrKopO5O7vvuq20cZmYV5mRRSd3J4u67axuHmVmFOVlU0o47wrBh7rcws6bjZFFJI0fCDjs4WZhZ03GyqDRfPmtmTagmyULSGEkXS7pH0t2S9pU0TtKVku7Pz2PztpJ0mqRFkm6TNKMWMZdtl11SB/crr9Q6EjOziimZLCS9XtJZkn4v6eruxwDr/QHw24hoA3YH7gaOA66KiOnAVXkZYBYwPT/mAGcMsO7qamtLc3E//HCtIzEzq5jhZWzzC+DHwFnAgP9cljQaeBtwJEBEvAy8LOlg4O15s/nAH4EvAwcD50VEAH/NZyXbRkR9Du9aOEbUjjvWNhYzswoppxlqbUScERE3RsTC7scA6pwGrAR+IulmSWdL2gKYWJAAHgUm5teTgaUF71+WyzYgaY6kLkldK1euHEB4A9Q9xaovnzWzJlJOsrhM0qckbZv7FcZJGjeAOocDM4AzImJP4AXWNzkBkM8i+jWLUETMi4j2iGifMGHCAMIboHHjYOut3cltZk2lnGaoI/LzlwrKAthhI+tcBiyLiBvy8sWkZPFYd/OSpG2Bx/P65cD2Be/fLpfVL18RZWZNpuSZRURMK/LY2ERBRDwKLJWU22s4ALgLWMD6xHQEcGl+vQD4WL4qah/g2brtr+jmZGFmTabkmYWkEcAxpE5pSB3PZ0bEmgHU+xmgU9KmwIPAUaTE9XNJRwOLgUPztpcD7wYWAavztvVtl13gySfhiSdgq61qHY2Z2YCV0wx1BjAC+FFe/mgu++eNrTQibgHai6w6oMi2AXx6Y+uqicIrovbbr7axmJlVQDnJ4s0RsXvB8tWSbq1WQE3BycLMmkw5V0O9IunVGwYk7UAF7rdoatddl54//nFobYXOzpqGY2Y2UOWcWXwJuEbSg4CAqTRCv0GtdHbCJz6xfnnxYpgzJ73u6KhNTGZmA6TUJVBiI2kk0H310r0R8VJVoxqg9vb26Orqqk3lra0pQfQ0daqHADGzuiZpYUQU60/u/cxC0v4RcbWkf+yxaidJRMSvKhpls1iypH/lZmYNoK9mqL8HrgbeW2RdAE4WxUyZUvzMYsqUwY/FzKxCek0WEXFifnlyRDxUuE7StKpG1cjmzk19FKtXry9raUnlZmYNqpyroX5ZpOziSgfSNDo6YN482D6PUDJ6dFp257aZNbC++izagN2A0T36LV4HbFbtwBpaR0d6TJsG++7rRGFmDa+vPoudgfcAY9iw3+J54ONVjKl5eIwoM2sSffVZXApcKmnfiLh+EGNqHm1t8Kc/wbp1sImnOzezxlXOTXk3S/o0qUnq1eaniPinqkXVLNraUkf3smW+GsrMGlo5f+7+DNgGeBfwv6T5JJ6vZlBNY5dd0rObosyswZWTLHaKiH8DXoiI+cBBwN7VDatJFA4oaGbWwMpJFt3zVjwj6Q3AaGDr6oXURCZMgLFjPR+3mTW8cvos5kkaC3yVNGvdKODfqhpVs5B8RZSZNYU+k4WkTYDnIuJp4E9s/LzbQ1dbG1xxRa2jMDMbkD6boSJiHfCvgxRLc2prg0cfhWeeqXUkZmYbrZw+iz9I+qKk7SWN635UPbJm0X1F1L331jYOM7MBKKfP4rD8XDgPduAmqfIUXhG1ty8iM7PGVE6y2CUiXiwskOSxoco1bRqMGOFObjNraOU0Q/2lzDIrZvhwmD7dl8+aWUPra9TZbYDJwOaS9iTNvw1p1NmWQYitebS1wZ131joKM7ON1lcz1LuAI0nDe3yvoPx54CtVjKn5tLXBggWwZk1qkjIzazB9jTo7H5gv6f0RUWwCJCtXWxusXQsPPLC+w9vMrIGU08H9G0kfBloLt4+Ik6sVVNMpHFDQycLMGlA5yeJS4FlgIfBSdcNpUjvvnJ59RZSZNahyksV2EXFg1SNpZltuCZMn+4ooM2tYZV06K+mNVY+k2XlAQTNrYOUki/2AhZLulXSbpNsl3VbtwJpOd7KIqHUkZmb9Vk4z1KyqRzEUtLXBc8+lQQW33bbW0ZiZ9UvJM4uIWAxsD+yfX68u532lSBom6WZJv8nL0yTdIGmRpIskbZrLR+blRXl960DrrglPsWpmDazkj76kE4EvA8fnohHA+RWo+3NAYY/vKcCpEbET8DRwdC4/Gng6l5+at2s8nmLVzBpYOWcI7wNmAy8ARMQjwJYDqVTSdqS5vM/OywL2By7Om8wHDsmvD87L5PUH5O0by6RJMGqUr4gys4ZUTrJ4OSKCNCw5kraoQL3fJ02qtC4vjweeiYi1eXkZaVwq8vNSgLz+2bz9BiTNkdQlqWvlypUVCLHCPMWqmTWwcpLFzyWdCYyR9HHgD8BZG1uhpPcAj0fEwo3dRzERMS8i2iOifcKECZXcdeU4WZhZgyp5NVREfFfSPwDPATsDX4uIKwdQ51uA2ZLeDWxGGsX2B6RkNDyfPWwHLM/bLyd1sC+TNBwYDTw5gPprp60Nzj8fVq1KTVJmZg2inA7uacC1EfGliPgicN1ArkiKiOMjYruIaAUOB66OiA7gGuADebMjSMOMACzIy+T1V+dmscbT3cl93321jcPMrJ/KaYb6Bev7FgBeyWWV9mXgWEmLSH0S5+Tyc4DxufxY4Lgq1D04fPmsmTWocm7KGx4RL3cvRMTL3fdADFRE/BH4Y379ILBXkW1eBD5YifpqbscdYdgwJwszazjlnFmslDS7e0HSwcAT1QupiY0cCTvs4MtnzazhlJMsPgl8RdISSUtJzUWfqG5YTaqzE5Ytg4svhtbWtGxm1gDKuRrqAWAfSaPy8qqqR9WMOjthzhz429/S8uLFaRmgo6N2cZmZlUGlLiySNBJ4Pw00U157e3t0dXXVOowNtbamBNHT1Knw8MODHY2Z2WtIWhgR7cXWeaa8wbJkSf/KzczqiGfKGyxTphQ/s5gyZfBjMTPrJ8+UN1jmzoWWlg3LWlpSuZlZnSvnzGI/4EhJD5GaoQRERLypqpE1m+5O7BNOSGcYm2wC8+a5c9vMGoJnyhtMHR3p8eMfwzHHwH771ToiM7OylDtT3hjgvfkxJpfZxpoxIz3fdFNt4zAzK1M5Awl+DugEts6P8yV9ptqBNbU3vjEN+7GwoqO0m5lVTTnNUEcDe0fECwCSTgGuB/6rmoE1tc03h1139ZmFmTWMcq6GEmmk2W6v5DIbiJkz05lFg462bmZDSznJ4ifADZJOknQS8FfWDx9uG2vGDHj8cVixotaRmJmVVM7YUN+T9EfSJbQAR0XEzVWNaijo7uReuBAmTaptLGZmJfR6ZiHpzZJmAUTETRFxWkScBmwraeagRdis9tgDJPdbmFlD6KsZ6hTgriLldwL/UZ1whpAttkjTrDpZmFkD6CtZbFnsfopctlX1QhpCZszw5bNm1hD6ShZj+1jX0sc6K9eMGbB8OTz2WK0jMTPrU1/J4g+S5kp69TJZJScDV1c/tCFgZu76udnXC5hZfesrWXwB2AFYJOmXkn4J3A+8Hjh2MIJrenvskZ7db2Fmda7XS2fzHdsfkrQDsFsuvjMiHhyUyIaC0aNhp53cb2Fmda+c+yweBJwgqmXGDLjxxlpHYWbWp3Lu4LZqmjkzzcH91FO1jsTMrFdOFrXWfSe3O7nNrI45WdTannumZ/dbmFkdc7KotfHjYepUXxFlZnXNyaIezJzpZGFmdc3Joh7MmAH33w/PPVfrSMzMinKyqAfu5DazOjfoyULS9pKukXSXpDvzHN9IGifpSkn35+exuVySTpO0SNJtkmYMdsxV150s3BRlZnWqFmcWa4EvRMSuwD7ApyXtChwHXBUR04Gr8jLALGB6fswBzhj8kKts4kSYPNnJwszq1qAni4hYERE35dfPA3cDk4GDgfl5s/nAIfn1wcB5kfwVGCNp28GNehBsvTVceCFssgm0tkJnZ60jMjN7VU37LCS1AnsCNwATI6J7QupHgYn59WRgacHbluWynvuaI6lLUtfKlSurF3Q1dHbCHXfA2rUQAYsXw5w5ThhmVjdqliwkjQJ+CXw+Ija4DCgiAoj+7C8i5kVEe0S0T5gwoYKRDoITToA1azYsW706lZuZ1YGaJAtJI0iJojMifpWLH+tuXsrPj+fy5cD2BW/fLpc1jyVL+lduZjbIanE1lIBzgLsj4nsFqxYAR+TXRwCXFpR/LF8VtQ/wbEFzVXOYMqV/5WZmg6wWZxZvAT4K7C/plvx4N/Bt4B8k3Q+8Iy8DXE4aIn0RcBbwqRrEXF1z50JLj5lqW1pSuZlZHSg5n0WlRcR1gHpZfUCR7QP4dFWDqrWOjvT8pS/BihUwbhycdtr6cjOzGvMd3PWiowOWL0+Xzb7lLU4UZlZXnCzqiQSzZ8OVV6aroczM6oSTRb2ZPRtefBH+8IdaR2Jm9ioni3rztrfB6NGwYEGtIzEze5WTRb0ZMQJmzYLLLoNXXql1NGZmgJNFfZo9Gx5/HG68sdaRmJkBThb16cADYfhwN0WZWd1wsqhHY8emvgsnCzOrE04W9Wr2bLjrLli0qNaRmJk5WdSt9743PV92WW3jMDPDyaJ+7bADvOENbooys7rgZFHPZs+Ga6+Fp56qdSRmNsQ5WdSz2bPTvRZXXFHrSMxsiHOyqGdvfjNMnOimKDOrOSeLerbJJrDLLvCLX6TXra2el9vMamLQ57OwfujshOuvh8jTkS9eDHPmpNcewtzMBpHPLOrZCSfASy9tWLZ6dSo3MxtEThb1bMmS/pWbmVWJk0U9mzKlf+VmZlXiZFHP5s6FlpYNyzbdNJWbmQ0iJ4t61tEB8+bB1KlpytWRI1OyOOigWkdmZkOMk0W96+iAhx+GdevSlVEvvABf/3qtozKzIcbJopHsuSd8/ONw+ulw9921jsbMhhAni0bzjW/AFlvA5z+//v4LM7Mqc7JoNBMmpGao3/8+DQXiO7vNbBD4Du5GNHZs6vBeuTIt+85uM6syn1k0oq997bVNUL6z28yqyMmiEfnObjMbZE4Wjai3O7gnThzcOMxsyHCyaETF7uyW4PHH4SMfSTfxuePbzCrIyaIR9byze+pUOOMM2GOPlByWLEl9Gt0d352d6dHa6iRiZhsnIhriARwI3AssAo7ra9uZM2fGkDRlSkRKExs+Ro+OaGnZsKylJeL889P7zj8/YurUCCk9V7p8MOpw3YNfd7MfX7PU3Q9AV/T2G9zbinp6AMOAB4AdgE2BW4Fde9t+yCYLqXiy6O2xzTYR3/9+xOabvzaRHHNM8QTT3/Lzz0+PSuzLdddP3c1+fM1Sdz8TRl/JQml9fZO0L3BSRLwrLx8PEBHfKrZ9e3t7dHV1DWKEdaK1NTU91ZPh+VaetWtddzPV3ezH1yx1T52axpYrk6SFEdFebF2j9FlMBpYWLC/LZa+SNEdSl6Suld03qw01xTq+W1pg/Pji20+YUP2Y1q6tzX8s1934dbjugdddwcvpGyVZlBQR8yKiPSLaJwzGj2A9KtbxPW8e/OAHxZPIqaembYoZNqwy5VOnVr8O1z34dTf78TVL3ZWcKK239ql6egD7Ar8rWD4eOL637Ydsn0Vf+uoUq7d2Vtdd/3U3+/E1S90V7LMoWlhvD9IYVg8C01jfwb1bb9s7WfRTPV7B4brrv+5mP75mqbsf+koWDdHBDSDp3cD3SVdGnRsRvc4tOmQ7uM3MBqCvDu6GGXU2Ii4HLq91HGZmQ1HTdHCbmVn1OFmYmVlJThZmZlaSk4WZmZXUMFdD9YeklcBAxr3YCniiQuE0Eh/30OLjHlrKOe6pEVH0ruamTBYDJamrt8vHmpmPe2jxcQ8tAz1uN0OZmVlJThZmZlaSk0Vx82odQI34uIcWH/fQMqDjdp+FmZmV5DMLMzMrycnCzMxKcrIoIOlASfdKWiTpuFrHUy2Stpd0jaS7JN0p6XO5fJykKyXdn5/H1jrWapA0TNLNkn6Tl6dJuiF/7xdJ2rTWMVaapDGSLpZ0j6S7Je07FL5vSf+S/43fIekCSZs16/ct6VxJj0u6o6Cs6Hes5LT8GdwmaUap/TtZZJKGAT8EZgG7Ah+StGtto6qatcAXImJXYB/g0/lYjwOuiojpwFV5uRl9Dri7YPkU4NSI2Al4Gji6JlFV1w+A30ZEG7A76fib+vuWNBn4LNAeEW8gTW9wOM37ff8UOLBHWW/f8Sxgen7MAc4otXMni/X2AhZFxIMR8TJwIXBwjWOqiohYERE35dfPk344JpOOd37ebD5wSE0CrCJJ2wEHAWfnZQH7AxfnTZruuCWNBt4GnAMQES9HxDMMge+bNA3D5pKGAy3ACpr0+46IPwFP9Sju7Ts+GDgvz3n0V2CMpG372r+TxXqTgaUFy8tyWVOT1ArsCdwATIyIFXnVo8DEWsVVRd8H/hVYl5fHA89ExNq83Izf+zRgJfCT3Px2tqQtaPLvOyKWA98FlpCSxLPAQpr/+y7U23fc7987J4shTNIo4JfA5yPiucJ1eYrFprquWtJ7gMcjYmGtYxlkw4EZwBkRsSfwAj2anJr0+x5L+gt6GjAJ2ILXNtMMGQP9jp0s1lsObF+wvF0ua0qSRpASRWdE/CoXP9Z9KpqfH69VfFXyFmC2pIdJzYz7k9ryx+RmCmjO730ZsCwibsjLF5OSR7N/3+8AHoqIlRGxBvgV6d9As3/fhXr7jvv9e+dksd7/AdPzlRKbkjrCFtQ4pqrI7fTnAHdHxPcKVi0AjsivjwAuHezYqikijo+I7SKilfT9Xh0RHcA1wAfyZs143I8CSyXtnIsOAO6iyb9vUvPTPpJa8r/57uNu6u+7h96+4wXAx/JVUfsAzxY0VxXlO7gLSHo3qU17GHBuRMytbUTVIWk/4Frgdta33X+F1G/xc2AKaYj3QyOiZ4dZU5D0duCLEfEeSTuQzjTGATcDH4mIl2oYXsVJ2oPUqb8p8CBwFOmPxab+viV9HTiMdAXgzcA/k9rmm+77lnQB8HbSUOSPAScCv6bId5yT5+mkZrnVwFER0dXn/p0szMysFDdDmZlZSU4WZmZWkpOFmZmV5GRhZmYlOVmYmVlJThZW1yQ9LOn2/LhL0jckbZbXTZJ0cR/vHSPpU4MX7Wvq/2Ae4fWaKtezTx5F9ZZc30nVrM+GJl86a3Ut323dHhFP5OFJ5gFrIuKIvt/56rhXv8kjjg46Sb8FvhER1/UoH14wNlEl6rmXdP38rXn05J0j4q4B7lOk34d1JTe2IcFnFtYwImIV8EngkDxOf2v32P2SdpN0Y/7r+jZJ04FvAzvmsv+QNErSVZJuymcqB+f3tua/yM/Kcx/8XtLmed1Okv4g6db8vh1z+Zck/V+u6+s9Y5X0NWA/4Jxc95GSFki6Grgqx//r/P6/SnpTft9JkuZLulbSYkn/KOk7Od7f5mFaetqaNFAeEfFKd6IoUccXC2K9I38GrUrzuZwH3AFsL+nLue5bJX07b79jjmVhjrNtwF+u1b+I8MOPun0ADwNb9Si7BdgbaAXuyGX/BXTk15sCmxeuz+XDgdfl11sBiwDl7dYCe+R1Pyfd1Qvprvb35debkYa5fifpDEekP7h+A7ytSOx/JJ0VARxJGqNpXEG8J+bX+wO35NcnAdcBI0jzTqwGZuV1lwCHFKnna6R5GS4BPgFsVkYdXyx4/x35M2gl3dG/Ty6fBfwFaMnL3bFfBUzPr/cmDZtS838rflT30T2YllkjUZGy64ETlOar+FVE3J9aUl7zvm9KehvpR3Ey64dsfigibsmvFwKtkrYEJkfEJQAR8SKApHeSEsbNeftRpElk/lQi7itj/XAa+wHvz/u9WtJ4Sa/L666IiDWSbicNPfPbXH476Qd9AxFxsqTOHNOHgQ+Rhn3oq47eLI40vwGkgfh+EhGr8z6eyk2Bfwf8ouDzHVlin9YEnCysoeQf8FbgPmB0d3lE/LekG0gTG10u6ROkMZAKdQATgJn5x/hh0tkCQOHYQK+Qzkx6DQP4VkSc2c/wXyhzu5cAImKdpDUR0d2xuI5e/s9GxAPAGZLOAlZKGt/H/teyYRP0ZgWvS8W4CWk+iD1KbGdNxn0W1jDyX7U/An4dEU/3WLcD8GBEnEYaWfNNwPPAlgWbjSbNZ7FG0v8DpvZVX6RZBJdJOiTXMVJSC/A74J9yPEiaLGnrfh7OtaTk1T2o4RPRY06Rckk6SOv/zJ9OSnbP9FHHw6QhylGae3laL7u+EjgqHzOSxuX3PyTpg7lMknbfmLitsfjMwhrBNfnHcBNSu/y/F9nmUOCjktaQZgT7Zm42+XPuBL+CNPfyZbl5pwu4p4y6PwqcKelkYA3wwYj4vaRdgOvzb/Qq4CP0bz6Ik4BzJd1G6pcoeXVXiRhPlbSadNbQERGvKF1CW6yOX5KGp76T1CdzX7GdRsRvlUar7ZL0MnA5aXTiDtJZzFdJfSsXArcOIH5rAL501szMSnIzlJmZleRkYWZmJTlZmJlZSU4WZmZWkpOFmZmV5GRhZmYlOVmYmVlJ/x9arJriDzZApwAAAABJRU5ErkJggg==\n",
+      "text/plain": [
+       "<Figure size 432x288 with 1 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "end of script\n"
+     ]
+    }
+   ],
+   "source": [
+    "# lets test interactive inputs\n",
+    "#c_initial = float(input(\"Initial Concentration\"))\n",
+    "#c_source = float(input(\"Source Concentration\"))\n",
+    "#space = float(input(\"Plotting Length\"))\n",
+    "#time  = float(input(\"Elapsed Time\"))\n",
+    "#t_pulse = float(input(\"Pulse Duration 100\"))\n",
+    "#t_pulse = time*10 # force constant reservoir condition\n",
+    "#dispersion = float(input(\"Dispersion Coefficient\"))\n",
+    "#velocity = float(input(\"Velocity\"))\n",
+    "#retardation = float(input(\"Retardation Factor 1.0\"))\n",
+    "#mu = 0.0000001\n",
+    "#lamda = 0.0\n",
+    "\n",
+    "c_initial = 0.0\n",
+    "c_source = 1000.0\n",
+    "space = 100.\n",
+    "time  = 10.\n",
+    "t_pulse = 100.0*time #Force constant reservoir condition\n",
+    "dispersion = 1.0\n",
+    "velocity = 0.5\n",
+    "retardation = 1.0\n",
+    "mu = 1e-9\n",
+    "lamda = 0.0\n",
+    "\n",
+    "#\n",
+    "# forward define and initialize vectors for a profile plot\n",
+    "#\n",
+    "how_many_points = 50\n",
+    "deltax = space/how_many_points\n",
+    "x = [i*deltax for i in range(how_many_points)] # null list\n",
+    "c = [0.0 for i in range(how_many_points)] # null list\n",
+    "#\n",
+    "# initialize the vectors so can use ordinary arithmetic\n",
+    "#dist = [0.1,1.0,2.0,3.0,4.0,5.0]\n",
+    "#dist = range(0,50,1)\n",
+    "for i in range(0,how_many_points,1):\n",
+    "    c[i] = conc1D(c_initial,c_source,x[i],time,t_pulse,dispersion,velocity,retardation,mu,lamda)\n",
+    "#    print (x[i],c[i])  # cool, now can build plot\n",
+    "#\n",
+    "# Building the Plot\n",
+    "#\n",
+    "plt.plot(x,c, color='red', marker='o', linestyle = 'solid')  # make the plot object\n",
+    "plt.title(\" Concentration Profile \\n Time:\" + repr(time) + \" time units \") # caption the plot object\n",
+    "plt.xlabel(\" Distance from Source \") # label x-axis\n",
+    "plt.ylabel(\" Concentration        \") # label y-axis\n",
+    "plt.savefig(\"1D-ADR.png\")\n",
+    "plt.show() # plot to stdio -- has to be last call as it kills prior objects\n",
+    "plt.close('all') # needed when plt.show call not invoked\n",
+    "print(\"end of script\")\n",
+    "#sys.exit() # used to elegant exit for CGI-BIN use"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## References\n",
+    "\n",
+    "1. [Ogata, A. and Banks,R. B. (1961) A Solution of the Differential Equation of Longitudinal Dispersion in Porous Media. USGS Professional Paper 411-A.](https://pubs.usgs.gov/pp/0411a/report.pdf) "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.10"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
