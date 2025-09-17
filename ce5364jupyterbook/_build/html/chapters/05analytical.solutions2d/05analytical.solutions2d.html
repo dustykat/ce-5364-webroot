@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05analytical.solutions2d/05analytical.solutions2d';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="11. Reactive Transport" href="../06reactive.transport/06reactive.transport.html" />
     <link rel="prev" title="9. Analytical Solutions (1D)" href="../05analytical.models1d/05analytical.models1d.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -207,6 +208,9 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Analytical Solutions (2D)</a></li>
 
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06reactive.transport/06reactive.transport.html">11. Reactive Transport</a></li>
 
 
 
@@ -420,14 +424,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-script">Plotting Script</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spreadsheet-model">Spreadsheet Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-code-listings">Useful Code Listings</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-plume-in-regional-flow-with-1st-order-decay-wilson-and-miller-solution">2D Plume in Regional Flow with 1st-Order Decay (Wilson and Miller Solution)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Leaky Well Function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wilson-and-miller-solution-prototype-function">Wilson and Miller Solution (Prototype Function)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Driver Script</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Plotting Script</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Spreadsheet Model</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-advection-dispersion-finite-area-constant-production-injection-source">3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source</a><ul class="visible nav section-nav flex-column">
@@ -1232,271 +1228,6 @@ def func_F(rho,tau):
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="d-plume-in-regional-flow-with-1st-order-decay-wilson-and-miller-solution">
-<h1>2D Plume in Regional Flow with 1st-Order Decay (Wilson and Miller Solution)<a class="headerlink" href="#d-plume-in-regional-flow-with-1st-order-decay-wilson-and-miller-solution" title="Link to this heading">#</a></h1>
-<p>The sketch depicts a vertical line source in an aquifer of infinite extent located at (x,y)=(0,0) some time after constant injection has begun.</p>
-<p><img alt="" src="../../_images/huntsetup2.png" /></p>
-<p>For the line source (injection well) whose fluid contribution makes negligible impact on the local hydraulics as depicted in the sketch the initial, boundary, and mass conservation conditions are:</p>
-<div class="math notranslate nohighlight">
-\[C(x,y,0)=0\]</div>
-<div class="math notranslate nohighlight">
-\[C(\pm \infty,\pm \infty,t)=0\]</div>
-<div class="math notranslate nohighlight">
-\[\int_{- \infty}^{\infty}\int_{-\infty}^{\infty}C(x,y,t)dxdy = C_0 Q t\]</div>
-<p>A solution obtained by time-convolution of an elementary line source solution with 1st order decay term is (Wilson and Miller, 1978) is</p>
-<div class="math notranslate nohighlight">
-\[C(x,y,t) = \frac{C_0 Q}{4 \pi n L}\frac{1}{\sqrt{D_x D_y}}exp(\frac{x v}{2 D_x})W(u,\frac{r}{B})\]</div>
-<p>where <span class="math notranslate nohighlight">\(W(u,\frac{r}{B})\)</span> is the leaky aquifer (Hantush) well function with</p>
-<div class="math notranslate nohighlight">
-\[B=\frac{2D_x}{v}\]</div>
-<div class="math notranslate nohighlight">
-\[d=1+\frac{2B\lambda}{v}\]</div>
-<div class="math notranslate nohighlight">
-\[r= {\sqrt{(x^2+y^2\frac{D_x}{D_y})d}}\]</div>
-<div class="math notranslate nohighlight">
-\[u=\frac{r^2}{4 d D_x t}\]</div>
-<p>The solution is presented in (Bear and Cheng, 2010) as</p>
-<p><img alt="" src="../../_images/wilsonmiller21.png" />
-<img alt="" src="../../_images/wilsonmiller11.png" />
-a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the integration routine); Hunt (1978) noticed that the integral was the leaky well function with appropriate substitutions and completed the solution.</p>
-<p>The leaky aquifer function can be evaluated numerically using a recursive definition, or efficient approximations can be used. Listings for these approximations appear below after the references</p>
-<p>The solution is applicable for porous media flow, where the velocity (below) is the mean section velocity (seepage velocity divided by the porosity). The solution can also be used with streams and pipes (porosity = 1). Negative values of distance in x-axis would correspond to locations upgradient of the injection location.</p>
-<p>Scripts to generate solutions are listed below:</p>
-<section id="id1">
-<h2>Leaky Well Function<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wh</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">rho</span><span class="p">):</span> <span class="c1"># Hantush Leaky aquifer well function</span>
-    <span class="kn">import</span> <span class="nn">numpy</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns Hantush&#39;s well function values</span>
-
-<span class="sd">    Note: works only for scalar values of u and rho</span>
-
-<span class="sd">    Parameters:</span>
-<span class="sd">    -----------</span>
-<span class="sd">    u : scalar  (u= r^2 * S / (4 * kD * t))</span>
-<span class="sd">    rho : sclaar (rho =r / lambda, lambda = sqrt(kD * c))</span>
-<span class="sd">    Returns:</span>
-<span class="sd">    --------</span>
-<span class="sd">    Wh(u, rho) : Hantush well function value for (u, rho)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">u</span> <span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-        <span class="n">rho</span> <span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;u and rho must be scalars.&quot;</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
-
-    <span class="n">LOGINF</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">LOGINF</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-    <span class="n">ym</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span>  <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
-    <span class="n">dy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-    <span class="n">wh</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">ym</span> <span class="o">-</span> <span class="p">(</span><span class="n">rho</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">ym</span> <span class="p">)</span> <span class="o">*</span> <span class="n">dy</span> <span class="o">/</span> <span class="n">ym</span><span class="p">)</span>
-    <span class="k">return</span><span class="p">(</span><span class="n">wh</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="wilson-and-miller-solution-prototype-function">
-<h2>Wilson and Miller Solution (Prototype Function)<a class="headerlink" href="#wilson-and-miller-solution-prototype-function" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">willsonmiller</span><span class="p">(</span><span class="n">c_injection</span><span class="p">,</span><span class="n">q_injection</span><span class="p">,</span><span class="n">l_thickness</span><span class="p">,</span><span class="n">d_x</span><span class="p">,</span><span class="n">d_y</span><span class="p">,</span><span class="n">decay</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">x_location</span><span class="p">,</span><span class="n">y_location</span><span class="p">,</span><span class="n">time</span><span class="p">):</span>
-    <span class="kn">import</span> <span class="nn">math</span>
-    <span class="n">B</span>   <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">d_x</span><span class="o">/</span><span class="n">velocity</span>
-    <span class="n">d</span>   <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">B</span><span class="o">*</span><span class="n">decay</span><span class="o">/</span><span class="n">velocity</span>
-    <span class="n">rsq</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_location</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y_location</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">d_x</span><span class="o">/</span><span class="n">d_y</span><span class="p">))</span><span class="o">*</span><span class="n">d</span>
-    <span class="n">r</span>   <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rsq</span><span class="p">)</span>
-    <span class="n">u</span>   <span class="o">=</span> <span class="n">rsq</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">d</span><span class="o">*</span><span class="n">d_x</span><span class="o">*</span><span class="n">time</span><span class="p">)</span>
-<span class="c1">#    print(B,d,rsq,r,u,r/B)</span>
-<span class="c1">#    print(rsq,rrr,aaa,bbb)</span>
-    <span class="n">term1</span> <span class="o">=</span> <span class="n">c_injection</span><span class="o">*</span><span class="n">q_injection</span><span class="o">/</span><span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">l_thickness</span><span class="p">)</span>
-    <span class="n">term2</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d_x</span><span class="o">*</span><span class="n">d_y</span><span class="p">))</span>
-    <span class="n">term3</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">x_location</span><span class="o">*</span><span class="n">velocity</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">d_x</span><span class="p">))</span>
-    <span class="n">term4</span> <span class="o">=</span> <span class="n">wh</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">r</span><span class="o">/</span><span class="n">B</span><span class="p">)</span>
-
-    <span class="c1">#if term4 &lt;= 0.0: term4 = 0.0</span>
-<span class="c1">#    print(term1,term2,term3,term4)</span>
-    <span class="k">if</span> <span class="n">term1</span><span class="o">*</span><span class="n">term2</span><span class="o">*</span><span class="n">term3</span><span class="o">*</span><span class="n">term4</span> <span class="o">&lt;=</span><span class="mf">0.0</span><span class="p">:</span>
-        <span class="n">temp</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">temp</span> <span class="o">=</span> <span class="n">term1</span><span class="o">*</span><span class="n">term2</span><span class="o">*</span><span class="n">term3</span><span class="o">*</span><span class="n">term4</span>
-    <span class="n">willsonmiller</span> <span class="o">=</span> <span class="n">temp</span>
-    <span class="k">return</span> <span class="n">willsonmiller</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="id2">
-<h2>Driver Script<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inputs</span>
-<span class="n">decay</span> <span class="o">=</span> <span class="mi">0</span><span class="c1">#0.0024 # added 1st order decay</span>
-<span class="n">c_injection</span> <span class="o">=</span> <span class="mi">133</span>
-<span class="n">q_injection</span> <span class="o">=</span> <span class="mf">3.66</span>
-<span class="n">l_thickness</span> <span class="o">=</span> <span class="mf">1.75</span>
-<span class="n">d_x</span> <span class="o">=</span> <span class="mf">0.920</span>
-<span class="n">d_y</span> <span class="o">=</span> <span class="mf">0.092</span>
-<span class="n">velocity</span> <span class="o">=</span> <span class="mf">0.187</span>
-<span class="n">x_location</span> <span class="o">=</span> <span class="mi">123</span>
-<span class="n">y_location</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">time</span> <span class="o">=</span> <span class="mi">36500</span>
-<span class="n">scale</span> <span class="o">=</span> <span class="n">c_injection</span><span class="o">*</span><span class="n">q_injection</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">willsonmiller</span><span class="p">(</span><span class="n">c_injection</span><span class="p">,</span><span class="n">q_injection</span><span class="p">,</span><span class="n">l_thickness</span><span class="p">,</span><span class="n">d_x</span><span class="p">,</span><span class="n">d_y</span><span class="p">,</span><span class="n">decay</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">x_location</span><span class="p">,</span><span class="n">y_location</span><span class="p">,</span><span class="n">time</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Concentration at x = &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">x_location</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; y= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">y_location</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">,</span><span class="s2">&quot; t= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">,</span><span class="s2">&quot; = &quot;</span><span class="p">,</span><span class="nb">repr</span><span class="p">(</span><span class="n">output</span><span class="p">))</span>
-<span class="c1">#</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">wh</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">61.5</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concentration at x =  123  y=  0  t=  36500  =  np.float64(53.424298876849655)
-6.232529667098016e-28
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
-<span class="c1"># forward define and initialize vectors for a profile plot</span>
-<span class="c1">#</span>
-<span class="n">how_many_points</span> <span class="o">=</span> <span class="mi">29</span>   
-<span class="n">deltat</span> <span class="o">=</span> <span class="mf">12.3</span>
-<span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span>  <span class="c1"># constructor notation</span>
-<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span>  <span class="c1"># constructor notation</span>
-
-<span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mf">1e-5</span> <span class="c1">#cannot have zero time, so use really small value first position in list</span>
-<span class="c1">#</span>
-<span class="c1"># build the profile predictions</span>
-<span class="c1">#</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">how_many_points</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">deltat</span>
-    <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">willsonmiller</span><span class="p">(</span><span class="n">c_injection</span><span class="p">,</span><span class="n">q_injection</span><span class="p">,</span><span class="n">l_thickness</span><span class="p">,</span><span class="n">d_x</span><span class="p">,</span><span class="n">d_y</span><span class="p">,</span><span class="n">decay</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">x_location</span><span class="p">,</span><span class="n">y_location</span><span class="p">,</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-
-<span class="c1">#</span>
-<span class="c1"># Import graphics routines for picture making</span>
-<span class="c1">#</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="c1">#</span>
-<span class="c1"># Build and Render the Plot</span>
-<span class="c1">#</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span><span class="p">)</span>  <span class="c1"># make the plot object</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot; Concentration History </span><span class="se">\n</span><span class="s2"> Space: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">x_location</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># caption the plot object</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot; Time since release &quot;</span><span class="p">)</span> <span class="c1"># label x-axis</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot; Concentration        &quot;</span><span class="p">)</span> <span class="c1"># label y-axis</span>
-<span class="c1">#plt.savefig(&quot;ogatabanksplot.png&quot;) # optional generates just a plot for embedding into a report</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># plot to stdio -- has to be last call as it kills prior objects</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span> <span class="c1"># needed when plt.show call not invoked, optional here</span>
-<span class="c1">#sys.exit() # used to elegant exit for CGI-BIN use</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/ae0303d53c089f2f799be32e05572ee306f668d0588bb06ec50605bd8527e160.png" src="../../_images/ae0303d53c089f2f799be32e05572ee306f668d0588bb06ec50605bd8527e160.png" />
-</div>
-</div>
-</section>
-<section id="id3">
-<h2>Plotting Script<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a plot</span>
-<span class="n">x_max</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="n">y_max</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="c1"># build a grid</span>
-<span class="n">nrows</span> <span class="o">=</span> <span class="mi">50</span>   
-<span class="n">deltax</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_max</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="n">nrows</span>
-<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">x_max</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
-        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00001</span>
-    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">deltax</span><span class="p">)</span>
-
-<span class="n">ncols</span> <span class="o">=</span> <span class="mi">50</span>   
-<span class="n">deltay</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_max</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ncols</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">y_max</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ncols</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
-        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00001</span>
-    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">deltay</span><span class="p">)</span>
-    
-<span class="c1">#y</span>
-
-<span class="c1">#y = [i*deltay for i in range(how_many_points)] # constructor notation</span>
-<span class="c1">#y[0]=0.001</span>
-<span class="n">time</span> <span class="o">=</span> <span class="mi">36500</span>
-<span class="n">ccc</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span>
-
-<span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
-        <span class="n">ccc</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span> <span class="o">=</span> <span class="n">willsonmiller</span><span class="p">(</span><span class="n">c_injection</span><span class="p">,</span><span class="n">q_injection</span><span class="p">,</span><span class="n">l_thickness</span><span class="p">,</span><span class="n">d_x</span><span class="p">,</span><span class="n">d_y</span><span class="p">,</span><span class="n">decay</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="n">time</span><span class="p">)</span>
-        
-<span class="c1">#y</span>
-
-<span class="n">my_xyz</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># empty list</span>
-<span class="n">count</span><span class="o">=</span><span class="mi">0</span>
-<span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
-        <span class="n">my_xyz</span><span class="o">.</span><span class="n">append</span><span class="p">([</span> <span class="n">x</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="n">ccc</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span> <span class="p">])</span>
-       <span class="c1"># print(count)</span>
-        <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span>
-        
-<span class="c1">#print(len(my_xyz))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
-<span class="n">my_xyz</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_xyz</span><span class="p">)</span> <span class="c1"># convert into a data frame</span>
-<span class="kn">import</span> <span class="nn">numpy</span> 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
-<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">griddata</span>
-<span class="c1"># extract lists from the dataframe</span>
-<span class="n">coord_x</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 0 of dataframe</span>
-<span class="n">coord_y</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 1 of dataframe</span>
-<span class="n">coord_z</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 2 of dataframe</span>
-<span class="c1">#print(min(coord_x), max(coord_x)) # activate to examine the dataframe</span>
-<span class="c1">#print(min(coord_y), max(coord_y))</span>
-<span class="n">coord_xy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">coord_y</span><span class="p">))</span>
-<span class="c1"># Set plotting range in original data units</span>
-<span class="n">lon</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="mi">64</span><span class="p">)</span>
-<span class="n">lat</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="mi">64</span><span class="p">)</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
-<span class="c1"># Grid the data; use linear interpolation (choices are nearest, linear, cubic)</span>
-<span class="n">Z</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_xy</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_z</span><span class="p">),</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
-<span class="c1"># Build the map</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">50</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Concentration Map at Elapsed Time &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39; days&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/5bd94c40175e6d53a5cd6fcd9a0e7d9bc48f5aa7fa9d98935b9ef9895ab6b38b.png" src="../../_images/5bd94c40175e6d53a5cd6fcd9a0e7d9bc48f5aa7fa9d98935b9ef9895ab6b38b.png" />
-</div>
-</div>
-</section>
-<section id="id4">
-<h2>Spreadsheet Model<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>A spreadsheet implementation is available at <a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/WilsonMillerModel.xlsm">http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/WilsonMillerModel.xlsm</a></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This model requires Analysis Tool Pack Add-In and the VBA Macro Enabled. Likely no longer working in recent Excel which is not backward compatable.</p>
-</div>
-</section>
-</section>
-<hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="d-advection-dispersion-finite-area-constant-production-injection-source">
 <h1>3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source<a class="headerlink" href="#d-advection-dispersion-finite-area-constant-production-injection-source" title="Link to this heading">#</a></h1>
 <p>The sketch depicts a planar source zone Y units wide and Z units tall, centered at (0,0,0).</p>
@@ -1649,6 +1380,15 @@ def func_F(rho,tau):
         <p class="prev-next-title">9. Analytical Solutions (1D)</p>
       </div>
     </a>
+    <a class="right-next"
+       href="../06reactive.transport/06reactive.transport.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">11. Reactive Transport</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1680,14 +1420,6 @@ def func_F(rho,tau):
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-script">Plotting Script</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spreadsheet-model">Spreadsheet Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-code-listings">Useful Code Listings</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-plume-in-regional-flow-with-1st-order-decay-wilson-and-miller-solution">2D Plume in Regional Flow with 1st-Order Decay (Wilson and Miller Solution)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Leaky Well Function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wilson-and-miller-solution-prototype-function">Wilson and Miller Solution (Prototype Function)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Driver Script</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Plotting Script</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Spreadsheet Model</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-advection-dispersion-finite-area-constant-production-injection-source">3D - Advection-Dispersion, Finite-Area, Constant Production (Injection) Source</a><ul class="visible nav section-nav flex-column">
