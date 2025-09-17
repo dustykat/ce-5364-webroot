@@ -19,3 +19,4 @@ chapters:
 - file: chapters/05analytical.models1d/05analytical.models1d
 - file: chapters/05analytical.solutions2d/05analytical.solutions2d
 - file: chapters/06reactive.transport/06reactive.transport
+- file: chapters/07mf6.model/07mf6.introduction
