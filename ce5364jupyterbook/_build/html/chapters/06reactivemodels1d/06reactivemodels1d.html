@@ -57,6 +57,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/06reactivemodels1d/06reactivemodels1d';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -184,7 +186,9 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.science.html">2. Fundamentals I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.practice.html">3. Fundamentals (Practice)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.practice.html">3. Fundamentals II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02regulatory.overview/regulatory.overview.html">3. Regulatory Overview and Risk Assessment</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="../03site.mapping.tools/site.mapping.tools.html">5. Site Mapping Tools</a></li>
 
 
@@ -197,6 +201,19 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="../04physical.transport/modeling.advection.html">8. Modeling Advection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05analytical.models1d/05analytical.models1d.html">9. Analytical Solutions (1D)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../05analytical.solutions2d/05analytical.solutions2d.html">10. Analytical Solutions (2D)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06reactive.transport/06reactive.transport.html">11. Reactive Transport</a></li>
+
+
 </ul>
 
     </div>
@@ -392,8 +409,36 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">6. 1-D Transport with Sorption and Decay</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-models-with-reaction-terms">Analytical Models with Reaction Terms</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ogata-banks-with-retardation">Ogata-Banks with Retardation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-spreadsheet">Profile Spreadsheet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#history-spreadsheet">History Spreadsheet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ogata-banks-with-retardation-and-decay">Ogata-Banks with Retardation and Decay</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Profile Spreadsheet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">History Spreadsheet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sauty-with-retardation">Sauty with Retardation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Profile Spreadsheet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">History Spreadsheet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sauty-with-retardation-and-decay">Sauty with Retardation and Decay</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Profile Spreadsheet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">History Spreadsheet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2d-model">A 2D Model</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -412,6 +457,232 @@ document.write(`
 <li><p>Retardation factor and first-order decay</p></li>
 <li><p>Example problems with parameter sensitivity analysis</p></li>
 </ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="analytical-models-with-reaction-terms">
+<h1>Analytical Models with Reaction Terms<a class="headerlink" href="#analytical-models-with-reaction-terms" title="Link to this heading">#</a></h1>
+<p>This section discussed modifications to the advection-dispersion equation (ADE), which describes the movement of a contaminant through an aquifer, accounting for two key processes: advection (the movement of contaminants with the flow of the medium) and dispersion (the spreading of contaminants due to velocity variations and molecular diffusion). Practical applications are often more complex, requiring us to consider reaction terms, which model processes such as chemical decay, adsorption, and desorption.</p>
+<p>Herein, we examine solutions to the advection-dispersion equation in several dimensions, with the addition of:</p>
+<ul class="simple">
+<li><p>First-order decay, which accounts for the transformation or degradation of the contaminant over time (e.g., radioactive decay or biodegradation).</p></li>
+<li><p>Adsorption/desorption processes, which describe the interaction between the contaminant and the surrounding porous medium through a linear equilibrium isotherm. This process is crucial for modeling how contaminants are temporarily stored in and released from the medium.</p></li>
+</ul>
+<p><strong>Governing Equation</strong></p>
+<p>The generalized advection-dispersion equation with reaction terms in multiple dimensions is written as:</p>
+<div class="math notranslate nohighlight">
+\[ (1+\frac{\rho_b}{n} K_d)\frac{\partial C}{\partial t} =  \nabla \cdot (D \nabla C - VC) - \lambda C \]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C(x,y,z,t)\)</span> is the contaminant concentration as a function of space and time.</p></li>
+<li><p><span class="math notranslate nohighlight">\(V\)</span>is the velocity field (advection term).</p></li>
+<li><p><span class="math notranslate nohighlight">\(D\)</span> is the dispersion tensor, accounting for spreading in multiple directions.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda\)</span> is the first-order decay constant, representing the rate at which the contaminant decays.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\rho_b\)</span> is the bulk density of the porous medium.</p></li>
+<li><p><span class="math notranslate nohighlight">\(K_d\)</span> is the distribution coefficient for linear adsorption/desorption, characterizing how the contaminant adheres to or detaches from the medium.</p></li>
+</ul>
+<p>The addition of the reaction terms, such as the decay constant <span class="math notranslate nohighlight">\(\lambda\)</span> and adsorption/desorption, significantly alters the transport dynamics. Understanding these interactions is essential for predicting the long-term fate and transport of contaminants in the environment, especially in cases where chemical reactions play a dominant role.</p>
+<p><strong>Solutions</strong></p>
+<p>Generally our prior solutions can be used with modifications to account for the new processes.  If the adsorbtion/desorbtion behavior is reasonably described by a linear equilibrium isotherm, the constant on the left <span class="math notranslate nohighlight">\(1 + \frac{\rho_b}{n} K_d = R\)</span> (the retardation factor) is approximated by a temporal adjustment called adjusted time (or just divide the other constants by <span class="math notranslate nohighlight">\(R\)</span>.)</p>
+<p>The 1st order decay term usually adjusts apparent velocity, and source concentration.</p>
+<section id="ogata-banks-with-retardation">
+<h2>Ogata-Banks with Retardation<a class="headerlink" href="#ogata-banks-with-retardation" title="Link to this heading">#</a></h2>
+<p>Adding the retardation effect is a simple metter of adjusting the various transport constants (assuming <span class="math notranslate nohighlight">\(\lambda = 0\)</span>)</p>
+<p>Below are a couple of spreadsheets that implement the modifications</p>
+<section id="profile-spreadsheet">
+<h3>Profile Spreadsheet<a class="headerlink" href="#profile-spreadsheet" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/OgataBanksRetardationProfile.xlsx">OB-ADR-Profile</a></p>
+</section>
+<section id="history-spreadsheet">
+<h3>History Spreadsheet<a class="headerlink" href="#history-spreadsheet" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/OgataBanksRetardationHistory.xlsx">OB-ADR-History</a></p>
+</section>
+</section>
+<section id="ogata-banks-with-retardation-and-decay">
+<h2>Ogata-Banks with Retardation and Decay<a class="headerlink" href="#ogata-banks-with-retardation-and-decay" title="Link to this heading">#</a></h2>
+<p>Adding the decay effect requires some consideration of travel time and elapsed time, then applying exponential decay to the entire transport result.</p>
+<p>Below are a couple of spreadsheets that implement the modifications</p>
+<section id="id1">
+<h3>Profile Spreadsheet<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/OgataBanksRetardationDecayProfile.xlsx">OB-ADRD-Profile</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I am not entirely confident this particular spreadsheet is correct; so if you use it professionally, check against some known solution before donating your double-wide to an attourney!</p>
+</div>
+</section>
+<section id="id2">
+<h3>History Spreadsheet<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/OgataBanksRetardationDecayHistory.xlsx">OB-ADRD-History</a></p>
+</section>
+</section>
+<section id="sauty-with-retardation">
+<h2>Sauty with Retardation<a class="headerlink" href="#sauty-with-retardation" title="Link to this heading">#</a></h2>
+<p>Adding the retardation effect is a simple metter of adjusting the various transport constants (assuming <span class="math notranslate nohighlight">\(\lambda = 0\)</span>)</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This section in-progress, links below may be 404s</p>
+</div>
+<p>Below are a couple of spreadsheets that implement the modifications</p>
+<section id="id3">
+<h3>Profile Spreadsheet<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyRetardationProfile.xlsx">S-ADR-Profile</a></p>
+</section>
+<section id="id4">
+<h3>History Spreadsheet<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyRetardationHistory.xlsx">S-ADR-History</a></p>
+</section>
+</section>
+<section id="sauty-with-retardation-and-decay">
+<h2>Sauty with Retardation and Decay<a class="headerlink" href="#sauty-with-retardation-and-decay" title="Link to this heading">#</a></h2>
+<p>Adding the decay effect requires some consideration of travel time and elapsed time, then applying exponential decay to the entire transport result.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This section in-progress, links below may be 404s</p>
+</div>
+<p>Below are a couple of spreadsheets that implement the modifications</p>
+<section id="id5">
+<h3>Profile Spreadsheet<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyRetardationDecayProfile.xlsx">S-ADRD-Profile</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I am not entirely confident this particular spreadsheet is correct; so if you use it professionally, check against some known solution before donating your double-wide to an attourney!</p>
+</div>
+</section>
+<section id="id6">
+<h3>History Spreadsheet<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/SautyRetardationDecayHistory.xlsx">S-ADRD-History</a></p>
+</section>
+</section>
+<section id="a-2d-model">
+<h2>A 2D Model<a class="headerlink" href="#a-2d-model" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This section in-progress, more description pending</p>
+</div>
+<p>Below is a script for a 2D situation, you can use it for 1D problem by specifying a large value for <span class="math notranslate nohighlight">\(+/- Y\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span><span class="p">,</span> <span class="n">erfc</span>
+
+<span class="k">def</span> <span class="nf">c2adrl</span><span class="p">(</span><span class="n">conc0</span><span class="p">,</span> <span class="n">distx</span><span class="p">,</span> <span class="n">disty</span><span class="p">,</span> <span class="n">dispx</span><span class="p">,</span> <span class="n">dispy</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">lenY</span><span class="p">,</span> <span class="n">retardation</span><span class="p">,</span> <span class="n">_lambda</span><span class="p">):</span>
+    <span class="n">vadj</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">/</span> <span class="n">retardation</span>
+    <span class="n">dispXadj</span> <span class="o">=</span> <span class="n">dispx</span> <span class="o">/</span> <span class="n">retardation</span>
+    <span class="n">dispYadj</span> <span class="o">=</span> <span class="n">dispy</span> <span class="o">/</span> <span class="n">retardation</span>
+    <span class="n">lambadj</span> <span class="o">=</span> <span class="n">_lambda</span> <span class="o">/</span> <span class="n">retardation</span>
+
+    <span class="n">uuu</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">4.0</span><span class="o">*</span><span class="n">lambadj</span><span class="o">*</span><span class="n">dispXadj</span><span class="o">/</span><span class="n">vadj</span><span class="p">)</span>
+    <span class="n">ypp</span> <span class="o">=</span> <span class="p">(</span><span class="n">disty</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">lenY</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispYadj</span><span class="o">*</span><span class="n">distx</span><span class="p">))</span>
+    <span class="n">ymm</span> <span class="o">=</span> <span class="p">(</span><span class="n">disty</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">lenY</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispYadj</span><span class="o">*</span><span class="n">distx</span><span class="p">))</span>
+
+    <span class="n">arg1</span> <span class="o">=</span> <span class="p">(</span><span class="n">distx</span> <span class="o">-</span> <span class="n">vadj</span><span class="o">*</span><span class="n">time</span><span class="o">*</span><span class="n">uuu</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dispXadj</span><span class="o">*</span><span class="n">vadj</span><span class="o">*</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">arg2</span> <span class="o">=</span> <span class="p">(</span><span class="n">distx</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dispXadj</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">uuu</span><span class="p">)</span>
+
+    <span class="n">term0</span> <span class="o">=</span> <span class="n">conc0</span> <span class="o">/</span> <span class="mi">4</span>
+    <span class="n">term1</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">arg2</span><span class="p">)</span>
+    <span class="n">term2</span> <span class="o">=</span> <span class="n">erfc</span><span class="p">(</span><span class="n">arg1</span><span class="p">)</span>
+    <span class="n">term3</span> <span class="o">=</span> <span class="p">(</span><span class="n">erf</span><span class="p">(</span><span class="n">ypp</span><span class="p">)</span> <span class="o">-</span> <span class="n">erf</span><span class="p">(</span><span class="n">ymm</span><span class="p">))</span>
+
+    <span class="n">c2adrl</span> <span class="o">=</span> <span class="n">term0</span> <span class="o">*</span> <span class="n">term1</span> <span class="o">*</span> <span class="n">term2</span> <span class="o">*</span> <span class="n">term3</span>
+    <span class="k">return</span> <span class="n">c2adrl</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inputs</span>
+<span class="n">c_initial</span> <span class="o">=</span> <span class="mf">100.0</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">yy</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="n">Dx</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">Dy</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">V</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mf">100.0</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">LAM</span> <span class="o">=</span> <span class="mf">0.00001</span>
+
+<span class="n">output</span><span class="o">=</span><span class="n">c2adrl</span><span class="p">(</span><span class="n">c_initial</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Dx</span><span class="p">,</span> <span class="n">Dy</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">LAM</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; y= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">&quot; t= &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot; C(x,y,t) = &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># make a plot</span>
+<span class="n">x_max</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="n">y_max</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="c1"># build a grid</span>
+<span class="n">nrows</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltax</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_max</span><span class="p">)</span><span class="o">/</span><span class="n">nrows</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00001</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">deltax</span><span class="p">)</span>
+
+<span class="n">ncols</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">deltay</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_max</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ncols</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">y_max</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00001</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">deltay</span><span class="p">)</span>
+    
+<span class="c1">#y</span>
+
+<span class="c1">#y = [i*deltay for i in range(how_many_points)] # constructor notation</span>
+<span class="c1">#y[0]=0.001</span>
+<span class="n">ccc</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">)]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+        <span class="n">ccc</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span> <span class="o">=</span> <span class="n">c2adrl</span><span class="p">(</span><span class="n">c_initial</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span> <span class="n">Dx</span><span class="p">,</span> <span class="n">Dy</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">LAM</span><span class="p">)</span>
+        
+<span class="c1">#y</span>
+
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># empty list</span>
+<span class="n">count</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+        <span class="n">my_xyz</span><span class="o">.</span><span class="n">append</span><span class="p">([</span> <span class="n">x</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="n">ccc</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span> <span class="p">])</span>
+       <span class="c1"># print(count)</span>
+        <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span>
+        
+<span class="c1">#print(len(my_xyz))</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="n">my_xyz</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_xyz</span><span class="p">)</span> <span class="c1"># convert into a data frame</span>
+<span class="kn">import</span> <span class="nn">numpy</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">griddata</span>
+<span class="c1"># extract lists from the dataframe</span>
+<span class="n">coord_x</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 0 of dataframe</span>
+<span class="n">coord_y</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 1 of dataframe</span>
+<span class="n">coord_z</span> <span class="o">=</span> <span class="n">my_xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># column 2 of dataframe</span>
+<span class="c1">#print(min(coord_x), max(coord_x)) # activate to examine the dataframe</span>
+<span class="c1">#print(min(coord_y), max(coord_y))</span>
+<span class="n">coord_xy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">coord_y</span><span class="p">))</span>
+<span class="c1"># Set plotting range in original data units</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_x</span><span class="p">),</span> <span class="mi">64</span><span class="p">)</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord_y</span><span class="p">),</span> <span class="mi">64</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+<span class="c1"># Grid the data; use linear interpolation (choices are nearest, linear, cubic)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_xy</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coord_z</span><span class="p">),</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="c1"># Build the map</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">100</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Concentration Map at Elapsed Time &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39; days&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x=  100  y=  5000  t=  100.0  C(x,y,t) =  0.0
+</pre></div>
+</div>
+<img alt="../../_images/bf9cd406fa0807c1fa92156af2ee10f5347e7c1b7e3d4bc19f82afc5283bccdd.png" src="../../_images/bf9cd406fa0807c1fa92156af2ee10f5347e7c1b7e3d4bc19f82afc5283bccdd.png" />
+</div>
+</div>
 </section>
 </section>
 
@@ -461,8 +732,36 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">6. 1-D Transport with Sorption and Decay</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-models-with-reaction-terms">Analytical Models with Reaction Terms</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ogata-banks-with-retardation">Ogata-Banks with Retardation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-spreadsheet">Profile Spreadsheet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#history-spreadsheet">History Spreadsheet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ogata-banks-with-retardation-and-decay">Ogata-Banks with Retardation and Decay</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Profile Spreadsheet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">History Spreadsheet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sauty-with-retardation">Sauty with Retardation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Profile Spreadsheet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">History Spreadsheet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sauty-with-retardation-and-decay">Sauty with Retardation and Decay</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Profile Spreadsheet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">History Spreadsheet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2d-model">A 2D Model</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
