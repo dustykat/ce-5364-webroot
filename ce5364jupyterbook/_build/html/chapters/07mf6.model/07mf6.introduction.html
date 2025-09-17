@@ -215,6 +215,7 @@
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">10. MODFLOW6 Introduction</a></li>
 
+
 </ul>
 
     </div>
@@ -417,16 +418,16 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-modflow-6-and-python-s-role-in-contaminant-transport-modeling">Overview of MODFLOW 6 and Python’s role in contaminant transport modeling.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-leveraging-python-for-automation-and-customization-in-groundwater-modeling">Importance of Leveraging Python for Automation and Customization in Groundwater Modeling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-and-configuration-of-modflow-6">Installation and Configuration of MODFLOW 6</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modflow-6-and-modelmuse-a-gui">MODFLOW 6 and ModelMUSE (a GUI)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modflow-6-and-flopy">MODFLOW 6 and FloPy</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-installation-requirements">Overview of Installation Requirements</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-on-various-architectures">Installation on Various Architectures</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-x86-64-and-macos-intel-installation">Windows (x86-64) and macOS (Intel) Installation</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#arm7-and-aarch-architecture-e-g-raspberry-pi-apple-silicon">ARM7 and AARCH Architecture (e.g., Raspberry Pi, Apple Silicon)</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ubuntu-20-linux-installation">Ubuntu 20+ Linux Installation</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-configuration-of-modflow-6">Installation &amp; Configuration of MODFLOW 6</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modflow-6-and-modelmuse-a-gui">MODFLOW 6 and ModelMUSE (a GUI)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modflow-6-and-flopy">MODFLOW 6 and FloPy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-installation-requirements">Overview of Installation Requirements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-on-various-architectures">Installation on Various Architectures</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-x86-64-and-macos-intel-installation">Windows (x86-64) and macOS (Intel) Installation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#arm7-and-aarch-architecture-e-g-raspberry-pi-apple-silicon">ARM7 and AARCH Architecture (e.g., Raspberry Pi, Apple Silicon)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ubuntu-20-linux-installation">Ubuntu 20+ Linux Installation</a></li>
 </ul>
 </li>
 </ul>
@@ -514,10 +515,11 @@ document.write(`
 <p>Beyond automation, Python also enables a high degree of customization. Groundwater models often require unique configurations tailored to specific environmental conditions or project objectives. With Python, we can write custom scripts to modify model parameters, handle boundary conditions dynamically, or integrate external datasets, such as real-time hydrological data or geospatial information. This customization not only saves time but also enhances the accuracy and flexibility of the model, making it easier to adapt to changing project needs.</p>
 <p>Moreover, Python’s vast ecosystem of libraries (like <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>) supports advanced data analysis and visualization, allowing engineers and scientists to interpret simulation results more effectively. Instead of manually reviewing raw output files, Python can be used to automate the extraction of key metrics, generate plots, and even create animated visualizations of flow and contaminant transport. This capacity for automation and customization makes Python an invaluable tool for modern groundwater modeling, enabling professionals to focus more on the science and decision-making, rather than the intricacies of file management and data processing.</p>
 </section>
-<section id="installation-and-configuration-of-modflow-6">
-<h2>Installation and Configuration of MODFLOW 6<a class="headerlink" href="#installation-and-configuration-of-modflow-6" title="Link to this heading">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="installation-configuration-of-modflow-6">
+<h1>Installation &amp; Configuration of MODFLOW 6<a class="headerlink" href="#installation-configuration-of-modflow-6" title="Link to this heading">#</a></h1>
 <section id="modflow-6-and-modelmuse-a-gui">
-<h3>MODFLOW 6 and ModelMUSE (a GUI)<a class="headerlink" href="#modflow-6-and-modelmuse-a-gui" title="Link to this heading">#</a></h3>
+<h2>MODFLOW 6 and ModelMUSE (a GUI)<a class="headerlink" href="#modflow-6-and-modelmuse-a-gui" title="Link to this heading">#</a></h2>
 <p>This is a common way to use MODFLOW, with a GUI.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -556,10 +558,10 @@ document.write(`
 </div>
 </section>
 <section id="modflow-6-and-flopy">
-<h3>MODFLOW 6 and FloPy<a class="headerlink" href="#modflow-6-and-flopy" title="Link to this heading">#</a></h3>
+<h2>MODFLOW 6 and FloPy<a class="headerlink" href="#modflow-6-and-flopy" title="Link to this heading">#</a></h2>
 <p>This is another common way to use MODFLOW, and access the binaries from python scripts or Jupyter Notebooks (with an ipython kernel).</p>
 <section id="overview-of-installation-requirements">
-<h4>Overview of Installation Requirements<a class="headerlink" href="#overview-of-installation-requirements" title="Link to this heading">#</a></h4>
+<h3>Overview of Installation Requirements<a class="headerlink" href="#overview-of-installation-requirements" title="Link to this heading">#</a></h3>
 <p>To install and run MODFLOW 6 with FloPy, consider the following system requirements and dependencies.</p>
 <ul class="simple">
 <li><p><strong>System Requirements for MODFLOW 6 and Python</strong></p>
@@ -578,9 +580,9 @@ document.write(`
 </ul>
 </section>
 <section id="installation-on-various-architectures">
-<h4>Installation on Various Architectures<a class="headerlink" href="#installation-on-various-architectures" title="Link to this heading">#</a></h4>
+<h3>Installation on Various Architectures<a class="headerlink" href="#installation-on-various-architectures" title="Link to this heading">#</a></h3>
 <section id="windows-x86-64-and-macos-intel-installation">
-<h5>Windows (x86-64) and macOS (Intel) Installation<a class="headerlink" href="#windows-x86-64-and-macos-intel-installation" title="Link to this heading">#</a></h5>
+<h4>Windows (x86-64) and macOS (Intel) Installation<a class="headerlink" href="#windows-x86-64-and-macos-intel-installation" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>Installing Pre-Compiled Binaries</strong></p>
 <ul>
@@ -603,7 +605,7 @@ document.write(`
 </ul>
 </section>
 <section id="arm7-and-aarch-architecture-e-g-raspberry-pi-apple-silicon">
-<h5>ARM7 and AARCH Architecture (e.g., Raspberry Pi, Apple Silicon)<a class="headerlink" href="#arm7-and-aarch-architecture-e-g-raspberry-pi-apple-silicon" title="Link to this heading">#</a></h5>
+<h4>ARM7 and AARCH Architecture (e.g., Raspberry Pi, Apple Silicon)<a class="headerlink" href="#arm7-and-aarch-architecture-e-g-raspberry-pi-apple-silicon" title="Link to this heading">#</a></h4>
 <ul>
 <li><p><strong>Compiling MODFLOW 6 from Source</strong></p>
 <ul>
@@ -635,7 +637,7 @@ make
 </ul>
 </section>
 <section id="ubuntu-20-linux-installation">
-<h5>Ubuntu 20+ Linux Installation<a class="headerlink" href="#ubuntu-20-linux-installation" title="Link to this heading">#</a></h5>
+<h4>Ubuntu 20+ Linux Installation<a class="headerlink" href="#ubuntu-20-linux-installation" title="Link to this heading">#</a></h4>
 <p>For server environments, MODFLOW 6 can be installed using package managers or compiled from source.</p>
 <ul>
 <li><p><strong>Installation via <code class="docutils literal notranslate"><span class="pre">apt-get</span></code> (Debian-based systems)</strong></p>
@@ -736,7 +738,6 @@ modflow-env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<spa
 </ol>
 </li>
 </ul>
-</section>
 </section>
 </section>
 </section>
@@ -2294,16 +2295,16 @@ Minimum Head is: -552.3  meters
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-modflow-6-and-python-s-role-in-contaminant-transport-modeling">Overview of MODFLOW 6 and Python’s role in contaminant transport modeling.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-leveraging-python-for-automation-and-customization-in-groundwater-modeling">Importance of Leveraging Python for Automation and Customization in Groundwater Modeling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-and-configuration-of-modflow-6">Installation and Configuration of MODFLOW 6</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modflow-6-and-modelmuse-a-gui">MODFLOW 6 and ModelMUSE (a GUI)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modflow-6-and-flopy">MODFLOW 6 and FloPy</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-installation-requirements">Overview of Installation Requirements</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-on-various-architectures">Installation on Various Architectures</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-x86-64-and-macos-intel-installation">Windows (x86-64) and macOS (Intel) Installation</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#arm7-and-aarch-architecture-e-g-raspberry-pi-apple-silicon">ARM7 and AARCH Architecture (e.g., Raspberry Pi, Apple Silicon)</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ubuntu-20-linux-installation">Ubuntu 20+ Linux Installation</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-configuration-of-modflow-6">Installation &amp; Configuration of MODFLOW 6</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modflow-6-and-modelmuse-a-gui">MODFLOW 6 and ModelMUSE (a GUI)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modflow-6-and-flopy">MODFLOW 6 and FloPy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-installation-requirements">Overview of Installation Requirements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-on-various-architectures">Installation on Various Architectures</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-x86-64-and-macos-intel-installation">Windows (x86-64) and macOS (Intel) Installation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#arm7-and-aarch-architecture-e-g-raspberry-pi-apple-silicon">ARM7 and AARCH Architecture (e.g., Raspberry Pi, Apple Silicon)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ubuntu-20-linux-installation">Ubuntu 20+ Linux Installation</a></li>
 </ul>
 </li>
 </ul>
