@@ -218,6 +218,7 @@
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">13. MODFLOW 6 Transport</a></li>
 
+
 </ul>
 
     </div>
@@ -413,7 +414,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">13. MODFLOW 6 Transport</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">13. MODFLOW 6 Transport</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mf6-gwt-compared-to-mt3dms-example-9">MF6-GWT compared to MT3DMS Example 9</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-setup">Initial setup</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-parameters">Define parameters</a></li>
 </ul>
@@ -429,7 +431,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#transport-model-mf6gwt-usgs-moc-benchmark">Transport Model (MF6–GWT) — USGS-MOC Benchmark</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mf6gwt-compared-to-usgs-moc-benchmark">MF6–GWT compared to USGS-MOC Benchmark</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">Problem Statement:</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-model">Conceptual model:</a></li>
 </ul>
@@ -498,6 +500,9 @@ The ten MT3DMS problems (manual, 1999; pp. ~130+) are widely used verification c
 </pre></div>
 </div>
 </div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="mf6-gwt-compared-to-mt3dms-example-9">
+<h1>MF6-GWT compared to MT3DMS Example 9<a class="headerlink" href="#mf6-gwt-compared-to-mt3dms-example-9" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reset</span> -f
@@ -1154,11 +1159,13 @@ Filter warnings repeated to achieve “for sure …” that the filter is applie
     <span class="n">idx</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">letter</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">styles</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="n">letter</span><span class="o">=</span><span class="n">letter</span><span class="p">,</span> <span class="n">heading</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/09bb460da7ec9416315de2c1345acc309f64d0392be3d4d88e38e4c12195da7e.png" src="../../_images/09bb460da7ec9416315de2c1345acc309f64d0392be3d4d88e38e4c12195da7e.png" />
+<img alt="../../_images/acc9f8f999a8c6a1355516bf9689cad6c354e1b7908cc96af4daf08bea01837a.png" src="../../_images/acc9f8f999a8c6a1355516bf9689cad6c354e1b7908cc96af4daf08bea01837a.png" />
 </div>
 </div>
 <p>In the figures above, the brown rectangle contained within the goldenrod rectangle represent two different horizontal hydraulic conductivities. The goldenrod color represents the conductivity of a medium grain material, <span class="math notranslate nohighlight">\(K_1 = 1.474\times 10^{-4}~\frac{m}{sec}\)</span>. The brown color represents theconductivity of a fine grain material, <span class="math notranslate nohighlight">\(K_2 = 1.474 \times 10^{-7}~\frac{m}{sec}\)</span>.</p>
@@ -1212,8 +1219,8 @@ Filter warnings repeated to achieve “for sure …” that the filter is applie
 </section>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="transport-model-mf6gwt-usgs-moc-benchmark">
-<h1>Transport Model (MF6–GWT) — USGS-MOC Benchmark<a class="headerlink" href="#transport-model-mf6gwt-usgs-moc-benchmark" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="mf6gwt-compared-to-usgs-moc-benchmark">
+<h1>MF6–GWT compared to USGS-MOC Benchmark<a class="headerlink" href="#mf6gwt-compared-to-usgs-moc-benchmark" title="Link to this heading">#</a></h1>
 <p>This sub-section extends our MODFLOW 6 Groundwater Transport (GWT) workflow by <strong>replicating a classic USGS-MOC benchmark</strong> from the 1980s. We follow the setup described here and compare MF6 results to the published MOC solution:
 <a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/_build/html/chapters/12.02usgsmocmodel/usgsmoc.html">http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/_build/html/chapters/12.02usgsmocmodel/usgsmoc.html</a></p>
 <p><strong>Why this example?</strong><br />
@@ -2005,9 +2012,13 @@ strt
     <span class="n">idx</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="n">letter</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">styles</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="n">letter</span><span class="o">=</span><span class="n">letter</span><span class="p">,</span> <span class="n">heading</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="c1">### 2X2 Plot matrix, lower right is null</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d12209996fe01ae796dc07aa484b9617ed49327d6be07d2cf99d83a6049cffda.png" src="../../_images/d12209996fe01ae796dc07aa484b9617ed49327d6be07d2cf99d83a6049cffda.png" />
 </div>
 </div>
 <p>The plume “color map” is overlain on the computational grid, and is set to opaque (not transparent).  The color ramp is and inverted GreenYellowRed.  The scale bar is distorted to emphasize concentrations bigger than 10.0 ppm in the plot call. High values render as red, lowest as green, the white cells are strict zero (there is no constituient mass in those cells yet.</p>
@@ -2137,7 +2148,6 @@ strt
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cbfd540c5a2cb6288105ab29a669acee97fc7eb73a0bacfe5191ebca9eca378e.png" src="../../_images/cbfd540c5a2cb6288105ab29a669acee97fc7eb73a0bacfe5191ebca9eca378e.png" />
 <img alt="../../_images/4ee33e04938a2389611d39b96f61360dd71ce4bc596e8c2d609c0f9347fa2be2.png" src="../../_images/4ee33e04938a2389611d39b96f61360dd71ce4bc596e8c2d609c0f9347fa2be2.png" />
 </div>
 </div>
@@ -2238,7 +2248,8 @@ strt
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">13. MODFLOW 6 Transport</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">13. MODFLOW 6 Transport</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mf6-gwt-compared-to-mt3dms-example-9">MF6-GWT compared to MT3DMS Example 9</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-setup">Initial setup</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-parameters">Define parameters</a></li>
 </ul>
@@ -2254,7 +2265,7 @@ strt
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#transport-model-mf6gwt-usgs-moc-benchmark">Transport Model (MF6–GWT) — USGS-MOC Benchmark</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mf6gwt-compared-to-usgs-moc-benchmark">MF6–GWT compared to USGS-MOC Benchmark</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">Problem Statement:</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-model">Conceptual model:</a></li>
 </ul>

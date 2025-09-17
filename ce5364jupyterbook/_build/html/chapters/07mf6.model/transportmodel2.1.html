@@ -1,0 +1,1346 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Transport Model using MT3DMS and USGS MOC (circa 1980s Example) &#8212; Groundwater Transport Phenomena</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/07mf6.model/transportmodel2.1';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gwtransport.png" class="logo__image only-light" alt="Groundwater Transport Phenomena - Home"/>
+    <script>document.write(`<img src="../../_static/gwtransport.png" class="logo__image only-dark" alt="Groundwater Transport Phenomena - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00syllabus/ce5364-syllabus-2025-3.html">0. Syllabus (Fall 2025)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.science.html">2. Fundamentals I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.practice.html">3. Fundamentals II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02regulatory.overview/regulatory.overview.html">3. Regulatory Overview and Risk Assessment</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03site.mapping.tools/site.mapping.tools.html">5. Site Mapping Tools</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03site.characterization/site.characterization.html">6. Site Characterization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/physical.transport.html">7. Physical Transport</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/modeling.advection.html">8. Modeling Advection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05analytical.models1d/05analytical.models1d.html">9. Analytical Solutions (1D)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../05analytical.solutions2d/05analytical.solutions2d.html">10. Analytical Solutions (2D)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06reactive.transport/06reactive.transport.html">11. Reactive Transport</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="07mf6.introduction.html">12. MODFLOW6 Introduction</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="07mf6.transport.html">13. MODFLOW 6 Transport</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/07mf6.model/transportmodel2.1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/07mf6.model/transportmodel2.1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Transport Model using MT3DMS and USGS MOC (circa 1980s Example)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-model">Conceptual model:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-setup">Initial setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-parameters">Define parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">Model setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-results">Plotting results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="transport-model-using-mt3dms-and-usgs-moc-circa-1980s-example">
+<h1>Transport Model using MT3DMS and USGS MOC (circa 1980s Example)<a class="headerlink" href="#transport-model-using-mt3dms-and-usgs-moc-circa-1980s-example" title="Link to this heading">#</a></h1>
+<p>This section recreates an example used in the orginal MOC model and described in some detail at <a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/_build/html/chapters/12.02usgsmocmodel/usgsmoc.html">http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/_build/html/chapters/12.02usgsmocmodel/usgsmoc.html</a></p>
+<section id="example-1">
+<h2>Example 1:<a class="headerlink" href="#example-1" title="Link to this heading">#</a></h2>
+<p>Alluvial valley with lakes as shown. Mountains are hydrogeologic barriers. Region is arid.</p>
+<p>Problem: Fuel spill at parking area near lake introduces contamination at 100 mg/l over area shown; How will plume spread over time?</p>
+<p><img alt="" src="../../_images/example1-area3.png" /></p>
+<section id="conceptual-model">
+<h3>Conceptual model:<a class="headerlink" href="#conceptual-model" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Assume 2D confined flow approximation is valid (small drawdowns compared to saturated thickness)</p></li>
+<li><p>No pumping</p></li>
+<li><p>Recharge = Evaporation (so net rainfall to aquifer is negligible)</p></li>
+<li><p>Mountains are no-flow boundaries.</p></li>
+</ul>
+<p>Translate into a computational grid:</p>
+<p><img alt="" src="../../_images/concept2grid3.png" /></p>
+<p>Using the sketch above we can construct a MODFLOW6 Flow and Transport model to study the question.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Literally we will simply modify the working model already created to fit the situation.  If you end up doing these (models) a lot, much can be automated, but only a handful of people actually become modelers full time and once they get good they get promoted to supervisory roles so their skills can atrophy.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reset</span> -f
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span><span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The script generates a lot of output that are suppressed by a <code class="docutils literal notranslate"><span class="pre">;</span></code>  Comment the character out to re-enable full output (which is damn helpful for debugging the script!)</p>
+</div>
+</section>
+</section>
+<section id="initial-setup">
+<h2>Initial setup<a class="headerlink" href="#initial-setup" title="Link to this heading">#</a></h2>
+<p>Import dependencies, define the example name and workspace, and read settings from environment variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pathlib</span> <span class="k">as</span> <span class="nn">pl</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pformat</span>
+
+<span class="kn">import</span> <span class="nn">flopy</span>
+<span class="kn">import</span> <span class="nn">git</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">flopy.plot.styles</span> <span class="kn">import</span> <span class="n">styles</span>
+<span class="kn">from</span> <span class="nn">modflow_devtools.misc</span> <span class="kn">import</span> <span class="n">get_env</span><span class="p">,</span> <span class="n">timed</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span><span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The code block above loads various modules into the environment; they must exist and be loaded into the kernel - if not you get a warning “Module Not Found” and will have to install into the kernel (i.e. <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">-m</span> <span class="pre">install</span> <span class="pre">module</span></code>, or the <code class="docutils literal notranslate"><span class="pre">conda</span></code> equivalent
+Filter warnings repeated to achieve “for sure …” that the filter is applied.  By design the filter will not stop ERRORS, and warnings issued within functions will still display, but it will address one annoying deprecation error.</p>
+</div>
+<section id="define-parameters">
+<h3>Define parameters<a class="headerlink" href="#define-parameters" title="Link to this heading">#</a></h3>
+<p>Define model units, parameters and other settings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model units</span>
+<span class="n">length_units</span> <span class="o">=</span> <span class="s2">&quot;feet&quot;</span>
+<span class="n">time_units</span> <span class="o">=</span> <span class="s2">&quot;seconds&quot;</span>
+
+<span class="c1"># Model parameters</span>
+<span class="n">nlay</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Number of layers</span>
+<span class="n">nrow</span> <span class="o">=</span> <span class="mi">7</span>  <span class="c1"># Number of rows</span>
+<span class="n">ncol</span> <span class="o">=</span> <span class="mi">7</span>  <span class="c1"># Number of columns</span>
+<span class="n">delr</span> <span class="o">=</span> <span class="mf">900.0</span>  <span class="c1"># Column width ($ft$)</span>
+<span class="n">delc</span> <span class="o">=</span> <span class="mf">900.0</span>  <span class="c1"># Row width ($ft$)</span>
+<span class="n">delz</span> <span class="o">=</span> <span class="mf">20.0</span>  <span class="c1"># Layer thickness ($ft$)</span>
+<span class="n">top</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># Top of the model ($ft$)</span>
+<span class="n">prsity</span> <span class="o">=</span> <span class="mf">0.3</span>  <span class="c1"># Porosity</span>
+<span class="n">k1</span> <span class="o">=</span> <span class="mf">0.005</span>  <span class="c1"># Horiz. hyd. conductivity of medium grain material ($m/sec$)</span>
+<span class="n">inj</span> <span class="o">=</span> <span class="mf">0.001</span>  <span class="c1"># Injection well rate ($ft^3/sec$) - no wells this model</span>
+<span class="n">ext</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.001</span>  <span class="c1"># Extraction well pumping rate ($ft^3/sec$) - no wells this model</span>
+<span class="n">al</span> <span class="o">=</span> <span class="mf">90.0</span>  <span class="c1"># Longitudinal dispersivity ($ft$)</span>
+<span class="n">trpt</span> <span class="o">=</span> <span class="mf">0.3</span>  <span class="c1"># Ratio of horiz. transverse to longitudinal dispersivity </span>
+<span class="n">perlen</span> <span class="o">=</span> <span class="mf">2.0</span>  <span class="c1"># Simulation time ($years$)</span>
+<span class="c1">## Values above are same as conceptual model in figure </span>
+
+<span class="c1"># Additional model input</span>
+<span class="n">hk</span> <span class="o">=</span> <span class="n">k1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">nlay</span><span class="p">,</span> <span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="c1">#hk[:, 5:8, 1:8] = k2 only one layer type this case</span>
+<span class="n">laytyp</span> <span class="o">=</span> <span class="n">icelltype</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Active model domain</span>
+<span class="n">ibound</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">nlay</span><span class="p">,</span> <span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">ibound</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">ibound</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">idomain</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">nlay</span><span class="p">,</span> <span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">icbund</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Boundary conditions</span>
+<span class="c1"># MF2K5 pumping info</span>
+<span class="n">qwell1</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">qwell2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.0189</span>
+<span class="n">welspd</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">qwell1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">qwell2</span><span class="p">]]}</span>  <span class="c1"># Well pumping info for MF2K5</span>
+<span class="n">cwell1</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">cwell0</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">spd</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">cwell1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">cwell0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">cwell0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">cwell0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span>
+<span class="p">}</span>  <span class="c1"># Well info 4 MT3D</span>
+<span class="c1"># MF6 pumping information</span>
+<span class="n">wellist_sp1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1">#                   (k,  i, j),   flow,  conc</span>
+<span class="n">wellist_sp1</span><span class="o">.</span><span class="n">append</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">qwell1</span><span class="p">,</span> <span class="n">cwell1</span><span class="p">])</span>  <span class="c1"># Injection well</span>
+<span class="n">wellist_sp1</span><span class="o">.</span><span class="n">append</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">qwell2</span><span class="p">,</span> <span class="n">cwell0</span><span class="p">])</span>  <span class="c1"># Pumping well</span>
+<span class="c1">#</span>
+<span class="n">wellist_sp2</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1">#                   (k,  i, j),   flow,  conc</span>
+<span class="n">wellist_sp2</span><span class="o">.</span><span class="n">append</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">qwell1</span><span class="p">,</span> <span class="n">cwell0</span><span class="p">])</span>  <span class="c1"># Injection well</span>
+<span class="n">wellist_sp2</span><span class="o">.</span><span class="n">append</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">qwell2</span><span class="p">,</span> <span class="n">cwell0</span><span class="p">])</span>  <span class="c1"># Pumping well</span>
+<span class="n">spd_mf6</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">wellist_sp1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">wellist_sp2</span><span class="p">}</span>
+
+<span class="c1"># Transport related</span>
+<span class="n">sconc</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">ath1</span> <span class="o">=</span> <span class="n">al</span> <span class="o">*</span> <span class="n">trpt</span>
+<span class="n">dmcoef</span> <span class="o">=</span> <span class="mf">90.0</span>  <span class="c1"># m^2/s</span>
+<span class="c1"># Time variables</span>
+<span class="n">perlen</span> <span class="o">=</span> <span class="p">[</span><span class="mf">365.0</span> <span class="o">*</span> <span class="mi">86400</span><span class="p">,</span> <span class="mf">365.0</span> <span class="o">*</span> <span class="mi">86400</span><span class="p">]</span>
+<span class="n">steady</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+<span class="n">nper</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">perlen</span><span class="p">)</span>
+<span class="n">nstp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">365</span><span class="p">,</span> <span class="mi">365</span><span class="p">]</span>
+<span class="n">tsmult</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="c1">#</span>
+<span class="n">sconc</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">c0</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">botm</span> <span class="o">=</span> <span class="p">[</span><span class="n">top</span> <span class="o">-</span> <span class="n">delz</span><span class="p">]</span>
+<span class="n">mixelm</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="c1"># Solver settings</span>
+<span class="n">nouter</span><span class="p">,</span> <span class="n">ninner</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">300</span>
+<span class="n">hclose</span><span class="p">,</span> <span class="n">rclose</span><span class="p">,</span> <span class="n">relax</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mf">1.0</span>
+<span class="n">percel</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># HMOC parameters</span>
+<span class="n">itrack</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">wd</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">dceps</span> <span class="o">=</span> <span class="mf">1.0e-5</span>
+<span class="n">nplane</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">npl</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">nph</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">npmin</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">npmax</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">dchmoc</span> <span class="o">=</span> <span class="mf">1.0e-3</span>
+<span class="n">nlsink</span> <span class="o">=</span> <span class="n">nplane</span>
+<span class="n">npsink</span> <span class="o">=</span> <span class="n">nph</span>
+<span class="n">nadvfd</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code block above loads variables and constants to define the actual model.  We will focus on how to conceptualize later on.</p>
+<div class="admonition-assumption admonition">
+<p class="admonition-title"><strong>Assumption</strong></p>
+<p>I have assumed that the code surrounds the entire model domain with no-flow cells; it’s what I would do in a general purpose program.  I don’t know and the <a class="reference external" href="https://pubs.usgs.gov/publication/tm6A57">MODFLOW6</a> report is kind of vague on the underlying technical approach; so I choose to make a guess and see how far I get - this is typical when learning how to operate a program, your mileage may vary</p>
+</div>
+<div class="admonition-update admonition">
+<p class="admonition-title"><em>Update</em></p>
+<p>The model indeed surrounds the computation domain with the equivalent of no-flow conditions as per</p>
+<p><img alt="" src="../../_images/noflow2.png" /></p>
+<p>Descriped on pg. 41 of <a class="reference external" href="https://pubs.usgs.gov/tm/06/a55/tm6a55.pdf">Documentation for the MODFLOW 6 Groundwater Flow Model, Ch 55, Book A6</a></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ibound</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[ 1,  1,  1,  1, -1, -1, -1],
+        [ 1,  1,  1,  1,  1,  1,  1],
+        [ 1,  1,  1,  1,  1,  1,  1],
+        [ 1,  1,  1,  1,  1,  1,  1],
+        [ 1,  1,  1,  1,  1,  1,  1],
+        [ 1,  1,  1,  1,  1,  1,  1],
+        [-1, -1, -1,  1,  1,  1,  1]]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="model-setup">
+<h2>Model setup<a class="headerlink" href="#model-setup" title="Link to this heading">#</a></h2>
+<p>Define functions to build models, write input files, and run the simulation.</p>
+<p><strong>Groundwater Flow Package Build</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Workspace and Executibles</span>
+<span class="c1">#binary = &quot;/home/sensei/ce-4363-webroot/ModflowExperimental/mf6-arm/mf6&quot;  # location on MY computer of the compiled modflow program</span>
+<span class="c1">#workarea = &quot;/home/sensei/ce-4363-webroot/ModflowExperimental/mf6-arm/mf6_moc1&quot; # location on MY computer to store files this example (directory must already exist)</span>
+<span class="c1">#workarea = workspace # location on MY computer to store files this example (directory must already exist)</span>
+
+<span class="n">binary</span> <span class="o">=</span> <span class="s2">&quot;/home/sensei/mfplayground/modflow-python/mf6.4.1_linux/bin/mf6&quot;</span>  <span class="c1"># location on AWS computer of the compiled modflow program</span>
+<span class="n">workarea</span> <span class="o">=</span> <span class="s2">&quot;/home/sensei/ce-5364-webroot/mfexperiments/mf6-ex2&quot;</span> <span class="c1"># location on MY computer to store files this example (directory must already exist)</span>
+
+
+<span class="c1"># Set Simulation Name(s)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;mf6_moc1&quot;</span>
+<span class="n">gwfname</span> <span class="o">=</span> <span class="s2">&quot;gwf-&quot;</span> <span class="o">+</span> <span class="n">name</span>
+<span class="n">gwtname</span> <span class="o">=</span> <span class="s2">&quot;gwt-&quot;</span> <span class="o">+</span> <span class="n">name</span>
+
+<span class="c1">##### FLOPY Build simulation framework ####</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">MFSimulation</span><span class="p">(</span>
+    <span class="n">sim_name</span><span class="o">=</span><span class="s2">&quot;sim-&quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">,</span> <span class="n">exe_name</span><span class="o">=</span><span class="n">binary</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;mf6&quot;</span><span class="p">,</span> <span class="n">sim_ws</span><span class="o">=</span><span class="n">workarea</span>
+<span class="p">)</span>
+<span class="c1">####### CREATED &quot;/home/sensei/ce-4363-webroot/ModflowExperimental/mf6-arm/mt3d_example9&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code block above sets paths to the binary (in my case a compiled MODFLOW6 object located at <code class="docutils literal notranslate"><span class="pre">/home/sensei/ce-4363-webroot/ModflowExperimental/mf6-arm/</span></code>.   The binary was built using the <code class="docutils literal notranslate"><span class="pre">make</span></code> utility operating on the <code class="docutils literal notranslate"><span class="pre">makefile</span></code> contained in <code class="docutils literal notranslate"><span class="pre">~path_to_source/mf6.4.1_linux/make</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">####### Instantiating MODFLOW 6 time discretization ########</span>
+<span class="n">tdis_rc</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nper</span><span class="p">):</span>
+    <span class="n">tdis_rc</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">perlen</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nstp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">tsmult</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowTdis</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">nper</span><span class="o">=</span><span class="n">nper</span><span class="p">,</span> <span class="n">perioddata</span><span class="o">=</span><span class="n">tdis_rc</span><span class="p">,</span> <span class="n">time_units</span><span class="o">=</span><span class="n">time_units</span><span class="p">);</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code block above sets the time stepping structure.  Units are supplied in the model constants already created. <code class="docutils literal notranslate"><span class="pre">perlen</span></code> is a list of period length in time units of a stress period. , <code class="docutils literal notranslate"><span class="pre">nstp</span></code> is a list of the number of time steps per period, tsmult is a list of time step multipliers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">####### Instantiating MODFLOW 6 groundwater flow model ########</span>
+<span class="c1"># Set Model Name (using same base name as the simulation)</span>
+<span class="n">model_nam_file</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.nam&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gwfname</span><span class="p">)</span>
+<span class="c1"># create MODFLOW6 flow model framework</span>
+<span class="n">gwf</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwf</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">modelname</span><span class="o">=</span><span class="n">gwfname</span><span class="p">,</span> <span class="n">save_flows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">model_nam_file</span><span class="o">=</span><span class="n">model_nam_file</span><span class="p">)</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code block above sets prefix of the flow model file names.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###### Instantiating MODFLOW 6 solver for flow model #######</span>
+<span class="c1"># Set Iterative Model Solution (choose solver parameters)</span>
+<span class="c1"># about IMS see: https://water.usgs.gov/nrp/gwsoftware/ModelMuse/Help/sms_sparse_matrix_solution_pac.htm</span>
+<span class="c1"># using defaults see: https://flopy.readthedocs.io/en/3.3.2/source/flopy.mf6.modflow.mfims.html</span>
+<span class="n">imsgwf</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowIms</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span>
+    <span class="n">print_option</span><span class="o">=</span><span class="s2">&quot;SUMMARY&quot;</span><span class="p">,</span>
+    <span class="n">outer_dvclose</span><span class="o">=</span><span class="n">hclose</span><span class="p">,</span>
+    <span class="n">outer_maximum</span><span class="o">=</span><span class="n">nouter</span><span class="p">,</span>
+    <span class="n">under_relaxation</span><span class="o">=</span><span class="s2">&quot;NONE&quot;</span><span class="p">,</span>
+    <span class="n">inner_maximum</span><span class="o">=</span><span class="n">ninner</span><span class="p">,</span>
+    <span class="n">inner_dvclose</span><span class="o">=</span><span class="n">hclose</span><span class="p">,</span>
+    <span class="n">rcloserecord</span><span class="o">=</span><span class="n">rclose</span><span class="p">,</span>
+    <span class="n">linear_acceleration</span><span class="o">=</span><span class="s2">&quot;CG&quot;</span><span class="p">,</span>
+    <span class="n">scaling_method</span><span class="o">=</span><span class="s2">&quot;NONE&quot;</span><span class="p">,</span>
+    <span class="n">reordering_method</span><span class="o">=</span><span class="s2">&quot;NONE&quot;</span><span class="p">,</span>
+    <span class="n">relaxation_factor</span><span class="o">=</span><span class="n">relax</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.ims&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">register_ims_package</span><span class="p">(</span><span class="n">imsgwf</span><span class="p">,</span> <span class="p">[</span><span class="n">gwf</span><span class="o">.</span><span class="n">name</span><span class="p">]);</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code block above sets the iteration and solver parameters.  URL to documents is included in the comments.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###### Instantiating MODFLOW 6 discretization package ######</span>
+<span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfdis</span><span class="p">(</span>
+    <span class="n">gwf</span><span class="p">,</span>
+    <span class="n">length_units</span><span class="o">=</span><span class="n">length_units</span><span class="p">,</span>
+    <span class="n">nlay</span><span class="o">=</span><span class="n">nlay</span><span class="p">,</span>
+    <span class="n">nrow</span><span class="o">=</span><span class="n">nrow</span><span class="p">,</span>
+    <span class="n">ncol</span><span class="o">=</span><span class="n">ncol</span><span class="p">,</span>
+    <span class="n">delr</span><span class="o">=</span><span class="n">delr</span><span class="p">,</span>
+    <span class="n">delc</span><span class="o">=</span><span class="n">delc</span><span class="p">,</span>
+    <span class="n">top</span><span class="o">=</span><span class="n">top</span><span class="p">,</span>
+    <span class="n">botm</span><span class="o">=</span><span class="n">botm</span><span class="p">,</span>
+    <span class="n">idomain</span><span class="o">=</span><span class="n">idomain</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.dis&quot;</span><span class="p">,</span>
+    <span class="p">);</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code block above sets the spatial structure.  We must supply layers, rows, columns, and spacing between rows and columns (i.e. how big is a pixel).  Vertical spacing computed as</p>
+<div class="math notranslate nohighlight">
+\[\Delta z = \frac{\text{top}-\text{bottom}}{\text{number of layers}}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###### Instantiating MODFLOW 6 initial conditions package for flow model #######</span>
+<span class="n">strt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nlay</span><span class="p">,</span> <span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">strt</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="c1"># set top row t0 100</span>
+<span class="n">xc</span> <span class="o">=</span> <span class="n">gwf</span><span class="o">.</span><span class="n">modelgrid</span><span class="o">.</span><span class="n">xcellcenters</span>
+<span class="n">strt</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">80.0</span> <span class="c1"># set bottom row to 80</span>
+<span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfic</span><span class="p">(</span><span class="n">gwf</span><span class="p">,</span> <span class="n">strt</span><span class="o">=</span><span class="n">strt</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.ic&quot;</span><span class="p">)</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>package_name = ic
+filename = gwf-mf6_moc1.ic
+package_type = ic
+model_or_simulation_package = model
+model_name = gwf-mf6_moc1
+
+Block griddata
+--------------------
+strt
+{internal}
+(array([[[  0.,   0.,   0.,   0., 100., 100., 100.],
+        [  0.,   0.,   0.,   0.,   0.,   0.,   0.],
+        [  0.,   0.,   0.,   0.,   0.,   0.,   0.],
+        [  0.,   0.,   0.,   0.,   0.,   0.,   0.],
+        [  0.,   0.,   0.,   0.,   0.,   0.,   0.],
+        [  0.,   0.,   0.,   0.,   0.,   0.,   0.],
+        [ 80.,  80.,  80.,   0.,   0.,   0.,   0.]]]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code block above sets the initial conditions. The top row in this example is set to 100, the bottom row to 80.0.  If there are other starting conditions either write code or read from a file, or hard-code the constants as needed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiating MODFLOW 6 node-property flow package</span>
+<span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfnpf</span><span class="p">(</span>
+    <span class="n">gwf</span><span class="p">,</span>
+    <span class="n">save_flows</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">icelltype</span><span class="o">=</span><span class="n">icelltype</span><span class="p">,</span>
+    <span class="n">k</span><span class="o">=</span><span class="n">hk</span><span class="p">,</span>
+    <span class="n">k33</span><span class="o">=</span><span class="n">hk</span><span class="p">,</span>
+    <span class="n">save_specific_discharge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.npf&quot;</span><span class="p">,</span>
+    <span class="p">);</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code block above sets the node-property data (its like the old BCF package).  Here we supply that we want to save sp. discharge (needed for transport), the k, and k33 values the same implies NOT unconfined sustem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate storage package</span>
+<span class="n">sto</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfsto</span><span class="p">(</span><span class="n">gwf</span><span class="p">,</span> <span class="n">ss</span><span class="o">=</span><span class="mf">1.0e-05</span><span class="p">);</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code block above sets the storage properties for transient simulations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiating MODFLOW 6 constant head package</span>
+<span class="c1"># MF6 constant head boundaries:</span>
+<span class="n">chdspd</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># Loop through the top &amp; bottom sides.</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">):</span>
+        <span class="c1">#               l,  r, c,  head, conc</span>
+    <span class="n">chdspd</span><span class="o">.</span><span class="n">append</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>  <span class="c1"># Top boundary</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">chdspd</span><span class="o">.</span><span class="n">append</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="mf">80.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>  <span class="c1"># Bottom boundary</span>
+<span class="n">chdspd</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">chdspd</span><span class="p">}</span>
+
+<span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfchd</span><span class="p">(</span>
+    <span class="n">gwf</span><span class="p">,</span>
+    <span class="n">maxbound</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">chdspd</span><span class="p">),</span>
+    <span class="n">stress_period_data</span><span class="o">=</span><span class="n">chdspd</span><span class="p">,</span>
+    <span class="n">save_flows</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">auxiliary</span><span class="o">=</span><span class="s2">&quot;CONCENTRATION&quot;</span><span class="p">,</span>
+    <span class="n">pname</span><span class="o">=</span><span class="s2">&quot;CHD-1&quot;</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.chd&quot;</span><span class="p">,</span>
+    <span class="p">);</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code block above sets the constant head boundary conditions.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I have intentionally supressed the well package for this example; it should still work because its MODULAR!</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiating MODFLOW 6 output control package for flow model</span>
+<span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfoc</span><span class="p">(</span>
+    <span class="n">gwf</span><span class="p">,</span>
+    <span class="n">head_filerecord</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.hds&quot;</span><span class="p">,</span>
+    <span class="n">budget_filerecord</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.bud&quot;</span><span class="p">,</span>
+    <span class="n">headprintrecord</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;COLUMNS&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;WIDTH&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="s2">&quot;DIGITS&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;GENERAL&quot;</span><span class="p">)],</span>
+    <span class="n">saverecord</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;HEAD&quot;</span><span class="p">,</span> <span class="s2">&quot;LAST&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;BUDGET&quot;</span><span class="p">,</span> <span class="s2">&quot;LAST&quot;</span><span class="p">)],</span>
+    <span class="n">printrecord</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;HEAD&quot;</span><span class="p">,</span> <span class="s2">&quot;LAST&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;BUDGET&quot;</span><span class="p">,</span> <span class="s2">&quot;LAST&quot;</span><span class="p">)],</span>
+    <span class="p">);</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code block above defines parts of output control.</p>
+<p><strong>Transport Package Building</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###### Instantiating MODFLOW 6 groundwater transport package ##########</span>
+<span class="n">gwtname</span> <span class="o">=</span> <span class="s2">&quot;gwt-&quot;</span> <span class="o">+</span> <span class="n">name</span>
+<span class="n">gwt</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">MFModel</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span>
+    <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;gwt6&quot;</span><span class="p">,</span>
+    <span class="n">modelname</span><span class="o">=</span><span class="n">gwtname</span><span class="p">,</span>
+    <span class="n">model_nam_file</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwtname</span><span class="si">}</span><span class="s2">.nam&quot;</span><span class="p">,</span>
+    <span class="p">)</span><span class="c1">#;</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+<span class="n">gwt</span><span class="o">.</span><span class="n">name_file</span><span class="o">.</span><span class="n">save_flows</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code block above sets prefix of the transport model file names.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create iterative model solution and register the gwt model with it</span>
+<span class="n">imsgwt</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowIms</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span>
+    <span class="n">print_option</span><span class="o">=</span><span class="s2">&quot;SUMMARY&quot;</span><span class="p">,</span>
+    <span class="n">outer_dvclose</span><span class="o">=</span><span class="n">hclose</span><span class="p">,</span>
+    <span class="n">outer_maximum</span><span class="o">=</span><span class="n">nouter</span><span class="p">,</span>
+    <span class="n">under_relaxation</span><span class="o">=</span><span class="s2">&quot;NONE&quot;</span><span class="p">,</span>
+    <span class="n">inner_maximum</span><span class="o">=</span><span class="n">ninner</span><span class="p">,</span>
+    <span class="n">inner_dvclose</span><span class="o">=</span><span class="n">hclose</span><span class="p">,</span>
+    <span class="n">rcloserecord</span><span class="o">=</span><span class="n">rclose</span><span class="p">,</span>
+    <span class="n">linear_acceleration</span><span class="o">=</span><span class="s2">&quot;BICGSTAB&quot;</span><span class="p">,</span>
+    <span class="n">scaling_method</span><span class="o">=</span><span class="s2">&quot;NONE&quot;</span><span class="p">,</span>
+    <span class="n">reordering_method</span><span class="o">=</span><span class="s2">&quot;NONE&quot;</span><span class="p">,</span>
+    <span class="n">relaxation_factor</span><span class="o">=</span><span class="n">relax</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwtname</span><span class="si">}</span><span class="s2">.ims&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">register_ims_package</span><span class="p">(</span><span class="n">imsgwt</span><span class="p">,</span> <span class="p">[</span><span class="n">gwt</span><span class="o">.</span><span class="n">name</span><span class="p">])</span><span class="c1">#;</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code block above sets the iteration and solver parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###### Instantiating MODFLOW 6 transport discretization package #####</span>
+<span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwtdis</span><span class="p">(</span>
+    <span class="n">gwt</span><span class="p">,</span>
+    <span class="n">nlay</span><span class="o">=</span><span class="n">nlay</span><span class="p">,</span>
+    <span class="n">nrow</span><span class="o">=</span><span class="n">nrow</span><span class="p">,</span>
+    <span class="n">ncol</span><span class="o">=</span><span class="n">ncol</span><span class="p">,</span>
+    <span class="n">delr</span><span class="o">=</span><span class="n">delr</span><span class="p">,</span>
+    <span class="n">delc</span><span class="o">=</span><span class="n">delc</span><span class="p">,</span>
+    <span class="n">top</span><span class="o">=</span><span class="n">top</span><span class="p">,</span>
+    <span class="n">botm</span><span class="o">=</span><span class="n">botm</span><span class="p">,</span>
+    <span class="n">idomain</span><span class="o">=</span><span class="n">idomain</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwtname</span><span class="si">}</span><span class="s2">.dis&quot;</span><span class="p">,</span>
+    <span class="p">);</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code block above sets the spatial structure.  We must supply layers, rows, columns, and spacing between rows and columns (i.e. how big is a pixel).  Vertical spacing computed as</p>
+<div class="math notranslate nohighlight">
+\[\Delta z = \frac{\text{top}-\text{bottom}}{\text{number of layers}}\]</div>
+<p>Typically will be same as flow model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiating MODFLOW 6 transport initial concentrations</span>
+<span class="n">sconc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nlay</span><span class="p">,</span> <span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">sconc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="c1"># set fuel spill row</span>
+<span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwtic</span><span class="p">(</span><span class="n">gwt</span><span class="p">,</span> <span class="n">strt</span><span class="o">=</span><span class="n">sconc</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwtname</span><span class="si">}</span><span class="s2">.ic&quot;</span><span class="p">)</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>package_name = ic
+filename = gwt-mf6_moc1.ic
+package_type = ic
+model_or_simulation_package = model
+model_name = gwt-mf6_moc1
+
+Block griddata
+--------------------
+strt
+{internal}
+(array([[[  0.,   0.,   0.,   0.,   0.,   0.,   0.],
+        [  0.,   0.,   0., 100., 100., 100., 100.],
+        [  0.,   0.,   0.,   0.,   0.,   0.,   0.],
+        [  0.,   0.,   0.,   0.,   0.,   0.,   0.],
+        [  0.,   0.,   0.,   0.,   0.,   0.,   0.],
+        [  0.,   0.,   0.,   0.,   0.,   0.,   0.],
+        [  0.,   0.,   0.,   0.,   0.,   0.,   0.]]]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Initial conditions (concentration) for transport.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># Instantiating MODFLOW 6 transport advection package</span>
+    <span class="k">if</span> <span class="n">mixelm</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">scheme</span> <span class="o">=</span> <span class="s2">&quot;UPSTREAM&quot;</span>
+    <span class="k">elif</span> <span class="n">mixelm</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">scheme</span> <span class="o">=</span> <span class="s2">&quot;TVD&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">()</span>
+    <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwtadv</span><span class="p">(</span><span class="n">gwt</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="n">scheme</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwtname</span><span class="si">}</span><span class="s2">.adv&quot;</span><span class="p">);</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Advective transport methods.  In this example upwind formulation with Total Variation Diminishing (TVD) flux limiters. A TVD formulation is a numerical method designed to ensure that the computed solution to a transport equation does not exhibit non-physical oscillations or spurious oscillations, particularly near discontinuities or steep gradients. This flux limitation is crucial for maintaining the accuracy and stability of the numerical solution in simulations involving advective transport, such as contaminant transport in groundwater models.</p>
+<p>Key points about TVD formulations:</p>
+<ul class="simple">
+<li><p>Purpose: TVD methods aim to prevent the introduction of oscillations or artifacts in the numerical solution that can arise from the discretization of the transport equation, especially in regions with sharp gradients or discontinuities.</p></li>
+<li><p>Techniques: TVD schemes use various strategies to achieve this, including modifying the standard discretization approaches, using flux limiters, or applying specific numerical flux functions that ensure the total variation of the solution is not increased.</p></li>
+<li><p>Applications: TVD methods are commonly used in computational fluid dynamics, meteorology, and environmental modeling where accurate representation of transport processes is essential. In groundwater modeling, TVD formulations help to ensure realistic simulation of contaminant transport and avoid numerical artifacts that could lead to incorrect predictions.</p></li>
+<li><p>Examples: Common TVD schemes include the TVD Runge-Kutta methods, TVD Lax-Wendroff schemes, and various other high-resolution schemes that incorporate flux limiters or other modifications to ensure total variation diminishing properties.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiating MODFLOW 6 transport dispersion package</span>
+<span class="k">if</span> <span class="n">al</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwtdsp</span><span class="p">(</span>
+        <span class="n">gwt</span><span class="p">,</span>
+        <span class="n">alh</span><span class="o">=</span><span class="n">al</span><span class="p">,</span> <span class="c1"># longitudinal</span>
+        <span class="n">ath1</span><span class="o">=</span><span class="n">ath1</span><span class="p">,</span> <span class="c1"># transverse</span>
+        <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwtname</span><span class="si">}</span><span class="s2">.dsp&quot;</span><span class="p">,</span>
+        <span class="p">);</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This code iniatiates the dispersion method with Longitudinal dispersivity  <span class="math notranslate nohighlight">\(a_l = 20.0~m\)</span> and the ratio of horizontal transverse to longitudinal dispersivity <span class="math notranslate nohighlight">\(trpt = 0.2\)</span>  In the above script <span class="math notranslate nohighlight">\(a_t = trpt \times a_l\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiating MODFLOW 6 transport mass storage package</span>
+<span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwtmst</span><span class="p">(</span>
+    <span class="n">gwt</span><span class="p">,</span>
+    <span class="n">porosity</span><span class="o">=</span><span class="n">prsity</span><span class="p">,</span>
+    <span class="n">first_order_decay</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">decay</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">decay_sorbed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">sorption</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">bulk_density</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">distcoef</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwtname</span><span class="si">}</span><span class="s2">.mst&quot;</span><span class="p">,</span>
+    <span class="p">);</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Code block sets adsorbtion/desorbtion and 1st order decay terms if any.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiating MODFLOW 6 transport source-sink mixing package</span>
+<span class="c1">#sourcerecarray = [</span>
+ <span class="c1">#   (&quot;WEL-1&quot;, &quot;AUX&quot;, &quot;CONCENTRATION&quot;),</span>
+  <span class="c1">#  (&quot;CHD-1&quot;, &quot;AUX&quot;, &quot;CONCENTRATION&quot;),</span>
+   <span class="c1"># ]</span>
+<span class="n">sourcerecarray</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;CHD-1&quot;</span><span class="p">,</span> <span class="s2">&quot;AUX&quot;</span><span class="p">,</span> <span class="s2">&quot;CONCENTRATION&quot;</span><span class="p">),</span>
+    <span class="p">]</span>
+<span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwtssm</span><span class="p">(</span>
+    <span class="n">gwt</span><span class="p">,</span>
+    <span class="n">sources</span><span class="o">=</span><span class="n">sourcerecarray</span><span class="p">,</span>
+    <span class="n">print_flows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwtname</span><span class="si">}</span><span class="s2">.ssm&quot;</span><span class="p">,</span>
+    <span class="p">);</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Code above manages source/sink mixing terms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiating MODFLOW 6 transport output control package</span>
+<span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwtoc</span><span class="p">(</span>
+    <span class="n">gwt</span><span class="p">,</span>
+    <span class="n">budget_filerecord</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwtname</span><span class="si">}</span><span class="s2">.cbc&quot;</span><span class="p">,</span>
+    <span class="n">concentration_filerecord</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwtname</span><span class="si">}</span><span class="s2">.ucn&quot;</span><span class="p">,</span>
+    <span class="n">concentrationprintrecord</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;COLUMNS&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;WIDTH&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="s2">&quot;DIGITS&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;GENERAL&quot;</span><span class="p">)],</span>
+    <span class="n">saverecord</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;CONCENTRATION&quot;</span><span class="p">,</span> <span class="s2">&quot;LAST&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;BUDGET&quot;</span><span class="p">,</span> <span class="s2">&quot;LAST&quot;</span><span class="p">)],</span>
+    <span class="n">printrecord</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;CONCENTRATION&quot;</span><span class="p">,</span> <span class="s2">&quot;LAST&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;BUDGET&quot;</span><span class="p">,</span> <span class="s2">&quot;LAST&quot;</span><span class="p">)],</span>
+    <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwtname</span><span class="si">}</span><span class="s2">.oc&quot;</span><span class="p">,</span>
+    <span class="p">);</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Output control for transport</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiating MODFLOW 6 flow-transport exchange mechanism</span>
+<span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfgwt</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span>
+    <span class="n">exgtype</span><span class="o">=</span><span class="s2">&quot;GWF6-GWT6&quot;</span><span class="p">,</span>
+    <span class="n">exgmnamea</span><span class="o">=</span><span class="n">gwfname</span><span class="p">,</span>
+    <span class="n">exgmnameb</span><span class="o">=</span><span class="n">gwtname</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.gwfgwt&quot;</span><span class="p">,</span>
+    <span class="p">);</span>
+<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Code above manages how flow (gwf) and transport (gwt) exchange information at each time step.</p>
+<p><strong>Generate the Files</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span><span class="o">.</span><span class="n">write_simulation</span><span class="p">(</span><span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Running the Model</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#success, buff = sim.run_simulation(silent=False, report=True)#Verbose output</span>
+<span class="n">success</span><span class="p">,</span> <span class="n">buff</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run_simulation</span><span class="p">(</span><span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">report</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="c1">#Suppress output</span>
+<span class="k">assert</span> <span class="n">success</span><span class="p">,</span> <span class="n">pformat</span><span class="p">(</span><span class="n">buff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="plotting-results">
+<h3>Plotting results<a class="headerlink" href="#plotting-results" title="Link to this heading">#</a></h3>
+<p>Plotting model results.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Even more reverse engineering to produce plots; took a fair bit of reading on the mighty internet to hack these plots.  We will compare to the elderly USGS-MOC code for the same problem.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">mcolors</span>
+<span class="c1"># Figure properties</span>
+<span class="n">figure_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1"># Get the MF6 concentration output</span>
+<span class="n">gwt</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">model_names</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ucnobj_mf6</span> <span class="o">=</span> <span class="n">gwt</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">concentration</span><span class="p">()</span>
+<span class="n">conc_mf6</span> <span class="o">=</span> <span class="n">ucnobj_mf6</span><span class="o">.</span><span class="n">get_alldata</span><span class="p">()</span>
+
+
+<span class="c1"># Create figure for scenario</span>
+<span class="k">with</span> <span class="n">styles</span><span class="o">.</span><span class="n">USGSPlot</span><span class="p">()</span> <span class="k">as</span> <span class="n">fs</span><span class="p">:</span>
+    <span class="n">sim_name</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;lines.dashed_pattern&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">]</span>
+    <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">100.</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+    
+<span class="c1"># end stress period -1 (initial conditions)</span>
+<span class="c1">################################ Initial Conditions (notice the cflood object uses sconc array)#################</span>
+    <span class="n">axWasNone</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figure_size</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">axWasNone</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>  <span class="c1">### 2X2 Plot matrix, this is upper left</span>
+    <span class="n">cflood</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_less_equal</span><span class="p">(</span><span class="n">sconc</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">mm</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">PlotMapView</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">gwf</span><span class="p">)</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;RdYlGn_r&quot;</span><span class="p">))</span>
+    <span class="n">cmap</span><span class="o">.</span><span class="n">set_bad</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;saddlebrown&#39;</span><span class="p">,</span> <span class="s1">&#39;goldenrod&#39;</span><span class="p">]</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+    <span class="n">mm</span><span class="o">.</span><span class="n">plot_ibound</span><span class="p">()</span>
+    <span class="n">mm</span><span class="o">.</span><span class="n">plot_grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;.5&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;RdYlGn_r&quot;</span><span class="p">))</span>
+    <span class="n">cmap</span><span class="o">.</span><span class="n">set_bad</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="c1"># Adjust normalization to skew values towards green</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">mcolors</span><span class="o">.</span><span class="n">PowerNorm</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># Lower gamma pushes towards green</span>
+<span class="c1"># Plot using the adjusted normalization</span>
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">plot_array</span><span class="p">(</span><span class="n">cflood</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+<span class="c1"># Add a colorbar to the plot</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Concentration (ppm)&#39;</span><span class="p">)</span>  <span class="c1"># Replace with appropriate label for your data</span>
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">contour_array</span><span class="p">(</span><span class="n">sconc</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Distance Along X-Axis, in meters&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Distance Along Y-Axis, in meters&quot;</span><span class="p">)</span>
+
+    <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;MF6 - End of Stress Period &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># set idx</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">letter</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">styles</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="n">letter</span><span class="o">=</span><span class="n">letter</span><span class="p">,</span> <span class="n">heading</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<span class="c1">################################## Results From Simulation ##########################    </span>
+<span class="c1"># end stress period 0</span>
+    <span class="n">stp_idx</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 0-based (out of 2 possible stress periods)</span>
+    <span class="n">axWasNone</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span> <span class="c1">### 2X2 Plot matrix, this is upper right</span>
+    <span class="n">cflood</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_less_equal</span><span class="p">(</span><span class="n">conc_mf6</span><span class="p">[</span><span class="n">stp_idx</span><span class="p">],</span> <span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">mm</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">PlotMapView</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">gwf</span><span class="p">)</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;RdYlGn_r&quot;</span><span class="p">))</span>
+    <span class="c1">#cmap = plt.get_cmap(&#39;RdYlGn_r&#39;)</span>
+    <span class="n">cmap</span><span class="o">.</span><span class="n">set_bad</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;saddlebrown&#39;</span><span class="p">,</span> <span class="s1">&#39;goldenrod&#39;</span><span class="p">]</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+    <span class="n">mm</span><span class="o">.</span><span class="n">plot_ibound</span><span class="p">()</span>
+    <span class="n">mm</span><span class="o">.</span><span class="n">plot_grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;.5&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;RdYlGn_r&quot;</span><span class="p">))</span>
+    <span class="n">cmap</span><span class="o">.</span><span class="n">set_bad</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="c1"># Adjust normalization to skew values towards green</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">mcolors</span><span class="o">.</span><span class="n">PowerNorm</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># Lower gamma pushes towards green</span>
+<span class="c1"># Plot using the adjusted normalization</span>
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">plot_array</span><span class="p">(</span><span class="n">cflood</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+<span class="c1"># Add a colorbar to the plot</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Concentration (ppm)&#39;</span><span class="p">)</span>  <span class="c1"># Replace with appropriate label for your data</span>
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">contour_array</span><span class="p">(</span><span class="n">conc_mf6</span><span class="p">[</span><span class="n">stp_idx</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Distance Along X-Axis, in meters&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Distance Along Y-Axis, in meters&quot;</span><span class="p">)</span>
+
+    <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;MF6 - End of Stress Period &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stp_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># set idx</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">letter</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">styles</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="n">letter</span><span class="o">=</span><span class="n">letter</span><span class="p">,</span> <span class="n">heading</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+    
+<span class="c1"># end stress period 1</span>
+    <span class="n">stp_idx</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># 0-based (out of 2 possible stress periods)</span>
+    <span class="k">if</span> <span class="n">axWasNone</span><span class="p">:</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;subplot2&quot;</span><span class="p">)</span> <span class="c1">### 2X2 Plot matrix, this is lower left</span>
+    <span class="n">cflood</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_less_equal</span><span class="p">(</span><span class="n">conc_mf6</span><span class="p">[</span><span class="n">stp_idx</span><span class="p">],</span> <span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">mm</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">PlotMapView</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">gwf</span><span class="p">)</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;saddlebrown&#39;</span><span class="p">,</span> <span class="s1">&#39;goldenrod&#39;</span><span class="p">]</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+    <span class="n">mm</span><span class="o">.</span><span class="n">plot_ibound</span><span class="p">()</span>
+    <span class="n">mm</span><span class="o">.</span><span class="n">plot_grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;.5&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;RdYlGn_r&quot;</span><span class="p">))</span>
+    <span class="n">cmap</span><span class="o">.</span><span class="n">set_bad</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="c1"># Adjust normalization to skew values towards green</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">mcolors</span><span class="o">.</span><span class="n">PowerNorm</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># Lower gamma pushes towards green</span>
+<span class="c1"># Plot using the adjusted normalization</span>
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">plot_array</span><span class="p">(</span><span class="n">cflood</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+<span class="c1"># Add a colorbar to the plot</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Concentration (ppm)&#39;</span><span class="p">)</span>  <span class="c1"># Replace with appropriate label for your data</span>
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">contour_array</span><span class="p">(</span><span class="n">conc_mf6</span><span class="p">[</span><span class="n">stp_idx</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Distance Along X-Axis, in meters&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Distance Along Y-Axis, in meters&quot;</span><span class="p">)</span>
+
+    <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;MF6 - End of Stress Period &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stp_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># set idx</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">letter</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">styles</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="n">letter</span><span class="o">=</span><span class="n">letter</span><span class="p">,</span> <span class="n">heading</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<span class="c1">### 2X2 Plot matrix, lower right is null</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/cbfd540c5a2cb6288105ab29a669acee97fc7eb73a0bacfe5191ebca9eca378e.png" src="../../_images/cbfd540c5a2cb6288105ab29a669acee97fc7eb73a0bacfe5191ebca9eca378e.png" />
+</div>
+</div>
+<p>The plume “color map” is overlain on the computational grid, and is set to opaque (not transparent).  The color ramp is and inverted GreenYellowRed.  The scale bar is distorted to emphasize concentrations bigger than 10.0 ppm in the plot call. High values render as red, lowest as green, the white cells are strict zero (there is no constituient mass in those cells yet.</p>
+</section>
+</section>
+<section id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Link to this heading">#</a></h2>
+<p>Reverse engineered enough to be able to model reasonably complex situations.  The reader should experiment how to get specific discharge out of the model and plot as a “arrow plot” to show flow directions.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/07mf6.model"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-model">Conceptual model:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-setup">Initial setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-parameters">Define parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">Model setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-results">Plotting results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Theodore G. Cleveland, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
