@@ -1,0 +1,1523 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; Groundwater Transport Phenomena</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03site.mapping.tools/exercise/ce5364-es3-2025-3-WS';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/gwtransport.png" class="logo__image only-light" alt="Groundwater Transport Phenomena - Home"/>
+    <script>document.write(`<img src="../../../_static/gwtransport.png" class="logo__image only-dark" alt="Groundwater Transport Phenomena - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../00syllabus/ce5364-syllabus-2025-3.html">0. Syllabus (Fall 2025)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../00introduction/00introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../01fundamentals/01fundamentals.science.html">2. Fundamentals I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../01fundamentals/01fundamentals.practice.html">3. Fundamentals II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02regulatory.overview/regulatory.overview.html">3. Regulatory Overview and Risk Assessment</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../site.mapping.tools.html">5. Site Mapping Tools</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../03site.characterization/site.characterization.html">6. Site Characterization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04physical.transport/physical.transport.html">7. Physical Transport</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../04physical.transport/modeling.advection.html">8. Modeling Advection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05analytical.models1d/05analytical.models1d.html">9. Analytical Solutions (1D)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../05analytical.solutions2d/05analytical.solutions2d.html">10. Analytical Solutions (2D)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../06reactive.transport/06reactive.transport.html">11. Reactive Transport</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../07mf6.model/07mf6.introduction.html">12. MODFLOW6 Introduction</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../07mf6.model/07mf6.transport.html">13. MODFLOW6 Transport</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/03site.mapping.tools/exercise/ce5364-es3-2025-3-WS.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/chapters/03site.mapping.tools/exercise/ce5364-es3-2025-3-WS.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p>CE 5364 – Groundwater Transport Phenomena FALL 2025</p>
+<p>Exercise Set 3</p>
+<p>Exercises</p>
+<ol class="arabic simple">
+<li><p>Figure 1 below depicts the general area where the Spill-O-Rama industrial manufacturing
+plant operates, among other things Spill-O-Rama manufactures titanium knee replace-
+ments, using proprietary techniques. The golf course is about 5000 meters west of the
+plant boundary. The golf course opened about 1980, around the same time as the plant
+began operations.</p></li>
+</ol>
+<p><img alt="" src="../../../_images/site_map_homework1.png" /></p>
+<p>Figure 2 below is a detail map of the plant itself showing the locations of monitoring wells
+(MW) and a pumping well (PW).</p>
+<p><img alt="" src="../../../_images/site_map_homework2.png" /></p>
+<p><strong>Determine:</strong></p>
+<p><strong>(a)</strong> Estimate the regional groundwater flow direction from the monitoring wells.</p>
+<p>A script to determine groundwater flow direction from the MW information is listed below.  It may look complicated, but it simply takes as input the xyz coordinates of the monitoring wells (z == head), solves the equation of a plane defined by the three points.  Then plots the points on a map.   It is reasonably generic, but I have modified some bits specific to the supplied test case.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">points_to_plane_plot.py</span>
+
+<span class="sd">Given three named 3D points (name, x, y, z), solve for the plane</span>
+<span class="sd">z(x,y) = a x + b y + c where (a, b) is the hydraulic gradient,</span>
+<span class="sd">then produce a plot of the three (x,y) points with:</span>
+<span class="sd">  - unit aspect ratio,</span>
+<span class="sd">  - ~10% padded limits,</span>
+<span class="sd">  - centroid marker,</span>
+<span class="sd">  - a single arrow from centroid in the (a, b) direction,</span>
+<span class="sd">  - optional contours of z(x,y),</span>
+<span class="sd">  - optional quiver (uniform gradient field).</span>
+
+<span class="sd">Usage examples</span>
+<span class="sd">--------------</span>
+<span class="sd"># Three points via flags (repeat --point three times)</span>
+<span class="sd">python points_to_plane_plot.py \</span>
+<span class="sd">  --point P1 0 0 100 \</span>
+<span class="sd">  --point P2 10 0 98 \</span>
+<span class="sd">  --point P3 0 10 97.5 \</span>
+<span class="sd">  --contours 10 --quiver 10 --save plane_plot.png</span>
+
+<span class="sd"># Same but just show interactively</span>
+<span class="sd">python points_to_plane_plot.py --point A 0 0 0 --point B 1 0 -1 --point C 0 1 -1</span>
+
+<span class="sd"># From CSV (name,x,y,z with header or headerless):</span>
+<span class="sd">#   P1,0,0,100</span>
+<span class="sd">#   P2,10,0,98</span>
+<span class="sd">#   P3,0,10,97.5</span>
+<span class="sd">python points_to_plane_plot.py --csv points.csv --contours 8 --quiver 12</span>
+
+<span class="sd">Notes</span>
+<span class="sd">-----</span>
+<span class="sd">- If points imply a vertical/near-vertical plane (not representable as z=ax+by+c),</span>
+<span class="sd">  the solve will fail with a clear message.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">Point</span> <span class="o">=</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+
+<span class="c1"># ---------- Math core ----------</span>
+<span class="k">def</span> <span class="nf">solve_plane_axy_plus_by_plus_c</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Point</span><span class="p">],</span> <span class="n">rtol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-12</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Solve z(x,y) = a x + b y + c from exactly three points (name, x, y, z).</span>
+<span class="sd">    Returns (a, b, c). Here (a, b) is the hydraulic gradient.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Provide exactly three points.&quot;</span><span class="p">)</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">zs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="c1"># Build system: [x y 1] [a b c]^T = z</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)])</span>
+    <span class="n">rank</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="n">rtol</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">rank</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Cannot represent the plane as z = a x + b y + c.</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;The points likely imply a vertical/near-vertical plane or duplicate (x,y).&quot;</span>
+        <span class="p">)</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">zs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="c1"># ---------- Plotting ----------</span>
+<span class="k">def</span> <span class="nf">plot_xy_with_overlays</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Point</span><span class="p">],</span>
+                          <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                          <span class="n">arrow_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.10</span><span class="p">,</span>
+                          <span class="n">pad_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.10</span><span class="p">,</span>
+                          <span class="n">contour_levels</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">quiver_grid</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Points with Plane Contours and Gradient Overlays&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make the requested plot with unit aspect, padding, centroid/arrow, optional contours &amp; quiver.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    arrow_frac : fraction of max(xspan, yspan) used for the centroid arrow length (default 0.10)</span>
+<span class="sd">    pad_frac   : fractional padding added to min/max limits (default 0.10)</span>
+<span class="sd">    contour_levels : None (no contours), int (#levels), or explicit list of levels</span>
+<span class="sd">    quiver_grid : None (no quiver) or number of vectors per axis</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">zs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="c1"># Centroid and spans</span>
+    <span class="n">X0</span><span class="p">,</span> <span class="n">Y0</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">ys</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">xspan</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">xs</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">yspan</span> <span class="o">=</span> <span class="n">ys</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">ys</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">span</span>  <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">xspan</span><span class="p">,</span> <span class="n">yspan</span><span class="p">,</span> <span class="mf">1e-12</span><span class="p">)</span>
+    <span class="n">pad</span>   <span class="o">=</span> <span class="n">pad_frac</span> <span class="o">*</span> <span class="n">span</span>
+    <span class="c1"># Generic sizing</span>
+    <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">xs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">pad</span>
+    <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">ys</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">ys</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">pad</span>
+    <span class="c1"># Override sizing</span>
+<span class="c1">#    xmin, xmax = 0, 10000</span>
+<span class="c1">#    ymin, ymax = 0, 10000    </span>
+
+    <span class="c1"># Arrow length scale in (a,b) direction (-a,-b are gradient)</span>
+    <span class="n">norm_ab</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="p">(</span><span class="n">arrow_frac</span> <span class="o">*</span> <span class="n">span</span><span class="p">)</span> <span class="o">/</span> <span class="n">norm_ab</span> <span class="k">if</span> <span class="n">norm_ab</span> <span class="o">&gt;</span> <span class="mf">1e-15</span> <span class="k">else</span> <span class="mf">0.0</span>
+    <span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span> <span class="o">=</span> <span class="n">X0</span> <span class="o">-</span> <span class="n">a</span> <span class="o">*</span> <span class="n">D</span><span class="p">,</span> <span class="n">Y0</span> <span class="o">-</span> <span class="n">b</span> <span class="o">*</span> <span class="n">D</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.8</span><span class="p">,</span> <span class="mf">6.8</span><span class="p">))</span>
+
+    <span class="c1"># Points &amp; triangle</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Points&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">ys</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+    <span class="c1"># Centroid and arrow</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">X0</span><span class="p">],</span> <span class="p">[</span><span class="n">Y0</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Centroid&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">X0</span><span class="p">,</span> <span class="n">Y0</span><span class="p">),</span>
+                <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hyd. grad. ≈ (</span><span class="si">{</span><span class="o">-</span><span class="n">a</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="o">-</span><span class="n">b</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span><span class="p">),</span>
+                <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+    <span class="c1"># Contours of z = a x + b y + c</span>
+    <span class="k">if</span> <span class="n">contour_levels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">gx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">201</span><span class="p">)</span>
+        <span class="n">gy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="mi">201</span><span class="p">)</span>
+        <span class="n">XX</span><span class="p">,</span> <span class="n">YY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">gx</span><span class="p">,</span> <span class="n">gy</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">)</span>
+        <span class="n">ZZ</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">XX</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">YY</span> <span class="o">+</span> <span class="n">c</span>
+        <span class="n">cs</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">XX</span><span class="p">,</span> <span class="n">YY</span><span class="p">,</span> <span class="n">ZZ</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">contour_levels</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+    <span class="c1"># Quiver: constant field (a,b); normalize for clean visual</span>
+    <span class="k">if</span> <span class="n">quiver_grid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">norm_ab</span> <span class="o">&gt;</span> <span class="mf">1e-15</span><span class="p">:</span>
+        <span class="n">qx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">quiver_grid</span><span class="p">)</span>
+        <span class="n">qy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">quiver_grid</span><span class="p">)</span>
+        <span class="n">QX</span><span class="p">,</span> <span class="n">QY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">)</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span> <span class="n">norm_ab</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span> <span class="o">/</span> <span class="n">norm_ab</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="mf">0.07</span> <span class="o">*</span> <span class="n">span</span>  <span class="c1"># vector length ~7% of span</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">QX</span><span class="p">,</span> <span class="n">QY</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">scale</span><span class="p">,</span>
+                  <span class="n">width</span><span class="o">=</span><span class="mf">0.003</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Gradient field&quot;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Easting (meters)&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Northing (meters)&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">adjustable</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
+<span class="c1"># manual override limits</span>
+<span class="c1">#    ax.set_xlim(0, 10000)  # Manual Override </span>
+<span class="c1">#    ax.set_ylim(0, 10000)  # Manual Override </span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="c1">#    ax.legend(loc=&quot;best&quot;, framealpha=0.9)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">framealpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
+
+<span class="c1"># ---------- I/O helpers ----------</span>
+<span class="k">def</span> <span class="nf">read_points_from_csv</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Point</span><span class="p">]:</span>
+    <span class="n">points</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Point</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">rdr</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rdr</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">row</span> <span class="ow">or</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="c1"># Try to detect header: name,x,y,z</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;x&quot;</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span> <span class="n">z</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+            <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CSV must contain exactly 3 points; got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">points</span>
+
+<span class="k">def</span> <span class="nf">parse_args</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">:</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Solve z=a x + b y + c from 3 points and plot overlays.&quot;</span><span class="p">)</span>
+    <span class="n">src</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">add_mutually_exclusive_group</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">src</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--csv&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;CSV file with rows: name,x,y,z (header ok).&quot;</span><span class="p">)</span>
+    <span class="n">src</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--point&quot;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;append&quot;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span><span class="s2">&quot;Z&quot;</span><span class="p">),</span>
+                     <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Specify a point (repeat exactly three times).&quot;</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--contours&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                   <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Contour levels: integer (e.g., 10) or comma list (e.g., 95,96,97).&quot;</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--quiver&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                   <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Quiver grid size (e.g., 10). Omit for no quiver.&quot;</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--arrow-frac&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span>
+                   <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Centroid arrow length as fraction of plot span (default 0.10).&quot;</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--pad-frac&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span>
+                   <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Axis padding as fraction of span (default 0.10).&quot;</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--save&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to save the figure (e.g., out.png).&quot;</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--title&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;Points with Plane Contours and Gradient Overlays&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">coerce_points_from_args</span><span class="p">(</span><span class="n">ns</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Point</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">ns</span><span class="o">.</span><span class="n">csv</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">read_points_from_csv</span><span class="p">(</span><span class="n">ns</span><span class="o">.</span><span class="n">csv</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">ns</span><span class="o">.</span><span class="n">point</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ns</span><span class="o">.</span><span class="n">point</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Provide exactly three --point entries; got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ns</span><span class="o">.</span><span class="n">point</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="n">pts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Point</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">sx</span><span class="p">,</span> <span class="n">sy</span><span class="p">,</span> <span class="n">sz</span> <span class="ow">in</span> <span class="n">ns</span><span class="o">.</span><span class="n">point</span><span class="p">:</span>
+        <span class="n">pts</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">sx</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">sy</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">sz</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">pts</span>
+
+<span class="k">def</span> <span class="nf">parse_contour_levels</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="c1"># integer?</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="c1"># list</span>
+    <span class="n">levels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">tok</span><span class="p">)</span> <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">tok</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">levels</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">levels</span>
+
+<span class="c1"># ---------- Main ----------</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">ns</span> <span class="o">=</span> <span class="n">parse_args</span><span class="p">()</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">coerce_points_from_args</span><span class="p">(</span><span class="n">ns</span><span class="p">)</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">solve_plane_axy_plus_by_plus_c</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;a = </span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, b = </span><span class="si">{</span><span class="n">b</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, c = </span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hydraulic gradient x component == </span><span class="si">{</span><span class="o">-</span><span class="n">a</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hydraulic gradient y component == </span><span class="si">{</span><span class="o">-</span><span class="n">b</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Plane: z(x,y) = </span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> x + </span><span class="si">{</span><span class="n">b</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> y + </span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">levels</span> <span class="o">=</span> <span class="n">parse_contour_levels</span><span class="p">(</span><span class="n">ns</span><span class="o">.</span><span class="n">contours</span><span class="p">)</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_xy_with_overlays</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span>
+                                    <span class="n">arrow_frac</span><span class="o">=</span><span class="n">ns</span><span class="o">.</span><span class="n">arrow_frac</span><span class="p">,</span>
+                                    <span class="n">pad_frac</span><span class="o">=</span><span class="n">ns</span><span class="o">.</span><span class="n">pad_frac</span><span class="p">,</span>
+                                    <span class="n">contour_levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span>
+                                    <span class="n">quiver_grid</span><span class="o">=</span><span class="n">ns</span><span class="o">.</span><span class="n">quiver</span><span class="p">,</span>
+                                    <span class="n">title</span><span class="o">=</span><span class="n">ns</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ns</span><span class="o">.</span><span class="n">save</span><span class="p">:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">ns</span><span class="o">.</span><span class="n">save</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved figure to: </span><span class="si">{</span><span class="n">ns</span><span class="o">.</span><span class="n">save</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="c1">### SUPPLY MW DATA AS A LIST OF TUPLES ###</span>
+    <span class="n">pts</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;MW-1&quot;</span><span class="p">,</span> <span class="mf">8300.0</span><span class="p">,</span> <span class="mf">7800.0</span><span class="p">,</span> <span class="mf">81.0</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;MW-2&quot;</span><span class="p">,</span> <span class="mf">8900.0</span><span class="p">,</span> <span class="mf">7580.0</span><span class="p">,</span> <span class="mf">80.0</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;MW-3&quot;</span><span class="p">,</span> <span class="mf">8500.0</span><span class="p">,</span> <span class="mf">6100.0</span><span class="p">,</span> <span class="mf">85.0</span><span class="p">),</span>
+    <span class="p">]</span>
+<span class="c1">### EQUATION OF THE PLANE ###</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">solve_plane_axy_plus_by_plus_c</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;a=</span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, b=</span><span class="si">{</span><span class="n">b</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, c=</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hydraulic gradient x component == </span><span class="si">{</span><span class="o">-</span><span class="n">a</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hydraulic gradient y component == </span><span class="si">{</span><span class="o">-</span><span class="n">b</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">### GENERATE PRETTY PLOT ###</span>
+    <span class="c1"># manual adjust in plotting function to extend plot area</span>
+    <span class="n">myTitle</span> <span class="o">=</span> <span class="s2">&quot;Spill-O-Rama Groundwater Map with Flow Directions&quot;</span>
+    <span class="n">plot_xy_with_overlays</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">arrow_frac</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span> <span class="n">pad_frac</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span><span class="n">contour_levels</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span><span class="n">quiver_grid</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="n">myTitle</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a=-0.002643, b=-0.002664, c=123.719262
+Hydraulic gradient x component == 0.002643
+Hydraulic gradient y component == 0.002664
+</pre></div>
+</div>
+<img alt="../../../_images/a8aed26ac29a56ad6462ae2620b9e88621195f5f55f07706b144251207619481.png" src="../../../_images/a8aed26ac29a56ad6462ae2620b9e88621195f5f55f07706b144251207619481.png" />
+</div>
+</div>
+<p>The plot above indicates the flow direction, in terms of angle relative to the Easting axis:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">radians</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">atan</span><span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">a</span><span class="p">)</span>
+<span class="n">degrees</span> <span class="o">=</span> <span class="n">radians</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Flow direction : </span><span class="si">{</span><span class="n">degrees</span><span class="si">:</span><span class="s2">10.3</span><span class="si">}</span><span class="s2"> degrees above horizontal&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Flow direction :       45.2 degrees above horizontal
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>(b)</strong> Is the groundwater flow direction favorable for constituients to move from the golf
+course to the plant site?</p>
+<p>Yes. Groundwater flows about N44.8°E (i.e., 44.8° north of due east). Because the golf course lies southwest of the plant site, this flow direction points from the golf course toward the Spill-O-Rama location. Consequently, constituents originating at the golf course are expected to migrate toward—and may ultimately be captured by—the Spill-O-Rama well, acknowledging travel-time and aquifer-property uncertainties.</p>
+<p><strong>(c)</strong> Estimate the hydraulic conductivity based on the pumping test results.</p>
+<p>Here we will employ some model of the aquifer system.  While it is unconfined, the drawdowns are comparatively small, so we will use the Theis solution and build a modeling tool to find <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(S\)</span>, then divide the result for <span class="math notranslate nohighlight">\(T\)</span> by the “average” saturated thickness to approximate <span class="math notranslate nohighlight">\(K\)</span></p>
+<p>The distances from the PW1 to MW1, MW2, MW3 are estimated from the drawings.  Two scripts follow:</p>
+<ol class="arabic simple">
+<li><p>A pump test simulator that simply plots drawdown as a function of input guesses, and include markers for the observations.</p></li>
+<li><p>A refinement step to find solutions that minimize model and observation error.</p></li>
+</ol>
+<p>First the simulator:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pump Test Analysis</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">expn</span>  <span class="c1"># E1(u) = expn(1, u)</span>
+
+<span class="c1">### Prototype well functions (from CE 4363/5363 - also in the review materials)</span>
+<span class="k">def</span> <span class="nf">W</span><span class="p">(</span><span class="n">u</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Theis well function using exponential integral E1(u). u must be &gt; 0.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">expn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">theis_drawdown</span><span class="p">(</span><span class="n">r</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">S</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">T</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">Q</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    s(r,t) = (Q / (4*pi*T)) * W( u ), with u = r^2 * S / (4 * T * t)</span>
+<span class="sd">    Units must be consistent:</span>
+<span class="sd">      r [m], t [min], S [-], T [m^2/min], Q [m^3/min]  =&gt;  s [m]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="c1"># ensure no zero time</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;All times must be &gt; 0 for Theis (appears you have t&lt;=0).&quot;</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">S</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">*</span> <span class="n">T</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">Q</span> <span class="o">/</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">T</span><span class="p">))</span> <span class="o">*</span> <span class="n">W</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+
+<span class="c1"># --- Observed data (from the table) ---</span>
+<span class="n">time_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>  <span class="mi">1</span><span class="p">,</span>   <span class="mi">6</span><span class="p">,</span>  <span class="mi">12</span><span class="p">,</span>  <span class="mi">18</span><span class="p">,</span>  <span class="mi">24</span><span class="p">,</span>  <span class="mi">30</span><span class="p">,</span>  <span class="mi">60</span><span class="p">,</span>  <span class="mi">90</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">480</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">MW1_obs</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.02</span><span class="p">,</span><span class="mf">0.096</span><span class="p">,</span><span class="mf">0.18</span><span class="p">,</span><span class="mf">0.257</span><span class="p">,</span><span class="mf">0.326</span><span class="p">,</span><span class="mf">0.582</span><span class="p">,</span><span class="mf">0.752</span><span class="p">,</span><span class="mf">0.88</span><span class="p">,</span><span class="mf">1.202</span><span class="p">,</span><span class="mf">1.537</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">MW2_obs</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.015</span><span class="p">,</span><span class="mf">0.045</span><span class="p">,</span><span class="mf">0.082</span><span class="p">,</span><span class="mf">0.121</span><span class="p">,</span><span class="mf">0.298</span><span class="p">,</span><span class="mf">0.436</span><span class="p">,</span><span class="mf">0.546</span><span class="p">,</span><span class="mf">0.84</span><span class="p">,</span><span class="mf">1.16</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">MW3_obs</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.005</span><span class="p">,</span><span class="mf">0.012</span><span class="p">,</span><span class="mf">0.071</span><span class="p">,</span><span class="mf">0.143</span><span class="p">,</span><span class="mf">0.212</span><span class="p">,</span><span class="mf">0.433</span><span class="p">,</span><span class="mf">0.71</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># --- User-supplied guesses &amp; constants ---</span>
+<span class="n">dgpm</span> <span class="o">=</span> <span class="mi">100</span>                       <span class="c1"># pumping rate [gpm]</span>
+<span class="n">dcfm</span> <span class="o">=</span> <span class="n">dgpm</span> <span class="o">/</span> <span class="mf">7.48</span>               <span class="c1"># ft^3/min</span>
+<span class="n">dcmm</span> <span class="o">=</span> <span class="n">dcfm</span> <span class="o">/</span> <span class="p">(</span><span class="mf">3.28</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>          <span class="c1"># m^3/min  (since 1 m ≈ 3.28 ft)</span>
+<span class="n">discharge</span> <span class="o">=</span> <span class="n">dcmm</span>                 <span class="c1"># Q [m^3/min]</span>
+
+<span class="n">storage</span> <span class="o">=</span> <span class="mf">0.001</span>                <span class="c1"># S [-]      GUESS THIS VALUE</span>
+<span class="n">hydk</span>    <span class="o">=</span> <span class="mf">0.001</span>                <span class="c1"># K [m/min]  GUESS THIS VALUE</span>
+<span class="n">thick_b</span> <span class="o">=</span> <span class="mf">85.0</span>                  <span class="c1"># aquifer thickness b [m] GUESS THIS VALUE</span>
+<span class="n">transmissivity</span> <span class="o">=</span> <span class="n">hydk</span> <span class="o">*</span> <span class="n">thick_b</span>  <span class="c1"># T [m^2/min]</span>
+
+<span class="c1"># --- Distances well -&gt; monitoring points (REQUIRED; set these) ---</span>
+<span class="n">r1</span> <span class="o">=</span> <span class="mi">500</span>   <span class="c1"># distance to MW1 [m]</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="mi">750</span>   <span class="c1"># distance to MW2 [m]</span>
+<span class="n">r3</span> <span class="o">=</span> <span class="mi">1250</span>  <span class="c1"># distance to MW3 [m]</span>
+
+<span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">r</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span><span class="p">)):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Please set r1, r2, r3 (meters) before running.&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Simulate ---</span>
+<span class="n">MW1_sim</span> <span class="o">=</span> <span class="n">theis_drawdown</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">time_min</span><span class="p">,</span> <span class="n">storage</span><span class="p">,</span> <span class="n">transmissivity</span><span class="p">,</span> <span class="n">discharge</span><span class="p">)</span>
+<span class="n">MW2_sim</span> <span class="o">=</span> <span class="n">theis_drawdown</span><span class="p">(</span><span class="n">r2</span><span class="p">,</span> <span class="n">time_min</span><span class="p">,</span> <span class="n">storage</span><span class="p">,</span> <span class="n">transmissivity</span><span class="p">,</span> <span class="n">discharge</span><span class="p">)</span>
+<span class="n">MW3_sim</span> <span class="o">=</span> <span class="n">theis_drawdown</span><span class="p">(</span><span class="n">r3</span><span class="p">,</span> <span class="n">time_min</span><span class="p">,</span> <span class="n">storage</span><span class="p">,</span> <span class="n">transmissivity</span><span class="p">,</span> <span class="n">discharge</span><span class="p">)</span>
+
+<span class="c1"># --- Residual diagnostics ---</span>
+<span class="k">def</span> <span class="nf">ssr</span><span class="p">(</span><span class="n">y_obs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y_sim</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y_obs</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y_sim</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">r</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">rmse</span><span class="p">(</span><span class="n">y_obs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y_sim</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y_obs</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y_sim</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">r</span><span class="p">)))</span>
+
+<span class="n">ssr1</span><span class="p">,</span> <span class="n">ssr2</span><span class="p">,</span> <span class="n">ssr3</span> <span class="o">=</span> <span class="n">ssr</span><span class="p">(</span><span class="n">MW1_obs</span><span class="p">,</span> <span class="n">MW1_sim</span><span class="p">),</span> <span class="n">ssr</span><span class="p">(</span><span class="n">MW2_obs</span><span class="p">,</span> <span class="n">MW2_sim</span><span class="p">),</span> <span class="n">ssr</span><span class="p">(</span><span class="n">MW3_obs</span><span class="p">,</span> <span class="n">MW3_sim</span><span class="p">)</span>
+<span class="n">rmse1</span><span class="p">,</span> <span class="n">rmse2</span><span class="p">,</span> <span class="n">rmse3</span> <span class="o">=</span> <span class="n">rmse</span><span class="p">(</span><span class="n">MW1_obs</span><span class="p">,</span> <span class="n">MW1_sim</span><span class="p">),</span> <span class="n">rmse</span><span class="p">(</span><span class="n">MW2_obs</span><span class="p">,</span> <span class="n">MW2_sim</span><span class="p">),</span> <span class="n">rmse</span><span class="p">(</span><span class="n">MW3_obs</span><span class="p">,</span> <span class="n">MW3_sim</span><span class="p">)</span>
+<span class="n">ssr_total</span> <span class="o">=</span> <span class="n">ssr1</span> <span class="o">+</span> <span class="n">ssr2</span> <span class="o">+</span> <span class="n">ssr3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Params:  S=</span><span class="si">{</span><span class="n">storage</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">  K=</span><span class="si">{</span><span class="n">hydk</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2"> m/min  T=</span><span class="si">{</span><span class="n">transmissivity</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2"> m^2/min  Q=</span><span class="si">{</span><span class="n">discharge</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2"> m^3/min&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Radii:   r1=</span><span class="si">{</span><span class="n">r1</span><span class="si">}</span><span class="s2"> m, r2=</span><span class="si">{</span><span class="n">r2</span><span class="si">}</span><span class="s2"> m, r3=</span><span class="si">{</span><span class="n">r3</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SSR:     MW1=</span><span class="si">{</span><span class="n">ssr1</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">, MW2=</span><span class="si">{</span><span class="n">ssr2</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">, MW3=</span><span class="si">{</span><span class="n">ssr3</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">,  TOTAL=</span><span class="si">{</span><span class="n">ssr_total</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RMSE:    MW1=</span><span class="si">{</span><span class="n">rmse1</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">, MW2=</span><span class="si">{</span><span class="n">rmse2</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">, MW3=</span><span class="si">{</span><span class="n">rmse3</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Plot: observed vs simulated (y inverted). Choose linear or log x-axis. ---</span>
+<span class="n">use_log_time</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># set True for log-time plot</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="c1"># Observations</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_min</span><span class="p">,</span> <span class="n">MW1_obs</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MW1 obs&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_min</span><span class="p">,</span> <span class="n">MW2_obs</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MW2 obs&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_min</span><span class="p">,</span> <span class="n">MW3_obs</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MW3 obs&#39;</span><span class="p">)</span>
+<span class="c1"># Simulations</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_min</span><span class="p">,</span> <span class="n">MW1_sim</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MW1 sim&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_min</span><span class="p">,</span> <span class="n">MW2_sim</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MW2 sim&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_min</span><span class="p">,</span> <span class="n">MW3_sim</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MW3 sim&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (min)&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot; [log]&quot;</span> <span class="k">if</span> <span class="n">use_log_time</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Drawdown s (m)  (inverted axis)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Observed vs Theis Simulated Drawdown&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>  <span class="c1"># low values at top</span>
+<span class="k">if</span> <span class="n">use_log_time</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Params:  S=0.001  K=0.001 m/min  T=0.085 m^2/min  Q=0.378858 m^3/min
+Radii:   r1=500 m, r2=750 m, r3=1250 m
+SSR:     MW1=5.58681, MW2=2.64563, MW3=0.76219,  TOTAL=8.99464
+RMSE:    MW1=0.712666, MW2=0.49042, MW3=0.26323
+</pre></div>
+</div>
+<img alt="../../../_images/e1f4d411c4ab77438ba1b98ada766ffaf232cb4fad5d5285f7e9c5a42f672cfa.png" src="../../../_images/e1f4d411c4ab77438ba1b98ada766ffaf232cb4fad5d5285f7e9c5a42f672cfa.png" />
+</div>
+</div>
+<p>Next the optimizer, some notes:</p>
+<ul class="simple">
+<li><p>This is most inelegant, but it usually works.</p></li>
+<li><p>In a spreadsheet, we would use GRG2 tools. (In MS Excel its called the SOLVER Add-In)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">least_squares</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># --- keep your existing helpers and data in scope:</span>
+<span class="c1"># theis_drawdown(), time_min, MW1_obs, MW2_obs, MW3_obs,</span>
+<span class="c1"># discharge, thick_b, r1, r2, r3</span>
+
+<span class="c1"># Optional well weights (e.g., emphasize nearer well).</span>
+<span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">w3</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span>  <span class="c1"># tweak if desired</span>
+
+<span class="k">def</span> <span class="nf">residuals_log_params</span><span class="p">(</span><span class="n">theta_log10</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    theta_log10 = [log10(S), log10(K_m_per_min)]</span>
+<span class="sd">    Returns concatenated residuals for all wells (obs - sim) with optional weights.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">log10S</span><span class="p">,</span> <span class="n">log10K</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">theta_log10</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">theta_log10</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">**</span><span class="n">log10S</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">**</span><span class="n">log10K</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">K</span> <span class="o">*</span> <span class="n">thick_b</span>
+
+    <span class="c1"># simulate</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">theis_drawdown</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">time_min</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">discharge</span><span class="p">)</span>
+    <span class="n">s2</span> <span class="o">=</span> <span class="n">theis_drawdown</span><span class="p">(</span><span class="n">r2</span><span class="p">,</span> <span class="n">time_min</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">discharge</span><span class="p">)</span>
+    <span class="n">s3</span> <span class="o">=</span> <span class="n">theis_drawdown</span><span class="p">(</span><span class="n">r3</span><span class="p">,</span> <span class="n">time_min</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">discharge</span><span class="p">)</span>
+
+    <span class="c1"># residuals = observed - simulated (same sign as your SSR function)</span>
+    <span class="n">res1</span> <span class="o">=</span> <span class="n">w1</span> <span class="o">*</span> <span class="p">(</span><span class="n">MW1_obs</span> <span class="o">-</span> <span class="n">s1</span><span class="p">)</span>
+    <span class="n">res2</span> <span class="o">=</span> <span class="n">w2</span> <span class="o">*</span> <span class="p">(</span><span class="n">MW2_obs</span> <span class="o">-</span> <span class="n">s2</span><span class="p">)</span>
+    <span class="n">res3</span> <span class="o">=</span> <span class="n">w3</span> <span class="o">*</span> <span class="p">(</span><span class="n">MW3_obs</span> <span class="o">-</span> <span class="n">s3</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">res1</span><span class="p">,</span> <span class="n">res2</span><span class="p">,</span> <span class="n">res3</span><span class="p">])</span>
+
+<span class="c1"># --- Initial guesses (from your script) ---</span>
+<span class="n">S0</span> <span class="o">=</span> <span class="n">storage</span>              <span class="c1"># e.g., 1.2e-5</span>
+<span class="n">K0</span> <span class="o">=</span> <span class="n">hydk</span>                 <span class="c1"># e.g., 6.8e-4 m/min</span>
+<span class="n">theta0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">S0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">K0</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># --- Bounds in log10 space (adjust if you have prior knowledge)</span>
+<span class="c1"># S in [1e-8, 1e-1],  K (m/min) in [1e-6, 1e-2]</span>
+<span class="n">lb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="o">-</span><span class="mf">8.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.0</span> <span class="p">])</span>   <span class="c1"># log10 lower bounds</span>
+<span class="n">ub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span> <span class="p">])</span>   <span class="c1"># log10 upper bounds</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span>
+    <span class="n">residuals_log_params</span><span class="p">,</span>
+    <span class="n">theta0</span><span class="p">,</span>
+    <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="n">lb</span><span class="p">,</span> <span class="n">ub</span><span class="p">),</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;trf&quot;</span><span class="p">,</span>
+    <span class="n">ftol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span> <span class="n">gtol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span>
+    <span class="n">max_nfev</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># --- Extract best-fit params ---</span>
+<span class="n">log10S_hat</span><span class="p">,</span> <span class="n">log10K_hat</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">x</span>
+<span class="n">S_hat</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">**</span><span class="n">log10S_hat</span>
+<span class="n">K_hat</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">**</span><span class="n">log10K_hat</span>
+<span class="n">T_hat</span> <span class="o">=</span> <span class="n">K_hat</span> <span class="o">*</span> <span class="n">thick_b</span>
+
+<span class="c1"># --- Compute uncertainties (approximate, from Jacobian) ---</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">jac</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>   <span class="c1"># number of residuals</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">jac</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>   <span class="c1"># number of params (2)</span>
+<span class="n">dof</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span>
+<span class="n">rss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">fun</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">sigma2</span> <span class="o">=</span> <span class="n">rss</span> <span class="o">/</span> <span class="n">dof</span>
+<span class="c1"># Cov in parameter space of theta (log10 params)</span>
+<span class="c1"># (J^T J)^(-1) scaled by residual variance</span>
+<span class="n">JTJ</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">jac</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">res</span><span class="o">.</span><span class="n">jac</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">cov_log</span> <span class="o">=</span> <span class="n">sigma2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">JTJ</span><span class="p">)</span>
+    <span class="n">se_logS</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">cov_log</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">se_logK</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">cov_log</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">except</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">LinAlgError</span><span class="p">:</span>
+    <span class="n">se_logS</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
+    <span class="n">se_logK</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
+
+<span class="c1"># Propagate to linear scale via log-normal approx:</span>
+<span class="c1"># If Y = 10^X and X ~ N(mu, sigma^2), then</span>
+<span class="c1"># std(Y) ≈ ln(10) * Y * sigma (small-sigma approximation)</span>
+<span class="n">ln10</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">10.0</span><span class="p">)</span>
+<span class="n">SE_S</span> <span class="o">=</span> <span class="n">ln10</span> <span class="o">*</span> <span class="n">S_hat</span> <span class="o">*</span> <span class="n">se_logS</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">se_logS</span><span class="p">)</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
+<span class="n">SE_K</span> <span class="o">=</span> <span class="n">ln10</span> <span class="o">*</span> <span class="n">K_hat</span> <span class="o">*</span> <span class="n">se_logK</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">se_logK</span><span class="p">)</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;===== Nonlinear least-squares fit (Theis) =====&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;S_hat = </span><span class="si">{</span><span class="n">S_hat</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">  ± </span><span class="si">{</span><span class="n">SE_S</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">  (1σ)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;K_hat = </span><span class="si">{</span><span class="n">K_hat</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2"> m/min  ± </span><span class="si">{</span><span class="n">SE_K</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;T_hat = </span><span class="si">{</span><span class="n">T_hat</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2"> m^2/min   (b = </span><span class="si">{</span><span class="n">thick_b</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2"> m)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RSS (sum of squared residuals) = </span><span class="si">{</span><span class="n">rss</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">,  dof = </span><span class="si">{</span><span class="n">dof</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Recompute simulations at best-fit and summarize SSR/RMSE by well ---</span>
+<span class="k">def</span> <span class="nf">ssr</span><span class="p">(</span><span class="n">y_obs</span><span class="p">,</span> <span class="n">y_sim</span><span class="p">):</span> 
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y_obs</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y_sim</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">r</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">rmse</span><span class="p">(</span><span class="n">y_obs</span><span class="p">,</span> <span class="n">y_sim</span><span class="p">):</span> 
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y_obs</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y_sim</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">r</span><span class="p">)))</span>
+
+<span class="n">MW1_fit</span> <span class="o">=</span> <span class="n">theis_drawdown</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">time_min</span><span class="p">,</span> <span class="n">S_hat</span><span class="p">,</span> <span class="n">T_hat</span><span class="p">,</span> <span class="n">discharge</span><span class="p">)</span>
+<span class="n">MW2_fit</span> <span class="o">=</span> <span class="n">theis_drawdown</span><span class="p">(</span><span class="n">r2</span><span class="p">,</span> <span class="n">time_min</span><span class="p">,</span> <span class="n">S_hat</span><span class="p">,</span> <span class="n">T_hat</span><span class="p">,</span> <span class="n">discharge</span><span class="p">)</span>
+<span class="n">MW3_fit</span> <span class="o">=</span> <span class="n">theis_drawdown</span><span class="p">(</span><span class="n">r3</span><span class="p">,</span> <span class="n">time_min</span><span class="p">,</span> <span class="n">S_hat</span><span class="p">,</span> <span class="n">T_hat</span><span class="p">,</span> <span class="n">discharge</span><span class="p">)</span>
+
+<span class="n">ssr1</span> <span class="o">=</span> <span class="n">ssr</span><span class="p">(</span><span class="n">MW1_obs</span><span class="p">,</span> <span class="n">MW1_fit</span><span class="p">);</span> <span class="n">rmse1</span> <span class="o">=</span> <span class="n">rmse</span><span class="p">(</span><span class="n">MW1_obs</span><span class="p">,</span> <span class="n">MW1_fit</span><span class="p">)</span>
+<span class="n">ssr2</span> <span class="o">=</span> <span class="n">ssr</span><span class="p">(</span><span class="n">MW2_obs</span><span class="p">,</span> <span class="n">MW2_fit</span><span class="p">);</span> <span class="n">rmse2</span> <span class="o">=</span> <span class="n">rmse</span><span class="p">(</span><span class="n">MW2_obs</span><span class="p">,</span> <span class="n">MW2_fit</span><span class="p">)</span>
+<span class="n">ssr3</span> <span class="o">=</span> <span class="n">ssr</span><span class="p">(</span><span class="n">MW3_obs</span><span class="p">,</span> <span class="n">MW3_fit</span><span class="p">);</span> <span class="n">rmse3</span> <span class="o">=</span> <span class="n">rmse</span><span class="p">(</span><span class="n">MW3_obs</span><span class="p">,</span> <span class="n">MW3_fit</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SSR by well:  MW1=</span><span class="si">{</span><span class="n">ssr1</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">,  MW2=</span><span class="si">{</span><span class="n">ssr2</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">,  MW3=</span><span class="si">{</span><span class="n">ssr3</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RMSE by well: MW1=</span><span class="si">{</span><span class="n">rmse1</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">, MW2=</span><span class="si">{</span><span class="n">rmse2</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">, MW3=</span><span class="si">{</span><span class="n">rmse3</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Plot best-fit against observations (reuse your plotting style) ---</span>
+<span class="n">use_log_time</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_min</span><span class="p">,</span> <span class="n">MW1_obs</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MW1 obs&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_min</span><span class="p">,</span> <span class="n">MW2_obs</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MW2 obs&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_min</span><span class="p">,</span> <span class="n">MW3_obs</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MW3 obs&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_min</span><span class="p">,</span> <span class="n">MW1_fit</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MW1 fit&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_min</span><span class="p">,</span> <span class="n">MW2_fit</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MW2 fit&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_min</span><span class="p">,</span> <span class="n">MW3_fit</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MW3 fit&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (min)&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot; [log]&quot;</span> <span class="k">if</span> <span class="n">use_log_time</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Drawdown s (m)  (inverted axis)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Observed vs Theis Best-Fit Drawdown&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">use_log_time</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>===== Nonlinear least-squares fit (Theis) =====
+S_hat = 1.213498e-05  ± 6.47e-08  (1σ)
+K_hat = 7.138009e-04 m/min  ± 3.70e-06
+T_hat = 6.067308e-02 m^2/min   (b = 85 m)
+RSS (sum of squared residuals) = 0.00117601,  dof = 31
+SSR by well:  MW1=0.000507541,  MW2=9.90114e-05,  MW3=0.000569461
+RMSE by well: MW1=0.00679265, MW2=0.00300017, MW3=0.00719508
+</pre></div>
+</div>
+<img alt="../../../_images/0b024342bd5007a7f3407dbedd1b7202c18bee4f5ebc8a8ef03da3298bc0f16f.png" src="../../../_images/0b024342bd5007a7f3407dbedd1b7202c18bee4f5ebc8a8ef03da3298bc0f16f.png" />
+</div>
+</div>
+<p>Now we report values:</p>
+<p>Our best guess of <span class="math notranslate nohighlight">\(K\)</span> is <span class="math notranslate nohighlight">\(7.14 \times 10^{-4}\)</span> meters/minute.</p>
+<p><strong>(d)</strong> Is the value of hydraulic conductivity from the pumping tests is comparable to
+the values shown on the drilling logs?</p>
+<p>Drilling logs state <span class="math notranslate nohighlight">\(K \approx 10^{-3} \text{ to } 10^{-6} \text{ cm/sec }\)</span>, so we compare to our pumping test.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm_sec</span> <span class="o">=</span> <span class="mf">1.2e-7</span> <span class="c1">#cm/sec</span>
+<span class="n">cm_min</span> <span class="o">=</span> <span class="n">cm_sec</span><span class="o">*</span><span class="mi">60</span>
+<span class="n">m_min</span>  <span class="o">=</span> <span class="n">cm_min</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">pumptest</span> <span class="o">=</span> <span class="mf">7.14e-4</span> <span class="c1">#m_min</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hydraulic conductivity (from drilling log): </span><span class="si">{</span><span class="n">m_min</span><span class="si">:</span><span class="s2">10.3</span><span class="si">}</span><span class="s2"> meters per minute&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hydraulic conductivity (from pumping test): </span><span class="si">{</span><span class="n">pumptest</span><span class="si">:</span><span class="s2">10.2</span><span class="si">}</span><span class="s2"> meters per minute&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hydraulic conductivity (from drilling log):    0.00072 meters per minute
+Hydraulic conductivity (from pumping test):    0.00071 meters per minute
+</pre></div>
+</div>
+</div>
+</div>
+<p>Comparing the value from the drilling log and the pumping test, the approximate hydraulic conductivtiy is certainly within the range of values on the log - similar to the clayey-sand values; so values are comparable.  We will use pumping test value as it represents actual hydraulics and not a textural guess.</p>
+<p><strong>(e)</strong> Assume the golf course starts using treated wastewater to irrigate. The irrigation scheme produces a concentration in the groundwater of 10000 ppm nitrate (as
+nitrate). How long until nitrate is detected in the MW array?</p>
+<p>Need to estimate distance from golf course to Spill-O-Rama. Reading from the map:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distx</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8200</span><span class="o">-</span><span class="mi">4200</span><span class="p">)</span> <span class="c1"># golf course edge to PW1</span>
+<span class="n">disty</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7200</span><span class="o">-</span><span class="mi">4000</span><span class="p">)</span> <span class="c1"># glof course edge to PW1</span>
+
+<span class="n">cartesian</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">distx</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">disty</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; Pathline distance Golf Course to PW1: </span><span class="si">{</span><span class="n">cartesian</span><span class="si">:</span><span class="s2">10.6</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Pathline distance Golf Course to PW1:     5122.5 meters
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now need to estimate travel time along that path.  Here we will use Darcy’s law and the already computed gradient to estimate time.  We need an estimate of porosity, the storage coefficient is pretty small and does not provide a meaningful estimate of porosity (so the pumping test analytical solution choice is suspect) - but lets be dummies and use the Kozeny-Carmen formula, which is assumed valid for sediments and soils composed of silt, sand and gravelly sand (like our drilling log).</p>
+<p><span class="math notranslate nohighlight">\(K = C_{kc} \frac{g}{\nu} \frac{n^3}{(1-n)^2} D_{10} \)</span></p>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(K\)</span> is the hydraulic conductivity</p></li>
+<li><p><span class="math notranslate nohighlight">\(\nu\)</span> is the kinematic viscosity of water</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> is porosity</p></li>
+<li><p><span class="math notranslate nohighlight">\(D_{10}\)</span> is the 10-th percentile grain diameter (in meters)</p></li>
+<li><p><span class="math notranslate nohighlight">\(g\)</span> is the gravitational acceleration constant</p></li>
+</ul>
+<p>Considering our drilling logs a typical D10 value (effective size) for silty sand will generally fall within the range for sand, such as 0.1 to 1.5 mm, with the specific value depending on the proportion of silt and how the soil is classified. The D10 value represents the particle size where 10% of the particles are smaller.</p>
+<p><a class="reference external" href="http://www.aqtesolv.com/aquifer-tests/aquifer_properties.htm">Porosity Hydraulic Conductivity Relationships</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cozenykarman</span><span class="p">(</span><span class="n">d10</span><span class="p">,</span><span class="n">kinematic</span><span class="p">,</span><span class="n">gravity</span><span class="p">,</span><span class="n">porosity</span><span class="p">):</span>
+    <span class="n">cck</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">180</span>
+    <span class="n">term1</span><span class="o">=</span><span class="n">gravity</span><span class="o">/</span><span class="n">kinematic</span>
+    <span class="n">term2</span><span class="o">=</span><span class="p">(</span><span class="n">porosity</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">porosity</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">cozenykarman</span><span class="o">=</span><span class="n">cck</span><span class="o">*</span><span class="n">term1</span><span class="o">*</span><span class="n">term2</span><span class="o">*</span><span class="n">d10</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">cozenykarman</span><span class="p">)</span>
+
+<span class="n">d10</span><span class="o">=</span><span class="mf">0.00045</span> <span class="c1">#0.45 mm</span>
+<span class="n">kinematic</span> <span class="o">=</span> <span class="mf">1.14e-6</span> <span class="c1">#H2O at 20C</span>
+<span class="n">gravity</span> <span class="o">=</span> <span class="mf">9.81</span> <span class="c1">#Earth</span>
+<span class="n">porosity</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1">#A guess</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hydraulic Conductivity : </span><span class="si">{</span><span class="n">cozenykarman</span><span class="p">(</span><span class="n">d10</span><span class="p">,</span><span class="n">kinematic</span><span class="p">,</span><span class="n">gravity</span><span class="p">,</span><span class="n">porosity</span><span class="p">)</span><span class="o">*</span><span class="mi">60</span><span class="si">:</span><span class="s2"> 10.4</span><span class="si">}</span><span class="s2"> meters per minute&quot;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hydraulic conductivity (from pumping test): </span><span class="si">{</span><span class="n">pumptest</span><span class="si">:</span><span class="s2">10.2</span><span class="si">}</span><span class="s2"> meters per minute&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hydraulic Conductivity :  0.0007171 meters per minute
+Hydraulic conductivity (from pumping test):    0.00071 meters per minute
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ok we have a porosity estimate of 0.1</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gradient</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">porosity</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># this is a guess, the storage coefficient is really small which would imply </span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="n">gradient</span><span class="o">*</span><span class="n">pumptest</span><span class="o">/</span><span class="n">porosity</span> <span class="c1">#meters/minute</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Flow velocity : </span><span class="si">{</span><span class="n">velocity</span><span class="si">:</span><span class="s2">10.5</span><span class="si">}</span><span class="s2"> meters/minute&quot;</span><span class="p">)</span>
+<span class="c1"># Now compute time</span>
+<span class="n">traveltime</span> <span class="o">=</span> <span class="n">cartesian</span><span class="o">/</span><span class="n">velocity</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Travel time : </span><span class="si">{</span><span class="n">traveltime</span><span class="si">:</span><span class="s2">10.5</span><span class="si">}</span><span class="s2"> minutes&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Travel time : </span><span class="si">{</span><span class="n">traveltime</span><span class="o">/</span><span class="mi">1440</span><span class="si">:</span><span class="s2">10.5</span><span class="si">}</span><span class="s2"> days&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Travel time : </span><span class="si">{</span><span class="n">traveltime</span><span class="o">/</span><span class="mi">1440</span><span class="o">/</span><span class="mi">365</span><span class="si">:</span><span class="s2">10.5</span><span class="si">}</span><span class="s2"> years&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Flow velocity : 2.6796e-05 meters/minute
+Travel time : 1.9117e+08 minutes
+Travel time : 1.3276e+05 days
+Travel time :     363.71 years
+</pre></div>
+</div>
+</div>
+</div>
+<p>So our estimate is in centuries - we probably don’t care much, we will be long gone before any mistakes catch up with us.</p>
+<p><strong>(f)</strong> Is nitrate damage to the titanium (i.e. embrittlement) a practical concern for
+Spill-O-Rama?</p>
+<p>No, a google search returns</p>
+<blockquote>
+<div><p>No—nitrate in room-temperature wash water is not a known embrittlement risk for titanium.</p>
+<p>Titanium’s main cleanliness-related embrittlement risk is hydrogen uptake (e.g., acid pickling in reducing acids, cathodic charging, or exposure to hydrogen sources), not nitrate ions. In fact, nitric acid/nitrates are commonly used to clean and passivate titanium because they’re oxidizing and do not introduce hydrogen into the metal. Embrittlement of titanium from nitrogen requires high temperatures (nitriding), not an aqueous rinse.</p>
+<p><strong>Practical guidance</strong></p>
+<p>If wash water may have some nitrate, it’s generally fine for titanium at ambient conditions.</p>
+<p><strong>Focus controls on:</strong></p>
+<ul class="simple">
+<li><p>Chlorides/fluorides (pitting/crevice corrosion risks)</p></li>
+<li><p>Low pH reducing acids and electrolytic hydrogen charging</p></li>
+<li><p>Residuals (any salts left to dry in crevices can promote corrosion or interfere with later welding/coating)</p></li>
+<li><p>Finish with a thorough DI water rinse and dry promptly.</p></li>
+<li><p>For critical parts (aero/biomed), follow a recognized cleaning/passivation spec (e.g., nitric/citric passivation), and avoid processes that could introduce hydrogen; no bake-out is typically needed for a nitrate-only rinse.</p></li>
+</ul>
+</div></blockquote>
+<p><strong>(g)</strong> (Extra Credit) Assume PW1 operates at 100 gpm as specified. Construct a map of
+groundwater elevations for the entire study area (Golf Course and Spill-O-Rama).</p>
+<p>A modification of the plotting code gives:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">points_to_plane_plot.py</span>
+
+<span class="sd">Given three named 3D points (name, x, y, z), solve for the plane</span>
+<span class="sd">z(x,y) = a x + b y + c where (a, b) is the hydraulic gradient,</span>
+<span class="sd">then produce a plot of the three (x,y) points with:</span>
+<span class="sd">  - unit aspect ratio,</span>
+<span class="sd">  - ~10% padded limits,</span>
+<span class="sd">  - centroid marker,</span>
+<span class="sd">  - a single arrow from centroid in the (a, b) direction,</span>
+<span class="sd">  - optional contours of z(x,y),</span>
+<span class="sd">  - optional quiver (uniform gradient field).</span>
+
+<span class="sd">Usage examples</span>
+<span class="sd">--------------</span>
+<span class="sd"># Three points via flags (repeat --point three times)</span>
+<span class="sd">python points_to_plane_plot.py \</span>
+<span class="sd">  --point P1 0 0 100 \</span>
+<span class="sd">  --point P2 10 0 98 \</span>
+<span class="sd">  --point P3 0 10 97.5 \</span>
+<span class="sd">  --contours 10 --quiver 10 --save plane_plot.png</span>
+
+<span class="sd"># Same but just show interactively</span>
+<span class="sd">python points_to_plane_plot.py --point A 0 0 0 --point B 1 0 -1 --point C 0 1 -1</span>
+
+<span class="sd"># From CSV (name,x,y,z with header or headerless):</span>
+<span class="sd">#   P1,0,0,100</span>
+<span class="sd">#   P2,10,0,98</span>
+<span class="sd">#   P3,0,10,97.5</span>
+<span class="sd">python points_to_plane_plot.py --csv points.csv --contours 8 --quiver 12</span>
+
+<span class="sd">Notes</span>
+<span class="sd">-----</span>
+<span class="sd">- If points imply a vertical/near-vertical plane (not representable as z=ax+by+c),</span>
+<span class="sd">  the solve will fail with a clear message.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">Point</span> <span class="o">=</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+
+<span class="c1"># ---------- Math core ----------</span>
+<span class="k">def</span> <span class="nf">solve_plane_axy_plus_by_plus_c</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Point</span><span class="p">],</span> <span class="n">rtol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-12</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Solve z(x,y) = a x + b y + c from exactly three points (name, x, y, z).</span>
+<span class="sd">    Returns (a, b, c). Here (a, b) is the hydraulic gradient.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Provide exactly three points.&quot;</span><span class="p">)</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">zs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="c1"># Build system: [x y 1] [a b c]^T = z</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)])</span>
+    <span class="n">rank</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="n">rtol</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">rank</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Cannot represent the plane as z = a x + b y + c.</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;The points likely imply a vertical/near-vertical plane or duplicate (x,y).&quot;</span>
+        <span class="p">)</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">zs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="c1"># ---------- Plotting ----------</span>
+<span class="k">def</span> <span class="nf">plot_xy_with_overlays</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Point</span><span class="p">],</span>
+                          <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                          <span class="n">arrow_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.10</span><span class="p">,</span>
+                          <span class="n">pad_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.10</span><span class="p">,</span>
+                          <span class="n">contour_levels</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">quiver_grid</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Points with Plane Contours and Gradient Overlays&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make the requested plot with unit aspect, padding, centroid/arrow, optional contours &amp; quiver.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    arrow_frac : fraction of max(xspan, yspan) used for the centroid arrow length (default 0.10)</span>
+<span class="sd">    pad_frac   : fractional padding added to min/max limits (default 0.10)</span>
+<span class="sd">    contour_levels : None (no contours), int (#levels), or explicit list of levels</span>
+<span class="sd">    quiver_grid : None (no quiver) or number of vectors per axis</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">zs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="c1"># Centroid and spans</span>
+    <span class="n">X0</span><span class="p">,</span> <span class="n">Y0</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">ys</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">xspan</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">xs</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">yspan</span> <span class="o">=</span> <span class="n">ys</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">ys</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">span</span>  <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">xspan</span><span class="p">,</span> <span class="n">yspan</span><span class="p">,</span> <span class="mf">1e-12</span><span class="p">)</span>
+    <span class="n">pad</span>   <span class="o">=</span> <span class="n">pad_frac</span> <span class="o">*</span> <span class="n">span</span>
+    <span class="c1"># Generic sizing</span>
+    <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">xs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">pad</span>
+    <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">ys</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">ys</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">pad</span>
+    <span class="c1"># Override sizing</span>
+    <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span>
+    <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span>    
+
+    <span class="c1"># Arrow length scale in (a,b) direction (-a,-b are gradient)</span>
+    <span class="n">norm_ab</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="p">(</span><span class="n">arrow_frac</span> <span class="o">*</span> <span class="n">span</span><span class="p">)</span> <span class="o">/</span> <span class="n">norm_ab</span> <span class="k">if</span> <span class="n">norm_ab</span> <span class="o">&gt;</span> <span class="mf">1e-15</span> <span class="k">else</span> <span class="mf">0.0</span>
+    <span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span> <span class="o">=</span> <span class="n">X0</span> <span class="o">-</span> <span class="n">a</span> <span class="o">*</span> <span class="n">D</span><span class="p">,</span> <span class="n">Y0</span> <span class="o">-</span> <span class="n">b</span> <span class="o">*</span> <span class="n">D</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.8</span><span class="p">,</span> <span class="mf">6.8</span><span class="p">))</span>
+
+    <span class="c1"># Points &amp; triangle</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Points&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">ys</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+    <span class="c1"># Centroid and arrow</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">X0</span><span class="p">],</span> <span class="p">[</span><span class="n">Y0</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Centroid&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">X0</span><span class="p">,</span> <span class="n">Y0</span><span class="p">),</span>
+                <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hyd. grad. ≈ (</span><span class="si">{</span><span class="o">-</span><span class="n">a</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="o">-</span><span class="n">b</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span><span class="p">),</span>
+                <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+    <span class="c1"># Contours of z = a x + b y + c</span>
+    <span class="k">if</span> <span class="n">contour_levels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">gx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">201</span><span class="p">)</span>
+        <span class="n">gy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="mi">201</span><span class="p">)</span>
+        <span class="n">XX</span><span class="p">,</span> <span class="n">YY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">gx</span><span class="p">,</span> <span class="n">gy</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">)</span>
+        <span class="n">ZZ</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">XX</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">YY</span> <span class="o">+</span> <span class="n">c</span>
+        <span class="n">cs</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">XX</span><span class="p">,</span> <span class="n">YY</span><span class="p">,</span> <span class="n">ZZ</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">contour_levels</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+    <span class="c1"># Quiver: constant field (a,b); normalize for clean visual</span>
+    <span class="k">if</span> <span class="n">quiver_grid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">norm_ab</span> <span class="o">&gt;</span> <span class="mf">1e-15</span><span class="p">:</span>
+        <span class="n">qx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">quiver_grid</span><span class="p">)</span>
+        <span class="n">qy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">quiver_grid</span><span class="p">)</span>
+        <span class="n">QX</span><span class="p">,</span> <span class="n">QY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">)</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span> <span class="n">norm_ab</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span> <span class="o">/</span> <span class="n">norm_ab</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="mf">0.07</span> <span class="o">*</span> <span class="n">span</span>  <span class="c1"># vector length ~7% of span</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">QX</span><span class="p">,</span> <span class="n">QY</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">scale</span><span class="p">,</span>
+                  <span class="n">width</span><span class="o">=</span><span class="mf">0.003</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Gradient field&quot;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Easting (meters)&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Northing (meters)&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">adjustable</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
+<span class="c1"># manual override limits</span>
+<span class="c1">#    ax.set_xlim(0, 10000)  # Manual Override </span>
+<span class="c1">#    ax.set_ylim(0, 10000)  # Manual Override </span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="c1">#    ax.legend(loc=&quot;best&quot;, framealpha=0.9)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">framealpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
+
+<span class="c1"># ---------- I/O helpers ----------</span>
+<span class="k">def</span> <span class="nf">read_points_from_csv</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Point</span><span class="p">]:</span>
+    <span class="n">points</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Point</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">rdr</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rdr</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">row</span> <span class="ow">or</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="c1"># Try to detect header: name,x,y,z</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;x&quot;</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span> <span class="n">z</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+            <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CSV must contain exactly 3 points; got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">points</span>
+
+<span class="k">def</span> <span class="nf">parse_args</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">:</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Solve z=a x + b y + c from 3 points and plot overlays.&quot;</span><span class="p">)</span>
+    <span class="n">src</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">add_mutually_exclusive_group</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">src</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--csv&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;CSV file with rows: name,x,y,z (header ok).&quot;</span><span class="p">)</span>
+    <span class="n">src</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--point&quot;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;append&quot;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span><span class="s2">&quot;Z&quot;</span><span class="p">),</span>
+                     <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Specify a point (repeat exactly three times).&quot;</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--contours&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                   <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Contour levels: integer (e.g., 10) or comma list (e.g., 95,96,97).&quot;</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--quiver&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                   <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Quiver grid size (e.g., 10). Omit for no quiver.&quot;</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--arrow-frac&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span>
+                   <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Centroid arrow length as fraction of plot span (default 0.10).&quot;</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--pad-frac&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span>
+                   <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Axis padding as fraction of span (default 0.10).&quot;</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--save&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to save the figure (e.g., out.png).&quot;</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--title&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;Points with Plane Contours and Gradient Overlays&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">coerce_points_from_args</span><span class="p">(</span><span class="n">ns</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Point</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">ns</span><span class="o">.</span><span class="n">csv</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">read_points_from_csv</span><span class="p">(</span><span class="n">ns</span><span class="o">.</span><span class="n">csv</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">ns</span><span class="o">.</span><span class="n">point</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ns</span><span class="o">.</span><span class="n">point</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Provide exactly three --point entries; got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ns</span><span class="o">.</span><span class="n">point</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="n">pts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Point</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">sx</span><span class="p">,</span> <span class="n">sy</span><span class="p">,</span> <span class="n">sz</span> <span class="ow">in</span> <span class="n">ns</span><span class="o">.</span><span class="n">point</span><span class="p">:</span>
+        <span class="n">pts</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">sx</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">sy</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">sz</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">pts</span>
+
+<span class="k">def</span> <span class="nf">parse_contour_levels</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="c1"># integer?</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="c1"># list</span>
+    <span class="n">levels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">tok</span><span class="p">)</span> <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">tok</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">levels</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">levels</span>
+
+<span class="c1"># ---------- Main ----------</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">ns</span> <span class="o">=</span> <span class="n">parse_args</span><span class="p">()</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">coerce_points_from_args</span><span class="p">(</span><span class="n">ns</span><span class="p">)</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">solve_plane_axy_plus_by_plus_c</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;a = </span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, b = </span><span class="si">{</span><span class="n">b</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, c = </span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hydraulic gradient x component == </span><span class="si">{</span><span class="o">-</span><span class="n">a</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hydraulic gradient y component == </span><span class="si">{</span><span class="o">-</span><span class="n">b</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Plane: z(x,y) = </span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> x + </span><span class="si">{</span><span class="n">b</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> y + </span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">levels</span> <span class="o">=</span> <span class="n">parse_contour_levels</span><span class="p">(</span><span class="n">ns</span><span class="o">.</span><span class="n">contours</span><span class="p">)</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_xy_with_overlays</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span>
+                                    <span class="n">arrow_frac</span><span class="o">=</span><span class="n">ns</span><span class="o">.</span><span class="n">arrow_frac</span><span class="p">,</span>
+                                    <span class="n">pad_frac</span><span class="o">=</span><span class="n">ns</span><span class="o">.</span><span class="n">pad_frac</span><span class="p">,</span>
+                                    <span class="n">contour_levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span>
+                                    <span class="n">quiver_grid</span><span class="o">=</span><span class="n">ns</span><span class="o">.</span><span class="n">quiver</span><span class="p">,</span>
+                                    <span class="n">title</span><span class="o">=</span><span class="n">ns</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ns</span><span class="o">.</span><span class="n">save</span><span class="p">:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">ns</span><span class="o">.</span><span class="n">save</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved figure to: </span><span class="si">{</span><span class="n">ns</span><span class="o">.</span><span class="n">save</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="c1">### SUPPLY MW DATA AS A LIST OF TUPLES ###</span>
+    <span class="n">pts</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;MW-1&quot;</span><span class="p">,</span> <span class="mf">8300.0</span><span class="p">,</span> <span class="mf">7800.0</span><span class="p">,</span> <span class="mf">81.0</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;MW-2&quot;</span><span class="p">,</span> <span class="mf">8900.0</span><span class="p">,</span> <span class="mf">7580.0</span><span class="p">,</span> <span class="mf">80.0</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;MW-3&quot;</span><span class="p">,</span> <span class="mf">8500.0</span><span class="p">,</span> <span class="mf">6100.0</span><span class="p">,</span> <span class="mf">85.0</span><span class="p">),</span>
+    <span class="p">]</span>
+<span class="c1">### EQUATION OF THE PLANE ###</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">solve_plane_axy_plus_by_plus_c</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;a=</span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, b=</span><span class="si">{</span><span class="n">b</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, c=</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hydraulic gradient x component == </span><span class="si">{</span><span class="o">-</span><span class="n">a</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hydraulic gradient y component == </span><span class="si">{</span><span class="o">-</span><span class="n">b</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">### GENERATE PRETTY PLOT ###</span>
+    <span class="c1"># manual adjust in plotting function to extend plot area</span>
+    <span class="n">myTitle</span> <span class="o">=</span> <span class="s2">&quot;Spill-O-Rama Groundwater Map with Flow Directions&quot;</span>
+    <span class="n">plot_xy_with_overlays</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">arrow_frac</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span> <span class="n">pad_frac</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span><span class="n">contour_levels</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span><span class="n">quiver_grid</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="n">myTitle</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a=-0.002643, b=-0.002664, c=123.719262
+Hydraulic gradient x component == 0.002643
+Hydraulic gradient y component == 0.002664
+</pre></div>
+</div>
+<img alt="../../../_images/f97b4ff7edf39c232e0cd834ff8f5306865eb2d0bce48d6f27c8919e30715449.png" src="../../../_images/f97b4ff7edf39c232e0cd834ff8f5306865eb2d0bce48d6f27c8919e30715449.png" />
+</div>
+</div>
+<p>Next we would add the drawdown effect of the pumping well to the regional flow to display the distortion in the vicinity of PW-1 to the plot.</p>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python-my-env",
+            path: "./chapters/03site.mapping.tools/exercise"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python-my-env'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Theodore G. Cleveland, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

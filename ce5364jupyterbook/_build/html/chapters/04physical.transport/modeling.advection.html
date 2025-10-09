@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/04physical.transport/modeling.advection';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="9. Analytical Solutions (1D)" href="../05analytical.models1d/05analytical.models1d.html" />
     <link rel="prev" title="7. Physical Transport" href="physical.transport.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -200,6 +201,25 @@
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Modeling Advection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05analytical.models1d/05analytical.models1d.html">9. Analytical Solutions (1D)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../05analytical.solutions2d/05analytical.solutions2d.html">10. Analytical Solutions (2D)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06reactive.transport/06reactive.transport.html">11. Reactive Transport</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07mf6.model/07mf6.introduction.html">12. MODFLOW6 Introduction</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07mf6.model/07mf6.transport.html">13. MODFLOW6 Transport</a></li>
+
+
 </ul>
 
     </div>
@@ -1380,17 +1400,17 @@ $<span class="math notranslate nohighlight">\(\frac{\partial C}{\partial x} \app
 
 <span class="c1"># Gaussian pulse centered at x0 with sd w and height C0</span>
 <span class="n">x0</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">C0</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">,</span> <span class="mf">100.0</span>
-<span class="n">C_init</span> <span class="o">=</span> <span class="n">C0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)</span><span class="o">/</span><span class="n">w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>   
+<span class="c1">#C_init = C0*np.exp(-((x - x0)/w)**2)   </span>
 <span class="c1"># Rectangular pulse centered at x0 with width w and height C0</span>
 <span class="c1">#x0, w, C0 = 0.05, 0.10, 0.0</span>
 <span class="c1"># Option A: node-based</span>
-<span class="c1">#C_init = rectangular_pulse_centered(x, x0, w, C0=C0)</span>
+<span class="n">C_init</span> <span class="o">=</span> <span class="n">rectangular_pulse_centered</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">C0</span><span class="o">=</span><span class="n">C0</span><span class="p">)</span>
 <span class="c1"># Option B: exact cell-average (better for narrow pulses)</span>
-<span class="c1"># C_init = rectangular_pulse_cellavg(x, dx, x0 - w/2, x0 + w/2, C0=C0)</span>
+<span class="c1">#C_init = rectangular_pulse_cellavg(x, dx, x0 - w/2, x0 + w/2, C0=C0)</span>
 
 <span class="c1"># Time / velocity and run</span>
 <span class="n">v</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.40</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">/</span> <span class="nb">abs</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>   <span class="c1"># CFL = 0.4</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">/</span> <span class="nb">abs</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>   <span class="c1"># CFL = 0.4</span>
 <span class="n">nt</span> <span class="o">=</span> <span class="mi">300</span>
 <span class="n">C</span> <span class="o">=</span> <span class="n">upwind_1d</span><span class="p">(</span><span class="n">C_init</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">C_left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>  <span class="c1"># uses the solver from earlier</span>
 
@@ -1401,8 +1421,8 @@ $<span class="math notranslate nohighlight">\(\frac{\partial C}{\partial x} \app
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a91ba0b16636dec0898796f0c444cc6cc9bc1cf09cff32218efe5ffc269cefaf.png" src="../../_images/a91ba0b16636dec0898796f0c444cc6cc9bc1cf09cff32218efe5ffc269cefaf.png" />
-<img alt="../../_images/0546cf302e001ed52e7c8ed27703934861a276e86b99f4658444ee21580c9356.png" src="../../_images/0546cf302e001ed52e7c8ed27703934861a276e86b99f4658444ee21580c9356.png" />
+<img alt="../../_images/420fcade6f35d6a0254e0c84b7494750b93e9343273fe3d2486aa1c546333e6d.png" src="../../_images/420fcade6f35d6a0254e0c84b7494750b93e9343273fe3d2486aa1c546333e6d.png" />
+<img alt="../../_images/3d7c857c9793cf635bee7671c50343a759dc5829e8400597584bfb46b565aa46.png" src="../../_images/3d7c857c9793cf635bee7671c50343a759dc5829e8400597584bfb46b565aa46.png" />
 </div>
 </div>
 </section>
@@ -1930,10 +1950,10 @@ To reduce that dissipation without re-introducing wiggles, move to higher-order 
 
 <span class="c1"># Velocities (cell-centered); constants here</span>
 <span class="n">u</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="n">v</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mf">1.0</span>
 
 <span class="c1"># Time step from conservative 2-D CFL: |u|*dt/dx + |v|*dt/dy &lt;= 1</span>
-<span class="n">CFL</span> <span class="o">=</span> <span class="mf">0.6</span>
+<span class="n">CFL</span> <span class="o">=</span> <span class="mf">0.99</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="n">CFL</span> <span class="o">/</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">/</span><span class="n">dx</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">/</span><span class="n">dy</span><span class="p">)</span>
 <span class="n">nt</span> <span class="o">=</span> <span class="mi">250</span>
 
@@ -1950,8 +1970,8 @@ To reduce that dissipation without re-introducing wiggles, move to higher-order 
 </div>
 <div class="cell_output docutils container">
 <img alt="../../_images/367fb6671eb72d4d3db46387680b7f58602db1c2da13b61ab5deda41355b8c96.png" src="../../_images/367fb6671eb72d4d3db46387680b7f58602db1c2da13b61ab5deda41355b8c96.png" />
-<img alt="../../_images/9f23e80141946debea69702d1da944d43a22bea515c275940e5d8f9831fc1f0a.png" src="../../_images/9f23e80141946debea69702d1da944d43a22bea515c275940e5d8f9831fc1f0a.png" />
-<img alt="../../_images/eefb5717a6525314ae0221ee255f34197c7c486280b724af5d779e1d62c8178d.png" src="../../_images/eefb5717a6525314ae0221ee255f34197c7c486280b724af5d779e1d62c8178d.png" />
+<img alt="../../_images/a8dd5d0571896b3cdd85f9eaeaafbcdb57ed071483efd8592204b435e18e34b2.png" src="../../_images/a8dd5d0571896b3cdd85f9eaeaafbcdb57ed071483efd8592204b435e18e34b2.png" />
+<img alt="../../_images/65b703ccaa560f4ffcec824972134346fbcb8dcdbfe23d9082339ad31101bfed.png" src="../../_images/65b703ccaa560f4ffcec824972134346fbcb8dcdbfe23d9082339ad31101bfed.png" />
 </div>
 </div>
 </section>
@@ -2017,6 +2037,15 @@ To reduce that dissipation without re-introducing wiggles, move to higher-order 
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">7. Physical Transport</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../05analytical.models1d/05analytical.models1d.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">9. Analytical Solutions (1D)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

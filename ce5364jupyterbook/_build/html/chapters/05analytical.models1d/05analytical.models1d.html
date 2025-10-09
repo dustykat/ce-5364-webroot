@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05analytical.models1d/05analytical.models1d';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="10. Analytical Solutions (2D)" href="../05analytical.solutions2d/05analytical.solutions2d.html" />
     <link rel="prev" title="8. Modeling Advection" href="../04physical.transport/modeling.advection.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -202,6 +203,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../04physical.transport/modeling.advection.html">8. Modeling Advection</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Analytical Solutions (1D)</a></li>
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="../05analytical.solutions2d/05analytical.solutions2d.html">10. Analytical Solutions (2D)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06reactive.transport/06reactive.transport.html">11. Reactive Transport</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07mf6.model/07mf6.introduction.html">12. MODFLOW6 Introduction</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07mf6.model/07mf6.transport.html">13. MODFLOW6 Transport</a></li>
 
 
 </ul>
@@ -423,7 +439,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spreadsheet-model">Spreadsheet Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-history">Concentration History</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Spreadsheet Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-ogata-banks-solution">1D Ogata-Banks Solution</a><ul class="visible nav section-nav flex-column">
@@ -447,6 +462,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Concentration History</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Spreadsheet Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extensions">Extensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-s">Exercise(s)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-end">Section End</a></li>
 </ul>
 </li>
 </ul>
@@ -725,11 +742,13 @@ $$  \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  +  =  (\frac{1}{2}
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">howmany</span><span class="p">):</span>
     <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">deltax</span><span class="p">)</span>
     
-<span class="n">time</span>        <span class="o">=</span> <span class="mf">75.0</span> <span class="c1"># days</span>
-
+<span class="n">time</span>        <span class="o">=</span> <span class="mf">5.00</span> <span class="c1"># days</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">howmany</span><span class="p">)]</span> <span class="c1">#concentration </span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">howmany</span><span class="p">):</span>
     <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">impulse1D</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">time</span><span class="p">,</span><span class="n">mass</span><span class="p">,</span><span class="n">dispersion</span><span class="p">,</span><span class="n">velocity</span><span class="p">)</span>
+    <span class="n">acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">deltax</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">acc</span><span class="p">))</span>
 <span class="c1">#</span>
 <span class="c1"># Import graphics routines for picture making</span>
 <span class="c1">#</span>
@@ -751,7 +770,10 @@ $$  \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  +  =  (\frac{1}{2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/03dccf55fe4e2e1e8a1a71cb4f3ccb77b34c1e2027dd9f6d21272c0805766686.png" src="../../_images/03dccf55fe4e2e1e8a1a71cb4f3ccb77b34c1e2027dd9f6d21272c0805766686.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9731.787793845493
+</pre></div>
+</div>
+<img alt="../../_images/21bdc25313b28b3e36ad247aea4bec00e13c5a581abb43de605f2d8fa12836d4.png" src="../../_images/21bdc25313b28b3e36ad247aea4bec00e13c5a581abb43de605f2d8fa12836d4.png" />
 </div>
 </div>
 </section>
@@ -805,7 +827,7 @@ $$  \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  +  =  (\frac{1}{2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7556c31bc0170e8caf1750c39790bf15e4f61522694df100b8e787ef1c1413d7.png" src="../../_images/7556c31bc0170e8caf1750c39790bf15e4f61522694df100b8e787ef1c1413d7.png" />
+<img alt="../../_images/819168f8bf797d389f46e20ae77ab767cc9eadc00af9d27dc26c56842509ea38.png" src="../../_images/819168f8bf797d389f46e20ae77ab767cc9eadc00af9d27dc26c56842509ea38.png" />
 </div>
 </div>
 </section>
@@ -813,20 +835,8 @@ $$  \frac{-M exp(- \frac{(x-vt)^2}{4 D_x t})}{4 \pi D_x t^2}  +  =  (\frac{1}{2}
 <h2>Spreadsheet Model<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>A spreadsheet model is located at <a class="reference external" href="http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/ImpulseSolutionHistory.xlsx">http://54.243.252.9/ce-5364-webroot/6-Spreadsheets/ImpulseSolutionHistory.xlsx</a></p>
 </section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li></li>
-<li><p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364notes/chapters/7analyticalmodels/SSANTS2.xlsm"><strong>SSANTS2.xlsm</strong> (Excel Macro Sheet(s)) - Choose Tabsheet <strong>1DIMPAD</strong></a> No longer works with modern Excel, it will open in LibreOffice</p></li>
-<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/yuan_thesis/Groundwater_transport.pdf">Yuan, D, (1995)  <em>Accurate approximations for one-, two-, and three-dimensional groundwater mass transport from an exponentially decaying contaminant source.</em> MS Thesis, Department of Civil and Environmental Engineering, University of Houston. </a></p></li>
-<li><p><a class="reference external" href="http://54.243.252.9/about-me-webroot/about-me/MyWebPapers/thesis/ants_dissertation/Luke_Chuang.pdf">Chuang, Lu-Chia, (1998) <em>A guidance system for choosing analytical contaminant transport models.</em> Doctoral Dissertation, Department of Civil and Environmental Engineering, University of Houston, Houston, Texas. 222p.</a></p></li>
-<li><p><a class="reference external" href="https://pubs.usgs.gov/publication/ofr8956">Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow
-Open-File Report 89-56</a></p></li>
-<li><p><a class="reference external" href="https://pubs.usgs.gov/publication/twri03B7">Analytical solutions for one-, two-, and three-dimensional solute transport in ground-water systems with uniform flow
-Techniques of Water-Resources Investigations 03-B7 (supercedes above reference)</a></p></li>
-</ol>
 </section>
-</section>
+<hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="d-ogata-banks-solution">
 <h1>1D Ogata-Banks Solution<a class="headerlink" href="#d-ogata-banks-solution" title="Link to this heading">#</a></h1>
 <p>The figure below depicts the physical system, and the analytical model system at three different times.</p>
@@ -881,14 +891,14 @@ Techniques of Water-Resources Investigations 03-B7 (supercedes above reference)<
 <span class="c1"># example inputs</span>
 <span class="c1">#</span>
 <span class="n">c_source</span> <span class="o">=</span> <span class="mf">1000.0</span> <span class="c1"># source concentration</span>
-<span class="n">space</span> <span class="o">=</span> <span class="mf">100.</span>      <span class="c1"># how far in X-direction to extend the plot</span>
-<span class="n">time</span>  <span class="o">=</span> <span class="mf">50.</span>       <span class="c1"># time since release</span>
+<span class="n">space</span> <span class="o">=</span> <span class="mf">200.</span>      <span class="c1"># how far in X-direction to extend the plot</span>
+<span class="n">time</span>  <span class="o">=</span> <span class="mf">100.</span>       <span class="c1"># time since release</span>
 <span class="n">dispersion</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># dispersion coefficient</span>
 <span class="n">velocity</span> <span class="o">=</span> <span class="mf">1.0</span>    <span class="c1"># pore velocity</span>
 <span class="c1">#</span>
 <span class="c1"># forward define and initialize vectors for a profile plot</span>
 <span class="c1">#</span>
-<span class="n">how_many_points</span> <span class="o">=</span> <span class="mi">50</span>   
+<span class="n">how_many_points</span> <span class="o">=</span> <span class="mi">100</span>   
 <span class="n">deltax</span> <span class="o">=</span> <span class="n">space</span><span class="o">/</span><span class="n">how_many_points</span>
 <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">deltax</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span> <span class="c1"># constructor notation</span>
 <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many_points</span><span class="p">)]</span>      <span class="c1"># constructor notation</span>
@@ -916,7 +926,7 @@ Techniques of Water-Resources Investigations 03-B7 (supercedes above reference)<
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5b62662e9d5d714fb7117fbd3d98e82d239eda8b780a136b32ff211b5c437079.png" src="../../_images/5b62662e9d5d714fb7117fbd3d98e82d239eda8b780a136b32ff211b5c437079.png" />
+<img alt="../../_images/6ffe2a7e92cb95eb5861a05a8d0b37f1caa52c0fd609ba4d443e59bb2a3a1901.png" src="../../_images/6ffe2a7e92cb95eb5861a05a8d0b37f1caa52c0fd609ba4d443e59bb2a3a1901.png" />
 </div>
 </div>
 </section>
@@ -1222,6 +1232,32 @@ The figure below depicts the physical system, and the analytical model system at
 Even then, one should keep the same discipline: verify the PDE, IC/BCs, mass balance, and limiting cases as much as possible.</p>
 </div>
 </section>
+<section id="exercise-s">
+<h2>Exercise(s)<a class="headerlink" href="#exercise-s" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="#dummy"><span class="xref myst">CE5364-es4-2025-4.pdf (Placeholder)</span></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># autobuild exercise</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">&quot;pdflatex&quot;</span><span class="p">,</span> <span class="s2">&quot;ce5364-es4-2025-4.tex&quot;</span><span class="p">],</span> 
+                   <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Build failed. Check your LaTeX source file.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Build failed. Check your LaTeX source file.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-end">
+<h2>Section End<a class="headerlink" href="#section-end" title="Link to this heading">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1263,6 +1299,15 @@ Even then, one should keep the same discipline: verify the PDE, IC/BCs, mass bal
         <p class="prev-next-title">8. Modeling Advection</p>
       </div>
     </a>
+    <a class="right-next"
+       href="../05analytical.solutions2d/05analytical.solutions2d.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">10. Analytical Solutions (2D)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1303,7 +1348,6 @@ Even then, one should keep the same discipline: verify the PDE, IC/BCs, mass bal
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spreadsheet-model">Spreadsheet Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-history">Concentration History</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Spreadsheet Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-ogata-banks-solution">1D Ogata-Banks Solution</a><ul class="visible nav section-nav flex-column">
@@ -1327,6 +1371,8 @@ Even then, one should keep the same discipline: verify the PDE, IC/BCs, mass bal
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Concentration History</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Spreadsheet Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extensions">Extensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-s">Exercise(s)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-end">Section End</a></li>
 </ul>
 </li>
 </ul>
