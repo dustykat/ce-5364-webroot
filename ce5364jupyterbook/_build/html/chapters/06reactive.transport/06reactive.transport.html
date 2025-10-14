@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/06reactive.transport/06reactive.transport';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="12. MODFLOW6 Introduction" href="../07mf6.model/07mf6.introduction.html" />
     <link rel="prev" title="10. Analytical Solutions (2D)" href="../05analytical.solutions2d/05analytical.solutions2d.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -211,6 +212,12 @@
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Reactive Transport</a></li>
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07mf6.model/07mf6.introduction.html">12. MODFLOW6 Introduction</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07mf6.model/07mf6.transport.html">13. MODFLOW6 Transport</a></li>
 
 
 </ul>
@@ -1463,14 +1470,22 @@ a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the 
 <hr class="docutils" />
 <section id="exercise-s">
 <h2>Exercise(s)<a class="headerlink" href="#exercise-s" title="Link to this heading">#</a></h2>
-<p>Link</p>
+<p><a class="reference external" href="http://54.243.252.9/">ce5364-es6-2025-3.pdf</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># autobuild</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># autobuild exercise</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">&quot;pdflatex&quot;</span><span class="p">,</span> <span class="s2">&quot;ce5364-es6-2025-3.tex&quot;</span><span class="p">],</span> 
+                   <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Build failed. Check your LaTeX source file.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p><a class="reference internal" href="#dummy"><span class="xref myst">ce5364-es6-2025-3-Example_Report.pdf</span></a> Placeholder</p>
 </section>
 <section id="section-end">
 <h2>Section End<a class="headerlink" href="#section-end" title="Link to this heading">#</a></h2>
@@ -1515,6 +1530,15 @@ a convolution integral (eqn. 10.6.38, p. 634) (the end user needs to supply the 
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">10. Analytical Solutions (2D)</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../07mf6.model/07mf6.introduction.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">12. MODFLOW6 Introduction</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

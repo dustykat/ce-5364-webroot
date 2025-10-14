@@ -1,0 +1,134 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{daves,fancyhdr,natbib,graphicx,dcolumn,amsmath,lastpage,url}
+\usepackage{amsmath,amssymb,epstopdf,longtable}
+\usepackage[final]{pdfpages}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\pagestyle{fancy}
+\lhead{CE 5364 -- Groundwater Transport Phenomena }
+\rhead{FALL 2025}
+\lfoot{ES5}
+\cfoot{}
+\rfoot{Page \thepage\ of \pageref{LastPage}}
+\renewcommand\headrulewidth{0pt}
+
+
+
+\begin{document}
+\begin{center}
+{\textbf{{ CE 5364 Groundwater Transport Phenomena } \\ {Exercise Set 3}}}
+\end{center}
+
+\section*{\small{Exercises}}
+\begin{enumerate} %% Problem Counter
+
+\item (Problem 6-7, pg. 588)
+
+An instantaneous release of biodegradable constituients occurs in a 1-D aquifer. The mass released is $1.0 ~kg$ over a $10~m^2$ area normal to the flow direction, $\alpha_l = 1.0~m$, the seepage velocity is 1.0 $\frac{m}{day}$, and the half-life of the decaying constituient is 33 years.
+
+Determine:
+\begin{enumerate} %% Deliverable Counter
+%\item Sketch the system.
+\item The maximum concentration at 100 meters from the source.
+\item Plot a concentration history (annual intervals) for a 40 year period from release date for a location 100 meters from the source.
+%\item The volumetric flow rate through the column.
+\end{enumerate} %% Deliverable Counter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item (Data Analysis)
+
+A batch isotherm test was performed with several 1-L solutions of the chemical of interest and one soil type, 20 g in each solution container.  The initial and final solution concentrations are shown in Table \ref{tab:Isotherm}.  Fit the linear, Freundlich, and Langmuir isotherm equations to this data.  
+
+% Requires the booktabs if the memoir class is not being used
+\begin{table}[htbp]
+\centering
+\caption{Isotherm Observations}
+\begin{tabular}{p{1.5in}p{1.5in}} % Column formatting, @{} suppresses leading/trailing space
+Initial Concentration (mg/L) & Equilibrium Concentration (mg/L)\\
+\hline
+\hline
+7.10&6.71\\
+4.53&4.18\\
+1.89&1.63\\
+1.31&1.10\\
+1.03&0.85\\
+\hline
+\end{tabular}
+\label{tab:Isotherm}
+\end{table}
+
+Determine:
+\begin{enumerate} %% Deliverable Counter
+\item The Linear isotherm equation for these data (i.e. fit the isotherm model to the data), plot the isotherm and data
+\item The Freundlich isotherm equation for these data, plot the isotherm and data
+\item The Langmuir isotherm equation for these data, plot the isotherm and data
+\item Which isotherm model produces the best fit for these data?
+\end{enumerate} %% Deliverable Counter
+
+Show calculations and identify all fitted parameter values.
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item (Data Analysis)
+
+The following table (Table \ref{tab:ColumnData})has data from a column test with bromide (conservative) and chromium (sorbed).  
+The porosity of the soil was 0.485, the bulk density was 1.85 g/cc, velocity was 0.244 cm/min, and the column was 25.4 cm long with a diameter of 2.54 cm.  
+
+% Requires the booktabs if the memoir class is not being used
+\begin{table}[h!]
+\centering
+\caption{Effluent Breakthrough Observations}
+\begin{tabular}{p{1.5in}p{1.5in}p{1.5in}} % Column formatting, @{} suppresses leading/trailing space
+Time (min) & Bromide $\frac{C}{Co}$ & Chromium $\frac{C}{Co}$ \\
+\hline
+\hline
+0&0.000&0.000\\
+15&0.000&0.000\\
+30&0.005&0.000\\
+45&0.003&0.000\\
+60&0.013&0.000\\
+75&0.075&0.000\\
+90&0.137&0.000\\
+105&0.530&0.000\\
+120&0.841&0.000\\
+135&1.000&0.000\\
+150&1.000&0.000\\
+165&1.000&0.009\\
+180&1.000&0.186\\
+195&1.000&0.595\\
+210&1.000&0.791\\
+225&1.000&0.875\\
+240&1.000&0.913\\
+255&1.000&0.946\\
+270&1.000&0.946\\
+285&1.000&1.000\\
+300&1.000&1.000\\
+315&1.000&1.000\\
+330&1.000&1.000\\
+345&1.000&1.000\\
+360&1.000&1.000\\
+\hline
+\end{tabular}
+\label{tab:ColumnData}
+\end{table}
+
+Determine:
+\begin{enumerate} %% Deliverable Counter
+    \item Sketch the system.
+    \item The dispersivity in $cm$ 
+   \item The retardation coefficient for $Cr$.
+\end{enumerate} %% Deliverable Counter
+
+%%%%%%%%%%%%%%%
+
+
+
+\end{enumerate}%% Problem Counter
+
+\end{document}  
+

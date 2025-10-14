@@ -1290,14 +1290,22 @@ def func_F(rho,tau):
 </div>
 <section id="exercise-s">
 <h2>Exercise(s)<a class="headerlink" href="#exercise-s" title="Link to this heading">#</a></h2>
-<p>Link</p>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/ce5364jupyterbook/chapters/05analytical.solutions2d/ce5364-es5-2025-3.pdf">ce5364-es5-2025-3.pdf</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># autobuild</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># autobuild exercise</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">&quot;pdflatex&quot;</span><span class="p">,</span> <span class="s2">&quot;ce5364-es5-2025-3.tex&quot;</span><span class="p">],</span> 
+                   <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Build failed. Check your LaTeX source file.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p><a class="reference internal" href="#dummy"><span class="xref myst">ce5364-es5-2025-3_Example_Report</span></a> Placeholder</p>
 </section>
 <section id="end-section">
 <h2>End Section<a class="headerlink" href="#end-section" title="Link to this heading">#</a></h2>
