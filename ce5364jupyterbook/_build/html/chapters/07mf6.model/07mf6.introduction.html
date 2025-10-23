@@ -548,14 +548,40 @@ document.write(`
 <p>Built as a framework that can host multiple model types (flow, transport, exchanges) under a single simulation.</p>
 <p>Implements a solver-based coupling scheme that lets you run multiple groundwater flow models, or flow + transport models, simultaneously.</p>
 <ol class="arabic simple" start="2">
-<li><p>Architecture and File Structure
-|Aspect	|MODFLOW-2005|	MODFLOW-6|
-|——-|————|———–|
-|Execution Structure	|One model = one name file listing package files	|A simulation includes one or more models (GWF, GWT, etc.) and exchanges|
-|Control Files	|<em>.nam (name file) lists packages	|</em>.mfsim.nam (simulation name file) lists sub-components (TDIS, models, exchanges, solver)|
-|Temporal Control	|DIS, BAS, and OC manage timing|	Unified TDIS (time discretization) and IMS (solver) modules used across models|
-|Coupling	|External or one-way only	|Internal, iterative coupling (e.g., flow–transport feedback, multi-model exchanges)|
-|Packages	|File-centric, limited cross-communication	|Object-oriented, with package interconnections through memory structures|</p></li>
+<li><p>Architecture and File Structure</p></li>
+</ol>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>MODFLOW-2005</p></th>
+<th class="head"><p>MODFLOW-6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Execution Structure</p></td>
+<td><p>One model = one name file listing package files</p></td>
+<td><p>A simulation includes one or more models (GWF, GWT, etc.) and exchanges</p></td>
+</tr>
+<tr class="row-odd"><td><p>Control Files</p></td>
+<td><p>*.nam (name file) lists packages</p></td>
+<td><p>*.mfsim.nam (simulation name file) lists sub-components (TDIS, models, exchanges, solver)</p></td>
+</tr>
+<tr class="row-even"><td><p>Temporal Control</p></td>
+<td><p>DIS, BAS, and OC manage timing</p></td>
+<td><p>Unified TDIS (time discretization) and IMS (solver) modules used across models</p></td>
+</tr>
+<tr class="row-odd"><td><p>Coupling</p></td>
+<td><p>External or one-way only</p></td>
+<td><p>Internal, iterative coupling (e.g., flow–transport feedback, multi-model exchanges)</p></td>
+</tr>
+<tr class="row-even"><td><p>Packages</p></td>
+<td><p>File-centric, limited cross-communication</p></td>
+<td><p>Object-oriented, with package interconnections through memory structures</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol class="arabic simple" start="3">
 <li><p>Model Types and Flexibility</p></li>
 </ol>
 <p><strong>MODFLOW-2005</strong></p>
