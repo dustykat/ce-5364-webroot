@@ -1,0 +1,98 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{daves,fancyhdr,natbib,graphicx,dcolumn,amsmath,lastpage,url}
+\usepackage{amsmath,amssymb,epstopdf,longtable}
+\usepackage[final]{pdfpages}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\pagestyle{fancy}
+\lhead{CE 5364 -- Groundwater Transport Phenomena }
+\rhead{FALL 2025}
+\lfoot{ES7}
+\cfoot{}
+\rfoot{Page \thepage\ of \pageref{LastPage}}
+\renewcommand\headrulewidth{0pt}
+
+
+
+\begin{document}
+\begin{center}
+{\textbf{{ CE 5364 Groundwater Transport Phenomena } \\ {Exercise Set 7}}}
+\end{center}
+
+\section*{\small{MODFLOW6 Exercises}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Hydrogeologic setting}
+A plume of dissolved trichloroethylene has been found in a shallow unconfined aquifer.  The distribution of the plume is shown on the figure on the following page.  The shallow aquifer is the top of a three-layered system as shown in Figure \ref{fig:aquifer-elevation-view}.  
+
+\begin{figure}[h!] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=6in]{aquifer-elevation-view.png} 
+   \caption{Elevation view of aquifer-aquitard system showing generic hydrogeologic setting}
+   \label{fig:aquifer-elevation-view}
+\end{figure}
+
+An aquitard separates the unconfined aquifer from a lower leaky confined aquifer.  
+
+Three domestic wells exist down-gradient of the plume.  Wells 1 and 3 are in the upper aquifer, while well 2 is in the lower aquifer.  They each flow at 120 gpm.
+
+Figure \ref{fig:plume-plan-view} is a plan-view schematic of the plume and aquifer horizontal spatial extent.
+
+\begin{figure}[h!] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=6in]{plan-view-plume.png} 
+   \caption{Plan view of aquifer-aquitard system showing boundary conditions, plume concentrations, and well locations.  Grid size information is included.}
+   \label{fig:plume-plan-view}
+\end{figure}
+
+\begin{enumerate} %% Problem Counter
+\item Set up the MODFLOW6 groundwater flow scripts/files and perform a steady-state run representing the hydraulic conditions as described.  Generate a steady-flow head map in all three layers (they may look quite similar).  Recall that you can run a separate flow-only simulation.
+
+\item Set up the MODFLOW6 groundwater transport scripts/files to demonstrate the advective movement of the plume under the steady-state conditions.  Consider transport in all three layers.  Generate plume maps in all three layers for initial time, and some later time.  Recall that the initial contamination is in the upper layer only.  Simulate long enough so that the plume clearly moves.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item \textbf{Advection and dispersion}.  Use MT3D with $\alpha_L$ = 10 ft and $\alpha_T$ = 1 ft and the initial concentrations properly distributed to show the movement of the plume and which pre-existing wells are impacted in terms of earliest and final plume contact. You may consider the leading and trailing edge of the plume to be represented by 5  ppb.  
+
+\item \textbf{Advection, dispersion, and sorption}.  Use a $K_d$ = 0.20 along with the conditions in the previous task. Demonstrate the plume’s impact on the existing wells similar to the previous task.
+
+\item Assuming some kind of natural degradation occurs that is described by first-order decay, find the necessary half-life with the conditions above to prevent the plume from reaching the first pre-existing well. 
+
+\item Design an extraction system (assuming no degredation processes, but including adsorbtion) to remove the plume. Use flow rates of 100 gpm.  
+
+
+Deliverable(s):
+\begin{enumerate} %% Deliverable Counter
+\item \textsl{General Description.}  Describe the general problem statement with the initial conditions.  Provide a sketch or printout that shows the location and initial concentration values.
+
+\item \textsl{Simulation results}
+    \begin{itemize} %% Deliverable Counter
+        \item Advection only.  Describe the MODFLOW6 input/scripts necessary. Provide maps/printout of the result.
+    \item Advection and dispersion.  Describe the input required for MODFLOW6.  Provide maps of the concentration contours that demonstrate the result(s).
+    \item Advection, dispersion, and sorption.  Describe the input required for MODFLOW6.  Provide maps of the concentration contours that demonstrate the result(s).
+    \item Advection, dispersion, sorption, and decay.  Describe the input required for MODFLOW6.  Provide maps of the concentration contours that demonstrate the result(s).
+    \item Pumping system.  Describe the approach you used to locate the wells and the MODFLOW6 modification(s).  Use the following costs to estimate total cost to capture contaminants to 5 ppb.
+
+Pumping well\\
+	Installation				$\$$50,000\\
+	Efficiency				0.80\\
+	Annual maintenance			$\$$4000\\
+	Energy cost				$\$$0.08/kWh\\
+	Outlet elevation at surface		3150 ft\\
+    \end{itemize} %% Deliverable Counter
+
+\end{enumerate} %% Deliverable Counter
+
+
+
+\end{enumerate}%% Problem Counter
+
+\end{document}  
+
+\item (Problem 6-7, pg. 588)
+
