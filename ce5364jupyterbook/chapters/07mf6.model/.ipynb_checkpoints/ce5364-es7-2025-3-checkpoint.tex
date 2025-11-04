@@ -38,6 +38,7 @@ A plume of dissolved trichloroethylene has been found in a shallow unconfined aq
 
 An aquitard separates the unconfined aquifer from a lower leaky confined aquifer.  
 
+\clearpage
 Three domestic wells exist down-gradient of the plume.  Wells 1 and 3 are in the upper aquifer, while well 2 is in the lower aquifer.  They each flow at 120 gpm.
 
 Figure \ref{fig:plume-plan-view} is a plan-view schematic of the plume and aquifer horizontal spatial extent.
@@ -49,21 +50,22 @@ Figure \ref{fig:plume-plan-view} is a plan-view schematic of the plume and aquif
    \label{fig:plume-plan-view}
 \end{figure}
 
+\clearpage
+
+\textbf{Workflow}
+
 \begin{enumerate} %% Problem Counter
 \item Set up the MODFLOW6 groundwater flow scripts/files and perform a steady-state run representing the hydraulic conditions as described.  Generate a steady-flow head map in all three layers (they may look quite similar).  Recall that you can run a separate flow-only simulation.
 
 \item Set up the MODFLOW6 groundwater transport scripts/files to demonstrate the advective movement of the plume under the steady-state conditions.  Consider transport in all three layers.  Generate plume maps in all three layers for initial time, and some later time.  Recall that the initial contamination is in the upper layer only.  Simulate long enough so that the plume clearly moves.
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item \textbf{Advection and dispersion}.  Use MT3D with $\alpha_L$ = 10 ft and $\alpha_T$ = 1 ft and the initial concentrations properly distributed to show the movement of the plume and which pre-existing wells are impacted in terms of earliest and final plume contact. You may consider the leading and trailing edge of the plume to be represented by 5  ppb.  
+\item \textbf{Advection and dispersion}.  Use MODFLOW^ with $\alpha_L$ = 10 ft and $\alpha_T$ = 1 ft and the initial concentrations properly distributed to show the movement of the plume and which pre-existing wells are impacted in terms of earliest and final plume contact. You may consider the leading and trailing edge of the plume to be represented by 5 ppb.  
 
 \item \textbf{Advection, dispersion, and sorption}.  Use a $K_d$ = 0.20 along with the conditions in the previous task. Demonstrate the plume’s impact on the existing wells similar to the previous task.
 
 \item Assuming some kind of natural degradation occurs that is described by first-order decay, find the necessary half-life with the conditions above to prevent the plume from reaching the first pre-existing well. 
 
-\item Design an extraction system (assuming no degredation processes, but including adsorbtion) to remove the plume. Use flow rates of 100 gpm.  
+\item Design an extraction system (assuming no degredation processes, but including adsorbtion) to remove the plume. Use flow rates of 100 gpm.  Demonstrate system performance by simulation.
 
 
 Deliverable(s):
@@ -94,5 +96,4 @@ Pumping well\\
 
 \end{document}  
 
-\item (Problem 6-7, pg. 588)
 
