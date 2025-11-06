@@ -21,3 +21,4 @@ chapters:
 - file: chapters/06reactive.transport/06reactive.transport
 - file: chapters/07mf6.model/07mf6.introduction
 - file: chapters/07mf6.model/07mf6.transport
+- file: chapters/08data.collection/08data.collection

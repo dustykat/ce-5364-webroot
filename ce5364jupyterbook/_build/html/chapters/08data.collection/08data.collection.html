@@ -1,0 +1,665 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>14. Sample Collection and Data Analysis &#8212; Groundwater Transport Phenomena</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/08data.collection/08data.collection';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="13. MODFLOW6 Transport" href="../07mf6.model/07mf6.transport.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gwtransport.png" class="logo__image only-light" alt="Groundwater Transport Phenomena - Home"/>
+    <script>document.write(`<img src="../../_static/gwtransport.png" class="logo__image only-dark" alt="Groundwater Transport Phenomena - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00syllabus/ce5364-syllabus-2025-3.html">0. Syllabus (Fall 2025)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.science.html">2. Fundamentals I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01fundamentals/01fundamentals.practice.html">3. Fundamentals II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02regulatory.overview/regulatory.overview.html">3. Regulatory Overview and Risk Assessment</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03site.mapping.tools/site.mapping.tools.html">5. Site Mapping Tools</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03site.characterization/site.characterization.html">6. Site Characterization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/physical.transport.html">7. Physical Transport</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04physical.transport/modeling.advection.html">8. Modeling Advection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05analytical.models1d/05analytical.models1d.html">9. Analytical Solutions (1D)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../05analytical.solutions2d/05analytical.solutions2d.html">10. Analytical Solutions (2D)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06reactive.transport/06reactive.transport.html">11. Reactive Transport</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07mf6.model/07mf6.introduction.html">12. MODFLOW6 Introduction</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../07mf6.model/07mf6.transport.html">13. MODFLOW6 Transport</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Sample Collection and Data Analysis</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/08data.collection/08data.collection.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/08data.collection/08data.collection.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>14. Sample Collection and Data Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">Videos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstrating-trend-s">Demonstrating Trend(s)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sample-collection-and-data-analysis">
+<h1>14. Sample Collection and Data Analysis<a class="headerlink" href="#sample-collection-and-data-analysis" title="Link to this heading">#</a></h1>
+<div class="admonition-course-website admonition">
+<p class="admonition-title">Course Website</p>
+<p><a class="reference external" href="http://54.243.252.9/ce-5364-webroot/">Link to Course Website</a></p>
+</div>
+<section id="readings">
+<h2>Readings<a class="headerlink" href="#readings" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.epa.gov/sites/default/files/2016-05/documents/tech_notes_6_dec2013_trend.pdf">U.S. Environmental Protection Agency, National Nonpoint Source Monitoring Program, Tech Notes #6</a></p></li>
+<li><p><a class="reference external" href="https://www.epa.gov/sites/default/files/documents/rcragwguiddoc-rpt_0.pdf">U.S. Environmental Protection Agency, Office of Solid Waste. (1986) RCRA ground-water monitoring technical enforcement guidance document. OSWER-9950.1</a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/twri/twri4a3/">Helsel, D.R., Hirsch, R.M., Ryberg, K.R., Archfield, S.A., and Gilroy, E.J., 2020, Statistical methods in water resources: U.S. Geological Survey Techniques and Methods, book 4, chap. A3, 458 p., https://doi.org/10.3133/tm4a3. [Supersedes USGS Techniques of Water-Resources Investigations, book 4, chap. A3, version 1.1.]</a></p></li>
+<li><p><a class="reference external" href="https://pubs.usgs.gov/sir/2005/5275/">Helsel, D.R., Mueller, D.K., and Slack, J.R., 2006, Computer program for the Kendall family of trend tests: U.S. Geological Survey Scientific Investigations Report 2005–5275, 4 p.</a></p></li>
+</ol>
+</section>
+<section id="videos">
+<h2>Videos<a class="headerlink" href="#videos" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>none</p></li>
+</ul>
+<p>Sampling is a crucial step in assessing groundwater contamination. The objective is to obtain representative samples that accurately reflect the water quality and the presence of contaminants. Here are some key considerations in sample collection:</p>
+<ul class="simple">
+<li><p>Sampling Locations: Careful selection of sampling locations is vital. These sites should be strategically chosen based on hydrogeological knowledge, proximity to potential contamination sources, and historical data. Monitoring wells, springs, or nearby surface water bodies can be appropriate locations.</p></li>
+<li><p>Sampling Depth: Groundwater can exhibit vertical variability in its quality. Thus, samples should be collected at various depths to assess the full spectrum of contamination.</p></li>
+<li><p>Sampling Frequency: Regular and consistent sampling over time is essential to track changes in groundwater quality. Seasonal variations and short-term fluctuations can impact the data.</p></li>
+<li><p>Sample Containers: Choosing appropriate containers is critical to preserve the integrity of the samples. Containers must be clean, made of inert materials, and properly labeled.</p></li>
+</ul>
+<p>Once samples are collected, thorough data analysis is imperative to draw meaningful conclusions about groundwater quality and contamination. Several steps are involved in this process:</p>
+<ul class="simple">
+<li><p>Laboratory Analysis: Samples are typically analyzed in specialized laboratories using standardized methods to detect and quantify specific contaminants. Common parameters include pH, turbidity, dissolved oxygen, and the concentration of various pollutants (e.g., heavy metals, nitrates, volatile organic compounds).</p></li>
+<li><p>Quality Control: Quality control measures, such as blank samples and duplicates, are essential to verify the accuracy and precision of laboratory results.</p></li>
+<li><p>Data Interpretation: The collected data need to be interpreted in the context of relevant regulations and guidelines. Comparison to established water quality standards or local regulatory limits helps identify contamination levels.</p></li>
+<li><p>Spatial Mapping: Geographic Information Systems (GIS) can be used to create spatial maps of contamination plumes, providing a visual representation of the extent and movement of pollutants.</p></li>
+<li><p>Trend Analysis: Over time, trends in groundwater quality should be assessed. This involves statistical techniques like trend analysis and time series modeling to identify changes in contamination levels.</p></li>
+<li><p>Risk Assessment: The final step is assessing the potential risks associated with groundwater contamination. This involves understanding the exposure pathways and potential health impacts on the community.</p></li>
+</ul>
+</section>
+<section id="demonstrating-trend-s">
+<h2>Demonstrating Trend(s)<a class="headerlink" href="#demonstrating-trend-s" title="Link to this heading">#</a></h2>
+<p>Demonstration of trends will typically employ both plotting (visual cues) and some kind of trend analysis.  The methods suggested in the textbook are variations of non-parametric statistical hypothesis tests.  (pp. 456-462)</p>
+<p><strong>Mann-Kendall Trend Test</strong> is used to determine whether or not a trend exists in time series (ordered) data. It is a non-parametric test, meaning there is no underlying assumption made about the normality of the data.</p>
+<p>The textbook presents a tabular approach for small data sets as one would expect on a remediation site - here we present a scripting approach using python packages.</p>
+<blockquote>
+<div><p>Mann-Kendall Trend Test using <code class="docutils literal notranslate"><span class="pre">mk.original_test()</span></code> function <br><br>In this approach, the <code class="docutils literal notranslate"><span class="pre">mk.original_test()</span></code> function with required parameters from the <strong>pymannkendall</strong> library to conduct the Mann-Kendall Trend test on the given data in the python programming language. To install the pymannkendall library for mk.original_test() function employ <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code> like:<br><br> <code class="docutils literal notranslate"><span class="pre">root&#64;atomickitty:/home/sensei#</span> <span class="pre">sudo</span> <span class="pre">-H</span> <span class="pre">/opt/jupyterhub/bin/python3</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pymannkendall</span></code></p>
+</div></blockquote>
+<p>An example from <a class="reference external" href="https://www.geeksforgeeks.org/how-to-perform-a-mann-kendall-trend-test-in-python/">https://www.geeksforgeeks.org</a> below is used to check the install</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pymannkendall</span> <span class="k">as</span> <span class="nn">mk</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+ 
+<span class="n">gfg_data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">54</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">53</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">53</span><span class="p">]</span>
+
+<span class="c1"># perform Mann-Kendall Trend Test</span>
+<span class="n">result</span><span class="o">=</span><span class="n">mk</span><span class="o">.</span><span class="n">original_test</span><span class="p">(</span><span class="n">gfg_data</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">trend</span><span class="p">)</span>
+<span class="n">trend_line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gfg_data</span><span class="p">))</span><span class="o">*</span><span class="n">result</span><span class="o">.</span><span class="n">slope</span> <span class="o">+</span> <span class="n">result</span><span class="o">.</span><span class="n">intercept</span>
+
+<span class="c1">#data plot </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">gfg_data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trend_line</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># autocorrelation plot</span>
+<span class="c1">#fig, ax = plt.subplots(figsize=(12, 8))</span>
+<span class="c1">#sm.graphics.tsa.plot_acf(gfg_data, lags=7, ax=ax);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>no trend
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 100.0)
+</pre></div>
+</div>
+<img alt="../../_images/2c22a1babec7bbf6df4a96e9d13624620dc30ee0e5fa17db6d46e16aa2e8c0d6.png" src="../../_images/2c22a1babec7bbf6df4a96e9d13624620dc30ee0e5fa17db6d46e16aa2e8c0d6.png" />
+</div>
+</div>
+<p>Now we have a tool, lets repeat the example on page 461 of the textbook</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pymannkendall</span> <span class="k">as</span> <span class="nn">mk</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">gfg_data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.18</span><span class="p">,</span><span class="mf">3.455</span><span class="p">,</span><span class="mf">3.022</span><span class="p">,</span><span class="mf">4.876</span><span class="p">,</span><span class="mf">1.635</span><span class="p">,</span><span class="mf">2.561</span><span class="p">,</span><span class="mf">2.329</span><span class="p">,</span><span class="mf">0.95</span><span class="p">]</span>
+ 
+<span class="c1"># perform Mann-Kendall Trend Test</span>
+<span class="n">result</span><span class="o">=</span><span class="n">mk</span><span class="o">.</span><span class="n">original_test</span><span class="p">(</span><span class="n">gfg_data</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trend type: &quot;</span><span class="p">,</span><span class="n">result</span><span class="o">.</span><span class="n">trend</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p-value at rejection : &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">p</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">trend_line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gfg_data</span><span class="p">))</span><span class="o">*</span><span class="n">result</span><span class="o">.</span><span class="n">slope</span> <span class="o">+</span> <span class="n">result</span><span class="o">.</span><span class="n">intercept</span>
+
+<span class="c1">#data plot </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">gfg_data</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trend_line</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Sample Number&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Conc. (ppm) &quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+<span class="c1"># autocorrelation plot</span>
+<span class="c1">#fig, ax = plt.subplots(figsize=(12, 8))</span>
+<span class="c1">#sm.graphics.tsa.plot_acf(gfg_data, lags=7, ax=ax);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trend type:  decreasing
+p-value at rejection :  0.06
+</pre></div>
+</div>
+<img alt="../../_images/6be7a660ba353169a39297da0652da33dff37fb3c234e63ccc06ad7e9e68e9d5.png" src="../../_images/6be7a660ba353169a39297da0652da33dff37fb3c234e63ccc06ad7e9e68e9d5.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/08data.collection"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../07mf6.model/07mf6.transport.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">13. MODFLOW6 Transport</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">Videos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstrating-trend-s">Demonstrating Trend(s)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Theodore G. Cleveland, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
