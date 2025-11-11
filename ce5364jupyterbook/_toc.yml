@@ -28,4 +28,9 @@ chapters:
   sections:
   - file: chapters/18untransport/unsaturatedtransport.ipynb
   - file: chapters/18untransport/napls.ipynb
+- file: chapters/19chemflow/chemflow
+  sections:
+  - file: chapters/19chemflow/chemflowaarch
+  - file: chapters/19chemflow/chemflowwinders
+  - file: chapters/19chemflow/chemflowexamples
 - file: chapters/22remediation/remediation.ipynb

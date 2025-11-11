@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>CHEMFLO-2000 &#8212; Groundwater Transport Phenomena</title>
+    <title>16. CHEMFLO-2000 &#8212; Groundwater Transport Phenomena</title>
   
   
   
@@ -60,6 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/19chemflow/chemflow';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="16.1 ARM7/AARCH Install" href="chemflowaarch.html" />
+    <link rel="prev" title="15.2 Non-Aqueous Phase Liquids" href="../18untransport/napls.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -179,7 +179,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00syllabus/ce5364-syllabus-2025-3.html">0. Syllabus (Fall 2025)</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../00introduction/00introduction.html">1. Introduction</a></li>
@@ -219,10 +219,18 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="../08data.collection/08data.collection.html">14. Sample Collection and Data Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../17unsaturatedzone/unsaturated.html">Unsaturated Zone Flow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../18untransport/unsaturatedtransport.html">Unsaturated Zone Transport</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../18untransport/napls.html">Non-Aqueous Phase Liquids</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../22remediation/remediation.html">Remediation Technologies</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../17unsaturatedzone/unsaturated.html">15 Unsaturated Zone Flow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../18untransport/unsaturatedtransport.html">15.1 Unsaturated Zone Transport (Continued)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../18untransport/napls.html">15.2 Non-Aqueous Phase Liquids</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">16. CHEMFLO-2000</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="chemflowaarch.html">16.1 ARM7/AARCH Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chemflowwinders.html">16.2 Windows Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chemflowexamples.html">16.3 CHEMFLOW Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../22remediation/remediation.html">17. Remediation Technologies</a></li>
 </ul>
 
     </div>
@@ -408,7 +416,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>CHEMFLO-2000</h1>
+    <h1>16. CHEMFLO-2000</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -432,7 +440,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chemflo-2000">
-<h1>CHEMFLO-2000<a class="headerlink" href="#chemflo-2000" title="Link to this heading">#</a></h1>
+<h1>16. CHEMFLO-2000<a class="headerlink" href="#chemflo-2000" title="Link to this heading">#</a></h1>
 <p>Water and chemical movement in soils are dynamic processes, changing dramatically over time and space. Soil properties, chemical properties, and water and chemical application rates interact in complex ways within the soil system to determine the direction and rate of movement of these materials. Researchers have worked many years to understand the physical and chemical mechanisms responsible for the movement of these materials. They have developed mathematical models describing these processes and compared the predictions of these models with field and laboratory measurements. The resulting mathematical models form a basis for predicting the behavior of water and chemicals in soils.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">CHEMFLO</span></code> software was created to enhance understanding of the flow and transport processes of water and chemicals into and through soils.  The software enables users to define water and chemical movement systems. The software then solves equation(s) from mathematical models of these systems and displays the results graphically.</p>
 <p>The software is intended for use by students, regulators, consultants, scientists, and others who are interested in understanding unsaturated flow and transport processes.</p>
@@ -447,6 +455,8 @@ document.write(`
 <li><p><a class="reference external" href="https://cfpub.epa.gov/si/si_public_record_report.cfm?Lab=NRMRL&amp;amp;dirEntryId=96478">Chemflo-2000 Manual (EPA website)</a></p></li>
 </ol>
 </section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -479,6 +489,24 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../18untransport/napls.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">15.2 Non-Aqueous Phase Liquids</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chemflowaarch.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">16.1 ARM7/AARCH Install</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
