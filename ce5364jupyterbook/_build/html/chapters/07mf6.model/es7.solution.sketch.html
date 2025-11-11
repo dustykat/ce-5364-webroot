@@ -219,12 +219,12 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="../08data.collection/08data.collection.html">14. Sample Collection and Data Analysis</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../17unsaturatedzone/unsaturated.html">Unsaturated Zone Flow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../18untransport/unsaturatedtransport.html">Unsaturated Zone Transport</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../18untransport/napls.html">Non-Aqueous Phase Liquids</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../17unsaturatedzone/unsaturated.html">15 Unsaturated Zone Flow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../18untransport/unsaturatedtransport.html">15.1 Unsaturated Zone Transport (Continued)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../18untransport/napls.html">15.2 Non-Aqueous Phase Liquids</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../22remediation/remediation.html">Remediation Technologies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22remediation/remediation.html">17. Remediation Technologies</a></li>
 </ul>
 
     </div>
@@ -1803,14 +1803,14 @@ Layer 3
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###### Instantiating MODFLOW 6 initial conditions for flow model ########</span>
 <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
     <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfic</span><span class="p">(</span><span class="n">gwf</span><span class="p">,</span> <span class="n">strt</span><span class="o">=</span><span class="n">inithead</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.ic&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;initial heads framework created into object: &quot;&quot;name.ic&quot;&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;initial heads framework created into object: </span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.ic &quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfic</span><span class="p">(</span><span class="n">gwf</span><span class="p">,</span> <span class="n">strt</span><span class="o">=</span><span class="n">inithead</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.ic&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>initial heads framework created into object: name.ic 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>initial heads framework created into object: gwf-es7.ic 
 </pre></div>
 </div>
 </div>
@@ -1828,7 +1828,7 @@ Layer 3
     <span class="n">save_specific_discharge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.npf&quot;</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;node-property framework created into object: &quot;&quot;name.npf&quot;&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node-property framework created into object: </span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.npf &quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfnpf</span><span class="p">(</span>
     <span class="n">gwf</span><span class="p">,</span>
@@ -1843,7 +1843,7 @@ Layer 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>node-property framework created into object: name.npf 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>node-property framework created into object: gwf-es7.npf 
 </pre></div>
 </div>
 </div>
@@ -1868,7 +1868,8 @@ Layer 3
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###### Instantiating MODFLOW 6 constant head package             ########</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### NEED FIX MULTIPLE STRESS PERIODS HERE ###</span>
+<span class="c1">###### Instantiating MODFLOW 6 constant head package             ########</span>
 <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
     <span class="n">chdspd</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">ilay</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nlay</span><span class="p">):</span>
@@ -1887,7 +1888,7 @@ Layer 3
     <span class="n">pname</span><span class="o">=</span><span class="s2">&quot;CHD-1&quot;</span><span class="p">,</span>
     <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.chd&quot;</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;storage framework created into object: &quot;&quot;chdspd&quot;&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;storage framework created into object: </span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.chd &quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">chdspd</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">ilay</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nlay</span><span class="p">):</span>
@@ -1900,7 +1901,7 @@ Layer 3
     <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfchd</span><span class="p">(</span>
     <span class="n">gwf</span><span class="p">,</span>
     <span class="n">maxbound</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">chdspd</span><span class="p">),</span>
-    <span class="n">stress_period_data</span><span class="o">=</span><span class="n">chdspd</span><span class="p">,</span>
+    <span class="n">stress_period_data</span><span class="o">=</span><span class="n">chdspd</span><span class="p">,</span> <span class="c1">#&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; HERE</span>
     <span class="n">save_flows</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">auxiliary</span><span class="o">=</span><span class="s2">&quot;CONCENTRATION&quot;</span><span class="p">,</span>
     <span class="n">pname</span><span class="o">=</span><span class="s2">&quot;CHD-1&quot;</span><span class="p">,</span>
@@ -1911,7 +1912,7 @@ Layer 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>storage framework created into object: chdspd 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>storage framework created into object: gwf-es7.chd 
 </pre></div>
 </div>
 </div>
@@ -1982,13 +1983,13 @@ Layer 3
     writing model name file...
     writing package dis...
     writing package ic...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    writing package npf...
+    writing package npf...
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    writing package sto...
-    writing package chd-1...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    writing package chd-1...
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    writing package oc...
