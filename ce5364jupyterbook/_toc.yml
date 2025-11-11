@@ -21,4 +21,11 @@ chapters:
 - file: chapters/06reactive.transport/06reactive.transport
 - file: chapters/07mf6.model/07mf6.introduction
 - file: chapters/07mf6.model/07mf6.transport
+  sections:
+  - file: chapters/07mf6.model/es7.solution.sketch
 - file: chapters/08data.collection/08data.collection
+- file: chapters/17unsaturatedzone/unsaturated.ipynb
+  sections:
+  - file: chapters/18untransport/unsaturatedtransport.ipynb
+  - file: chapters/18untransport/napls.ipynb
+- file: chapters/22remediation/remediation.ipynb
