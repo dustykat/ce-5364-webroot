@@ -224,6 +224,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../18untransport/napls.html">15.2 Non-Aqueous Phase Liquids</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../19chemflow/chemflow.html">16. CHEMFLO-2000</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../19chemflow/chemflowaarch.html">16.1 ARM7/AARCH Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../19chemflow/chemflowwinders.html">16.2 Windows Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../19chemflow/chemflowexamples.html">16.3 CHEMFLOW Examples</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../22remediation/remediation.html">17. Remediation Technologies</a></li>
 </ul>
 
@@ -397,7 +403,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -413,6 +421,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-model-post-processing-and-hydraulic-reasonableness-check">Flow Model – Post-Processing and Hydraulic Reasonableness Check</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -424,6 +440,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="es7-solution-sketch">
 <h1>ES7 Solution Sketch<a class="headerlink" href="#es7-solution-sketch" title="Link to this heading">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is a work in progress - end goal is to get a working model framework, then students modify to fit the problem statement, formulate narrative answers, etc.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Populate this portion with the problem prompt</p>
@@ -431,10 +451,10 @@ document.write(`
 <p>Model build notes (flow model):</p>
 <ul class="simple">
 <li><p>memory purge script DONE</p></li>
+<li><p>problem set up database: IN PROGRESS</p></li>
 <li><p>import MF6 FloPy script DONE</p></li>
 <li><p>define workspace script DONE</p></li>
 <li><p>set simulation name: DONE</p></li>
-<li><p>problem set up database: IN PROGRESS</p></li>
 <li><p>set flow model name: DONE</p></li>
 <li><p>set time discretization: DONE</p></li>
 <li><p>solver for flow model: DONE</p></li>
@@ -445,8 +465,15 @@ document.write(`
 <li><p>constant head package: DONE</p></li>
 <li><p>well package (if applicable): SKIP TRY 1</p></li>
 <li><p>output control for flow model: DONE</p></li>
-<li><p>Attempt FLOW model run: FAIL – needs fixin’</p></li>
+<li><p>Attempt FLOW model run: SUCCESS; NEED TO CHECK OUTPUTS</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reset</span> -f
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># purge memory and reset_environment</span>
@@ -479,37 +506,6 @@ document.write(`
 <span class="c1">#from modflow_devtools.misc import get_env, timed</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span><span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define workspace and executibles -- THISISMACHINE SPECIFIC</span>
-<span class="n">binary</span> <span class="o">=</span> <span class="s2">&quot;/home/sensei/mfplayground/modflow-python/mf6.4.1_linux/bin/mf6&quot;</span>  <span class="c1"># location on MY computer of the compiled modflow program</span>
-<span class="n">directory_name</span> <span class="o">=</span> <span class="s2">&quot;es7_soln&quot;</span>
-<span class="n">workarea</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;/home/sensei/ce-5364-webroot/mfexperiments&quot;</span><span class="p">,</span> <span class="n">directory_name</span><span class="p">)</span>
-<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">workarea</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set simulation name(s)</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;es7&quot;</span>
-<span class="n">gwfname</span> <span class="o">=</span> <span class="s2">&quot;gwf-&quot;</span> <span class="o">+</span> <span class="n">name</span>
-<span class="n">gwtname</span> <span class="o">=</span> <span class="s2">&quot;gwt-&quot;</span> <span class="o">+</span> <span class="n">name</span>
-
-<span class="c1">##### FLOPY build simulation framework ####</span>
-<span class="n">sim</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">MFSimulation</span><span class="p">(</span>
-    <span class="n">sim_name</span><span class="o">=</span><span class="s2">&quot;sim-&quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">,</span> <span class="n">exe_name</span><span class="o">=</span><span class="n">binary</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;mf6&quot;</span><span class="p">,</span> <span class="n">sim_ws</span><span class="o">=</span><span class="n">workarea</span>
-<span class="p">)</span>
-<span class="c1"># set model name (using same base name as the simulation)</span>
-<span class="n">model_nam_file</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.nam&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gwfname</span><span class="p">)</span>
-<span class="c1"># create MODFLOW6 flow model framework</span>
-<span class="n">gwf</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwf</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">modelname</span><span class="o">=</span><span class="n">gwfname</span><span class="p">,</span> <span class="n">save_flows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">model_nam_file</span><span class="o">=</span><span class="n">model_nam_file</span><span class="p">)</span>
-<span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
 </pre></div>
 </div>
 </div>
@@ -676,7 +672,7 @@ document.write(`
 
 <span class="c1"># Time variables</span>
 <span class="n">perlen</span> <span class="o">=</span> <span class="p">[</span><span class="mf">365.0</span> <span class="o">*</span> <span class="mi">86400</span><span class="p">,</span> <span class="mf">365.0</span> <span class="o">*</span> <span class="mi">86400</span><span class="p">]</span>
-<span class="n">steady</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+<span class="n">steady</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
 <span class="n">nper</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">perlen</span><span class="p">)</span>
 <span class="n">nstp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">365</span><span class="p">,</span> <span class="mi">365</span><span class="p">]</span>
 <span class="n">tsmult</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
@@ -1668,6 +1664,17 @@ Layer 3
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define workspace and executibles -- THISISMACHINE SPECIFIC</span>
+<span class="n">binary</span> <span class="o">=</span> <span class="s2">&quot;/home/sensei/mfplayground/modflow-python/mf6.4.1_linux/bin/mf6&quot;</span>  <span class="c1"># location on MY computer of the compiled modflow program</span>
+<span class="n">directory_name</span> <span class="o">=</span> <span class="s2">&quot;es7_soln&quot;</span>
+<span class="n">workarea</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;/home/sensei/ce-5364-webroot/mfexperiments&quot;</span><span class="p">,</span> <span class="n">directory_name</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">workarea</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>The workflow for the flow model will generally involve the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">###### Instantiating MODFLOW 6 groundwater flow model            ########</span>
 <span class="c1">###### Instantiating MODFLOW 6 time discretization               ########</span>
@@ -1684,20 +1691,36 @@ Layer 3
 <p>These are created one-by-one in the cells below</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###### Instantiating MODFLOW 6 groundwater flow model            ########</span>
-<span class="c1"># Set Model Name (using same base name as the simulation)</span>
-<span class="n">model_nam_file</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.nam&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gwfname</span><span class="p">)</span>
-<span class="c1"># create MODFLOW6 flow model framework</span>
-<span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-    <span class="n">gwf</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwf</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">modelname</span><span class="o">=</span><span class="n">gwfname</span><span class="p">,</span> <span class="n">save_flows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">model_nam_file</span><span class="o">=</span><span class="n">model_nam_file</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;flow model framework created into object: &quot;&quot;gwf&quot;&quot; &quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set simulation name(s)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;es7&quot;</span>
+<span class="n">gwfname</span> <span class="o">=</span> <span class="s2">&quot;gwf-&quot;</span> <span class="o">+</span> <span class="n">name</span>
+<span class="n">gwtname</span> <span class="o">=</span> <span class="s2">&quot;gwt-&quot;</span> <span class="o">+</span> <span class="n">name</span>
+
+<span class="c1">##### FLOPY build simulation framework ####</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">MFSimulation</span><span class="p">(</span>
+    <span class="n">sim_name</span><span class="o">=</span><span class="s2">&quot;sim-&quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">,</span> <span class="n">exe_name</span><span class="o">=</span><span class="n">binary</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;mf6&quot;</span><span class="p">,</span> <span class="n">sim_ws</span><span class="o">=</span><span class="n">workarea</span>
+<span class="p">)</span>
+
+<span class="n">model_nam_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.nam&quot;</span>
+
+<span class="k">if</span> <span class="n">gwfname</span> <span class="ow">in</span> <span class="n">sim</span><span class="o">.</span><span class="n">model_dict</span><span class="p">:</span>
+    <span class="n">gwf</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="n">gwfname</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;GWF model &#39;</span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">&#39; already exists in sim.&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">gwf</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwf</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">modelname</span><span class="o">=</span><span class="n">gwfname</span><span class="p">,</span> <span class="n">save_flows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">model_nam_file</span><span class="o">=</span><span class="n">model_nam_file</span><span class="p">);</span>
+    <span class="n">gwf</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwf</span><span class="p">(</span>
+        <span class="n">sim</span><span class="p">,</span>
+        <span class="n">modelname</span><span class="o">=</span><span class="n">gwfname</span><span class="p">,</span>
+        <span class="n">save_flows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">model_nam_file</span><span class="o">=</span><span class="n">model_nam_file</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Created GWF model &#39;</span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">&#39; with name file </span><span class="si">{</span><span class="n">model_nam_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flow model framework created into object: gwf 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Created GWF model &#39;gwf-es7&#39; with name file gwf-es7.nam
 </pre></div>
 </div>
 </div>
@@ -1745,14 +1768,14 @@ Layer 3
     <span class="p">)</span>
 <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
     <span class="n">sim</span><span class="o">.</span><span class="n">register_ims_package</span><span class="p">(</span><span class="n">imsgwf</span><span class="p">,</span> <span class="p">[</span><span class="n">gwf</span><span class="o">.</span><span class="n">name</span><span class="p">])</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;solver framework created into object: &quot;&quot;imsgwf&quot;&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;solver framework created into object: </span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.ims &quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">sim</span><span class="o">.</span><span class="n">register_ims_package</span><span class="p">(</span><span class="n">imsgwf</span><span class="p">,</span> <span class="p">[</span><span class="n">gwf</span><span class="o">.</span><span class="n">name</span><span class="p">]);</span>   
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>solver framework created into object: imsgwf 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>solver framework created into object: gwf-es7.ims 
 </pre></div>
 </div>
 </div>
@@ -1774,7 +1797,7 @@ Layer 3
     <span class="n">idomain</span><span class="o">=</span><span class="n">idomain</span><span class="p">,</span>
     <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.dis&quot;</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;grid framework created into object: &quot;&quot;name.dis&quot;&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;grid framework created into object: </span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.dis &quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfdis</span><span class="p">(</span>
     <span class="n">gwf</span><span class="p">,</span>
@@ -1793,7 +1816,7 @@ Layer 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>grid framework created into object: name.dis 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>grid framework created into object: gwf-es7.dis 
 </pre></div>
 </div>
 </div>
@@ -1857,6 +1880,8 @@ Layer 3
 <span class="k">else</span><span class="p">:</span>
     <span class="n">sto</span> <span class="o">=</span> <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfsto</span><span class="p">(</span><span class="n">gwf</span><span class="p">,</span><span class="n">storagecoefficient</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ss</span><span class="o">=</span><span class="n">ss_array</span><span class="p">);</span>
 <span class="c1">## delete &quot;;&quot; in above line at end to show full output</span>
+
+<span class="c1">########## Does storage need multi-period</span>
 </pre></div>
 </div>
 </div>
@@ -1888,7 +1913,7 @@ Layer 3
     <span class="n">pname</span><span class="o">=</span><span class="s2">&quot;CHD-1&quot;</span><span class="p">,</span>
     <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.chd&quot;</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;storage framework created into object: </span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.chd &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;constant head framework created into object: </span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.chd &quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">chdspd</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">ilay</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nlay</span><span class="p">):</span>
@@ -1912,7 +1937,7 @@ Layer 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>storage framework created into object: gwf-es7.chd 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>constant head framework created into object: gwf-es7.chd 
 </pre></div>
 </div>
 </div>
@@ -1945,7 +1970,7 @@ Layer 3
     <span class="n">saverecord</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;HEAD&quot;</span><span class="p">,</span> <span class="s2">&quot;LAST&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;BUDGET&quot;</span><span class="p">,</span> <span class="s2">&quot;LAST&quot;</span><span class="p">)],</span>
     <span class="n">printrecord</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;HEAD&quot;</span><span class="p">,</span> <span class="s2">&quot;LAST&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;BUDGET&quot;</span><span class="p">,</span> <span class="s2">&quot;LAST&quot;</span><span class="p">)],</span>
     <span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;output control for flow model created into objects &quot;&quot;name.hds&quot;&quot; and &quot;&quot;name.bud&quot;&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;output control for flow model created into objects </span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.hds and </span><span class="si">{</span><span class="n">gwfname</span><span class="si">}</span><span class="s2">.bud &quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">flopy</span><span class="o">.</span><span class="n">mf6</span><span class="o">.</span><span class="n">ModflowGwfoc</span><span class="p">(</span>
     <span class="n">gwf</span><span class="p">,</span>
@@ -1959,7 +1984,7 @@ Layer 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>output control for flow model created into objects name.hds and name.bud 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>output control for flow model created into objects gwf-es7.hds and gwf-es7.bud 
 </pre></div>
 </div>
 </div>
@@ -1997,6 +2022,1181 @@ Layer 3
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Attempt to run MODFLOW this model</span>
+<span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">silent</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">silent</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">success</span><span class="p">,</span> <span class="n">buff</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run_simulation</span><span class="p">(</span><span class="n">silent</span><span class="o">=</span><span class="n">silent</span><span class="p">,</span> <span class="n">report</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[1;32mMODFLOW 6 normal termination.</span><span class="se">\033</span><span class="s2">[0m&quot;</span><span class="p">)</span>   <span class="c1"># bold green</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[1;31mMODFLOW 6 did NOT terminate normally!</span><span class="se">\033</span><span class="s2">[0m&quot;</span><span class="p">)</span>  <span class="c1"># bold red</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;MODFLOW 6 did not terminate normally.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FloPy is using the following executable to run the model: ../../../mfplayground/modflow-python/mf6.4.1_linux/bin/mf6
+                                   MODFLOW 6
+                U.S. GEOLOGICAL SURVEY MODULAR HYDROLOGIC MODEL
+                            VERSION 6.6.1 02/10/2025
+
+   MODFLOW 6 compiled Feb 14 2025 13:39:18 with Intel(R) Fortran Intel(R) 64
+   Compiler Classic for applications running on Intel(R) 64, Version 2021.7.0
+                             Build 20220726_000000
+
+This software has been approved for release by the U.S. Geological 
+Survey (USGS). Although the software has been subjected to rigorous 
+review, the USGS reserves the right to update the software as needed 
+pursuant to further analysis and review. No warranty, expressed or 
+implied, is made by the USGS or the U.S. Government as to the 
+functionality of the software and related material nor shall the 
+fact of release constitute any such warranty. Furthermore, the 
+software is released on condition that neither the USGS nor the U.S. 
+Government shall be held liable for any damages resulting from its 
+authorized or unauthorized use. Also refer to the USGS Water 
+Resources Software User Rights Notice for complete use, copyright, 
+and distribution information.
+
+ 
+ MODFLOW runs in SEQUENTIAL mode
+ 
+ Run start date and time (yyyy/mm/dd hh:mm:ss): 2025/11/13 22:54:35
+ 
+ Writing simulation list file: mfsim.lst
+ Using Simulation name file: mfsim.nam
+ 
+    Solving:  Stress period:     1    Time step:     1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:     2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:     3
+    Solving:  Stress period:     1    Time step:     4
+    Solving:  Stress period:     1    Time step:     5
+    Solving:  Stress period:     1    Time step:     6
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:     7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:     8
+    Solving:  Stress period:     1    Time step:     9
+    Solving:  Stress period:     1    Time step:    10
+    Solving:  Stress period:     1    Time step:    11
+    Solving:  Stress period:     1    Time step:    12
+    Solving:  Stress period:     1    Time step:    13
+    Solving:  Stress period:     1    Time step:    14
+    Solving:  Stress period:     1    Time step:    15
+    Solving:  Stress period:     1    Time step:    16
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    17
+    Solving:  Stress period:     1    Time step:    18
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    19
+    Solving:  Stress period:     1    Time step:    20
+    Solving:  Stress period:     1    Time step:    21
+    Solving:  Stress period:     1    Time step:    22
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    23
+    Solving:  Stress period:     1    Time step:    24
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    25
+    Solving:  Stress period:     1    Time step:    26
+    Solving:  Stress period:     1    Time step:    27
+    Solving:  Stress period:     1    Time step:    28
+    Solving:  Stress period:     1    Time step:    29
+    Solving:  Stress period:     1    Time step:    30
+    Solving:  Stress period:     1    Time step:    31
+    Solving:  Stress period:     1    Time step:    32
+    Solving:  Stress period:     1    Time step:    33
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    34
+    Solving:  Stress period:     1    Time step:    35
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    36
+    Solving:  Stress period:     1    Time step:    37
+    Solving:  Stress period:     1    Time step:    38
+    Solving:  Stress period:     1    Time step:    39
+    Solving:  Stress period:     1    Time step:    40
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    41
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    42
+    Solving:  Stress period:     1    Time step:    43
+    Solving:  Stress period:     1    Time step:    44
+    Solving:  Stress period:     1    Time step:    45
+    Solving:  Stress period:     1    Time step:    46
+    Solving:  Stress period:     1    Time step:    47
+    Solving:  Stress period:     1    Time step:    48
+    Solving:  Stress period:     1    Time step:    49
+    Solving:  Stress period:     1    Time step:    50
+    Solving:  Stress period:     1    Time step:    51
+    Solving:  Stress period:     1    Time step:    52
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    53
+    Solving:  Stress period:     1    Time step:    54
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    55
+    Solving:  Stress period:     1    Time step:    56
+    Solving:  Stress period:     1    Time step:    57
+    Solving:  Stress period:     1    Time step:    58
+    Solving:  Stress period:     1    Time step:    59
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    60
+    Solving:  Stress period:     1    Time step:    61
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    62
+    Solving:  Stress period:     1    Time step:    63
+    Solving:  Stress period:     1    Time step:    64
+    Solving:  Stress period:     1    Time step:    65
+    Solving:  Stress period:     1    Time step:    66
+    Solving:  Stress period:     1    Time step:    67
+    Solving:  Stress period:     1    Time step:    68
+    Solving:  Stress period:     1    Time step:    69
+    Solving:  Stress period:     1    Time step:    70
+    Solving:  Stress period:     1    Time step:    71
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    72
+    Solving:  Stress period:     1    Time step:    73
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    74
+    Solving:  Stress period:     1    Time step:    75
+    Solving:  Stress period:     1    Time step:    76
+    Solving:  Stress period:     1    Time step:    77
+    Solving:  Stress period:     1    Time step:    78
+    Solving:  Stress period:     1    Time step:    79
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    80
+    Solving:  Stress period:     1    Time step:    81
+    Solving:  Stress period:     1    Time step:    82
+    Solving:  Stress period:     1    Time step:    83
+    Solving:  Stress period:     1    Time step:    84
+    Solving:  Stress period:     1    Time step:    85
+    Solving:  Stress period:     1    Time step:    86
+    Solving:  Stress period:     1    Time step:    87
+    Solving:  Stress period:     1    Time step:    88
+    Solving:  Stress period:     1    Time step:    89
+    Solving:  Stress period:     1    Time step:    90
+    Solving:  Stress period:     1    Time step:    91
+    Solving:  Stress period:     1    Time step:    92
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    93
+    Solving:  Stress period:     1    Time step:    94
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:    95
+    Solving:  Stress period:     1    Time step:    96
+    Solving:  Stress period:     1    Time step:    97
+    Solving:  Stress period:     1    Time step:    98
+    Solving:  Stress period:     1    Time step:    99
+    Solving:  Stress period:     1    Time step:   100
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   101
+    Solving:  Stress period:     1    Time step:   102
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   103
+    Solving:  Stress period:     1    Time step:   104
+    Solving:  Stress period:     1    Time step:   105
+    Solving:  Stress period:     1    Time step:   106
+    Solving:  Stress period:     1    Time step:   107
+    Solving:  Stress period:     1    Time step:   108
+    Solving:  Stress period:     1    Time step:   109
+    Solving:  Stress period:     1    Time step:   110
+    Solving:  Stress period:     1    Time step:   111
+    Solving:  Stress period:     1    Time step:   112
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   113
+    Solving:  Stress period:     1    Time step:   114
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   115
+    Solving:  Stress period:     1    Time step:   116
+    Solving:  Stress period:     1    Time step:   117
+    Solving:  Stress period:     1    Time step:   118
+    Solving:  Stress period:     1    Time step:   119
+    Solving:  Stress period:     1    Time step:   120
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   121
+    Solving:  Stress period:     1    Time step:   122
+    Solving:  Stress period:     1    Time step:   123
+    Solving:  Stress period:     1    Time step:   124
+    Solving:  Stress period:     1    Time step:   125
+    Solving:  Stress period:     1    Time step:   126
+    Solving:  Stress period:     1    Time step:   127
+    Solving:  Stress period:     1    Time step:   128
+    Solving:  Stress period:     1    Time step:   129
+    Solving:  Stress period:     1    Time step:   130
+    Solving:  Stress period:     1    Time step:   131
+    Solving:  Stress period:     1    Time step:   132
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   133
+    Solving:  Stress period:     1    Time step:   134
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   135
+    Solving:  Stress period:     1    Time step:   136
+    Solving:  Stress period:     1    Time step:   137
+    Solving:  Stress period:     1    Time step:   138
+    Solving:  Stress period:     1    Time step:   139
+    Solving:  Stress period:     1    Time step:   140
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   141
+    Solving:  Stress period:     1    Time step:   142
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   143
+    Solving:  Stress period:     1    Time step:   144
+    Solving:  Stress period:     1    Time step:   145
+    Solving:  Stress period:     1    Time step:   146
+    Solving:  Stress period:     1    Time step:   147
+    Solving:  Stress period:     1    Time step:   148
+    Solving:  Stress period:     1    Time step:   149
+    Solving:  Stress period:     1    Time step:   150
+    Solving:  Stress period:     1    Time step:   151
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   152
+    Solving:  Stress period:     1    Time step:   153
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   154
+    Solving:  Stress period:     1    Time step:   155
+    Solving:  Stress period:     1    Time step:   156
+    Solving:  Stress period:     1    Time step:   157
+    Solving:  Stress period:     1    Time step:   158
+    Solving:  Stress period:     1    Time step:   159
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   160
+    Solving:  Stress period:     1    Time step:   161
+    Solving:  Stress period:     1    Time step:   162
+    Solving:  Stress period:     1    Time step:   163
+    Solving:  Stress period:     1    Time step:   164
+    Solving:  Stress period:     1    Time step:   165
+    Solving:  Stress period:     1    Time step:   166
+    Solving:  Stress period:     1    Time step:   167
+    Solving:  Stress period:     1    Time step:   168
+    Solving:  Stress period:     1    Time step:   169
+    Solving:  Stress period:     1    Time step:   170
+    Solving:  Stress period:     1    Time step:   171
+    Solving:  Stress period:     1    Time step:   172
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   173
+    Solving:  Stress period:     1    Time step:   174
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   175
+    Solving:  Stress period:     1    Time step:   176
+    Solving:  Stress period:     1    Time step:   177
+    Solving:  Stress period:     1    Time step:   178
+    Solving:  Stress period:     1    Time step:   179
+    Solving:  Stress period:     1    Time step:   180
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   181
+    Solving:  Stress period:     1    Time step:   182
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   183
+    Solving:  Stress period:     1    Time step:   184
+    Solving:  Stress period:     1    Time step:   185
+    Solving:  Stress period:     1    Time step:   186
+    Solving:  Stress period:     1    Time step:   187
+    Solving:  Stress period:     1    Time step:   188
+    Solving:  Stress period:     1    Time step:   189
+    Solving:  Stress period:     1    Time step:   190
+    Solving:  Stress period:     1    Time step:   191
+    Solving:  Stress period:     1    Time step:   192
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   193
+    Solving:  Stress period:     1    Time step:   194
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   195
+    Solving:  Stress period:     1    Time step:   196
+    Solving:  Stress period:     1    Time step:   197
+    Solving:  Stress period:     1    Time step:   198
+    Solving:  Stress period:     1    Time step:   199
+    Solving:  Stress period:     1    Time step:   200
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   201
+    Solving:  Stress period:     1    Time step:   202
+    Solving:  Stress period:     1    Time step:   203
+    Solving:  Stress period:     1    Time step:   204
+    Solving:  Stress period:     1    Time step:   205
+    Solving:  Stress period:     1    Time step:   206
+    Solving:  Stress period:     1    Time step:   207
+    Solving:  Stress period:     1    Time step:   208
+    Solving:  Stress period:     1    Time step:   209
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   210
+    Solving:  Stress period:     1    Time step:   211
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   212
+    Solving:  Stress period:     1    Time step:   213
+    Solving:  Stress period:     1    Time step:   214
+    Solving:  Stress period:     1    Time step:   215
+    Solving:  Stress period:     1    Time step:   216
+    Solving:  Stress period:     1    Time step:   217
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   218
+    Solving:  Stress period:     1    Time step:   219
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   220
+    Solving:  Stress period:     1    Time step:   221
+    Solving:  Stress period:     1    Time step:   222
+    Solving:  Stress period:     1    Time step:   223
+    Solving:  Stress period:     1    Time step:   224
+    Solving:  Stress period:     1    Time step:   225
+    Solving:  Stress period:     1    Time step:   226
+    Solving:  Stress period:     1    Time step:   227
+    Solving:  Stress period:     1    Time step:   228
+    Solving:  Stress period:     1    Time step:   229
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   230
+    Solving:  Stress period:     1    Time step:   231
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   232
+    Solving:  Stress period:     1    Time step:   233
+    Solving:  Stress period:     1    Time step:   234
+    Solving:  Stress period:     1    Time step:   235
+    Solving:  Stress period:     1    Time step:   236
+    Solving:  Stress period:     1    Time step:   237
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   238
+    Solving:  Stress period:     1    Time step:   239
+    Solving:  Stress period:     1    Time step:   240
+    Solving:  Stress period:     1    Time step:   241
+    Solving:  Stress period:     1    Time step:   242
+    Solving:  Stress period:     1    Time step:   243
+    Solving:  Stress period:     1    Time step:   244
+    Solving:  Stress period:     1    Time step:   245
+    Solving:  Stress period:     1    Time step:   246
+    Solving:  Stress period:     1    Time step:   247
+    Solving:  Stress period:     1    Time step:   248
+    Solving:  Stress period:     1    Time step:   249
+    Solving:  Stress period:     1    Time step:   250
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   251
+    Solving:  Stress period:     1    Time step:   252
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   253
+    Solving:  Stress period:     1    Time step:   254
+    Solving:  Stress period:     1    Time step:   255
+    Solving:  Stress period:     1    Time step:   256
+    Solving:  Stress period:     1    Time step:   257
+    Solving:  Stress period:     1    Time step:   258
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   259
+    Solving:  Stress period:     1    Time step:   260
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   261
+    Solving:  Stress period:     1    Time step:   262
+    Solving:  Stress period:     1    Time step:   263
+    Solving:  Stress period:     1    Time step:   264
+    Solving:  Stress period:     1    Time step:   265
+    Solving:  Stress period:     1    Time step:   266
+    Solving:  Stress period:     1    Time step:   267
+    Solving:  Stress period:     1    Time step:   268
+    Solving:  Stress period:     1    Time step:   269
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   270
+    Solving:  Stress period:     1    Time step:   271
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   272
+    Solving:  Stress period:     1    Time step:   273
+    Solving:  Stress period:     1    Time step:   274
+    Solving:  Stress period:     1    Time step:   275
+    Solving:  Stress period:     1    Time step:   276
+    Solving:  Stress period:     1    Time step:   277
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   278
+    Solving:  Stress period:     1    Time step:   279
+    Solving:  Stress period:     1    Time step:   280
+    Solving:  Stress period:     1    Time step:   281
+    Solving:  Stress period:     1    Time step:   282
+    Solving:  Stress period:     1    Time step:   283
+    Solving:  Stress period:     1    Time step:   284
+    Solving:  Stress period:     1    Time step:   285
+    Solving:  Stress period:     1    Time step:   286
+    Solving:  Stress period:     1    Time step:   287
+    Solving:  Stress period:     1    Time step:   288
+    Solving:  Stress period:     1    Time step:   289
+    Solving:  Stress period:     1    Time step:   290
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   291
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   292
+    Solving:  Stress period:     1    Time step:   293
+    Solving:  Stress period:     1    Time step:   294
+    Solving:  Stress period:     1    Time step:   295
+    Solving:  Stress period:     1    Time step:   296
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   297
+    Solving:  Stress period:     1    Time step:   298
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   299
+    Solving:  Stress period:     1    Time step:   300
+    Solving:  Stress period:     1    Time step:   301
+    Solving:  Stress period:     1    Time step:   302
+    Solving:  Stress period:     1    Time step:   303
+    Solving:  Stress period:     1    Time step:   304
+    Solving:  Stress period:     1    Time step:   305
+    Solving:  Stress period:     1    Time step:   306
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   307
+    Solving:  Stress period:     1    Time step:   308
+    Solving:  Stress period:     1    Time step:   309
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   310
+    Solving:  Stress period:     1    Time step:   311
+    Solving:  Stress period:     1    Time step:   312
+    Solving:  Stress period:     1    Time step:   313
+    Solving:  Stress period:     1    Time step:   314
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   315
+    Solving:  Stress period:     1    Time step:   316
+    Solving:  Stress period:     1    Time step:   317
+    Solving:  Stress period:     1    Time step:   318
+    Solving:  Stress period:     1    Time step:   319
+    Solving:  Stress period:     1    Time step:   320
+    Solving:  Stress period:     1    Time step:   321
+    Solving:  Stress period:     1    Time step:   322
+    Solving:  Stress period:     1    Time step:   323
+    Solving:  Stress period:     1    Time step:   324
+    Solving:  Stress period:     1    Time step:   325
+    Solving:  Stress period:     1    Time step:   326
+    Solving:  Stress period:     1    Time step:   327
+    Solving:  Stress period:     1    Time step:   328
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   329
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   330
+    Solving:  Stress period:     1    Time step:   331
+    Solving:  Stress period:     1    Time step:   332
+    Solving:  Stress period:     1    Time step:   333
+    Solving:  Stress period:     1    Time step:   334
+    Solving:  Stress period:     1    Time step:   335
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   336
+    Solving:  Stress period:     1    Time step:   337
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   338
+    Solving:  Stress period:     1    Time step:   339
+    Solving:  Stress period:     1    Time step:   340
+    Solving:  Stress period:     1    Time step:   341
+    Solving:  Stress period:     1    Time step:   342
+    Solving:  Stress period:     1    Time step:   343
+    Solving:  Stress period:     1    Time step:   344
+    Solving:  Stress period:     1    Time step:   345
+    Solving:  Stress period:     1    Time step:   346
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   347
+    Solving:  Stress period:     1    Time step:   348
+    Solving:  Stress period:     1    Time step:   349
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   350
+    Solving:  Stress period:     1    Time step:   351
+    Solving:  Stress period:     1    Time step:   352
+    Solving:  Stress period:     1    Time step:   353
+    Solving:  Stress period:     1    Time step:   354
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     1    Time step:   355
+    Solving:  Stress period:     1    Time step:   356
+    Solving:  Stress period:     1    Time step:   357
+    Solving:  Stress period:     1    Time step:   358
+    Solving:  Stress period:     1    Time step:   359
+    Solving:  Stress period:     1    Time step:   360
+    Solving:  Stress period:     1    Time step:   361
+    Solving:  Stress period:     1    Time step:   362
+    Solving:  Stress period:     1    Time step:   363
+    Solving:  Stress period:     1    Time step:   364
+    Solving:  Stress period:     1    Time step:   365
+    Solving:  Stress period:     2    Time step:     1
+    Solving:  Stress period:     2    Time step:     2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:     3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:     4
+    Solving:  Stress period:     2    Time step:     5
+    Solving:  Stress period:     2    Time step:     6
+    Solving:  Stress period:     2    Time step:     7
+    Solving:  Stress period:     2    Time step:     8
+    Solving:  Stress period:     2    Time step:     9
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    10
+    Solving:  Stress period:     2    Time step:    11
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    12
+    Solving:  Stress period:     2    Time step:    13
+    Solving:  Stress period:     2    Time step:    14
+    Solving:  Stress period:     2    Time step:    15
+    Solving:  Stress period:     2    Time step:    16
+    Solving:  Stress period:     2    Time step:    17
+    Solving:  Stress period:     2    Time step:    18
+    Solving:  Stress period:     2    Time step:    19
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    20
+    Solving:  Stress period:     2    Time step:    21
+    Solving:  Stress period:     2    Time step:    22
+    Solving:  Stress period:     2    Time step:    23
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    24
+    Solving:  Stress period:     2    Time step:    25
+    Solving:  Stress period:     2    Time step:    26
+    Solving:  Stress period:     2    Time step:    27
+    Solving:  Stress period:     2    Time step:    28
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    29
+    Solving:  Stress period:     2    Time step:    30
+    Solving:  Stress period:     2    Time step:    31
+    Solving:  Stress period:     2    Time step:    32
+    Solving:  Stress period:     2    Time step:    33
+    Solving:  Stress period:     2    Time step:    34
+    Solving:  Stress period:     2    Time step:    35
+    Solving:  Stress period:     2    Time step:    36
+    Solving:  Stress period:     2    Time step:    37
+    Solving:  Stress period:     2    Time step:    38
+    Solving:  Stress period:     2    Time step:    39
+    Solving:  Stress period:     2    Time step:    40
+    Solving:  Stress period:     2    Time step:    41
+    Solving:  Stress period:     2    Time step:    42
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    43
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    44
+    Solving:  Stress period:     2    Time step:    45
+    Solving:  Stress period:     2    Time step:    46
+    Solving:  Stress period:     2    Time step:    47
+    Solving:  Stress period:     2    Time step:    48
+    Solving:  Stress period:     2    Time step:    49
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    50
+    Solving:  Stress period:     2    Time step:    51
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    52
+    Solving:  Stress period:     2    Time step:    53
+    Solving:  Stress period:     2    Time step:    54
+    Solving:  Stress period:     2    Time step:    55
+    Solving:  Stress period:     2    Time step:    56
+    Solving:  Stress period:     2    Time step:    57
+    Solving:  Stress period:     2    Time step:    58
+    Solving:  Stress period:     2    Time step:    59
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    60
+    Solving:  Stress period:     2    Time step:    61
+    Solving:  Stress period:     2    Time step:    62
+    Solving:  Stress period:     2    Time step:    63
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    64
+    Solving:  Stress period:     2    Time step:    65
+    Solving:  Stress period:     2    Time step:    66
+    Solving:  Stress period:     2    Time step:    67
+    Solving:  Stress period:     2    Time step:    68
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    69
+    Solving:  Stress period:     2    Time step:    70
+    Solving:  Stress period:     2    Time step:    71
+    Solving:  Stress period:     2    Time step:    72
+    Solving:  Stress period:     2    Time step:    73
+    Solving:  Stress period:     2    Time step:    74
+    Solving:  Stress period:     2    Time step:    75
+    Solving:  Stress period:     2    Time step:    76
+    Solving:  Stress period:     2    Time step:    77
+    Solving:  Stress period:     2    Time step:    78
+    Solving:  Stress period:     2    Time step:    79
+    Solving:  Stress period:     2    Time step:    80
+    Solving:  Stress period:     2    Time step:    81
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    82
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    83
+    Solving:  Stress period:     2    Time step:    84
+    Solving:  Stress period:     2    Time step:    85
+    Solving:  Stress period:     2    Time step:    86
+    Solving:  Stress period:     2    Time step:    87
+    Solving:  Stress period:     2    Time step:    88
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    89
+    Solving:  Stress period:     2    Time step:    90
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    91
+    Solving:  Stress period:     2    Time step:    92
+    Solving:  Stress period:     2    Time step:    93
+    Solving:  Stress period:     2    Time step:    94
+    Solving:  Stress period:     2    Time step:    95
+    Solving:  Stress period:     2    Time step:    96
+    Solving:  Stress period:     2    Time step:    97
+    Solving:  Stress period:     2    Time step:    98
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:    99
+    Solving:  Stress period:     2    Time step:   100
+    Solving:  Stress period:     2    Time step:   101
+    Solving:  Stress period:     2    Time step:   102
+    Solving:  Stress period:     2    Time step:   103
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   104
+    Solving:  Stress period:     2    Time step:   105
+    Solving:  Stress period:     2    Time step:   106
+    Solving:  Stress period:     2    Time step:   107
+    Solving:  Stress period:     2    Time step:   108
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   109
+    Solving:  Stress period:     2    Time step:   110
+    Solving:  Stress period:     2    Time step:   111
+    Solving:  Stress period:     2    Time step:   112
+    Solving:  Stress period:     2    Time step:   113
+    Solving:  Stress period:     2    Time step:   114
+    Solving:  Stress period:     2    Time step:   115
+    Solving:  Stress period:     2    Time step:   116
+    Solving:  Stress period:     2    Time step:   117
+    Solving:  Stress period:     2    Time step:   118
+    Solving:  Stress period:     2    Time step:   119
+    Solving:  Stress period:     2    Time step:   120
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   121
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   122
+    Solving:  Stress period:     2    Time step:   123
+    Solving:  Stress period:     2    Time step:   124
+    Solving:  Stress period:     2    Time step:   125
+    Solving:  Stress period:     2    Time step:   126
+    Solving:  Stress period:     2    Time step:   127
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   128
+    Solving:  Stress period:     2    Time step:   129
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   130
+    Solving:  Stress period:     2    Time step:   131
+    Solving:  Stress period:     2    Time step:   132
+    Solving:  Stress period:     2    Time step:   133
+    Solving:  Stress period:     2    Time step:   134
+    Solving:  Stress period:     2    Time step:   135
+    Solving:  Stress period:     2    Time step:   136
+    Solving:  Stress period:     2    Time step:   137
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   138
+    Solving:  Stress period:     2    Time step:   139
+    Solving:  Stress period:     2    Time step:   140
+    Solving:  Stress period:     2    Time step:   141
+    Solving:  Stress period:     2    Time step:   142
+    Solving:  Stress period:     2    Time step:   143
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   144
+    Solving:  Stress period:     2    Time step:   145
+    Solving:  Stress period:     2    Time step:   146
+    Solving:  Stress period:     2    Time step:   147
+    Solving:  Stress period:     2    Time step:   148
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   149
+    Solving:  Stress period:     2    Time step:   150
+    Solving:  Stress period:     2    Time step:   151
+    Solving:  Stress period:     2    Time step:   152
+    Solving:  Stress period:     2    Time step:   153
+    Solving:  Stress period:     2    Time step:   154
+    Solving:  Stress period:     2    Time step:   155
+    Solving:  Stress period:     2    Time step:   156
+    Solving:  Stress period:     2    Time step:   157
+    Solving:  Stress period:     2    Time step:   158
+    Solving:  Stress period:     2    Time step:   159
+    Solving:  Stress period:     2    Time step:   160
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   161
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   162
+    Solving:  Stress period:     2    Time step:   163
+    Solving:  Stress period:     2    Time step:   164
+    Solving:  Stress period:     2    Time step:   165
+    Solving:  Stress period:     2    Time step:   166
+    Solving:  Stress period:     2    Time step:   167
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   168
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   169
+    Solving:  Stress period:     2    Time step:   170
+    Solving:  Stress period:     2    Time step:   171
+    Solving:  Stress period:     2    Time step:   172
+    Solving:  Stress period:     2    Time step:   173
+    Solving:  Stress period:     2    Time step:   174
+    Solving:  Stress period:     2    Time step:   175
+    Solving:  Stress period:     2    Time step:   176
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   177
+    Solving:  Stress period:     2    Time step:   178
+    Solving:  Stress period:     2    Time step:   179
+    Solving:  Stress period:     2    Time step:   180
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   181
+    Solving:  Stress period:     2    Time step:   182
+    Solving:  Stress period:     2    Time step:   183
+    Solving:  Stress period:     2    Time step:   184
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   185
+    Solving:  Stress period:     2    Time step:   186
+    Solving:  Stress period:     2    Time step:   187
+    Solving:  Stress period:     2    Time step:   188
+    Solving:  Stress period:     2    Time step:   189
+    Solving:  Stress period:     2    Time step:   190
+    Solving:  Stress period:     2    Time step:   191
+    Solving:  Stress period:     2    Time step:   192
+    Solving:  Stress period:     2    Time step:   193
+    Solving:  Stress period:     2    Time step:   194
+    Solving:  Stress period:     2    Time step:   195
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   196
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   197
+    Solving:  Stress period:     2    Time step:   198
+    Solving:  Stress period:     2    Time step:   199
+    Solving:  Stress period:     2    Time step:   200
+    Solving:  Stress period:     2    Time step:   201
+    Solving:  Stress period:     2    Time step:   202
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   203
+    Solving:  Stress period:     2    Time step:   204
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   205
+    Solving:  Stress period:     2    Time step:   206
+    Solving:  Stress period:     2    Time step:   207
+    Solving:  Stress period:     2    Time step:   208
+    Solving:  Stress period:     2    Time step:   209
+    Solving:  Stress period:     2    Time step:   210
+    Solving:  Stress period:     2    Time step:   211
+    Solving:  Stress period:     2    Time step:   212
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   213
+    Solving:  Stress period:     2    Time step:   214
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   215
+    Solving:  Stress period:     2    Time step:   216
+    Solving:  Stress period:     2    Time step:   217
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   218
+    Solving:  Stress period:     2    Time step:   219
+    Solving:  Stress period:     2    Time step:   220
+    Solving:  Stress period:     2    Time step:   221
+    Solving:  Stress period:     2    Time step:   222
+    Solving:  Stress period:     2    Time step:   223
+    Solving:  Stress period:     2    Time step:   224
+    Solving:  Stress period:     2    Time step:   225
+    Solving:  Stress period:     2    Time step:   226
+    Solving:  Stress period:     2    Time step:   227
+    Solving:  Stress period:     2    Time step:   228
+    Solving:  Stress period:     2    Time step:   229
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   230
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   231
+    Solving:  Stress period:     2    Time step:   232
+    Solving:  Stress period:     2    Time step:   233
+    Solving:  Stress period:     2    Time step:   234
+    Solving:  Stress period:     2    Time step:   235
+    Solving:  Stress period:     2    Time step:   236
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   237
+    Solving:  Stress period:     2    Time step:   238
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   239
+    Solving:  Stress period:     2    Time step:   240
+    Solving:  Stress period:     2    Time step:   241
+    Solving:  Stress period:     2    Time step:   242
+    Solving:  Stress period:     2    Time step:   243
+    Solving:  Stress period:     2    Time step:   244
+    Solving:  Stress period:     2    Time step:   245
+    Solving:  Stress period:     2    Time step:   246
+    Solving:  Stress period:     2    Time step:   247
+    Solving:  Stress period:     2    Time step:   248
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   249
+    Solving:  Stress period:     2    Time step:   250
+    Solving:  Stress period:     2    Time step:   251
+    Solving:  Stress period:     2    Time step:   252
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   253
+    Solving:  Stress period:     2    Time step:   254
+    Solving:  Stress period:     2    Time step:   255
+    Solving:  Stress period:     2    Time step:   256
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   257
+    Solving:  Stress period:     2    Time step:   258
+    Solving:  Stress period:     2    Time step:   259
+    Solving:  Stress period:     2    Time step:   260
+    Solving:  Stress period:     2    Time step:   261
+    Solving:  Stress period:     2    Time step:   262
+    Solving:  Stress period:     2    Time step:   263
+    Solving:  Stress period:     2    Time step:   264
+    Solving:  Stress period:     2    Time step:   265
+    Solving:  Stress period:     2    Time step:   266
+    Solving:  Stress period:     2    Time step:   267
+    Solving:  Stress period:     2    Time step:   268
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   269
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   270
+    Solving:  Stress period:     2    Time step:   271
+    Solving:  Stress period:     2    Time step:   272
+    Solving:  Stress period:     2    Time step:   273
+    Solving:  Stress period:     2    Time step:   274
+    Solving:  Stress period:     2    Time step:   275
+    Solving:  Stress period:     2    Time step:   276
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   277
+    Solving:  Stress period:     2    Time step:   278
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   279
+    Solving:  Stress period:     2    Time step:   280
+    Solving:  Stress period:     2    Time step:   281
+    Solving:  Stress period:     2    Time step:   282
+    Solving:  Stress period:     2    Time step:   283
+    Solving:  Stress period:     2    Time step:   284
+    Solving:  Stress period:     2    Time step:   285
+    Solving:  Stress period:     2    Time step:   286
+    Solving:  Stress period:     2    Time step:   287
+    Solving:  Stress period:     2    Time step:   288
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   289
+    Solving:  Stress period:     2    Time step:   290
+    Solving:  Stress period:     2    Time step:   291
+    Solving:  Stress period:     2    Time step:   292
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   293
+    Solving:  Stress period:     2    Time step:   294
+    Solving:  Stress period:     2    Time step:   295
+    Solving:  Stress period:     2    Time step:   296
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   297
+    Solving:  Stress period:     2    Time step:   298
+    Solving:  Stress period:     2    Time step:   299
+    Solving:  Stress period:     2    Time step:   300
+    Solving:  Stress period:     2    Time step:   301
+    Solving:  Stress period:     2    Time step:   302
+    Solving:  Stress period:     2    Time step:   303
+    Solving:  Stress period:     2    Time step:   304
+    Solving:  Stress period:     2    Time step:   305
+    Solving:  Stress period:     2    Time step:   306
+    Solving:  Stress period:     2    Time step:   307
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   308
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   309
+    Solving:  Stress period:     2    Time step:   310
+    Solving:  Stress period:     2    Time step:   311
+    Solving:  Stress period:     2    Time step:   312
+    Solving:  Stress period:     2    Time step:   313
+    Solving:  Stress period:     2    Time step:   314
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   315
+    Solving:  Stress period:     2    Time step:   316
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   317
+    Solving:  Stress period:     2    Time step:   318
+    Solving:  Stress period:     2    Time step:   319
+    Solving:  Stress period:     2    Time step:   320
+    Solving:  Stress period:     2    Time step:   321
+    Solving:  Stress period:     2    Time step:   322
+    Solving:  Stress period:     2    Time step:   323
+    Solving:  Stress period:     2    Time step:   324
+    Solving:  Stress period:     2    Time step:   325
+    Solving:  Stress period:     2    Time step:   326
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   327
+    Solving:  Stress period:     2    Time step:   328
+    Solving:  Stress period:     2    Time step:   329
+    Solving:  Stress period:     2    Time step:   330
+    Solving:  Stress period:     2    Time step:   331
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   332
+    Solving:  Stress period:     2    Time step:   333
+    Solving:  Stress period:     2    Time step:   334
+    Solving:  Stress period:     2    Time step:   335
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   336
+    Solving:  Stress period:     2    Time step:   337
+    Solving:  Stress period:     2    Time step:   338
+    Solving:  Stress period:     2    Time step:   339
+    Solving:  Stress period:     2    Time step:   340
+    Solving:  Stress period:     2    Time step:   341
+    Solving:  Stress period:     2    Time step:   342
+    Solving:  Stress period:     2    Time step:   343
+    Solving:  Stress period:     2    Time step:   344
+    Solving:  Stress period:     2    Time step:   345
+    Solving:  Stress period:     2    Time step:   346
+    Solving:  Stress period:     2    Time step:   347
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   348
+    Solving:  Stress period:     2    Time step:   349
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   350
+    Solving:  Stress period:     2    Time step:   351
+    Solving:  Stress period:     2    Time step:   352
+    Solving:  Stress period:     2    Time step:   353
+    Solving:  Stress period:     2    Time step:   354
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   355
+    Solving:  Stress period:     2    Time step:   356
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Solving:  Stress period:     2    Time step:   357
+    Solving:  Stress period:     2    Time step:   358
+    Solving:  Stress period:     2    Time step:   359
+    Solving:  Stress period:     2    Time step:   360
+    Solving:  Stress period:     2    Time step:   361
+    Solving:  Stress period:     2    Time step:   362
+    Solving:  Stress period:     2    Time step:   363
+    Solving:  Stress period:     2    Time step:   364
+    Solving:  Stress period:     2    Time step:   365
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2025/11/13 22:54:39
+ Elapsed run time:  3.952 Seconds
+ 
+ Normal termination of simulation.
+<span class=" -Color -Color-Bold -Color-Bold-Green">MODFLOW 6 normal termination.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="flow-model-post-processing-and-hydraulic-reasonableness-check">
+<h2>Flow Model – Post-Processing and Hydraulic Reasonableness Check<a class="headerlink" href="#flow-model-post-processing-and-hydraulic-reasonableness-check" title="Link to this heading">#</a></h2>
+<p>Before moving on to transport modeling, it is essential to verify that the groundwater flow solution behaves in a physically reasonable way. In this section, we will visualize the simulated hydraulic head distribution in all three layers for both the initial and final times of the steady-state run (recall that for steady flow, these should be identical unless transient storage was activated).</p>
+<p>The goal here is not yet to interpret plume behavior or evaluate well impacts.
+Instead, we are performing a sanity check on the model’s hydraulics:</p>
+<p>Do heads decrease in the expected down-gradient direction?</p>
+<p>Are vertical gradients consistent with the conceptual hydrogeologic system (unconfined → aquitard → leaky confined)?</p>
+<p>Do pumping wells induce appropriate drawdowns in the correct layers?</p>
+<p>Are boundary conditions behaving as intended (constant head, no-flow, or others)?</p>
+<p>Is the system numerically stable (no oscillations, unreasonable values, or artifacts)?</p>
+<p>If the hydraulic field is incorrect, any subsequent GWT transport simulation will also be incorrect—since advective velocities and flow exchanges come directly from this flow solution.</p>
+<p>For now, we will generate plots of heads in Layer 1, Layer 2, and Layer 3.
+Later, once the hydraulics are validated, we may choose to suppress or streamline these plots to focus on the actual transport problems in Exercise Set 7.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hobj</span> <span class="o">=</span> <span class="n">gwf</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Head file explorer ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;kstp,kper combos:&quot;</span><span class="p">,</span> <span class="n">hobj</span><span class="o">.</span><span class="n">get_kstpkper</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Times:&quot;</span><span class="p">,</span> <span class="n">hobj</span><span class="o">.</span><span class="n">get_times</span><span class="p">())</span>
+
+<span class="c1"># Get last timestep by default</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">hobj</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Head array shape:&quot;</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Layer count:&quot;</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Layer </span><span class="si">{</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: min=</span><span class="si">{</span><span class="n">h</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, max=</span><span class="si">{</span><span class="n">h</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Head file explorer ===
+kstp,kper combos: [(np.int32(364), np.int32(0)), (np.int32(364), np.int32(1))]
+Times: [np.float64(31536000.0), np.float64(63072000.0)]
+Head array shape: (3, 50, 26)
+Layer count: 3
+Layer 1: min=3040.000, max=3100.000
+Layer 2: min=3040.000, max=3100.000
+Layer 3: min=3040.000, max=3100.000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## now attempt to postprocess</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">gwf</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">kstpkper</span><span class="o">=</span><span class="p">(</span><span class="mi">364</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delc</span><span class="o">*</span><span class="n">ncol</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delr</span><span class="o">*</span><span class="n">nrow</span><span class="p">,</span> <span class="n">nrow</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mf">2900.0</span><span class="p">,</span> <span class="mf">3210.0</span>
+<span class="n">contour_intervals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">2900.0</span><span class="p">,</span> <span class="mf">3210.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+
+<span class="c1"># ### Plot a Map of Layer 1</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">contour_intervals</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Project Aquifer Layer 1 = PreDevelopment Conditions&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Easting (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Northing (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2.1f</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="c1"># ### Plot a Map of Layer 2</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">contour_intervals</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Project Aquifer Layer 2 = PreDevelopment Conditions&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Easting (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Northing (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2.1f</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="c1"># ### Plot a Map of Layer 3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">contour_intervals</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Project Aquifer Layer 3 = PreDevelopment Conditions&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Easting (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Northing (meters)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2.1f</span><span class="s2">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[3100.         3100.         3100.         ... 3095.59477136
+  3095.09710538 3094.86207994]
+ [3100.         3099.64965221 3099.3843541  ... 3095.26110073
+  3094.83446485 3094.62705449]
+ [3100.         3099.21425474 3098.68465866 ... 3094.68765165
+  3094.35259881 3094.18461867]
+ ...
+ [3050.19104234 3050.07121793 3049.82903907 ... 3041.1670703
+  3040.6456397  3040.        ]
+ [3049.92866444 3049.7999369  3049.53850154 ... 3040.55515421
+  3040.30019848 3040.        ]
+ [3049.79501407 3049.66136371 3049.38914014 ... 3040.
+  3040.         3040.        ]]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3100.0
+</pre></div>
+</div>
+<img alt="../../_images/0e76683141f552336071d4370664102c7bc56592f01d1fbb44e2b1acea1323c2.png" src="../../_images/0e76683141f552336071d4370664102c7bc56592f01d1fbb44e2b1acea1323c2.png" />
+<img alt="../../_images/7c85286b9ba0a1d103cd8636237b0f815734fda140880826c0f124d2ac918e2b.png" src="../../_images/7c85286b9ba0a1d103cd8636237b0f815734fda140880826c0f124d2ac918e2b.png" />
+<img alt="../../_images/817294db19f8313f493aa33c41dc142363b764e60c5a384e940466609e71901b.png" src="../../_images/817294db19f8313f493aa33c41dc142363b764e60c5a384e940466609e71901b.png" />
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2053,6 +3253,21 @@ Layer 3
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-model-post-processing-and-hydraulic-reasonableness-check">Flow Model – Post-Processing and Hydraulic Reasonableness Check</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
