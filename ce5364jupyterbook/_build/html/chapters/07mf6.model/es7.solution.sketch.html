@@ -426,6 +426,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-object-workflow">Simulation Object Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-specific-database">Problem Specific Database</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-model-workflow">Flow Model Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transport-model-workflow">Transport Model Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attempt-the-simulation-run-s">Attempt the simulation run(s)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-model-post-processing">Flow Model – Post-Processing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transport-model-post-processing">Transport Model - Post Processing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-development-notes">Appendix — Development Notes</a></li>
@@ -444,13 +449,13 @@ document.write(`
 <h1>ES7 Solution Sketch<a class="headerlink" href="#es7-solution-sketch" title="Link to this heading">#</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This is a work in progress - end goal is to get a working model framework, then students modify to fit the problem statement, formulate narrative answers, etc.</p>
+<p>This is a working model framework.  Students will modify to fit the problem statement, formulate narrative answers, capture relevant graphics, etc.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Populate this portion with the problem prompt</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Populate your solution report with the problem prompt, then backfill solution as modeling proceedes.</p>
 </div>
-<p>Model build notes (flow model):</p>
+<p>Model build notes:</p>
 <ul class="simple">
 <li><p>memory purge script DONE</p></li>
 <li><p>problem set up database: IN PROGRESS</p></li>
@@ -459,7 +464,7 @@ document.write(`
 <li><p>set simulation name: DONE</p></li>
 <li><p>set flow model name: DONE</p></li>
 <li><p>set time discretization: DONE</p></li>
-<li><p>solver for flow model: DONE</p></li>
+<li><p>set solver and register the flow model: DONE</p></li>
 <li><p>discretization for flow model: DONE</p></li>
 <li><p>initial conditions for flow model: DONE</p></li>
 <li><p>node property flow package: DONE</p></li>
@@ -467,9 +472,34 @@ document.write(`
 <li><p>constant head package: DONE</p></li>
 <li><p>well package (if applicable): SKIP TRY 1</p></li>
 <li><p>output control for flow model: DONE</p></li>
-<li><p>Attempt FLOW model run: SUCCESS; NEED TO CHECK OUTPUTS</p></li>
-<li><p>build starting concentration arrays</p></li>
+<li><p><strong>Attempt FLOW model run: SUCCESS; recode out of script</strong></p></li>
+<li><p>build starting concentration arrays: DONE</p></li>
+<li><p>set solver and register the transport model: DONE</p></li>
+<li><p>discretization for transport model: DONE</p></li>
+<li><p>transport initial concentrations: DONE (its why we built the arrays)</p></li>
+<li><p>set transport advection package: DONE</p></li>
+<li><p>set transport dispersion package: DONE</p></li>
+<li><p>set mass transfer package: DONE</p></li>
+<li><p>set source-sink mixing package: DONE</p></li>
+<li><p>set transport output control package: DONE</p></li>
+<li><p>set flow-transport exchange: DONE</p></li>
+<li><p><strong>Attempt FLOW+TRANSPORT model: SUCCESS; CHECK OUTPUTS &gt;&gt;&gt; DEBUG K ERROR (FORGOT DAYS 2 SECONDS)</strong></p></li>
+<li><p>build output graphics: DONE</p></li>
 </ul>
+<p><strong>Working Model Framework is Complete</strong></p>
+<p>Modifications to complete assignment:</p>
+<ul class="simple">
+<li><p>Add three wells and verify drawdown looks OK.</p></li>
+<li><p>Add output code to get C(t) as a prescribed well.</p></li>
+<li><p>Probably add a few more stress periods to help capture plume arrival/departure at specific locations.  This will make plotting a bit cluttered, but the simulations themselves will be easier to manage.</p></li>
+<li><p>Mod mass transfer package to simulate effect of retardation.</p></li>
+<li><p>Mod mass transfer to simulate 1-st order decay.</p></li>
+<li><p>Get output plots captured and into report before next step</p></li>
+<li><p>Mod wells package to insert a remediation system (we only really get pump-and-treat to work with here)</p></li>
+<li><p>Complete report and hand-in your design and analysis</p></li>
+</ul>
+<section id="simulation-object-workflow">
+<h2>Simulation Object Workflow<a class="headerlink" href="#simulation-object-workflow" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reset</span> -f
@@ -513,6 +543,9 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
+<section id="problem-specific-database">
+<h2>Problem Specific Database<a class="headerlink" href="#problem-specific-database" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Problem set-up database and simulation control constants</span>
@@ -1912,20 +1945,9 @@ Layer 3
 </div>
 </div>
 </div>
-<p>The workflow for the flow model will generally involve the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">###### Instantiating MODFLOW 6 groundwater flow model            ########</span>
-<span class="c1">###### Instantiating MODFLOW 6 time discretization               ########</span>
-<span class="c1">###### Instantiating MODFLOW 6 solver for flow model             ########</span>
-<span class="c1">###### Instantiating MODFLOW 6 discretization for flow model     ########</span>
-<span class="c1">###### Instantiating MODFLOW 6 initial conditions for flow model ########</span>
-<span class="c1">###### Instantiating MODFLOW 6 node-property flow package        ########</span>
-<span class="c1">###### Instantiating MODFLOW 6 storage package                   ########</span>
-<span class="c1">###### Instantiating MODFLOW 6 constant head package             ########</span>
-<span class="c1">###### Instantiating MODFLOW 6 well package (if applicable)      ########</span>
-<span class="c1">###### Instantiating MODFLOW 6 output control for flow model     ########</span>
-</pre></div>
-</div>
-<p>These are created one-by-one in the cells below</p>
+</section>
+<section id="flow-model-workflow">
+<h2>Flow Model Workflow<a class="headerlink" href="#flow-model-workflow" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set simulation name(s)</span>
@@ -2230,7 +2252,9 @@ Layer 3
 </div>
 </div>
 </div>
-<p>Now build the transport model parts</p>
+</section>
+<section id="transport-model-workflow">
+<h2>Transport Model Workflow<a class="headerlink" href="#transport-model-workflow" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###### Instantiating MODFLOW 6 groundwater transport model (GWT) ######</span>
@@ -2488,6 +2512,9 @@ Layer 3
 </div>
 </div>
 </div>
+</section>
+<section id="attempt-the-simulation-run-s">
+<h2>Attempt the simulation run(s)<a class="headerlink" href="#attempt-the-simulation-run-s" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span><span class="o">.</span><span class="n">write_simulation</span><span class="p">(</span><span class="n">silent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -2564,6 +2591,7 @@ Layer 3
 </div>
 </div>
 </div>
+</section>
 <section id="flow-model-post-processing">
 <h2>Flow Model – Post-Processing<a class="headerlink" href="#flow-model-post-processing" title="Link to this heading">#</a></h2>
 <p>A sanity check on the model’s hydraulics we should ask ourselves:</p>
@@ -3266,6 +3294,11 @@ Later, once the hydraulics are validated, we may choose to suppress or streamlin
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-object-workflow">Simulation Object Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-specific-database">Problem Specific Database</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-model-workflow">Flow Model Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transport-model-workflow">Transport Model Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attempt-the-simulation-run-s">Attempt the simulation run(s)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-model-post-processing">Flow Model – Post-Processing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transport-model-post-processing">Transport Model - Post Processing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-development-notes">Appendix — Development Notes</a></li>
