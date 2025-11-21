@@ -1,0 +1,22 @@
+/* Optional — tighten content column for a classic RTD feel */
+.bd-main .bd-content {
+    max-width: 900px;
+}
+
+/* Light gray sidebar background reminiscent of RTD */
+.bd-sidebar {
+    background-color: #f8f8f8;
+}
+
+/* RTD-style link coloring */
+a {
+    color: #2980b9;
+}
+a:hover {
+    color: #1b4f72;
+}
+
+/* Slight font-size tweak for TOC */
+.bd-sidebar .nav a {
+    font-size: 0.92rem;
+}

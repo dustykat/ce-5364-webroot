@@ -30,6 +30,20 @@ repository:
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+#html:
+#  use_issues_button: true
+#  use_repository_button: true
 html:
-  use_issues_button: true
-  use_repository_button: true
+  theme:
+    name: sphinx_book_theme
+    options:
+      home_page_in_toc: true       # shows landing page in sidebar
+      show_navbar_depth: 1         # similar to RTD expand level
+      show_toc_level: 2            # sidebar depth
+      use_download_button: true
+      use_fullscreen_button: true
+      use_issues_button: false
+      use_repository_button: false
+      use_edit_page_button: false
+  extra_css:
+    - _static/css/rtd-ish.css   # you can add this later
