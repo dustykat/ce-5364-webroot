@@ -34,3 +34,9 @@ chapters:
   - file: chapters/19chemflow/chemflowwinders
   - file: chapters/19chemflow/chemflowexamples
 - file: chapters/22remediation/remediation.ipynb
+- file: chapters/12.02usgsmocmodel/Legacy.ipynb
+  sections:
+  - file: chapters/12.02usgsmocmodel/usgsmoc.ipynb
+  - file: chapters/12.02usgsmocmodel/winmoc.ipynb
+  - file: chapters/12.02usgsmocmodel/armmoc.ipynb
+  - file: chapters/12.02usgsmocmodel/dprw.ipynb
