@@ -780,11 +780,11 @@ document.write(`
 <span class="c1"># Build time information</span>
 
 <span class="c1"># Time variables</span>
-<span class="n">perlen</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span> <span class="o">*</span> <span class="mi">86400</span><span class="p">,</span> <span class="mf">364.0</span> <span class="o">*</span> <span class="mi">86400</span><span class="p">]</span> <span class="c1">#0.1 day initial, 1.0 years next period</span>
-<span class="n">steady</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+<span class="n">perlen</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span> <span class="o">*</span> <span class="mi">86400</span><span class="p">,</span> <span class="mi">10</span><span class="o">*</span><span class="mf">365.0</span> <span class="o">*</span> <span class="mi">86400</span><span class="p">,</span><span class="mi">10</span><span class="o">*</span><span class="mf">365.0</span> <span class="o">*</span> <span class="mi">86400</span><span class="p">]</span> <span class="c1">#0.1 day initial, 1.0 years next period</span>
+<span class="n">steady</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
 <span class="n">nper</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">perlen</span><span class="p">)</span>
-<span class="n">nstp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">364</span><span class="p">]</span>
-<span class="n">tsmult</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="n">nstp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">364</span><span class="p">,</span> <span class="mi">364</span><span class="p">]</span>
+<span class="n">tsmult</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
 
 <span class="c1"># Solver settings</span>
 <span class="n">nouter</span><span class="p">,</span> <span class="n">ninner</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">300</span>
@@ -2524,7 +2524,9 @@ Layer 3
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>writing simulation...
   writing simulation name file...
-  writing simulation tdis package...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  writing simulation tdis package...
   writing solution package ims_-1...
   writing solution package ims_0...
   writing package es7.gwfgwt...
@@ -2550,7 +2552,9 @@ Layer 3
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    writing package ic...
-    writing package adv...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    writing package adv...
     writing package dsp...
     writing package mst...
 </pre></div>
@@ -2623,8 +2627,8 @@ Layer 3
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Head file explorer ===
-kstp,kper combos: [(np.int32(0), np.int32(0)), (np.int32(363), np.int32(1))]
-Times: [np.float64(8640.0), np.float64(31458240.0)]
+kstp,kper combos: [(np.int32(0), np.int32(0)), (np.int32(363), np.int32(1)), (np.int32(363), np.int32(2))]
+Times: [np.float64(8640.0), np.float64(315368640.0), np.float64(630728640.0)]
 Head array shape: (3, 50, 26)
 Layer count: 3
 Layer 1: min=3040.000, max=3100.000
@@ -2731,9 +2735,9 @@ Layer 3: min=3040.000, max=3100.000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/30275a6b51491f24258a92ea4d86f484c53602196b59c652a2bae07013f7a154.png" src="../../_images/30275a6b51491f24258a92ea4d86f484c53602196b59c652a2bae07013f7a154.png" />
-<img alt="../../_images/e8304cc208c7463fe744700be710bc68fa7c1c33c9c328f263d7ea2ee876262d.png" src="../../_images/e8304cc208c7463fe744700be710bc68fa7c1c33c9c328f263d7ea2ee876262d.png" />
-<img alt="../../_images/27000f1e315e5d8758af54ada51d59577a230802dba00cf593139f179e8b4aa1.png" src="../../_images/27000f1e315e5d8758af54ada51d59577a230802dba00cf593139f179e8b4aa1.png" />
+<img alt="../../_images/de0ff42d75e354fa9f234b1221aed326617f35d1a3eb4447641484d4958d2ef1.png" src="../../_images/de0ff42d75e354fa9f234b1221aed326617f35d1a3eb4447641484d4958d2ef1.png" />
+<img alt="../../_images/10fb3c1d33314ed634d825d0c947b96a9cd1136b91fa6f73619ea7e2647f828c.png" src="../../_images/10fb3c1d33314ed634d825d0c947b96a9cd1136b91fa6f73619ea7e2647f828c.png" />
+<img alt="../../_images/a6c965f494ea41b55c438289846faa86d8376191e56cf4254c5fa0c10887e0ac.png" src="../../_images/a6c965f494ea41b55c438289846faa86d8376191e56cf4254c5fa0c10887e0ac.png" />
 </div>
 </div>
 </section>
@@ -2786,7 +2790,7 @@ Layer 3: min=3040.000, max=3100.000
 
 <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nlay</span><span class="p">):</span>
     <span class="n">layer_data</span> <span class="o">=</span> <span class="n">conc</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span>
-    <span class="n">layer_masked</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_less_equal</span><span class="p">(</span><span class="n">layer_data</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+    <span class="n">layer_masked</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_less_equal</span><span class="p">(</span><span class="n">layer_data</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
 
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
 
@@ -2814,9 +2818,9 @@ Layer 3: min=3040.000, max=3100.000
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Easting (m)&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Northing (m)&quot;</span><span class="p">)</span>
 <span class="c1"># Toggle block OFF/ON as needed</span>
-    <span class="c1">#ax.set_xticks(x_edges)</span>
-    <span class="c1">#ax.set_yticks(y_edges)</span>
-    <span class="c1">#ax.grid(True, color=&quot;black&quot;, linewidth=0.5, alpha=0.4)</span>
+<span class="c1">#    ax.set_xticks(x_edges)</span>
+<span class="c1">#    ax.set_yticks(y_edges)</span>
+<span class="c1">#    ax.grid(True, color=&quot;black&quot;, linewidth=0.5, alpha=0.4)</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2.1f</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Concentration&quot;</span><span class="p">)</span>
@@ -2826,7 +2830,7 @@ Layer 3: min=3040.000, max=3100.000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d481cdc0f7a486469dfc4f7a09c8c7425950cbcad2bbd0ea6a2ece945b21eae0.png" src="../../_images/d481cdc0f7a486469dfc4f7a09c8c7425950cbcad2bbd0ea6a2ece945b21eae0.png" />
+<img alt="../../_images/4106a0a7a4290c564231696adc6a704aab5132d4ddfb8181b0c51f71c3025a55.png" src="../../_images/4106a0a7a4290c564231696adc6a704aab5132d4ddfb8181b0c51f71c3025a55.png" />
 <img alt="../../_images/87db874f6c3d3353f61e5b07ffef557670d1f01710ea968c146379af95fa5e75.png" src="../../_images/87db874f6c3d3353f61e5b07ffef557670d1f01710ea968c146379af95fa5e75.png" />
 <img alt="../../_images/00138d42acd546960e413c300cffffaaef4ee2ea030cd5e06bca3fbb78f1dd8d.png" src="../../_images/00138d42acd546960e413c300cffffaaef4ee2ea030cd5e06bca3fbb78f1dd8d.png" />
 </div>
@@ -2874,7 +2878,7 @@ Layer 3: min=3040.000, max=3100.000
 
 <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nlay</span><span class="p">):</span>
     <span class="n">layer_data</span> <span class="o">=</span> <span class="n">conc</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span>
-    <span class="n">layer_masked</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_less_equal</span><span class="p">(</span><span class="n">layer_data</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+    <span class="n">layer_masked</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_less_equal</span><span class="p">(</span><span class="n">layer_data</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
 
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
 
@@ -2914,8 +2918,96 @@ Layer 3: min=3040.000, max=3100.000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7ef6b74bf7df5c5d2e56da929992e0b4a69e7701bb467e1366f00fcd96e29959.png" src="../../_images/7ef6b74bf7df5c5d2e56da929992e0b4a69e7701bb467e1366f00fcd96e29959.png" />
-<img alt="../../_images/f12215a679cae0132decad4656074867536a36cf79854f3b2703576916692333.png" src="../../_images/f12215a679cae0132decad4656074867536a36cf79854f3b2703576916692333.png" />
+<img alt="../../_images/e6eea28e3557200aef60469d402207bf9059e9b3dc4e79186c344e522160c01d.png" src="../../_images/e6eea28e3557200aef60469d402207bf9059e9b3dc4e79186c344e522160c01d.png" />
+<img alt="../../_images/ba507209c0b44c7ea18be58c145348a8c0f5a138b9556c573970897bed26b97a.png" src="../../_images/ba507209c0b44c7ea18be58c145348a8c0f5a138b9556c573970897bed26b97a.png" />
+<img alt="../../_images/4c40ca0ab306c932961c76b1cd4eea02028e8847feb3da8fe97b175ccdc4d419.png" src="../../_images/4c40ca0ab306c932961c76b1cd4eea02028e8847feb3da8fe97b175ccdc4d419.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assuming you already have:</span>
+<span class="c1"># conc  : (nlay, nrow, ncol)</span>
+<span class="c1"># delr  : row spacing</span>
+<span class="c1"># delc  : column spacing</span>
+<span class="c1"># nrow, ncol defined</span>
+
+<span class="c1"># Get concentration at a specific time (kstp=0, kper=0)</span>
+<span class="n">conc</span> <span class="o">=</span> <span class="n">gwt</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">concentration</span><span class="p">()</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">kstpkper</span><span class="o">=</span><span class="p">(</span><span class="mi">363</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># shape (nlay, nrow, ncol)</span>
+<span class="c1"># Now we already have:</span>
+<span class="c1"># conc  : (nlay, nrow, ncol)</span>
+<span class="c1"># delr  : row spacing</span>
+<span class="c1"># delc  : column spacing</span>
+<span class="c1"># nrow, ncol defined</span>
+<span class="n">nlay</span><span class="p">,</span> <span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">=</span> <span class="n">conc</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="c1"># Cell center coordinates (for contour)</span>
+<span class="n">x_centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">delc</span><span class="p">,</span> <span class="n">delc</span> <span class="o">*</span> <span class="p">(</span><span class="n">ncol</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">ncol</span><span class="p">)</span>
+<span class="n">y_centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">delr</span><span class="p">,</span> <span class="n">delr</span> <span class="o">*</span> <span class="p">(</span><span class="n">nrow</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">nrow</span><span class="p">)</span>
+<span class="n">y_centers</span> <span class="o">=</span> <span class="n">y_centers</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># if you want row 0 at top (northing increasing upward)</span>
+
+<span class="c1"># Cell edge coordinates (for pcolormesh)</span>
+<span class="n">x_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delc</span> <span class="o">*</span> <span class="n">ncol</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delr</span> <span class="o">*</span> <span class="n">nrow</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y_edges</span> <span class="o">=</span> <span class="n">y_edges</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>      <span class="c1"># match the flip above</span>
+
+<span class="n">X_edges</span><span class="p">,</span> <span class="n">Y_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x_edges</span><span class="p">,</span> <span class="n">y_edges</span><span class="p">)</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">contour_levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1000.0</span> <span class="o">+</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">)</span>
+
+<span class="n">base_cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;turbo&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># or &quot;bwr&quot;, &quot;jet&quot;, etc.</span>
+<span class="n">base_cmap</span><span class="o">.</span><span class="n">set_bad</span><span class="p">(</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>                   <span class="c1"># masked values → white</span>
+
+<span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1000.0</span>  <span class="c1"># or use conc.min()/conc.max() if you prefer</span>
+
+
+<span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nlay</span><span class="p">):</span>
+    <span class="n">layer_data</span> <span class="o">=</span> <span class="n">conc</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span>
+    <span class="n">layer_masked</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_less_equal</span><span class="p">(</span><span class="n">layer_data</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span>
+        <span class="n">X_edges</span><span class="p">,</span>
+        <span class="n">Y_edges</span><span class="p">,</span>
+        <span class="n">layer_masked</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="n">base_cmap</span><span class="p">,</span>
+        <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span>
+        <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span>
+        <span class="n">shading</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span>
+        <span class="n">x_centers</span><span class="p">,</span>
+        <span class="n">y_centers</span><span class="p">,</span>
+        <span class="n">layer_masked</span><span class="p">,</span>
+        <span class="n">levels</span><span class="o">=</span><span class="n">contour_levels</span><span class="p">,</span>
+        <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Project Aquifer Layer </span><span class="si">{</span><span class="n">layer</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> – Concentration at End Stress Period 1 (0-Based) &quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Easting (m)&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Northing (m)&quot;</span><span class="p">)</span>
+
+<span class="c1">#    ax.set_xticks(x_edges)</span>
+<span class="c1">#    ax.set_yticks(y_edges)</span>
+<span class="c1">#    ax.grid(True, color=&quot;black&quot;, linewidth=0.5, alpha=0.4)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2.1f</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Concentration&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/e94ff82d66c8cd0abbeede467962731ba8617d871a40251dc77ebd298ae60e86.png" src="../../_images/e94ff82d66c8cd0abbeede467962731ba8617d871a40251dc77ebd298ae60e86.png" />
+<img alt="../../_images/e81a628901ff1e41b22a678446579475567b196ff71193315b51f3c594e67e79.png" src="../../_images/e81a628901ff1e41b22a678446579475567b196ff71193315b51f3c594e67e79.png" />
 <img alt="../../_images/4c40ca0ab306c932961c76b1cd4eea02028e8847feb3da8fe97b175ccdc4d419.png" src="../../_images/4c40ca0ab306c932961c76b1cd4eea02028e8847feb3da8fe97b175ccdc4d419.png" />
 </div>
 </div>
